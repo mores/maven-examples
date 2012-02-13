@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:Application
+    xmlns:mx="http://www.adobe.com/2006/mxml"
+    backgroundGradientColors="[#0e2e7d, #6479ab]"
+    layout="vertical"
+    verticalAlign="middle">
+
+    <mx:Style>
+        .Panel {
+            padding-left: 8px; padding-top: 8px;
+            padding-right: 8px; padding-bottom: 8px;
+        }
+        .Result { font-size: 26px; color: white; }
+    </mx:Style>
+
+    <mx:RemoteObject id="srv" destination="helloWorldService" />
+
+    <mx:Panel styleName="Panel" title="Hello World Sample">
+        <mx:Label text="Enter your name:"/>
+        <mx:TextInput id="nameInput" />
+        <mx:Button label="Say Hello" click="srv.sayHello(nameInput.text)"/>
+    </mx:Panel>
+        
+    <mx:Label styleName="Result" text="{srv.sayHello.lastResult}"/>
+
+</mx:Application>
