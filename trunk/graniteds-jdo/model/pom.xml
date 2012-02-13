@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+        http://maven.apache.org/maven-v4_0_0.xsd">
+
+        <parent>
+                <groupId>org.test</groupId>
+                <artifactId>granite-jdo</artifactId>
+                <version>0.1</version>
+        </parent>
+
+        <modelVersion>4.0.0</modelVersion>
+        <artifactId>model</artifactId>
+        <version>0.1</version>
+        <packaging>jar</packaging>
+        <name>${pom.artifactId}</name>
+
+	<dependencies>
+		<dependency>
+                        <groupId>org.datanucleus</groupId>
+                        <artifactId>datanucleus-api-jdo</artifactId>
+                        <version>${datanucleus-api-jdo.version}</version>
+		</dependency>
+
+		<dependency>
+                        <groupId>javax.jdo</groupId>
+                        <artifactId>jdo2-api</artifactId>
+                        <version>${jdo2-api.version}</version>
+                </dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <configuration>
+                                        <source>1.5</source>
+                                        <target>1.5</target>
+                                </configuration>
+                        </plugin>
+
+			<plugin>
+                                <groupId>org.datanucleus</groupId>
+                                <artifactId>maven-datanucleus-plugin</artifactId>
+                                <version>${maven-datanucleus-plugin.version}</version>
+                                <configuration>
+                                        <verbose>true</verbose>
+                                        <mappingIncludes>**/*.class</mappingIncludes>
+                                        <api>JDO</api>
+                                </configuration>
+                                <executions>
+                                        <execution>
+                                                <phase>compile</phase>
+                                                <goals>
+                                                        <goal>enhance</goal>
+                                                </goals>
+                                        </execution>
+                                </executions>
+                        </plugin>
+		</plugins>
+	</build>
+</project>

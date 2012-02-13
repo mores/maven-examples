@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  http://maven.apache.org/maven-v4_0_0.xsd">
+
+        <modelVersion>4.0.0</modelVersion>
+	<groupId>org.test</groupId>
+        <artifactId>granite-jdo</artifactId>
+	<name>${artifactId}</name>
+	<version>0.1</version>
+	<packaging>pom</packaging>
+
+	<properties>
+                <maven_basedir>${basedir}</maven_basedir>
+
+		<jdo2-api.version>2.3-eb</jdo2-api.version>
+
+		<datanucleus-core.version>3.0.8</datanucleus-core.version>
+		<datanucleus-rdbms.version>3.0.7</datanucleus-rdbms.version>
+		<datanucleus-api-jdo.version>3.0.4</datanucleus-api-jdo.version>
+		<maven-datanucleus-plugin.version>3.0.1</maven-datanucleus-plugin.version>
+
+		<flex-framework.version>3.2.0.3958</flex-framework.version>
+
+		<flexmojos-maven-plugin.version>3.8</flexmojos-maven-plugin.version>
+
+		<graniteds.version>2.3.0.GA</graniteds.version>
+        </properties>
+
+	<modules>
+		<module>services-config</module>
+		<module>model</module>
+		<module>swc</module>
+		<module>swf</module>
+		<module>www</module>
+	</modules>
+
+</project>
