@@ -9,6 +9,9 @@
 
     <mx:Script>
 	<![CDATA[
+		import mx.controls.Alert;
+		import mx.events.ListEvent;
+
 		import org.test.Welcome;
 
 		[Bindable]
@@ -17,6 +20,12 @@
 		private function initApp():void
 		{
 			srv.findWelcomeHistory();
+		}
+
+		public function setWelcome( event:ListEvent ):void
+		{
+                	welcome = srv.findWelcomeHistory.lastResult.getItemAt( event.rowIndex ) as Welcome;
+			Alert.show( "Number of headers: " + welcome.headers.length );
 		}
 	]]>
     </mx:Script>
@@ -39,7 +48,12 @@
         
         <mx:Label text="History:"/>
         <mx:DataGrid dataProvider="{srv.findWelcomeHistory.lastResult}"
-          width="200" height="200"/>
+          width="200" height="200" itemClick="setWelcome(event)">
+		<mx:columns>
+                    <mx:DataGridColumn dataField="id" headerText="ID"/>
+                    <mx:DataGridColumn dataField="name" headerText="Name"/>
+                </mx:columns>
+	</mx:DataGrid>
     </mx:Panel>
         
     <mx:Label styleName="Result" text="{srv.sayHello.lastResult}"/>
