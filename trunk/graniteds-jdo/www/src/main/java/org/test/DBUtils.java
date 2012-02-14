@@ -29,11 +29,16 @@ public class DBUtils {
 	
 	public java.util.List getWelcomeHistory() {
 		javax.jdo.PersistenceManager pm = JDOManager.getPersistenceManager( "datanucleus.properties" );
+		javax.jdo.FetchPlan fetchPlan = pm.getFetchPlan();
+                fetchPlan.addGroup( "withHeaders" );
+		fetchPlan.addGroup( "withWelcome" );
+		fetchPlan.setMaxFetchDepth( -1 );
 
                 javax.jdo.Transaction tx = pm.currentTransaction();
                 tx.begin();
 
                 javax.jdo.Query query = pm.newQuery( org.test.Welcome.class );
+		
 
                 java.util.List result = (java.util.List)query.execute();
                 if( result.size() > 0 ) {

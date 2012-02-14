@@ -1,6 +1,5 @@
 package org.test;
 
-import javax.jdo.annotations.Element;
 import javax.jdo.annotations.FetchGroup;
 import javax.jdo.annotations.FetchGroups;
 import javax.jdo.annotations.IdentityType;
@@ -16,22 +15,24 @@ import java.io.Serializable;
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
 @FetchGroups({
-	@FetchGroup(name="withHeaders", members = {@Persistent(name="headers")})
-	})
-public class Welcome extends Base implements Serializable {
+        @FetchGroup(name="withWelcome", members = {@Persistent(name="welcome")})
+        })
+public class Header extends Base implements Serializable {
 
     @Persistent
     private String name;
 
     @Persistent
-    @Element(types=org.test.Header.class, dependent="true",mappedBy="welcome")
-    private java.util.List<Header> headers = new java.util.Vector();
+    private String value;
 
-    public Welcome() {
+    private Welcome welcome;
+
+    public Header() {
     }
 
-    public Welcome(String name) {
+    public Header(String name, String value) {
         this.name = name;
+        this.value = value;
     }
 	
     public String getName() {
@@ -41,11 +42,18 @@ public class Welcome extends Base implements Serializable {
         this.name = name;
     }
 
-    public java.util.List<Header> getHeaders() {
-	return headers;
+    public String getValue() {
+        return value;
+    }
+    public void setValue(String value) {
+        this.value = value;
     }
 
-    public void setHeaders( java.util.List<Header> headers ) {
-	this.headers = headers;
-    }
+   public Welcome getWelcome() {
+	return welcome;
+   }
+
+   public void setWelcome( Welcome welcome ) {
+	this.welcome = welcome;
+   }
 }
