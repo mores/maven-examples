@@ -9,22 +9,20 @@ import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
-public class Welcome extends Base implements Serializable {
+public class Base implements Serializable {
 
-    @Persistent
-    private String name;
+    @PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    private Integer id;
 
-    public Welcome() {
+    public Base() {
     }
 
-    public Welcome(String name) {
-        this.name = name;
+    public Integer getId() {
+        return id;
     }
-	
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+
+    public void setId(Integer i) {
+	this.id = i;
     }
 }
