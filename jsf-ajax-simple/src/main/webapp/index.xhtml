@@ -9,6 +9,9 @@
 <h:body>
     <h:form id="form1" prependId="false">
         <h:outputScript name="jsf.js" library="javax.faces" target="head"/>
+	<script type="text/javascript">
+		jsf.ajax.addOnError(function() {alert("error");});
+	</script>
         <h:outputText id="out1" value="Current Count: #{count.count}"/>
         <br/>
         <!-- Increment the counter on the server, and the client -->
