@@ -1,7 +1,11 @@
 package org.test;
 
 import javax.faces.event.ActionEvent;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+@ManagedBean(name="count")
+@SessionScoped
 public class Count {
     Integer count = 0;
 

@@ -5,9 +5,4 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
    version="2.0">
 
-   <managed-bean>
-	<managed-bean-name>count</managed-bean-name>
-	<managed-bean-class>org.test.Count</managed-bean-class>
-	<managed-bean-scope>session</managed-bean-scope>
-   </managed-bean>
 </faces-config>
