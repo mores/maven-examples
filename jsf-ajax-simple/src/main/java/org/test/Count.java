@@ -2,10 +2,10 @@ package org.test;
 
 import javax.faces.event.ActionEvent;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean(name="count")
-@SessionScoped
+@ViewScoped
 public class Count {
     Integer count = 0;
 
