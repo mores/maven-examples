@@ -88,11 +88,46 @@
 				<dependencies>
 
 					<dependency>
+						<groupId>org.apache.myfaces.extensions.cdi.core</groupId>
+						<artifactId>myfaces-extcdi-core-api</artifactId>
+						<version>${codi.version}</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.apache.myfaces.extensions.cdi.core</groupId>
+						<artifactId>myfaces-extcdi-core-impl</artifactId>
+						<version>${codi.version}</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
+						<artifactId>myfaces-extcdi-jsf20-module-api</artifactId>
+						<version>${codi.version}</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
+						<artifactId>myfaces-extcdi-jsf20-module-impl</artifactId>
+						<version>${codi.version}</version>
+					</dependency>
+
+					<dependency>
 						<groupId>javax.validation</groupId>
 						<artifactId>validation-api</artifactId>
 						<version>1.0.0.GA</version>
 					</dependency>
 
+					<dependency>
+						<groupId>org.jboss.weld.servlet</groupId>
+						<artifactId>weld-servlet</artifactId>
+						<version>1.1.5.Final</version>
+					</dependency>
+
+					<dependency>
+						<groupId>com.sun.faces</groupId>
+						<artifactId>jsf-api</artifactId>
+						<version>${jsf-ri.version}</version>
+					</dependency>
 
 					<dependency>
 						<groupId>com.sun.faces</groupId>

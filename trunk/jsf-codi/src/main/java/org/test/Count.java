@@ -2,12 +2,12 @@ package org.test;
 
 import java.io.Serializable;
 import javax.inject.Named;
-//import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.WindowScoped;
-import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ConversationScoped;
+import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.WindowScoped;
+//import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.ConversationScoped;
 
 @Named
-//@WindowScoped
-@ConversationScoped
+@WindowScoped
+//@ConversationScoped
 public class Count implements Serializable {
 
     private Integer count = 0;
