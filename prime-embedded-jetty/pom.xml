@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>server</module>
 		<module>www</module>
 	</modules>
 
