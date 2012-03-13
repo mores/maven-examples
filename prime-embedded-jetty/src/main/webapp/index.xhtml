@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<f:view contentType="text/html">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Dashboard</title>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">  
+  
+    <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">  
+        <h:outputText value="Top unit content." />  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">  
+        <h:outputText value="South unit content." />  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">  
+        <h:form>  
+            <h:outputText value="Left" />
+        </h:form>  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">  
+        <h:outputText value="Right unit content." />  
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="center">  
+        <h:form>  
+            This fullPage layout consists of five different layoutUnits which are resizable and closable by default.  
+        </h:form>  
+    </p:layoutUnit>  
+  
+</p:layout> 
+</h:body>
+</f:view>
+</html>
