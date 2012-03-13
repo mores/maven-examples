@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>org.test</groupId>
+		<artifactId>prime-embedded-jetty</artifactId>
+		<version>0.1</version>
+	</parent>
+
+        <modelVersion>4.0.0</modelVersion>
+        <artifactId>server</artifactId>
+	<name>${artifactId}</name>
+	<version>0.1</version>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-server</artifactId>
+                        <version>8.1.1.v20120215</version>
+			<scope>compile</scope>
+                </dependency>
+
+		<dependency>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-webapp</artifactId>
+                        <version>8.1.1.v20120215</version>
+                        <scope>compile</scope>
+                </dependency>
+	</dependencies>
+
+	<build>
+                <plugins>
+			<plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <configuration>
+                                        <source>1.5</source>
+                                        <target>1.5</target>
+                                </configuration>
+			</plugin>
+		</plugins>
+        </build>
+
+</project>
