@@ -31,6 +31,24 @@
 			</plugin>
 
 			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-aar-maven-plugin</artifactId>
+				<version>1.6.1</version>
+				<extensions>true</extensions>
+				<configuration>
+					<servicesXmlFile>src/main/resources/services.xml</servicesXmlFile>
+					<wsdlFile>src/main/resources/StockQuoteService.wsdl</wsdlFile>
+				</configuration>
+				<executions>
+                                        <execution>
+                                                <goals>
+                                                        <goal>aar</goal>
+                                                </goals>
+                                        </execution>
+                                </executions>
+			</plugin>
+
+			<plugin>
                                 <groupId>org.apache.maven.plugins</groupId>
                                 <artifactId>maven-compiler-plugin</artifactId>
                                 <configuration>
