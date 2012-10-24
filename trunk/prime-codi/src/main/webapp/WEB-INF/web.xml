@@ -4,22 +4,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
 
-	<!-- Identify this web app -->
-	<context-param>
-                <param-name>com.smartwattinc.app</param-name>
-                <param-value>AMP</param-value>
-        </context-param>
-
-	<context-param>
-		<param-name>com.smartwattinc.app.version</param-name>
-		<param-value>${project.version}</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>com.smartwattinc.app.svn.revision</param-name>
-		<param-value>${svn.revision}</param-value>
-	</context-param>
-
 	<!-- comment out when using glassfish -->
 	<listener>
 		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
