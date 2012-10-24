@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html
+<ui:composition template="/WEB-INF/layout/layout.xhtml"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -8,33 +8,40 @@
       xmlns:p="http://primefaces.org/ui"
 >
 
-<f:view contentType="text/html">
+	<ui:define name="title">Job List All</ui:define>
 
-        
-        <h:head>
-                <!-- This pulls in the resources-->
-        </h:head>
-        <h:body>
-
-	<p:menubar>  
-		<p:submenu label="Navigate">
-		    <p:menuitem value="One" url="one.jsf"  />  
-		    <p:separator />  
-		    <p:menuitem value="Two" url="two.jsf" />  
-		</p:submenu>
-	</p:menubar>
-
-        <p:panel>Hello
-                <p:messages id="msgs" />
-        </p:panel>
+	<ui:define name="primary">
 
 	<h:form id="form1" prependId="false">
-		<h:outputText id="out1" value="Current Count: #{count.count}"/>
-		<br/>
-		<h:commandButton id="button1" value="Count" action="#{count.add}" />
-		<br/>
-		<h:commandButton id="reset" value="reset" action="#{count.reset}" />
+
+		<p:panel>
+			<br/>
+			<h:outputText id="out1" value="Current Count: #{count.count}"/>
+			<br/>
+			<h:commandButton id="button1" value="Count" action="#{count.add}" />
+			<br/>
+			<h:commandButton id="reset" value="reset" action="#{count.reset}" />
+		</p:panel>
+
+		<p:spacer height="15" />
+
+		<p:panel>
+			<p:dataTable id="listAll" paginator="true" rows="15" rowsPerPageTemplate="15,50,100,1000" value="#{listAllDataTable.attrs}" var="attr" >
+
+				<p:column>
+					<h:outputText value="#{attr.id}"/>
+				</p:column>
+
+				<p:column>
+                                        <h:outputText value="#{attr.description}"/>
+                                </p:column>
+
+				<p:column>
+					<p:commandLink action="one.jsf" value="one" ajax="false" />
+				</p:column>
+
+			</p:dataTable>
+		</p:panel>
 	</h:form>
-</h:body>
-</f:view>
-</html>
+	</ui:define>
+</ui:composition>

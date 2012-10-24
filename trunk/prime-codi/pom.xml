@@ -21,7 +21,6 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
                         <groupId>org.apache.myfaces.extensions.cdi.core</groupId>
                         <artifactId>myfaces-extcdi-core-api</artifactId>
@@ -61,6 +60,12 @@
                         <artifactId>weld-servlet</artifactId>
                         <version>1.1.10.Final</version>
                 </dependency>
+
+		<dependency>
+                        <groupId>org.primefaces.themes</groupId>
+                        <artifactId>south-street</artifactId>
+                        <version>1.0.8</version>
+                </dependency>
 		
 		<dependency>
                         <groupId>org.primefaces</groupId>
@@ -94,7 +99,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>pdc</finalName>
+		<finalName>pc</finalName>
                 <plugins>
                         <plugin>
                                 <groupId>org.mortbay.jetty</groupId>

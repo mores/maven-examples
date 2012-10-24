@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html
+<ui:composition template="/WEB-INF/layout/layout.xhtml"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -8,22 +8,9 @@
       xmlns:p="http://primefaces.org/ui"
 >
 
-<f:view contentType="text/html">
+	<ui:define name="title">Job List All</ui:define>
 
-        
-        <h:head>
-                <!-- This pulls in the resources-->
-        </h:head>
-        <h:body>
-
-	<p:menubar>  
-		<p:submenu label="Navigate">
-		    <p:menuitem value="One" url="one.jsf"  />  
-		    <p:separator />  
-		    <p:menuitem value="Two" url="two.jsf" />  
-		</p:submenu>
-	</p:menubar>
-
+	<ui:define name="primary">
         <p:panel>Hello
                 <p:messages id="msgs" />
         </p:panel>
@@ -35,6 +22,5 @@
 		<br/>
 		<h:commandButton id="reset" value="reset" action="#{count.reset}" />
 	</h:form>
-</h:body>
-</f:view>
-</html>
+	</ui:define>
+</ui:composition>
