@@ -14,4 +14,9 @@
 		<property name="password" value="123456"/>
 	</bean>
 
+	<bean id="sender" class="org.springframework.ws.transport.http.HttpsUrlConnectionMessageSender">
+		<property name="sslProtocol" value="TLS"/>
+		<property name="keyManagers" ref="keyManager" />
+	</bean>
+
 </beans>
