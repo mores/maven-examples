@@ -5,7 +5,7 @@
 	<portlet>
 		<portlet-name>prime-portlet</portlet-name>
                 <display-name>PrimeFaces Basic Portlet</display-name>
-                <portlet-class>org.portletfaces.bridge.GenericFacesPortlet</portlet-class>
+                <portlet-class>org.test.PrimePortlet</portlet-class>
                 <init-param>
                         <name>javax.portlet.faces.defaultViewId.view</name>
                         <value>/view.xhtml</value>
