@@ -39,6 +39,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>prime-portlet</finalName>
                 <plugins>
 			<plugin>
                                 <groupId>org.apache.maven.plugins</groupId>
