@@ -9,10 +9,17 @@
 	<packaging>war</packaging>
 
 	<properties>
-                <jsf-ri.version>2.1.18</jsf-ri.version>
+                <jsf-ri.version>2.1.7</jsf-ri.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+                        <groupId>javax.portlet</groupId>
+                        <artifactId>portlet-api</artifactId>
+                        <version>2.0</version>
+			<scope>provided</scope>
+                </dependency>
+
 		<dependency>
 			<groupId>com.liferay.faces</groupId>
 			<artifactId>liferay-faces-bridge-impl</artifactId>
@@ -22,7 +29,7 @@
 		<dependency>
                         <groupId>org.primefaces</groupId>
                         <artifactId>primefaces</artifactId>
-                        <version>3.5</version>
+                        <version>3.4</version>
                 </dependency>
 
                 <dependency>
