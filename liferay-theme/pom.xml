@@ -16,6 +16,17 @@
 
 	<build>
 		<plugins>
+			<!-- 
+				http://issues.liferay.com/browse/LPS-26939
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<packagingExcludes>**/.sass-cache/**</packagingExcludes>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>com.liferay.maven.plugins</groupId>
 				<artifactId>liferay-maven-plugin</artifactId>
