@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-drive</artifactId>
-			<version>v2-rev39-1.13.2-beta</version>
+			<version>v2-rev43-1.13.2-beta</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.http-client</groupId>

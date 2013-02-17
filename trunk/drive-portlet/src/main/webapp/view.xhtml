@@ -7,32 +7,17 @@
 	<h:head></h:head>
 
     <h:form>
-	<p:dataTable var="file" value="#{testBean.files}">
+	<p:treeTable var="file" value="#{testBean.root}" scrollable="true" scrollHeight="200">
 		<p:column>
 			<f:facet name="header">Title</f:facet>
 			<h:outputText value="#{file.title}" />
 		</p:column>
 
 		<p:column>
-                        <f:facet name="header">File Extension</f:facet>
-                        <h:outputText value="#{file.fileExtension}" />
-                </p:column>
-
-		<p:column>
-                        <f:facet name="header">File Size</f:facet>
-                        <h:outputText value="#{file.size}" />
-                </p:column>
-
-		<p:column>
-                        <f:facet name="header">Kind</f:facet>
-                        <h:outputText value="#{file.kind}" />
-                </p:column>
-
-		<p:column>
                         <f:facet name="header">Id</f:facet>
                         <h:outputText value="#{file.id}" />
                 </p:column>
-	</p:dataTable>
+	</p:treeTable>
     </h:form>
 
 </f:view>

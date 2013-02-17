@@ -17,11 +17,12 @@ public class TestBean implements java.io.Serializable {
 
 	private String redirectUrl = "urn:ietf:wg:oauth:2.0:oob";
 
-	private java.util.List<com.google.api.services.drive.model.File> files;
+	private org.primefaces.model.TreeNode root;
 
 	public TestBean()
 	{
 		log.trace( "init" );
+		root = new org.primefaces.model.DefaultTreeNode( "root", null ); 
 		try
 		{
 			javax.faces.context.FacesContext context = javax.faces.context.FacesContext.getCurrentInstance();
@@ -49,24 +50,47 @@ public class TestBean implements java.io.Serializable {
 
 				com.google.api.services.drive.Drive service = new com.google.api.services.drive.Drive.Builder( httpTransport, jsonFactory, credentials ).build();
 
-				files = new java.util.ArrayList<com.google.api.services.drive.model.File>();
+				java.util.List<com.google.api.services.drive.model.File> files = new java.util.ArrayList<com.google.api.services.drive.model.File>();
 				com.google.api.services.drive.Drive.Files.List request = service.files().list(); 
 
 				com.google.api.services.drive.model.FileList fileList = request.execute();
 				files.addAll( fileList.getItems() );
 				log.trace( "Size of files: " + files.size() );
 
+				// All files not yet a tree node
+				java.util.Hashtable<String,com.google.api.services.drive.model.File> lookup = new java.util.Hashtable();
+				java.util.Hashtable<String,org.primefaces.model.TreeNode> treeLookup = new java.util.Hashtable();
+
 				for( int x = 0; x < files.size(); x++ )
 				{
 					com.google.api.services.drive.model.File file = files.get( x );
-					log.trace( "Title: " + file.getTitle() );
-					com.google.api.services.drive.model.File.Labels labels = file.getLabels();
-					java.util.Iterator it = labels.entrySet().iterator();
-					while( it.hasNext() )
+					log.trace( x + " " + file.getId() + " " + file.getTitle() + " " + file.getShared() );
+					// Don't reshare anything that was shared to me.
+					if( ! file.getShared() )
 					{
-						java.util.Map.Entry pairs = (java.util.Map.Entry)it.next();
-						log.trace(pairs.getKey() + " = " + pairs.getValue());	
+						lookup.put( file.getId(), file );
+
+						java.util.List<com.google.api.services.drive.model.ParentReference> parents = file.getParents();
+						for( int y = 0; y < parents.size(); y++ )
+						{
+							com.google.api.services.drive.model.ParentReference pr = parents.get( y );
+							if( pr.getIsRoot() )
+							{
+								org.primefaces.model.TreeNode tn = new org.primefaces.model.DefaultTreeNode( file, root );
+								treeLookup.put( file.getId(), tn );
+								lookup.remove( file.getId() );
+
+								log.trace( x + "\t" + file.getId() );
+							}
+						}
 					}
+				}
+				log.trace( lookup.size() + " " + treeLookup.size() );
+
+				while( lookup.size() > 0 )
+				{
+					makeTheTree( lookup, treeLookup );
+					log.trace( lookup.size() + " " + treeLookup.size() );
 				}
 			}
 		}
@@ -78,6 +102,29 @@ public class TestBean implements java.io.Serializable {
                         log.error( "Error: " + sw.toString() );
 		}
 	}
+
+	private void makeTheTree( java.util.Hashtable<String,com.google.api.services.drive.model.File> lookup, java.util.Hashtable<String,org.primefaces.model.TreeNode> treeLookup )
+	{
+		// Lets place the rest in the tree
+		java.util.Enumeration e = lookup.keys();
+		while( e.hasMoreElements() )
+		{
+			String id = (String)e.nextElement();
+			com.google.api.services.drive.model.File file = lookup.get( id );
+			java.util.List<com.google.api.services.drive.model.ParentReference> parents = file.getParents();
+			for( int y = 0; y < parents.size(); y++ )
+			{
+				com.google.api.services.drive.model.ParentReference pr = parents.get( y );
+				if( treeLookup.get( pr.getId() ) != null )
+				{
+					org.primefaces.model.TreeNode parent = treeLookup.get( pr.getId() );
+					org.primefaces.model.TreeNode tn = new org.primefaces.model.DefaultTreeNode( file, parent );
+					treeLookup.put( file.getId(), tn );
+					lookup.remove( file.getId() );
+				}
+			}
+		}
+	} 
     
 	public String getClientId()
 	{
@@ -119,14 +166,9 @@ public class TestBean implements java.io.Serializable {
 		this.refreshToken = rt;
 	}
 
-	public java.util.List<com.google.api.services.drive.model.File> getFiles()
+	public org.primefaces.model.TreeNode getRoot()
 	{
-		return files;
-	}
-
-	public void setFiles( java.util.List<com.google.api.services.drive.model.File> f )
-	{
-		this.files = f;
+		return root;
 	}
 
 	public void savePrefs()
