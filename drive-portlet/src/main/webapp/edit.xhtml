@@ -1,0 +1,29 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head></h:head>
+
+    <h:form>
+	<p:messages id="msgs"/>
+
+	<h:panelGrid columns="2">
+		<h:outputText value="Client ID" />
+		<p:inputText value="#{testBean.clientId}" size="60" />
+
+		<h:outputText value="Client secret" />
+		<p:inputText value="#{testBean.clientSecret}" size="60" />
+
+		<h:outputText value="Access Token" />
+                <p:inputText value="#{testBean.accessToken}" size="90" />
+
+		<h:outputText value="Refresh Token" />
+                <p:inputText value="#{testBean.refreshToken}" size="60" />
+
+		<p:commandButton update="msgs" value="Submit" action="#{testBean.savePrefs}" />
+	</h:panelGrid>
+    </h:form>
+
+</f:view>
