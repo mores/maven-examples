@@ -55,7 +55,6 @@ public class TestBean implements java.io.Serializable {
 					}
 
 					String[] parts = file.getKey().split( "/" );
-
 					log.trace( x + " " + file.getKey() + " " + parts.length + " " + parts[ parts.length - 1 ] );
 
 					if( parts.length == 1 )

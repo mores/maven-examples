@@ -23,11 +23,7 @@ public class S3Portlet extends org.portletfaces.bridge.GenericFacesPortlet
 		}
 		else
 		{
-			javax.faces.context.FacesContext context = javax.faces.context.FacesContext.getCurrentInstance();
-                        javax.faces.context.ExternalContext ectx = context.getExternalContext();
-
-                        javax.portlet.PortletRequest portletRequest = (javax.portlet.PortletRequest)ectx.getRequest();
-                        javax.portlet.PortletPreferences portletPreferences = portletRequest.getPreferences();
+                        javax.portlet.PortletPreferences portletPreferences = request.getPreferences();
 
                         String accessKey = portletPreferences.getValue( "accessKey", "" );
                         String  secretKey = portletPreferences.getValue( "secretKey", "" );
@@ -40,8 +36,14 @@ public class S3Portlet extends org.portletfaces.bridge.GenericFacesPortlet
 				com.amazonaws.services.s3.model.S3Object obj = s3.getObject( bucket, request.getResourceID() );
 				if( obj != null )
 				{
-					log.trace( "Have object - will travel" );
 					com.amazonaws.services.s3.model.ObjectMetadata meta = obj.getObjectMetadata();	
+					log.trace( "Have object - will travel " + meta.getContentDisposition() );
+
+					response.setProperty( "Cache-Control", "no-store" ); //HTTP 1.1
+					response.setProperty( "Pragma", "no-cache" ); //HTTP 1.0
+
+					String[] parts = obj.getKey().split( "/" );
+					response.setProperty( "Content-Disposition", "attachment; filename=" + parts[ parts.length - 1 ] );
 					response.setContentType( meta.getContentType() );
 					java.io.InputStream is = obj.getObjectContent();
 					java.io.OutputStream out = response.getPortletOutputStream();
