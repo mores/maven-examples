@@ -1,0 +1,26 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head></h:head>
+
+    <h:form>
+	<p:messages id="msgs"/>
+
+	<h:panelGrid columns="2">
+		<h:outputText value="Access Key" />
+		<p:inputText value="#{testBean.accessKey}" size="60" />
+
+		<h:outputText value="Secret Key" />
+		<p:inputText value="#{testBean.secretKey}" size="60" />
+
+		<h:outputText value="Bucket" />
+                <p:inputText value="#{testBean.bucket}" size="100" />
+
+		<p:commandButton update="msgs" value="Submit" action="#{testBean.savePrefs}" />
+	</h:panelGrid>
+    </h:form>
+
+</f:view>
