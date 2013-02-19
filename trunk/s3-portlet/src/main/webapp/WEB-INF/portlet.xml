@@ -5,7 +5,7 @@
 	<portlet>
 		<portlet-name>s3-portlet</portlet-name>
                 <display-name>Amazon S3 Portlet</display-name>
-                <portlet-class>org.portletfaces.bridge.GenericFacesPortlet</portlet-class>
+                <portlet-class>org.test.S3Portlet</portlet-class>
                 <init-param>
                         <name>javax.portlet.faces.defaultViewId.view</name>
                         <value>/view.xhtml</value>

@@ -26,6 +26,7 @@ public class TestBean implements java.io.Serializable {
 			javax.faces.context.ExternalContext ectx = context.getExternalContext();
 
 			javax.portlet.PortletRequest portletRequest = (javax.portlet.PortletRequest)ectx.getRequest();
+			javax.portlet.RenderResponse renderResponse = (javax.portlet.RenderResponse)ectx.getResponse();
 			javax.portlet.PortletPreferences portletPreferences = portletRequest.getPreferences();
 
 			accessKey = portletPreferences.getValue( "accessKey", "" );
@@ -46,6 +47,12 @@ public class TestBean implements java.io.Serializable {
 				for( int x = 0; x < files.size(); x++ )
 				{
 					com.amazonaws.services.s3.model.S3ObjectSummary file = files.get( x );
+					javax.portlet.ResourceURL rurl = null;
+					if( ! file.getKey().endsWith( "/" ) )
+					{
+						rurl = renderResponse.createResourceURL();
+						rurl.setResourceID( file.getKey() );
+					}
 
 					String[] parts = file.getKey().split( "/" );
 
@@ -53,7 +60,7 @@ public class TestBean implements java.io.Serializable {
 
 					if( parts.length == 1 )
 					{
-						org.primefaces.model.TreeNode tn = new org.primefaces.model.DefaultTreeNode( file, root );
+						org.primefaces.model.TreeNode tn = new org.primefaces.model.DefaultTreeNode( new FileBean( file, rurl ), root );
 						if( file.getKey().endsWith( "/" ) )
 						{
 							treeLookup.put( file.getKey(), tn );
@@ -67,7 +74,7 @@ public class TestBean implements java.io.Serializable {
 						org.primefaces.model.TreeNode found = treeLookup.get( beginsWith );
 						if( found != null )
 						{
-							org.primefaces.model.TreeNode tn = new org.primefaces.model.DefaultTreeNode( file, found );
+							org.primefaces.model.TreeNode tn = new org.primefaces.model.DefaultTreeNode( new FileBean( file, rurl ), found );
 							if( file.getKey().endsWith( "/" ) )
 							{
 								treeLookup.put( file.getKey(), tn );

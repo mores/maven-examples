@@ -12,6 +12,13 @@
                 <jsf-ri.version>2.1.7</jsf-ri.version>
 	</properties>
 
+	<repositories>
+                <repository>
+                        <id>prime-repo</id>
+                        <url>http://repository.primefaces.org</url>
+                </repository>
+        </repositories>
+
 	<dependencies>
 		<dependency>
                         <groupId>org.slf4j</groupId>
