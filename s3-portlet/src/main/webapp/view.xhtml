@@ -12,6 +12,12 @@
 			<f:facet name="header">Title</f:facet>
 			<h:outputText value="#{file.key}" />
 		</p:column>
+	
+		<p:column>
+			<h:outputLink value="#{file.url}" rendered="#{ file.url != null }" >
+				<h:outputText value="Download" />
+			</h:outputLink>
+		</p:column>
 
 	</p:treeTable>
     </h:form>
