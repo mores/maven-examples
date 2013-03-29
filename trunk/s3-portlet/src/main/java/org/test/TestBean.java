@@ -11,6 +11,9 @@ public class TestBean implements java.io.Serializable {
     
 	private String accessKey;
 	private String secretKey;	
+	
+	private boolean scrollable;
+	private int scrollHeight;
 
 	private String bucket;
 
@@ -32,6 +35,9 @@ public class TestBean implements java.io.Serializable {
 			accessKey = portletPreferences.getValue( "accessKey", "" );
 			secretKey = portletPreferences.getValue( "secretKey", "" );
 			bucket = portletPreferences.getValue( "bucket", "" );
+
+			scrollable = new Boolean( portletPreferences.getValue( "scrollable", "false" ) ).booleanValue();
+			scrollHeight = new Integer( portletPreferences.getValue( "scrollHeight", "400" ) ).intValue();
 
 			if( accessKey.length() > 0 && secretKey.length() > 0 && bucket .length() > 0 )
 			{
@@ -112,6 +118,26 @@ public class TestBean implements java.io.Serializable {
 		this.secretKey = sk;
 	}
 
+	public boolean getScrollable()
+	{
+		return scrollable;
+	}
+
+	public void setScrollable( boolean s )
+	{
+		this.scrollable = s;
+	}
+
+	public int getScrollHeight()
+	{
+		return scrollHeight;
+	}
+
+	public void setScrollHeight( int sh )
+	{
+		this.scrollHeight = sh;
+	}
+
 	public String getBucket()
 	{
 		return bucket;
@@ -141,6 +167,9 @@ public class TestBean implements java.io.Serializable {
 			portletPreferences.setValue( "accessKey", accessKey );
 			portletPreferences.setValue( "secretKey", secretKey );
 			portletPreferences.setValue( "bucket", bucket );
+
+			portletPreferences.setValue( "scrollable", new Boolean( scrollable ).toString() );
+			portletPreferences.setValue( "scrollHeight", new Integer( scrollHeight ).toString() );
                         portletPreferences.store();
 
                         returnMsg.setSeverity( javax.faces.application.FacesMessage.SEVERITY_INFO );

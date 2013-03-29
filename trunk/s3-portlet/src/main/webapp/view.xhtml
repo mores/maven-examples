@@ -7,7 +7,7 @@
 	<h:head></h:head>
 
     <h:form>
-	<p:treeTable var="file" value="#{testBean.root}" scrollable="true" scrollHeight="200">
+	<p:treeTable var="file" value="#{testBean.root}" scrollable="#{testBean.scrollable}" scrollHeight="#{testBean.scrollHeight}">
 		<p:column>
 			<f:facet name="header">Title</f:facet>
 			<h:outputText value="#{file.title}" />
