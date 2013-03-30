@@ -28,6 +28,12 @@
 		<h:outputText value="Scroll Height" />
 		<p:inputText value="#{testBean.scrollHeight}" size="5" />
 
+		<h:outputText value="Ordering" />
+		<p:selectOneRadio value="#{testBean.defaultOrdering}" >
+			<f:selectItem itemLabel="Ascending" itemValue="true" />
+			<f:selectItem itemLabel="Decending" itemValue="false" />
+		</p:selectOneRadio>
+
 		<p:commandButton update="msgs" value="Submit" action="#{testBean.savePrefs}" />
 	</h:panelGrid>
     </h:form>
