@@ -26,10 +26,10 @@ public class S3Portlet extends org.portletfaces.bridge.GenericFacesPortlet
                         javax.portlet.PortletPreferences portletPreferences = request.getPreferences();
 
                         String accessKey = portletPreferences.getValue( "accessKey", "" );
-                        String  secretKey = portletPreferences.getValue( "secretKey", "" );
+                        String secretKey = portletPreferences.getValue( "secretKey", "" );
                         String bucket = portletPreferences.getValue( "bucket", "" );
 
-                        if( accessKey.length() > 0 && secretKey.length() > 0 && bucket .length() > 0 )
+                        if( accessKey.length() > 0 && secretKey.length() > 0 && bucket.length() > 0 )
                         {
                                 com.amazonaws.auth.BasicAWSCredentials creds = new com.amazonaws.auth.BasicAWSCredentials( accessKey, secretKey );
                                 com.amazonaws.services.s3.AmazonS3Client s3 = new com.amazonaws.services.s3.AmazonS3Client( creds );
