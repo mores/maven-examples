@@ -88,7 +88,6 @@ public class TestBean implements java.io.Serializable {
 								// Set the download url
 								if( rurl != null )
 								{
-									fb.setKey( file.getKey() ); 
 									fb.setTitle( title );
 									fb.setUrl( rurl.toString() );
 								}

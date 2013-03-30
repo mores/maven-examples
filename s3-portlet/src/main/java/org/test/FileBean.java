@@ -4,19 +4,8 @@ public class FileBean implements java.io.Serializable {
 
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( FileBean.class );
     
-	private String key;
 	private String title;
 	private String url;	
-
-	public String getKey()
-	{
-		return key;
-	}
-
-	public void setKey( String k )
-	{
-		this.key = k;
-	}
 
 	public String getTitle()
 	{
