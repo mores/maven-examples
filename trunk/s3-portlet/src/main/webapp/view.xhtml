@@ -7,7 +7,15 @@
 	<h:head></h:head>
 
     <h:form>
-	<p:treeTable var="file" value="#{testBean.root}" scrollable="#{testBean.scrollable}" scrollHeight="#{testBean.scrollHeight}">
+	<h:panelGrid columns="3">  
+		<h:outputLabel value="Search: "/>
+		<p:inputText id="filterOut" value="#{testBean.filterOut}" >  
+			<p:ajax event="keyup" update="fileList" />
+		</p:inputText>
+		<p:watermark for="filterOut" value="Enter filename to" />  
+	</h:panelGrid>
+	
+	<p:treeTable id="fileList" var="file" value="#{testBean.root}" scrollable="#{testBean.scrollable}" scrollHeight="#{testBean.scrollHeight}">
 		<p:column>
 			<f:facet name="header">Title</f:facet>
 			<h:outputText value="#{file.title}" />
