@@ -9,28 +9,32 @@ public class TestBean implements java.io.Serializable {
 
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( TestBean.class );
     
+	// S3 specific
 	private String accessKey;
+	private String bucket;
 	private String secretKey;	
 	
+	// UI
 	private boolean defaultOrdering;			
+	private String filterOut;
 	private boolean scrollable;
 	private int scrollHeight;
 
-	private String bucket;
-
 	private org.primefaces.model.TreeNode root;
+	private java.util.List<com.amazonaws.services.s3.model.S3ObjectSummary> files;
+	private java.util.Map<String,javax.portlet.ResourceURL> resources;
 
 	public TestBean()
 	{
 		log.trace( "init" );
-		root = new org.primefaces.model.DefaultTreeNode( "root", null ); 
+		resources = new java.util.Hashtable();
 		try
 		{
 			javax.faces.context.FacesContext context = javax.faces.context.FacesContext.getCurrentInstance();
 			javax.faces.context.ExternalContext ectx = context.getExternalContext();
+			javax.portlet.RenderResponse renderResponse = (javax.portlet.RenderResponse)ectx.getResponse();
 
 			javax.portlet.PortletRequest portletRequest = (javax.portlet.PortletRequest)ectx.getRequest();
-			javax.portlet.RenderResponse renderResponse = (javax.portlet.RenderResponse)ectx.getResponse();
 			javax.portlet.PortletPreferences portletPreferences = portletRequest.getPreferences();
 
 			accessKey = portletPreferences.getValue( "accessKey", "" );
@@ -47,7 +51,7 @@ public class TestBean implements java.io.Serializable {
 				com.amazonaws.services.s3.AmazonS3Client s3 = new com.amazonaws.services.s3.AmazonS3Client( creds );
 				com.amazonaws.services.s3.model.ObjectListing listing = s3.listObjects( bucket );
 
-				java.util.List<com.amazonaws.services.s3.model.S3ObjectSummary> files = listing.getObjectSummaries();
+				files = listing.getObjectSummaries();
 				// results always come back alphabetical order = i.e. the parent folder will show up first
 
 				if( ! defaultOrdering )
@@ -55,69 +59,95 @@ public class TestBean implements java.io.Serializable {
 					java.util.Collections.reverse( files );
 				}
 
-				java.util.Hashtable<String,org.primefaces.model.TreeNode> treeLookup = new java.util.Hashtable();
-
+				// index urls
 				for( int x = 0; x < files.size(); x++ )
 				{
 					com.amazonaws.services.s3.model.S3ObjectSummary file = files.get( x );
-					javax.portlet.ResourceURL rurl = null;
 					if( ! file.getKey().endsWith( "/" ) )
 					{
-						rurl = renderResponse.createResourceURL();
+						javax.portlet.ResourceURL rurl = renderResponse.createResourceURL();
 						rurl.setResourceID( file.getKey() );
-					}
-
-					String[] parts = file.getKey().split( "/" );
-					String title = parts[ parts.length - 1 ];
-					log.trace( x + " " + file.getKey() + " " + parts.length + " " + title );
-
-					for( int y = 1; y < parts.length + 1; y++ )
-					{
-						String path = buildPath( parts, y );
-						String[] folderParts = path.split( "/" );
-						String folder = folderParts[ folderParts.length - 1 ];
-						log.trace( "Path: " + path + "\t" + folder );
-
-						org.primefaces.model.TreeNode found = treeLookup.get( path );
-						if( found == null )
-						{
-							FileBean fb = new FileBean();
-							fb.setTitle( folder );
-							if( y == parts.length )
-							{
-								// Set the download url
-								if( rurl != null )
-								{
-									fb.setTitle( title );
-									fb.setUrl( rurl.toString() );
-								}
-							}
-							org.primefaces.model.TreeNode tn = null;
-							if( y == 1 )
-							{
-								
-								tn = new org.primefaces.model.DefaultTreeNode( fb, root );
-							}
-							else
-							{
-								String parentPath = buildPath( parts, y - 1 );
-								log.trace( "Parent Path: " + parentPath );
-								tn = new org.primefaces.model.DefaultTreeNode( fb, treeLookup.get( parentPath ) );
-							}
-							treeLookup.put( path, tn );
-						}
-
-						
+						resources.put( file.getKey(), rurl );
 					}
 				}
+				display();
+			}
+			else
+			{
+				files = new java.util.Vector();
 			}
 		}
 		catch( Exception e )
-		{
-			java.io.StringWriter sw = new java.io.StringWriter();
+                {
+                        java.io.StringWriter sw = new java.io.StringWriter();
                         java.io.PrintWriter pw = new java.io.PrintWriter( sw );
                         e.printStackTrace( pw );
                         log.error( "Error: " + sw.toString() );
+                }
+	}
+
+	private void display()
+	{
+		log.trace( "display: " + filterOut );
+		root = new org.primefaces.model.DefaultTreeNode( "root", null );
+		java.util.Hashtable<String,org.primefaces.model.TreeNode> treeLookup = new java.util.Hashtable();
+
+		for( int x = 0; x < files.size(); x++ )
+		{
+			com.amazonaws.services.s3.model.S3ObjectSummary file = files.get( x );
+
+			int index = 999;
+			if( ( filterOut != null ) && filterOut.length() > 0 )
+			{
+				index = file.getKey().toLowerCase().indexOf( filterOut.toLowerCase() );
+			}
+
+			if( index > -1 )
+			{
+				String[] parts = file.getKey().split( "/" );
+				String title = parts[ parts.length - 1 ];
+				log.trace( x + " " + file.getKey() + " " + parts.length + " " + title );
+
+				for( int y = 1; y < parts.length + 1; y++ )
+				{
+					String path = buildPath( parts, y );
+					String[] folderParts = path.split( "/" );
+					String folder = folderParts[ folderParts.length - 1 ];
+					log.trace( "Path: " + path + "\t" + folder );
+
+					org.primefaces.model.TreeNode found = treeLookup.get( path );
+					if( found == null )
+					{
+						FileBean fb = new FileBean();
+						fb.setTitle( folder );
+						if( y == parts.length )
+						{
+							// Set the download url
+							javax.portlet.ResourceURL rurl = resources.get( file.getKey() );
+							if( rurl != null )
+							{
+								fb.setTitle( title );
+								fb.setUrl( rurl.toString() );
+							}
+						}
+						org.primefaces.model.TreeNode tn = null;
+						if( y == 1 )
+						{
+							
+							tn = new org.primefaces.model.DefaultTreeNode( fb, root );
+						}
+						else
+						{
+							String parentPath = buildPath( parts, y - 1 );
+							log.trace( "Parent Path: " + parentPath );
+							tn = new org.primefaces.model.DefaultTreeNode( fb, treeLookup.get( parentPath ) );
+						}
+						treeLookup.put( path, tn );
+					}
+
+				
+				}
+			}
 		}
 	}
 
@@ -149,6 +179,17 @@ public class TestBean implements java.io.Serializable {
 	public void setDefaultOrdering( boolean d )
 	{
 		this.defaultOrdering = d;
+	}
+
+	public String getFilterOut()
+	{
+		return filterOut;
+	}
+
+	public void setFilterOut( String fo )
+	{
+		this.filterOut = fo;
+		display();
 	}
 
 	public String getSecretKey()
