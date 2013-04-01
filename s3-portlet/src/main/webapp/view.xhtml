@@ -7,12 +7,13 @@
 	<h:head></h:head>
 
     <h:form>
-	<h:panelGrid columns="3">  
+	<h:panelGrid columns="4">  
 		<h:outputLabel value="Search: "/>
 		<p:inputText id="filterOut" value="#{testBean.filterOut}" >  
-			<p:ajax event="keyup" update="fileList" />
+			<p:ajax event="keyup" update="fileList results" />
 		</p:inputText>
-		<p:watermark for="filterOut" value="Enter filename to" />  
+		<p:watermark for="filterOut" value="for filename" />  
+		<h:outputLabel id="results" value="#{testBean.fileCount}" />
 	</h:panelGrid>
 	
 	<p:treeTable id="fileList" var="file" value="#{testBean.root}" scrollable="#{testBean.scrollable}" scrollHeight="#{testBean.scrollHeight}">

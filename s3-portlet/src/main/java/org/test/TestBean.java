@@ -16,6 +16,7 @@ public class TestBean implements java.io.Serializable {
 	
 	// UI
 	private boolean defaultOrdering;			
+	private int fileCount;
 	private String filterOut;
 	private boolean scrollable;
 	private int scrollHeight;
@@ -89,6 +90,7 @@ public class TestBean implements java.io.Serializable {
 	private void display()
 	{
 		log.trace( "display: " + filterOut );
+		fileCount = 0;
 		root = new org.primefaces.model.DefaultTreeNode( "root", null );
 		java.util.Hashtable<String,org.primefaces.model.TreeNode> treeLookup = new java.util.Hashtable();
 
@@ -97,7 +99,7 @@ public class TestBean implements java.io.Serializable {
 			com.amazonaws.services.s3.model.S3ObjectSummary file = files.get( x );
 
 			int index = 999;
-			if( ( filterOut != null ) && filterOut.length() > 0 )
+			if( ( filterOut != null ) && ( ! filterOut.equals( "" ) ) )
 			{
 				index = file.getKey().toLowerCase().indexOf( filterOut.toLowerCase() );
 			}
@@ -128,6 +130,7 @@ public class TestBean implements java.io.Serializable {
 							{
 								fb.setTitle( title );
 								fb.setUrl( rurl.toString() );
+								fileCount = fileCount + 1;
 							}
 						}
 						org.primefaces.model.TreeNode tn = null;
@@ -179,6 +182,11 @@ public class TestBean implements java.io.Serializable {
 	public void setDefaultOrdering( boolean d )
 	{
 		this.defaultOrdering = d;
+	}
+
+	public String getFileCount()
+	{
+		return fileCount + " file(s) found";
 	}
 
 	public String getFilterOut()
