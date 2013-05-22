@@ -13,8 +13,11 @@ public class ListAllDataTable implements Serializable
 	public ListAllDataTable()
 	{
 		attrs = new java.util.Vector();
-		attrs.add( new SimpleAttribute( "A 1 2 3" ) );
-		attrs.add( new SimpleAttribute( "B 2 4 6" ) );
+
+		for( int x = 0; x < 100; x++ )
+		{
+			attrs.add( new SimpleAttribute( java.util.UUID.randomUUID().toString() ) );
+		}
 		System.out.println( "Number of attrs: " + attrs.size() );
 	}
 
@@ -22,4 +25,10 @@ public class ListAllDataTable implements Serializable
         {
 		return( attrs );
         }
+
+	public String delete()
+	{
+		javax.faces.context.FacesContext.getCurrentInstance().addMessage( null, new javax.faces.application.FacesMessage( javax.faces.application.FacesMessage.SEVERITY_ERROR, "Admin Permission Required", "Delete Failure" ));
+		return null;
+	}
 }	
