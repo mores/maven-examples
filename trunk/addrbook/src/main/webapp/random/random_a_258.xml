@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="813">
+			<first>Bobby</first>
+			<last>Henry</last>
+			<middle>F</middle>
+		</person>
+		<address id="764">
+			<street1>6977 Franklin Street</street1>
+			<street2></street2>
+			<city id="94365">
+				<label>Brooklyn</label>
+				<geocode>
+					<lat>12053080</lat>
+					<long>66067567</long>
+					<accuracy>3</accuracy>
+					<id>21512637</id>
+				</geocode>
+			</city>
+			<state id="72694">
+				<label>NY</label>
+				<geocode>
+					<lat>10265636</lat>
+					<long>66154264</long>
+					<accuracy>0</accuracy>
+					<id>50665804</id>
+				</geocode>
+			</state>
+			<zip id="33588">
+				<label>01583</label>
+				<geocode>
+					<lat>53045932</lat>
+					<long>47029210</long>
+					<accuracy>8</accuracy>
+					<id>10714480</id>
+				</geocode>
+			</zip>
+			<phone id="40436">
+				<type>0</type>
+				<label>home</label>
+				<area>780</area>
+				<prefix>359</prefix>
+				<ex>3194</ex>
+			</phone>
+
+			<phone id="97530">
+				<type>0</type>
+				<label>home</label>
+				<area>215</area>
+				<prefix>769</prefix>
+				<ex>897</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>37993030</lat>
+				<long>34329331</long>
+				<accuracy>8</accuracy>
+				<id>49731356</id>
+			</geocode>
+		</address>
+		<phone id="40119">
+			<type>1</type>
+			<label>home</label>
+			<area>10</area>
+			<prefix>314</prefix>
+			<ex>1944</ex>
+		</phone>
+		<email id="30328">
+			<label>email</label>
+			<address>Don@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="237">
+			<first>Dan</first>
+			<last>Channel</last>
+			<middle>G</middle>
+		</person>
+		<address id="352">
+			<street1>1875 Martin Luther King Jr</street1>
+			<street2></street2>
+			<city id="89658">
+				<label>Southboro</label>
+				<geocode>
+					<lat>62325128</lat>
+					<long>82727413</long>
+					<accuracy>3</accuracy>
+					<id>18485727</id>
+				</geocode>
+			</city>
+			<state id="60558">
+				<label>FL</label>
+				<geocode>
+					<lat>93994874</lat>
+					<long>27263136</long>
+					<accuracy>6</accuracy>
+					<id>7981528</id>
+				</geocode>
+			</state>
+			<zip id="53563">
+				<label>92507</label>
+				<geocode>
+					<lat>76516906</lat>
+					<long>32967565</long>
+					<accuracy>2</accuracy>
+					<id>5363296</id>
+				</geocode>
+			</zip>
+			<phone id="37805">
+				<type>0</type>
+				<label>home</label>
+				<area>285</area>
+				<prefix>707</prefix>
+				<ex>1122</ex>
+			</phone>
+
+			<phone id="59311">
+				<type>1</type>
+				<label>home</label>
+				<area>741</area>
+				<prefix>985</prefix>
+				<ex>2609</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>66558936</lat>
+				<long>17498194</long>
+				<accuracy>3</accuracy>
+				<id>75497146</id>
+			</geocode>
+		</address>
+		<phone id="63887">
+			<type>1</type>
+			<label>home</label>
+			<area>847</area>
+			<prefix>79</prefix>
+			<ex>8975</ex>
+		</phone>
+		<email id="19833">
+			<label>email</label>
+			<address>Dana@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

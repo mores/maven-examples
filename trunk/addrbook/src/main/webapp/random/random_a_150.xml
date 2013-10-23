@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="713">
+			<first>Adam</first>
+			<last>Dionne</last>
+			<middle>C</middle>
+		</person>
+		<address id="332">
+			<street1>6468 Main Blvd</street1>
+			<street2></street2>
+			<city id="55161">
+				<label>La Jolla</label>
+				<geocode>
+					<lat>78206944</lat>
+					<long>63214357</long>
+					<accuracy>3</accuracy>
+					<id>24040735</id>
+				</geocode>
+			</city>
+			<state id="39388">
+				<label>VA</label>
+				<geocode>
+					<lat>32119650</lat>
+					<long>79171602</long>
+					<accuracy>7</accuracy>
+					<id>58556435</id>
+				</geocode>
+			</state>
+			<zip id="68760">
+				<label>01602</label>
+				<geocode>
+					<lat>32562053</lat>
+					<long>94611027</long>
+					<accuracy>5</accuracy>
+					<id>37088152</id>
+				</geocode>
+			</zip>
+			<phone id="23133">
+				<type>1</type>
+				<label>home</label>
+				<area>285</area>
+				<prefix>704</prefix>
+				<ex>6614</ex>
+			</phone>
+
+			<phone id="19464">
+				<type>0</type>
+				<label>home</label>
+				<area>405</area>
+				<prefix>933</prefix>
+				<ex>6611</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>84266588</lat>
+				<long>31436144</long>
+				<accuracy>1</accuracy>
+				<id>59875583</id>
+			</geocode>
+		</address>
+		<phone id="59657">
+			<type>1</type>
+			<label>home</label>
+			<area>323</area>
+			<prefix>127</prefix>
+			<ex>5964</ex>
+		</phone>
+		<email id="48355">
+			<label>email</label>
+			<address>Charis@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="2">
+			<first>Henry</first>
+			<last>Bobby</last>
+			<middle>D</middle>
+		</person>
+		<address id="2319">
+			<street1>9324 Broadway</street1>
+			<street2></street2>
+			<city id="10858">
+				<label>Amherst</label>
+				<geocode>
+					<lat>28496111</lat>
+					<long>16166789</long>
+					<accuracy>1</accuracy>
+					<id>70358230</id>
+				</geocode>
+			</city>
+			<state id="18660">
+				<label>MO</label>
+				<geocode>
+					<lat>57432838</lat>
+					<long>73470165</long>
+					<accuracy>2</accuracy>
+					<id>66340728</id>
+				</geocode>
+			</state>
+			<zip id="51743">
+				<label>04011</label>
+				<geocode>
+					<lat>39156815</lat>
+					<long>13234859</long>
+					<accuracy>6</accuracy>
+					<id>12483431</id>
+				</geocode>
+			</zip>
+			<phone id="34">
+				<type>1</type>
+				<label>home</label>
+				<area>543</area>
+				<prefix>806</prefix>
+				<ex>6907</ex>
+			</phone>
+
+			<phone id="43747">
+				<type>0</type>
+				<label>home</label>
+				<area>236</area>
+				<prefix>877</prefix>
+				<ex>8667</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>62060728</lat>
+				<long>88076387</long>
+				<accuracy>8</accuracy>
+				<id>61323700</id>
+			</geocode>
+		</address>
+		<phone id="58748">
+			<type>1</type>
+			<label>home</label>
+			<area>150</area>
+			<prefix>293</prefix>
+			<ex>384</ex>
+		</phone>
+		<email id="45665">
+			<label>email</label>
+			<address>Danielle@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

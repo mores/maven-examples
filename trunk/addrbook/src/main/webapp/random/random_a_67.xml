@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="434">
+			<first>Barron</first>
+			<last>DeCascos</last>
+			<middle>F</middle>
+		</person>
+		<address id="792">
+			<street1>795 Villa DeVia</street1>
+			<street2></street2>
+			<city id="33959">
+				<label>Huntington Beach</label>
+				<geocode>
+					<lat>34667256</lat>
+					<long>39665030</long>
+					<accuracy>2</accuracy>
+					<id>70654857</id>
+				</geocode>
+			</city>
+			<state id="985">
+				<label>ND</label>
+				<geocode>
+					<lat>48590372</lat>
+					<long>21525749</long>
+					<accuracy>2</accuracy>
+					<id>71765416</id>
+				</geocode>
+			</state>
+			<zip id="67233">
+				<label>92510</label>
+				<geocode>
+					<lat>82451344</lat>
+					<long>92235288</long>
+					<accuracy>7</accuracy>
+					<id>46382272</id>
+				</geocode>
+			</zip>
+			<phone id="81007">
+				<type>1</type>
+				<label>home</label>
+				<area>191</area>
+				<prefix>370</prefix>
+				<ex>166</ex>
+			</phone>
+
+			<phone id="21956">
+				<type>0</type>
+				<label>home</label>
+				<area>68</area>
+				<prefix>711</prefix>
+				<ex>7033</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>94151783</lat>
+				<long>48927613</long>
+				<accuracy>3</accuracy>
+				<id>1522416</id>
+			</geocode>
+		</address>
+		<phone id="23288">
+			<type>1</type>
+			<label>home</label>
+			<area>254</area>
+			<prefix>168</prefix>
+			<ex>6524</ex>
+		</phone>
+		<email id="85974">
+			<label>email</label>
+			<address>Dionne@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="953">
+			<first>Guillermo</first>
+			<last>Barron</last>
+			<middle>G</middle>
+		</person>
+		<address id="9836">
+			<street1>2541 Franklin Street</street1>
+			<street2></street2>
+			<city id="48797">
+				<label>Amherst</label>
+				<geocode>
+					<lat>19876918</lat>
+					<long>3997615</long>
+					<accuracy>0</accuracy>
+					<id>48460838</id>
+				</geocode>
+			</city>
+			<state id="67369">
+				<label>PA</label>
+				<geocode>
+					<lat>5642918</lat>
+					<long>74812897</long>
+					<accuracy>6</accuracy>
+					<id>74947131</id>
+				</geocode>
+			</state>
+			<zip id="47951">
+				<label>90212</label>
+				<geocode>
+					<lat>12450099</lat>
+					<long>70707326</long>
+					<accuracy>2</accuracy>
+					<id>70678519</id>
+				</geocode>
+			</zip>
+			<phone id="38255">
+				<type>0</type>
+				<label>home</label>
+				<area>134</area>
+				<prefix>265</prefix>
+				<ex>5957</ex>
+			</phone>
+
+			<phone id="92069">
+				<type>0</type>
+				<label>home</label>
+				<area>804</area>
+				<prefix>699</prefix>
+				<ex>27</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>86973897</lat>
+				<long>93580104</long>
+				<accuracy>7</accuracy>
+				<id>49702183</id>
+			</geocode>
+		</address>
+		<phone id="29308">
+			<type>1</type>
+			<label>home</label>
+			<area>46</area>
+			<prefix>240</prefix>
+			<ex>3296</ex>
+		</phone>
+		<email id="26136">
+			<label>email</label>
+			<address>Bob@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

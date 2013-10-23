@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="66">
+			<first>Howard</first>
+			<last>Eric</last>
+			<middle>B</middle>
+		</person>
+		<address id="8228">
+			<street1>4565 Chestnut</street1>
+			<street2></street2>
+			<city id="35095">
+				<label>Millbury</label>
+				<geocode>
+					<lat>40885958</lat>
+					<long>48272403</long>
+					<accuracy>7</accuracy>
+					<id>23437010</id>
+				</geocode>
+			</city>
+			<state id="87121">
+				<label>MI</label>
+				<geocode>
+					<lat>61519758</lat>
+					<long>71903699</long>
+					<accuracy>7</accuracy>
+					<id>33012564</id>
+				</geocode>
+			</state>
+			<zip id="21112">
+				<label>90503</label>
+				<geocode>
+					<lat>36249574</lat>
+					<long>73673569</long>
+					<accuracy>6</accuracy>
+					<id>63238145</id>
+				</geocode>
+			</zip>
+			<phone id="11527">
+				<type>0</type>
+				<label>home</label>
+				<area>833</area>
+				<prefix>10</prefix>
+				<ex>4887</ex>
+			</phone>
+
+			<phone id="3334">
+				<type>0</type>
+				<label>home</label>
+				<area>604</area>
+				<prefix>411</prefix>
+				<ex>3065</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>76329982</lat>
+				<long>76444105</long>
+				<accuracy>7</accuracy>
+				<id>19938690</id>
+			</geocode>
+		</address>
+		<phone id="85590">
+			<type>1</type>
+			<label>home</label>
+			<area>731</area>
+			<prefix>993</prefix>
+			<ex>3918</ex>
+		</phone>
+		<email id="46566">
+			<label>email</label>
+			<address>Garth@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="597">
+			<first>Bob</first>
+			<last>Gonsalez</last>
+			<middle>B</middle>
+		</person>
+		<address id="2409">
+			<street1>6369 Central</street1>
+			<street2></street2>
+			<city id="93065">
+				<label>Hopkinton</label>
+				<geocode>
+					<lat>95439556</lat>
+					<long>88937827</long>
+					<accuracy>1</accuracy>
+					<id>27022875</id>
+				</geocode>
+			</city>
+			<state id="3931">
+				<label>ND</label>
+				<geocode>
+					<lat>81209084</lat>
+					<long>7862794</long>
+					<accuracy>4</accuracy>
+					<id>30834585</id>
+				</geocode>
+			</state>
+			<zip id="72945">
+				<label>90212</label>
+				<geocode>
+					<lat>45482337</lat>
+					<long>52560548</long>
+					<accuracy>1</accuracy>
+					<id>48794273</id>
+				</geocode>
+			</zip>
+			<phone id="71474">
+				<type>0</type>
+				<label>home</label>
+				<area>118</area>
+				<prefix>88</prefix>
+				<ex>5106</ex>
+			</phone>
+
+			<phone id="89411">
+				<type>0</type>
+				<label>home</label>
+				<area>204</area>
+				<prefix>467</prefix>
+				<ex>6179</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>9686368</lat>
+				<long>11010627</long>
+				<accuracy>1</accuracy>
+				<id>45261222</id>
+			</geocode>
+		</address>
+		<phone id="49174">
+			<type>0</type>
+			<label>home</label>
+			<area>507</area>
+			<prefix>742</prefix>
+			<ex>6774</ex>
+		</phone>
+		<email id="27294">
+			<label>email</label>
+			<address>Cody@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

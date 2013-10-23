@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="804">
+			<first>Christos</first>
+			<last>Ben</last>
+			<middle>C</middle>
+		</person>
+		<address id="6283">
+			<street1>756 Washington Blvd</street1>
+			<street2></street2>
+			<city id="58554">
+				<label>San Onofree</label>
+				<geocode>
+					<lat>63888133</lat>
+					<long>3883488</long>
+					<accuracy>6</accuracy>
+					<id>64257529</id>
+				</geocode>
+			</city>
+			<state id="33902">
+				<label>SD</label>
+				<geocode>
+					<lat>62632594</lat>
+					<long>37138905</long>
+					<accuracy>0</accuracy>
+					<id>39711694</id>
+				</geocode>
+			</state>
+			<zip id="10542">
+				<label>01068</label>
+				<geocode>
+					<lat>52636733</lat>
+					<long>21960185</long>
+					<accuracy>3</accuracy>
+					<id>2708748</id>
+				</geocode>
+			</zip>
+			<phone id="22910">
+				<type>0</type>
+				<label>home</label>
+				<area>728</area>
+				<prefix>853</prefix>
+				<ex>1260</ex>
+			</phone>
+
+			<phone id="61408">
+				<type>0</type>
+				<label>home</label>
+				<area>484</area>
+				<prefix>954</prefix>
+				<ex>5354</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>67757098</lat>
+				<long>19197919</long>
+				<accuracy>1</accuracy>
+				<id>73757114</id>
+			</geocode>
+		</address>
+		<phone id="52750">
+			<type>0</type>
+			<label>home</label>
+			<area>101</area>
+			<prefix>954</prefix>
+			<ex>1258</ex>
+		</phone>
+		<email id="17326">
+			<label>email</label>
+			<address>Ben@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="563">
+			<first>Bob</first>
+			<last>Gomes</last>
+			<middle>B</middle>
+		</person>
+		<address id="4201">
+			<street1>1458 Goldstar</street1>
+			<street2></street2>
+			<city id="56927">
+				<label>Northampton</label>
+				<geocode>
+					<lat>80587585</lat>
+					<long>46636348</long>
+					<accuracy>2</accuracy>
+					<id>47649587</id>
+				</geocode>
+			</city>
+			<state id="86043">
+				<label>VA</label>
+				<geocode>
+					<lat>39687920</lat>
+					<long>69282649</long>
+					<accuracy>1</accuracy>
+					<id>76640433</id>
+				</geocode>
+			</state>
+			<zip id="18185">
+				<label>01068</label>
+				<geocode>
+					<lat>30543253</lat>
+					<long>60256526</long>
+					<accuracy>4</accuracy>
+					<id>44477616</id>
+				</geocode>
+			</zip>
+			<phone id="34854">
+				<type>1</type>
+				<label>home</label>
+				<area>131</area>
+				<prefix>245</prefix>
+				<ex>5068</ex>
+			</phone>
+
+			<phone id="28801">
+				<type>1</type>
+				<label>home</label>
+				<area>653</area>
+				<prefix>108</prefix>
+				<ex>9752</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>55436071</lat>
+				<long>38216187</long>
+				<accuracy>7</accuracy>
+				<id>40890643</id>
+			</geocode>
+		</address>
+		<phone id="73783">
+			<type>1</type>
+			<label>home</label>
+			<area>485</area>
+			<prefix>537</prefix>
+			<ex>8402</ex>
+		</phone>
+		<email id="4823">
+			<label>email</label>
+			<address>Eric@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

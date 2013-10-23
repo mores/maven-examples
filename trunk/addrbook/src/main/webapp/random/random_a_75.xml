@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="747">
+			<first>Hughe</first>
+			<last>Dionne</last>
+			<middle>C</middle>
+		</person>
+		<address id="4618">
+			<street1>9542 Franklin Blvd</street1>
+			<street2></street2>
+			<city id="60571">
+				<label>Easthampton</label>
+				<geocode>
+					<lat>23232811</lat>
+					<long>47457416</long>
+					<accuracy>7</accuracy>
+					<id>87468156</id>
+				</geocode>
+			</city>
+			<state id="92288">
+				<label>NJ</label>
+				<geocode>
+					<lat>63165244</lat>
+					<long>13489416</long>
+					<accuracy>4</accuracy>
+					<id>48563971</id>
+				</geocode>
+			</state>
+			<zip id="34600">
+				<label>01585</label>
+				<geocode>
+					<lat>92773833</lat>
+					<long>68477422</long>
+					<accuracy>2</accuracy>
+					<id>69932524</id>
+				</geocode>
+			</zip>
+			<phone id="84224">
+				<type>0</type>
+				<label>home</label>
+				<area>200</area>
+				<prefix>357</prefix>
+				<ex>6366</ex>
+			</phone>
+
+			<phone id="55881">
+				<type>0</type>
+				<label>home</label>
+				<area>106</area>
+				<prefix>271</prefix>
+				<ex>402</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>57155121</lat>
+				<long>47229773</long>
+				<accuracy>5</accuracy>
+				<id>74437168</id>
+			</geocode>
+		</address>
+		<phone id="98794">
+			<type>0</type>
+			<label>home</label>
+			<area>547</area>
+			<prefix>535</prefix>
+			<ex>6437</ex>
+		</phone>
+		<email id="25607">
+			<label>email</label>
+			<address>Dionysus@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="425">
+			<first>Eric</first>
+			<last>Eric</last>
+			<middle>H</middle>
+		</person>
+		<address id="979">
+			<street1>3100 1st street</street1>
+			<street2></street2>
+			<city id="74790">
+				<label>San Clemente</label>
+				<geocode>
+					<lat>3433730</lat>
+					<long>67711663</long>
+					<accuracy>5</accuracy>
+					<id>87089170</id>
+				</geocode>
+			</city>
+			<state id="13523">
+				<label>WI</label>
+				<geocode>
+					<lat>87398845</lat>
+					<long>35547804</long>
+					<accuracy>2</accuracy>
+					<id>42748237</id>
+				</geocode>
+			</state>
+			<zip id="44026">
+				<label>01604</label>
+				<geocode>
+					<lat>14266114</lat>
+					<long>29577956</long>
+					<accuracy>2</accuracy>
+					<id>29432110</id>
+				</geocode>
+			</zip>
+			<phone id="81012">
+				<type>1</type>
+				<label>home</label>
+				<area>9</area>
+				<prefix>357</prefix>
+				<ex>4225</ex>
+			</phone>
+
+			<phone id="69877">
+				<type>0</type>
+				<label>home</label>
+				<area>439</area>
+				<prefix>709</prefix>
+				<ex>5733</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>43810185</lat>
+				<long>51405810</long>
+				<accuracy>5</accuracy>
+				<id>885785</id>
+			</geocode>
+		</address>
+		<phone id="44330">
+			<type>0</type>
+			<label>home</label>
+			<area>15</area>
+			<prefix>665</prefix>
+			<ex>3356</ex>
+		</phone>
+		<email id="19422">
+			<label>email</label>
+			<address>Christine@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

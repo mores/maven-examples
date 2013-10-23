@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="50">
+			<first>Christopher</first>
+			<last>Bathgate</last>
+			<middle>B</middle>
+		</person>
+		<address id="8188">
+			<street1>8845 Broadway</street1>
+			<street2></street2>
+			<city id="5002">
+				<label>Boston</label>
+				<geocode>
+					<lat>72469433</lat>
+					<long>35981475</long>
+					<accuracy>0</accuracy>
+					<id>62279334</id>
+				</geocode>
+			</city>
+			<state id="49039">
+				<label>MI</label>
+				<geocode>
+					<lat>85057054</lat>
+					<long>31370849</long>
+					<accuracy>1</accuracy>
+					<id>71749819</id>
+				</geocode>
+			</state>
+			<zip id="38785">
+				<label>90503</label>
+				<geocode>
+					<lat>20012997</lat>
+					<long>47476792</long>
+					<accuracy>2</accuracy>
+					<id>20268588</id>
+				</geocode>
+			</zip>
+			<phone id="72288">
+				<type>0</type>
+				<label>home</label>
+				<area>106</area>
+				<prefix>522</prefix>
+				<ex>6507</ex>
+			</phone>
+
+			<phone id="68972">
+				<type>1</type>
+				<label>home</label>
+				<area>500</area>
+				<prefix>155</prefix>
+				<ex>7973</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>64530407</lat>
+				<long>79542842</long>
+				<accuracy>6</accuracy>
+				<id>58019434</id>
+			</geocode>
+		</address>
+		<phone id="24353">
+			<type>0</type>
+			<label>home</label>
+			<area>728</area>
+			<prefix>160</prefix>
+			<ex>9196</ex>
+		</phone>
+		<email id="78840">
+			<label>email</label>
+			<address>Arnold@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="572">
+			<first>Donald</first>
+			<last>Hughes</last>
+			<middle>F</middle>
+		</person>
+		<address id="2317">
+			<street1>4208 Olympic</street1>
+			<street2></street2>
+			<city id="4466">
+				<label>Brookline</label>
+				<geocode>
+					<lat>17697357</lat>
+					<long>96759675</long>
+					<accuracy>8</accuracy>
+					<id>50738507</id>
+				</geocode>
+			</city>
+			<state id="28407">
+				<label>AZ</label>
+				<geocode>
+					<lat>56173734</lat>
+					<long>69426646</long>
+					<accuracy>0</accuracy>
+					<id>20769309</id>
+				</geocode>
+			</state>
+			<zip id="8968">
+				<label>90504</label>
+				<geocode>
+					<lat>74078183</lat>
+					<long>38511153</long>
+					<accuracy>0</accuracy>
+					<id>85978922</id>
+				</geocode>
+			</zip>
+			<phone id="54910">
+				<type>0</type>
+				<label>home</label>
+				<area>831</area>
+				<prefix>559</prefix>
+				<ex>1750</ex>
+			</phone>
+
+			<phone id="41904">
+				<type>1</type>
+				<label>home</label>
+				<area>342</area>
+				<prefix>914</prefix>
+				<ex>7483</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>20805646</lat>
+				<long>96255074</long>
+				<accuracy>2</accuracy>
+				<id>56112683</id>
+			</geocode>
+		</address>
+		<phone id="21111">
+			<type>0</type>
+			<label>home</label>
+			<area>577</area>
+			<prefix>523</prefix>
+			<ex>286</ex>
+		</phone>
+		<email id="11862">
+			<label>email</label>
+			<address>Hughe@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

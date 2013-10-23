@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="954">
+			<first>Charis</first>
+			<last>Christiansen</last>
+			<middle>A</middle>
+		</person>
+		<address id="8441">
+			<street1>8247 Pismo</street1>
+			<street2></street2>
+			<city id="85341">
+				<label>Newport Beach</label>
+				<geocode>
+					<lat>76845065</lat>
+					<long>48054334</long>
+					<accuracy>3</accuracy>
+					<id>38819741</id>
+				</geocode>
+			</city>
+			<state id="36761">
+				<label>WI</label>
+				<geocode>
+					<lat>94629560</lat>
+					<long>99963191</long>
+					<accuracy>7</accuracy>
+					<id>1400645</id>
+				</geocode>
+			</state>
+			<zip id="95126">
+				<label>01602</label>
+				<geocode>
+					<lat>95434550</lat>
+					<long>28354115</long>
+					<accuracy>3</accuracy>
+					<id>83890830</id>
+				</geocode>
+			</zip>
+			<phone id="63582">
+				<type>1</type>
+				<label>home</label>
+				<area>869</area>
+				<prefix>65</prefix>
+				<ex>2963</ex>
+			</phone>
+
+			<phone id="61830">
+				<type>1</type>
+				<label>home</label>
+				<area>652</area>
+				<prefix>826</prefix>
+				<ex>5842</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>84431267</lat>
+				<long>2253178</long>
+				<accuracy>7</accuracy>
+				<id>77560083</id>
+			</geocode>
+		</address>
+		<phone id="47765">
+			<type>1</type>
+			<label>home</label>
+			<area>282</area>
+			<prefix>109</prefix>
+			<ex>4613</ex>
+		</phone>
+		<email id="7298">
+			<label>email</label>
+			<address>Billy@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="601">
+			<first>Eric</first>
+			<last>Howards</last>
+			<middle>D</middle>
+		</person>
+		<address id="5282">
+			<street1>4026 5th Street</street1>
+			<street2></street2>
+			<city id="43121">
+				<label>Brooklyn</label>
+				<geocode>
+					<lat>55850870</lat>
+					<long>98680162</long>
+					<accuracy>7</accuracy>
+					<id>45355818</id>
+				</geocode>
+			</city>
+			<state id="33907">
+				<label>MO</label>
+				<geocode>
+					<lat>58771809</lat>
+					<long>88260336</long>
+					<accuracy>8</accuracy>
+					<id>50046537</id>
+				</geocode>
+			</state>
+			<zip id="42569">
+				<label>90504</label>
+				<geocode>
+					<lat>46562299</lat>
+					<long>16308808</long>
+					<accuracy>1</accuracy>
+					<id>12122713</id>
+				</geocode>
+			</zip>
+			<phone id="66952">
+				<type>0</type>
+				<label>home</label>
+				<area>645</area>
+				<prefix>301</prefix>
+				<ex>6401</ex>
+			</phone>
+
+			<phone id="13372">
+				<type>1</type>
+				<label>home</label>
+				<area>364</area>
+				<prefix>497</prefix>
+				<ex>4774</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>38806720</lat>
+				<long>32853305</long>
+				<accuracy>2</accuracy>
+				<id>3333900</id>
+			</geocode>
+		</address>
+		<phone id="9605">
+			<type>1</type>
+			<label>home</label>
+			<area>171</area>
+			<prefix>331</prefix>
+			<ex>2864</ex>
+		</phone>
+		<email id="14179">
+			<label>email</label>
+			<address>Billy@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>
