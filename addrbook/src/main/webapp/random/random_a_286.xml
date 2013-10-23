@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="843">
+			<first>Hughe</first>
+			<last>Christos</last>
+			<middle>B</middle>
+		</person>
+		<address id="151">
+			<street1>592 Villa DeVia</street1>
+			<street2></street2>
+			<city id="92459">
+				<label>Saint Louis</label>
+				<geocode>
+					<lat>46436514</lat>
+					<long>29720013</long>
+					<accuracy>0</accuracy>
+					<id>43611924</id>
+				</geocode>
+			</city>
+			<state id="47272">
+				<label>FL</label>
+				<geocode>
+					<lat>14796575</lat>
+					<long>96381994</long>
+					<accuracy>5</accuracy>
+					<id>64331562</id>
+				</geocode>
+			</state>
+			<zip id="64596">
+				<label>92510</label>
+				<geocode>
+					<lat>30132333</lat>
+					<long>23235678</long>
+					<accuracy>0</accuracy>
+					<id>60510089</id>
+				</geocode>
+			</zip>
+			<phone id="51259">
+				<type>0</type>
+				<label>home</label>
+				<area>138</area>
+				<prefix>781</prefix>
+				<ex>6161</ex>
+			</phone>
+
+			<phone id="86889">
+				<type>1</type>
+				<label>home</label>
+				<area>67</area>
+				<prefix>234</prefix>
+				<ex>5828</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>1197143</lat>
+				<long>85508678</long>
+				<accuracy>1</accuracy>
+				<id>58129343</id>
+			</geocode>
+		</address>
+		<phone id="44629">
+			<type>0</type>
+			<label>home</label>
+			<area>797</area>
+			<prefix>617</prefix>
+			<ex>4386</ex>
+		</phone>
+		<email id="46700">
+			<label>email</label>
+			<address>Frederic@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="484">
+			<first>Donald</first>
+			<last>Bathgate</last>
+			<middle>B</middle>
+		</person>
+		<address id="9541">
+			<street1>672 Pismo</street1>
+			<street2></street2>
+			<city id="93803">
+				<label>Los Angeles</label>
+				<geocode>
+					<lat>59896377</lat>
+					<long>61287706</long>
+					<accuracy>3</accuracy>
+					<id>29095804</id>
+				</geocode>
+			</city>
+			<state id="54902">
+				<label>NV</label>
+				<geocode>
+					<lat>98335118</lat>
+					<long>38555276</long>
+					<accuracy>2</accuracy>
+					<id>13291580</id>
+				</geocode>
+			</state>
+			<zip id="34915">
+				<label>01602</label>
+				<geocode>
+					<lat>33264926</lat>
+					<long>70941713</long>
+					<accuracy>7</accuracy>
+					<id>49701300</id>
+				</geocode>
+			</zip>
+			<phone id="67341">
+				<type>1</type>
+				<label>home</label>
+				<area>719</area>
+				<prefix>679</prefix>
+				<ex>3379</ex>
+			</phone>
+
+			<phone id="31088">
+				<type>0</type>
+				<label>home</label>
+				<area>61</area>
+				<prefix>785</prefix>
+				<ex>9859</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>14138755</lat>
+				<long>46994962</long>
+				<accuracy>3</accuracy>
+				<id>26002038</id>
+			</geocode>
+		</address>
+		<phone id="22849">
+			<type>0</type>
+			<label>home</label>
+			<area>546</area>
+			<prefix>961</prefix>
+			<ex>3305</ex>
+		</phone>
+		<email id="12643">
+			<label>email</label>
+			<address>Don@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

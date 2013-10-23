@@ -1,0 +1,46 @@
+<?xml version="1.0">
+
+<rowset>
+	<meta>
+		<col>first name</col>
+		<col>last name</col>
+		<col>middle</col>
+		<col>street line 1</col>
+		<col>street line 2</col>
+		<col>city</col>
+		<col>state</col>
+		<col>zip</col>
+		<col>phone</col>
+		<col>fax</col>
+		<col>email</col>
+		<col>notes</col>
+	</meta>
+	<row>
+		<col>John</col>
+		<col>Doe1</col>
+		<col></col>
+		<col>1000 Lost blvd</col>
+		<col></col>
+		<col>Seattle</col>
+		<col>WA</col>
+		<col>01010</col>
+		<col>111-222-3333</col>
+		<col>111-222-3333</col>
+		<col>john.doe@fox.com</col>
+		<col>A dummy entry named after the TV show John Doe</col>
+	</row>
+	<row>
+		<col>John</col>
+		<col>Doe2</col>
+		<col></col>
+		<col>1000 Lost blvd</col>
+		<col></col>
+		<col>Seattle</col>
+		<col>WA</col>
+		<col>01010</col>
+		<col>111-222-3333</col>
+		<col>111-222-3333</col>
+		<col>john.doe@fox.com</col>
+		<col>A dummy entry named after the TV show John Doe</col>
+	</row>
+</rowset>

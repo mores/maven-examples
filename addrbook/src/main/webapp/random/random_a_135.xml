@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="293">
+			<first>Barton</first>
+			<last>Frederic</last>
+			<middle>F</middle>
+		</person>
+		<address id="6745">
+			<street1>8869 Walnut Creek</street1>
+			<street2></street2>
+			<city id="63497">
+				<label>Newton</label>
+				<geocode>
+					<lat>61173763</lat>
+					<long>24572872</long>
+					<accuracy>4</accuracy>
+					<id>2823176</id>
+				</geocode>
+			</city>
+			<state id="86063">
+				<label>SC</label>
+				<geocode>
+					<lat>65591014</lat>
+					<long>6083524</long>
+					<accuracy>0</accuracy>
+					<id>36298910</id>
+				</geocode>
+			</state>
+			<zip id="96710">
+				<label>01585</label>
+				<geocode>
+					<lat>45637434</lat>
+					<long>97617866</long>
+					<accuracy>4</accuracy>
+					<id>2240799</id>
+				</geocode>
+			</zip>
+			<phone id="48687">
+				<type>0</type>
+				<label>home</label>
+				<area>807</area>
+				<prefix>446</prefix>
+				<ex>4641</ex>
+			</phone>
+
+			<phone id="52675">
+				<type>1</type>
+				<label>home</label>
+				<area>728</area>
+				<prefix>467</prefix>
+				<ex>2079</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>89957370</lat>
+				<long>31612010</long>
+				<accuracy>2</accuracy>
+				<id>84925647</id>
+			</geocode>
+		</address>
+		<phone id="26208">
+			<type>1</type>
+			<label>home</label>
+			<area>583</area>
+			<prefix>172</prefix>
+			<ex>1915</ex>
+		</phone>
+		<email id="34521">
+			<label>email</label>
+			<address>Candy@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="945">
+			<first>Guillermo</first>
+			<last>Henry</last>
+			<middle>C</middle>
+		</person>
+		<address id="6963">
+			<street1>3801 3rd Street</street1>
+			<street2></street2>
+			<city id="51430">
+				<label>El Cajon</label>
+				<geocode>
+					<lat>5813379</lat>
+					<long>51091738</long>
+					<accuracy>3</accuracy>
+					<id>80206284</id>
+				</geocode>
+			</city>
+			<state id="204">
+				<label>NJ</label>
+				<geocode>
+					<lat>69369912</lat>
+					<long>74352601</long>
+					<accuracy>1</accuracy>
+					<id>53635525</id>
+				</geocode>
+			</state>
+			<zip id="37119">
+				<label>04012</label>
+				<geocode>
+					<lat>54720121</lat>
+					<long>82347078</long>
+					<accuracy>6</accuracy>
+					<id>37118688</id>
+				</geocode>
+			</zip>
+			<phone id="3351">
+				<type>0</type>
+				<label>home</label>
+				<area>99</area>
+				<prefix>407</prefix>
+				<ex>4029</ex>
+			</phone>
+
+			<phone id="52535">
+				<type>1</type>
+				<label>home</label>
+				<area>300</area>
+				<prefix>331</prefix>
+				<ex>9761</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>88625181</lat>
+				<long>73521063</long>
+				<accuracy>4</accuracy>
+				<id>40096788</id>
+			</geocode>
+		</address>
+		<phone id="87821">
+			<type>0</type>
+			<label>home</label>
+			<area>235</area>
+			<prefix>321</prefix>
+			<ex>2807</ex>
+		</phone>
+		<email id="12062">
+			<label>email</label>
+			<address>Dionne@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

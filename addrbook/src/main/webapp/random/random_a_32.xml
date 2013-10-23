@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="583">
+			<first>Gill</first>
+			<last>Charis</last>
+			<middle>H</middle>
+		</person>
+		<address id="1989">
+			<street1>3913 2nd Street</street1>
+			<street2></street2>
+			<city id="50467">
+				<label>Walnut Creek</label>
+				<geocode>
+					<lat>5610923</lat>
+					<long>52480774</long>
+					<accuracy>6</accuracy>
+					<id>86102117</id>
+				</geocode>
+			</city>
+			<state id="24952">
+				<label>NJ</label>
+				<geocode>
+					<lat>84846319</lat>
+					<long>23625907</long>
+					<accuracy>0</accuracy>
+					<id>25511465</id>
+				</geocode>
+			</state>
+			<zip id="84318">
+				<label>90210</label>
+				<geocode>
+					<lat>29170442</lat>
+					<long>27484213</long>
+					<accuracy>2</accuracy>
+					<id>26298577</id>
+				</geocode>
+			</zip>
+			<phone id="15630">
+				<type>1</type>
+				<label>home</label>
+				<area>151</area>
+				<prefix>804</prefix>
+				<ex>5168</ex>
+			</phone>
+
+			<phone id="37965">
+				<type>0</type>
+				<label>home</label>
+				<area>591</area>
+				<prefix>418</prefix>
+				<ex>5515</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>36912789</lat>
+				<long>24920373</long>
+				<accuracy>1</accuracy>
+				<id>72018479</id>
+			</geocode>
+		</address>
+		<phone id="35876">
+			<type>0</type>
+			<label>home</label>
+			<area>469</area>
+			<prefix>249</prefix>
+			<ex>4506</ex>
+		</phone>
+		<email id="30732">
+			<label>email</label>
+			<address>Garth@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="199">
+			<first>Dionne</first>
+			<last>Arnold</last>
+			<middle>H</middle>
+		</person>
+		<address id="3019">
+			<street1>4540 Pismo</street1>
+			<street2></street2>
+			<city id="6784">
+				<label>Southampton</label>
+				<geocode>
+					<lat>63477459</lat>
+					<long>94790481</long>
+					<accuracy>3</accuracy>
+					<id>5735213</id>
+				</geocode>
+			</city>
+			<state id="14554">
+				<label>SC</label>
+				<geocode>
+					<lat>20186421</lat>
+					<long>88785703</long>
+					<accuracy>2</accuracy>
+					<id>32486975</id>
+				</geocode>
+			</state>
+			<zip id="92724">
+				<label>01065</label>
+				<geocode>
+					<lat>95065828</lat>
+					<long>81492264</long>
+					<accuracy>5</accuracy>
+					<id>77140986</id>
+				</geocode>
+			</zip>
+			<phone id="6751">
+				<type>1</type>
+				<label>home</label>
+				<area>876</area>
+				<prefix>815</prefix>
+				<ex>4582</ex>
+			</phone>
+
+			<phone id="32315">
+				<type>1</type>
+				<label>home</label>
+				<area>682</area>
+				<prefix>782</prefix>
+				<ex>962</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>46153338</lat>
+				<long>86234878</long>
+				<accuracy>5</accuracy>
+				<id>1357833</id>
+			</geocode>
+		</address>
+		<phone id="70664">
+			<type>0</type>
+			<label>home</label>
+			<area>640</area>
+			<prefix>2</prefix>
+			<ex>1495</ex>
+		</phone>
+		<email id="71107">
+			<label>email</label>
+			<address>Arnold@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

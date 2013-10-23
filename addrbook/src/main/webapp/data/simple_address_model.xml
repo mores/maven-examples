@@ -1,0 +1,32 @@
+<?xml version="1.0">
+
+<rowset>
+	<meta>
+		<col>first name</col>
+		<col>last name</col>
+		<col>middle</col>
+		<col>street line 1</col>
+		<col>street line 2</col>
+		<col>city</col>
+		<col>state</col>
+		<col>zip</col>
+		<col>phone</col>
+		<col>fax</col>
+		<col>email</col>
+		<col>notes</col>
+	</meta>
+	<row>
+		<col>first name</col>
+		<col>last name</col>
+		<col>middle</col>
+		<col>street line 1</col>
+		<col>street line 2</col>
+		<col>city</col>
+		<col>state</col>
+		<col>zip</col>
+		<col>phone</col>
+		<col>fax</col>
+		<col>email</col>
+		<col>notes</col>
+	</row>
+</rowset>

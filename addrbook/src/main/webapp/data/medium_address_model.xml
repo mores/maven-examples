@@ -1,0 +1,43 @@
+<?xml version="1.0">
+
+<rowset>
+	<row>
+		<person>
+			<first>first name</first>
+			<last>last name</last>
+			<middle>middle</middle>
+		</person>
+		<address>
+			<label>label</label>
+			<street1>street line 1</street1>
+			<street2>street line 2</street2>
+			<city>city</city>
+			<state>state</state>
+			<zip>zip</zip>
+			<phone>phone</phone>
+			<fax>fax</fax>
+			<notes>notes</notes>
+		</address>
+		<address>
+			<label>label</label>
+			<street1>street line 1</street1>
+			<street2>street line 2</street2>
+			<city>city</city>
+			<state>state</state>
+			<zip>zip</zip>
+			<phone>phone</phone>
+			<fax>fax</fax>
+			<notes>notes</notes>
+		</address>
+		<phone>
+			<label>home</label>
+			<number></number>
+		</phone>
+		<email>
+			<label>email</label>
+			<address>me@here.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>notes</notes>
+	</row>
+</rowset>

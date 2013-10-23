@@ -1,0 +1,80 @@
+<?xml version="1.0">
+
+<rowset>
+	<row>
+		<person id="">
+			<col>first name</col>
+			<col>last name</col>
+			<col>middle</col>
+		</person>
+		<address id="">
+			<label>label</label>
+			<street1>street line 1</street1>
+			<street2>street line 2</street2>
+			<city id="">
+				<label>city</label>
+				<geocode>
+					<long></long>
+					<lat></lat>
+					<accuracy></accuracy>
+					<id></id>
+				</geocode>
+			</city>
+			<state id="">
+				<label>state</label>
+				<geocode>
+					<long></long>
+					<lat></lat>
+					<accuracy></accuracy>
+					<id></id>
+				</geocode>
+			</state>
+			<zip id="">
+				<label>zip</label>
+				<geocode>
+					<long></long>
+					<lat></lat>
+					<accuracy></accuracy>
+					<id></id>
+				</geocode>
+			</zip>
+			<phone id="">
+				<type>1</type>
+				<label>home</label>
+				<area></area>
+				<pref><pref>
+				<ex></ex>
+			</phone>
+			<phone id="">
+				<type>2</type>
+				<label>home</label>
+				<area></area>
+				<pref><pref>
+				<ex></ex>
+			</phone>
+			<notes>notes</notes>
+			<geocode>
+				<long></long>
+				<lat></lat>
+				<accuracy></accuracy>
+				<id></id>
+			</geocode>
+		</address>
+		<phone id="">
+			<label>home</label>
+			<area></area>
+			<pref><pref>
+			<ex></ex>
+		</phone>
+		<email id="">
+			<label>email</label>
+			<address>me@here.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>notes</notes>
+		<relations>
+			<person>id</person>
+			<person>id</person>
+		</relations>
+	</row>
+</rowset>

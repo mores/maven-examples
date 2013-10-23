@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="964">
+			<first>Chris</first>
+			<last>Frederic</last>
+			<middle>B</middle>
+		</person>
+		<address id="7275">
+			<street1>5816 Harvard Street</street1>
+			<street2></street2>
+			<city id="19776">
+				<label>Southampton</label>
+				<geocode>
+					<lat>43360979</lat>
+					<long>8184223</long>
+					<accuracy>0</accuracy>
+					<id>6046392</id>
+				</geocode>
+			</city>
+			<state id="93664">
+				<label>WI</label>
+				<geocode>
+					<lat>78175064</lat>
+					<long>87453679</long>
+					<accuracy>0</accuracy>
+					<id>60165680</id>
+				</geocode>
+			</state>
+			<zip id="49690">
+				<label>01582</label>
+				<geocode>
+					<lat>56508264</lat>
+					<long>18442861</long>
+					<accuracy>5</accuracy>
+					<id>61642054</id>
+				</geocode>
+			</zip>
+			<phone id="84708">
+				<type>0</type>
+				<label>home</label>
+				<area>704</area>
+				<prefix>988</prefix>
+				<ex>6841</ex>
+			</phone>
+
+			<phone id="60685">
+				<type>1</type>
+				<label>home</label>
+				<area>110</area>
+				<prefix>783</prefix>
+				<ex>9035</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>80669024</lat>
+				<long>41893610</long>
+				<accuracy>0</accuracy>
+				<id>47374361</id>
+			</geocode>
+		</address>
+		<phone id="10631">
+			<type>0</type>
+			<label>home</label>
+			<area>714</area>
+			<prefix>580</prefix>
+			<ex>1792</ex>
+		</phone>
+		<email id="36924">
+			<label>email</label>
+			<address>Barton@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="234">
+			<first>Barton</first>
+			<last>Arron</last>
+			<middle>A</middle>
+		</person>
+		<address id="9603">
+			<street1>8035 7th Street</street1>
+			<street2></street2>
+			<city id="10959">
+				<label>Newport</label>
+				<geocode>
+					<lat>16066215</lat>
+					<long>7773605</long>
+					<accuracy>8</accuracy>
+					<id>70908717</id>
+				</geocode>
+			</city>
+			<state id="23726">
+				<label>SD</label>
+				<geocode>
+					<lat>76053503</lat>
+					<long>85628919</long>
+					<accuracy>6</accuracy>
+					<id>4575251</id>
+				</geocode>
+			</state>
+			<zip id="82557">
+				<label>01900</label>
+				<geocode>
+					<lat>15966002</lat>
+					<long>45816280</long>
+					<accuracy>2</accuracy>
+					<id>79855222</id>
+				</geocode>
+			</zip>
+			<phone id="58739">
+				<type>0</type>
+				<label>home</label>
+				<area>64</area>
+				<prefix>398</prefix>
+				<ex>7475</ex>
+			</phone>
+
+			<phone id="56579">
+				<type>0</type>
+				<label>home</label>
+				<area>350</area>
+				<prefix>68</prefix>
+				<ex>1697</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>97170925</lat>
+				<long>70350306</long>
+				<accuracy>3</accuracy>
+				<id>64207414</id>
+			</geocode>
+		</address>
+		<phone id="18821">
+			<type>1</type>
+			<label>home</label>
+			<area>465</area>
+			<prefix>355</prefix>
+			<ex>6119</ex>
+		</phone>
+		<email id="18858">
+			<label>email</label>
+			<address>Dartanion@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

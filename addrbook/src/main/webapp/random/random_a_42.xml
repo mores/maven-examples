@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="203">
+			<first>Eric</first>
+			<last>Charis</last>
+			<middle>D</middle>
+		</person>
+		<address id="2489">
+			<street1>5063 Broadway</street1>
+			<street2></street2>
+			<city id="71713">
+				<label>Queens</label>
+				<geocode>
+					<lat>77986386</lat>
+					<long>35044430</long>
+					<accuracy>4</accuracy>
+					<id>11830694</id>
+				</geocode>
+			</city>
+			<state id="49036">
+				<label>SD</label>
+				<geocode>
+					<lat>66566317</lat>
+					<long>87940623</long>
+					<accuracy>2</accuracy>
+					<id>27449772</id>
+				</geocode>
+			</state>
+			<zip id="80979">
+				<label>92507</label>
+				<geocode>
+					<lat>57943586</lat>
+					<long>79448573</long>
+					<accuracy>3</accuracy>
+					<id>80811059</id>
+				</geocode>
+			</zip>
+			<phone id="72190">
+				<type>1</type>
+				<label>home</label>
+				<area>966</area>
+				<prefix>32</prefix>
+				<ex>9420</ex>
+			</phone>
+
+			<phone id="75120">
+				<type>0</type>
+				<label>home</label>
+				<area>867</area>
+				<prefix>583</prefix>
+				<ex>8190</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>58521351</lat>
+				<long>79990408</long>
+				<accuracy>3</accuracy>
+				<id>85931379</id>
+			</geocode>
+		</address>
+		<phone id="89740">
+			<type>0</type>
+			<label>home</label>
+			<area>708</area>
+			<prefix>819</prefix>
+			<ex>243</ex>
+		</phone>
+		<email id="28384">
+			<label>email</label>
+			<address>Frederic@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="429">
+			<first>Donald</first>
+			<last>Danish</last>
+			<middle>D</middle>
+		</person>
+		<address id="1608">
+			<street1>3389 Newton</street1>
+			<street2></street2>
+			<city id="89882">
+				<label>Shrewsbury</label>
+				<geocode>
+					<lat>71810400</lat>
+					<long>49533013</long>
+					<accuracy>5</accuracy>
+					<id>55598485</id>
+				</geocode>
+			</city>
+			<state id="53182">
+				<label>NJ</label>
+				<geocode>
+					<lat>77788655</lat>
+					<long>77117223</long>
+					<accuracy>3</accuracy>
+					<id>29744933</id>
+				</geocode>
+			</state>
+			<zip id="85546">
+				<label>04012</label>
+				<geocode>
+					<lat>18893864</lat>
+					<long>28965431</long>
+					<accuracy>0</accuracy>
+					<id>50379917</id>
+				</geocode>
+			</zip>
+			<phone id="82158">
+				<type>0</type>
+				<label>home</label>
+				<area>337</area>
+				<prefix>768</prefix>
+				<ex>7157</ex>
+			</phone>
+
+			<phone id="32075">
+				<type>1</type>
+				<label>home</label>
+				<area>844</area>
+				<prefix>99</prefix>
+				<ex>1104</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>43330700</lat>
+				<long>87649000</long>
+				<accuracy>4</accuracy>
+				<id>7122787</id>
+			</geocode>
+		</address>
+		<phone id="65298">
+			<type>0</type>
+			<label>home</label>
+			<area>135</area>
+			<prefix>235</prefix>
+			<ex>3093</ex>
+		</phone>
+		<email id="36643">
+			<label>email</label>
+			<address>Candy@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

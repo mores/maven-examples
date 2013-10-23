@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="344">
+			<first>Frank</first>
+			<last>Bobby</last>
+			<middle>C</middle>
+		</person>
+		<address id="6353">
+			<street1>7262 Main Blvd</street1>
+			<street2></street2>
+			<city id="39099">
+				<label>Westboro</label>
+				<geocode>
+					<lat>50923758</lat>
+					<long>86103520</long>
+					<accuracy>4</accuracy>
+					<id>88554346</id>
+				</geocode>
+			</city>
+			<state id="67017">
+				<label>SC</label>
+				<geocode>
+					<lat>20448774</lat>
+					<long>97558912</long>
+					<accuracy>2</accuracy>
+					<id>4282706</id>
+				</geocode>
+			</state>
+			<zip id="93809">
+				<label>01065</label>
+				<geocode>
+					<lat>22585262</lat>
+					<long>41697696</long>
+					<accuracy>4</accuracy>
+					<id>81825564</id>
+				</geocode>
+			</zip>
+			<phone id="85546">
+				<type>0</type>
+				<label>home</label>
+				<area>853</area>
+				<prefix>433</prefix>
+				<ex>7772</ex>
+			</phone>
+
+			<phone id="7446">
+				<type>0</type>
+				<label>home</label>
+				<area>760</area>
+				<prefix>891</prefix>
+				<ex>294</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>26495747</lat>
+				<long>69775479</long>
+				<accuracy>2</accuracy>
+				<id>2050237</id>
+			</geocode>
+		</address>
+		<phone id="94028">
+			<type>1</type>
+			<label>home</label>
+			<area>333</area>
+			<prefix>54</prefix>
+			<ex>2214</ex>
+		</phone>
+		<email id="42554">
+			<label>email</label>
+			<address>Henry@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="694">
+			<first>Frederic</first>
+			<last>Christiansen</last>
+			<middle>D</middle>
+		</person>
+		<address id="9690">
+			<street1>7883 Goldstar</street1>
+			<street2></street2>
+			<city id="480">
+				<label>Westhampton</label>
+				<geocode>
+					<lat>116039</lat>
+					<long>1087560</long>
+					<accuracy>1</accuracy>
+					<id>6299429</id>
+				</geocode>
+			</city>
+			<state id="55038">
+				<label>CO</label>
+				<geocode>
+					<lat>23425110</lat>
+					<long>22501395</long>
+					<accuracy>8</accuracy>
+					<id>51555178</id>
+				</geocode>
+			</state>
+			<zip id="48002">
+				<label>01065</label>
+				<geocode>
+					<lat>98772897</lat>
+					<long>31606583</long>
+					<accuracy>1</accuracy>
+					<id>55056965</id>
+				</geocode>
+			</zip>
+			<phone id="31220">
+				<type>1</type>
+				<label>home</label>
+				<area>381</area>
+				<prefix>925</prefix>
+				<ex>5094</ex>
+			</phone>
+
+			<phone id="84718">
+				<type>1</type>
+				<label>home</label>
+				<area>457</area>
+				<prefix>135</prefix>
+				<ex>1494</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>61920293</lat>
+				<long>94479625</long>
+				<accuracy>2</accuracy>
+				<id>86994074</id>
+			</geocode>
+		</address>
+		<phone id="22552">
+			<type>0</type>
+			<label>home</label>
+			<area>729</area>
+			<prefix>307</prefix>
+			<ex>6645</ex>
+		</phone>
+		<email id="40656">
+			<label>email</label>
+			<address>Dionysus@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

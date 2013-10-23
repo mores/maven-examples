@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="95">
+			<first>Eric</first>
+			<last>Christos</last>
+			<middle>D</middle>
+		</person>
+		<address id="1199">
+			<street1>8683 Lincoln Bvld</street1>
+			<street2></street2>
+			<city id="55942">
+				<label>Beverly</label>
+				<geocode>
+					<lat>33485931</lat>
+					<long>74326911</long>
+					<accuracy>2</accuracy>
+					<id>36296702</id>
+				</geocode>
+			</city>
+			<state id="70629">
+				<label>CO</label>
+				<geocode>
+					<lat>21244984</lat>
+					<long>93372867</long>
+					<accuracy>5</accuracy>
+					<id>14299223</id>
+				</geocode>
+			</state>
+			<zip id="51410">
+				<label>04012</label>
+				<geocode>
+					<lat>91569882</lat>
+					<long>41273261</long>
+					<accuracy>4</accuracy>
+					<id>58743103</id>
+				</geocode>
+			</zip>
+			<phone id="90940">
+				<type>0</type>
+				<label>home</label>
+				<area>105</area>
+				<prefix>641</prefix>
+				<ex>1734</ex>
+			</phone>
+
+			<phone id="30555">
+				<type>1</type>
+				<label>home</label>
+				<area>810</area>
+				<prefix>478</prefix>
+				<ex>6889</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>62571173</lat>
+				<long>14815672</long>
+				<accuracy>7</accuracy>
+				<id>76032036</id>
+			</geocode>
+		</address>
+		<phone id="37103">
+			<type>0</type>
+			<label>home</label>
+			<area>190</area>
+			<prefix>342</prefix>
+			<ex>7667</ex>
+		</phone>
+		<email id="97695">
+			<label>email</label>
+			<address>Barton@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="752">
+			<first>Christine</first>
+			<last>Barron</last>
+			<middle>A</middle>
+		</person>
+		<address id="896">
+			<street1>4755 Broadway</street1>
+			<street2></street2>
+			<city id="69786">
+				<label>San Jose</label>
+				<geocode>
+					<lat>79559069</lat>
+					<long>31111931</long>
+					<accuracy>0</accuracy>
+					<id>64985148</id>
+				</geocode>
+			</city>
+			<state id="83676">
+				<label>WI</label>
+				<geocode>
+					<lat>54409757</lat>
+					<long>38570174</long>
+					<accuracy>4</accuracy>
+					<id>33804480</id>
+				</geocode>
+			</state>
+			<zip id="98769">
+				<label>90504</label>
+				<geocode>
+					<lat>91151507</lat>
+					<long>31176509</long>
+					<accuracy>0</accuracy>
+					<id>9699924</id>
+				</geocode>
+			</zip>
+			<phone id="6901">
+				<type>0</type>
+				<label>home</label>
+				<area>489</area>
+				<prefix>222</prefix>
+				<ex>6021</ex>
+			</phone>
+
+			<phone id="50518">
+				<type>0</type>
+				<label>home</label>
+				<area>221</area>
+				<prefix>713</prefix>
+				<ex>8818</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>31185546</lat>
+				<long>35733961</long>
+				<accuracy>8</accuracy>
+				<id>38098988</id>
+			</geocode>
+		</address>
+		<phone id="4040">
+			<type>1</type>
+			<label>home</label>
+			<area>537</area>
+			<prefix>64</prefix>
+			<ex>3046</ex>
+		</phone>
+		<email id="28402">
+			<label>email</label>
+			<address>Arron@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

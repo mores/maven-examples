@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="516">
+			<first>Frederic</first>
+			<last>Danielle</last>
+			<middle>B</middle>
+		</person>
+		<address id="1564">
+			<street1>6217 Harvard Street</street1>
+			<street2></street2>
+			<city id="67532">
+				<label>Newport Beach</label>
+				<geocode>
+					<lat>43532104</lat>
+					<long>74445250</long>
+					<accuracy>6</accuracy>
+					<id>7229699</id>
+				</geocode>
+			</city>
+			<state id="9558">
+				<label>AZ</label>
+				<geocode>
+					<lat>34945353</lat>
+					<long>22167011</long>
+					<accuracy>1</accuracy>
+					<id>51556791</id>
+				</geocode>
+			</state>
+			<zip id="91468">
+				<label>92507</label>
+				<geocode>
+					<lat>31571995</lat>
+					<long>55175200</long>
+					<accuracy>5</accuracy>
+					<id>43533667</id>
+				</geocode>
+			</zip>
+			<phone id="30426">
+				<type>1</type>
+				<label>home</label>
+				<area>900</area>
+				<prefix>788</prefix>
+				<ex>3212</ex>
+			</phone>
+
+			<phone id="2548">
+				<type>0</type>
+				<label>home</label>
+				<area>152</area>
+				<prefix>884</prefix>
+				<ex>854</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>42377757</lat>
+				<long>56932054</long>
+				<accuracy>2</accuracy>
+				<id>12485426</id>
+			</geocode>
+		</address>
+		<phone id="70004">
+			<type>1</type>
+			<label>home</label>
+			<area>459</area>
+			<prefix>477</prefix>
+			<ex>2008</ex>
+		</phone>
+		<email id="24276">
+			<label>email</label>
+			<address>Howard@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="493">
+			<first>Henry</first>
+			<last>Deville</last>
+			<middle>D</middle>
+		</person>
+		<address id="616">
+			<street1>7362 Franklin Blvd</street1>
+			<street2></street2>
+			<city id="91791">
+				<label>Walnut Creek</label>
+				<geocode>
+					<lat>41036267</lat>
+					<long>39077127</long>
+					<accuracy>4</accuracy>
+					<id>59393013</id>
+				</geocode>
+			</city>
+			<state id="39719">
+				<label>UT</label>
+				<geocode>
+					<lat>9108600</lat>
+					<long>4499685</long>
+					<accuracy>4</accuracy>
+					<id>75398006</id>
+				</geocode>
+			</state>
+			<zip id="8042">
+				<label>01605</label>
+				<geocode>
+					<lat>31221836</lat>
+					<long>58244062</long>
+					<accuracy>2</accuracy>
+					<id>58839353</id>
+				</geocode>
+			</zip>
+			<phone id="21208">
+				<type>0</type>
+				<label>home</label>
+				<area>668</area>
+				<prefix>968</prefix>
+				<ex>5189</ex>
+			</phone>
+
+			<phone id="26816">
+				<type>0</type>
+				<label>home</label>
+				<area>938</area>
+				<prefix>211</prefix>
+				<ex>8486</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>52430449</lat>
+				<long>69187514</long>
+				<accuracy>8</accuracy>
+				<id>71215863</id>
+			</geocode>
+		</address>
+		<phone id="28847">
+			<type>0</type>
+			<label>home</label>
+			<area>922</area>
+			<prefix>39</prefix>
+			<ex>5592</ex>
+		</phone>
+		<email id="2822">
+			<label>email</label>
+			<address>Candy@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="225">
+			<first>Donald</first>
+			<last>Billy</last>
+			<middle>D</middle>
+		</person>
+		<address id="7304">
+			<street1>273 Main Blvd</street1>
+			<street2></street2>
+			<city id="93242">
+				<label>San Diego</label>
+				<geocode>
+					<lat>55947650</lat>
+					<long>91382091</long>
+					<accuracy>8</accuracy>
+					<id>35285538</id>
+				</geocode>
+			</city>
+			<state id="58271">
+				<label>MO</label>
+				<geocode>
+					<lat>52603067</lat>
+					<long>57141664</long>
+					<accuracy>8</accuracy>
+					<id>82700426</id>
+				</geocode>
+			</state>
+			<zip id="90461">
+				<label>01602</label>
+				<geocode>
+					<lat>37670046</lat>
+					<long>4046958</long>
+					<accuracy>5</accuracy>
+					<id>50738505</id>
+				</geocode>
+			</zip>
+			<phone id="5171">
+				<type>0</type>
+				<label>home</label>
+				<area>299</area>
+				<prefix>588</prefix>
+				<ex>7390</ex>
+			</phone>
+
+			<phone id="46790">
+				<type>1</type>
+				<label>home</label>
+				<area>427</area>
+				<prefix>765</prefix>
+				<ex>9614</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>76139040</lat>
+				<long>49422299</long>
+				<accuracy>1</accuracy>
+				<id>34739330</id>
+			</geocode>
+		</address>
+		<phone id="13136">
+			<type>0</type>
+			<label>home</label>
+			<area>790</area>
+			<prefix>568</prefix>
+			<ex>480</ex>
+		</phone>
+		<email id="36676">
+			<label>email</label>
+			<address>Frederic@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="525">
+			<first>Fred</first>
+			<last>Danielle</last>
+			<middle>B</middle>
+		</person>
+		<address id="5778">
+			<street1>6933 Huntington Beach Blvd</street1>
+			<street2></street2>
+			<city id="76453">
+				<label>Blacks Beach</label>
+				<geocode>
+					<lat>90272801</lat>
+					<long>70204108</long>
+					<accuracy>8</accuracy>
+					<id>6063086</id>
+				</geocode>
+			</city>
+			<state id="88280">
+				<label>MI</label>
+				<geocode>
+					<lat>11197067</lat>
+					<long>5011865</long>
+					<accuracy>0</accuracy>
+					<id>28150157</id>
+				</geocode>
+			</state>
+			<zip id="19727">
+				<label>01603</label>
+				<geocode>
+					<lat>22079022</lat>
+					<long>41975432</long>
+					<accuracy>8</accuracy>
+					<id>55063392</id>
+				</geocode>
+			</zip>
+			<phone id="4354">
+				<type>1</type>
+				<label>home</label>
+				<area>886</area>
+				<prefix>188</prefix>
+				<ex>9467</ex>
+			</phone>
+
+			<phone id="23854">
+				<type>1</type>
+				<label>home</label>
+				<area>861</area>
+				<prefix>336</prefix>
+				<ex>858</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>63868520</lat>
+				<long>46472552</long>
+				<accuracy>7</accuracy>
+				<id>36416466</id>
+			</geocode>
+		</address>
+		<phone id="85203">
+			<type>0</type>
+			<label>home</label>
+			<area>658</area>
+			<prefix>46</prefix>
+			<ex>1581</ex>
+		</phone>
+		<email id="94163">
+			<label>email</label>
+			<address>Christos@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="913">
+			<first>Arnold</first>
+			<last>Cadwell</last>
+			<middle>D</middle>
+		</person>
+		<address id="5170">
+			<street1>1894 Villa DeVia</street1>
+			<street2></street2>
+			<city id="8012">
+				<label>Brooklyn</label>
+				<geocode>
+					<lat>33703197</lat>
+					<long>254019</long>
+					<accuracy>4</accuracy>
+					<id>45234306</id>
+				</geocode>
+			</city>
+			<state id="92772">
+				<label>VA</label>
+				<geocode>
+					<lat>78204710</lat>
+					<long>88653468</long>
+					<accuracy>7</accuracy>
+					<id>48615063</id>
+				</geocode>
+			</state>
+			<zip id="30790">
+				<label>92507</label>
+				<geocode>
+					<lat>59831077</lat>
+					<long>69492954</long>
+					<accuracy>0</accuracy>
+					<id>36324405</id>
+				</geocode>
+			</zip>
+			<phone id="13999">
+				<type>0</type>
+				<label>home</label>
+				<area>741</area>
+				<prefix>679</prefix>
+				<ex>848</ex>
+			</phone>
+
+			<phone id="76995">
+				<type>0</type>
+				<label>home</label>
+				<area>102</area>
+				<prefix>796</prefix>
+				<ex>1208</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>27733203</lat>
+				<long>11134630</long>
+				<accuracy>8</accuracy>
+				<id>62985747</id>
+			</geocode>
+		</address>
+		<phone id="89457">
+			<type>0</type>
+			<label>home</label>
+			<area>512</area>
+			<prefix>381</prefix>
+			<ex>7721</ex>
+		</phone>
+		<email id="25017">
+			<label>email</label>
+			<address>Howard@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="529">
+			<first>Hank</first>
+			<last>Hinkley</last>
+			<middle>D</middle>
+		</person>
+		<address id="1033">
+			<street1>6628 Konya Drive</street1>
+			<street2></street2>
+			<city id="27643">
+				<label>Long Beach</label>
+				<geocode>
+					<lat>20837905</lat>
+					<long>74259690</long>
+					<accuracy>2</accuracy>
+					<id>16314684</id>
+				</geocode>
+			</city>
+			<state id="83376">
+				<label>SD</label>
+				<geocode>
+					<lat>35855299</lat>
+					<long>76126495</long>
+					<accuracy>1</accuracy>
+					<id>14154283</id>
+				</geocode>
+			</state>
+			<zip id="80244">
+				<label>90212</label>
+				<geocode>
+					<lat>32679416</lat>
+					<long>83156508</long>
+					<accuracy>1</accuracy>
+					<id>47932602</id>
+				</geocode>
+			</zip>
+			<phone id="57160">
+				<type>1</type>
+				<label>home</label>
+				<area>236</area>
+				<prefix>167</prefix>
+				<ex>1855</ex>
+			</phone>
+
+			<phone id="55536">
+				<type>0</type>
+				<label>home</label>
+				<area>55</area>
+				<prefix>217</prefix>
+				<ex>4676</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>14471107</lat>
+				<long>91737272</long>
+				<accuracy>4</accuracy>
+				<id>38106043</id>
+			</geocode>
+		</address>
+		<phone id="33238">
+			<type>1</type>
+			<label>home</label>
+			<area>717</area>
+			<prefix>732</prefix>
+			<ex>269</ex>
+		</phone>
+		<email id="88526">
+			<label>email</label>
+			<address>Bill@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

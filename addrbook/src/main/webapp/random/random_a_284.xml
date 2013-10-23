@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="596">
+			<first>Bobby</first>
+			<last>Henry</last>
+			<middle>D</middle>
+		</person>
+		<address id="2764">
+			<street1>6894 Olympic Blvd</street1>
+			<street2></street2>
+			<city id="32486">
+				<label>Universal City</label>
+				<geocode>
+					<lat>88770184</lat>
+					<long>69209557</long>
+					<accuracy>6</accuracy>
+					<id>88590889</id>
+				</geocode>
+			</city>
+			<state id="31912">
+				<label>FL</label>
+				<geocode>
+					<lat>14243157</lat>
+					<long>91255509</long>
+					<accuracy>7</accuracy>
+					<id>655278</id>
+				</geocode>
+			</state>
+			<zip id="59360">
+				<label>90210</label>
+				<geocode>
+					<lat>91870424</lat>
+					<long>89547959</long>
+					<accuracy>5</accuracy>
+					<id>70830583</id>
+				</geocode>
+			</zip>
+			<phone id="11247">
+				<type>1</type>
+				<label>home</label>
+				<area>291</area>
+				<prefix>331</prefix>
+				<ex>7130</ex>
+			</phone>
+
+			<phone id="31445">
+				<type>0</type>
+				<label>home</label>
+				<area>276</area>
+				<prefix>621</prefix>
+				<ex>909</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>38327328</lat>
+				<long>9707226</long>
+				<accuracy>4</accuracy>
+				<id>18457143</id>
+			</geocode>
+		</address>
+		<phone id="32917">
+			<type>0</type>
+			<label>home</label>
+			<area>789</area>
+			<prefix>362</prefix>
+			<ex>2243</ex>
+		</phone>
+		<email id="38190">
+			<label>email</label>
+			<address>Dionysus@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="15">
+			<first>Donald</first>
+			<last>Christine</last>
+			<middle>H</middle>
+		</person>
+		<address id="3396">
+			<street1>9470 2nd Street</street1>
+			<street2></street2>
+			<city id="69584">
+				<label>Hampton</label>
+				<geocode>
+					<lat>28114249</lat>
+					<long>25984863</long>
+					<accuracy>6</accuracy>
+					<id>1181223</id>
+				</geocode>
+			</city>
+			<state id="80542">
+				<label>LA</label>
+				<geocode>
+					<lat>13931630</lat>
+					<long>1687424</long>
+					<accuracy>4</accuracy>
+					<id>63572066</id>
+				</geocode>
+			</state>
+			<zip id="42966">
+				<label>92507</label>
+				<geocode>
+					<lat>34641122</lat>
+					<long>58924396</long>
+					<accuracy>0</accuracy>
+					<id>44283571</id>
+				</geocode>
+			</zip>
+			<phone id="68358">
+				<type>1</type>
+				<label>home</label>
+				<area>977</area>
+				<prefix>165</prefix>
+				<ex>2580</ex>
+			</phone>
+
+			<phone id="54538">
+				<type>0</type>
+				<label>home</label>
+				<area>518</area>
+				<prefix>604</prefix>
+				<ex>9968</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>88578942</lat>
+				<long>16762308</long>
+				<accuracy>8</accuracy>
+				<id>49486250</id>
+			</geocode>
+		</address>
+		<phone id="36751">
+			<type>0</type>
+			<label>home</label>
+			<area>836</area>
+			<prefix>102</prefix>
+			<ex>3881</ex>
+		</phone>
+		<email id="94376">
+			<label>email</label>
+			<address>Frederic@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>

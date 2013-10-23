@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rowset>
+	<row>
+
+		<person id="274">
+			<first>Don</first>
+			<last>Deville</last>
+			<middle>C</middle>
+		</person>
+		<address id="3086">
+			<street1>3576 Lincoln Bvld</street1>
+			<street2></street2>
+			<city id="32435">
+				<label>Pismo Beach</label>
+				<geocode>
+					<lat>31855539</lat>
+					<long>68521690</long>
+					<accuracy>8</accuracy>
+					<id>36125850</id>
+				</geocode>
+			</city>
+			<state id="6081">
+				<label>ID</label>
+				<geocode>
+					<lat>74909286</lat>
+					<long>78536381</long>
+					<accuracy>0</accuracy>
+					<id>22127581</id>
+				</geocode>
+			</state>
+			<zip id="63461">
+				<label>01068</label>
+				<geocode>
+					<lat>95273865</lat>
+					<long>82507985</long>
+					<accuracy>7</accuracy>
+					<id>36801424</id>
+				</geocode>
+			</zip>
+			<phone id="85400">
+				<type>1</type>
+				<label>home</label>
+				<area>859</area>
+				<prefix>38</prefix>
+				<ex>8322</ex>
+			</phone>
+
+			<phone id="77446">
+				<type>0</type>
+				<label>home</label>
+				<area>330</area>
+				<prefix>500</prefix>
+				<ex>9133</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>83952878</lat>
+				<long>27581487</long>
+				<accuracy>7</accuracy>
+				<id>61447254</id>
+			</geocode>
+		</address>
+		<phone id="52833">
+			<type>0</type>
+			<label>home</label>
+			<area>387</area>
+			<prefix>213</prefix>
+			<ex>8526</ex>
+		</phone>
+		<email id="33566">
+			<label>email</label>
+			<address>Bill@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+	<row>
+
+		<person id="860">
+			<first>Garth</first>
+			<last>Ben</last>
+			<middle>B</middle>
+		</person>
+		<address id="6643">
+			<street1>7704 5th Street</street1>
+			<street2></street2>
+			<city id="58940">
+				<label>Westhampton</label>
+				<geocode>
+					<lat>31105269</lat>
+					<long>86814677</long>
+					<accuracy>1</accuracy>
+					<id>37532579</id>
+				</geocode>
+			</city>
+			<state id="84383">
+				<label>OR</label>
+				<geocode>
+					<lat>81396088</lat>
+					<long>43973206</long>
+					<accuracy>5</accuracy>
+					<id>50771657</id>
+				</geocode>
+			</state>
+			<zip id="20836">
+				<label>01585</label>
+				<geocode>
+					<lat>51674804</lat>
+					<long>84722787</long>
+					<accuracy>5</accuracy>
+					<id>572712</id>
+				</geocode>
+			</zip>
+			<phone id="11951">
+				<type>1</type>
+				<label>home</label>
+				<area>822</area>
+				<prefix>268</prefix>
+				<ex>294</ex>
+			</phone>
+
+			<phone id="89325">
+				<type>0</type>
+				<label>home</label>
+				<area>832</area>
+				<prefix>444</prefix>
+				<ex>117</ex>
+			</phone>
+
+			<notes>are you hungry?</notes>
+			<geocode>
+				<lat>23800956</lat>
+				<long>63768718</long>
+				<accuracy>7</accuracy>
+				<id>31200260</id>
+			</geocode>
+		</address>
+		<phone id="62728">
+			<type>1</type>
+			<label>home</label>
+			<area>464</area>
+			<prefix>612</prefix>
+			<ex>8156</ex>
+		</phone>
+		<email id="66478">
+			<label>email</label>
+			<address>Frederic@test.com</address>
+			<nic>me</nic>
+		</email>
+		<notes>are you hungry?</notes>
+	</row>
+</rowset>
