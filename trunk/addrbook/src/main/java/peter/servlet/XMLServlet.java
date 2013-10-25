@@ -6,7 +6,6 @@ import javax.servlet.http.*;
 import java.net.URL;
 import java.io.*;
 import org.w3c.dom.*;
-import javax.xml.*;
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
