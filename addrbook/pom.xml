@@ -11,11 +11,34 @@
 	<properties>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>apache</id>
+			<url>https://repository.apache.org/content/groups/snapshots/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
-                        <groupId>jstl</groupId>
-                        <artifactId>jstl</artifactId>
-                        <version>1.2</version>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.1</version>
+		</dependency>
+
+		<!--
+			so far only this snapshot fixes x:forEach very slow in JSTL
+			https://issues.apache.org/bugzilla/show_bug.cgi?id=27717 i
+		-->
+		<dependency>
+                        <groupId>org.apache.taglibs</groupId>
+                        <artifactId>taglibs-standard-spec</artifactId>
+                        <version>1.2-SNAPSHOT</version>
+                </dependency>
+
+		<dependency>
+                        <groupId>org.apache.taglibs</groupId>
+                        <artifactId>taglibs-standard-impl</artifactId>
+                        <version>1.2-SNAPSHOT</version>
                 </dependency>
 
 		<dependency>
@@ -30,6 +53,7 @@
                         <version>2.5</version>
                         <scope>provided</scope>
                 </dependency>
+
 	</dependencies>
 
 	<build>
