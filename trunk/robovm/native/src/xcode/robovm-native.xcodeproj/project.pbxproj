@@ -334,9 +334,11 @@
 				DSTROOT = /tmp/robovm_native.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "robovm-native/robovm-native-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -409,6 +411,7 @@
 				638014FC18936AA3001B0CDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		638014FD18936AA3001B0CDB /* Build configuration list for PBXNativeTarget "robovm-nativeTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +420,7 @@
 				638014FF18936AA3001B0CDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

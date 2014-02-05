@@ -14,7 +14,7 @@
 		<string>https://maven-examples.googlecode.com/svn/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>robovm/native/src/xcode/robovm-native/robovm-native.xcodeproj/project.xcworkspace</string>
+	<string>robovm/native/src/xcode/robovm-native.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B2DF7CB2-A6E1-480C-84C4-5945444116F6</key>
