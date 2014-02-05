@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+        http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <groupId>org.test</groupId>
+    <artifactId>robovm-binding</artifactId>
+    <version>0.1</version>
+
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+    <name>${pom.artifactId}</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robovm-cocoatouch</artifactId>
+            <version>0.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robovm-objc</artifactId>
+            <version>0.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robovm-rt</artifactId>
+            <version>0.0.8</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                    </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
