@@ -10,7 +10,8 @@
 
 @interface robovm_native : NSObject
 
--(int) add:(int)a :(int)b;
 -(void) displayAlert;
+-(int) doubleUp:(int)a;
+-(int) add:(int)a :(int)b;
 
 @end
