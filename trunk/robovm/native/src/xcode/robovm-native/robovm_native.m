@@ -11,10 +11,6 @@
 
 @implementation robovm_native
 
--(int)add:(int)a :(int)b {
-    return a + b;
-}
-
 -(void)displayAlert{
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"Announcement"
@@ -24,4 +20,13 @@
                           otherButtonTitles:nil];
     [alert show];
 }
+
+-(int) doubleUp:(int)a {
+    return a * 2;
+}
+
+-(int)add:(int)a :(int)b {
+    return a + b;
+}
+
 @end
