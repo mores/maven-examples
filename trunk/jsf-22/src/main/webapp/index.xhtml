@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>CODI</title>
+</h:head>
+<h:body>
+    <h:form id="form1" prependId="false">
+        <h:outputText id="out1" value="Current Count: #{count.count}"/>
+        <br/>
+	<h:commandButton id="button1" value="Count" action="#{count.add}" />
+	<br/>
+	<h:commandButton id="reset" value="reset" action="#{count.reset}" />
+    </h:form>
+</h:body>
+</html>
