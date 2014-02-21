@@ -13,9 +13,16 @@
 
 	<!-- IMPLEMENTATION -->
 	<cc:implementation>
-		<h:panelGrid columns="1" border="0" >
-			<h:inputText id="input1" />
-			<h:inputText id="input2" />
+		<h:panelGrid columns="2" border="0" >
+			<h:inputText id="input1" value="#{var1.var}" >
+				<f:ajax render="output1" event="blur"/>
+			</h:inputText>
+			<h:outputText id="output1" value="#{var1.var}" />
+
+			<h:inputText id="input2" value="#{var2.var}" >
+				<f:ajax render="output2" event="blur"/>
+			</h:inputText>
+			<h:outputText id="output2" value="#{var2.var}" />
 		</h:panelGrid>
 	</cc:implementation>
 </html>
