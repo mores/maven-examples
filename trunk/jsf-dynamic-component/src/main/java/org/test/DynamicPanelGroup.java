@@ -36,8 +36,8 @@ public class DynamicPanelGroup
 
 			try
 			{
-				com.sun.faces.facelets.FaceletFactory factory = (com.sun.faces.facelets.FaceletFactory)com.sun.faces.util.RequestStateManager.get( context, com.sun.faces.util.RequestStateManager.FACELET_FACTORY);
-				com.sun.faces.facelets.Facelet f = factory.getFacelet( componentResource.getURL() );
+				com.sun.faces.facelets.impl.DefaultFaceletFactory factory = (com.sun.faces.facelets.impl.DefaultFaceletFactory)com.sun.faces.util.RequestStateManager.get( context, com.sun.faces.util.RequestStateManager.FACELET_FACTORY);
+				javax.faces.view.facelets.Facelet f = factory.getFacelet( context, componentResource.getURL() );
 				f.apply( context, compositeRoot );
 			}
 			catch( Exception e )
