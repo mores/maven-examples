@@ -9,17 +9,29 @@ public class DynamicPanelGroup
 {
 	private javax.faces.component.html.HtmlPanelGroup panelGroup;
 
+	private javax.faces.context.FacesContext context;
+	private javax.faces.application.Application application;
+
 	public javax.faces.component.html.HtmlPanelGroup getStuff()
 	{
 		System.out.println( "getStuff" );
 
-		javax.faces.context.FacesContext context = javax.faces.context.FacesContext.getCurrentInstance();
-		javax.faces.application.Application application = context.getApplication();
+		context = javax.faces.context.FacesContext.getCurrentInstance();
+		application = context.getApplication();
 
 		panelGroup = new javax.faces.component.html.HtmlPanelGroup();
 
 		javax.faces.application.ResourceHandler handler = application.getResourceHandler();
-                javax.faces.application.Resource componentResource = handler.createResource( "whatever.xhtml", "components/form" ) ;
+
+		dynamicallyAdd( handler, "whatever1.xhtml", "components/form", "compositeID1" );	
+		dynamicallyAdd( handler, "whatever2.xhtml", "components/form", "compositeID2" );
+
+		return( panelGroup );
+	}
+
+	private void dynamicallyAdd( javax.faces.application.ResourceHandler handler, String name, String library, String compositeId )
+	{	
+                javax.faces.application.Resource componentResource = handler.createResource( name, library ) ;
                 if( componentResource != null )
                 {
 			javax.faces.component.UIComponent composite = application.createComponent( context, componentResource );
@@ -32,7 +44,7 @@ public class DynamicPanelGroup
 			javax.faces.component.UIComponent compositeRoot = application.createComponent( javax.faces.component.UIPanel.COMPONENT_TYPE );
 			composite.getAttributes().put( javax.faces.application.Resource.COMPONENT_RESOURCE_KEY, componentResource );
 			compositeRoot.setRendererType( "javax.faces.Group" );
-			composite.setId( "compositeID" );
+			composite.setId( compositeId );
 
 			try
 			{
@@ -59,8 +71,6 @@ public class DynamicPanelGroup
                 {
                         System.err.println( "Resource was null" );
                 }	
-
-		return( panelGroup );
 	}
 
 	public void setStuff( javax.faces.component.html.HtmlPanelGroup pg )

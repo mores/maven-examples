@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:cc="http://java.sun.com/jsf/composite"
+>
+
+	<!-- INTERFACE -->
+        <cc:interface>
+        </cc:interface>
+
+	<!-- IMPLEMENTATION -->
+	<cc:implementation>
+		<h:panelGrid columns="2" border="0" >
+			<h:inputText id="input2" value="#{var2.var}" >
+				<f:ajax render="output2" event="blur"/>
+			</h:inputText>
+			<h:outputText id="output2" value="#{var2.var}" />
+		</h:panelGrid>
+	</cc:implementation>
+</html>
