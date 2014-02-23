@@ -29,4 +29,30 @@
     return a + b;
 }
 
+-(void)getData {
+    NSLog(@"getData");
+    
+    NSURL *url = [NSURL URLWithString:@"http://api.kivaws.org/v1/loans/search.json?status=fundraising"];
+    NSError* error = nil;
+    NSData *jsonDataString = [[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error: nil] dataUsingEncoding:NSUTF8StringEncoding];
+    if (jsonDataString == nil )
+    {
+        NSLog(@"%@",[error localizedDescription]);
+        return;
+    }
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonDataString options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:&error];
+    
+    if( json == nil )
+    {
+        NSLog(@"%@",[error localizedDescription]);
+        return;
+    }
+    NSLog(@"json: %@", json);
+    
+    NSArray* latestLoans = [json objectForKey:@"loans"];
+    NSLog(@"loans: %@", latestLoans);
+
+}
+
 @end
