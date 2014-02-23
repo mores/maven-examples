@@ -13,5 +13,6 @@
 -(void) displayAlert;
 -(int) doubleUp:(int)a;
 -(int) add:(int)a :(int)b;
+-(void)getData;
 
 @end
