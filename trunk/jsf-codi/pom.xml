@@ -9,8 +9,8 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<codi.version>1.0.5</codi.version>
-                <jsf-ri.version>2.0.9</jsf-ri.version>
+		<codi.version>1.0.6</codi.version>
+                <jsf-ri.version>2.1.26</jsf-ri.version>
 	</properties>
 
 	<dependencies>
@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet</artifactId>
-			<version>1.1.10.Final</version>
+			<version>1.1.18.Final</version>
 		</dependency>
 
                 <dependency>
