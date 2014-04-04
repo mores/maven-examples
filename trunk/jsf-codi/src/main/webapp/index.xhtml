@@ -13,6 +13,11 @@
 	<h:commandButton id="button1" value="Count" action="#{count.add}" />
 	<br/>
 	<h:commandButton id="reset" value="reset" action="#{count.reset}" />
+	<br/>
+	<br/>
+	<br/> <h:commandButton value="MyListener" actionListener="#{count.addMyListener}" ajax="true" />
+	<br/> <h:commandButton value="PublicListener" actionListener="#{count.addPublicListener}" ajax="true" />	
+	<br/> <h:commandButton value="ProtectedListener" actionListener="#{count.addProtectedListener}" ajax="true" />
     </h:form>
 </h:body>
 </html>
