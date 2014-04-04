@@ -36,4 +36,10 @@ public class Count implements Serializable {
 
 	return "home";
     }
+
+    public void addMyListener( javax.faces.event.ActionEvent ae )
+    {
+  	System.out.println( "addMyListener" );
+        count++;
+    }
 }
