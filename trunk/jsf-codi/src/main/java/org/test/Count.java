@@ -8,7 +8,7 @@ import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.WindowScope
 @Named
 @WindowScoped
 //@ConversationScoped
-public class Count implements Serializable {
+public class Count extends Generic implements Serializable {
 
     private Integer count = 0;
 
