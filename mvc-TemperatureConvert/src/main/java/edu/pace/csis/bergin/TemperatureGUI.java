@@ -18,7 +18,7 @@ abstract class TemperatureGUI implements java.util.Observer
 		temperatureFrame.add("South", buttons);		
 		temperatureFrame.addWindowListener(new CloseListener());	
 		model.addObserver(this); // Connect the View to the Model
-		temperatureFrame.setSize(200,100);
+		temperatureFrame.setSize(200,125);
 		temperatureFrame.setLocation(h, v);
 		temperatureFrame.setVisible(true);
 	}

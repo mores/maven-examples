@@ -5,7 +5,8 @@ public class MVCTempConvert
 	public static void main( String args[] ) 
 	{	
 		TemperatureModel temperature = new TemperatureModel();
-		new FarenheitGUI( temperature, 100, 100 );
-		new CelsiusGUI( temperature, 100, 250 );
+		new FarenheitGUI( temperature, 125, 125 );
+		new CelsiusGUI( temperature, 125, 250 );
+		new GraphGUI( temperature, 325, 125 );
 	}
 }
