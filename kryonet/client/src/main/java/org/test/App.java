@@ -20,6 +20,15 @@ public class App
 					SomeResponse response = (SomeResponse)object;
 					System.out.println(response.text);
 				}
+				else if( object instanceof java.util.List )
+				{
+					java.util.List responses = (java.util.List)object;
+					for( int x = 0; x < responses.size(); x++ )
+					{
+						SomeResponse response = (SomeResponse)responses.get( x );
+						System.out.println(response.text);
+					}	
+				}
 			}
 		});	
 
