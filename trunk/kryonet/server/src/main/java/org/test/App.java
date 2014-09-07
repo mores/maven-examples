@@ -19,9 +19,17 @@ public class App
 					SomeRequest request = (SomeRequest)object;
 					System.out.println(request.text);
 
+					java.util.List<SomeResponse> responses = new java.util.Vector();
+
 					SomeResponse response = new SomeResponse();
-					response.text = "Thanks";
-					connection.sendTCP( response );
+					response.text = "Thank";
+					responses.add( response );
+
+					SomeResponse response2 = new SomeResponse();
+					response2.text = "You";
+					responses.add( response2 );
+
+					connection.sendTCP( responses );
 				}
 			}
 		});
