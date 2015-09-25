@@ -16,7 +16,7 @@
         </repositories>
 
 	<properties>
-                <jsf-ri.version>2.2.10</jsf-ri.version>
+                <jsf-ri.version>2.2.12</jsf-ri.version>
 	</properties>
 
 	<dependencies>
@@ -29,7 +29,7 @@
 		<dependency>
                         <groupId>org.primefaces</groupId>
                         <artifactId>primefaces</artifactId>
-                        <version>5.2</version>
+                        <version>5.3.RC1</version>
                 </dependency>
 
 		<dependency>

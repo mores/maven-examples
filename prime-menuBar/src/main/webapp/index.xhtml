@@ -65,6 +65,17 @@
 		</p:submenu>
 	</p:menubar>
 
+	<h:panelGrid column="1" width="100%">
+		<h:panelGroup style="display:block; text-align:center">
+
+			<h:panelGrid column="1" width="100%">
+				<h:outputText value="JSF: #{SystemBean.jsfVersion}" />
+				<h:outputText value="Prime: #{SystemBean.primeVersion}" />
+			</h:panelGrid>
+
+		</h:panelGroup>
+	</h:panelGrid>
+
 	</h:form>
 	</h:body>
 </f:view>
