@@ -28,7 +28,7 @@
                                 </p:column>
 
 				<p:column>
-					<p:commandLink ajax="true" oncomplete="confirmDelete.show()" >
+					<p:commandLink ajax="true" oncomplete="PF('confirmDelete').show()" >
 						<h:outputText value="Delete" />
 					</p:commandLink>
 				</p:column>
@@ -37,8 +37,8 @@
 		</p:panel>
 
 		<p:confirmDialog message="Are you sure about deleting this ?" showEffect="bounce" hideEffect="explode"  header="Initiating destroy process" severity="alert" widgetVar="confirmDelete">  
-			<p:commandButton value="Yes I am 100% sure" update="messages" oncomplete="confirmDelete.hide()"  action="#{listAllDataTable.delete}" ajax="false" />  
-			<p:commandButton value="Cancel" onclick="confirmDelete.hide()" type="button" />   
+			<p:commandButton value="Yes I am 100% sure" update="messages" oncomplete="PF('confirmDelete').hide()"  action="#{listAllDataTable.delete}" ajax="false" />  
+			<p:commandButton value="Cancel" onclick="PF('confirmDelete').hide()" type="button" />   
 		</p:confirmDialog>
 	</h:form>
 	</ui:define>

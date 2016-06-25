@@ -2,7 +2,7 @@ package org.test;
 
 import java.io.Serializable;
 import javax.inject.Named;
-import org.apache.myfaces.extensions.cdi.core.api.scope.conversation.WindowScoped;
+import org.apache.deltaspike.core.api.scope.WindowScoped;
 
 @Named
 @WindowScoped
