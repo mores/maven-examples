@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<ui:composition template="/WEB-INF/layout/layout.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+	<ui:define name="title">Many Beans</ui:define>
+
+	<ui:define name="primary">
+
+	<p:messages />
+
+	<h:form id="form1">
+
+		<p:panel>
+			<h:panelGrid columns="4" cellpadding="5">
+				<h:outputLabel for="multiplier" value="multiplier:" style="font-weight:bold" />
+				<p:inputText id="multiplier" value="#{multiplier.value}" />
+				<p:commandButton value="Submit" update="displayEr displayProduct" icon="ui-icon-check" />
+				<h:outputText id="displayEr" value="#{multiplier.value}" />
+
+				<h:outputLabel for="multiplicand" value="multiplicand:" style="font-weight:bold" />
+                                <p:inputText id="multiplicand" value="#{multiplicand.value}" />
+                                <p:commandButton value="Submit" update="displayCand displayProduct" icon="ui-icon-check" />
+                                <h:outputText id="displayCand" value="#{multiplicand.value}" />
+
+				<h:outputLabel for="product" value="product:" style="font-weight:bold" />
+                                <p:commandButton value="Submit" update="displayProduct" icon="ui-icon-check" />
+                                <h:outputText id="displayProduct" value="#{product.value}" />
+			</h:panelGrid>
+		</p:panel>
+
+	</h:form>
+	</ui:define>
+</ui:composition>
