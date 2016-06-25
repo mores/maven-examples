@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui"
 >
 
-	<ui:define name="title">List All</ui:define>
+	<ui:define name="title">Many Beans</ui:define>
 
 	<ui:define name="primary">
 
@@ -17,29 +17,23 @@
 	<h:form id="form1">
 
 		<p:panel>
-			<p:dataTable id="listAll" paginator="true" rows="15" rowsPerPageTemplate="15,50,100,1000" value="#{listAllDataTable.attrs}" var="attr" >
+			<h:panelGrid columns="4" cellpadding="5">
+				<h:outputLabel for="multiplier" value="multiplier:" style="font-weight:bold" />
+				<p:inputText id="multiplier" value="#{multiplier.value}" />
+				<p:commandButton value="Submit" update="displayEr displayProduct" icon="ui-icon-check" />
+				<h:outputText id="displayEr" value="#{multiplier.value}" />
 
-				<p:column>
-					<h:outputText value="#{attr.id}"/>
-				</p:column>
+				<h:outputLabel for="multiplicand" value="multiplicand:" style="font-weight:bold" />
+                                <p:inputText id="multiplicand" value="#{multiplicand.value}" />
+                                <p:commandButton value="Submit" update="displayCand displayProduct" icon="ui-icon-check" />
+                                <h:outputText id="displayCand" value="#{multiplicand.value}" />
 
-				<p:column filterBy="#{attr.description}" filterMatchMode="contains">
-                                        <h:outputText value="#{attr.description}"/>
-                                </p:column>
-
-				<p:column>
-					<p:commandLink ajax="true" oncomplete="PF('confirmDelete').show()" >
-						<h:outputText value="Delete" />
-					</p:commandLink>
-				</p:column>
-
-			</p:dataTable>
+				<h:outputLabel for="product" value="product:" style="font-weight:bold" />
+                                <p:commandButton value="Submit" update="displayProduct" icon="ui-icon-check" />
+                                <h:outputText id="displayProduct" value="#{product.value}" />
+			</h:panelGrid>
 		</p:panel>
 
-		<p:confirmDialog message="Are you sure about deleting this ?" showEffect="bounce" hideEffect="explode"  header="Initiating destroy process" severity="alert" widgetVar="confirmDelete">  
-			<p:commandButton value="Yes I am 100% sure" update="messages" oncomplete="PF('confirmDelete').hide()"  action="#{listAllDataTable.delete}" ajax="false" />  
-			<p:commandButton value="Cancel" onclick="PF('confirmDelete').hide()" type="button" />   
-		</p:confirmDialog>
 	</h:form>
 	</ui:define>
 </ui:composition>
