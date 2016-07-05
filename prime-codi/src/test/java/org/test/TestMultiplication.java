@@ -1,35 +1,50 @@
 package org.test;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.apache.deltaspike.cdise.api.ContextControl;
+import org.apache.deltaspike.core.spi.scope.window.WindowContext;
 import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
+
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(CdiTestRunner.class)
 public class TestMultiplication {
 
-  @Inject
-  Multiplicand multiplicand;
+	@Inject
+	private WindowContext windowContext;
 
-  @Inject
-  Multiplier multiplier;
- 
-  @Inject
-  Product product;
- 
-  @Test
-  public void testMultiply() {
+	@Inject
+	private ContextControl contextControl;
 
-    multiplicand.setValue( new java.math.BigDecimal( "3" ) );
+	@Inject
+	Multiplicand multiplicand;
 
-    multiplier.setValue( new java.math.BigDecimal( "7" ) );
+	@Inject
+	Multiplier multiplier;
 
-    java.math.BigDecimal value = product.getValue(); 
-    System.out.println( "value: " + value );
+	@Inject
+	Product product;
 
-    assertTrue( value.compareTo( new java.math.BigDecimal( "21" ) ) == 0 );
+	@Test
+	public void testMultiply() {
 
-  }
+		contextControl.startContext(RequestScoped.class);
+		windowContext.activateWindow("testWindow");
+
+		multiplicand.setValue(new java.math.BigDecimal("3"));
+
+		multiplier.setValue(new java.math.BigDecimal("7"));
+
+		java.math.BigDecimal value = product.getValue();
+		System.out.println("value: " + value);
+
+		Assert.assertTrue(value.compareTo(new java.math.BigDecimal("21")) == 0);
+
+		contextControl.stopContext(RequestScoped.class);
+
+	}
 }

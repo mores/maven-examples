@@ -9,24 +9,24 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 public class Product implements Serializable {
 
-    @Inject
-    private Multiplicand multiplicand;
+	@Inject
+	private Multiplicand multiplicand;
 
-    @Inject
-    private Multiplier multiplier;
+	@Inject
+	private Multiplier multiplier;
 
-    public Product() {
-	System.out.println( "init" );
-    }
-
-    public java.math.BigDecimal getValue() {
-
-	java.math.BigDecimal value = null;
-	try {
-		value = multiplier.getValue().multiply( multiplicand.getValue() );
-	} catch ( Exception e ) {
-		System.out.println( "Error: " + e );	
+	public Product() {
+		System.out.println("init");
 	}
-	return value;
-    }
+
+	public java.math.BigDecimal getValue() {
+
+		java.math.BigDecimal value = null;
+		try {
+			value = multiplier.getValue().multiply(multiplicand.getValue());
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
+		return value;
+	}
 }

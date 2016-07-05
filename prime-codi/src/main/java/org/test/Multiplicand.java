@@ -2,25 +2,25 @@ package org.test;
 
 import java.io.Serializable;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import org.apache.deltaspike.core.api.scope.WindowScoped;
 
 @Named
-@SessionScoped
+@WindowScoped
 public class Multiplicand implements Serializable {
 
-    private java.math.BigDecimal value;
+	private java.math.BigDecimal value;
 
-    public Multiplicand() {
-	System.out.println( "init" );
-    }
+	public Multiplicand() {
+		System.out.println("init");
+	}
 
-    public java.math.BigDecimal getValue() {
-        System.out.println( "Multiplicand - getValue: " + value );
-	return value;
-    }
+	public java.math.BigDecimal getValue() {
+		System.out.println("Multiplicand - getValue: " + value);
+		return value;
+	}
 
-    public void setValue( java.math.BigDecimal v ) {
-	System.out.println( "Multiplicand - setValue: " + v );
- 	value = v;
-    }
+	public void setValue(java.math.BigDecimal v) {
+		System.out.println("Multiplicand - setValue: " + v);
+		value = v;
+	}
 }

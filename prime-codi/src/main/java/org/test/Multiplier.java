@@ -8,19 +8,19 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 public class Multiplier implements Serializable {
 
-    private java.math.BigDecimal value;
+	private java.math.BigDecimal value;
 
-    public Multiplier() {
-	System.out.println( "init" );
-    }
+	public Multiplier() {
+		System.out.println("init");
+	}
 
-    public java.math.BigDecimal getValue() {
-        System.out.println( "Multiplier - getValue: " + value );
-	return value;
-    }
+	public java.math.BigDecimal getValue() {
+		System.out.println("Multiplier - getValue: " + value);
+		return value;
+	}
 
-    public void setValue( java.math.BigDecimal v ) {
-	System.out.println( "Multiplier - setValue: " + v );
- 	value = v;
-    }
+	public void setValue(java.math.BigDecimal v) {
+		System.out.println("Multiplier - setValue: " + v);
+		value = v;
+	}
 }
