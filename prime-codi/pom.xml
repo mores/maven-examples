@@ -15,6 +15,27 @@
 
 	<dependencies>
 		<dependency>
+                        <groupId>org.apache.deltaspike.modules</groupId>
+                        <artifactId>deltaspike-test-control-module-api</artifactId>
+                        <version>${deltaspike.version}</version>
+                        <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                        <groupId>org.apache.deltaspike.modules</groupId>
+                        <artifactId>deltaspike-test-control-module-impl</artifactId>
+                        <version>${deltaspike.version}</version>
+                        <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                        <groupId>org.apache.deltaspike.cdictrl</groupId>
+                        <artifactId>deltaspike-cdictrl-weld</artifactId>
+                        <version>${deltaspike.version}</version>
+                        <scope>test</scope>
+                </dependency>
+		
+		<dependency>
                         <groupId>javax.servlet</groupId>
                         <artifactId>javax.servlet-api</artifactId>
                         <version>3.0.1</version>
