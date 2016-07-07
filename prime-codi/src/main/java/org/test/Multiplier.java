@@ -2,10 +2,10 @@ package org.test;
 
 import java.io.Serializable;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
 
 @Named
-@SessionScoped
+@ViewAccessScoped
 public class Multiplier implements Serializable {
 
 	private java.math.BigDecimal value;
