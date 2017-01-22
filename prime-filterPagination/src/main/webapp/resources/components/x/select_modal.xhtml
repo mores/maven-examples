@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<!-- INTERFACE -->
+        <composite:interface>
+		<composite:attribute name="ajaxUpdate"/>
+		<composite:attribute name="filteredLocationTypes"/>
+		<composite:attribute name="typesSource"/>
+		<composite:attribute name="typesTarget"/>
+        </composite:interface>
+
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<h:form>
+			<p:dialog header="Location Types" widgetVar="locationTypeDialog" resizeable="false" modal="true" dynamic="true" >
+				<p:panel toggleable="false" closable="false" >
+					<p:dataTable paginator="true" rows="5" var="locationType" value="#{cc.attrs.typesSource}" filteredValue="#{cc.attrs.filteredLocationTypes}" >
+
+						<p:column>
+							<f:facet name="header">ID</f:facet>
+							<h:outputText value="#{locationType.id}" />
+						</p:column>
+
+						<p:column filterBy="#{locationType.type}" filterMatchMode="contains" >
+							<f:facet name="header">Type</f:facet>
+							<h:outputText value="#{locationType.type}" />
+						</p:column>
+
+						<p:column>
+							<p:commandButton id="selectButton" update="#{cc.attrs.ajaxUpdate}" onclick="PF('locationTypeDialog').hide()" value="Select" >
+								<f:setPropertyActionListener value="#{locationType}" target="#{cc.attrs.typesTarget}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</p:dialog>
+		</h:form>
+
+	</composite:implementation>
+</html>

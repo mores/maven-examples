@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:x="http://java.sun.com/jsf/composite/components/x"
+>
+
+	<f:view contentType="text/html">
+
+	<h:head>
+	</h:head>
+	<h:body>
+
+	<x:select_modal ajaxUpdate=":form1:locationType :form1:msgs" typesSource="#{BackingBean.locationTypes}" filteredLocationTypes="#{BackingBean.filteredLocationTypes}" typesTarget="#{BackingBean.locationType}" />
+
+	<h:form id="form1">
+
+		<p:messages id="msgs" showDetail="true"/>
+
+		<h:panelGrid columns="3" border="0" >
+			<h:outputLabel styleClass="formLabel" value="Location Type" for="locationType" />
+			<h:outputText id="locationType" value="#{BackingBean.locationType.type}" />
+			<p:commandLink onclick="PF('locationTypeDialog').show()" >
+				<h:outputText value="Show Modal"/>
+			</p:commandLink>
+		</h:panelGrid>
+
+		<h:panelGrid column="1" width="100%">
+			<h:panelGroup style="display:block; text-align:center">
+
+				<h:panelGrid column="1" width="100%">
+					<h:outputText value="JSF: #{SystemBean.jsfVersion}" />
+					<h:outputText value="Prime: #{SystemBean.primeVersion}" />
+				</h:panelGrid>
+
+			</h:panelGroup>
+		</h:panelGrid>
+
+	</h:form>
+	</h:body>
+</f:view>
+</html>
