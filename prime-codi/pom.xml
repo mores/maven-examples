@@ -9,9 +9,9 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<deltaspike.version>1.7.0</deltaspike.version>
-                <jsf-ri.version>2.2.12</jsf-ri.version>
-		<weld.version>2.2.16.Final</weld.version>
+		<deltaspike.version>1.7.2</deltaspike.version>
+                <jsf-ri.version>2.2.13</jsf-ri.version>
+		<weld.version>2.4.2.Final</weld.version>
 	</properties>
 
 	<dependencies>
