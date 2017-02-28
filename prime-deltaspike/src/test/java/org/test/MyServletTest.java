@@ -1,0 +1,60 @@
+package org.test;
+
+import javax.inject.Inject;
+
+import org.apache.deltaspike.cdise.api.ContextControl;
+import org.apache.deltaspike.core.spi.scope.window.WindowContext;
+import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.junit.Test;
+
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+@RunWith(CdiTestRunner.class)
+public class MyServletTest {
+
+	@Inject
+	private org.apache.deltaspike.core.spi.scope.window.WindowContext windowContext;
+
+	@Inject
+	private org.apache.deltaspike.cdise.api.ContextControl contextControl;
+
+	@InjectMocks
+	private MyServlet myServlet;
+
+	@After
+	public void teardown() {
+		contextControl
+				.stopContext(javax.enterprise.context.ConversationScoped.class);
+	}
+
+	@Before
+	public void init() {
+		org.mockito.MockitoAnnotations.initMocks(this);
+
+		contextControl
+				.startContext(javax.enterprise.context.ConversationScoped.class);
+		windowContext.activateWindow("testWindow");
+	}
+
+	@Test
+	public void testServlet() throws Exception {
+		javax.servlet.http.HttpServletRequest request = org.mockito.Mockito
+				.mock(javax.servlet.http.HttpServletRequest.class);
+		javax.servlet.http.HttpServletResponse response = org.mockito.Mockito
+				.mock(javax.servlet.http.HttpServletResponse.class);
+
+		// org.mockito.Mockito.when( request.getServletPath() ).thenReturn(
+		// "/this/path" );
+		// org.mockito.Mockito.when( request.getParameter( "ID" ) ).thenReturn(
+		// "1234" );
+		// org.mockito.Mockito.when( request.getParameter( "format" )
+		// ).thenReturn( "PDF" );
+
+		myServlet.doGet(request, response);
+	}
+}
