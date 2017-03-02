@@ -18,12 +18,9 @@ import org.mockito.Mock;
 public class MyServletTest {
 
 	@Inject
-	private org.apache.deltaspike.core.spi.scope.window.WindowContext windowContext;
-
-	@Inject
 	private org.apache.deltaspike.cdise.api.ContextControl contextControl;
 
-	@InjectMocks
+	@Inject
 	private MyServlet myServlet;
 
 	@After
@@ -38,7 +35,6 @@ public class MyServletTest {
 
 		contextControl
 				.startContext(javax.enterprise.context.ConversationScoped.class);
-		windowContext.activateWindow("testWindow");
 	}
 
 	@Test
@@ -48,13 +44,18 @@ public class MyServletTest {
 		javax.servlet.http.HttpServletResponse response = org.mockito.Mockito
 				.mock(javax.servlet.http.HttpServletResponse.class);
 
-		// org.mockito.Mockito.when( request.getServletPath() ).thenReturn(
-		// "/this/path" );
-		// org.mockito.Mockito.when( request.getParameter( "ID" ) ).thenReturn(
-		// "1234" );
-		// org.mockito.Mockito.when( request.getParameter( "format" )
-		// ).thenReturn( "PDF" );
+		org.mockito.Mockito.when(request.getParameter("multiplicand"))
+				.thenReturn("1234");
+		org.mockito.Mockito.when(request.getParameter("multiplier"))
+				.thenReturn("3.7");
+
+		java.io.PrintWriter writer = new java.io.PrintWriter("somefile.txt");
+		org.mockito.Mockito.when(response.getWriter()).thenReturn(writer);
 
 		myServlet.doGet(request, response);
+		writer.flush();
+		org.junit.Assert.assertTrue(org.apache.commons.io.FileUtils
+				.readFileToString(new java.io.File("somefile.txt"), "UTF-8")
+				.contains("4565.8"));
 	}
 }

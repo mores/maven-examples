@@ -28,10 +28,19 @@ public class MyServlet extends javax.servlet.http.HttpServlet {
 		windowContext.activateWindow("abc123");
 
 		System.out.println("multiplicand: " + multiplicand);
-		multiplicand.setValue(new java.math.BigDecimal("1.2"));
+		multiplicand.setValue(new java.math.BigDecimal(request
+				.getParameter("multiplicand")));
 		System.out.println("multiplier: " + multiplier);
-		multiplier.setValue(new java.math.BigDecimal("3.3"));
+		multiplier.setValue(new java.math.BigDecimal(request
+				.getParameter("multiplier")));
 		System.out.println("product: " + product);
 		System.out.println("survey says: " + product.getValue());
+
+		try {
+			java.io.PrintWriter out = response.getWriter();
+			out.println(product.getValue());
+		} catch (Exception e) {
+			System.out.println("Exception is :" + e);
+		}
 	}
 }
