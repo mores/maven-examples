@@ -8,6 +8,12 @@ import javax.inject.Inject;
 public class MyServlet extends javax.servlet.http.HttpServlet {
 
 	@Inject
+	private javax.faces.lifecycle.Lifecycle lifecycle;
+
+	@Inject
+	private javax.faces.context.FacesContextFactory fcFactory;
+
+	@Inject
 	private org.apache.deltaspike.core.spi.scope.window.WindowContext windowContext;
 
 	@Inject
@@ -25,12 +31,21 @@ public class MyServlet extends javax.servlet.http.HttpServlet {
 			throws javax.servlet.ServletException {
 		System.out.println("doGet");
 
-		javax.faces.lifecycle.LifecycleFactory lFactory = (javax.faces.lifecycle.LifecycleFactory) javax.faces.FactoryFinder
-				.getFactory(javax.faces.FactoryFinder.LIFECYCLE_FACTORY);
-		javax.faces.lifecycle.Lifecycle lifecycle = lFactory
-				.getLifecycle(javax.faces.lifecycle.LifecycleFactory.DEFAULT_LIFECYCLE);
-		javax.faces.context.FacesContextFactory fcFactory = (javax.faces.context.FacesContextFactory) javax.faces.FactoryFinder
-				.getFactory(javax.faces.FactoryFinder.FACES_CONTEXT_FACTORY);
+		/*
+		 * javax.faces.lifecycle.LifecycleFactory lFactory =
+		 * (javax.faces.lifecycle.LifecycleFactory) javax.faces.FactoryFinder
+		 * .getFactory(javax.faces.FactoryFinder.LIFECYCLE_FACTORY);
+		 */
+		/*
+		 * javax.faces.lifecycle.Lifecycle lifecycle = lFactory
+		 * .getLifecycle(javax
+		 * .faces.lifecycle.LifecycleFactory.DEFAULT_LIFECYCLE);
+		 */
+		/*
+		 * javax.faces.context.FacesContextFactory fcFactory =
+		 * (javax.faces.context.FacesContextFactory) javax.faces.FactoryFinder
+		 * .getFactory(javax.faces.FactoryFinder.FACES_CONTEXT_FACTORY);
+		 */
 		javax.faces.context.FacesContext context = fcFactory.getFacesContext(
 				getServletContext(), request, response, lifecycle);
 
