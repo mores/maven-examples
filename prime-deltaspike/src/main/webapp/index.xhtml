@@ -29,9 +29,11 @@
                                 <h:outputText id="displayCand" value="#{multiplicand.value}" />
 
 				<h:outputLabel for="product" value="product:" style="font-weight:bold" />
-                                <p:commandButton value="Submit" update="displayProduct" icon="ui-icon-check" />
+                                <p:commandButton value="Submit" update="displayProduct :form1:msgs" icon="ui-icon-check" />
                                 <h:outputText id="displayProduct" value="#{product.value}" />
 			</h:panelGrid>
+
+			<p:messages id="msgs" showDetail="true"/>
 		</p:panel>
 
 	</h:form>
