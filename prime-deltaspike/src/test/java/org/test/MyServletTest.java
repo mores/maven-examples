@@ -39,6 +39,10 @@ public class MyServletTest {
 
 	@Test
 	public void testServlet() throws Exception {
+		final javax.servlet.ServletConfig servletConfig = org.mockito.Mockito
+				.mock(javax.servlet.ServletConfig.class);
+		myServlet.init(servletConfig);
+
 		javax.servlet.http.HttpServletRequest request = org.mockito.Mockito
 				.mock(javax.servlet.http.HttpServletRequest.class);
 		javax.servlet.http.HttpServletResponse response = org.mockito.Mockito
