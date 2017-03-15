@@ -11,7 +11,7 @@ public class Multiplier implements Serializable {
 	private java.math.BigDecimal value;
 
 	public Multiplier() {
-		System.out.println("init");
+		System.out.println("Multiplier - init");
 	}
 
 	public java.math.BigDecimal getValue() {

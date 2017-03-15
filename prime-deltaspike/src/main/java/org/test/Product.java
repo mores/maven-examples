@@ -16,7 +16,7 @@ public class Product implements Serializable {
 	private Multiplier multiplier;
 
 	public Product() {
-		System.out.println("init");
+		System.out.println("product init");
 	}
 
 	public java.math.BigDecimal getValue() {

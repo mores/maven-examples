@@ -11,7 +11,7 @@ public class Multiplicand implements Serializable {
 	private java.math.BigDecimal value;
 
 	public Multiplicand() {
-		System.out.println("init");
+		System.out.println("Multiplicand - init");
 	}
 
 	public java.math.BigDecimal getValue() {
