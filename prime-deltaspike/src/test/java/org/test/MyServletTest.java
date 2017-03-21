@@ -39,8 +39,9 @@ public class MyServletTest {
 
 	@Test
 	public void testServlet() throws Exception {
-		final javax.servlet.ServletConfig servletConfig = org.mockito.Mockito
-				.mock(javax.servlet.ServletConfig.class);
+		javax.servlet.ServletContext servletContext = new org.apache.myfaces.test.mock.MockServletContext();
+		javax.servlet.ServletConfig servletConfig = new org.apache.myfaces.test.mock.MockServletConfig(
+				servletContext);
 		myServlet.init(servletConfig);
 
 		javax.servlet.http.HttpServletRequest request = org.mockito.Mockito
@@ -58,8 +59,14 @@ public class MyServletTest {
 
 		myServlet.doGet(request, response);
 		writer.flush();
-		org.junit.Assert.assertTrue(org.apache.commons.io.FileUtils
-				.readFileToString(new java.io.File("somefile.txt"), "UTF-8")
-				.contains("4565.8"));
+
+		String fileContents = org.apache.commons.io.FileUtils.readFileToString(
+				new java.io.File("somefile.txt"), "UTF-8");
+		System.out.println("\n -- \n" + fileContents + "\n -- \n");
+
+		org.junit.Assert.assertTrue(fileContents.contains("4565.8"));
+		org.junit.Assert
+				.assertTrue(fileContents
+						.contains("Faces Error: Over limit. Management approval required"));
 	}
 }
