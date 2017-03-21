@@ -10,7 +10,7 @@
 
 	<properties>
 		<deltaspike.version>1.7.2</deltaspike.version>
-                <jsf-ri.version>2.2.13</jsf-ri.version>
+                <jsf-my.version>2.2.12</jsf-my.version>
 		<weld.version>2.4.2.Final</weld.version>
 	</properties>
 
@@ -72,13 +72,6 @@
                 </dependency>
 
 		<dependency>
-                        <groupId>junit</groupId>
-                        <artifactId>junit</artifactId>
-                        <version>4.10</version>
-                        <scope>test</scope>
-                </dependency>
-		
-		<dependency>
 			<groupId>org.apache.deltaspike.core</groupId>
 			<artifactId>deltaspike-core-api</artifactId>
 			<version>${deltaspike.version}</version>
@@ -126,12 +119,6 @@
                 </dependency>
 
 		<dependency>
-                        <groupId>org.primefaces.themes</groupId>
-                        <artifactId>south-street</artifactId>
-                        <version>1.0.8</version>
-                </dependency>
-		
-		<dependency>
                         <groupId>org.primefaces</groupId>
                         <artifactId>primefaces</artifactId>
                         <version>6.0</version>
@@ -150,15 +137,36 @@
                 </dependency>
 
                 <dependency>
-                        <groupId>com.sun.faces</groupId>
-                        <artifactId>jsf-api</artifactId>
-                        <version>${jsf-ri.version}</version>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+                        <version>${jsf-my.version}</version>
                 </dependency>
 
                 <dependency>
-                        <groupId>com.sun.faces</groupId>
-                        <artifactId>jsf-impl</artifactId>
-                        <version>${jsf-ri.version}</version>
+			<groupId>org.apache.myfaces.core</groupId>
+                        <artifactId>myfaces-impl</artifactId>
+                        <version>${jsf-my.version}</version>
+                </dependency>
+
+		<dependency>
+                        <groupId>org.apache.myfaces.core</groupId>
+                        <artifactId>myfaces-impl-test</artifactId>
+                        <version>${jsf-my.version}</version>
+                        <scope>test</scope>
+                </dependency>
+
+		<dependency>
+                        <groupId>org.apache.myfaces.test</groupId>
+                        <artifactId>myfaces-test22</artifactId>
+                        <version>1.0.7</version>
+                        <scope>test</scope>
+                </dependency>
+
+		<dependency>
+                        <groupId>junit</groupId>
+                        <artifactId>junit</artifactId>
+                        <version>4.10</version>
+                        <scope>test</scope>
                 </dependency>
 	</dependencies>
 
@@ -188,12 +196,6 @@
                                         </dependency>
 
 					<dependency>
-						<groupId>org.primefaces.themes</groupId>
-						<artifactId>south-street</artifactId>
-						<version>1.0.8</version>
-					</dependency>
-
-					<dependency>
 						<groupId>org.primefaces</groupId>
 						<artifactId>primefaces</artifactId>
 						<version>6.0</version>
@@ -206,8 +208,8 @@
                                 <groupId>org.apache.maven.plugins</groupId>
                                 <artifactId>maven-compiler-plugin</artifactId>
                                 <configuration>
-                                        <source>1.5</source>
-                                        <target>1.5</target>
+                                        <source>1.6</source>
+                                        <target>1.6</target>
                                 </configuration>
 			</plugin>
 

@@ -48,11 +48,6 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 
-	<context-param>  
-		<param-name>primefaces.THEME</param-name>  
-		<param-value>south-street</param-value>  
-	</context-param>
-
 	<welcome-file-list>
 		<welcome-file>index.jsf</welcome-file>
 	</welcome-file-list>
