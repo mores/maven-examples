@@ -10,8 +10,8 @@
 
 	<properties>
 		<deltaspike.version>1.7.2</deltaspike.version>
-                <jsf-ri.version>2.2.13</jsf-ri.version>
-		<weld.version>2.4.2.Final</weld.version>
+                <jsf-ri.version>2.2.14</jsf-ri.version>
+		<weld.version>2.4.3.Final</weld.version>
 	</properties>
 
 	<dependencies>
