@@ -9,23 +9,15 @@
 	<packaging>war</packaging>
 
 	<properties>
-                <jsf-ri.version>2.2.5</jsf-ri.version>
 	</properties>
 
 	<dependencies>
-                <dependency>
-                        <groupId>com.sun.faces</groupId>
-                        <artifactId>jsf-api</artifactId>
-                        <version>${jsf-ri.version}</version>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.3.0</version>
 			<scope>provided</scope>
-                </dependency>
-
-                <dependency>
-                        <groupId>com.sun.faces</groupId>
-                        <artifactId>jsf-impl</artifactId>
-                        <version>${jsf-ri.version}</version>
-			<scope>provided</scope>
-                </dependency>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -47,15 +39,9 @@
                                 </configuration>
 				<dependencies>
 					<dependency>
-						<groupId>com.sun.faces</groupId>
-						<artifactId>jsf-api</artifactId>
-						<version>${jsf-ri.version}</version>
-					</dependency>
-
-					<dependency>
-						<groupId>com.sun.faces</groupId>
-						<artifactId>jsf-impl</artifactId>
-						<version>${jsf-ri.version}</version>
+						<groupId>org.glassfish</groupId>
+						<artifactId>javax.faces</artifactId>
+						<version>2.3.0</version>
 					</dependency>
 				</dependencies>
                         </plugin>
@@ -66,6 +52,9 @@
                                 <configuration>
                                         <source>1.5</source>
                                         <target>1.5</target>
+					<compilerArgument>-Xlint:all</compilerArgument>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
                                 </configuration>
 			</plugin>
 		</plugins>
