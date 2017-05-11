@@ -7,14 +7,12 @@ public class AppTest
 {
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( AppTest.class );
 
-	private com.vividsolutions.jts.geom.GeometryFactory geometryFactory;
 	private org.geotools.map.MapContent map;
 	private org.geotools.styling.Style pointStyle;
 
 	@Before
 	public void init()
 	{
-		geometryFactory = new com.vividsolutions.jts.geom.GeometryFactory();
 	}
 
 	@Test
@@ -104,8 +102,7 @@ public class AppTest
 		org.geotools.feature.DefaultFeatureCollection featureCollection = new org.geotools.feature.DefaultFeatureCollection( "internal", TYPE );
 		featureCollection.add( feature );
 
-		org.geotools.styling.Style style = org.geotools.styling.SLD.createPointStyle( "Star", java.awt.Color.BLUE, java.awt.Color.BLUE, 0.3f, 15 );
-		org.geotools.map.Layer layer = new org.geotools.map.FeatureLayer( featureCollection, style );
+		org.geotools.map.Layer layer = new org.geotools.map.FeatureLayer( featureCollection, pointStyle );
 		layer.setTitle( "NewPoint" );
 		return layer;
 	}
