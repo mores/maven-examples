@@ -25,8 +25,8 @@ public class AppTest
 		org.geotools.process.spatialstatistics.core.DistanceFactory distanceFactory = new org.geotools.process.spatialstatistics.core.DistanceFactory();
 		java.util.List<org.geotools.process.spatialstatistics.core.SpatialEvent> events = new java.util.ArrayList<>();
 		events.add( createSpatialEvent( 100L, 10.0, -10.0 ) );
-		events.add( createSpatialEvent( 100L, 10.0, 10.0 ) );
-		events.add( createSpatialEvent( 100L, -10.0, -10.0 ) );
+		events.add( createSpatialEvent( 101L, 10.0, 10.0 ) );
+		events.add( createSpatialEvent( 102L, -10.0, -10.0 ) );
 
 		double standardDeviation = 1.0;
 		boolean useWeight = false;
