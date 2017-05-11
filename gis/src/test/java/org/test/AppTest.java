@@ -8,7 +8,6 @@ public class AppTest
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( AppTest.class );
 
 	private com.vividsolutions.jts.geom.GeometryFactory geometryFactory;
-	private java.util.List<com.vividsolutions.jts.geom.Coordinate> coordsList;
 	private org.geotools.map.MapContent map;
 	private org.geotools.styling.Style pointStyle;
 
@@ -16,7 +15,6 @@ public class AppTest
 	public void init()
 	{
 		geometryFactory = new com.vividsolutions.jts.geom.GeometryFactory();
-		coordsList = new java.util.ArrayList<>();
 	}
 
 	@Test
@@ -83,7 +81,6 @@ public class AppTest
 	private org.geotools.process.spatialstatistics.core.SpatialEvent createSpatialEvent( Long id, double lng, double lat )
 	{
 		com.vividsolutions.jts.geom.Coordinate coordinate = new com.vividsolutions.jts.geom.Coordinate( lng, lat );
-		coordsList.add( coordinate );
 
 		org.geotools.process.spatialstatistics.core.SpatialEvent spatialEvent = new org.geotools.process.spatialstatistics.core.SpatialEvent( id, coordinate );
 		return spatialEvent;
