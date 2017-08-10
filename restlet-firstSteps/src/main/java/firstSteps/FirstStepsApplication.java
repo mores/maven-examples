@@ -1,6 +1,6 @@
 package firstSteps;  
   
-public class FirstStepsApplication extends org.restlet.Application {  
+public class FirstStepsApplication extends org.restlet.ext.swagger.SwaggerApplication {
   
     /** 
      * Creates a root Restlet that will receive all incoming calls. 
