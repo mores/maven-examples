@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app version="2.5"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
+
+	<!-- SSO -->
+        <filter>
+                <filter-name>callbackFilter</filter-name>
+                <filter-class>org.pac4j.j2e.filter.CallbackFilter</filter-class>
+                <init-param>
+                        <param-name>defaultUrl</param-name>
+                        <param-value>/</param-value>
+                </init-param>
+                <init-param>
+                        <param-name>renewSession</param-name>
+                        <param-value>true</param-value>
+                </init-param>
+                <init-param>
+                        <param-name>multiProfile</param-name>
+                        <param-value>true</param-value>
+                </init-param>
+        </filter>
+        <filter-mapping>
+                <filter-name>callbackFilter</filter-name>
+                <url-pattern>/callback/AzureAdClient</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+        <filter>
+                <filter-name>AzureAdFilter</filter-name>
+                <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+                <init-param>
+                        <param-name>configFactory</param-name>
+                        <param-value>org.test.pac4j.ConfigFactory</param-value>
+                </init-param>
+                <init-param>
+                        <param-name>clients</param-name>
+                        <param-value>AzureAdClient</param-value>
+                </init-param>
+                <init-param>
+                        <param-name>authorizers</param-name>
+                        <param-value>securityHeaders</param-value>
+                </init-param>
+                <init-param>
+                        <param-name>matchers</param-name>
+                        <param-value>excludedPath</param-value>
+                </init-param>
+        </filter>
+        <filter-mapping>
+                <filter-name>AzureAdFilter</filter-name>
+                <url-pattern>/main/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- Faces Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
+	<!-- default content for helloworld application -->
+	<welcome-file-list>
+		<welcome-file>index.jsf</welcome-file>
+	</welcome-file-list>
+</web-app>
+
