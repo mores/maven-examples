@@ -8,7 +8,24 @@
 </h:head>
 <h:body>
 	<h1>Protected</h1>
-	<h:outputText value="${request.remoteUser}"/>
+	<table>
+	<tr>
+		<td>RemoteUser</td>
+		<td><h:outputText value="${request.remoteUser}"/></td>
+	</tr>
+	<tr>
+		<td>Id Token</td>
+		<td><h:outputText value="${tokens.idToken}"/></td>
+	</tr>
+	<tr>
+		<td>Access Token</td>
+		<td><h:outputText value="${tokens.accessToken}"/></td>
+	</tr>
+	<tr>
+		<td>Refresh Token</td>
+		<td><h:outputText value="${tokens.refreshToken}"/></td>
+	</tr>
+	</table>
     <h:form id="form1" prependId="false">
     </h:form>
 </h:body>

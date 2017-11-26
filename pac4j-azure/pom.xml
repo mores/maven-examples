@@ -14,6 +14,13 @@
 
 	<dependencies>
 		<dependency>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>javax.servlet-api</artifactId>
+                        <version>3.0.1</version>
+                        <scope>provided</scope>
+                </dependency>
+
+		<dependency>
 			<groupId>org.pac4j</groupId>
 			<artifactId>j2e-pac4j</artifactId>
 			<version>4.0.0-SNAPSHOT</version>
@@ -90,6 +97,11 @@
                                 <configuration>
                                         <source>1.8</source>
                                         <target>1.8</target>
+					<showDeprecation>true</showDeprecation>
+                                        <showWarnings>true</showWarnings>
+                                        <compilerArgs>
+                                                <arg>-Xlint</arg>
+                                        </compilerArgs>
                                 </configuration>
 			</plugin>
 		</plugins>
