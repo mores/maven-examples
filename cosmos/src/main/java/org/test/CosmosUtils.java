@@ -2,6 +2,8 @@ package org.test;
 
 public class CosmosUtils
 {
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( CosmosUtils.class );
+
 	private com.microsoft.azure.documentdb.DocumentClient documentClient;	
 	private com.google.gson.Gson gson;
 
@@ -11,7 +13,7 @@ public class CosmosUtils
 		gson = new com.google.gson.Gson();
 	}
 
-	/* */
+	/* Collection */
 
 	public com.microsoft.azure.documentdb.DocumentCollection createCollection( com.microsoft.azure.documentdb.Database database, String collectionId ) throws com.microsoft.azure.documentdb.DocumentClientException
 	{
@@ -21,9 +23,9 @@ public class CosmosUtils
                 return documentClient.createCollection( database.getSelfLink(), collectionDefinition, null).getResource();
 	}
 
-	public java.util.List<com.microsoft.azure.documentdb.DocumentCollection> listCollections( com.microsoft.azure.documentdb.Database database, String collectionId )
+	public java.util.List<com.microsoft.azure.documentdb.DocumentCollection> listCollections( com.microsoft.azure.documentdb.Database database )
 	{
-		return documentClient.queryCollections( database.getSelfLink(), "SELECT * FROM root r WHERE r.id='" + collectionId + "'", null).getQueryIterable().toList();
+		return documentClient.queryCollections( database.getSelfLink(), "SELECT * FROM root r", null).getQueryIterable().toList();
 	}
 
 	/* DB */
@@ -48,12 +50,14 @@ public class CosmosUtils
 		return documentClient.queryDatabases( "SELECT * FROM root", null).getQueryIterable().toList();
 	}
 
-	public Item getItem( com.microsoft.azure.documentdb.DocumentCollection collection, String id )
+	/* Items */
+
+	public Object getItem( com.microsoft.azure.documentdb.DocumentCollection collection, String id, Class clz )
 	{
 		java.util.List<com.microsoft.azure.documentdb.Document> documentList = documentClient.queryDocuments( collection.getSelfLink(), "SELECT * FROM root r WHERE r.id='" + id + "'", null).getQueryIterable().toList();
 		if( documentList.size() > 0 )
 		{
-			return gson.fromJson( documentList.get(0).toString(), Item.class);
+			return gson.fromJson( documentList.get(0).toString(), clz);
 		}
 		else
 		{
@@ -61,25 +65,37 @@ public class CosmosUtils
 		}
 	}
 
-	public java.util.List<Item> getItems( com.microsoft.azure.documentdb.DocumentCollection collection)
+	public java.util.List getItems( com.microsoft.azure.documentdb.DocumentCollection collection, Class clz )
 	{
-		java.util.List<Item> items = new java.util.ArrayList<Item>();
-		java.util.List<com.microsoft.azure.documentdb.Document> documentList = documentClient.queryDocuments( collection.getSelfLink(), "SELECT * FROM root r WHERE r.entityType = 'Item'", null).getQueryIterable().toList();
+		java.util.List items = new java.util.ArrayList();
+		java.util.List<com.microsoft.azure.documentdb.Document> documentList = documentClient.queryDocuments( collection.getSelfLink(), "SELECT * FROM root r WHERE r.entityType = '" + clz.getName() + "'", null).getQueryIterable().toList();
 
 		for( com.microsoft.azure.documentdb.Document itemDocument : documentList)
 		{
-			items.add( gson.fromJson( itemDocument.toString(), Item.class));
+			String rawJson = itemDocument.toString();
+			log.trace( "rawJson: " + rawJson );
+			items.add( gson.fromJson( rawJson, clz ));
 		}
 
 		return items;
 	 }
 
-	public Item saveItem( com.microsoft.azure.documentdb.DocumentCollection collection, Item item ) throws com.microsoft.azure.documentdb.DocumentClientException
+	public Object createItem( com.microsoft.azure.documentdb.DocumentCollection collection, Object item ) throws com.microsoft.azure.documentdb.DocumentClientException
 	{
-		com.microsoft.azure.documentdb.Document itemDocument = new com.microsoft.azure.documentdb.Document( gson.toJson(item) );
-		itemDocument.set("entityType", "item");
+		com.microsoft.azure.documentdb.Document itemDocument = new com.microsoft.azure.documentdb.Document( gson.toJson( item ) );
+		itemDocument.set( "entityType", item.getClass().getName() );
 		itemDocument = documentClient.createDocument( collection.getSelfLink(), itemDocument, null, false).getResource();
 
-		return gson.fromJson( itemDocument.toString(), Item.class);
+		return gson.fromJson( itemDocument.toString(), item.getClass() );
+	}
+
+	public Object updateItem( Object item ) throws com.microsoft.azure.documentdb.DocumentClientException
+	{
+		String rawJson = gson.toJson( item );
+		log.trace( "rawJson: " + rawJson );
+		com.microsoft.azure.documentdb.Document itemDocument = new com.microsoft.azure.documentdb.Document( rawJson );
+		itemDocument = documentClient.replaceDocument( itemDocument, null ).getResource();
+
+		return gson.fromJson( itemDocument.toString(), item.getClass() );
 	}
 }

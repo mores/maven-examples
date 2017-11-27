@@ -25,11 +25,33 @@ public class CosmosUtilsTest
 		for( com.microsoft.azure.documentdb.Database db : dbs )
 		{
 			log.debug( "db: " +db );
-			cosmosUtils.deleteDB( db );
+			//cosmosUtils.deleteDB( db );
+
+			for( com.microsoft.azure.documentdb.DocumentCollection collection : cosmosUtils.listCollections( db ) )
+			{
+				log.debug( "collection: " + collection );
+
+				java.util.List<Item> items = cosmosUtils.getItems( collection, Item.class );
+				log.info( "Number of Items: " + items.size() );
+				int x = 0;
+				for( Item item : items )
+				{
+					log.debug( "item: " + item );
+					if( x == 0 )
+					{
+						item.setName( "Zero" );
+						item = (Item)cosmosUtils.updateItem( item );
+					}
+					x = x + 1;
+				}
+
+				Item item = new Item();
+				cosmosUtils.createItem( collection, item );
+			}
 		}
 	}
 
-	@Test
+	//@Test
 	public void testCreateDatabase() throws Exception
 	{
 		java.text.DateFormat dateFormat = new java.text.SimpleDateFormat( "yyyyMMddHHmmssSSS" );
@@ -39,7 +61,7 @@ public class CosmosUtilsTest
 		junit.framework.Assert.assertNotNull( database );
 	}
 
-	@Test
+	//@Test
         public void testCreateCollection() throws Exception
         {
                 java.text.DateFormat dateFormat = new java.text.SimpleDateFormat( "yyyyMMddHHmmssSSS" );

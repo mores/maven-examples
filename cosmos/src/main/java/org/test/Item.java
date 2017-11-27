@@ -2,15 +2,24 @@ package org.test;
 
 public class Item
 {
-	private Long id;
+	/* cosmo fields */
+	private String _attachments;
+	private String _etag;
+	private String _rid;
+	private String _self;
+	private String _ts;
+	private String entityType;
+	private String id;
+	
+	/* user defined fields */
 	private String name;
 
-	public Long getId()
+	public String getId()
 	{
 		return id;
 	}
 
-	public void setId( Long id )
+	public void setId( String id )
 	{
 		this.id = id;
 	}
@@ -24,4 +33,10 @@ public class Item
 	{
 		this.name = name;
 	}
+
+	@Override
+        public String toString()
+        {
+                return String.format( "%s[id=%s]%s", getClass().getSimpleName(), getId(), getName() );
+        }
 }
