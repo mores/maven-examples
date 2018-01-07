@@ -8,7 +8,19 @@
         </layout>
     </appender>
 
+	<category name="org.pac4j.core.client">
+		<priority value="DEBUG" />
+	</category>
+
 	<category name="org.pac4j.core.engine">
+		<priority value="DEBUG" />
+	</category>
+
+	<category name="org.pac4j.oidc.credentials.authenticator">
+		<priority value="DEBUG" />
+	</category>
+
+	<category name="org.pac4j.oidc.redirect">
 		<priority value="DEBUG" />
 	</category>
 

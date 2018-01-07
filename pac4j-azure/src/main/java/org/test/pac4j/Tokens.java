@@ -10,6 +10,7 @@ public class Tokens
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( Tokens.class );
 
 	private org.pac4j.oidc.profile.azuread.AzureAdProfile azureAdProfile;
+	private String text;
 
 	public Tokens()
 	{
@@ -28,6 +29,23 @@ public class Tokens
 	public String getIdToken()
 	{
 		com.nimbusds.jwt.JWT jwtFromOpenId = azureAdProfile.getIdToken();
+
+		try
+		{
+			com.nimbusds.jwt.JWTClaimsSet claims = jwtFromOpenId.getJWTClaimsSet();
+			java.util.Date expiresOn = claims.getExpirationTime();
+			log.info( "Expires on: " + expiresOn );
+
+			for( String claim : claims.getClaims().keySet() )
+			{
+				log.info( claim + "\t" + claims.getClaims().get( claim ) );
+			}
+		}
+		catch ( Exception e )
+		{
+			e.printStackTrace();
+		}
+
 		return jwtFromOpenId.serialize();
 	}
 
@@ -36,9 +54,35 @@ public class Tokens
 		return azureAdProfile.getAccessToken().getValue();
 	}
 
+	public java.util.Date getAuthTime()
+	{
+		return azureAdProfile.getAuthTime();
+	}
+
 	public String getRefreshToken()
 	{
 		com.nimbusds.oauth2.sdk.token.RefreshToken refreshToken = azureAdProfile.getRefreshToken();
 		return refreshToken.getValue();
+	}
+
+	public String getAccessTokenFromRefreshToken()
+	{
+		org.pac4j.core.config.Config config = org.pac4j.core.config.ConfigSingleton.getConfig();
+		org.pac4j.core.client.Clients clients = config.getClients();
+		org.pac4j.oidc.client.AzureAdClient azureAdClient = clients.findClient( org.pac4j.oidc.client.AzureAdClient.class );
+		String accessToken = azureAdClient.getAccessTokenFromRefreshToken( azureAdProfile );
+
+		log.info( "obj: " + azureAdClient );
+		return azureAdClient.getAccessTokenFromRefreshToken( azureAdProfile );
+	}
+
+	public String getText()
+	{
+		return text;
+	}
+
+        public void setText(String text)
+	{
+        	this.text = text;
 	}
 }
