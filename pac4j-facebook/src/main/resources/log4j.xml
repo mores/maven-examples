@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+            <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%16d %-5p [%c{1}:%L] (%X{user}) %m%n" />
+        </layout>
+    </appender>
+
+	<category name="org.pac4j.core.client">
+		<priority value="DEBUG" />
+	</category>
+
+	<category name="org.pac4j.core.engine">
+		<priority value="DEBUG" />
+	</category>
+
+	<category name="org.pac4j.oidc.credentials.authenticator">
+		<priority value="DEBUG" />
+	</category>
+
+	<category name="org.pac4j.oidc.redirect">
+		<priority value="DEBUG" />
+	</category>
+
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+</log4j:configuration>
