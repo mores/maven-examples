@@ -49,12 +49,14 @@ public class Tokens
 
 		return jwtFromOpenId.serialize();
 	}
+	*/
 
 	public String getAccessToken()
 	{
-		return azureAdProfile.getAccessToken().getValue();
+		return facebookProfile.getAccessToken();
 	}
 
+	/*
 	public java.util.Date getAuthTime()
 	{
 		return azureAdProfile.getAuthTime();

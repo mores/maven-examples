@@ -16,34 +16,9 @@
 		<td><h:outputText value="${request.remoteUser}"/></td>
 	</tr>
 	<tr>
-		<td>Id Token</td>
-		<td><h:outputText value="${tokens.idToken}"/></td>
-	</tr>
-	<tr>
-		<td>Access Token</td>
-		<td><h:outputText value="${tokens.accessToken}"/></td>
-	</tr>
-	<tr>
-		<td>Refresh Token</td>
-		<td><h:outputText value="${tokens.refreshToken}"/></td>
-	</tr>
-	<tr>
-		<td>Access Token From RefreshToken</td>
-		<td><h:outputText value="${tokens.accessTokenFromRefreshToken}"/></td>
-	</tr>
-	<tr>
-		<td>auth_time</td>
-		<td><h:outputText value="${tokens.authTime}"/></td>
-	</tr>
+                <td>Access Token</td>
+                <td><h:outputText value="${tokens.accessToken}"/></td>
+        </tr>
 	</table>
-    <p:log id="log" />
-    <h:form id="form1" prependId="false">
-        <h:panelGrid columns="4" cellpadding="5">
-            <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
-            <p:inputText id="name" value="#{tokens.text}" />
-            <p:commandButton value="Submit" update="display" icon="ui-icon-check" />
-            <h:outputText id="display" value="#{tokens.text}" />
-       </h:panelGrid>
-    </h:form>
 </h:body>
 </html>
