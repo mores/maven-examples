@@ -55,6 +55,9 @@ public class TimeResource
 		SimpleBean simpleBean = new SimpleBean();
 		simpleBean.setUserName( userName );
 
-		return javax.ws.rs.core.Response.ok( simpleBean.toJson(), MediaType.APPLICATION_JSON ).build();
+		javax.ws.rs.core.CacheControl cacheControl = new javax.ws.rs.core.CacheControl();
+		cacheControl.setPrivate( true );
+
+		return javax.ws.rs.core.Response.ok( simpleBean.toJson(), MediaType.APPLICATION_JSON ).cacheControl( cacheControl ).build();
 	}
 }
