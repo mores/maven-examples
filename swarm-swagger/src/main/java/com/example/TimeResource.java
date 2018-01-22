@@ -23,7 +23,7 @@ import org.joda.time.DateTime;
 
 @Path( "/time" )
 @Api( value = "/time", description = "Get the time", tags = "time" )
-@Produces( MediaType.APPLICATION_JSON )
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @SwaggerDefinition(
         info = @Info(
                 title = "Time API",
@@ -45,7 +45,7 @@ public class TimeResource
 	        response = String.class,
 	        authorizations = @Authorization( value = "api_key" )
 	        )
-	@Produces( MediaType.APPLICATION_JSON )
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public javax.ws.rs.core.Response get( @Context javax.ws.rs.core.SecurityContext securityContext )
 	{
 		log.info( "get" );
@@ -58,6 +58,6 @@ public class TimeResource
 		javax.ws.rs.core.CacheControl cacheControl = new javax.ws.rs.core.CacheControl();
 		cacheControl.setPrivate( true );
 
-		return javax.ws.rs.core.Response.ok( simpleBean.toJson(), MediaType.APPLICATION_JSON ).cacheControl( cacheControl ).build();
+		return javax.ws.rs.core.Response.ok( simpleBean ).cacheControl( cacheControl ).build();
 	}
 }
