@@ -42,7 +42,7 @@ public class TimeResource
 	@Path( "/now" )
 	@ApiOperation( value = "Get the current time",
 	        notes = "Returns the time as a string",
-	        response = String.class,
+	        response = SimpleBean.class,
 	        authorizations = @Authorization( value = "api_key" )
 	        )
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
