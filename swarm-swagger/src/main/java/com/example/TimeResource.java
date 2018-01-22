@@ -46,12 +46,15 @@ public class TimeResource
 	        authorizations = @Authorization( value = "api_key" )
 	        )
 	@Produces( MediaType.APPLICATION_JSON )
-	public String get( @Context javax.ws.rs.core.SecurityContext securityContext )
+	public javax.ws.rs.core.Response get( @Context javax.ws.rs.core.SecurityContext securityContext )
 	{
 		log.info( "get" );
 
 		String userName = securityContext.getUserPrincipal().getName();
 
-		return String.format( "{\"value\" : \"" + userName + ", The time is %s\"}", new DateTime() );
+		SimpleBean simpleBean = new SimpleBean();
+		simpleBean.setUserName( userName );
+
+		return javax.ws.rs.core.Response.ok( simpleBean.toJson(), MediaType.APPLICATION_JSON ).build();
 	}
 }
