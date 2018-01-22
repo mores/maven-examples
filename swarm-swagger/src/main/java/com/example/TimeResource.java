@@ -13,6 +13,8 @@ import javax.ws.rs.core.Context;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiKeyAuthDefinition;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 import io.swagger.annotations.BasicAuthDefinition;
 import io.swagger.annotations.Info;
@@ -45,6 +47,12 @@ public class TimeResource
 	        response = SimpleBean.class,
 	        authorizations = @Authorization( value = "api_key" )
 	        )
+	@ApiResponses(value = {
+		@ApiResponse(response = SimpleBean.class, code = java.net.HttpURLConnection.HTTP_OK, message = "Returns a certain user"),
+		@ApiResponse(response = ErrorBean.class, code = java.net.HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
+		@ApiResponse(response = ErrorBean.class, code = java.net.HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
+		@ApiResponse(response = ErrorBean.class, code = java.net.HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems")
+	})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public javax.ws.rs.core.Response get( @Context javax.ws.rs.core.SecurityContext securityContext )
 	{

@@ -93,10 +93,13 @@ public class AuthenticationFilter implements ContainerRequestFilter
 
 		// Abort the filter chain with a 401 status code response
 		// The WWW-Authenticate header is sent along with the response
+		ErrorBean errorBean = new ErrorBean();
+		errorBean.setMessage( "RTFM" );
+
 		requestContext.abortWith(
-		        Response.status( Response.Status.UNAUTHORIZED )
-		                .header( HttpHeaders.WWW_AUTHENTICATE,
-		                        AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"" )
+		        Response.ok( errorBean )
+				.status( Response.Status.UNAUTHORIZED )
+		                .header( HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"" )
 		                .build() );
 	}
 
