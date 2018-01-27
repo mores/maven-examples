@@ -10,6 +10,7 @@
 </h:head>
 <h:body>
 	<h1>Protected</h1>
+	<p:graphicImage url="${tokens.pictureUrl}" />
 	<table>
 	<tr>
 		<td>RemoteUser</td>
@@ -19,6 +20,10 @@
                 <td>Access Token</td>
                 <td><h:outputText value="${tokens.accessToken}"/></td>
         </tr>
+	<tr>
+		<td>Friends</td>
+		<td><h:outputText value="${tokens.pictureUrl}"/></td>
+	</tr>
 	</table>
 </h:body>
 </html>

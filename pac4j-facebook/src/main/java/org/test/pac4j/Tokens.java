@@ -56,6 +56,13 @@ public class Tokens
 		return facebookProfile.getAccessToken();
 	}
 
+	public String getPictureUrl()
+	{
+		com.restfb.FacebookClient facebookClient25 = new com.restfb.DefaultFacebookClient(facebookProfile.getAccessToken(), com.restfb.Version.VERSION_2_5);
+		com.restfb.types.User me = facebookClient25.fetchObject("me", com.restfb.types.User.class, com.restfb.Parameter.with("fields", "picture,first_name,last_name,gender,name"));
+		return me.getPicture().getUrl();
+	}
+
 	/*
 	public java.util.Date getAuthTime()
 	{
