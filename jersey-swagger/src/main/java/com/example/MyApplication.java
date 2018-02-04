@@ -18,6 +18,7 @@ public class MyApplication extends javax.ws.rs.core.Application
 		log.debug( "init" );
 		jacksonJsonProvider.setMapper( objectMapper );
 
+		classes.add( AuthenticationFilter.class );
 		classes.add( SwaggerUiResource.class );
 		classes.add( TimeResource.class );
 

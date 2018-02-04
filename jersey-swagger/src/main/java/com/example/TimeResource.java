@@ -40,6 +40,7 @@ public class TimeResource
 	private static org.jboss.logging.Logger log = org.jboss.logging.Logger.getLogger( TimeResource.class );
 
 	@GET
+	@Secured
 	@Path( "/now" )
 	@ApiOperation( value = "Get the current time",
 	        notes = "Returns the time as a string",
@@ -53,11 +54,13 @@ public class TimeResource
 		@ApiResponse(response = ErrorBean.class, code = java.net.HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems")
 	})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public javax.ws.rs.core.Response get()
+	public javax.ws.rs.core.Response get( @Context javax.ws.rs.core.SecurityContext securityContext )
 	{
 		log.info( "get" );
+		String userName = securityContext.getUserPrincipal().getName();
 
 		SimpleBean simpleBean = new SimpleBean();
+		simpleBean.setUserName( userName );
 
 		javax.ws.rs.core.CacheControl cacheControl = new javax.ws.rs.core.CacheControl();
 		cacheControl.setPrivate( true );
