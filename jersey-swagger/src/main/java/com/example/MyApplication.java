@@ -14,6 +14,7 @@ public class MyApplication extends javax.ws.rs.core.Application
 	{
 		log.debug( "init" );
 
+		classes.add( SwaggerUiResource.class );
 		classes.add( TimeResource.class );
 
 		classes.add( io.swagger.jaxrs.listing.ApiListingResource.class );
