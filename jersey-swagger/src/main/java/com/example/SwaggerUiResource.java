@@ -20,6 +20,13 @@ public class SwaggerUiResource
 	private javax.servlet.ServletContext servletContext;
 
 	@GET
+	@Path( "/" )
+	public java.io.InputStream get()
+	{
+		return this.get( "index.html" );
+	}
+
+	@GET
 	@Path( "{filename}" )
 	public java.io.InputStream get( @PathParam( "filename" ) String fileName )
 	{
