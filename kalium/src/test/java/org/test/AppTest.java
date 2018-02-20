@@ -13,16 +13,17 @@ public class AppTest
 
 		java.security.SecureRandom r = new java.security.SecureRandom();
         	org.abstractj.kalium.keys.KeyPair keyPair = new org.abstractj.kalium.keys.KeyPair(new byte[org.abstractj.kalium.NaCl.Sodium.CRYPTO_BOX_CURVE25519XSALSA20POLY1305_SECRETKEYBYTES]);
-		byte[] sk = keyPair.getPrivateKey().toBytes();
-		byte[] pk = keyPair.getPublicKey().toBytes();
-		byte[] m = new byte[r.nextInt(1000)];
+		byte[] privateKey = keyPair.getPrivateKey().toBytes();
+		byte[] publicKey = keyPair.getPublicKey().toBytes();
 
-		r.nextBytes(m);
-		org.abstractj.kalium.crypto.SealedBox sb = new org.abstractj.kalium.crypto.SealedBox(pk);
-		byte[] c = sb.encrypt(m);
+		byte[] payload = new byte[r.nextInt(1000)];
+		r.nextBytes( payload );
 
-		org.abstractj.kalium.crypto.SealedBox sb2 = new org.abstractj.kalium.crypto.SealedBox(pk, sk);
-		byte[] m2 = sb2.decrypt(c);
-		org.junit.Assert.assertArrayEquals(m, m2);
+		org.abstractj.kalium.crypto.SealedBox sb = new org.abstractj.kalium.crypto.SealedBox( publicKey );
+		byte[] c = sb.encrypt( payload );
+
+		org.abstractj.kalium.crypto.SealedBox sb2 = new org.abstractj.kalium.crypto.SealedBox( publicKey, privateKey );
+		byte[] decryptedPayload = sb2.decrypt( c );
+		org.junit.Assert.assertArrayEquals( payload, decryptedPayload );
 	}
 }
