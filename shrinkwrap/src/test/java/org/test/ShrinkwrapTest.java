@@ -15,6 +15,7 @@ public class ShrinkwrapTest
 	public static Archive<?> createDeployment()
 	{
 		org.jboss.shrinkwrap.api.spec.JavaArchive jar = org.jboss.shrinkwrap.api.ShrinkWrap.create( org.jboss.shrinkwrap.api.spec.JavaArchive.class ).addAsResource( "one", "fred" );
+		log.debug( jar.toString( true ) );
 		return jar;
 	}
 
