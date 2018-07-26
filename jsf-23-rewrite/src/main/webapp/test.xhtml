@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+	<f:view contentType="text/html">
+
+	<h:head>
+	</h:head>
+	<h:body>
+
+	<h:form id="form1">
+
+		<h:panelGrid columns="3" border="0" >
+			<h:outputLabel styleClass="formLabel" value="Name from BackingBean:" for="name" />
+			<h:outputText id="name" value="#{BackingBean.name}" />
+		</h:panelGrid>
+
+		<h:outputLink value="name/fred">Try Rewrite</h:outputLink>
+
+	</h:form>
+	</h:body>
+</f:view>
+</html>
