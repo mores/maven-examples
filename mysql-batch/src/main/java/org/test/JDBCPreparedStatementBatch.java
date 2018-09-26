@@ -16,9 +16,12 @@ public class JDBCPreparedStatementBatch {
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement(query);
+
+			int size = 10000;
 			
 			long start = System.currentTimeMillis();
-			for(int i =0; i<10000;i++){
+
+			for(int i =0; i < size; i++){
 				ps.setInt(1, i);
 				ps.setString(2, "Name"+i);
 				
@@ -27,8 +30,16 @@ public class JDBCPreparedStatementBatch {
 				if(i%1000 == 0) ps.executeBatch();
 			}
 			ps.executeBatch();
+
+			long end = System.currentTimeMillis();
+			long diff = end - start;
 			
-			log.trace( "JDBCPreparedStatementBatch Time Taken = "+(System.currentTimeMillis()-start));
+			log.trace( "JDBCPreparedStatementBatch Time Taken = " + diff );
+
+			java.math.BigDecimal seconds = new java.math.BigDecimal( diff ).divide( new java.math.BigDecimal( "1000" ), 2, java.math.RoundingMode.HALF_UP );
+			java.math.BigDecimal perSecond = new java.math.BigDecimal( size ).divide( seconds, 2, java.math.RoundingMode.HALF_UP );
+
+			log.trace( perSecond + " inserts per second" );
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
