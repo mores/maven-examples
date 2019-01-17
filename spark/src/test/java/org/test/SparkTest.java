@@ -40,6 +40,15 @@ public class SparkTest
 
 		cooked.show();
 
+		org.apache.spark.sql.Dataset<org.apache.spark.sql.Row> df = spark.read().format("csv").option("header","true").option("inferschema","true").load( "src/test/resources/mpg.csv").cache();
+		df.printSchema();
+
+		df.withColumnRenamed("manufacturer", "manuf").show(5);
+
+		df.groupBy("class", "year").avg("hwy").show();
+
+		df.groupBy("class").pivot("year").avg("hwy").show();
+
 		spark.stop();
 	}
 }
