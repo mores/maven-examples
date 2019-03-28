@@ -1,0 +1,15 @@
+swarm:
+  logging:
+    pattern-formatters:
+      LOG_FORMATTER:
+        pattern: "%16d %p [%c] %s%e%n"
+    periodic-rotating-file-handlers:
+      FILE:
+        file:
+          path: /tmp/a2a
+        suffix: .yyyy-MM-dd
+        named-formatter: LOG_FORMATTER
+    root-logger:
+      handlers:
+      - CONSOLE
+      - FILE
