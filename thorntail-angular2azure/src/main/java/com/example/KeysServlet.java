@@ -10,7 +10,7 @@ public class KeysServlet extends javax.servlet.http.HttpServlet
 	@Override
         protected void doGet( javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response ) throws javax.servlet.ServletException, java.io.IOException
         {
-		log.info( "doGet: " + request.getServerName() + request.getContextPath() );
+		log.info( "doGet" );
 		java.io.PrintWriter out = response.getWriter();
 
 		/*
