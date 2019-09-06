@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+	<scanAnnotatedClasses>
+		<packageInclude>org.test</packageInclude>
+	</scanAnnotatedClasses>
+	<scoreDirectorFactory>
+		<easyScoreCalculatorClass>org.test.Scorer</easyScoreCalculatorClass>
+	</scoreDirectorFactory>
+	<termination>
+		<secondsSpentLimit>10</secondsSpentLimit>
+	</termination>
+</solver>
