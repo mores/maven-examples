@@ -61,6 +61,8 @@ public class CloudTest
 		}
 		*/
 
+		int numberMachinesWithoutTask = 0;
+
 		double totalCost = 0.0;
 		double maxTime = 0.0;
 		java.util.Map<Machine, java.util.List<Task>> machineTasks = new java.util.HashMap<>();
@@ -75,6 +77,17 @@ public class CloudTest
 				}
 				machineTasks.get(task.getMachine()).add(task);
 			}
+			else
+			{
+				numberMachinesWithoutTask++;
+			}
+		}
+
+		log.info( "numberMachinesWithoutTask: " + numberMachinesWithoutTask );
+		if( numberMachinesWithoutTask > 0 )
+		{
+			log.error( "Not all tasks are complete - consider raising the time !!" );
+			return;
 		}
 
 		for( Machine machine : machineTasks.keySet() )
