@@ -11,7 +11,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <geotools.version>22.2</geotools.version>
+    <!--
+	 22.2 works for geotools minus spatialstatistics
+	-->
+    <geotools.version>21.3</geotools.version>
   </properties>
 
     <repositories>
@@ -36,6 +39,12 @@
     </repositories>
 
   <dependencies>
+	  	<dependency>
+                        <groupId>org.geotools</groupId>
+                        <artifactId>gt-process-spatialstatistics</artifactId>
+                        <version>${geotools.version}</version>
+		</dependency>
+
 	  	<dependency>
 			<groupId>org.geotools</groupId>
 			<artifactId>gt-shapefile</artifactId>
