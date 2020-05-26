@@ -65,20 +65,48 @@ public class GoTempTest
 								javax.usb.UsbPipe pipe = endpoint.getUsbPipe();
 								pipe.open();
 
-								byte[] bytesToRead = new byte[8];
+								for( int x = 0; x < 20; x++ )
+								{
+									byte[] bytesToRead = new byte[8];
 
-								javax.usb.UsbIrp irpRead = pipe.createUsbIrp();
-								irpRead.setData( bytesToRead );
-								pipe.asyncSubmit( irpRead );
-								irpRead.waitUntilComplete(1000);
+									javax.usb.UsbIrp irpRead = pipe.createUsbIrp();
+									irpRead.setData( bytesToRead );
+									pipe.syncSubmit( irpRead );
+									/*
+									pipe.asyncSubmit( irpRead );
+									irpRead.waitUntilComplete( 1000 );
+									Thread.sleep( 1000 );
+									*/
 
-								Thread.sleep( 1000 );
+									if( x == 0 )
+									{
+										// garbage from the last run
+										continue;
+									}
 
-								org.apache.commons.codec.binary.Hex hex = new org.apache.commons.codec.binary.Hex();
-								String stuff = hex.encodeHexString( bytesToRead );
-								log.info( stuff );
+									int sampleCount = bytesToRead[0];
+									int sequence = bytesToRead[1];
+									log.info( sampleCount + "\t" + sequence );
+
+									if( sampleCount > 0 )
+									{
+										double celsius = getCelsius( bytesToRead[2], bytesToRead[3] );
+										double fahrenheit = getFahrenheit( celsius );
+									}
+
+									if( sampleCount > 1 )
+									{
+										double celsius = getCelsius( bytesToRead[4], bytesToRead[5] );
+										double fahrenheit = getFahrenheit( celsius );
+									}
+									
+									if( sampleCount > 2 )
+									{
+										double celsius = getCelsius( bytesToRead[6], bytesToRead[7] );
+										double fahrenheit = getFahrenheit( celsius );
+									}
+								}
 							}
-
 						}
 						catch( Exception e )
 						{
@@ -95,5 +123,29 @@ public class GoTempTest
 				}
 			}
 		}
+	}
+
+	private double getCelsius( byte one, byte two )
+	{
+		int vTemp = ((two & 0xff) << 8) | (one & 0xff);
+
+		// https://finninday.net/wiki/index.php/Vernier_Go_Temp_USB_device_in_Linux
+		// 126.74
+		// double celsius = vTemp / 126.74;
+
+		// https://github.com/VernierST/GoIO_SDK/blob/4bd9d650c22036a77b666cebd4f3b1051b699d28/src/GoIO_cpp/GUSBDirectTempDevice.cpp#L51
+		double kDegreesCelsiusPerBit = 0.0078125;
+
+		double celsius = vTemp * kDegreesCelsiusPerBit;
+		log.info( "\t" + celsius );
+
+		return celsius;
+	}
+
+	private double getFahrenheit( double celsius )
+	{
+		double fahrenheit = ( celsius * 9 / 5 ) + 32;
+		log.info( "\t" + fahrenheit );
+		return fahrenheit;
 	}
 }
