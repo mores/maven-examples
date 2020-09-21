@@ -13,4 +13,8 @@
 		<module>www</module>
 	</modules>
 
+	<properties>
+		<jetty.version>9.4.31.v20200723</jetty.version>
+	</properties>
+
 </project>

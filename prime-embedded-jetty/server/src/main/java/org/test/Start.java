@@ -2,21 +2,13 @@ package org.test;
 
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.bio.SocketConnector;
 import org.eclipse.jetty.webapp.WebAppContext;
 import java.security.ProtectionDomain;
 import java.net.URL;
  
 public class Start {
     public static void main(String[] args) {
-    Server server = new Server();
-    SocketConnector connector = new SocketConnector();
- 
-    // Set some timeout options to make debugging easier.
-    connector.setMaxIdleTime(1000 * 60 * 60);
-    connector.setSoLingerTime(-1);
-    connector.setPort(9090);
-    server.setConnectors(new Connector[]{connector});
+    Server server = new Server( 9090 );
  
     WebAppContext context = new WebAppContext();
     context.setServer(server);

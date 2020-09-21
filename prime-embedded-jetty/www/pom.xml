@@ -26,6 +26,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+
+		<dependency>
                         <groupId>org.test</groupId>
                         <artifactId>server</artifactId>
                         <version>0.1</version>
@@ -34,55 +40,55 @@
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-server</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-util</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-http</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-servlet</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-io</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-webapp</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-security</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-xml</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-continuation</artifactId>
-                        <version>8.1.1.v20120215</version>
+                        <version>${jetty.version}</version>
                 </dependency>
 
 		<dependency>
@@ -142,6 +148,13 @@
 					</archive>
 					<packagingExcludes>WEB-INF/lib/jsf-api*.jar,WEB-INF/lib/jsf-impl*.jar,WEB-INF/lib/jetty*.jar,WEB-INF/lib/servlet*.jar,WEB-INF/lib/server*.jar</packagingExcludes>
 					<overlays>
+
+						<overlay>
+							<groupId>javax.servlet</groupId>
+							<artifactId>javax.servlet-api</artifactId>
+							<type>jar</type>
+						</overlay>
+
 						<overlay>
 							<groupId>org.test</groupId>
 							<artifactId>server</artifactId>
@@ -251,7 +264,7 @@
                         <plugin>
                                 <groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.1.v20120215</version>
+				<version>${jetty.version}</version>
                                 <configuration>
 					<webApp>
 						<contextPath>/helloworld</contextPath>
@@ -288,8 +301,8 @@
                                 <groupId>org.apache.maven.plugins</groupId>
                                 <artifactId>maven-compiler-plugin</artifactId>
                                 <configuration>
-                                        <source>1.5</source>
-                                        <target>1.5</target>
+                                        <source>1.8</source>
+                                        <target>1.8</target>
                                 </configuration>
 			</plugin>
 		</plugins>
