@@ -24,18 +24,19 @@ public class App
 		int fd = 0;
 		try
 		{
-			String fileName = "/tmp/abc";
+			String fileName = "/dev/fb0";
 			fd = CLibrary.INSTANCE.open( fileName, CLibrary.O_RDWR | CLibrary.O_CREAT );
 			if( fd == -1 )
 			{
 				log.error( "Unable to open: " + fileName );
 				System.exit( 1 );
 			}
-
 			System.out.println( "File Descriptior: " + fd );
 
-			byte[] data = plainJavaString.getBytes( java.nio.charset.StandardCharsets.UTF_8 );
-			CLibrary.INSTANCE.write( fd, data, data.length );
+			byte[] data = { (byte)0xff, (byte)0xff, (byte)0xff, (byte)0x00 };
+
+			int written = CLibrary.INSTANCE.write( fd, data, data.length );
+			System.out.println( "Wrote: " + written );
 		}
 		catch( Exception e )
                 {
