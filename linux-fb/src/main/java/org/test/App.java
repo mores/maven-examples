@@ -24,7 +24,15 @@ public class App
 		int fd = 0;
 		try
 		{
-			fd = CLibrary.INSTANCE.open( "/tmp/abc", CLibrary.O_RDWR | CLibrary.O_CREAT );
+			String fileName = "/tmp/abc";
+			fd = CLibrary.INSTANCE.open( fileName, CLibrary.O_RDWR | CLibrary.O_CREAT );
+			if( fd == -1 )
+			{
+				log.error( "Unable to open: " + fileName );
+				System.exit( 1 );
+			}
+
+			System.out.println( "File Descriptior: " + fd );
 
 			byte[] data = plainJavaString.getBytes( java.nio.charset.StandardCharsets.UTF_8 );
 			CLibrary.INSTANCE.write( fd, data, data.length );
