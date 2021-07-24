@@ -1,6 +1,6 @@
 package org.test;
 
-public class MyCanvas extends java.awt.Canvas
+public class MyCanvas extends javax.swing.JPanel
 {       
         private MyModel model;
 

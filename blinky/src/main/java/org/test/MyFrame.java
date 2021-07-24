@@ -1,6 +1,6 @@
 package org.test;
 
-public class MyFrame extends java.awt.Frame implements java.awt.event.ActionListener, java.util.Observer, java.awt.event.WindowListener
+public class MyFrame extends javax.swing.JFrame implements java.awt.event.ActionListener, java.util.Observer, java.awt.event.WindowListener
 {       
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( MyFrame.class );
 
@@ -16,8 +16,8 @@ public class MyFrame extends java.awt.Frame implements java.awt.event.ActionList
                 this.model = model;
                 model.addObserver(this);
 
-                add("North", upButton);
                 add("Center", canvas);
+		add("South", upButton);
                 setSize(225, 350);
                 setLocation(325,125);
                 setVisible(true);
