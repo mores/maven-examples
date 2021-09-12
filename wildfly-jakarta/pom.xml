@@ -61,6 +61,14 @@
 						</eclipseWtp>
 					</format>
 				</formats>
+				<java>
+					<eclipse>
+						<version>4.13.0</version>
+						<!-- optional
+						<file>${basedir}/eclipse-formatter.xml</file>
+						-->
+					</eclipse>
+				</java>
 			</configuration>
 		</plugin>
         </plugins>
