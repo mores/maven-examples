@@ -10,4 +10,14 @@
 		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
 		<param-value>true</param-value>
 	</context-param>
+
+	<data-source>
+		<name>java:global/DataSourceName</name>
+		<class-name>org.h2.jdbcx.JdbcDataSource</class-name>
+		<url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</url>
+	</data-source>
+
+	<welcome-file-list>
+		<welcome-file>test.xhtml</welcome-file>
+	</welcome-file-list>
 </web-app>

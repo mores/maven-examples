@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
->
-    <h:head>
-        <title>Hello World</title>
-    </h:head>
-    <h:body>
-        <h1>Hello World</h1>
-        <h:form>
-            <h:outputLabel for="input" value="Input" />
-            <h:inputText id="input" value="#{bean.input}" />
-            <h:commandButton value="Submit" action="#{bean.submit}">
-                <f:ajax execute="@form" render=":output" />
-            </h:commandButton>
-        </h:form>
-        <h:outputText id="output" value="#{bean.output}" />
-    </h:body>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html">
+	<h:head>
+		<title>Hello World</title>
+	</h:head>
+	<h:body>
+		<h1>Hello World</h1>
+		<h:form>
+			<h:outputLabel for="input" value="Input" />
+			<h:inputText id="input" value="#{bean.message.text}" />
+			<h:message id="input_m" for="input" />
+			<h:commandButton value="Submit" action="#{bean.submit}">
+				<f:ajax execute="@form" render="input input_m :table" />
+			</h:commandButton>
+		</h:form>
+		<h:dataTable id="table" value="#{bean.messages}" var="message">
+			<h:column>#{message.id}</h:column>
+			<h:column>#{message.text}</h:column>
+		</h:dataTable>
+	</h:body>
 </html>
