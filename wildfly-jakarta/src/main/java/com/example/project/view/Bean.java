@@ -18,14 +18,19 @@ public class Bean {
 	private List<Message> messages;
 
 	@Inject
+	private org.slf4j.Logger logger;
+
+	@Inject
 	private MessageService messageService;
 
 	@PostConstruct
 	public void init() {
+		logger.debug("Initiated @PostConstruct method.");
 		messages = messageService.list();
 	}
 
 	public void submit() {
+		logger.trace("submit: " + message.getText());
 		messageService.create(message);
 		messages.add(message);
 		message = new Message();
