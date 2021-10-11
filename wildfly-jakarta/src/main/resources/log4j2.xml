@@ -3,7 +3,7 @@
 
 	<Appenders>
                 <Console name="CONSOLE" target="SYSTEM_OUT">
-                        <PatternLayout pattern="%16d %-5p [%c{1}:%L] (%X{name}) %m%n"/>
+                        <PatternLayout pattern="%-5p [%c{1}:%L] (%X{name}) %m%n"/>
                 </Console>
                 
                 <RollingFile name="fileAppender" append="true">
