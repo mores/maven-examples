@@ -5,17 +5,36 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
         http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 >
-    <!-- Servlet configuration here. -->
 	<context-param>
 		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
 		<param-value>true</param-value>
 	</context-param>
 
 	<data-source>
-		<name>java:global/DataSourceName</name>
+		<name>java:global/EvenDataSource</name>
 		<class-name>org.h2.jdbcx.JdbcDataSource</class-name>
-		<url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</url>
+		<url>jdbc:h2:mem:even;DB_CLOSE_DELAY=-1</url>
 	</data-source>
+
+	<data-source>
+                <name>java:global/OddDataSource</name>
+                <class-name>org.h2.jdbcx.JdbcDataSource</class-name>
+                <url>jdbc:h2:mem:odd;DB_CLOSE_DELAY=-1</url>
+        </data-source>
+
+	<!--
+	<data-source>
+                <name>java:global/EvenDataSource</name>
+                <class-name>com.mysql.cj.jdbc.MysqlConnectionPoolDataSource</class-name>
+                <url>jdbc:mysql://127.0.0.1/even</url>
+        </data-source>
+
+	<data-source>
+                <name>java:global/OddDataSource</name>
+                <class-name>com.mysql.cj.jdbc.MysqlConnectionPoolDataSource</class-name>
+                <url>jdbc:mysql://127.0.0.1/odd</url>
+        </data-source>
+	-->
 
 	<welcome-file-list>
 		<welcome-file>test.xhtml</welcome-file>
