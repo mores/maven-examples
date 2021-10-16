@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,8 +12,8 @@ import com.example.project.model.Message;
 import com.example.project.service.MessageService;
 
 @Named
-@RequestScoped
-public class Bean {
+@SessionScoped
+public class Bean implements java.io.Serializable {
 
 	private Message message = new Message();
 	private List<Message> messages;
@@ -23,15 +24,20 @@ public class Bean {
 	@Inject
 	private MessageService messageService;
 
+	private String tenant;
+
 	@PostConstruct
 	public void init() {
-		logger.debug("Initiated @PostConstruct method.");
-		messages = messageService.list();
+
+		tenant = "even";
+
+		logger.debug("Initiated @PostConstruct method. Tenant is: " + tenant);
+		messages = messageService.list(tenant);
 	}
 
 	public void submit() {
 		logger.trace("submit: " + message.getText());
-		messageService.create(message);
+		messageService.create(tenant, message);
 		messages.add(message);
 		message = new Message();
 	}
@@ -42,5 +48,18 @@ public class Bean {
 
 	public List<Message> getMessages() {
 		return messages;
+	}
+
+	public String getTenant() {
+		return tenant;
+	}
+
+	public void setTenant(String tenant) {
+		this.tenant = tenant;
+	}
+
+	public void changeTenant(javax.faces.event.AjaxBehaviorEvent event) {
+		logger.debug("Changed tenant to: " + tenant);
+		messages = messageService.list(tenant);
 	}
 }

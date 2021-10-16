@@ -6,6 +6,13 @@
 	<h:body>
 		<h1>Hello World</h1>
 		<h:form>
+			<h:outputLabel for="tenant" value="Tenant" />
+			<h:selectOneMenu id="tenant" value="#{bean.tenant}" onclick="">
+				<f:selectItem itemLabel="even" itemValue="even" />
+				<f:selectItem itemLabel="odd" itemValue="odd" />
+				<f:ajax listener="#{bean.changeTenant}" render="table" />
+			</h:selectOneMenu>
+
 			<h:outputLabel for="input" value="Input" />
 			<h:inputText id="input" value="#{bean.message.text}" />
 			<h:message id="input_m" for="input" />
