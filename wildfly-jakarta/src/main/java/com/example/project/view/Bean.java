@@ -11,8 +11,10 @@ import javax.inject.Named;
 import com.example.project.model.Message;
 import com.example.project.service.MessageService;
 
+import org.apache.deltaspike.core.api.scope.WindowScoped;
+
 @Named
-@SessionScoped
+@WindowScoped
 public class Bean implements java.io.Serializable {
 
 	private Message message = new Message();
