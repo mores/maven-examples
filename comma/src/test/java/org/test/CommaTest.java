@@ -30,6 +30,7 @@ public class CommaTest
 		org.apache.spark.sql.Dataset<org.apache.spark.sql.Row> dataset = sqlContext.read()
                     .format("com.databricks.spark.csv")
                     .option("inferSchema", "true")
+                    .option("unescapedQuoteHandling", "STOP_AT_CLOSING_QUOTE" )
                     .option("header", "true")
                     .load("src/test/resources/sample.data");
 
