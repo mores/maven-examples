@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<cxf.version>2.5.2</cxf.version>
+		<cxf.version>2.5.10</cxf.version>
 	</properties>
 
 	<dependencies>
