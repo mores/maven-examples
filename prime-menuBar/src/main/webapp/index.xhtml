@@ -79,7 +79,10 @@
 			<p:poll interval="2" listener="#{PollView.increment}" update="txt_count"/>
 			<h:outputText id="txt_count" value="#{PollView.number}"/>
 
-			
+			<br/>
+
+			<p:commandButton id="run" value="Submit" ajax="true" action="#{Processing.start}" onclick="PF('pbAjax').start();" />
+			<p:progressBar widgetVar="pbAjax" ajax="true" value="#{Processing.progress}" labelTemplate="{value}%" styleClass="animated" global="false" />	
 
 		</h:panelGroup>
 	</h:panelGrid>
