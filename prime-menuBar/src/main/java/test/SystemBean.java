@@ -3,8 +3,6 @@ package test;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 
-import org.primefaces.context.RequestContext;
-
 @ManagedBean(name="SystemBean")
 @ApplicationScoped
 public class SystemBean implements java.io.Serializable 
@@ -15,7 +13,8 @@ public class SystemBean implements java.io.Serializable
 	public SystemBean()
 	{
 		jsf = Package.getPackage("com.sun.faces").getImplementationVersion();
-		prime = RequestContext.getCurrentInstance().getApplicationContext().getConfig().getBuildVersion();
+		org.primefaces.config.PrimeEnvironment pe = new org.primefaces.config.PrimeEnvironment( javax.faces.context.FacesContext.getCurrentInstance() );
+		prime = pe.getBuildVersion();
 	}
 
 	public String getJsfVersion()
