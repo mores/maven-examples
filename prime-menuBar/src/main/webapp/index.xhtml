@@ -73,6 +73,9 @@
 				<h:outputText value="Prime: #{SystemBean.primeVersion}" />
 			</h:panelGrid>
 
+			<p:poll interval="2" listener="#{PollView.increment}" update="txt_count"/>
+			<h:outputText id="txt_count" value="#{PollView.number}"/>
+
 		</h:panelGroup>
 	</h:panelGrid>
 
