@@ -17,14 +17,12 @@
 		<h:form id="form">
 			<p:panel id="basic" header="XHTML" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" footer="footer" >
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="This is page1" />
+					<h:outputText value="This is page 2" />
 				</h:panelGrid>
-				<p:commandLink action="page2.jsf" ajax="false" value="Page 2" />
+
+				<p:commandLink action="index.jsf" ajax="false" value="Page 1" />
 			</p:panel>	
 
-			<br/>
-
-			<t:helloWorldComponent value="fred"/>
 		</h:form>
         </h:body>
         </f:view>
