@@ -11,7 +11,13 @@
 	<f:view contentType="text/html">
 
 	<h:head>
+		<link
+                        rel="stylesheet"
+                        type="text/css"
+                        href="#{facesContext.externalContext.requestContextPath}/style.css" />
 	</h:head>
+
+
 	<h:body>
 
 	<p:messages />
@@ -84,10 +90,31 @@
 			<p:commandButton id="run" value="Submit" ajax="true" action="#{Processing.start}" onclick="PF('pbAjax').start();" />
 			<p:progressBar widgetVar="pbAjax" ajax="true" value="#{Processing.progress}" labelTemplate="{value}%" styleClass="animated" global="false" />	
 
+
+			<p:schedule
+                                        id="schedule"
+                                        value="#{MyWeek.eventModel}"
+                                        widgetVar="myschedule"
+                                        styleClass="expandHeight"
+                                        locale="tr"
+                                        allDaySlot="true"
+                                        aspectRatio="2.1"
+                                        initialDate="#{MyWeek.initialDate}"
+                                        leftHeaderTemplate=""
+                                        rightHeaderTemplate=""
+                                        view="agendaWeek"
+                                        firstDay="3"
+                                        showWeekends="true"
+                                        slotMinutes="15"
+                                        timeZone="America/New_York"
+                                        draggable="true">
+			</p:schedule>
+
 		</h:panelGroup>
 	</h:panelGrid>
 
 	</h:form>
+
 	</h:body>
 </f:view>
 </html>
