@@ -17,6 +17,7 @@
 
 	<properties>
                 <jsf-ri.version>2.2.12</jsf-ri.version>
+		<primefaces.version>7.0.29</primefaces.version>
 	</properties>
 
 	<dependencies>
@@ -29,7 +30,7 @@
 		<dependency>
                         <groupId>org.primefaces</groupId>
                         <artifactId>primefaces</artifactId>
-                        <version>7.0.29</version>
+                        <version>${primefaces.version}</version>
                 </dependency>
 
 		<dependency>
@@ -85,7 +86,7 @@
 					<dependency>
 						<groupId>org.primefaces</groupId>
 						<artifactId>primefaces</artifactId>
-						<version>7.0.29</version>
+						<version>${primefaces.version}</version>
 					</dependency>
 
 				</dependencies>
