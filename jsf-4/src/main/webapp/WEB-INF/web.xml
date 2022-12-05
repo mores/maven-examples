@@ -5,4 +5,13 @@
                 <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
         </listener>
 
+	<welcome-file-list>
+		<welcome-file>greeting.xhtml</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>jakarta.faces.CLIENT_WINDOW_MODE</param-name>
+		<param-value>url</param-value>
+	</context-param>
+
 </web-app>
