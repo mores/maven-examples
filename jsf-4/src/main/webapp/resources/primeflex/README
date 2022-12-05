@@ -1,0 +1,5 @@
+wget https://raw.githubusercontent.com/primefaces/primeflex/master/dist/primeflex.css
+
+wget https://raw.githubusercontent.com/primefaces/primeflex/master/dist/themes/arya-blue.css
+wget https://raw.githubusercontent.com/primefaces/primeflex/master/dist/themes/saga-blue.css
+wget https://raw.githubusercontent.com/primefaces/primeflex/master/dist/themes/vela-blue.css

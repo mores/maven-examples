@@ -8,28 +8,42 @@
 
     <h:head>
         <title>Hello, World!</title>
+	<h:outputStylesheet name="primeflex/primeflex.css" />
     </h:head>
 
     <h:body>
         <h:form>
 
-            <p:poll interval="4" listener="#{pollView.increment}" update="txt_count"/>
-            <h:outputText id="txt_count" value="Session: #{pollView.number}"/>
-            <br />
+		<div class="bg-bluegray-900 text-gray-100 p-3 flex justify-content-between lg:justify-content-center align-items-center flex-wrap">
+			<div class="font-bold mr-8">🔥 Hot Deals!</div>
+			<div class="align-items-center hidden lg:flex">
+				<span class="line-height-3">Libero voluptatum atque exercitationem praesentium provident odit.</span>
+			</div>
+			<div class="flex align-items-center ml-2 mr-8">
+				<a class="text-white" href="#"><span class="underline font-bold">Learn More</span></a>
+			</div>
+			<a class="flex align-items-center no-underline justify-content-center border-circle text-white-100 hover:bg-bluegray-700 cursor-pointer transition-colors transition-duration-150" style="width:2rem; height: 2rem">
+				<i class="pi pi-times"></i>
+			</a>
+		</div>
+
+	    <p:poll interval="4" listener="#{pollView.increment}" update="txt_count"/>
+	    <h:outputText id="txt_count" value="Session: #{pollView.number}"/>
+	    <br />
 
 	    <p:poll interval="2" listener="#{tabView.increment}" update="window_count"/>
-            <h:outputText id="window_count" value="Browser Tab: #{tabView.number}"/>
-            <br />
+	    <h:outputText id="window_count" value="Browser Tab: #{tabView.number}"/>
+	    <br />
 
-            <h:outputLabel for="name" value="Enter your name" required="true" />
-            <h:inputText id="name" value="#{hello.name}" />
-            <h:message for="name" />
-            <br />
-            <h:commandButton value="Say hello" action="#{hello.createMessage}">
-                <f:ajax execute="@form" render="@form" />
-            </h:commandButton>
-            <br />
-            #{hello.message}
-        </h:form>
+	    <h:outputLabel for="name" value="Enter your name" required="true" />
+	    <h:inputText id="name" value="#{hello.name}" />
+	    <h:message for="name" />
+	    <br />
+	    <h:commandButton value="Say hello" action="#{hello.createMessage}">
+		<f:ajax execute="@form" render="@form" />
+	    </h:commandButton>
+	    <br />
+	    #{hello.message}
+	</h:form>
     </h:body>
 </html>
