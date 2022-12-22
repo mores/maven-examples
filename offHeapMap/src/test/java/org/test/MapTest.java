@@ -41,7 +41,7 @@ public class MapTest
 		db.close();
         }
 
-	@Test
+	//@Test
 	public void testAlsoWorks() throws Exception
 	{
 		net.openhft.chronicle.map.ChronicleMapBuilder<String, String> mapBuilder = net.openhft.chronicle.map.ChronicleMapBuilder.of( String.class, String.class)
@@ -52,6 +52,36 @@ public class MapTest
 		net.openhft.chronicle.map.ChronicleMap<String, String> map = mapBuilder.create();
 
 		loadMap( map );
+	}
+
+	@Test
+	public void testBug() throws Exception
+	{
+		java.util.Map<String, String> zero = new java.util.TreeMap<>();
+                zero.put( "zero", "0" );
+
+		java.util.Map<String, String> notZero = new java.util.TreeMap<>();
+                notZero.put( "zero", new Integer( "0" ).toString() );
+
+		if( zero.equals( notZero ) )
+		{
+			log.info( "Both TreeMaps are EQUAL !!" );
+		}
+
+		net.openhft.chronicle.map.ChronicleMapBuilder<java.util.Map<String, String>, String> crossoverBuilder = net.openhft.chronicle.map.ChronicleMapBuilder
+                                        .of( (Class<java.util.Map<String, String>>)(Class)java.util.Map.class, (Class)String.class )
+                                        .name( "crossover" )
+                                        .averageKey( zero )
+                                        .averageValue( "Fred" )
+                                        .entries( 5 );
+
+		net.openhft.chronicle.map.ChronicleMap<java.util.Map<String, String>, String> crossover = crossoverBuilder.create();
+		crossover.put( notZero, "ZERO" );
+
+		log.info( "crossover: " + crossover );
+
+		String found = crossover.get( zero );
+                log.info( "Found: " + found );
 	}
 
 	public static String formatSize(long v)
