@@ -54,33 +54,57 @@ public class MapTest
 		loadMap( map );
 	}
 
+	private java.util.Map<String, String> createTreeMap( boolean asInt )
+	{
+		java.util.Map<String, String> zero = new java.util.TreeMap<>();
+		if( asInt )
+		{
+			zero.put( "_company_", new Integer( "0" ).toString() );
+			zero.put( "_variable_", new Integer( "0" ).toString() );
+		}
+		else
+		{
+			zero.put( "_company_", "0" );
+			zero.put( "_variable_", "0" );
+		}
+                zero.put( "_year_", "1891" );
+
+		return zero;
+	}
+
 	@Test
 	public void testBug() throws Exception
 	{
-		java.util.Map<String, String> zero = new java.util.TreeMap<>();
-                zero.put( "zero", "0" );
+		java.util.Map<String, String> zero = createTreeMap( true );
+		byte[] stuff = oos( zero );
+		log.info( "zero ObjectOutputStream: " + stuff.length );
 
-		java.util.Map<String, String> notZero = new java.util.TreeMap<>();
-                notZero.put( "zero", new Integer( "0" ).toString() );
+		java.util.Map<String, String> notZero = createTreeMap( false );
+		byte[] stuff2 = oos( notZero );
+                log.info( "notZero ObjectOutputStream: " + stuff2.length );
 
 		if( zero.equals( notZero ) )
 		{
 			log.info( "Both TreeMaps are EQUAL !!" );
 		}
 
-		net.openhft.chronicle.map.ChronicleMapBuilder<java.util.Map<String, String>, String> crossoverBuilder = net.openhft.chronicle.map.ChronicleMapBuilder
+	 	java.util.Map<java.util.Map<String, String>, String> justMap = new java.util.HashMap<>();
+		justMap.put( zero, "ZERO" );
+
+		String gotIt = justMap.get( notZero );
+		log.info( "Got It: " + gotIt );
+
+		net.openhft.chronicle.map.ChronicleMapBuilder<java.util.Map<String, String>, String> builder = net.openhft.chronicle.map.ChronicleMapBuilder
                                         .of( (Class<java.util.Map<String, String>>)(Class)java.util.Map.class, (Class)String.class )
                                         .name( "crossover" )
                                         .averageKey( zero )
                                         .averageValue( "Fred" )
                                         .entries( 5 );
 
-		net.openhft.chronicle.map.ChronicleMap<java.util.Map<String, String>, String> crossover = crossoverBuilder.create();
-		crossover.put( notZero, "ZERO" );
+		net.openhft.chronicle.map.ChronicleMap<java.util.Map<String, String>, String> chronicle = builder.create();
+		chronicle.put( zero, "ZERO" );
 
-		log.info( "crossover: " + crossover );
-
-		String found = crossover.get( zero );
+		String found = chronicle.get( notZero );
                 log.info( "Found: " + found );
 	}
 
@@ -90,4 +114,29 @@ public class MapTest
         	int z = (63 - Long.numberOfLeadingZeros(v)) / 10;
         	return String.format("%.1f %sB", (double)v / (1L << (z*10)), " KMGTPE".charAt(z));
 	}
+
+	private byte[] oos( Object obj ) throws Exception
+        {
+                java.io.ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
+                java.io.ObjectOutputStream out = null;
+                try
+                {
+                        out = new java.io.ObjectOutputStream( bos );
+                        out.writeObject( obj );
+                        out.flush();
+                        byte[] yourBytes = bos.toByteArray();
+                        return yourBytes;
+                }
+                finally
+                {
+                        try
+                        {
+                                bos.close();
+                        }
+                        catch( Exception ex )
+                        {
+                                // ignore close exception
+                        }
+                }
+        }
 }
