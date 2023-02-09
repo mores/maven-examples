@@ -28,11 +28,11 @@
 		</div>
 
 	    <p:poll interval="4" listener="#{pollView.increment}" update="txt_count"/>
-	    <h:outputText id="txt_count" value="Session: #{pollView.number}"/>
+	    <h:outputText id="txt_count" value="Session Counter: #{pollView.number}"/>
 	    <br />
 
 	    <p:poll interval="2" listener="#{tabView.increment}" update="window_count"/>
-	    <h:outputText id="window_count" value="Browser Tab: #{tabView.number}"/>
+	    <h:outputText id="window_count" value="Browser Tab Counter: #{tabView.number}"/>
 	    <br />
 
 	    <h:outputLabel for="name" value="Enter your name" required="true" />
