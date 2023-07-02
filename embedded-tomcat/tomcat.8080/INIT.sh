@@ -1,3 +1,7 @@
 #!/bin/sh
 
-keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass password -validity 360 -keysize 2048
+echo "Enter hostname: "
+
+read hostname
+
+keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass password -validity 360 -keysize 2048 -dname "CN=$hostname, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown" -ext SAN=dns:$hostname
