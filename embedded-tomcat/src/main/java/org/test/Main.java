@@ -17,6 +17,7 @@ public class Main
 		}
 
 		tomcat.setPort(Integer.valueOf(webPort));
+		tomcat.getConnector();
 
 		org.apache.catalina.core.StandardContext ctx = (org.apache.catalina.core.StandardContext)tomcat.addWebapp("/", new java.io.File(webappDirLocation).getAbsolutePath());
 		System.out.println("configuring app with basedir: " + new java.io.File("./" + webappDirLocation).getAbsolutePath());
