@@ -39,19 +39,19 @@ public class Main
 	private static org.apache.catalina.connector.Connector getSslConnector()
 	{
 		org.apache.catalina.connector.Connector connector = new org.apache.catalina.connector.Connector();
-		connector.setPort(9000);
+		connector.setPort(443);
 		connector.setSecure(true);
 		connector.setScheme("https");
-		connector.setAttribute("keyAlias", "selfsigned");
-		connector.setAttribute("keystorePass", "password");
-		connector.setAttribute("keystoreType", "JKS");
-		connector.setAttribute("keystoreFile", "keystore.jks");
-		connector.setAttribute("clientAuth", "false");
-		connector.setAttribute("protocol", "HTTP/1.1");
-		connector.setAttribute("sslProtocol", "TLS");
-		connector.setAttribute("maxThreads", "200");
-		connector.setAttribute("protocol", "org.apache.coyote.http11.Http11AprProtocol");
-		connector.setAttribute("SSLEnabled", true);
+		connector.setProperty("keyAlias", "selfsigned");
+		connector.setProperty("keystorePass", "password");
+		connector.setProperty("keystoreType", "JKS");
+		connector.setProperty("keystoreFile", "keystore.jks");
+		connector.setProperty("clientAuth", "false");
+		connector.setProperty("protocol", "HTTP/1.1");
+		connector.setProperty("sslProtocol", "TLS");
+		connector.setProperty("maxThreads", "200");
+		connector.setProperty("protocol", "org.apache.coyote.http11.Http11AprProtocol");
+		connector.setProperty("SSLEnabled", "true");
 		return connector;
 	}
 }
