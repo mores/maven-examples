@@ -19,6 +19,9 @@ public class Main
 		tomcat.setPort(Integer.valueOf(webPort));
 		tomcat.getConnector();
 
+		org.apache.catalina.Service service = tomcat.getService();
+		service.addConnector(getSslConnector());
+
 		org.apache.catalina.core.StandardContext ctx = (org.apache.catalina.core.StandardContext)tomcat.addWebapp("/", new java.io.File(webappDirLocation).getAbsolutePath());
 		System.out.println("configuring app with basedir: " + new java.io.File("./" + webappDirLocation).getAbsolutePath());
 
@@ -31,5 +34,24 @@ public class Main
 
 		tomcat.start();
 		tomcat.getServer().await();
+	}
+
+	private static org.apache.catalina.connector.Connector getSslConnector()
+	{
+		org.apache.catalina.connector.Connector connector = new org.apache.catalina.connector.Connector();
+		connector.setPort(9000);
+		connector.setSecure(true);
+		connector.setScheme("https");
+		connector.setAttribute("keyAlias", "selfsigned");
+		connector.setAttribute("keystorePass", "password");
+		connector.setAttribute("keystoreType", "JKS");
+		connector.setAttribute("keystoreFile", "keystore.jks");
+		connector.setAttribute("clientAuth", "false");
+		connector.setAttribute("protocol", "HTTP/1.1");
+		connector.setAttribute("sslProtocol", "TLS");
+		connector.setAttribute("maxThreads", "200");
+		connector.setAttribute("protocol", "org.apache.coyote.http11.Http11AprProtocol");
+		connector.setAttribute("SSLEnabled", true);
+		return connector;
 	}
 }
