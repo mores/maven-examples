@@ -42,16 +42,15 @@ public class Main
 		connector.setPort(443);
 		connector.setSecure(true);
 		connector.setScheme("https");
-		connector.setProperty("keyAlias", "selfsigned");
-		connector.setProperty("keystorePass", "password");
-		connector.setProperty("keystoreType", "JKS");
-		connector.setProperty("keystoreFile", "keystore.jks");
-		connector.setProperty("clientAuth", "false");
-		connector.setProperty("protocol", "HTTP/1.1");
-		connector.setProperty("sslProtocol", "TLS");
-		connector.setProperty("maxThreads", "200");
-		connector.setProperty("protocol", "org.apache.coyote.http11.Http11AprProtocol");
 		connector.setProperty("SSLEnabled", "true");
+		org.apache.tomcat.util.net.SSLHostConfig sslHostConfig = new org.apache.tomcat.util.net.SSLHostConfig();
+		org.apache.tomcat.util.net.SSLHostConfigCertificate cert = new org.apache.tomcat.util.net.SSLHostConfigCertificate(sslHostConfig, org.apache.tomcat.util.net.SSLHostConfigCertificate.Type.RSA);
+		cert.setCertificateKeystoreFile( "keystore.jks" );
+		cert.setCertificateKeystorePassword( "password");
+		cert.setCertificateKeyAlias( "selfsigned" );
+		sslHostConfig.addCertificate(cert);
+		connector.addSslHostConfig(sslHostConfig);
+
 		return connector;
 	}
 }

@@ -9,17 +9,10 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<tomcat.version>9.0.76</tomcat.version>
+		<tomcat.version>10.1.10</tomcat.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-                        <groupId>javax.servlet</groupId>
-                        <artifactId>javax.servlet-api</artifactId>
-                        <version>3.0.1</version>
-                        <scope>provided</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-core</artifactId>
