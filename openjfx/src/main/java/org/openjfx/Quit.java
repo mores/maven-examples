@@ -1,14 +1,14 @@
 package org.openjfx;
 
-public class Quit implements javafx.event.EventHandler<javafx.event.ActionEvent>
-{
+public class Quit
+		implements
+			javafx.event.EventHandler<javafx.event.ActionEvent> {
 
-    @Override
-    public void handle( javafx.event.ActionEvent event )
-    {
+	@Override
+	public void handle(javafx.event.ActionEvent event) {
 
-	System.out.println("Quit Selected");
-	System.exit( 0 );
+		System.out.println("Quit Selected");
+		System.exit(0);
 
-    }
+	}
 }
