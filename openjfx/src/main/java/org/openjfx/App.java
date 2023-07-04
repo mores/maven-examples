@@ -27,11 +27,11 @@ public class App extends Application {
 
 	javafx.scene.control.MenuItem quit = new javafx.scene.control.MenuItem( "Quit" );
 	file.getItems().add( quit );
+	quit.setOnAction( new Quit() );
 
-	quit.setOnAction(e -> {
-		System.out.println("Quit Selected");
-		System.exit( 0 );
-	});
+	javafx.scene.control.MenuItem about = new javafx.scene.control.MenuItem( "About" );
+	file.getItems().add( about );
+	about.setOnAction( new About() );
 
         javafx.scene.control.Label label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
         borderPane.setCenter( new StackPane(label) );
@@ -45,5 +45,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
