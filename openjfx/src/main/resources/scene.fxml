@@ -4,8 +4,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox>
-    <Label text="Hello world!"/>
-    <Label text="This is a simple demo application."/>
-    <Button text="Click me!"/>
+<VBox
+	xmlns="http://javafx.com/javafx"
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="org.openjfx.SceneController"
+>
+
+    <Label fx:id="title" text="Hello world!"/>
+    <Label fx:id="subTitle" text="This is a simple demo application."/>
+
+    <Button fx:id="button" text="Click me!" onAction="#buttonClicked"/>
 </VBox>
