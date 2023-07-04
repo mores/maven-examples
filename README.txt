@@ -16,3 +16,7 @@ jsf-ajax-simple - Adapted from http://weblogs.java.net/blog/driscoll/archive/200
 	cd jsf-ajax-simple
 	mvn jetty:run
 	http://<server name or ip>:9090/helloworld/index.jsf
+
+
+mvn versions:display-dependency-updates
+mvn versions:display-plugin-updates
