@@ -44,6 +44,7 @@
                     <release>${maven.compiler.release}</release>
                 </configuration>
             </plugin>
+
             <plugin>
 		<groupId>org.codehaus.mojo</groupId>
 		<artifactId>exec-maven-plugin</artifactId>
@@ -52,6 +53,7 @@
 		  <mainClass>${mainClass}</mainClass>
 		</configuration>
 	      </plugin>
+
               <plugin>
 		<groupId>org.openjfx</groupId>
 		<artifactId>javafx-maven-plugin</artifactId>
@@ -67,6 +69,29 @@
 			<jlinkZipName>hellofx</jlinkZipName>
 		</configuration>
 	   </plugin>	
+
+	   <plugin>
+		<groupId>org.panteleyev</groupId>
+		<artifactId>jpackage-maven-plugin</artifactId>
+		<version>1.4.0</version>
+		<configuration>
+			<name>hellofx</name>
+			<appVersion>1.0.0</appVersion>
+			<vendor>org.openjfx</vendor>
+			<destination>target/dist</destination>
+			<module>hellofx/org.openjfx.App</module>
+			<runtimeImage>target/hellofx</runtimeImage>
+			<linuxShortcut>true</linuxShortcut>
+			<linuxPackageName>hellofx</linuxPackageName>
+			<linuxAppCategory>Utilities</linuxAppCategory>
+			<linuxMenuGroup>Utilities</linuxMenuGroup>
+			<icon>${project.basedir}/duke.png</icon>
+			<javaOptions>
+				<option>-Dfile.encoding=UTF-8</option>
+			</javaOptions>
+		</configuration>
+	   </plugin>
+
 	   <plugin>
 		<groupId>com.googlecode.maven-java-formatter-plugin</groupId>
 		<artifactId>maven-java-formatter-plugin</artifactId>
