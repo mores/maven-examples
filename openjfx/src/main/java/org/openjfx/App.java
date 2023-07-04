@@ -30,6 +30,11 @@ public class App extends Application {
 		file.getItems().add(quit);
 		quit.setOnAction(new Quit());
 
+		javafx.scene.control.MenuItem fxml = new javafx.scene.control.MenuItem(
+				"FXML");
+		file.getItems().add(fxml);
+		fxml.setOnAction(new Fxml(stage));
+
 		javafx.scene.control.MenuItem about = new javafx.scene.control.MenuItem(
 				"About");
 		file.getItems().add(about);

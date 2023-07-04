@@ -73,7 +73,7 @@
 	   <plugin>
 		<groupId>org.panteleyev</groupId>
 		<artifactId>jpackage-maven-plugin</artifactId>
-		<version>1.4.0</version>
+		<version>1.6.0</version>
 		<configuration>
 			<name>hellofx</name>
 			<appVersion>1.0.0</appVersion>

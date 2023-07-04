@@ -1,3 +1,6 @@
+JavaFX 20 requires JDK17 or later
+
+
 1. Run locally
 	mvn clean compile exec:java
 
