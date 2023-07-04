@@ -3,7 +3,7 @@ package edu.pace.csis.bergin;
 import java.awt.*;
 import java.util.*;
 
-public class GraphGUI extends Frame implements Observer
+public class GraphGUI extends Frame implements java.beans.PropertyChangeListener
 {	
 	public GraphGUI(TemperatureModel model, int h, int v)
 	{ 	
@@ -19,10 +19,12 @@ public class GraphGUI extends Frame implements Observer
 		setSize(225, 350);
 		setLocation(h,v);
 		setVisible(true);
-		model.addObserver(this); // Connect to the model
+
+		model.addPropertyChangeListener( this );
 	}
 	
-	public void update(Observable obs, Object o) // Respond to changes
+	@Override
+	public void propertyChange( java.beans.PropertyChangeEvent propertyChangeEvent )
 	{	
 		repaint();
 	}

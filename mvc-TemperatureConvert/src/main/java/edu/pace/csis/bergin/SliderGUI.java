@@ -4,11 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class SliderGUI implements Observer
+public class SliderGUI implements java.beans.PropertyChangeListener
 {	
 	public SliderGUI(TemperatureModel m, int h, int v)
 	{	
-		m.addObserver(this); //Observe the temperature model
 		model = m;
 		sliderFrame.add(tempControl);
 		tempControl.addAdjustmentListener(new SlideListener());
@@ -16,11 +15,14 @@ public class SliderGUI implements Observer
 		sliderFrame.setLocation(h, v);
 		sliderFrame.setVisible(true);
 		sliderFrame.addWindowListener(new TemperatureGUI.CloseListener());		
+
+		model.addPropertyChangeListener( this );
 	}
 	
-	public void update(Observable t, Object o)
+	@Override
+	public void propertyChange( java.beans.PropertyChangeEvent propertyChangeEvent )
 	{	
-		double temp = ((TemperatureModel)t).getC();
+		double temp = model.getC();
 		tempControl.setValue((int)temp); // Move the slider thumb
 	}
 	

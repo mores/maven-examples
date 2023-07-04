@@ -3,7 +3,7 @@ package edu.pace.csis.bergin;
 import java.awt.*;
 import java.awt.event.*;
 
-abstract class TemperatureGUI implements java.util.Observer
+abstract class TemperatureGUI
 {	
 	TemperatureGUI(String label, TemperatureModel model, int h, int v)
 	{	
@@ -17,7 +17,6 @@ abstract class TemperatureGUI implements java.util.Observer
 		buttons.add(downButton);		
 		temperatureFrame.add("South", buttons);		
 		temperatureFrame.addWindowListener(new CloseListener());	
-		model.addObserver(this); // Connect the View to the Model
 		temperatureFrame.setSize(200,125);
 		temperatureFrame.setLocation(h, v);
 		temperatureFrame.setVisible(true);

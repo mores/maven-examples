@@ -1,6 +1,6 @@
 package edu.pace.csis.bergin;
 
-public class TemperatureModel extends java.util.Observable
+public class TemperatureModel
 {	
 	public double getF(){return temperatureF;}
 	
@@ -8,17 +8,22 @@ public class TemperatureModel extends java.util.Observable
 	
 	public void setF(double tempF)
 	{	
+		double oldTemperatureF = temperatureF;
 		temperatureF = tempF;
-		setChanged();
-		notifyObservers();
+		pcs.firePropertyChange( "value", oldTemperatureF, temperatureF );
 	}
 	
 	public void setC(double tempC)
 	{	
+		double oldTemperatureF = temperatureF;
 		temperatureF = tempC*9.0/5.0 + 32.0;
-		setChanged();
-		notifyObservers();
+		pcs.firePropertyChange( "value", oldTemperatureF, temperatureF ); 
 	}
 
+	public void addPropertyChangeListener( java.beans.PropertyChangeListener listener) {
+		this.pcs.addPropertyChangeListener(listener);
+	}
+
+	private java.beans.PropertyChangeSupport pcs = new java.beans.PropertyChangeSupport(this);
 	private double temperatureF = 32.0;
 }

@@ -3,7 +3,7 @@ package edu.pace.csis.bergin;
 import java.awt.event.*;
 import java.util.*;
 
-class CelsiusGUI extends TemperatureGUI
+class CelsiusGUI extends TemperatureGUI implements java.beans.PropertyChangeListener
 {	
 	public CelsiusGUI(TemperatureModel model, int h, int v)
 	{	
@@ -12,9 +12,12 @@ class CelsiusGUI extends TemperatureGUI
 		addUpListener(new UpListener());
 		addDownListener(new DownListener());
 		addDisplayListener(new DisplayListener());
+
+		model.addPropertyChangeListener( this );
 	}
 	
-	public void update(Observable t, Object o) // Called from the Model
+	@Override
+	public void propertyChange( java.beans.PropertyChangeEvent propertyChangeEvent )
 	{	
 		setDisplay("" + model().getC());
 	}
