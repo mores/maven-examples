@@ -7,15 +7,29 @@ package org.test;
 
 public class Pixel
 {
+	private float brightness;
+
 	private int red;
 	private int green;
 	private int blue;
 
 	public Pixel()
 	{
+		brightness = 1.0f;
+
 		red = 255;
 		green = 255;
 		blue = 255;
+	}
+
+	public float getBrightness()
+	{
+		return brightness;
+	}
+
+	public void setBrightness( float brightness )
+	{
+		this.brightness = brightness;
 	}
 
 	public int getRed()
@@ -150,13 +164,12 @@ public class Pixel
 	}
 
 	//
-
 	public byte[] getRGB()
 	{
 		byte[] data = new byte[3];
-		data[0] = (byte)red;
-		data[1] = (byte)green;
-		data[2] = (byte)blue;
+		data[0] = (byte)(int)(red * brightness);
+		data[1] = (byte)(int)(green * brightness);
+		data[2] = (byte)(int)(blue * brightness);
 
 		return data;
 	}
