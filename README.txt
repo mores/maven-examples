@@ -15,7 +15,7 @@ graniteds-jdo - Example how granite can use JDO
 jsf-ajax-simple - Adapted from http://weblogs.java.net/blog/driscoll/archive/2008/11/a_simple_ajax_j.html 
 	cd jsf-ajax-simple
 	mvn jetty:run
-	http://<server name or ip>:9090/helloworld/index.jsf
+	http://<server name or ip>:8080/helloworld/index.jsf
 
 
 mvn versions:display-dependency-updates
