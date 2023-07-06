@@ -11,9 +11,9 @@ public class Pixel
 {
 	private float brightness;
 
-	private int red;
-	private int green;
-	private int blue;
+	private short red;
+	private short green;
+	private short blue;
 
 	public Pixel()
 	{
@@ -45,32 +45,32 @@ public class Pixel
 		}
 	}
 
-	public int getRed()
+	public short getRed()
 	{
 		return red;
 	}
 
-	public void setRed( int red )
+	public void setRed( short red )
 	{
 		this.red = red;
 	}
 
-	public int getGreen()
+	public short getGreen()
         {
                 return green;
         }
 
-        public void setGreen( int green )
+        public void setGreen( short green )
         {
                 this.green = green;
         }
 
-	public int getBlue()
+	public short getBlue()
         {
                 return blue;
         }
 
-        public void setBlue( int blue )
+        public void setBlue( short blue )
         {
                 this.blue = blue;
         }
@@ -135,16 +135,16 @@ public class Pixel
 
 	public void orange()
 	{
-		red = java.awt.Color.ORANGE.getRed();
-		green = java.awt.Color.ORANGE.getGreen();
-		blue = java.awt.Color.ORANGE.getBlue();
+		red = (short)java.awt.Color.ORANGE.getRed();
+		green = (short)java.awt.Color.ORANGE.getGreen();
+		blue = (short)java.awt.Color.ORANGE.getBlue();
 	}
 
 	public void pink()
 	{
-		red = java.awt.Color.PINK.getRed();
-                green = java.awt.Color.PINK.getGreen();
-                blue = java.awt.Color.PINK.getBlue();
+		red = (short)java.awt.Color.PINK.getRed();
+                green = (short)java.awt.Color.PINK.getGreen();
+                blue = (short)java.awt.Color.PINK.getBlue();
 	}
 
 	public void red()
@@ -179,9 +179,9 @@ public class Pixel
 	public byte[] getRGB()
 	{
 		byte[] data = new byte[3];
-		data[0] = (byte)(int)(red * brightness);
-		data[1] = (byte)(int)(green * brightness);
-		data[2] = (byte)(int)(blue * brightness);
+		data[0] = (byte)(short)(red * brightness);
+		data[1] = (byte)(short)(green * brightness);
+		data[2] = (byte)(short)(blue * brightness);
 
 		return data;
 	}
