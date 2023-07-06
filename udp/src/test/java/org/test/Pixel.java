@@ -3,6 +3,8 @@ package org.test;
 /*
 	Java byte 8-bit signed -128 -> 127
 	we want to work with 0 -> 255
+
+	How much different is this from java.awt.Color ??
 */
 
 public class Pixel
@@ -27,9 +29,20 @@ public class Pixel
 		return brightness;
 	}
 
-	public void setBrightness( float brightness )
+	public void setBrightness( Float bright )
 	{
-		this.brightness = brightness;
+		if( bright.compareTo( 1.0f ) > 0 )
+		{
+			brightness = 1.0f;
+		}
+		else if( bright.compareTo( 0.0f ) < 0 )
+		{
+			brightness = 0.0f;
+		}
+		else
+		{
+			this.brightness = bright;
+		}
 	}
 
 	public int getRed()
@@ -80,8 +93,8 @@ public class Pixel
 	// colors
 	public void azure()
 	{
-		red = 0;
-		green = 165;
+		red = 240;
+		green = 255;
 		blue = 255;
 	}
 
@@ -94,7 +107,7 @@ public class Pixel
 
 	public void chartreuse()
 	{
-		red = 165;
+		red = 223;
 		green = 255;
 		blue = 0;
 	}
@@ -122,17 +135,16 @@ public class Pixel
 
 	public void orange()
 	{
-		// 100% red + 64.7% green
-		red = 255;
-                green = 165;
-                blue = 0;
+		red = java.awt.Color.ORANGE.getRed();
+		green = java.awt.Color.ORANGE.getGreen();
+		blue = java.awt.Color.ORANGE.getBlue();
 	}
 
 	public void pink()
 	{
-		red = 255;
-		green = 0;
-		blue = 165;
+		red = java.awt.Color.PINK.getRed();
+                green = java.awt.Color.PINK.getGreen();
+                blue = java.awt.Color.PINK.getBlue();
 	}
 
 	public void red()
@@ -146,12 +158,12 @@ public class Pixel
 	{
 		red = 0;
 		green = 255;
-		blue = 165;
+		blue = 127;
 	}
 
 	public void violet()
 	{
-		red = 165;
+		red = 127;
 		green = 0;
 		blue = 255;
 	}
