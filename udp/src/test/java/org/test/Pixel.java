@@ -24,6 +24,15 @@ public class Pixel
 		blue = 255;
 	}
 
+	public Pixel( java.awt.Color color )
+	{
+		brightness = 1.0f;
+
+		red = (short)color.getRed();
+                green = (short)color.getGreen();
+                blue = (short)color.getBlue();
+	}
+
 	public float getBrightness()
 	{
 		return brightness;

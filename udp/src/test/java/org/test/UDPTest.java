@@ -13,13 +13,21 @@ public class UDPTest
 	@Test
 	public void nano() throws Exception
 	{
-		java.util.List<Frame> frames = getUpDownFrames();
+		java.util.List<Frame> frames = new java.util.ArrayList<>();
+
+		java.util.List<Frame> fadeUp = getFadeUpFrames( java.awt.Color.BLUE, 200 );
+		frames.addAll( fadeUp );
+		java.util.List<Frame> gradient = getGradientFrames( java.awt.Color.BLUE, java.awt.Color.GREEN, 400);
+		frames.addAll( gradient );
+		java.util.List<Frame> fadeDown = getFadeDownFrames( java.awt.Color.GREEN, 200 );
+		frames.addAll( fadeDown );
+
 		log.info( "Number of Frames: " + frames.size() );
 
 		java.net.InetAddress address = java.net.InetAddress.getByName( "192.168.1.74" );
                 java.net.DatagramSocket socket = new java.net.DatagramSocket();
 
-		double framesPerSecond = 60.0;
+		double framesPerSecond = 30.0;
 		final double ns = 1000000000.0 / framesPerSecond;
 
 		long lastTime = System.nanoTime();
@@ -184,6 +192,80 @@ public class UDPTest
 
 		return frame;
 	}
+
+	private java.util.List<Frame> getFadeDownFrames( java.awt.Color color, int steps )
+        {               
+                java.util.List<Frame> frames = new java.util.ArrayList<>();
+                                
+                Float brightness = 1.0f;
+                Float delta = 1.0f / steps ;
+                                
+                for( int step = 0; step < steps; step++ )
+                {               
+                        Frame frame = new Frame();
+                        brightness = brightness - delta;
+                                
+                        java.util.List<Pixel> pixels = new java.util.ArrayList<>();
+                        for( int x = 0; x < numberOfPixels; x ++ )
+                        {       
+                                Pixel pixel = new Pixel( color );
+                                pixel.setBrightness( brightness );
+                                pixels.add( pixel );
+                        }
+                        frame.setPixels( pixels );
+                        frames.add( frame );
+                }
+                
+                return frames;
+        }
+
+	private java.util.List<Frame> getFadeUpFrames( java.awt.Color color, int steps )
+        {
+                java.util.List<Frame> frames = new java.util.ArrayList<>();
+
+		Float brightness = 0.0f;
+                Float delta = 1.0f / steps ;
+
+		for( int step = 0; step < steps; step++ )
+                {
+			Frame frame = new Frame();
+			brightness = brightness + delta;
+
+			java.util.List<Pixel> pixels = new java.util.ArrayList<>();
+                        for( int x = 0; x < numberOfPixels; x ++ )
+                        {
+                                Pixel pixel = new Pixel( color );
+				pixel.setBrightness( brightness );
+                                pixels.add( pixel );
+                        }
+                        frame.setPixels( pixels );
+                        frames.add( frame );			
+                }
+
+                return frames;
+        }
+
+	private java.util.List<Frame> getGradientFrames( java.awt.Color begin, java.awt.Color end, int steps )
+        {
+                java.util.List<Frame> frames = new java.util.ArrayList<>();
+
+		java.util.List<java.awt.Color> colors = getGradient( begin, end, steps );
+		for( java.awt.Color color : colors )
+		{
+			Frame frame = new Frame();
+
+			java.util.List<Pixel> pixels = new java.util.ArrayList<>();
+			for( int x = 0; x < numberOfPixels; x ++ )
+			{
+				Pixel pixel = new Pixel( color );
+				pixels.add( pixel );
+			}
+			frame.setPixels( pixels );
+			frames.add( frame );
+		}
+
+                return frames;
+        }
 
 	private java.util.List<java.awt.Color> getGradient( java.awt.Color begin, java.awt.Color end, int steps )
 	{
