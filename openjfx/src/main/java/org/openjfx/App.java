@@ -46,17 +46,7 @@ public class App extends Application {
 
 		javafx.scene.control.ColorPicker colorPicker = new javafx.scene.control.ColorPicker();
 		borderPane.setLeft(new StackPane(colorPicker));
-
-		colorPicker.setOnAction(new javafx.event.EventHandler() {
-			public void handle(javafx.event.Event t) {
-				javafx.scene.paint.Color color = colorPicker.getValue();
-
-				int red = (int) (color.getRed() * 255);
-				int green = (int) (color.getGreen() * 255);
-				int blue = (int) (color.getBlue() * 255);
-				System.out.println(red + " " + green + " " + blue);
-			}
-		});
+		colorPicker.setOnAction(new Color(stage));
 
 		javafx.scene.Scene scene = new javafx.scene.Scene(borderPane, 640, 480);
 		stage.setScene(scene);
