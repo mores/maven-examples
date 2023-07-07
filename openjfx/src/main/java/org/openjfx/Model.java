@@ -2,6 +2,9 @@ package org.openjfx;
 
 public class Model {
 
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory
+			.getLogger(Model.class);
+
 	private javafx.stage.Stage stage;
 
 	private javafx.beans.property.IntegerProperty number;
@@ -17,9 +20,9 @@ public class Model {
 			public void changed(
 					javafx.beans.value.ObservableValue<? extends Number> observableValue,
 					Number before, Number after) {
-				System.out.println("changed: " + observableValue);
-				System.out.println("before: " + before);
-				System.out.println("after: " + after);
+				log.debug("changed: " + observableValue);
+				log.debug("before: " + before);
+				log.debug("after: " + after);
 			}
 		});
 
@@ -30,9 +33,9 @@ public class Model {
 			public void changed(
 					javafx.beans.value.ObservableValue<? extends String> observableValue,
 					String before, String after) {
-				System.out.println("changed: " + observableValue);
-				System.out.println("before: " + before);
-				System.out.println("after: " + after);
+				log.debug("changed: " + observableValue);
+				log.debug("before: " + before);
+				log.debug("after: " + after);
 			}
 		});
 	}

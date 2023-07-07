@@ -3,6 +3,10 @@ package org.openjfx;
 public class About
 		implements
 			javafx.event.EventHandler<javafx.event.ActionEvent> {
+
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory
+			.getLogger(About.class);
+
 	private Model model;
 
 	public About(Model model) {
@@ -11,7 +15,7 @@ public class About
 
 	@Override
 	public void handle(javafx.event.ActionEvent event) {
-		System.out.println("About Selected");
+		log.debug("About Selected");
 
 		javafx.scene.control.Label secondLabel = new javafx.scene.control.Label(
 				"I'm a Label on new Modal Window");

@@ -11,8 +11,13 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory
+			.getLogger(App.class);
+
 	@Override
 	public void start(Stage stage) {
+
+		log.info( "start" );
 
 		Model model = new Model( stage );
 

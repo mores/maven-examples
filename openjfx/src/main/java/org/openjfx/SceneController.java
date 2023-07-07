@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 
 public class SceneController implements javafx.fxml.Initializable {
 
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory
+			.getLogger(SceneController.class);
+
 	@FXML
 	private javafx.scene.control.Button button;
 
@@ -20,9 +23,8 @@ public class SceneController implements javafx.fxml.Initializable {
 	}
 
 	public void buttonClicked() {
-		System.out.println("Button clicked!");
-
-		System.out.println("Model: " + model.getText());
+		log.debug("Button clicked!");
+		log.debug("Model: " + model.getText());
 
 		button.setText("Click me again!");
 
