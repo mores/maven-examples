@@ -4,10 +4,10 @@ public class Color
 		implements
 			javafx.event.EventHandler<javafx.event.ActionEvent> {
 
-	private javafx.stage.Stage primaryStage;
+	private Model model;
 
-	public Color(javafx.stage.Stage primaryStage) {
-		this.primaryStage = primaryStage;
+	public Color(Model model) {
+		this.model = model;
 	}
 
 	@Override
@@ -27,5 +27,6 @@ public class Color
 		int blue = (int) (color.getBlue() * 255);
 		System.out.println(red + " " + green + " " + blue);
 
+		model.setText(red + " " + green + " " + blue);
 	}
 }

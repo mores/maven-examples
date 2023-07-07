@@ -3,10 +3,10 @@ package org.openjfx;
 public class About
 		implements
 			javafx.event.EventHandler<javafx.event.ActionEvent> {
-	private javafx.stage.Stage primaryStage;
+	private Model model;
 
-	public About(javafx.stage.Stage primaryStage) {
-		this.primaryStage = primaryStage;
+	public About(Model model) {
+		this.model = model;
 	}
 
 	@Override
@@ -14,7 +14,7 @@ public class About
 		System.out.println("About Selected");
 
 		javafx.scene.control.Label secondLabel = new javafx.scene.control.Label(
-				"I'm a Label on new Window");
+				"I'm a Label on new Modal Window");
 
 		javafx.scene.layout.StackPane secondaryLayout = new javafx.scene.layout.StackPane();
 		secondaryLayout.getChildren().add(secondLabel);
@@ -31,11 +31,11 @@ public class About
 		newWindow.initModality(javafx.stage.Modality.WINDOW_MODAL);
 
 		// Specifies the owner Window (parent) for new window
-		newWindow.initOwner(primaryStage);
+		newWindow.initOwner(model.getStage());
 
 		// Set position of second window, related to primary window.
-		newWindow.setX(primaryStage.getX() + 200);
-		newWindow.setY(primaryStage.getY() + 100);
+		newWindow.setX(model.getStage().getX() + 200);
+		newWindow.setY(model.getStage().getY() + 100);
 
 		newWindow.show();
 	}

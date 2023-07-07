@@ -4,10 +4,10 @@ public class Fxml
 		implements
 			javafx.event.EventHandler<javafx.event.ActionEvent> {
 
-	private javafx.stage.Stage primaryStage;
+	private Model model;
 
-	public Fxml(javafx.stage.Stage primaryStage) {
-		this.primaryStage = primaryStage;
+	public Fxml(Model model) {
+		this.model = model;
 	}
 
 	@Override
@@ -16,6 +16,12 @@ public class Fxml
 		javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
 		java.net.URL xmlUrl = getClass().getResource("/scene.fxml");
 		loader.setLocation(xmlUrl);
+		loader.setControllerFactory(new javafx.util.Callback<Class<?>, Object>() {
+			@Override
+			public Object call(Class<?> aClass) {
+				return new SceneController(model);
+			}
+		});
 
 		javafx.stage.Stage newWindow = new javafx.stage.Stage();
 		newWindow.setTitle("Loaded from scene.fxml");
@@ -27,10 +33,10 @@ public class Fxml
 			e.printStackTrace();
 		}
 
-		newWindow.initOwner(primaryStage);
+		newWindow.initOwner(model.getStage());
 
-		newWindow.setX(primaryStage.getX() + 200);
-		newWindow.setY(primaryStage.getY() + 100);
+		newWindow.setX(model.getStage().getX() + 200);
+		newWindow.setY(model.getStage().getY() + 100);
 
 		newWindow.show();
 

@@ -14,6 +14,8 @@ public class App extends Application {
 	@Override
 	public void start(Stage stage) {
 
+		Model model = new Model( stage );
+
 		var javaVersion = SystemInfo.javaVersion();
 		var javafxVersion = SystemInfo.javafxVersion();
 
@@ -28,12 +30,12 @@ public class App extends Application {
 		javafx.scene.control.MenuItem about = new javafx.scene.control.MenuItem(
                                 "About");
                 file.getItems().add(about);
-                about.setOnAction(new About(stage));
+                about.setOnAction(new About(model));
 
 		javafx.scene.control.MenuItem fxml = new javafx.scene.control.MenuItem(
 				"FXML");
 		file.getItems().add(fxml);
-		fxml.setOnAction(new Fxml(stage));
+		fxml.setOnAction(new Fxml(model));
 
 		javafx.scene.control.MenuItem quit = new javafx.scene.control.MenuItem(
                                 "Quit");
@@ -52,7 +54,7 @@ public class App extends Application {
 
 		javafx.scene.control.ColorPicker colorPicker = new javafx.scene.control.ColorPicker();
 		borderPane.setLeft(new StackPane(colorPicker));
-		colorPicker.setOnAction(new Color(stage));
+		colorPicker.setOnAction(new Color(model));
 
 		javafx.scene.control.ProgressBar progressBar = new javafx.scene.control.ProgressBar();
 		progressBar.setVisible(false);
