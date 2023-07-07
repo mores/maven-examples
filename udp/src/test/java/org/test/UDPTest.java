@@ -15,11 +15,11 @@ public class UDPTest
 	{
 		java.util.List<Frame> frames = new java.util.ArrayList<>();
 
-		java.util.List<Frame> fadeUp = getFadeUpFrames( java.awt.Color.BLUE, 200 );
+		java.util.List<Frame> fadeUp = getFadeUpFrames( Pixel.BLUE, 200 );
 		frames.addAll( fadeUp );
-		java.util.List<Frame> gradient = getGradientFrames( java.awt.Color.BLUE, java.awt.Color.GREEN, 400);
+		java.util.List<Frame> gradient = getGradientFrames( Pixel.BLUE, Pixel.GREEN, 400);
 		frames.addAll( gradient );
-		java.util.List<Frame> fadeDown = getFadeDownFrames( java.awt.Color.GREEN, 200 );
+		java.util.List<Frame> fadeDown = getFadeDownFrames( Pixel.GREEN, 200 );
 		frames.addAll( fadeDown );
 
 		log.info( "Number of Frames: " + frames.size() );
@@ -123,8 +123,6 @@ public class UDPTest
 		for( int x = 0; x < numberOfPixels; x ++ )
 		{
 			Pixel pixel = new Pixel();
-			pixel.setBrightness( brightness );
-			pixels.add( pixel );	
 
 			int remainder = x % 14;
 			switch( remainder )
@@ -138,53 +136,56 @@ public class UDPTest
 					break;
 
 				case 2:
-					pixel.red();
+					pixel = Pixel.RED;
 					break;
 
 				case 3:
-					pixel.orange();
+					pixel = Pixel.ORANGE;
 					break;
 
 				case 4:
-					pixel.yellow();
+					pixel = Pixel.YELLOW;
 					break;
 
 				case 5: 
-					pixel.chartreuse();
+					pixel = Pixel.CHARTREUSE;
 					break;
 
 				case 6:
-					pixel.green();
+					pixel = Pixel.GREEN;
 					break;
 
 				case 7:
-					pixel.springGreen();
+					pixel = Pixel.SPRING_GREEN;
 					break;
 
 				case 8:
-					pixel.cyan();
+					pixel = Pixel.CYAN;
 					break;
 
 				case 9:
-					pixel.azure();
+					pixel = Pixel.AZURE;
 					break;
 
 				case 10:
-					pixel.blue();
+					pixel = Pixel.BLUE;
 					break;
 
 				case 11:
-					pixel.violet();
+					pixel = Pixel.VIOLET;
 					break;
 
 				case 12:
-					pixel.magenta();
+					pixel = Pixel.MAGENTA;
 					break;
 
 				case 13:
-					pixel.pink();
+					pixel = Pixel.PINK;
 					break;
 			}
+
+			pixel.setBrightness( brightness );
+			pixels.add( pixel );
 
 		}
 
@@ -193,7 +194,7 @@ public class UDPTest
 		return frame;
 	}
 
-	private java.util.List<Frame> getFadeDownFrames( java.awt.Color color, int steps )
+	private java.util.List<Frame> getFadeDownFrames( Pixel color, int steps )
         {               
                 java.util.List<Frame> frames = new java.util.ArrayList<>();
                                 
@@ -219,7 +220,7 @@ public class UDPTest
                 return frames;
         }
 
-	private java.util.List<Frame> getFadeUpFrames( java.awt.Color color, int steps )
+	private java.util.List<Frame> getFadeUpFrames( Pixel color, int steps )
         {
                 java.util.List<Frame> frames = new java.util.ArrayList<>();
 
@@ -245,12 +246,12 @@ public class UDPTest
                 return frames;
         }
 
-	private java.util.List<Frame> getGradientFrames( java.awt.Color begin, java.awt.Color end, int steps )
+	private java.util.List<Frame> getGradientFrames( Pixel begin, Pixel end, int steps )
         {
                 java.util.List<Frame> frames = new java.util.ArrayList<>();
 
-		java.util.List<java.awt.Color> colors = getGradient( begin, end, steps );
-		for( java.awt.Color color : colors )
+		java.util.List<Pixel> colors = getGradient( begin, end, steps );
+		for( Pixel color : colors )
 		{
 			Frame frame = new Frame();
 
@@ -267,9 +268,9 @@ public class UDPTest
                 return frames;
         }
 
-	private java.util.List<java.awt.Color> getGradient( java.awt.Color begin, java.awt.Color end, int steps )
+	private java.util.List<Pixel> getGradient( Pixel begin, Pixel end, int steps )
 	{
-		java.util.List<java.awt.Color> colors = new java.util.ArrayList<>();
+		java.util.List<Pixel> colors = new java.util.ArrayList<>();
 
 		for (int i = 0; i < steps; i++)
 		{
@@ -279,7 +280,7 @@ public class UDPTest
 			int green = (int) (end.getGreen() * ratio + begin.getGreen() * (1 - ratio));
 			int blue = (int) (end.getBlue() * ratio + begin.getBlue() * (1 - ratio));
 
-			java.awt.Color stepColor = new java.awt.Color(red, green, blue);
+			Pixel stepColor = new Pixel(red, green, blue);
 			colors.add( stepColor );
 		}
 

@@ -5,6 +5,7 @@ package org.test;
 	we want to work with 0 -> 255
 
 	How much different is this from java.awt.Color ??
+	How much different is this from javafx.scene.paint.Color ??
 */
 
 public class Pixel
@@ -24,13 +25,22 @@ public class Pixel
 		blue = 255;
 	}
 
-	public Pixel( java.awt.Color color )
+	public Pixel( Pixel template )
 	{
 		brightness = 1.0f;
 
-		red = (short)color.getRed();
-                green = (short)color.getGreen();
-                blue = (short)color.getBlue();
+                this.red = template.getRed();
+                this.green = template.getGreen();
+                this.blue = template.getBlue();
+	}
+ 
+	public Pixel( int red, int green, int blue )
+	{
+		brightness = 1.0f;
+
+		this.red = (short)red;
+                this.green = (short)green;
+                this.blue = (short)blue;
 	}
 
 	public float getBrightness()
@@ -100,89 +110,18 @@ public class Pixel
         }
 
 	// colors
-	public void azure()
-	{
-		red = 240;
-		green = 255;
-		blue = 255;
-	}
-
-	public void blue()
-	{
-		red = 0;
-                green = 0;
-                blue = 255;
-	}
-
-	public void chartreuse()
-	{
-		red = 223;
-		green = 255;
-		blue = 0;
-	}
-
-	public void cyan()
-	{
-		red = 0;
-                green = 255;
-                blue = 255;
-	}
-
-	public void green()
-        {
-                red = 0;
-                green = 255;
-                blue = 0;
-        }
-
-	public void magenta()
-	{
-		red = 255;
-		green = 0;
-                blue = 255;
-	}
-
-	public void orange()
-	{
-		red = (short)java.awt.Color.ORANGE.getRed();
-		green = (short)java.awt.Color.ORANGE.getGreen();
-		blue = (short)java.awt.Color.ORANGE.getBlue();
-	}
-
-	public void pink()
-	{
-		red = (short)java.awt.Color.PINK.getRed();
-                green = (short)java.awt.Color.PINK.getGreen();
-                blue = (short)java.awt.Color.PINK.getBlue();
-	}
-
-	public void red()
-	{
-		red = 255;
-		green = 0;
-                blue = 0;
-	}
-
-	public void springGreen()
-	{
-		red = 0;
-		green = 255;
-		blue = 127;
-	}
-
-	public void violet()
-	{
-		red = 127;
-		green = 0;
-		blue = 255;
-	}
-
-	public void yellow()
-	{
-		red = 255;
-		green = 255;
-		blue = 0;
-	}
+	public static final Pixel AZURE = new Pixel( 240, 255, 255 );
+	public static final Pixel BLUE = new Pixel( 0, 0, 255 );
+	public static final Pixel CHARTREUSE = new Pixel( 233, 255, 0 );
+	public static final Pixel CYAN = new Pixel( 0, 255, 255 );
+	public static final Pixel GREEN = new Pixel( 0, 255, 0 );
+	public static final Pixel MAGENTA = new Pixel( 255, 0, 255 );
+	public static final Pixel ORANGE = new Pixel( 255, 255, 0 );
+	public static final Pixel PINK = new Pixel( 255, 200, 0 );
+	public static final Pixel RED = new Pixel( 255, 0, 0 );
+	public static final Pixel SPRING_GREEN = new Pixel( 0, 255, 127 );
+	public static final Pixel VIOLET = new Pixel( 127, 0, 255 );
+	public static final Pixel YELLOW = new Pixel( 255, 255, 0 );
 
 	//
 	public byte[] getRGB()
