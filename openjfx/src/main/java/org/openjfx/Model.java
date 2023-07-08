@@ -7,15 +7,19 @@ public class Model {
 
 	private javafx.stage.Stage stage;
 
-	private javafx.beans.property.IntegerProperty number;
-	private javafx.beans.property.StringProperty text;
+	private javafx.collections.ObservableList<javafx.scene.paint.Color> colorsProperty;
+	private javafx.beans.property.IntegerProperty numberProperty;
+	private javafx.beans.property.StringProperty textProperty;
 
-	public Model(javafx.stage.Stage stage) {
+	public Model(javafx.stage.Stage stage ) {
 
 		this.stage = stage;
 
-		number = new javafx.beans.property.SimpleIntegerProperty(0);
-		number.addListener(new javafx.beans.value.ChangeListener<Number>() {
+		java.util.List<javafx.scene.paint.Color> colors = new java.util.ArrayList<>();
+		colorsProperty = javafx.collections.FXCollections.observableList( colors );
+
+		numberProperty = new javafx.beans.property.SimpleIntegerProperty(0);
+		numberProperty.addListener(new javafx.beans.value.ChangeListener<Number>() {
 			@Override
 			public void changed(
 					javafx.beans.value.ObservableValue<? extends Number> observableValue,
@@ -26,9 +30,9 @@ public class Model {
 			}
 		});
 
-		text = new javafx.beans.property.SimpleStringProperty(
+		textProperty = new javafx.beans.property.SimpleStringProperty(
 				"Oh, hello There !");
-		text.addListener(new javafx.beans.value.ChangeListener<String>() {
+		textProperty.addListener(new javafx.beans.value.ChangeListener<String>() {
 			@Override
 			public void changed(
 					javafx.beans.value.ObservableValue<? extends String> observableValue,
@@ -39,32 +43,40 @@ public class Model {
 			}
 		});
 	}
+	public void addColor(javafx.scene.paint.Color color) {
+
+		colorsProperty.add(color);
+	}
 
 	public javafx.stage.Stage getStage() {
 		return stage;
 	}
 
+	public javafx.collections.ObservableList<javafx.scene.paint.Color> getColorsProperty() {
+		return colorsProperty;
+	}
+
 	public Integer getNumber() {
-		return number.get();
+		return numberProperty.get();
 	}
 
 	public void setNumber(Integer number) {
-		this.number.set(number);
+		this.numberProperty.set(number);
 	}
 
-	public javafx.beans.property.IntegerProperty numberProperty() {
-		return number;
+	public javafx.beans.property.IntegerProperty getNumberProperty() {
+		return numberProperty;
 	}
 
 	public String getText() {
-		return text.get();
+		return textProperty.get();
 	}
 
 	public void setText(String text) {
-		this.text.set(text);
+		this.textProperty.set(text);
 	}
 
-	public javafx.beans.property.StringProperty textProperty() {
-		return text;
+	public javafx.beans.property.StringProperty getTextProperty() {
+		return textProperty;
 	}
 }

@@ -24,12 +24,6 @@ public class Color
 				.getTarget();
 
 		javafx.scene.paint.Color color = source.getValue();
-
-		int red = (int) (color.getRed() * 255);
-		int green = (int) (color.getGreen() * 255);
-		int blue = (int) (color.getBlue() * 255);
-		log.debug(red + " " + green + " " + blue);
-
-		model.setText(red + " " + green + " " + blue);
+		model.addColor(color);
 	}
 }

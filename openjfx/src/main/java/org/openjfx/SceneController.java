@@ -38,8 +38,8 @@ public class SceneController implements javafx.fxml.Initializable {
 	public void initialize(java.net.URL url,
 			java.util.ResourceBundle resourceBundle) {
 
-		field.textProperty().bindBidirectional(model.textProperty());
+		field.textProperty().bindBidirectional(model.getTextProperty());
 		spinner.getValueFactory().valueProperty()
-				.bindBidirectional(model.numberProperty());
+				.bindBidirectional(model.getNumberProperty());
 	}
 }
