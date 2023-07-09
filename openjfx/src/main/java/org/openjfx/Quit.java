@@ -1,11 +1,8 @@
 package org.openjfx;
 
-public class Quit
-		implements
-			javafx.event.EventHandler<javafx.event.ActionEvent> {
+public class Quit implements javafx.event.EventHandler<javafx.event.ActionEvent> {
 
-	private static org.slf4j.Logger log = org.slf4j.LoggerFactory
-			.getLogger(Quit.class);
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Quit.class);
 
 	@Override
 	public void handle(javafx.event.ActionEvent event) {

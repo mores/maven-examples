@@ -1,8 +1,6 @@
 package org.openjfx;
 
-public class Fxml
-		implements
-			javafx.event.EventHandler<javafx.event.ActionEvent> {
+public class Fxml implements javafx.event.EventHandler<javafx.event.ActionEvent> {
 
 	private Model model;
 

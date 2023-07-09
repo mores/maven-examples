@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<profiles version="12">
+	<profile kind="CodeFormatterProfile" name="Default" version="12">
+		<setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="200"/>
+	</profile>
+</profiles>

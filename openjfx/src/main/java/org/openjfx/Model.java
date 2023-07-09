@@ -2,8 +2,7 @@ package org.openjfx;
 
 public class Model {
 
-	private static org.slf4j.Logger log = org.slf4j.LoggerFactory
-			.getLogger(Model.class);
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Model.class);
 
 	private javafx.stage.Stage stage;
 
@@ -11,32 +10,29 @@ public class Model {
 	private javafx.beans.property.IntegerProperty numberProperty;
 	private javafx.beans.property.StringProperty textProperty;
 
-	public Model(javafx.stage.Stage stage ) {
+	public Model(javafx.stage.Stage stage) {
 
 		this.stage = stage;
 
 		java.util.List<javafx.scene.paint.Color> colors = new java.util.ArrayList<>();
-		colorsProperty = javafx.collections.FXCollections.observableList( colors );
+		colorsProperty = javafx.collections.FXCollections.observableList(colors);
 
 		numberProperty = new javafx.beans.property.SimpleIntegerProperty(0);
 		numberProperty.addListener(new javafx.beans.value.ChangeListener<Number>() {
 			@Override
-			public void changed(
-					javafx.beans.value.ObservableValue<? extends Number> observableValue,
-					Number before, Number after) {
+			public void changed(javafx.beans.value.ObservableValue<? extends Number> observableValue, Number before,
+					Number after) {
 				log.debug("changed: " + observableValue);
 				log.debug("before: " + before);
 				log.debug("after: " + after);
 			}
 		});
 
-		textProperty = new javafx.beans.property.SimpleStringProperty(
-				"Oh, hello There !");
+		textProperty = new javafx.beans.property.SimpleStringProperty("Oh, hello There !");
 		textProperty.addListener(new javafx.beans.value.ChangeListener<String>() {
 			@Override
-			public void changed(
-					javafx.beans.value.ObservableValue<? extends String> observableValue,
-					String before, String after) {
+			public void changed(javafx.beans.value.ObservableValue<? extends String> observableValue, String before,
+					String after) {
 				log.debug("changed: " + observableValue);
 				log.debug("before: " + before);
 				log.debug("after: " + after);

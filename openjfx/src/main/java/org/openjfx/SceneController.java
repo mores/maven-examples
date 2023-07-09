@@ -4,8 +4,7 @@ import javafx.fxml.FXML;
 
 public class SceneController implements javafx.fxml.Initializable {
 
-	private static org.slf4j.Logger log = org.slf4j.LoggerFactory
-			.getLogger(SceneController.class);
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(SceneController.class);
 
 	@FXML
 	private javafx.scene.control.Button button;
@@ -35,11 +34,9 @@ public class SceneController implements javafx.fxml.Initializable {
 	}
 
 	@Override
-	public void initialize(java.net.URL url,
-			java.util.ResourceBundle resourceBundle) {
+	public void initialize(java.net.URL url, java.util.ResourceBundle resourceBundle) {
 
 		field.textProperty().bindBidirectional(model.getTextProperty());
-		spinner.getValueFactory().valueProperty()
-				.bindBidirectional(model.getNumberProperty());
+		spinner.getValueFactory().valueProperty().bindBidirectional(model.getNumberProperty());
 	}
 }

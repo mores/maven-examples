@@ -2,8 +2,7 @@ package org.openjfx;
 
 public class TaskService extends javafx.concurrent.Service<Void> {
 
-	private static org.slf4j.Logger log = org.slf4j.LoggerFactory
-			.getLogger(TaskService.class);
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(TaskService.class);
 
 	@Override
 	protected javafx.concurrent.Task<Void> createTask() {
