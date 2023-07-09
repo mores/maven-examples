@@ -120,7 +120,12 @@ public class App extends Application {
 
 		progressBar.progressProperty().bind(service.progressProperty());
 
-		button.setOnAction(e -> service.restart());
+		javafx.event.EventHandler<javafx.event.ActionEvent> event = new javafx.event.EventHandler<>() {
+			public void handle(javafx.event.ActionEvent e) {
+				service.restart();
+			}
+		};
+		button.setOnAction(event);
 
 		javafx.scene.Scene scene = new javafx.scene.Scene(borderPane, 640, 480);
 		stage.setScene(scene);
