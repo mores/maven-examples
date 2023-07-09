@@ -84,6 +84,9 @@ public class App extends Application {
 
 						javafx.scene.control.TextField one = (javafx.scene.control.TextField) listOfColors.getChildren()
 								.get(change.getFrom());
+						if (colorPlus.isDark()) {
+							one.setStyle("-fx-text-fill: white;");
+						}
 						one.setText("Complete");
 					}
 				}
@@ -99,8 +102,21 @@ public class App extends Application {
 		borderPane.setBottom(new StackPane(progressBar));
 
 		TaskService service = new TaskService(model);
-		service.setOnScheduled(e -> progressBar.setVisible(true));
-		service.setOnSucceeded(e -> progressBar.setVisible(false));
+		service.setOnScheduled(new javafx.event.EventHandler<javafx.concurrent.WorkerStateEvent>() {
+
+			@Override
+			public void handle(javafx.concurrent.WorkerStateEvent t) {
+				progressBar.setVisible(true);
+			}
+
+		});
+		service.setOnSucceeded(new javafx.event.EventHandler<javafx.concurrent.WorkerStateEvent>() {
+
+			@Override
+			public void handle(javafx.concurrent.WorkerStateEvent t) {
+				progressBar.setVisible(false);
+			}
+		});
 
 		progressBar.progressProperty().bind(service.progressProperty());
 
