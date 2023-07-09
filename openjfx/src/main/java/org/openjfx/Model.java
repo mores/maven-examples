@@ -6,7 +6,7 @@ public class Model {
 
 	private javafx.stage.Stage stage;
 
-	private javafx.collections.ObservableList<javafx.scene.paint.Color> colorsProperty;
+	private javafx.beans.property.ListProperty colorsProperty;
 	private javafx.beans.property.IntegerProperty numberProperty;
 	private javafx.beans.property.StringProperty textProperty;
 
@@ -14,8 +14,8 @@ public class Model {
 
 		this.stage = stage;
 
-		java.util.List<javafx.scene.paint.Color> colors = new java.util.ArrayList<>();
-		colorsProperty = javafx.collections.FXCollections.observableList(colors);
+		colorsProperty = new javafx.beans.property.SimpleListProperty<>(
+				javafx.collections.FXCollections.observableArrayList());
 
 		numberProperty = new javafx.beans.property.SimpleIntegerProperty(0);
 		numberProperty.addListener(new javafx.beans.value.ChangeListener<Number>() {
