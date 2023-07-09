@@ -56,20 +56,35 @@ public class App extends Application {
 		javafx.scene.layout.VBox listOfColors = new javafx.scene.layout.VBox();
 		vbox.getChildren().add(listOfColors);
 
-		model.getColorsProperty().addListener(new javafx.collections.ListChangeListener<javafx.scene.paint.Color>() {
+		model.getColorsProperty().addListener(new javafx.collections.ListChangeListener<ColorPlus>() {
 
 			@Override
-			public void onChanged(
-					javafx.collections.ListChangeListener.Change<? extends javafx.scene.paint.Color> change) {
+			public void onChanged(javafx.collections.ListChangeListener.Change<? extends ColorPlus> change) {
 				while (change.next()) {
-					java.util.List<? extends javafx.scene.paint.Color> list = change.getAddedSubList();
-					for (javafx.scene.paint.Color color : list) {
-						javafx.scene.control.TextField one = new javafx.scene.control.TextField();
-						one.setPrefWidth(100);
-						one.setMaxWidth(100);
-						one.setBackground(new javafx.scene.layout.Background(
-								new javafx.scene.layout.BackgroundFill(color, null, null)));
-						listOfColors.getChildren().add(one);
+
+					log.info("Change: " + change);
+
+					if (change.wasAdded()) {
+						java.util.List<? extends ColorPlus> list = change.getAddedSubList();
+						for (ColorPlus colorPlus : list) {
+							javafx.scene.paint.Color color = colorPlus.getColor();
+							javafx.scene.control.TextField one = new javafx.scene.control.TextField();
+							one.setEditable(false);
+							one.setPrefWidth(100);
+							one.setMaxWidth(100);
+							one.setBackground(new javafx.scene.layout.Background(
+									new javafx.scene.layout.BackgroundFill(color, null, null)));
+							listOfColors.getChildren().add(one);
+						}
+					}
+
+					if (change.wasUpdated()) {
+						ColorPlus colorPlus = change.getList().get(change.getFrom());
+						log.info("Completed: " + colorPlus.getComplete());
+
+						javafx.scene.control.TextField one = (javafx.scene.control.TextField) listOfColors.getChildren()
+								.get(change.getFrom());
+						one.setText("Complete");
 					}
 				}
 			}
@@ -83,7 +98,7 @@ public class App extends Application {
 		progressBar.setVisible(false);
 		borderPane.setBottom(new StackPane(progressBar));
 
-		TaskService service = new TaskService();
+		TaskService service = new TaskService(model);
 		service.setOnScheduled(e -> progressBar.setVisible(true));
 		service.setOnSucceeded(e -> progressBar.setVisible(false));
 

@@ -19,6 +19,6 @@ public class ColorEvent implements javafx.event.EventHandler<javafx.event.Action
 		javafx.scene.control.ColorPicker target = (javafx.scene.control.ColorPicker) event.getTarget();
 
 		javafx.scene.paint.Color color = source.getValue();
-		model.addColor(color);
+		model.addColor(new ColorPlus(color));
 	}
 }

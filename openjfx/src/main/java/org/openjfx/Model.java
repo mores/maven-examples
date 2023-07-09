@@ -6,7 +6,7 @@ public class Model {
 
 	private javafx.stage.Stage stage;
 
-	private javafx.beans.property.ListProperty<javafx.scene.paint.Color> colorsProperty;
+	private javafx.collections.ObservableList<ColorPlus> colorsProperty;
 	private javafx.beans.property.IntegerProperty numberProperty;
 	private javafx.beans.property.StringProperty textProperty;
 
@@ -14,8 +14,8 @@ public class Model {
 
 		this.stage = stage;
 
-		colorsProperty = new javafx.beans.property.SimpleListProperty<>(
-				javafx.collections.FXCollections.observableArrayList());
+		colorsProperty = javafx.collections.FXCollections
+				.observableArrayList(color -> new javafx.beans.Observable[]{color.getCompleteProperty()});
 
 		numberProperty = new javafx.beans.property.SimpleIntegerProperty(0);
 		numberProperty.addListener(new javafx.beans.value.ChangeListener<Number>() {
@@ -39,8 +39,8 @@ public class Model {
 			}
 		});
 	}
-	public void addColor(javafx.scene.paint.Color color) {
 
+	public void addColor(ColorPlus color) {
 		colorsProperty.add(color);
 	}
 
@@ -48,7 +48,7 @@ public class Model {
 		return stage;
 	}
 
-	public javafx.beans.property.ListProperty<javafx.scene.paint.Color> getColorsProperty() {
+	public javafx.collections.ObservableList<ColorPlus> getColorsProperty() {
 		return colorsProperty;
 	}
 
