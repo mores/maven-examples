@@ -6,7 +6,7 @@ public class Model {
 
 	private javafx.stage.Stage stage;
 
-	private javafx.beans.property.ListProperty colorsProperty;
+	private javafx.beans.property.ListProperty<javafx.scene.paint.Color> colorsProperty;
 	private javafx.beans.property.IntegerProperty numberProperty;
 	private javafx.beans.property.StringProperty textProperty;
 
@@ -48,7 +48,7 @@ public class Model {
 		return stage;
 	}
 
-	public javafx.collections.ObservableList<javafx.scene.paint.Color> getColorsProperty() {
+	public javafx.beans.property.ListProperty<javafx.scene.paint.Color> getColorsProperty() {
 		return colorsProperty;
 	}
 

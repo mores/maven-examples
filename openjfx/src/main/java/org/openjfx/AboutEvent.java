@@ -1,12 +1,12 @@
 package org.openjfx;
 
-public class About implements javafx.event.EventHandler<javafx.event.ActionEvent> {
+public class AboutEvent implements javafx.event.EventHandler<javafx.event.ActionEvent> {
 
-	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(About.class);
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AboutEvent.class);
 
 	private Model model;
 
-	public About(Model model) {
+	public AboutEvent(Model model) {
 		this.model = model;
 	}
 

@@ -1,12 +1,12 @@
 package org.openjfx;
 
-public class Color implements javafx.event.EventHandler<javafx.event.ActionEvent> {
+public class ColorEvent implements javafx.event.EventHandler<javafx.event.ActionEvent> {
 
-	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Color.class);
+	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ColorEvent.class);
 
 	private Model model;
 
-	public Color(Model model) {
+	public ColorEvent(Model model) {
 		this.model = model;
 	}
 

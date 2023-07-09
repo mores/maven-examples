@@ -33,15 +33,15 @@ public class App extends Application {
 
 		javafx.scene.control.MenuItem about = new javafx.scene.control.MenuItem("About");
 		file.getItems().add(about);
-		about.setOnAction(new About(model));
+		about.setOnAction(new AboutEvent(model));
 
 		javafx.scene.control.MenuItem fxml = new javafx.scene.control.MenuItem("FXML");
 		file.getItems().add(fxml);
-		fxml.setOnAction(new Fxml(model));
+		fxml.setOnAction(new FxmlEvent(model));
 
 		javafx.scene.control.MenuItem quit = new javafx.scene.control.MenuItem("Quit");
 		file.getItems().add(quit);
-		quit.setOnAction(new Quit());
+		quit.setOnAction(new QuitEvent());
 
 		javafx.scene.layout.VBox vbox = new javafx.scene.layout.VBox();
 		borderPane.setCenter(vbox);
@@ -77,7 +77,7 @@ public class App extends Application {
 
 		javafx.scene.control.ColorPicker colorPicker = new javafx.scene.control.ColorPicker();
 		borderPane.setLeft(new StackPane(colorPicker));
-		colorPicker.setOnAction(new Color(model));
+		colorPicker.setOnAction(new ColorEvent(model));
 
 		javafx.scene.control.ProgressBar progressBar = new javafx.scene.control.ProgressBar();
 		progressBar.setVisible(false);
