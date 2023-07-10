@@ -6,10 +6,12 @@ public class ColorPlus {
 
 	private javafx.scene.paint.Color color;
 	private javafx.beans.property.BooleanProperty completeProperty;
+	private String id;
 
 	public ColorPlus(javafx.scene.paint.Color color) {
 		this.color = color;
 		completeProperty = new javafx.beans.property.SimpleBooleanProperty(false);
+		this.id = java.util.UUID.randomUUID().toString();
 	}
 
 	public javafx.scene.paint.Color getColor() {
@@ -26,6 +28,10 @@ public class ColorPlus {
 
 	public javafx.beans.property.BooleanProperty getCompleteProperty() {
 		return completeProperty;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public boolean isDark() {

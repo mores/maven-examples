@@ -50,8 +50,24 @@ public class App extends Application {
 				"Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
 		vbox.getChildren().add(label);
 
-		javafx.scene.control.Button button = new javafx.scene.control.Button("Start Task");
-		vbox.getChildren().add(button);
+		javafx.scene.layout.HBox hbox = new javafx.scene.layout.HBox();
+
+		javafx.scene.control.Button start = new javafx.scene.control.Button("Start Task");
+		hbox.setMargin(start, new javafx.geometry.Insets(2, 5, 2, 5));
+		hbox.getChildren().add(start);
+
+		javafx.scene.control.Button clear = new javafx.scene.control.Button("Clear");
+		hbox.setMargin(clear, new javafx.geometry.Insets(2, 5, 2, 5));
+		hbox.getChildren().add(clear);
+
+		javafx.event.EventHandler<javafx.event.ActionEvent> clearEvent = new javafx.event.EventHandler<>() {
+			public void handle(javafx.event.ActionEvent e) {
+				model.getColorsProperty().clear();
+			}
+		};
+		clear.setOnAction(clearEvent);
+
+		vbox.getChildren().add(hbox);
 
 		javafx.scene.layout.VBox listOfColors = new javafx.scene.layout.VBox();
 		vbox.getChildren().add(listOfColors);
@@ -70,6 +86,7 @@ public class App extends Application {
 							javafx.scene.paint.Color color = colorPlus.getColor();
 							javafx.scene.control.TextField one = new javafx.scene.control.TextField();
 							one.setEditable(false);
+							one.setId(colorPlus.getId());
 							one.setPrefWidth(100);
 							one.setMaxWidth(100);
 							one.setBackground(new javafx.scene.layout.Background(
@@ -89,6 +106,26 @@ public class App extends Application {
 						}
 						one.setText("Complete");
 					}
+
+					if (change.wasRemoved()) {
+
+						final java.util.List<javafx.scene.Node> removalCandidates = new java.util.ArrayList<>();
+
+						java.util.List<? extends ColorPlus> list = change.getRemoved();
+						for (ColorPlus colorPlus : list) {
+
+							log.info("Removed: " + colorPlus.getId());
+
+							javafx.collections.ObservableList<javafx.scene.Node> children = listOfColors.getChildren();
+							for (javafx.scene.Node child : children) {
+								if (colorPlus.getId().equals(child.getId())) {
+									removalCandidates.add(child);
+								}
+							}
+						}
+
+						listOfColors.getChildren().removeAll(removalCandidates);
+					}
 				}
 			}
 		});
@@ -103,12 +140,10 @@ public class App extends Application {
 
 		TaskService service = new TaskService(model);
 		service.setOnScheduled(new javafx.event.EventHandler<javafx.concurrent.WorkerStateEvent>() {
-
 			@Override
 			public void handle(javafx.concurrent.WorkerStateEvent t) {
 				progressBar.setVisible(true);
 			}
-
 		});
 		service.setOnSucceeded(new javafx.event.EventHandler<javafx.concurrent.WorkerStateEvent>() {
 
@@ -125,7 +160,7 @@ public class App extends Application {
 				service.restart();
 			}
 		};
-		button.setOnAction(event);
+		start.setOnAction(event);
 
 		javafx.scene.Scene scene = new javafx.scene.Scene(borderPane, 640, 480);
 		stage.setScene(scene);

@@ -14,8 +14,14 @@ public class Model {
 
 		this.stage = stage;
 
-		colorsProperty = javafx.collections.FXCollections
-				.observableArrayList(color -> new javafx.beans.Observable[]{color.getCompleteProperty()});
+		javafx.util.Callback callback = new javafx.util.Callback<ColorPlus, javafx.beans.Observable[]>() {
+			@Override
+			public javafx.beans.Observable[] call(ColorPlus colorPlus) {
+				return new javafx.beans.Observable[]{colorPlus.getCompleteProperty()};
+			}
+		};
+
+		colorsProperty = javafx.collections.FXCollections.observableArrayList(callback);
 
 		numberProperty = new javafx.beans.property.SimpleIntegerProperty(0);
 		numberProperty.addListener(new javafx.beans.value.ChangeListener<Number>() {
