@@ -60,13 +60,6 @@ public class App extends Application {
 		hbox.setMargin(clear, new javafx.geometry.Insets(2, 5, 2, 5));
 		hbox.getChildren().add(clear);
 
-		javafx.event.EventHandler<javafx.event.ActionEvent> clearEvent = new javafx.event.EventHandler<>() {
-			public void handle(javafx.event.ActionEvent e) {
-				model.getColorsProperty().clear();
-			}
-		};
-		clear.setOnAction(clearEvent);
-
 		vbox.getChildren().add(hbox);
 
 		javafx.scene.layout.VBox listOfColors = new javafx.scene.layout.VBox();
@@ -152,6 +145,21 @@ public class App extends Application {
 				progressBar.setVisible(false);
 			}
 		});
+
+		javafx.event.EventHandler<javafx.event.ActionEvent> clearEvent = new javafx.event.EventHandler<>() {
+			public void handle(javafx.event.ActionEvent e) {
+				if (service.isRunning()) {
+					log.warn("Currently running - can't clear yet!");
+					javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+							javafx.scene.control.Alert.AlertType.ERROR,
+							"Please be patient. You must wait for the current process to stop");
+					alert.show();
+					return;
+				}
+				model.getColorsProperty().clear();
+			}
+		};
+		clear.setOnAction(clearEvent);
 
 		progressBar.progressProperty().bind(service.progressProperty());
 
