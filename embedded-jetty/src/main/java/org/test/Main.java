@@ -1,11 +1,5 @@
 package org.test;
 
-import org.eclipse.jetty.annotations.AnnotationConfiguration;
-import org.eclipse.jetty.plus.webapp.EnvConfiguration;
-import org.eclipse.jetty.plus.webapp.PlusConfiguration;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.webapp.*;
-
 public class Main
 {
         public static void main(String[] args) throws Exception
@@ -17,6 +11,8 @@ public class Main
 		servletContext.setBaseResource( org.eclipse.jetty.util.resource.Resource.newResource( "src/main/webapp" ) );
 		servletContext.setContextPath( "/" );
 		servletContext.setWelcomeFiles(new String[]{"index.html", "welcome.html"});
+
+		servletContext.setAttribute( "fromMain", "passed in from Main" );
 
 		org.eclipse.jetty.servlet.ServletHolder holder = new org.eclipse.jetty.servlet.ServletHolder( "default", org.eclipse.jetty.servlet.DefaultServlet.class ); 
 		holder.setInitParameter( "dirAllowed","true");

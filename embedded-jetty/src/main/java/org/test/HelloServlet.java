@@ -7,7 +7,8 @@ public class HelloServlet extends jakarta.servlet.http.HttpServlet
 	{
 		jakarta.servlet.ServletOutputStream out = resp.getOutputStream();
 		out.write( "oh hello there ".getBytes() );
-		out.write( java.time.LocalDateTime.now().toString().getBytes() );
+		out.println( java.time.LocalDateTime.now().toString() );
+		out.println( "FromMain: " + getServletContext().getAttribute( "fromMain" ) );
 		out.flush();
 		out.close();
 	}
