@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  http://maven.apache.org/maven-v4_0_0.xsd">
+
+        <modelVersion>4.0.0</modelVersion>
+	<groupId>org.test</groupId>
+        <artifactId>embedded-jetty</artifactId>
+	<name>${artifactId}</name>
+	<version>0.1</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<jetty.version>11.0.15</jetty.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-annotations</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-slf4j-impl</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>embeddedJetty</finalName>
+		<plugins>
+			<plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <version>3.11.0</version>
+                                <configuration>
+                                        <source>11</source>
+                                        <target>11</target>
+                                        <showDeprecation>true</showDeprecation>
+                                        <showWarnings>true</showWarnings>
+                                        <compilerArgs>
+                                                <arg>-Xlint</arg>
+                                        </compilerArgs>
+                                </configuration>
+			</plugin>
+
+			<plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-assembly-plugin</artifactId>
+                                <executions>
+                                        <execution>
+                                                <phase>package</phase>
+                                                <goals>
+                                                        <goal>single</goal>
+                                                </goals>
+                                                <configuration>
+                                                        <archive>
+                                                                <manifest>
+                                                                        <mainClass>org.test.Main</mainClass>
+                                                                </manifest>
+                                                        </archive>
+                                                        <descriptorRefs>
+                                                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                                                        </descriptorRefs>
+                                                        <appendAssemblyId>false</appendAssemblyId>
+                                                </configuration>
+                                        </execution>
+                                </executions>
+                        </plugin>
+		</plugins>
+	</build>
+</project>	
