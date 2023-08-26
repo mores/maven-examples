@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example</groupId>
+	<artifactId>jersey3-swagger</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>11</java.version>
+		<jersey.version>3.1.3</jersey.version>
+		<swagger-ui.version>4.15.5</swagger-ui.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-jaxb</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>io.swagger.core.v3</groupId>
+		    <artifactId>swagger-jaxrs2-jakarta</artifactId>
+		    <version>2.2.15</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>jakarta.ws.rs</groupId>
+		    <artifactId>jakarta.ws.rs-api</artifactId>
+		    <version>3.1.0</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>jakarta.xml.bind</groupId>
+		    <artifactId>jakarta.xml.bind-api</artifactId>
+		    <version>4.0.0</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.glassfish.jersey.core</groupId>
+		    <artifactId>jersey-server</artifactId>
+		    <version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.glassfish.jersey.containers</groupId>
+		    <artifactId>jersey-container-servlet</artifactId>
+		    <version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.glassfish.jersey.inject</groupId>
+		    <artifactId>jersey-hk2</artifactId>
+		    <version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.glassfish.jersey.media</groupId>
+		    <artifactId>jersey-media-json-jackson</artifactId>
+		    <version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.glassfish.jaxb</groupId>
+		    <artifactId>jaxb-runtime</artifactId>
+		    <version>4.0.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>v1</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.4.0</version>
+				<executions>
+					<execution>
+						<id>enforce-maven</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.6.3</version>
+								</requireMavenVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<showDeprecation>true</showDeprecation>
+                                        <showWarnings>true</showWarnings>
+                                        <compilerArgs>
+                                                <arg>-Xlint</arg>
+                                        </compilerArgs>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.googlecode.maven-download-plugin</groupId>
+				<artifactId>download-maven-plugin</artifactId>
+				<version>1.7.1</version>
+				<executions>
+					<execution>
+						<id>swagger-ui</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>wget</goal>
+						</goals>
+						<configuration>
+							<url>https://github.com/swagger-api/swagger-ui/archive/v${swagger-ui.version}.tar.gz</url>
+							<unpack>true</unpack>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
+				<configuration>
+					<warName>${project.build.finalName}</warName>
+					<webappDirectory>${basedir}/target/${project.build.finalName}</webappDirectory>
+					<webResources>
+						<webResource>
+							<directory>${project.build.directory}/swagger-ui-${swagger-ui.version}/dist</directory>
+							<targetPath>swagger-ui</targetPath>
+						</webResource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>1</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<replace token= "https://petstore.swagger.io/v2/swagger.json" value="http://localhost:8080/v1/swagger.json" dir="target">
+									<include name="**/*"/>
+								</replace>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>io.swagger.core.v3</groupId>
+				<artifactId>swagger-maven-plugin-jakarta</artifactId>
+				<version>2.2.15</version>
+				<configuration>
+					<outputFileName>swagger</outputFileName>
+					<outputPath>${basedir}/target/${project.build.finalName}/</outputPath>
+					<outputFormat>JSON</outputFormat>
+					<resourcePackages>
+						<package>${project.groupId}</package>
+					</resourcePackages>
+					<prettyPrint>true</prettyPrint>
+					<configurationFilePath>src/main/resources/openapi.json</configurationFilePath>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>resolve</goal>
+						</goals>
+					</execution>
+				</executions>
+		    </plugin>
+
+		</plugins>
+	</build>
+</project>

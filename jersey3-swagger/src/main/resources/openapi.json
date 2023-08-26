@@ -1,0 +1,25 @@
+{
+    "openAPI": {
+        "info": {
+            "version": "1.0",
+            "title": "swagger-samples",
+            "description": "Swagger API: <b>MyEntity</b>",
+            "termsOfService": "http://localhost:8080/",
+            "contact": {
+                "email": "contact@localhost",
+                "name": "localhost",
+                "url": "http://localhost:8080/"
+            },
+            "license": {
+                "name": "localhost license",
+                "url": "http://localhost:8080/"
+            }
+        },
+        "servers": [
+            {
+                "url": "http://localhost:8080/v1",
+                "description": "Development server"
+            }
+        ]
+    }
+}
