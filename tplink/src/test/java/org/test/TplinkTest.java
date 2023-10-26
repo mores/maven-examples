@@ -13,8 +13,15 @@ public class TplinkTest
         {
                 log.info( "test" );
 
-		String json = "{\"system\":{\"get_sysinfo\":null}}";
-		log.info( "Json: " + json );
+		Pixel orange = new Pixel( 255, 40, 0 );
+		Kasa kasa = new Kasa( orange );
+
+		com.google.gson.Gson gson = new com.google.gson.Gson();
+		String json = gson.toJson( kasa );
+                log.info( "JSON: " + json );
+
+		//String json = "{\"system\":{\"get_sysinfo\":null}}";
+
 		byte[] encrypted = encrypt( json );
 		log.debug( "encrypted: " + org.apache.commons.codec.binary.Hex.encodeHexString( encrypted ) );
 
