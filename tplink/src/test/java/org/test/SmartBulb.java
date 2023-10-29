@@ -2,13 +2,13 @@ package org.test;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Kasa
+public class SmartBulb
 {
 	@SerializedName( "smartlife.iot.smartbulb.lightingservice" )
-	private Bulb lightingservice;
+	private LightState lightingservice;
 
-	public Kasa( Pixel pixel )
+	public SmartBulb( Pixel pixel )
 	{
-		lightingservice = new Bulb( pixel );
+		lightingservice = new LightState( pixel );
 	}
 } 
