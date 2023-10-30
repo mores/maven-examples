@@ -18,14 +18,25 @@ public class App extends Application {
 
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(App.class);
 
+	private JpaUtils jpaUtils;
+
 	private static final String[] SAMPLE_NAME_DATA = {"John", "Jill", "Jack", "Jerry"};
 
 	@Override
 	public void start(Stage stage) {
 
 		log.info("start");
+		jpaUtils = new JpaUtils();
 
 		final javafx.scene.control.ListView<String> nameView = new javafx.scene.control.ListView();
+
+		final Button submitNames = new Button("Submit names to the database");
+		submitNames.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				populateDatabase();
+			}
+		});
 
 		final Button fetchNames = new Button("Fetch names from the database");
 		fetchNames.setOnAction(new EventHandler<ActionEvent>() {
@@ -72,6 +83,7 @@ public class App extends Application {
 		layout.setStyle("-fx-background-color: cornsilk; -fx-padding: 15;");
 
 		javafx.scene.layout.HBox stuff = new javafx.scene.layout.HBox(10);
+		stuff.getChildren().add(submitNames);
 		stuff.getChildren().add(fetchNames);
 		stuff.getChildren().add(clearNameList);
 
@@ -95,68 +107,24 @@ public class App extends Application {
 	}
 
 	private void fetchNamesFromDatabaseToListView(ListView listView) {
-		try (Connection con = getConnection()) {
-			if (!schemaExists(con)) {
-				createSchema(con);
-				populateDatabase(con);
-			}
-			listView.setItems(fetchNames(con));
-		} catch (SQLException | ClassNotFoundException ex) {
-			log.error("Error: " + ex);
-		}
-	}
 
-	private Connection getConnection() throws ClassNotFoundException, SQLException {
-		log.info("Getting a database connection");
-		Class.forName("org.h2.Driver");
-		return DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-	}
+		java.util.List<Employee> list = jpaUtils.getEmployees();
+		log.info("Number of Employees: " + list.size());
 
-	private void createSchema(Connection con) throws SQLException {
-		log.info("Creating schema");
-		Statement st = con.createStatement();
-		String table = "create table employee(id integer, name varchar(64))";
-		st.executeUpdate(table);
-		log.info("Created schema");
-	}
-
-	private void populateDatabase(Connection con) throws SQLException {
-		log.info("Populating database");
-		Statement st = con.createStatement();
-		int i = 1;
-		for (String name : SAMPLE_NAME_DATA) {
-			st.executeUpdate("insert into employee values(" + i + ",'" + name + "')");
-			i++;
-		}
-		log.info("Populated database");
-	}
-
-	private boolean schemaExists(Connection con) {
-		log.info("Checking for Schema existence");
-		try {
-			Statement st = con.createStatement();
-			st.executeQuery("select count(*) from employee");
-			log.info("Schema exists");
-		} catch (SQLException ex) {
-			log.info("Existing DB not found will create a new one");
-			return false;
-		}
-
-		return true;
-	}
-
-	private javafx.collections.ObservableList<String> fetchNames(Connection con) throws SQLException {
-		log.info("Fetching names from database");
 		javafx.collections.ObservableList<String> names = javafx.collections.FXCollections.observableArrayList();
-
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select name from employee");
-		while (rs.next()) {
-			names.add(rs.getString("name"));
+		for (Employee employee : list) {
+			names.add(employee.getEname());
 		}
+		listView.setItems(names);
+	}
 
-		log.info("Found " + names.size() + " names");
+	private void populateDatabase() {
+		log.info("Populating database");
 
-		return names;
+		Employee employee = new Employee();
+		employee.setEname("Johnny");
+		employee.setSalary(40000);
+		employee.setDeg("Technical Manager");
+		jpaUtils.saveOrUpdate(employee);
 	}
 }
