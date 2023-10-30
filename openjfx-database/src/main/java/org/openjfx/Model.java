@@ -6,22 +6,12 @@ public class Model {
 
 	private javafx.stage.Stage stage;
 
-	private javafx.collections.ObservableList<ColorPlus> colorsProperty;
 	private javafx.beans.property.IntegerProperty numberProperty;
 	private javafx.beans.property.StringProperty textProperty;
 
 	public Model(javafx.stage.Stage stage) {
 
 		this.stage = stage;
-
-		javafx.util.Callback callback = new javafx.util.Callback<ColorPlus, javafx.beans.Observable[]>() {
-			@Override
-			public javafx.beans.Observable[] call(ColorPlus colorPlus) {
-				return new javafx.beans.Observable[]{colorPlus.getCompleteProperty()};
-			}
-		};
-
-		colorsProperty = javafx.collections.FXCollections.observableArrayList(callback);
 
 		numberProperty = new javafx.beans.property.SimpleIntegerProperty(0);
 		numberProperty.addListener(new javafx.beans.value.ChangeListener<Number>() {
@@ -46,16 +36,8 @@ public class Model {
 		});
 	}
 
-	public void addColor(ColorPlus color) {
-		colorsProperty.add(color);
-	}
-
 	public javafx.stage.Stage getStage() {
 		return stage;
-	}
-
-	public javafx.collections.ObservableList<ColorPlus> getColorsProperty() {
-		return colorsProperty;
 	}
 
 	public Integer getNumber() {
