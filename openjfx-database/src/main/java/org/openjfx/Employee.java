@@ -14,20 +14,27 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int eid;
 
-	private String ename;
+	private java.time.LocalDateTime created;
+	private String name;
 	private double salary;
 	private String deg;
 
-	public Employee(int eid, String ename, double salary, String deg) {
+	public Employee() {
 		super();
+		this.created = java.time.LocalDateTime.now();
+	}
+
+	public Employee(int eid, String name, double salary, String deg) {
+		super();
+		this.created = java.time.LocalDateTime.now();
 		this.eid = eid;
-		this.ename = ename;
+		this.name = name;
 		this.salary = salary;
 		this.deg = deg;
 	}
 
-	public Employee() {
-		super();
+	public java.time.LocalDateTime getCreated() {
+		return created;
 	}
 
 	public int getEid() {
@@ -38,12 +45,12 @@ public class Employee {
 		this.eid = eid;
 	}
 
-	public String getEname() {
-		return ename;
+	public String getName() {
+		return name;
 	}
 
-	public void setEname(String ename) {
-		this.ename = ename;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public double getSalary() {

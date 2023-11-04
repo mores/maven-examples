@@ -28,7 +28,18 @@ public class App extends Application {
 		log.info("start");
 		jpaUtils = new JpaUtils();
 
-		final javafx.scene.control.ListView<String> nameView = new javafx.scene.control.ListView();
+		final javafx.scene.control.TableView<Employee> tableView = new javafx.scene.control.TableView();
+
+		TableColumn createdCol = new TableColumn("Created");
+		createdCol.setMinWidth(200);
+		createdCol.setCellValueFactory(
+				new javafx.scene.control.cell.PropertyValueFactory<Employee, java.time.LocalDateTime>("created"));
+
+		TableColumn nameCol = new TableColumn("Name");
+		nameCol.setMinWidth(100);
+		nameCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<Employee, String>("name"));
+
+		tableView.getColumns().addAll(createdCol, nameCol);
 
 		final Button submitNames = new Button("Submit names to the database");
 		submitNames.setOnAction(new EventHandler<ActionEvent>() {
@@ -42,7 +53,7 @@ public class App extends Application {
 		fetchNames.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				fetchNamesFromDatabaseToListView(nameView);
+				fetchNamesFromDatabaseToListView(tableView);
 			}
 		});
 
@@ -50,7 +61,7 @@ public class App extends Application {
 		clearNameList.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				nameView.getItems().clear();
+				tableView.getItems().clear();
 			}
 		});
 
@@ -89,7 +100,7 @@ public class App extends Application {
 
 		layout.getChildren().setAll(stuff);
 
-		layout.getChildren().add(nameView);
+		layout.getChildren().add(tableView);
 		borderPane.setCenter(layout);
 
 		javafx.scene.control.Label label = new Label(
@@ -106,23 +117,23 @@ public class App extends Application {
 		launch();
 	}
 
-	private void fetchNamesFromDatabaseToListView(ListView listView) {
+	private void fetchNamesFromDatabaseToListView(TableView tableView) {
 
 		java.util.List<Employee> list = jpaUtils.getEmployees();
 		log.info("Number of Employees: " + list.size());
 
-		javafx.collections.ObservableList<String> names = javafx.collections.FXCollections.observableArrayList();
+		javafx.collections.ObservableList<Employee> names = javafx.collections.FXCollections.observableArrayList();
 		for (Employee employee : list) {
-			names.add(employee.getEname());
+			names.add(employee);
 		}
-		listView.setItems(names);
+		tableView.setItems(names);
 	}
 
 	private void populateDatabase() {
 		log.info("Populating database");
 
 		Employee employee = new Employee();
-		employee.setEname("Johnny");
+		employee.setName("Johnny");
 		employee.setSalary(40000);
 		employee.setDeg("Technical Manager");
 		jpaUtils.saveOrUpdate(employee);
