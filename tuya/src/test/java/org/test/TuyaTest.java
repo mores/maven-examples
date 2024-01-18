@@ -11,16 +11,26 @@ public class TuyaTest
 
 	private String ip = "";
 
+	@Test
+	public void testTwo() throws Exception
+        {
+                log.info( "testTwo" );
+		RealTimeAdjustment rta = new RealTimeAdjustment();
+		send( generate_payload( rta ) );
+	}
+
         @Test
         public void test() throws Exception
         {
                 log.info( "test" );
-
 		status();
         }
 
 	private String decrypt( byte[] payload ) throws Exception
 	{
+		log.info( "length: " + payload.length );
+		log.info( "decrypting: " + org.apache.commons.codec.binary.Hex.encodeHexString( payload ) );
+
 		javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("AES/ECB/PKCS5Padding");
                 javax.crypto.spec.SecretKeySpec keySpec = new javax.crypto.spec.SecretKeySpec( key.getBytes("UTF-8"), "AES");
                 cipher.init(javax.crypto.Cipher.DECRYPT_MODE, keySpec );
@@ -44,28 +54,62 @@ public class TuyaTest
 		return encrypted;
 	}
 
-	private byte[] generate_payload( String command ) throws Exception
+	private byte[] generate_payload( DataPoint dps ) throws Exception
 	{
-		log.info( "generate_payload: " + command );
+		log.info( "generate_payload: " + dps );
 
 		com.google.gson.Gson gson = new com.google.gson.Gson();
 
 		Payload payload = new Payload( devId );
+		if( dps != null )
+		{
+			payload.setDps( dps.getCommand() );
+		}
 		String json = gson.toJson( payload );
 		log.info( "JSON: " + json );
 
 		byte[] encrypted = encrypt( json );
 
+		java.io.ByteArrayOutputStream constructed = new java.io.ByteArrayOutputStream();
+		if( dps != null )
+		{
+			constructed.write( "3.3\0\0\0\0\0\0\0\0\0\0\0\0".getBytes() );
+			constructed.write( encrypted );
+		}
+		else
+		{
+			constructed.write( encrypted );
+		}
+
 		java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
-		output.write( encrypted );
+		output.write( constructed.toByteArray() );
 		output.write( org.apache.commons.codec.binary.Hex.decodeHex( "000000000000aa55" ) );
 		byte[] bff = output.toByteArray();
 
 		log.info( "bff: " + org.apache.commons.codec.binary.Hex.encodeHexString( bff ) );
+		log.info( "bff length: " + bff.length );
+
+		int payload_len = bff.length + 8 + 4;
+		log.info( "payload_len: " + payload_len );
 
 		output = new java.io.ByteArrayOutputStream();
-		output.write( org.apache.commons.codec.binary.Hex.decodeHex( "000055aa00000000000000" ) );
-		output.write( org.apache.commons.codec.binary.Hex.decodeHex( "0a" ) );
+
+		// prefix_nr
+		output.write( org.apache.commons.codec.binary.Hex.decodeHex( "000055aa0000" ) );
+
+		int msgSequence = 43;
+		output.write( msgSequence >> 8 );
+	        output.write( msgSequence );
+		output.write( org.apache.commons.codec.binary.Hex.decodeHex( "000000" ) );
+		// hexByte
+		if( dps != null )
+		{
+			output.write( org.apache.commons.codec.binary.Hex.decodeHex( "07" ) );
+		}
+		else
+		{
+			output.write( org.apache.commons.codec.binary.Hex.decodeHex( "0a" ) );
+		}
 		output.write( org.apache.commons.codec.binary.Hex.decodeHex( "000000" ) );
 		output.write( bff.length );
 		output.write( bff );
@@ -73,6 +117,7 @@ public class TuyaTest
 		byte[] buf = output.toByteArray();
 		Integer crc32b = crc32b( buf );
 		log.info( "HEX crc: " + Integer.toHexString( crc32b ) );
+		log.info( "HEX crc: " + Integer.toHexString( REV( crc32b ) ) );
 
 		byte[] crc_bytes = java.nio.ByteBuffer.allocate(4).putInt( crc32b ).array();
 		buf[ buf.length - 8 ] = crc_bytes[3];
@@ -103,6 +148,13 @@ public class TuyaTest
 
 		int messageStart = 0;
 		int messageEnd = 0;
+
+		if( 7 == message_type )
+		{
+			return;
+		}
+
+		// DP_QUERY
 		if( 10 == message_type )
 		{
 			messageStart = 20;
@@ -137,7 +189,7 @@ public class TuyaTest
 	private void status() throws Exception
 	{
 		log.info( "status" );
-		send( generate_payload("status") );
+		send( generate_payload(null) );
 	}
 
 	private Integer crc32b( byte[] bytes )
@@ -156,5 +208,16 @@ public class TuyaTest
 		log.info( "CRC32b: " + crc32b );
 
 		return crc32b;
+	}
+
+	private int REV(int n)
+	{
+		return ((n >> 24) & 0xff)
+		    | // (n >> 24) - 0x000000aa
+		    ((n << 8) & 0xff0000)
+		    | // (n << 24) - 0xdd000000
+		    ((n >> 8) & 0xff00)
+		    | // (((n >> 16) << 24) >> 16) - 0xbb00
+		    ((n << 24) & 0xff000000);
 	}
 }
