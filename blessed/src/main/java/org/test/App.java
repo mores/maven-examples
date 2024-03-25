@@ -6,6 +6,12 @@ public class App
 {
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( App.class );
 
+	// _ENV_SENSE_UUID = bluetooth.UUID(0x181A)
+	private static java.util.UUID SERVICE = java.util.UUID.fromString( "0000181a-0000-1000-8000-00805f9b34fb" );
+
+	// _TEMP_CHAR = bluetooth.UUID(0x2A6E)
+	private static java.util.UUID TEMP = java.util.UUID.fromString( "00002a6e-0000-1000-8000-00805f9b34fb" );
+
 	private final String[] args;
 	private String lookingFor;
 
@@ -21,13 +27,10 @@ public class App
         {
                 this.args = args;
 	
-		if( args.length < 1 )
+		if( args.length > 0 )
 		{
-			log.error( "Please supply address" );
-			System.exit( 0 );
+			this.lookingFor = args[0];
 		}
-
-		this.lookingFor = args[0];
         }
 
 	public void run()
@@ -44,11 +47,12 @@ public class App
 		@Override
 		public void onServicesDiscovered(@NotNull final com.welie.blessed.BluetoothPeripheral peripheral, @NotNull final java.util.List<com.welie.blessed.BluetoothGattService> services)
 		{
-			log.info( "onServicesDiscovered" );
+			for( com.welie.blessed.BluetoothGattService service : services )
+			{
+				log.info( "\tDiscovered Service: " + service.getUuid() );
+			}
 
-			// _ENV_SENSE_UUID = bluetooth.UUID(0x181A)
-			// _TEMP_CHAR = bluetooth.UUID(0x2A6E)
-			peripheral.setNotify( java.util.UUID.fromString( "0000181a-0000-1000-8000-00805f9b34fb" ), java.util.UUID.fromString( "00002a6e-0000-1000-8000-00805f9b34fb" ), true );
+			peripheral.setNotify( SERVICE, TEMP, true );
 		}
 
 		@Override
@@ -73,11 +77,12 @@ public class App
 			{
 				return;
 			}
-			log.info( "onDiscoveredPeripheral: " + peripheral.getAddress() );
+			log.info( "onDiscoveredPeripheral: " + peripheral.getAddress() + "\t" + peripheral.getName() );
 			knownDevices.add( peripheral.getAddress() );
 
 			if( peripheral.getAddress().equals( lookingFor ) )
 			{
+				central.stopScan();
 				central.connectPeripheral( peripheral, peripheralCallback );
 			}
 		}
