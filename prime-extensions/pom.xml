@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  http://maven.apache.org/maven-v4_0_0.xsd">
+
+        <modelVersion>4.0.0</modelVersion>
+	<groupId>org.test</groupId>
+        <artifactId>prime-menuBar</artifactId>
+	<name>${artifactId}</name>
+	<version>0.1</version>
+	<packaging>war</packaging>
+
+	<repositories>
+        </repositories>
+
+	<properties>
+		<primefaces.version>14.0.0</primefaces.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>primefaces-extensions</artifactId>
+			<version>14.0.0</version>
+			<classifier>jakarta</classifier>
+		</dependency>
+
+		<dependency>
+                        <groupId>org.primefaces</groupId>
+                        <artifactId>primefaces</artifactId>
+                        <version>${primefaces.version}</version>
+			<classifier>jakarta</classifier>
+                </dependency>
+
+		<dependency>
+                        <groupId>org.jboss.weld.servlet</groupId>
+                        <artifactId>weld-servlet-shaded</artifactId>
+                        <version>5.1.2.Final</version>
+                </dependency>
+
+                <dependency>
+                        <groupId>jakarta.faces</groupId>
+                        <artifactId>jakarta.faces-api</artifactId>
+                        <version>4.0.1</version>
+                </dependency>
+
+                <dependency>
+                        <groupId>org.glassfish</groupId>
+                        <artifactId>jakarta.faces</artifactId>
+                        <version>4.0.5</version>
+                </dependency>
+		
+	</dependencies>
+
+	<build>
+		<finalName>pc</finalName>
+                <plugins>
+                        <plugin>
+                                <groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>11.0.21</version>
+                                <configuration>
+					<httpConnector>
+						<port>9090</port>
+					</httpConnector>
+					<webApp>
+						<contextPath>/helloworld</contextPath>
+					</webApp>
+                                </configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.primefaces</groupId>
+						<artifactId>primefaces</artifactId>
+						<version>${primefaces.version}</version>
+						<classifier>jakarta</classifier>
+					</dependency>
+
+				</dependencies>
+                        </plugin>
+
+			<plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <configuration>
+                                        <source>11</source>
+                                        <target>11</target>
+                                </configuration>
+			</plugin>
+		</plugins>
+        </build>
+
+</project>

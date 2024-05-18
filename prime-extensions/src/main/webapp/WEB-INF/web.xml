@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app version="6.0">
+
+        <listener>
+                <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+        </listener>
+
+        <welcome-file-list>
+                <welcome-file>login.xhtml</welcome-file>
+        </welcome-file-list>
+
+        <context-param>
+                <param-name>primefaces.CSP</param-name>
+                <param-value>false</param-value>
+        </context-param>
+
+        <context-param>
+                <param-name>jakarta.faces.PROJECT_STAGE</param-name>
+                <param-value>Development</param-value>
+        </context-param>
+
+        <context-param>
+                <param-name>primefaces.THEME</param-name>
+                <param-value>saga</param-value>
+        </context-param>
+
+        <context-param>
+                <param-name>jakarta.faces.CLIENT_WINDOW_MODE</param-name>
+                <param-value>url</param-value>
+        </context-param>
+
+        <session-config>
+                <session-timeout>500</session-timeout>
+        </session-config>
+</web-app>

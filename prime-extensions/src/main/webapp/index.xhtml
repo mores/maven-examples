@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+	lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+>
+
+	<f:view contentType="text/html">
+
+	<h:head>
+	</h:head>
+	<h:body>
+
+	<p:messages />
+
+	<h:form id="form1">
+
+	<p:menubar>
+		<p:submenu label="File" icon="ui-icon-document">
+			<p:submenu label="New" icon="ui-icon-contact">
+				<p:menuitem value="Index" url="/helloworld/index.xhtml" />
+			</p:submenu>
+			<p:menuitem value="Open" url="#" />
+			<p:separator />
+			<p:menuitem value="Quit" url="#" />
+		</p:submenu>
+	</p:menubar>
+
+	<h:panelGrid column="1" width="100%">
+		<h:panelGroup style="display:block; text-align:center">
+
+			<h:outputText value="Project" />
+
+			<h:panelGrid column="1" width="100%">
+				<h:outputText value="JSF: #{systemBean.jsfVersion}" />
+				<h:outputText value="Prime: #{systemBean.primeVersion}" />
+			</h:panelGrid>
+
+			<p:poll interval="2" listener="#{pollView.increment}" update="txt_count"/>
+			<h:outputText id="txt_count" value="#{pollView.number}"/>
+
+			<pe:counter end="9000" separator=""/>		
+
+		</h:panelGroup>
+	</h:panelGrid>
+
+	</h:form>
+	</h:body>
+</f:view>
+</html>
