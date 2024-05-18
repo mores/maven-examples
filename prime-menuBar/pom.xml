@@ -9,15 +9,11 @@
 	<packaging>war</packaging>
 
 	<repositories>
-                <repository>
-                        <id>prime-repo</id>
-                        <url>http://repository.primefaces.org</url>
-                </repository>
         </repositories>
 
 	<properties>
                 <jsf-ri.version>2.2.12</jsf-ri.version>
-		<primefaces.version>7.0.29</primefaces.version>
+		<primefaces.version>7.0</primefaces.version>
 	</properties>
 
 	<dependencies>
@@ -62,19 +58,16 @@
 		<finalName>pc</finalName>
                 <plugins>
                         <plugin>
-                                <groupId>org.mortbay.jetty</groupId>
+                                <groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.1.v20120215</version>
+				<version>10.0.21</version>
                                 <configuration>
+					<httpConnector>
+						<port>9090</port>
+					</httpConnector>
 					<webApp>
 						<contextPath>/helloworld</contextPath>
 					</webApp>
-					<systemProperties>
-						<systemProperty>
-							<key>jetty.port</key>
-							<value>9090</value>
-						</systemProperty>
-					</systemProperties>
                                 </configuration>
 				<dependencies>
                                         <dependency>
