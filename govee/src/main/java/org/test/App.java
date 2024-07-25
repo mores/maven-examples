@@ -2,22 +2,24 @@ package org.test;
 
 import org.jetbrains.annotations.NotNull;
 
-/*
-*	all red 	- 0100ffff - 6e74665f656e61626c65 
-*	all yellow 	- 0100ffff - 6e74665f656e61626c65 
-*	all blue	- 0100ffff - 6e74665f656e61626c65
-*/
+// https://github.com/egold555/Govee-Reverse-Engineering/blob/master/Products/H6127.md
 
 public class App
 {
 	private static org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( App.class );
 
 	private final String[] args;
+	private String command;
 	private String lookingFor;
+
+	private static java.util.UUID GOVEE_CONTROL = java.util.UUID.fromString( "00010203-0405-0607-0809-0a0b0c0d2b11" );
 
 	private com.welie.blessed.BluetoothCentralManager central;
 	private com.welie.blessed.BluetoothPeripheral connectedPeripheral;
 	private static final java.util.Set<String> knownDevices = new java.util.HashSet<>();
+
+	private byte[] packetOn = new byte[20];
+	private byte[] packetOff = new byte[20];
 
 	public static void main( String[] args )
         {
@@ -26,11 +28,26 @@ public class App
 
         public App( String[] args )
         {
+		packetOn[0] = 0x33;
+                packetOn[1] = 0x01;
+                packetOn[2] = 0x01;
+                packetOn[19] = 0x33;
+
+                packetOff[0] = 0x33;
+                packetOff[1] = 0x01;
+                packetOff[2] = 0x00;
+                packetOff[19] = 0x32;
+
                 this.args = args;
 	
 		if( args.length > 0 )
 		{
 			this.lookingFor = args[0];
+		}
+
+		if( args.length > 1 )
+		{
+			this.command = args[1];
 		}
 
 		Runtime.getRuntime().addShutdownHook(new Thread()
@@ -77,16 +94,19 @@ public class App
 				java.util.List<com.welie.blessed.BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
 				for( com.welie.blessed.BluetoothGattCharacteristic characteristic : characteristics )
 				{
-					log.info( "\t\tDiscovered Characteristic: " + characteristic.getUuid() + "\t" + characteristic.getProperties() );
-					log.info( "\t\t\tsupportsReading: " + characteristic.supportsReading() );
-					log.info( "\t\t\tsupportsWritingWithResponse: " + characteristic.supportsWritingWithResponse() );
-					log.info( "\t\t\tsupportsWritingWithoutResponse: " + characteristic.supportsWritingWithoutResponse() );
-					log.info( "\t\t\tsupportsNotifying: " + characteristic.supportsNotifying() );
-
-					if( characteristic.supportsReading() )
+					if( characteristic.getUuid().equals( GOVEE_CONTROL ))
 					{
-						boolean read = peripheral.readCharacteristic( characteristic );
-						log.info( "Read: " + read );
+						byte[] packet = packetOn;
+						if( "on".equals( command ) )
+						{
+							packet = packetOn;
+						}
+						else if( "off".equals( command ) )
+						{
+							packet = packetOff;
+						}
+
+						peripheral.writeCharacteristic( characteristic, packet, com.welie.blessed.BluetoothGattCharacteristic.WriteType.WITH_RESPONSE);
 					}
 				}
 			}
