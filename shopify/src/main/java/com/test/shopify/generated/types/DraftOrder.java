@@ -1,0 +1,1853 @@
+package com.test.shopify.generated.types;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.lang.Object;
+import java.lang.Override;
+import java.lang.String;
+import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * An order that a merchant creates on behalf of a customer. Draft orders are
+ * useful for merchants that need to do the following tasks:
+ *
+ * - Create new orders for sales made by phone, in person, by chat, or elsewhere.
+ * When a merchant accepts payment for a draft order, an order is created.
+ * - Send invoices to customers to pay with a secure checkout link.
+ * - Use custom items to represent additional costs or products that aren't displayed in a shop's inventory.
+ * - Re-create orders manually from active sales channels.
+ * - Sell products at discount or wholesale rates.
+ * - Take pre-orders.
+ * - Save an order as a draft and resume working on it later.
+ *
+ * For draft orders in multiple currencies `presentment_money` is the source of
+ * truth for what a customer is going to be charged and `shop_money` is an estimate
+ * of what the merchant might receive in their shop currency.
+ *
+ * **Caution:** Only use this data if it's required for your app's functionality.
+ * Shopify will restrict [access to
+ * scopes](https://shopify.dev/api/usage/access-scopes) for apps that don't have a
+ * legitimate use for the associated data.
+ */
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NONE
+)
+public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.test.shopify.generated.types.CommentEventSubject, com.test.shopify.generated.types.HasEvents, com.test.shopify.generated.types.HasLocalizationExtensions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Navigable, com.test.shopify.generated.types.Node {
+  /**
+   * The custom order-level discount applied.
+   */
+  private DraftOrderAppliedDiscount appliedDiscount;
+
+  /**
+   * The billing address of the customer.
+   */
+  private MailingAddress billingAddress;
+
+  /**
+   * Whether the billing address matches the shipping address.
+   */
+  private boolean billingAddressMatchesShippingAddress;
+
+  /**
+   * The date and time when the draft order was converted to a new order,
+   * and had it's status changed to **Completed**.
+   */
+  private OffsetDateTime completedAt;
+
+  /**
+   * The date and time when the draft order was created in Shopify.
+   */
+  private OffsetDateTime createdAt;
+
+  /**
+   * The shop currency used for calculation.
+   */
+  private CurrencyCode currencyCode;
+
+  /**
+   * The custom information added to the draft order on behalf of the customer.
+   */
+  private List<Attribute> customAttributes;
+
+  /**
+   * The customer who will be sent an invoice.
+   */
+  private Customer customer;
+
+  /**
+   * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that
+   * returns the single next record, sorted ascending by ID.
+   */
+  private String defaultCursor;
+
+  /**
+   * The email address of the customer, which is used to send notifications.
+   */
+  private String email;
+
+  /**
+   * The list of events associated with the draft order.
+   */
+  private EventConnection events;
+
+  /**
+   * Whether the merchant has added timeline comments to the draft order.
+   */
+  private boolean hasTimelineComment;
+
+  /**
+   * A globally-unique ID.
+   */
+  private String id;
+
+  /**
+   * The subject defined for the draft invoice email template.
+   */
+  private String invoiceEmailTemplateSubject;
+
+  /**
+   * The date and time when the invoice was last emailed to the customer.
+   */
+  private OffsetDateTime invoiceSentAt;
+
+  /**
+   * The link to the checkout, which is sent to the customer in the invoice email.
+   */
+  private String invoiceUrl;
+
+  /**
+   * The ID of the corresponding resource in the REST Admin API.
+   */
+  private String legacyResourceId;
+
+  /**
+   * The list of the line items in the draft order.
+   */
+  private DraftOrderLineItemConnection lineItems;
+
+  /**
+   * A subtotal of the line items and corresponding discounts,
+   * excluding include shipping charges, shipping discounts, taxes, or order discounts.
+   */
+  private MoneyBag lineItemsSubtotalPrice;
+
+  /**
+   * List of localization extensions for the resource.
+   */
+  private LocalizationExtensionConnection localizationExtensions;
+
+  /**
+   * The name of the selected market.
+   */
+  private String marketName;
+
+  /**
+   * The selected country code that determines the pricing.
+   */
+  private CountryCode marketRegionCountryCode;
+
+  /**
+   * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+   * including its `namespace` and `key`, that's associated with a Shopify resource
+   * for the purposes of adding and storing additional information.
+   */
+  private Metafield metafield;
+
+  /**
+   * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+   * that a merchant associates with a Shopify resource.
+   */
+  private MetafieldConnection metafields;
+
+  /**
+   * The identifier for the draft order, which is unique within the store. For example, _#D1223_.
+   */
+  private String name;
+
+  /**
+   * The text from an optional note attached to the draft order.
+   */
+  private String note2;
+
+  /**
+   * The order that was created from the draft order.
+   */
+  private Order order;
+
+  /**
+   * The associated payment terms for this draft order.
+   */
+  private PaymentTerms paymentTerms;
+
+  /**
+   * The assigned phone number.
+   */
+  private String phone;
+
+  /**
+   * The purchase order number.
+   */
+  private String poNumber;
+
+  /**
+   * The payment currency used for calculation.
+   */
+  private CurrencyCode presentmentCurrencyCode;
+
+  /**
+   * Returns a private metafield by namespace and key that belongs to the resource.
+   */
+  private PrivateMetafield privateMetafield;
+
+  /**
+   * List of private metafields that belong to the resource.
+   */
+  private PrivateMetafieldConnection privateMetafields;
+
+  /**
+   * The purchasing entity.
+   */
+  private PurchasingEntity purchasingEntity;
+
+  /**
+   * Whether the draft order is ready and can be completed.
+   * Draft orders might have asynchronous operations that can take time to finish.
+   */
+  private boolean ready;
+
+  /**
+   * The time after which inventory will automatically be restocked.
+   */
+  private OffsetDateTime reserveInventoryUntil;
+
+  /**
+   * The shipping address of the customer.
+   */
+  private MailingAddress shippingAddress;
+
+  /**
+   * The line item containing the shipping information and costs.
+   */
+  private ShippingLine shippingLine;
+
+  /**
+   * The status of the draft order.
+   */
+  private DraftOrderStatus status;
+
+  /**
+   * The subtotal, in shop currency, of the line items and their discounts,
+   * excluding shipping charges, shipping discounts, and taxes.
+   */
+  private String subtotalPrice;
+
+  /**
+   * The subtotal, of the line items and their discounts, excluding shipping charges, shipping discounts, and taxes.
+   */
+  private MoneyBag subtotalPriceSet;
+
+  /**
+   * The comma separated list of tags associated with the draft order.
+   * Updating `tags` overwrites any existing tags that were previously added to the draft order.
+   * To add new tags without overwriting existing tags, use the
+   * [tagsAdd](https://shopify.dev/api/admin-graphql/latest/mutations/tagsadd) mutation.
+   */
+  private List<String> tags;
+
+  /**
+   * Whether the draft order is tax exempt.
+   */
+  private boolean taxExempt;
+
+  /**
+   * The list of of taxes lines charged for each line item and shipping line.
+   */
+  private List<TaxLine> taxLines;
+
+  /**
+   * Whether the line item prices include taxes.
+   */
+  private boolean taxesIncluded;
+
+  /**
+   * Total discounts.
+   */
+  private MoneyBag totalDiscountsSet;
+
+  /**
+   * Total price of line items.
+   */
+  private MoneyBag totalLineItemsPriceSet;
+
+  /**
+   * The total price, in shop currency, includes taxes, shipping charges, and discounts.
+   */
+  private String totalPrice;
+
+  /**
+   * The total price, includes taxes, shipping charges, and discounts.
+   */
+  private MoneyBag totalPriceSet;
+
+  /**
+   * The total shipping price in shop currency.
+   */
+  private String totalShippingPrice;
+
+  /**
+   * The total shipping price.
+   */
+  private MoneyBag totalShippingPriceSet;
+
+  /**
+   * The total tax in shop currency.
+   */
+  private String totalTax;
+
+  /**
+   * The total tax.
+   */
+  private MoneyBag totalTaxSet;
+
+  /**
+   * The total weight in grams of the draft order.
+   */
+  private String totalWeight;
+
+  /**
+   * The date and time when the draft order was last changed.
+   * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
+   */
+  private OffsetDateTime updatedAt;
+
+  /**
+   * Whether the draft order will be visible to the customer on the self-serve portal.
+   */
+  private boolean visibleToCustomer;
+
+  public DraftOrder() {
+  }
+
+  /**
+   * The custom order-level discount applied.
+   */
+  public DraftOrderAppliedDiscount getAppliedDiscount() {
+    return appliedDiscount;
+  }
+
+  public void setAppliedDiscount(DraftOrderAppliedDiscount appliedDiscount) {
+    this.appliedDiscount = appliedDiscount;
+  }
+
+  /**
+   * The billing address of the customer.
+   */
+  public MailingAddress getBillingAddress() {
+    return billingAddress;
+  }
+
+  public void setBillingAddress(MailingAddress billingAddress) {
+    this.billingAddress = billingAddress;
+  }
+
+  /**
+   * Whether the billing address matches the shipping address.
+   */
+  public boolean getBillingAddressMatchesShippingAddress() {
+    return billingAddressMatchesShippingAddress;
+  }
+
+  public void setBillingAddressMatchesShippingAddress(
+      boolean billingAddressMatchesShippingAddress) {
+    this.billingAddressMatchesShippingAddress = billingAddressMatchesShippingAddress;
+  }
+
+  /**
+   * The date and time when the draft order was converted to a new order,
+   * and had it's status changed to **Completed**.
+   */
+  public OffsetDateTime getCompletedAt() {
+    return completedAt;
+  }
+
+  public void setCompletedAt(OffsetDateTime completedAt) {
+    this.completedAt = completedAt;
+  }
+
+  /**
+   * The date and time when the draft order was created in Shopify.
+   */
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  /**
+   * The shop currency used for calculation.
+   */
+  public CurrencyCode getCurrencyCode() {
+    return currencyCode;
+  }
+
+  public void setCurrencyCode(CurrencyCode currencyCode) {
+    this.currencyCode = currencyCode;
+  }
+
+  /**
+   * The custom information added to the draft order on behalf of the customer.
+   */
+  public List<Attribute> getCustomAttributes() {
+    return customAttributes;
+  }
+
+  public void setCustomAttributes(List<Attribute> customAttributes) {
+    this.customAttributes = customAttributes;
+  }
+
+  /**
+   * The customer who will be sent an invoice.
+   */
+  public Customer getCustomer() {
+    return customer;
+  }
+
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
+  }
+
+  /**
+   * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that
+   * returns the single next record, sorted ascending by ID.
+   */
+  public String getDefaultCursor() {
+    return defaultCursor;
+  }
+
+  public void setDefaultCursor(String defaultCursor) {
+    this.defaultCursor = defaultCursor;
+  }
+
+  /**
+   * The email address of the customer, which is used to send notifications.
+   */
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  /**
+   * The list of events associated with the draft order.
+   */
+  public EventConnection getEvents() {
+    return events;
+  }
+
+  public void setEvents(EventConnection events) {
+    this.events = events;
+  }
+
+  /**
+   * Whether the merchant has added timeline comments to the draft order.
+   */
+  public boolean getHasTimelineComment() {
+    return hasTimelineComment;
+  }
+
+  public void setHasTimelineComment(boolean hasTimelineComment) {
+    this.hasTimelineComment = hasTimelineComment;
+  }
+
+  /**
+   * A globally-unique ID.
+   */
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * The subject defined for the draft invoice email template.
+   */
+  public String getInvoiceEmailTemplateSubject() {
+    return invoiceEmailTemplateSubject;
+  }
+
+  public void setInvoiceEmailTemplateSubject(String invoiceEmailTemplateSubject) {
+    this.invoiceEmailTemplateSubject = invoiceEmailTemplateSubject;
+  }
+
+  /**
+   * The date and time when the invoice was last emailed to the customer.
+   */
+  public OffsetDateTime getInvoiceSentAt() {
+    return invoiceSentAt;
+  }
+
+  public void setInvoiceSentAt(OffsetDateTime invoiceSentAt) {
+    this.invoiceSentAt = invoiceSentAt;
+  }
+
+  /**
+   * The link to the checkout, which is sent to the customer in the invoice email.
+   */
+  public String getInvoiceUrl() {
+    return invoiceUrl;
+  }
+
+  public void setInvoiceUrl(String invoiceUrl) {
+    this.invoiceUrl = invoiceUrl;
+  }
+
+  /**
+   * The ID of the corresponding resource in the REST Admin API.
+   */
+  public String getLegacyResourceId() {
+    return legacyResourceId;
+  }
+
+  public void setLegacyResourceId(String legacyResourceId) {
+    this.legacyResourceId = legacyResourceId;
+  }
+
+  /**
+   * The list of the line items in the draft order.
+   */
+  public DraftOrderLineItemConnection getLineItems() {
+    return lineItems;
+  }
+
+  public void setLineItems(DraftOrderLineItemConnection lineItems) {
+    this.lineItems = lineItems;
+  }
+
+  /**
+   * A subtotal of the line items and corresponding discounts,
+   * excluding include shipping charges, shipping discounts, taxes, or order discounts.
+   */
+  public MoneyBag getLineItemsSubtotalPrice() {
+    return lineItemsSubtotalPrice;
+  }
+
+  public void setLineItemsSubtotalPrice(MoneyBag lineItemsSubtotalPrice) {
+    this.lineItemsSubtotalPrice = lineItemsSubtotalPrice;
+  }
+
+  /**
+   * List of localization extensions for the resource.
+   */
+  public LocalizationExtensionConnection getLocalizationExtensions() {
+    return localizationExtensions;
+  }
+
+  public void setLocalizationExtensions(LocalizationExtensionConnection localizationExtensions) {
+    this.localizationExtensions = localizationExtensions;
+  }
+
+  /**
+   * The name of the selected market.
+   */
+  public String getMarketName() {
+    return marketName;
+  }
+
+  public void setMarketName(String marketName) {
+    this.marketName = marketName;
+  }
+
+  /**
+   * The selected country code that determines the pricing.
+   */
+  public CountryCode getMarketRegionCountryCode() {
+    return marketRegionCountryCode;
+  }
+
+  public void setMarketRegionCountryCode(CountryCode marketRegionCountryCode) {
+    this.marketRegionCountryCode = marketRegionCountryCode;
+  }
+
+  /**
+   * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+   * including its `namespace` and `key`, that's associated with a Shopify resource
+   * for the purposes of adding and storing additional information.
+   */
+  public Metafield getMetafield() {
+    return metafield;
+  }
+
+  public void setMetafield(Metafield metafield) {
+    this.metafield = metafield;
+  }
+
+  /**
+   * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+   * that a merchant associates with a Shopify resource.
+   */
+  public MetafieldConnection getMetafields() {
+    return metafields;
+  }
+
+  public void setMetafields(MetafieldConnection metafields) {
+    this.metafields = metafields;
+  }
+
+  /**
+   * The identifier for the draft order, which is unique within the store. For example, _#D1223_.
+   */
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * The text from an optional note attached to the draft order.
+   */
+  public String getNote2() {
+    return note2;
+  }
+
+  public void setNote2(String note2) {
+    this.note2 = note2;
+  }
+
+  /**
+   * The order that was created from the draft order.
+   */
+  public Order getOrder() {
+    return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
+
+  /**
+   * The associated payment terms for this draft order.
+   */
+  public PaymentTerms getPaymentTerms() {
+    return paymentTerms;
+  }
+
+  public void setPaymentTerms(PaymentTerms paymentTerms) {
+    this.paymentTerms = paymentTerms;
+  }
+
+  /**
+   * The assigned phone number.
+   */
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  /**
+   * The purchase order number.
+   */
+  public String getPoNumber() {
+    return poNumber;
+  }
+
+  public void setPoNumber(String poNumber) {
+    this.poNumber = poNumber;
+  }
+
+  /**
+   * The payment currency used for calculation.
+   */
+  public CurrencyCode getPresentmentCurrencyCode() {
+    return presentmentCurrencyCode;
+  }
+
+  public void setPresentmentCurrencyCode(CurrencyCode presentmentCurrencyCode) {
+    this.presentmentCurrencyCode = presentmentCurrencyCode;
+  }
+
+  /**
+   * Returns a private metafield by namespace and key that belongs to the resource.
+   */
+  public PrivateMetafield getPrivateMetafield() {
+    return privateMetafield;
+  }
+
+  public void setPrivateMetafield(PrivateMetafield privateMetafield) {
+    this.privateMetafield = privateMetafield;
+  }
+
+  /**
+   * List of private metafields that belong to the resource.
+   */
+  public PrivateMetafieldConnection getPrivateMetafields() {
+    return privateMetafields;
+  }
+
+  public void setPrivateMetafields(PrivateMetafieldConnection privateMetafields) {
+    this.privateMetafields = privateMetafields;
+  }
+
+  /**
+   * The purchasing entity.
+   */
+  public PurchasingEntity getPurchasingEntity() {
+    return purchasingEntity;
+  }
+
+  public void setPurchasingEntity(PurchasingEntity purchasingEntity) {
+    this.purchasingEntity = purchasingEntity;
+  }
+
+  /**
+   * Whether the draft order is ready and can be completed.
+   * Draft orders might have asynchronous operations that can take time to finish.
+   */
+  public boolean getReady() {
+    return ready;
+  }
+
+  public void setReady(boolean ready) {
+    this.ready = ready;
+  }
+
+  /**
+   * The time after which inventory will automatically be restocked.
+   */
+  public OffsetDateTime getReserveInventoryUntil() {
+    return reserveInventoryUntil;
+  }
+
+  public void setReserveInventoryUntil(OffsetDateTime reserveInventoryUntil) {
+    this.reserveInventoryUntil = reserveInventoryUntil;
+  }
+
+  /**
+   * The shipping address of the customer.
+   */
+  public MailingAddress getShippingAddress() {
+    return shippingAddress;
+  }
+
+  public void setShippingAddress(MailingAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
+  }
+
+  /**
+   * The line item containing the shipping information and costs.
+   */
+  public ShippingLine getShippingLine() {
+    return shippingLine;
+  }
+
+  public void setShippingLine(ShippingLine shippingLine) {
+    this.shippingLine = shippingLine;
+  }
+
+  /**
+   * The status of the draft order.
+   */
+  public DraftOrderStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(DraftOrderStatus status) {
+    this.status = status;
+  }
+
+  /**
+   * The subtotal, in shop currency, of the line items and their discounts,
+   * excluding shipping charges, shipping discounts, and taxes.
+   */
+  public String getSubtotalPrice() {
+    return subtotalPrice;
+  }
+
+  public void setSubtotalPrice(String subtotalPrice) {
+    this.subtotalPrice = subtotalPrice;
+  }
+
+  /**
+   * The subtotal, of the line items and their discounts, excluding shipping charges, shipping discounts, and taxes.
+   */
+  public MoneyBag getSubtotalPriceSet() {
+    return subtotalPriceSet;
+  }
+
+  public void setSubtotalPriceSet(MoneyBag subtotalPriceSet) {
+    this.subtotalPriceSet = subtotalPriceSet;
+  }
+
+  /**
+   * The comma separated list of tags associated with the draft order.
+   * Updating `tags` overwrites any existing tags that were previously added to the draft order.
+   * To add new tags without overwriting existing tags, use the
+   * [tagsAdd](https://shopify.dev/api/admin-graphql/latest/mutations/tagsadd) mutation.
+   */
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+  /**
+   * Whether the draft order is tax exempt.
+   */
+  public boolean getTaxExempt() {
+    return taxExempt;
+  }
+
+  public void setTaxExempt(boolean taxExempt) {
+    this.taxExempt = taxExempt;
+  }
+
+  /**
+   * The list of of taxes lines charged for each line item and shipping line.
+   */
+  public List<TaxLine> getTaxLines() {
+    return taxLines;
+  }
+
+  public void setTaxLines(List<TaxLine> taxLines) {
+    this.taxLines = taxLines;
+  }
+
+  /**
+   * Whether the line item prices include taxes.
+   */
+  public boolean getTaxesIncluded() {
+    return taxesIncluded;
+  }
+
+  public void setTaxesIncluded(boolean taxesIncluded) {
+    this.taxesIncluded = taxesIncluded;
+  }
+
+  /**
+   * Total discounts.
+   */
+  public MoneyBag getTotalDiscountsSet() {
+    return totalDiscountsSet;
+  }
+
+  public void setTotalDiscountsSet(MoneyBag totalDiscountsSet) {
+    this.totalDiscountsSet = totalDiscountsSet;
+  }
+
+  /**
+   * Total price of line items.
+   */
+  public MoneyBag getTotalLineItemsPriceSet() {
+    return totalLineItemsPriceSet;
+  }
+
+  public void setTotalLineItemsPriceSet(MoneyBag totalLineItemsPriceSet) {
+    this.totalLineItemsPriceSet = totalLineItemsPriceSet;
+  }
+
+  /**
+   * The total price, in shop currency, includes taxes, shipping charges, and discounts.
+   */
+  public String getTotalPrice() {
+    return totalPrice;
+  }
+
+  public void setTotalPrice(String totalPrice) {
+    this.totalPrice = totalPrice;
+  }
+
+  /**
+   * The total price, includes taxes, shipping charges, and discounts.
+   */
+  public MoneyBag getTotalPriceSet() {
+    return totalPriceSet;
+  }
+
+  public void setTotalPriceSet(MoneyBag totalPriceSet) {
+    this.totalPriceSet = totalPriceSet;
+  }
+
+  /**
+   * The total shipping price in shop currency.
+   */
+  public String getTotalShippingPrice() {
+    return totalShippingPrice;
+  }
+
+  public void setTotalShippingPrice(String totalShippingPrice) {
+    this.totalShippingPrice = totalShippingPrice;
+  }
+
+  /**
+   * The total shipping price.
+   */
+  public MoneyBag getTotalShippingPriceSet() {
+    return totalShippingPriceSet;
+  }
+
+  public void setTotalShippingPriceSet(MoneyBag totalShippingPriceSet) {
+    this.totalShippingPriceSet = totalShippingPriceSet;
+  }
+
+  /**
+   * The total tax in shop currency.
+   */
+  public String getTotalTax() {
+    return totalTax;
+  }
+
+  public void setTotalTax(String totalTax) {
+    this.totalTax = totalTax;
+  }
+
+  /**
+   * The total tax.
+   */
+  public MoneyBag getTotalTaxSet() {
+    return totalTaxSet;
+  }
+
+  public void setTotalTaxSet(MoneyBag totalTaxSet) {
+    this.totalTaxSet = totalTaxSet;
+  }
+
+  /**
+   * The total weight in grams of the draft order.
+   */
+  public String getTotalWeight() {
+    return totalWeight;
+  }
+
+  public void setTotalWeight(String totalWeight) {
+    this.totalWeight = totalWeight;
+  }
+
+  /**
+   * The date and time when the draft order was last changed.
+   * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
+   */
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  /**
+   * Whether the draft order will be visible to the customer on the self-serve portal.
+   */
+  public boolean getVisibleToCustomer() {
+    return visibleToCustomer;
+  }
+
+  public void setVisibleToCustomer(boolean visibleToCustomer) {
+    this.visibleToCustomer = visibleToCustomer;
+  }
+
+  @Override
+  public String toString() {
+    return "DraftOrder{appliedDiscount='" + appliedDiscount + "', billingAddress='" + billingAddress + "', billingAddressMatchesShippingAddress='" + billingAddressMatchesShippingAddress + "', completedAt='" + completedAt + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', customAttributes='" + customAttributes + "', customer='" + customer + "', defaultCursor='" + defaultCursor + "', email='" + email + "', events='" + events + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', invoiceEmailTemplateSubject='" + invoiceEmailTemplateSubject + "', invoiceSentAt='" + invoiceSentAt + "', invoiceUrl='" + invoiceUrl + "', legacyResourceId='" + legacyResourceId + "', lineItems='" + lineItems + "', lineItemsSubtotalPrice='" + lineItemsSubtotalPrice + "', localizationExtensions='" + localizationExtensions + "', marketName='" + marketName + "', marketRegionCountryCode='" + marketRegionCountryCode + "', metafield='" + metafield + "', metafields='" + metafields + "', name='" + name + "', note2='" + note2 + "', order='" + order + "', paymentTerms='" + paymentTerms + "', phone='" + phone + "', poNumber='" + poNumber + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', purchasingEntity='" + purchasingEntity + "', ready='" + ready + "', reserveInventoryUntil='" + reserveInventoryUntil + "', shippingAddress='" + shippingAddress + "', shippingLine='" + shippingLine + "', status='" + status + "', subtotalPrice='" + subtotalPrice + "', subtotalPriceSet='" + subtotalPriceSet + "', tags='" + tags + "', taxExempt='" + taxExempt + "', taxLines='" + taxLines + "', taxesIncluded='" + taxesIncluded + "', totalDiscountsSet='" + totalDiscountsSet + "', totalLineItemsPriceSet='" + totalLineItemsPriceSet + "', totalPrice='" + totalPrice + "', totalPriceSet='" + totalPriceSet + "', totalShippingPrice='" + totalShippingPrice + "', totalShippingPriceSet='" + totalShippingPriceSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "', totalWeight='" + totalWeight + "', updatedAt='" + updatedAt + "', visibleToCustomer='" + visibleToCustomer + "'}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DraftOrder that = (DraftOrder) o;
+    return Objects.equals(appliedDiscount, that.appliedDiscount) &&
+        Objects.equals(billingAddress, that.billingAddress) &&
+        billingAddressMatchesShippingAddress == that.billingAddressMatchesShippingAddress &&
+        Objects.equals(completedAt, that.completedAt) &&
+        Objects.equals(createdAt, that.createdAt) &&
+        Objects.equals(currencyCode, that.currencyCode) &&
+        Objects.equals(customAttributes, that.customAttributes) &&
+        Objects.equals(customer, that.customer) &&
+        Objects.equals(defaultCursor, that.defaultCursor) &&
+        Objects.equals(email, that.email) &&
+        Objects.equals(events, that.events) &&
+        hasTimelineComment == that.hasTimelineComment &&
+        Objects.equals(id, that.id) &&
+        Objects.equals(invoiceEmailTemplateSubject, that.invoiceEmailTemplateSubject) &&
+        Objects.equals(invoiceSentAt, that.invoiceSentAt) &&
+        Objects.equals(invoiceUrl, that.invoiceUrl) &&
+        Objects.equals(legacyResourceId, that.legacyResourceId) &&
+        Objects.equals(lineItems, that.lineItems) &&
+        Objects.equals(lineItemsSubtotalPrice, that.lineItemsSubtotalPrice) &&
+        Objects.equals(localizationExtensions, that.localizationExtensions) &&
+        Objects.equals(marketName, that.marketName) &&
+        Objects.equals(marketRegionCountryCode, that.marketRegionCountryCode) &&
+        Objects.equals(metafield, that.metafield) &&
+        Objects.equals(metafields, that.metafields) &&
+        Objects.equals(name, that.name) &&
+        Objects.equals(note2, that.note2) &&
+        Objects.equals(order, that.order) &&
+        Objects.equals(paymentTerms, that.paymentTerms) &&
+        Objects.equals(phone, that.phone) &&
+        Objects.equals(poNumber, that.poNumber) &&
+        Objects.equals(presentmentCurrencyCode, that.presentmentCurrencyCode) &&
+        Objects.equals(privateMetafield, that.privateMetafield) &&
+        Objects.equals(privateMetafields, that.privateMetafields) &&
+        Objects.equals(purchasingEntity, that.purchasingEntity) &&
+        ready == that.ready &&
+        Objects.equals(reserveInventoryUntil, that.reserveInventoryUntil) &&
+        Objects.equals(shippingAddress, that.shippingAddress) &&
+        Objects.equals(shippingLine, that.shippingLine) &&
+        Objects.equals(status, that.status) &&
+        Objects.equals(subtotalPrice, that.subtotalPrice) &&
+        Objects.equals(subtotalPriceSet, that.subtotalPriceSet) &&
+        Objects.equals(tags, that.tags) &&
+        taxExempt == that.taxExempt &&
+        Objects.equals(taxLines, that.taxLines) &&
+        taxesIncluded == that.taxesIncluded &&
+        Objects.equals(totalDiscountsSet, that.totalDiscountsSet) &&
+        Objects.equals(totalLineItemsPriceSet, that.totalLineItemsPriceSet) &&
+        Objects.equals(totalPrice, that.totalPrice) &&
+        Objects.equals(totalPriceSet, that.totalPriceSet) &&
+        Objects.equals(totalShippingPrice, that.totalShippingPrice) &&
+        Objects.equals(totalShippingPriceSet, that.totalShippingPriceSet) &&
+        Objects.equals(totalTax, that.totalTax) &&
+        Objects.equals(totalTaxSet, that.totalTaxSet) &&
+        Objects.equals(totalWeight, that.totalWeight) &&
+        Objects.equals(updatedAt, that.updatedAt) &&
+        visibleToCustomer == that.visibleToCustomer;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(appliedDiscount, billingAddress, billingAddressMatchesShippingAddress, completedAt, createdAt, currencyCode, customAttributes, customer, defaultCursor, email, events, hasTimelineComment, id, invoiceEmailTemplateSubject, invoiceSentAt, invoiceUrl, legacyResourceId, lineItems, lineItemsSubtotalPrice, localizationExtensions, marketName, marketRegionCountryCode, metafield, metafields, name, note2, order, paymentTerms, phone, poNumber, presentmentCurrencyCode, privateMetafield, privateMetafields, purchasingEntity, ready, reserveInventoryUntil, shippingAddress, shippingLine, status, subtotalPrice, subtotalPriceSet, tags, taxExempt, taxLines, taxesIncluded, totalDiscountsSet, totalLineItemsPriceSet, totalPrice, totalPriceSet, totalShippingPrice, totalShippingPriceSet, totalTax, totalTaxSet, totalWeight, updatedAt, visibleToCustomer);
+  }
+
+  public static Builder newBuilder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+    /**
+     * The custom order-level discount applied.
+     */
+    private DraftOrderAppliedDiscount appliedDiscount;
+
+    /**
+     * The billing address of the customer.
+     */
+    private MailingAddress billingAddress;
+
+    /**
+     * Whether the billing address matches the shipping address.
+     */
+    private boolean billingAddressMatchesShippingAddress;
+
+    /**
+     * The date and time when the draft order was converted to a new order,
+     * and had it's status changed to **Completed**.
+     */
+    private OffsetDateTime completedAt;
+
+    /**
+     * The date and time when the draft order was created in Shopify.
+     */
+    private OffsetDateTime createdAt;
+
+    /**
+     * The shop currency used for calculation.
+     */
+    private CurrencyCode currencyCode;
+
+    /**
+     * The custom information added to the draft order on behalf of the customer.
+     */
+    private List<Attribute> customAttributes;
+
+    /**
+     * The customer who will be sent an invoice.
+     */
+    private Customer customer;
+
+    /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that
+     * returns the single next record, sorted ascending by ID.
+     */
+    private String defaultCursor;
+
+    /**
+     * The email address of the customer, which is used to send notifications.
+     */
+    private String email;
+
+    /**
+     * The list of events associated with the draft order.
+     */
+    private EventConnection events;
+
+    /**
+     * Whether the merchant has added timeline comments to the draft order.
+     */
+    private boolean hasTimelineComment;
+
+    /**
+     * A globally-unique ID.
+     */
+    private String id;
+
+    /**
+     * The subject defined for the draft invoice email template.
+     */
+    private String invoiceEmailTemplateSubject;
+
+    /**
+     * The date and time when the invoice was last emailed to the customer.
+     */
+    private OffsetDateTime invoiceSentAt;
+
+    /**
+     * The link to the checkout, which is sent to the customer in the invoice email.
+     */
+    private String invoiceUrl;
+
+    /**
+     * The ID of the corresponding resource in the REST Admin API.
+     */
+    private String legacyResourceId;
+
+    /**
+     * The list of the line items in the draft order.
+     */
+    private DraftOrderLineItemConnection lineItems;
+
+    /**
+     * A subtotal of the line items and corresponding discounts,
+     * excluding include shipping charges, shipping discounts, taxes, or order discounts.
+     */
+    private MoneyBag lineItemsSubtotalPrice;
+
+    /**
+     * List of localization extensions for the resource.
+     */
+    private LocalizationExtensionConnection localizationExtensions;
+
+    /**
+     * The name of the selected market.
+     */
+    private String marketName;
+
+    /**
+     * The selected country code that determines the pricing.
+     */
+    private CountryCode marketRegionCountryCode;
+
+    /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     */
+    private Metafield metafield;
+
+    /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     */
+    private MetafieldConnection metafields;
+
+    /**
+     * The identifier for the draft order, which is unique within the store. For example, _#D1223_.
+     */
+    private String name;
+
+    /**
+     * The text from an optional note attached to the draft order.
+     */
+    private String note2;
+
+    /**
+     * The order that was created from the draft order.
+     */
+    private Order order;
+
+    /**
+     * The associated payment terms for this draft order.
+     */
+    private PaymentTerms paymentTerms;
+
+    /**
+     * The assigned phone number.
+     */
+    private String phone;
+
+    /**
+     * The purchase order number.
+     */
+    private String poNumber;
+
+    /**
+     * The payment currency used for calculation.
+     */
+    private CurrencyCode presentmentCurrencyCode;
+
+    /**
+     * Returns a private metafield by namespace and key that belongs to the resource.
+     */
+    private PrivateMetafield privateMetafield;
+
+    /**
+     * List of private metafields that belong to the resource.
+     */
+    private PrivateMetafieldConnection privateMetafields;
+
+    /**
+     * The purchasing entity.
+     */
+    private PurchasingEntity purchasingEntity;
+
+    /**
+     * Whether the draft order is ready and can be completed.
+     * Draft orders might have asynchronous operations that can take time to finish.
+     */
+    private boolean ready;
+
+    /**
+     * The time after which inventory will automatically be restocked.
+     */
+    private OffsetDateTime reserveInventoryUntil;
+
+    /**
+     * The shipping address of the customer.
+     */
+    private MailingAddress shippingAddress;
+
+    /**
+     * The line item containing the shipping information and costs.
+     */
+    private ShippingLine shippingLine;
+
+    /**
+     * The status of the draft order.
+     */
+    private DraftOrderStatus status;
+
+    /**
+     * The subtotal, in shop currency, of the line items and their discounts,
+     * excluding shipping charges, shipping discounts, and taxes.
+     */
+    private String subtotalPrice;
+
+    /**
+     * The subtotal, of the line items and their discounts, excluding shipping charges, shipping discounts, and taxes.
+     */
+    private MoneyBag subtotalPriceSet;
+
+    /**
+     * The comma separated list of tags associated with the draft order.
+     * Updating `tags` overwrites any existing tags that were previously added to the draft order.
+     * To add new tags without overwriting existing tags, use the
+     * [tagsAdd](https://shopify.dev/api/admin-graphql/latest/mutations/tagsadd) mutation.
+     */
+    private List<String> tags;
+
+    /**
+     * Whether the draft order is tax exempt.
+     */
+    private boolean taxExempt;
+
+    /**
+     * The list of of taxes lines charged for each line item and shipping line.
+     */
+    private List<TaxLine> taxLines;
+
+    /**
+     * Whether the line item prices include taxes.
+     */
+    private boolean taxesIncluded;
+
+    /**
+     * Total discounts.
+     */
+    private MoneyBag totalDiscountsSet;
+
+    /**
+     * Total price of line items.
+     */
+    private MoneyBag totalLineItemsPriceSet;
+
+    /**
+     * The total price, in shop currency, includes taxes, shipping charges, and discounts.
+     */
+    private String totalPrice;
+
+    /**
+     * The total price, includes taxes, shipping charges, and discounts.
+     */
+    private MoneyBag totalPriceSet;
+
+    /**
+     * The total shipping price in shop currency.
+     */
+    private String totalShippingPrice;
+
+    /**
+     * The total shipping price.
+     */
+    private MoneyBag totalShippingPriceSet;
+
+    /**
+     * The total tax in shop currency.
+     */
+    private String totalTax;
+
+    /**
+     * The total tax.
+     */
+    private MoneyBag totalTaxSet;
+
+    /**
+     * The total weight in grams of the draft order.
+     */
+    private String totalWeight;
+
+    /**
+     * The date and time when the draft order was last changed.
+     * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
+     */
+    private OffsetDateTime updatedAt;
+
+    /**
+     * Whether the draft order will be visible to the customer on the self-serve portal.
+     */
+    private boolean visibleToCustomer;
+
+    public DraftOrder build() {
+      DraftOrder result = new DraftOrder();
+      result.appliedDiscount = this.appliedDiscount;
+      result.billingAddress = this.billingAddress;
+      result.billingAddressMatchesShippingAddress = this.billingAddressMatchesShippingAddress;
+      result.completedAt = this.completedAt;
+      result.createdAt = this.createdAt;
+      result.currencyCode = this.currencyCode;
+      result.customAttributes = this.customAttributes;
+      result.customer = this.customer;
+      result.defaultCursor = this.defaultCursor;
+      result.email = this.email;
+      result.events = this.events;
+      result.hasTimelineComment = this.hasTimelineComment;
+      result.id = this.id;
+      result.invoiceEmailTemplateSubject = this.invoiceEmailTemplateSubject;
+      result.invoiceSentAt = this.invoiceSentAt;
+      result.invoiceUrl = this.invoiceUrl;
+      result.legacyResourceId = this.legacyResourceId;
+      result.lineItems = this.lineItems;
+      result.lineItemsSubtotalPrice = this.lineItemsSubtotalPrice;
+      result.localizationExtensions = this.localizationExtensions;
+      result.marketName = this.marketName;
+      result.marketRegionCountryCode = this.marketRegionCountryCode;
+      result.metafield = this.metafield;
+      result.metafields = this.metafields;
+      result.name = this.name;
+      result.note2 = this.note2;
+      result.order = this.order;
+      result.paymentTerms = this.paymentTerms;
+      result.phone = this.phone;
+      result.poNumber = this.poNumber;
+      result.presentmentCurrencyCode = this.presentmentCurrencyCode;
+      result.privateMetafield = this.privateMetafield;
+      result.privateMetafields = this.privateMetafields;
+      result.purchasingEntity = this.purchasingEntity;
+      result.ready = this.ready;
+      result.reserveInventoryUntil = this.reserveInventoryUntil;
+      result.shippingAddress = this.shippingAddress;
+      result.shippingLine = this.shippingLine;
+      result.status = this.status;
+      result.subtotalPrice = this.subtotalPrice;
+      result.subtotalPriceSet = this.subtotalPriceSet;
+      result.tags = this.tags;
+      result.taxExempt = this.taxExempt;
+      result.taxLines = this.taxLines;
+      result.taxesIncluded = this.taxesIncluded;
+      result.totalDiscountsSet = this.totalDiscountsSet;
+      result.totalLineItemsPriceSet = this.totalLineItemsPriceSet;
+      result.totalPrice = this.totalPrice;
+      result.totalPriceSet = this.totalPriceSet;
+      result.totalShippingPrice = this.totalShippingPrice;
+      result.totalShippingPriceSet = this.totalShippingPriceSet;
+      result.totalTax = this.totalTax;
+      result.totalTaxSet = this.totalTaxSet;
+      result.totalWeight = this.totalWeight;
+      result.updatedAt = this.updatedAt;
+      result.visibleToCustomer = this.visibleToCustomer;
+      return result;
+    }
+
+    /**
+     * The custom order-level discount applied.
+     */
+    public Builder appliedDiscount(DraftOrderAppliedDiscount appliedDiscount) {
+      this.appliedDiscount = appliedDiscount;
+      return this;
+    }
+
+    /**
+     * The billing address of the customer.
+     */
+    public Builder billingAddress(MailingAddress billingAddress) {
+      this.billingAddress = billingAddress;
+      return this;
+    }
+
+    /**
+     * Whether the billing address matches the shipping address.
+     */
+    public Builder billingAddressMatchesShippingAddress(
+        boolean billingAddressMatchesShippingAddress) {
+      this.billingAddressMatchesShippingAddress = billingAddressMatchesShippingAddress;
+      return this;
+    }
+
+    /**
+     * The date and time when the draft order was converted to a new order,
+     * and had it's status changed to **Completed**.
+     */
+    public Builder completedAt(OffsetDateTime completedAt) {
+      this.completedAt = completedAt;
+      return this;
+    }
+
+    /**
+     * The date and time when the draft order was created in Shopify.
+     */
+    public Builder createdAt(OffsetDateTime createdAt) {
+      this.createdAt = createdAt;
+      return this;
+    }
+
+    /**
+     * The shop currency used for calculation.
+     */
+    public Builder currencyCode(CurrencyCode currencyCode) {
+      this.currencyCode = currencyCode;
+      return this;
+    }
+
+    /**
+     * The custom information added to the draft order on behalf of the customer.
+     */
+    public Builder customAttributes(List<Attribute> customAttributes) {
+      this.customAttributes = customAttributes;
+      return this;
+    }
+
+    /**
+     * The customer who will be sent an invoice.
+     */
+    public Builder customer(Customer customer) {
+      this.customer = customer;
+      return this;
+    }
+
+    /**
+     * A default [cursor](https://shopify.dev/api/usage/pagination-graphql) that
+     * returns the single next record, sorted ascending by ID.
+     */
+    public Builder defaultCursor(String defaultCursor) {
+      this.defaultCursor = defaultCursor;
+      return this;
+    }
+
+    /**
+     * The email address of the customer, which is used to send notifications.
+     */
+    public Builder email(String email) {
+      this.email = email;
+      return this;
+    }
+
+    /**
+     * The list of events associated with the draft order.
+     */
+    public Builder events(EventConnection events) {
+      this.events = events;
+      return this;
+    }
+
+    /**
+     * Whether the merchant has added timeline comments to the draft order.
+     */
+    public Builder hasTimelineComment(boolean hasTimelineComment) {
+      this.hasTimelineComment = hasTimelineComment;
+      return this;
+    }
+
+    /**
+     * A globally-unique ID.
+     */
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
+
+    /**
+     * The subject defined for the draft invoice email template.
+     */
+    public Builder invoiceEmailTemplateSubject(String invoiceEmailTemplateSubject) {
+      this.invoiceEmailTemplateSubject = invoiceEmailTemplateSubject;
+      return this;
+    }
+
+    /**
+     * The date and time when the invoice was last emailed to the customer.
+     */
+    public Builder invoiceSentAt(OffsetDateTime invoiceSentAt) {
+      this.invoiceSentAt = invoiceSentAt;
+      return this;
+    }
+
+    /**
+     * The link to the checkout, which is sent to the customer in the invoice email.
+     */
+    public Builder invoiceUrl(String invoiceUrl) {
+      this.invoiceUrl = invoiceUrl;
+      return this;
+    }
+
+    /**
+     * The ID of the corresponding resource in the REST Admin API.
+     */
+    public Builder legacyResourceId(String legacyResourceId) {
+      this.legacyResourceId = legacyResourceId;
+      return this;
+    }
+
+    /**
+     * The list of the line items in the draft order.
+     */
+    public Builder lineItems(DraftOrderLineItemConnection lineItems) {
+      this.lineItems = lineItems;
+      return this;
+    }
+
+    /**
+     * A subtotal of the line items and corresponding discounts,
+     * excluding include shipping charges, shipping discounts, taxes, or order discounts.
+     */
+    public Builder lineItemsSubtotalPrice(MoneyBag lineItemsSubtotalPrice) {
+      this.lineItemsSubtotalPrice = lineItemsSubtotalPrice;
+      return this;
+    }
+
+    /**
+     * List of localization extensions for the resource.
+     */
+    public Builder localizationExtensions(LocalizationExtensionConnection localizationExtensions) {
+      this.localizationExtensions = localizationExtensions;
+      return this;
+    }
+
+    /**
+     * The name of the selected market.
+     */
+    public Builder marketName(String marketName) {
+      this.marketName = marketName;
+      return this;
+    }
+
+    /**
+     * The selected country code that determines the pricing.
+     */
+    public Builder marketRegionCountryCode(CountryCode marketRegionCountryCode) {
+      this.marketRegionCountryCode = marketRegionCountryCode;
+      return this;
+    }
+
+    /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     */
+    public Builder metafield(Metafield metafield) {
+      this.metafield = metafield;
+      return this;
+    }
+
+    /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     */
+    public Builder metafields(MetafieldConnection metafields) {
+      this.metafields = metafields;
+      return this;
+    }
+
+    /**
+     * The identifier for the draft order, which is unique within the store. For example, _#D1223_.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * The text from an optional note attached to the draft order.
+     */
+    public Builder note2(String note2) {
+      this.note2 = note2;
+      return this;
+    }
+
+    /**
+     * The order that was created from the draft order.
+     */
+    public Builder order(Order order) {
+      this.order = order;
+      return this;
+    }
+
+    /**
+     * The associated payment terms for this draft order.
+     */
+    public Builder paymentTerms(PaymentTerms paymentTerms) {
+      this.paymentTerms = paymentTerms;
+      return this;
+    }
+
+    /**
+     * The assigned phone number.
+     */
+    public Builder phone(String phone) {
+      this.phone = phone;
+      return this;
+    }
+
+    /**
+     * The purchase order number.
+     */
+    public Builder poNumber(String poNumber) {
+      this.poNumber = poNumber;
+      return this;
+    }
+
+    /**
+     * The payment currency used for calculation.
+     */
+    public Builder presentmentCurrencyCode(CurrencyCode presentmentCurrencyCode) {
+      this.presentmentCurrencyCode = presentmentCurrencyCode;
+      return this;
+    }
+
+    /**
+     * Returns a private metafield by namespace and key that belongs to the resource.
+     */
+    public Builder privateMetafield(PrivateMetafield privateMetafield) {
+      this.privateMetafield = privateMetafield;
+      return this;
+    }
+
+    /**
+     * List of private metafields that belong to the resource.
+     */
+    public Builder privateMetafields(PrivateMetafieldConnection privateMetafields) {
+      this.privateMetafields = privateMetafields;
+      return this;
+    }
+
+    /**
+     * The purchasing entity.
+     */
+    public Builder purchasingEntity(PurchasingEntity purchasingEntity) {
+      this.purchasingEntity = purchasingEntity;
+      return this;
+    }
+
+    /**
+     * Whether the draft order is ready and can be completed.
+     * Draft orders might have asynchronous operations that can take time to finish.
+     */
+    public Builder ready(boolean ready) {
+      this.ready = ready;
+      return this;
+    }
+
+    /**
+     * The time after which inventory will automatically be restocked.
+     */
+    public Builder reserveInventoryUntil(OffsetDateTime reserveInventoryUntil) {
+      this.reserveInventoryUntil = reserveInventoryUntil;
+      return this;
+    }
+
+    /**
+     * The shipping address of the customer.
+     */
+    public Builder shippingAddress(MailingAddress shippingAddress) {
+      this.shippingAddress = shippingAddress;
+      return this;
+    }
+
+    /**
+     * The line item containing the shipping information and costs.
+     */
+    public Builder shippingLine(ShippingLine shippingLine) {
+      this.shippingLine = shippingLine;
+      return this;
+    }
+
+    /**
+     * The status of the draft order.
+     */
+    public Builder status(DraftOrderStatus status) {
+      this.status = status;
+      return this;
+    }
+
+    /**
+     * The subtotal, in shop currency, of the line items and their discounts,
+     * excluding shipping charges, shipping discounts, and taxes.
+     */
+    public Builder subtotalPrice(String subtotalPrice) {
+      this.subtotalPrice = subtotalPrice;
+      return this;
+    }
+
+    /**
+     * The subtotal, of the line items and their discounts, excluding shipping charges, shipping discounts, and taxes.
+     */
+    public Builder subtotalPriceSet(MoneyBag subtotalPriceSet) {
+      this.subtotalPriceSet = subtotalPriceSet;
+      return this;
+    }
+
+    /**
+     * The comma separated list of tags associated with the draft order.
+     * Updating `tags` overwrites any existing tags that were previously added to the draft order.
+     * To add new tags without overwriting existing tags, use the
+     * [tagsAdd](https://shopify.dev/api/admin-graphql/latest/mutations/tagsadd) mutation.
+     */
+    public Builder tags(List<String> tags) {
+      this.tags = tags;
+      return this;
+    }
+
+    /**
+     * Whether the draft order is tax exempt.
+     */
+    public Builder taxExempt(boolean taxExempt) {
+      this.taxExempt = taxExempt;
+      return this;
+    }
+
+    /**
+     * The list of of taxes lines charged for each line item and shipping line.
+     */
+    public Builder taxLines(List<TaxLine> taxLines) {
+      this.taxLines = taxLines;
+      return this;
+    }
+
+    /**
+     * Whether the line item prices include taxes.
+     */
+    public Builder taxesIncluded(boolean taxesIncluded) {
+      this.taxesIncluded = taxesIncluded;
+      return this;
+    }
+
+    /**
+     * Total discounts.
+     */
+    public Builder totalDiscountsSet(MoneyBag totalDiscountsSet) {
+      this.totalDiscountsSet = totalDiscountsSet;
+      return this;
+    }
+
+    /**
+     * Total price of line items.
+     */
+    public Builder totalLineItemsPriceSet(MoneyBag totalLineItemsPriceSet) {
+      this.totalLineItemsPriceSet = totalLineItemsPriceSet;
+      return this;
+    }
+
+    /**
+     * The total price, in shop currency, includes taxes, shipping charges, and discounts.
+     */
+    public Builder totalPrice(String totalPrice) {
+      this.totalPrice = totalPrice;
+      return this;
+    }
+
+    /**
+     * The total price, includes taxes, shipping charges, and discounts.
+     */
+    public Builder totalPriceSet(MoneyBag totalPriceSet) {
+      this.totalPriceSet = totalPriceSet;
+      return this;
+    }
+
+    /**
+     * The total shipping price in shop currency.
+     */
+    public Builder totalShippingPrice(String totalShippingPrice) {
+      this.totalShippingPrice = totalShippingPrice;
+      return this;
+    }
+
+    /**
+     * The total shipping price.
+     */
+    public Builder totalShippingPriceSet(MoneyBag totalShippingPriceSet) {
+      this.totalShippingPriceSet = totalShippingPriceSet;
+      return this;
+    }
+
+    /**
+     * The total tax in shop currency.
+     */
+    public Builder totalTax(String totalTax) {
+      this.totalTax = totalTax;
+      return this;
+    }
+
+    /**
+     * The total tax.
+     */
+    public Builder totalTaxSet(MoneyBag totalTaxSet) {
+      this.totalTaxSet = totalTaxSet;
+      return this;
+    }
+
+    /**
+     * The total weight in grams of the draft order.
+     */
+    public Builder totalWeight(String totalWeight) {
+      this.totalWeight = totalWeight;
+      return this;
+    }
+
+    /**
+     * The date and time when the draft order was last changed.
+     * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
+     */
+    public Builder updatedAt(OffsetDateTime updatedAt) {
+      this.updatedAt = updatedAt;
+      return this;
+    }
+
+    /**
+     * Whether the draft order will be visible to the customer on the self-serve portal.
+     */
+    public Builder visibleToCustomer(boolean visibleToCustomer) {
+      this.visibleToCustomer = visibleToCustomer;
+      return this;
+    }
+  }
+}
