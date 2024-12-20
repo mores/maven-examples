@@ -18,6 +18,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.netflix.graphql.dgs.codegen</groupId>
+			<artifactId>graphql-dgs-codegen-client-core</artifactId>
+			<version>5.1.17</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.netflix.graphql.dgs</groupId>
 			<artifactId>graphql-dgs-client</artifactId>
 			<version>9.2.2</version>
@@ -117,31 +123,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>io.github.deweyjose</groupId>
-				<artifactId>graphqlcodegen-maven-plugin</artifactId>
-				<version>1.61.6-SNAPSHOT</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<generateClientApiV2>true</generateClientApiV2>
-					<packageName>com.test.shopify.generated</packageName>
-					<schemaPaths>
-						<param>download/schema.graphql</param>
-					</schemaPaths>
-					<typeMapping>
-						<xxx>java.lang.String</xxx>
-					</typeMapping>
-					<typeMappingPropertiesFiles>
-						<typeMappingPropertiesFile>src/main/resources/common-type-mappings.properties</typeMappingPropertiesFile>
-					</typeMappingPropertiesFiles>
-				</configuration>
-			</plugin>
+			<!-- <plugin> <groupId>io.github.deweyjose</groupId> <artifactId>graphqlcodegen-maven-plugin</artifactId> <version>1.61.6-SNAPSHOT</version> <executions> <execution> <goals> <goal>generate</goal> </goals> </execution> </executions> <configuration> <generateClientApiV2>true</generateClientApiV2> <packageName>com.test.shopify.generated</packageName> <schemaPaths> <param>download/schema.graphql</param> </schemaPaths> <typeMapping> <xxx>java.lang.String</xxx> </typeMapping> <typeMappingPropertiesFiles> <typeMappingPropertiesFile>src/main/resources/common-type-mappings.properties</typeMappingPropertiesFile> </typeMappingPropertiesFiles> </configuration> </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
