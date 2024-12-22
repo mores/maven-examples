@@ -1,0 +1,35 @@
+type Query @extends {
+    ticks(first: Int, after: Int, allowCached: Boolean): TicksConnection
+}
+
+type Tick {
+    id: ID
+    route: Route
+    date: LocalDate
+    userStars: Int
+    userRating: String
+    comments: String
+}
+
+type Votes {
+    starRating: Float
+    nrOfVotes: Int
+}
+
+type Route {
+    routeId: ID
+    name: String
+    grade: String
+    pitches: Int
+    votes: Votes
+    location: [String]
+}
+
+type TicksConnection {
+    edges: [TickEdge]
+}
+
+type TickEdge {
+    cursor: String!
+    node: Tick
+}
