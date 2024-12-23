@@ -1,7 +1,6 @@
 package com.test.shopify.generated.types;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
@@ -16,7 +15,7 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class ProductVariant implements CommentEventEmbed, MetafieldReference, MetafieldReferencer, com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.HasPublishedTranslations, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Navigable, com.test.shopify.generated.types.Node {
+public class ProductVariant implements CommentEventEmbed, MetafieldReference, MetafieldReferencer, com.test.shopify.generated.types.HasEvents, com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.HasPublishedTranslations, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Navigable, com.test.shopify.generated.types.Node {
   /**
    * Whether the product variant is available for sale.
    */
@@ -59,28 +58,9 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
   private String displayName;
 
   /**
-   * The fulfillment service that stocks a product variant.
-   *   
-   * This is a third-party fulfillment service if the following conditions are met:
-   * - The product variant is stocked by a single fulfillment service.
-   * - The [FulfillmentService](/api/admin-graphql/latest/objects/FulfillmentService)
-   * is a third-party fulfillment service. Third-party fulfillment services don't
-   * have a handle with the value `manual`.
-   * - The fulfillment service hasn't [opted into SKU sharing](/api/admin-graphql/latest/objects/FulfillmentService#field-fulfillmentservice-permitsskusharing).
-   *   
-   * If the conditions aren't met, then the fulfillment service has the `manual` handle.
+   * The paginated list of events associated with the host subject.
    */
-  private FulfillmentService fulfillmentService;
-
-  /**
-   * Whether changes to the fulfillment service for the product variant are allowed.
-   */
-  private EditableProperty fulfillmentServiceEditable;
-
-  /**
-   * The Harmonized System Code (or HS Tariff Code) for the variant.
-   */
-  private String harmonizedSystemCode;
+  private EventConnection events;
 
   /**
    * A globally-unique ID.
@@ -96,11 +76,6 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
    * The inventory item, which is used to query for inventory information.
    */
   private InventoryItem inventoryItem;
-
-  /**
-   * The fulfillment service that tracks the number of items in stock for the product variant.
-   */
-  private ProductVariantInventoryManagement inventoryManagement;
 
   /**
    * Whether customers are allowed to place an order for the product variant when it's out of stock.
@@ -183,11 +158,6 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
   private boolean requiresComponents;
 
   /**
-   * Whether a customer needs to provide a shipping address when placing an order for the product variant.
-   */
-  private boolean requiresShipping;
-
-  /**
    * List of product options applied to the variant.
    */
   private List<SelectedOption> selectedOptions;
@@ -208,6 +178,11 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
    * A list of all selling plan groups defined in the current shop associated with the product variant.
    */
   private SellingPlanGroupConnection sellingPlanGroups;
+
+  /**
+   * Count of selling plan groups associated with the product variant.
+   */
+  private Count sellingPlanGroupsCount;
 
   /**
    * A case-sensitive identifier for the product variant in the shop.
@@ -245,21 +220,14 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
   private List<Translation> translations;
 
   /**
+   * The unit price measurement for the variant.
+   */
+  private UnitPriceMeasurement unitPriceMeasurement;
+
+  /**
    * The date and time (ISO 8601 format) when the product variant was last modified.
    */
   private OffsetDateTime updatedAt;
-
-  /**
-   * The weight of the product variant in the unit system specified with weight_unit.
-   */
-  private Double weight;
-
-  /**
-   * The unit of measurement that applies to the product variant's weight. If you
-   * don't specify a value for weight_unit, then the shop's default unit of
-   * measurement is applied. Valid values: `g`, `kg`, `oz`, `lb`.
-   */
-  private WeightUnit weightUnit;
 
   public ProductVariant() {
   }
@@ -354,45 +322,14 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
   }
 
   /**
-   * The fulfillment service that stocks a product variant.
-   *   
-   * This is a third-party fulfillment service if the following conditions are met:
-   * - The product variant is stocked by a single fulfillment service.
-   * - The [FulfillmentService](/api/admin-graphql/latest/objects/FulfillmentService)
-   * is a third-party fulfillment service. Third-party fulfillment services don't
-   * have a handle with the value `manual`.
-   * - The fulfillment service hasn't [opted into SKU sharing](/api/admin-graphql/latest/objects/FulfillmentService#field-fulfillmentservice-permitsskusharing).
-   *   
-   * If the conditions aren't met, then the fulfillment service has the `manual` handle.
+   * The paginated list of events associated with the host subject.
    */
-  public FulfillmentService getFulfillmentService() {
-    return fulfillmentService;
+  public EventConnection getEvents() {
+    return events;
   }
 
-  public void setFulfillmentService(FulfillmentService fulfillmentService) {
-    this.fulfillmentService = fulfillmentService;
-  }
-
-  /**
-   * Whether changes to the fulfillment service for the product variant are allowed.
-   */
-  public EditableProperty getFulfillmentServiceEditable() {
-    return fulfillmentServiceEditable;
-  }
-
-  public void setFulfillmentServiceEditable(EditableProperty fulfillmentServiceEditable) {
-    this.fulfillmentServiceEditable = fulfillmentServiceEditable;
-  }
-
-  /**
-   * The Harmonized System Code (or HS Tariff Code) for the variant.
-   */
-  public String getHarmonizedSystemCode() {
-    return harmonizedSystemCode;
-  }
-
-  public void setHarmonizedSystemCode(String harmonizedSystemCode) {
-    this.harmonizedSystemCode = harmonizedSystemCode;
+  public void setEvents(EventConnection events) {
+    this.events = events;
   }
 
   /**
@@ -426,17 +363,6 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
 
   public void setInventoryItem(InventoryItem inventoryItem) {
     this.inventoryItem = inventoryItem;
-  }
-
-  /**
-   * The fulfillment service that tracks the number of items in stock for the product variant.
-   */
-  public ProductVariantInventoryManagement getInventoryManagement() {
-    return inventoryManagement;
-  }
-
-  public void setInventoryManagement(ProductVariantInventoryManagement inventoryManagement) {
-    this.inventoryManagement = inventoryManagement;
   }
 
   /**
@@ -611,17 +537,6 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
   }
 
   /**
-   * Whether a customer needs to provide a shipping address when placing an order for the product variant.
-   */
-  public boolean getRequiresShipping() {
-    return requiresShipping;
-  }
-
-  public void setRequiresShipping(boolean requiresShipping) {
-    this.requiresShipping = requiresShipping;
-  }
-
-  /**
    * List of product options applied to the variant.
    */
   public List<SelectedOption> getSelectedOptions() {
@@ -665,6 +580,17 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
 
   public void setSellingPlanGroups(SellingPlanGroupConnection sellingPlanGroups) {
     this.sellingPlanGroups = sellingPlanGroups;
+  }
+
+  /**
+   * Count of selling plan groups associated with the product variant.
+   */
+  public Count getSellingPlanGroupsCount() {
+    return sellingPlanGroupsCount;
+  }
+
+  public void setSellingPlanGroupsCount(Count sellingPlanGroupsCount) {
+    this.sellingPlanGroupsCount = sellingPlanGroupsCount;
   }
 
   /**
@@ -739,6 +665,17 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
   }
 
   /**
+   * The unit price measurement for the variant.
+   */
+  public UnitPriceMeasurement getUnitPriceMeasurement() {
+    return unitPriceMeasurement;
+  }
+
+  public void setUnitPriceMeasurement(UnitPriceMeasurement unitPriceMeasurement) {
+    this.unitPriceMeasurement = unitPriceMeasurement;
+  }
+
+  /**
    * The date and time (ISO 8601 format) when the product variant was last modified.
    */
   public OffsetDateTime getUpdatedAt() {
@@ -749,33 +686,9 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
     this.updatedAt = updatedAt;
   }
 
-  /**
-   * The weight of the product variant in the unit system specified with weight_unit.
-   */
-  public Double getWeight() {
-    return weight;
-  }
-
-  public void setWeight(Double weight) {
-    this.weight = weight;
-  }
-
-  /**
-   * The unit of measurement that applies to the product variant's weight. If you
-   * don't specify a value for weight_unit, then the shop's default unit of
-   * measurement is applied. Valid values: `g`, `kg`, `oz`, `lb`.
-   */
-  public WeightUnit getWeightUnit() {
-    return weightUnit;
-  }
-
-  public void setWeightUnit(WeightUnit weightUnit) {
-    this.weightUnit = weightUnit;
-  }
-
   @Override
   public String toString() {
-    return "ProductVariant{availableForSale='" + availableForSale + "', barcode='" + barcode + "', compareAtPrice='" + compareAtPrice + "', contextualPricing='" + contextualPricing + "', createdAt='" + createdAt + "', defaultCursor='" + defaultCursor + "', deliveryProfile='" + deliveryProfile + "', displayName='" + displayName + "', fulfillmentService='" + fulfillmentService + "', fulfillmentServiceEditable='" + fulfillmentServiceEditable + "', harmonizedSystemCode='" + harmonizedSystemCode + "', id='" + id + "', image='" + image + "', inventoryItem='" + inventoryItem + "', inventoryManagement='" + inventoryManagement + "', inventoryPolicy='" + inventoryPolicy + "', inventoryQuantity='" + inventoryQuantity + "', legacyResourceId='" + legacyResourceId + "', media='" + media + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', position='" + position + "', presentmentPrices='" + presentmentPrices + "', price='" + price + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', product='" + product + "', productVariantComponents='" + productVariantComponents + "', requiresComponents='" + requiresComponents + "', requiresShipping='" + requiresShipping + "', selectedOptions='" + selectedOptions + "', sellableOnlineQuantity='" + sellableOnlineQuantity + "', sellingPlanGroupCount='" + sellingPlanGroupCount + "', sellingPlanGroups='" + sellingPlanGroups + "', sku='" + sku + "', storefrontId='" + storefrontId + "', taxCode='" + taxCode + "', taxable='" + taxable + "', title='" + title + "', translations='" + translations + "', updatedAt='" + updatedAt + "', weight='" + weight + "', weightUnit='" + weightUnit + "'}";
+    return "ProductVariant{availableForSale='" + availableForSale + "', barcode='" + barcode + "', compareAtPrice='" + compareAtPrice + "', contextualPricing='" + contextualPricing + "', createdAt='" + createdAt + "', defaultCursor='" + defaultCursor + "', deliveryProfile='" + deliveryProfile + "', displayName='" + displayName + "', events='" + events + "', id='" + id + "', image='" + image + "', inventoryItem='" + inventoryItem + "', inventoryPolicy='" + inventoryPolicy + "', inventoryQuantity='" + inventoryQuantity + "', legacyResourceId='" + legacyResourceId + "', media='" + media + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', position='" + position + "', presentmentPrices='" + presentmentPrices + "', price='" + price + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', product='" + product + "', productVariantComponents='" + productVariantComponents + "', requiresComponents='" + requiresComponents + "', selectedOptions='" + selectedOptions + "', sellableOnlineQuantity='" + sellableOnlineQuantity + "', sellingPlanGroupCount='" + sellingPlanGroupCount + "', sellingPlanGroups='" + sellingPlanGroups + "', sellingPlanGroupsCount='" + sellingPlanGroupsCount + "', sku='" + sku + "', storefrontId='" + storefrontId + "', taxCode='" + taxCode + "', taxable='" + taxable + "', title='" + title + "', translations='" + translations + "', unitPriceMeasurement='" + unitPriceMeasurement + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -791,13 +704,10 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
         Objects.equals(defaultCursor, that.defaultCursor) &&
         Objects.equals(deliveryProfile, that.deliveryProfile) &&
         Objects.equals(displayName, that.displayName) &&
-        Objects.equals(fulfillmentService, that.fulfillmentService) &&
-        Objects.equals(fulfillmentServiceEditable, that.fulfillmentServiceEditable) &&
-        Objects.equals(harmonizedSystemCode, that.harmonizedSystemCode) &&
+        Objects.equals(events, that.events) &&
         Objects.equals(id, that.id) &&
         Objects.equals(image, that.image) &&
         Objects.equals(inventoryItem, that.inventoryItem) &&
-        Objects.equals(inventoryManagement, that.inventoryManagement) &&
         Objects.equals(inventoryPolicy, that.inventoryPolicy) &&
         Objects.equals(inventoryQuantity, that.inventoryQuantity) &&
         Objects.equals(legacyResourceId, that.legacyResourceId) &&
@@ -813,25 +723,24 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
         Objects.equals(product, that.product) &&
         Objects.equals(productVariantComponents, that.productVariantComponents) &&
         requiresComponents == that.requiresComponents &&
-        requiresShipping == that.requiresShipping &&
         Objects.equals(selectedOptions, that.selectedOptions) &&
         sellableOnlineQuantity == that.sellableOnlineQuantity &&
         sellingPlanGroupCount == that.sellingPlanGroupCount &&
         Objects.equals(sellingPlanGroups, that.sellingPlanGroups) &&
+        Objects.equals(sellingPlanGroupsCount, that.sellingPlanGroupsCount) &&
         Objects.equals(sku, that.sku) &&
         Objects.equals(storefrontId, that.storefrontId) &&
         Objects.equals(taxCode, that.taxCode) &&
         taxable == that.taxable &&
         Objects.equals(title, that.title) &&
         Objects.equals(translations, that.translations) &&
-        Objects.equals(updatedAt, that.updatedAt) &&
-        Objects.equals(weight, that.weight) &&
-        Objects.equals(weightUnit, that.weightUnit);
+        Objects.equals(unitPriceMeasurement, that.unitPriceMeasurement) &&
+        Objects.equals(updatedAt, that.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(availableForSale, barcode, compareAtPrice, contextualPricing, createdAt, defaultCursor, deliveryProfile, displayName, fulfillmentService, fulfillmentServiceEditable, harmonizedSystemCode, id, image, inventoryItem, inventoryManagement, inventoryPolicy, inventoryQuantity, legacyResourceId, media, metafield, metafieldDefinitions, metafields, position, presentmentPrices, price, privateMetafield, privateMetafields, product, productVariantComponents, requiresComponents, requiresShipping, selectedOptions, sellableOnlineQuantity, sellingPlanGroupCount, sellingPlanGroups, sku, storefrontId, taxCode, taxable, title, translations, updatedAt, weight, weightUnit);
+    return Objects.hash(availableForSale, barcode, compareAtPrice, contextualPricing, createdAt, defaultCursor, deliveryProfile, displayName, events, id, image, inventoryItem, inventoryPolicy, inventoryQuantity, legacyResourceId, media, metafield, metafieldDefinitions, metafields, position, presentmentPrices, price, privateMetafield, privateMetafields, product, productVariantComponents, requiresComponents, selectedOptions, sellableOnlineQuantity, sellingPlanGroupCount, sellingPlanGroups, sellingPlanGroupsCount, sku, storefrontId, taxCode, taxable, title, translations, unitPriceMeasurement, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -881,28 +790,9 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
     private String displayName;
 
     /**
-     * The fulfillment service that stocks a product variant.
-     *   
-     * This is a third-party fulfillment service if the following conditions are met:
-     * - The product variant is stocked by a single fulfillment service.
-     * - The [FulfillmentService](/api/admin-graphql/latest/objects/FulfillmentService)
-     * is a third-party fulfillment service. Third-party fulfillment services don't
-     * have a handle with the value `manual`.
-     * - The fulfillment service hasn't [opted into SKU sharing](/api/admin-graphql/latest/objects/FulfillmentService#field-fulfillmentservice-permitsskusharing).
-     *   
-     * If the conditions aren't met, then the fulfillment service has the `manual` handle.
+     * The paginated list of events associated with the host subject.
      */
-    private FulfillmentService fulfillmentService;
-
-    /**
-     * Whether changes to the fulfillment service for the product variant are allowed.
-     */
-    private EditableProperty fulfillmentServiceEditable;
-
-    /**
-     * The Harmonized System Code (or HS Tariff Code) for the variant.
-     */
-    private String harmonizedSystemCode;
+    private EventConnection events;
 
     /**
      * A globally-unique ID.
@@ -918,11 +808,6 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
      * The inventory item, which is used to query for inventory information.
      */
     private InventoryItem inventoryItem;
-
-    /**
-     * The fulfillment service that tracks the number of items in stock for the product variant.
-     */
-    private ProductVariantInventoryManagement inventoryManagement;
 
     /**
      * Whether customers are allowed to place an order for the product variant when it's out of stock.
@@ -1005,11 +890,6 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
     private boolean requiresComponents;
 
     /**
-     * Whether a customer needs to provide a shipping address when placing an order for the product variant.
-     */
-    private boolean requiresShipping;
-
-    /**
      * List of product options applied to the variant.
      */
     private List<SelectedOption> selectedOptions;
@@ -1030,6 +910,11 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
      * A list of all selling plan groups defined in the current shop associated with the product variant.
      */
     private SellingPlanGroupConnection sellingPlanGroups;
+
+    /**
+     * Count of selling plan groups associated with the product variant.
+     */
+    private Count sellingPlanGroupsCount;
 
     /**
      * A case-sensitive identifier for the product variant in the shop.
@@ -1067,21 +952,14 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
     private List<Translation> translations;
 
     /**
+     * The unit price measurement for the variant.
+     */
+    private UnitPriceMeasurement unitPriceMeasurement;
+
+    /**
      * The date and time (ISO 8601 format) when the product variant was last modified.
      */
     private OffsetDateTime updatedAt;
-
-    /**
-     * The weight of the product variant in the unit system specified with weight_unit.
-     */
-    private Double weight;
-
-    /**
-     * The unit of measurement that applies to the product variant's weight. If you
-     * don't specify a value for weight_unit, then the shop's default unit of
-     * measurement is applied. Valid values: `g`, `kg`, `oz`, `lb`.
-     */
-    private WeightUnit weightUnit;
 
     public ProductVariant build() {
       ProductVariant result = new ProductVariant();
@@ -1093,13 +971,10 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
       result.defaultCursor = this.defaultCursor;
       result.deliveryProfile = this.deliveryProfile;
       result.displayName = this.displayName;
-      result.fulfillmentService = this.fulfillmentService;
-      result.fulfillmentServiceEditable = this.fulfillmentServiceEditable;
-      result.harmonizedSystemCode = this.harmonizedSystemCode;
+      result.events = this.events;
       result.id = this.id;
       result.image = this.image;
       result.inventoryItem = this.inventoryItem;
-      result.inventoryManagement = this.inventoryManagement;
       result.inventoryPolicy = this.inventoryPolicy;
       result.inventoryQuantity = this.inventoryQuantity;
       result.legacyResourceId = this.legacyResourceId;
@@ -1115,20 +990,19 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
       result.product = this.product;
       result.productVariantComponents = this.productVariantComponents;
       result.requiresComponents = this.requiresComponents;
-      result.requiresShipping = this.requiresShipping;
       result.selectedOptions = this.selectedOptions;
       result.sellableOnlineQuantity = this.sellableOnlineQuantity;
       result.sellingPlanGroupCount = this.sellingPlanGroupCount;
       result.sellingPlanGroups = this.sellingPlanGroups;
+      result.sellingPlanGroupsCount = this.sellingPlanGroupsCount;
       result.sku = this.sku;
       result.storefrontId = this.storefrontId;
       result.taxCode = this.taxCode;
       result.taxable = this.taxable;
       result.title = this.title;
       result.translations = this.translations;
+      result.unitPriceMeasurement = this.unitPriceMeasurement;
       result.updatedAt = this.updatedAt;
-      result.weight = this.weight;
-      result.weightUnit = this.weightUnit;
       return result;
     }
 
@@ -1198,35 +1072,10 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
     }
 
     /**
-     * The fulfillment service that stocks a product variant.
-     *   
-     * This is a third-party fulfillment service if the following conditions are met:
-     * - The product variant is stocked by a single fulfillment service.
-     * - The [FulfillmentService](/api/admin-graphql/latest/objects/FulfillmentService)
-     * is a third-party fulfillment service. Third-party fulfillment services don't
-     * have a handle with the value `manual`.
-     * - The fulfillment service hasn't [opted into SKU sharing](/api/admin-graphql/latest/objects/FulfillmentService#field-fulfillmentservice-permitsskusharing).
-     *   
-     * If the conditions aren't met, then the fulfillment service has the `manual` handle.
+     * The paginated list of events associated with the host subject.
      */
-    public Builder fulfillmentService(FulfillmentService fulfillmentService) {
-      this.fulfillmentService = fulfillmentService;
-      return this;
-    }
-
-    /**
-     * Whether changes to the fulfillment service for the product variant are allowed.
-     */
-    public Builder fulfillmentServiceEditable(EditableProperty fulfillmentServiceEditable) {
-      this.fulfillmentServiceEditable = fulfillmentServiceEditable;
-      return this;
-    }
-
-    /**
-     * The Harmonized System Code (or HS Tariff Code) for the variant.
-     */
-    public Builder harmonizedSystemCode(String harmonizedSystemCode) {
-      this.harmonizedSystemCode = harmonizedSystemCode;
+    public Builder events(EventConnection events) {
+      this.events = events;
       return this;
     }
 
@@ -1251,14 +1100,6 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
      */
     public Builder inventoryItem(InventoryItem inventoryItem) {
       this.inventoryItem = inventoryItem;
-      return this;
-    }
-
-    /**
-     * The fulfillment service that tracks the number of items in stock for the product variant.
-     */
-    public Builder inventoryManagement(ProductVariantInventoryManagement inventoryManagement) {
-      this.inventoryManagement = inventoryManagement;
       return this;
     }
 
@@ -1389,14 +1230,6 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
     }
 
     /**
-     * Whether a customer needs to provide a shipping address when placing an order for the product variant.
-     */
-    public Builder requiresShipping(boolean requiresShipping) {
-      this.requiresShipping = requiresShipping;
-      return this;
-    }
-
-    /**
      * List of product options applied to the variant.
      */
     public Builder selectedOptions(List<SelectedOption> selectedOptions) {
@@ -1427,6 +1260,14 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
      */
     public Builder sellingPlanGroups(SellingPlanGroupConnection sellingPlanGroups) {
       this.sellingPlanGroups = sellingPlanGroups;
+      return this;
+    }
+
+    /**
+     * Count of selling plan groups associated with the product variant.
+     */
+    public Builder sellingPlanGroupsCount(Count sellingPlanGroupsCount) {
+      this.sellingPlanGroupsCount = sellingPlanGroupsCount;
       return this;
     }
 
@@ -1484,28 +1325,18 @@ public class ProductVariant implements CommentEventEmbed, MetafieldReference, Me
     }
 
     /**
+     * The unit price measurement for the variant.
+     */
+    public Builder unitPriceMeasurement(UnitPriceMeasurement unitPriceMeasurement) {
+      this.unitPriceMeasurement = unitPriceMeasurement;
+      return this;
+    }
+
+    /**
      * The date and time (ISO 8601 format) when the product variant was last modified.
      */
     public Builder updatedAt(OffsetDateTime updatedAt) {
       this.updatedAt = updatedAt;
-      return this;
-    }
-
-    /**
-     * The weight of the product variant in the unit system specified with weight_unit.
-     */
-    public Builder weight(Double weight) {
-      this.weight = weight;
-      return this;
-    }
-
-    /**
-     * The unit of measurement that applies to the product variant's weight. If you
-     * don't specify a value for weight_unit, then the shop's default unit of
-     * measurement is applied. Valid values: `g`, `kg`, `oz`, `lb`.
-     */
-    public Builder weightUnit(WeightUnit weightUnit) {
-      this.weightUnit = weightUnit;
       return this;
     }
   }

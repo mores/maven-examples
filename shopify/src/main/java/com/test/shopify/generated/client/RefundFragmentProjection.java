@@ -33,6 +33,31 @@ public class RefundFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?>
      return projection;
   }
 
+  public OrderAdjustmentConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> orderAdjustments(
+      ) {
+     OrderAdjustmentConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> projection = new OrderAdjustmentConnectionProjection<>(this, getRoot());
+     getFields().put("orderAdjustments", projection);
+     return projection;
+  }
+
+  public OrderAdjustmentConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> orderAdjustments(
+      Integer first, String after, Integer last, String before, Boolean reverse) {
+    OrderAdjustmentConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> projection = new OrderAdjustmentConnectionProjection<>(this, getRoot());    
+    getFields().put("orderAdjustments", projection);
+    getInputArguments().computeIfAbsent("orderAdjustments", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("orderAdjustments").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("orderAdjustments").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("orderAdjustments").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("orderAdjustments").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("orderAdjustments").add(reverseArg);
+    return projection;
+  }
+
   public RefundLineItemConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> refundLineItems(
       ) {
      RefundLineItemConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> projection = new RefundLineItemConnectionProjection<>(this, getRoot());
@@ -55,6 +80,31 @@ public class RefundFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?>
     getInputArguments().get("refundLineItems").add(beforeArg);
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("refundLineItems").add(reverseArg);
+    return projection;
+  }
+
+  public RefundShippingLineConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> refundShippingLines(
+      ) {
+     RefundShippingLineConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> projection = new RefundShippingLineConnectionProjection<>(this, getRoot());
+     getFields().put("refundShippingLines", projection);
+     return projection;
+  }
+
+  public RefundShippingLineConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> refundShippingLines(
+      Integer first, String after, Integer last, String before, Boolean reverse) {
+    RefundShippingLineConnectionProjection<RefundFragmentProjection<PARENT, ROOT>, ROOT> projection = new RefundShippingLineConnectionProjection<>(this, getRoot());    
+    getFields().put("refundShippingLines", projection);
+    getInputArguments().computeIfAbsent("refundShippingLines", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("refundShippingLines").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("refundShippingLines").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("refundShippingLines").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("refundShippingLines").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("refundShippingLines").add(reverseArg);
     return projection;
   }
 

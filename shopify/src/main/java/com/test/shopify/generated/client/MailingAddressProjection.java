@@ -20,6 +20,13 @@ public class MailingAddressProjection<PARENT extends BaseSubProjectionNode<?, ?>
      return projection;
   }
 
+  public MailingAddressValidationResultProjection<MailingAddressProjection<PARENT, ROOT>, ROOT> validationResultSummary(
+      ) {
+     MailingAddressValidationResultProjection<MailingAddressProjection<PARENT, ROOT>, ROOT> projection = new MailingAddressValidationResultProjection<>(this, getRoot());
+     getFields().put("validationResultSummary", projection);
+     return projection;
+  }
+
   public MailingAddressProjection<PARENT, ROOT> address1() {
     getFields().put("address1", null);
     return this;

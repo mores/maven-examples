@@ -9,31 +9,36 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
- * The input fields to create or update free shipping automatic discount.
+ * The input fields for creating or updating a
+ * [free shipping discount](https://help.shopify.com/manual/discounts/discount-types/free-shipping)
+ * that's automatically applied on a cart and at checkout.
  */
 public class DiscountAutomaticFreeShippingInput {
   /**
-   * Determines which discount classes the shipping discount can combine with.
+   * The
+   * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that you can use in combination with the shipping discount.
    */
   private DiscountCombinesWithInput combinesWith;
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   private String title;
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   private OffsetDateTime startsAt;
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   private OffsetDateTime endsAt;
 
   /**
-   * The minimum subtotal or quantity that's required for the discount to be applied.
+   * The minimum subtotal or quantity of items that are required for the discount to be applied.
    */
   private DiscountMinimumRequirementInput minimumRequirement;
 
@@ -54,11 +59,17 @@ public class DiscountAutomaticFreeShippingInput {
 
   /**
    * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
    */
   private Boolean appliesOnSubscription = false;
 
   /**
-   * The number of times a discount applies on recurring purchases (subscriptions).
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
    */
   private Integer recurringCycleLimit;
 
@@ -66,7 +77,9 @@ public class DiscountAutomaticFreeShippingInput {
   }
 
   /**
-   * Determines which discount classes the shipping discount can combine with.
+   * The
+   * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that you can use in combination with the shipping discount.
    */
   public DiscountCombinesWithInput getCombinesWith() {
     return combinesWith;
@@ -77,7 +90,7 @@ public class DiscountAutomaticFreeShippingInput {
   }
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   public String getTitle() {
     return title;
@@ -88,7 +101,7 @@ public class DiscountAutomaticFreeShippingInput {
   }
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   public OffsetDateTime getStartsAt() {
     return startsAt;
@@ -99,7 +112,8 @@ public class DiscountAutomaticFreeShippingInput {
   }
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   public OffsetDateTime getEndsAt() {
     return endsAt;
@@ -110,7 +124,7 @@ public class DiscountAutomaticFreeShippingInput {
   }
 
   /**
-   * The minimum subtotal or quantity that's required for the discount to be applied.
+   * The minimum subtotal or quantity of items that are required for the discount to be applied.
    */
   public DiscountMinimumRequirementInput getMinimumRequirement() {
     return minimumRequirement;
@@ -155,6 +169,9 @@ public class DiscountAutomaticFreeShippingInput {
 
   /**
    * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
    */
   public Boolean getAppliesOnSubscription() {
     return appliesOnSubscription;
@@ -165,7 +182,10 @@ public class DiscountAutomaticFreeShippingInput {
   }
 
   /**
-   * The number of times a discount applies on recurring purchases (subscriptions).
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
    */
   public Integer getRecurringCycleLimit() {
     return recurringCycleLimit;
@@ -208,27 +228,30 @@ public class DiscountAutomaticFreeShippingInput {
 
   public static class Builder {
     /**
-     * Determines which discount classes the shipping discount can combine with.
+     * The
+     * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with the shipping discount.
      */
     private DiscountCombinesWithInput combinesWith;
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     private String title;
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     private OffsetDateTime startsAt;
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     private OffsetDateTime endsAt;
 
     /**
-     * The minimum subtotal or quantity that's required for the discount to be applied.
+     * The minimum subtotal or quantity of items that are required for the discount to be applied.
      */
     private DiscountMinimumRequirementInput minimumRequirement;
 
@@ -249,11 +272,17 @@ public class DiscountAutomaticFreeShippingInput {
 
     /**
      * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
      */
     private Boolean appliesOnSubscription = false;
 
     /**
-     * The number of times a discount applies on recurring purchases (subscriptions).
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
      */
     private Integer recurringCycleLimit;
 
@@ -273,7 +302,9 @@ public class DiscountAutomaticFreeShippingInput {
     }
 
     /**
-     * Determines which discount classes the shipping discount can combine with.
+     * The
+     * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with the shipping discount.
      */
     public Builder combinesWith(DiscountCombinesWithInput combinesWith) {
       this.combinesWith = combinesWith;
@@ -281,7 +312,7 @@ public class DiscountAutomaticFreeShippingInput {
     }
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     public Builder title(String title) {
       this.title = title;
@@ -289,7 +320,7 @@ public class DiscountAutomaticFreeShippingInput {
     }
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     public Builder startsAt(OffsetDateTime startsAt) {
       this.startsAt = startsAt;
@@ -297,7 +328,8 @@ public class DiscountAutomaticFreeShippingInput {
     }
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     public Builder endsAt(OffsetDateTime endsAt) {
       this.endsAt = endsAt;
@@ -305,7 +337,7 @@ public class DiscountAutomaticFreeShippingInput {
     }
 
     /**
-     * The minimum subtotal or quantity that's required for the discount to be applied.
+     * The minimum subtotal or quantity of items that are required for the discount to be applied.
      */
     public Builder minimumRequirement(DiscountMinimumRequirementInput minimumRequirement) {
       this.minimumRequirement = minimumRequirement;
@@ -338,6 +370,9 @@ public class DiscountAutomaticFreeShippingInput {
 
     /**
      * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
      */
     public Builder appliesOnSubscription(Boolean appliesOnSubscription) {
       this.appliesOnSubscription = appliesOnSubscription;
@@ -345,7 +380,10 @@ public class DiscountAutomaticFreeShippingInput {
     }
 
     /**
-     * The number of times a discount applies on recurring purchases (subscriptions).
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
      */
     public Builder recurringCycleLimit(Integer recurringCycleLimit) {
       this.recurringCycleLimit = recurringCycleLimit;

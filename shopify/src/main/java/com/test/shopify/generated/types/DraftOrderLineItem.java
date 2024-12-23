@@ -14,11 +14,23 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class DraftOrderLineItem implements com.test.shopify.generated.types.Node {
+public class DraftOrderLineItem implements DraftOrderPlatformDiscountAllocationTarget, com.test.shopify.generated.types.Node {
   /**
    * The custom applied discount.
    */
   private DraftOrderAppliedDiscount appliedDiscount;
+
+  /**
+   * The `discountedTotal` divided by `quantity`,
+   * equal to the average value of the line item price per unit after discounts are applied.
+   * This value doesn't include discounts applied to the entire draft order.
+   */
+  private MoneyBag approximateDiscountedUnitPriceSet;
+
+  /**
+   * The list of bundle components if applicable.
+   */
+  private List<DraftOrderLineItem> bundleComponents;
 
   /**
    * Whether the line item is custom (`true`) or contains a product variant (`false`).
@@ -111,6 +123,11 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
   private MoneyBag originalUnitPriceSet;
 
   /**
+   * The original custom line item input price.
+   */
+  private MoneyV2 originalUnitPriceWithCurrency;
+
+  /**
    * The product for the line item.
    */
   private Product product;
@@ -157,6 +174,12 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
   private MoneyBag totalDiscountSet;
 
   /**
+   * The UUID of the draft order line item. Must be unique and consistent across requests.
+   * This field is mandatory in order to manipulate drafts with bundles.
+   */
+  private String uuid;
+
+  /**
    * The product variant for the line item.
    */
   private ProductVariant variant;
@@ -188,6 +211,30 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
 
   public void setAppliedDiscount(DraftOrderAppliedDiscount appliedDiscount) {
     this.appliedDiscount = appliedDiscount;
+  }
+
+  /**
+   * The `discountedTotal` divided by `quantity`,
+   * equal to the average value of the line item price per unit after discounts are applied.
+   * This value doesn't include discounts applied to the entire draft order.
+   */
+  public MoneyBag getApproximateDiscountedUnitPriceSet() {
+    return approximateDiscountedUnitPriceSet;
+  }
+
+  public void setApproximateDiscountedUnitPriceSet(MoneyBag approximateDiscountedUnitPriceSet) {
+    this.approximateDiscountedUnitPriceSet = approximateDiscountedUnitPriceSet;
+  }
+
+  /**
+   * The list of bundle components if applicable.
+   */
+  public List<DraftOrderLineItem> getBundleComponents() {
+    return bundleComponents;
+  }
+
+  public void setBundleComponents(List<DraftOrderLineItem> bundleComponents) {
+    this.bundleComponents = bundleComponents;
   }
 
   /**
@@ -383,6 +430,17 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
   }
 
   /**
+   * The original custom line item input price.
+   */
+  public MoneyV2 getOriginalUnitPriceWithCurrency() {
+    return originalUnitPriceWithCurrency;
+  }
+
+  public void setOriginalUnitPriceWithCurrency(MoneyV2 originalUnitPriceWithCurrency) {
+    this.originalUnitPriceWithCurrency = originalUnitPriceWithCurrency;
+  }
+
+  /**
    * The product for the line item.
    */
   public Product getProduct() {
@@ -483,6 +541,18 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
   }
 
   /**
+   * The UUID of the draft order line item. Must be unique and consistent across requests.
+   * This field is mandatory in order to manipulate drafts with bundles.
+   */
+  public String getUuid() {
+    return uuid;
+  }
+
+  public void setUuid(String uuid) {
+    this.uuid = uuid;
+  }
+
+  /**
    * The product variant for the line item.
    */
   public ProductVariant getVariant() {
@@ -528,7 +598,7 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
 
   @Override
   public String toString() {
-    return "DraftOrderLineItem{appliedDiscount='" + appliedDiscount + "', custom='" + custom + "', customAttributes='" + customAttributes + "', customAttributesV2='" + customAttributesV2 + "', discountedTotal='" + discountedTotal + "', discountedTotalSet='" + discountedTotalSet + "', discountedUnitPrice='" + discountedUnitPrice + "', discountedUnitPriceSet='" + discountedUnitPriceSet + "', fulfillmentService='" + fulfillmentService + "', grams='" + grams + "', id='" + id + "', image='" + image + "', isGiftCard='" + isGiftCard + "', name='" + name + "', originalTotal='" + originalTotal + "', originalTotalSet='" + originalTotalSet + "', originalUnitPrice='" + originalUnitPrice + "', originalUnitPriceSet='" + originalUnitPriceSet + "', product='" + product + "', quantity='" + quantity + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', taxLines='" + taxLines + "', taxable='" + taxable + "', title='" + title + "', totalDiscount='" + totalDiscount + "', totalDiscountSet='" + totalDiscountSet + "', variant='" + variant + "', variantTitle='" + variantTitle + "', vendor='" + vendor + "', weight='" + weight + "'}";
+    return "DraftOrderLineItem{appliedDiscount='" + appliedDiscount + "', approximateDiscountedUnitPriceSet='" + approximateDiscountedUnitPriceSet + "', bundleComponents='" + bundleComponents + "', custom='" + custom + "', customAttributes='" + customAttributes + "', customAttributesV2='" + customAttributesV2 + "', discountedTotal='" + discountedTotal + "', discountedTotalSet='" + discountedTotalSet + "', discountedUnitPrice='" + discountedUnitPrice + "', discountedUnitPriceSet='" + discountedUnitPriceSet + "', fulfillmentService='" + fulfillmentService + "', grams='" + grams + "', id='" + id + "', image='" + image + "', isGiftCard='" + isGiftCard + "', name='" + name + "', originalTotal='" + originalTotal + "', originalTotalSet='" + originalTotalSet + "', originalUnitPrice='" + originalUnitPrice + "', originalUnitPriceSet='" + originalUnitPriceSet + "', originalUnitPriceWithCurrency='" + originalUnitPriceWithCurrency + "', product='" + product + "', quantity='" + quantity + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', taxLines='" + taxLines + "', taxable='" + taxable + "', title='" + title + "', totalDiscount='" + totalDiscount + "', totalDiscountSet='" + totalDiscountSet + "', uuid='" + uuid + "', variant='" + variant + "', variantTitle='" + variantTitle + "', vendor='" + vendor + "', weight='" + weight + "'}";
   }
 
   @Override
@@ -537,6 +607,8 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
     if (o == null || getClass() != o.getClass()) return false;
     DraftOrderLineItem that = (DraftOrderLineItem) o;
     return Objects.equals(appliedDiscount, that.appliedDiscount) &&
+        Objects.equals(approximateDiscountedUnitPriceSet, that.approximateDiscountedUnitPriceSet) &&
+        Objects.equals(bundleComponents, that.bundleComponents) &&
         custom == that.custom &&
         Objects.equals(customAttributes, that.customAttributes) &&
         Objects.equals(customAttributesV2, that.customAttributesV2) &&
@@ -554,6 +626,7 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
         Objects.equals(originalTotalSet, that.originalTotalSet) &&
         Objects.equals(originalUnitPrice, that.originalUnitPrice) &&
         Objects.equals(originalUnitPriceSet, that.originalUnitPriceSet) &&
+        Objects.equals(originalUnitPriceWithCurrency, that.originalUnitPriceWithCurrency) &&
         Objects.equals(product, that.product) &&
         quantity == that.quantity &&
         requiresShipping == that.requiresShipping &&
@@ -563,6 +636,7 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
         Objects.equals(title, that.title) &&
         Objects.equals(totalDiscount, that.totalDiscount) &&
         Objects.equals(totalDiscountSet, that.totalDiscountSet) &&
+        Objects.equals(uuid, that.uuid) &&
         Objects.equals(variant, that.variant) &&
         Objects.equals(variantTitle, that.variantTitle) &&
         Objects.equals(vendor, that.vendor) &&
@@ -571,7 +645,7 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
 
   @Override
   public int hashCode() {
-    return Objects.hash(appliedDiscount, custom, customAttributes, customAttributesV2, discountedTotal, discountedTotalSet, discountedUnitPrice, discountedUnitPriceSet, fulfillmentService, grams, id, image, isGiftCard, name, originalTotal, originalTotalSet, originalUnitPrice, originalUnitPriceSet, product, quantity, requiresShipping, sku, taxLines, taxable, title, totalDiscount, totalDiscountSet, variant, variantTitle, vendor, weight);
+    return Objects.hash(appliedDiscount, approximateDiscountedUnitPriceSet, bundleComponents, custom, customAttributes, customAttributesV2, discountedTotal, discountedTotalSet, discountedUnitPrice, discountedUnitPriceSet, fulfillmentService, grams, id, image, isGiftCard, name, originalTotal, originalTotalSet, originalUnitPrice, originalUnitPriceSet, originalUnitPriceWithCurrency, product, quantity, requiresShipping, sku, taxLines, taxable, title, totalDiscount, totalDiscountSet, uuid, variant, variantTitle, vendor, weight);
   }
 
   public static Builder newBuilder() {
@@ -583,6 +657,18 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
      * The custom applied discount.
      */
     private DraftOrderAppliedDiscount appliedDiscount;
+
+    /**
+     * The `discountedTotal` divided by `quantity`,
+     * equal to the average value of the line item price per unit after discounts are applied.
+     * This value doesn't include discounts applied to the entire draft order.
+     */
+    private MoneyBag approximateDiscountedUnitPriceSet;
+
+    /**
+     * The list of bundle components if applicable.
+     */
+    private List<DraftOrderLineItem> bundleComponents;
 
     /**
      * Whether the line item is custom (`true`) or contains a product variant (`false`).
@@ -675,6 +761,11 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
     private MoneyBag originalUnitPriceSet;
 
     /**
+     * The original custom line item input price.
+     */
+    private MoneyV2 originalUnitPriceWithCurrency;
+
+    /**
      * The product for the line item.
      */
     private Product product;
@@ -721,6 +812,12 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
     private MoneyBag totalDiscountSet;
 
     /**
+     * The UUID of the draft order line item. Must be unique and consistent across requests.
+     * This field is mandatory in order to manipulate drafts with bundles.
+     */
+    private String uuid;
+
+    /**
      * The product variant for the line item.
      */
     private ProductVariant variant;
@@ -743,6 +840,8 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
     public DraftOrderLineItem build() {
       DraftOrderLineItem result = new DraftOrderLineItem();
       result.appliedDiscount = this.appliedDiscount;
+      result.approximateDiscountedUnitPriceSet = this.approximateDiscountedUnitPriceSet;
+      result.bundleComponents = this.bundleComponents;
       result.custom = this.custom;
       result.customAttributes = this.customAttributes;
       result.customAttributesV2 = this.customAttributesV2;
@@ -760,6 +859,7 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
       result.originalTotalSet = this.originalTotalSet;
       result.originalUnitPrice = this.originalUnitPrice;
       result.originalUnitPriceSet = this.originalUnitPriceSet;
+      result.originalUnitPriceWithCurrency = this.originalUnitPriceWithCurrency;
       result.product = this.product;
       result.quantity = this.quantity;
       result.requiresShipping = this.requiresShipping;
@@ -769,6 +869,7 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
       result.title = this.title;
       result.totalDiscount = this.totalDiscount;
       result.totalDiscountSet = this.totalDiscountSet;
+      result.uuid = this.uuid;
       result.variant = this.variant;
       result.variantTitle = this.variantTitle;
       result.vendor = this.vendor;
@@ -781,6 +882,24 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
      */
     public Builder appliedDiscount(DraftOrderAppliedDiscount appliedDiscount) {
       this.appliedDiscount = appliedDiscount;
+      return this;
+    }
+
+    /**
+     * The `discountedTotal` divided by `quantity`,
+     * equal to the average value of the line item price per unit after discounts are applied.
+     * This value doesn't include discounts applied to the entire draft order.
+     */
+    public Builder approximateDiscountedUnitPriceSet(MoneyBag approximateDiscountedUnitPriceSet) {
+      this.approximateDiscountedUnitPriceSet = approximateDiscountedUnitPriceSet;
+      return this;
+    }
+
+    /**
+     * The list of bundle components if applicable.
+     */
+    public Builder bundleComponents(List<DraftOrderLineItem> bundleComponents) {
+      this.bundleComponents = bundleComponents;
       return this;
     }
 
@@ -926,6 +1045,14 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
     }
 
     /**
+     * The original custom line item input price.
+     */
+    public Builder originalUnitPriceWithCurrency(MoneyV2 originalUnitPriceWithCurrency) {
+      this.originalUnitPriceWithCurrency = originalUnitPriceWithCurrency;
+      return this;
+    }
+
+    /**
      * The product for the line item.
      */
     public Builder product(Product product) {
@@ -995,6 +1122,15 @@ public class DraftOrderLineItem implements com.test.shopify.generated.types.Node
      */
     public Builder totalDiscountSet(MoneyBag totalDiscountSet) {
       this.totalDiscountSet = totalDiscountSet;
+      return this;
+    }
+
+    /**
+     * The UUID of the draft order line item. Must be unique and consistent across requests.
+     * This field is mandatory in order to manipulate drafts with bundles.
+     */
+    public Builder uuid(String uuid) {
+      this.uuid = uuid;
       return this;
     }
 

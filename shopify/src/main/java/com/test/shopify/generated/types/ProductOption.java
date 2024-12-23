@@ -22,9 +22,20 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
   private String id;
 
   /**
+   * The metafield identifier linked to this option.
+   */
+  private LinkedMetafield linkedMetafield;
+
+  /**
    * The product option’s name.
    */
   private String name;
+
+  /**
+   * Similar to values, option_values returns all the corresponding option value
+   * objects to the product option, including values not assigned to any variants.
+   */
+  private List<ProductOptionValue> optionValues;
 
   /**
    * The product option's position.
@@ -56,6 +67,17 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
   }
 
   /**
+   * The metafield identifier linked to this option.
+   */
+  public LinkedMetafield getLinkedMetafield() {
+    return linkedMetafield;
+  }
+
+  public void setLinkedMetafield(LinkedMetafield linkedMetafield) {
+    this.linkedMetafield = linkedMetafield;
+  }
+
+  /**
    * The product option’s name.
    */
   public String getName() {
@@ -64,6 +86,18 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * Similar to values, option_values returns all the corresponding option value
+   * objects to the product option, including values not assigned to any variants.
+   */
+  public List<ProductOptionValue> getOptionValues() {
+    return optionValues;
+  }
+
+  public void setOptionValues(List<ProductOptionValue> optionValues) {
+    this.optionValues = optionValues;
   }
 
   /**
@@ -101,7 +135,7 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
 
   @Override
   public String toString() {
-    return "ProductOption{id='" + id + "', name='" + name + "', position='" + position + "', translations='" + translations + "', values='" + values + "'}";
+    return "ProductOption{id='" + id + "', linkedMetafield='" + linkedMetafield + "', name='" + name + "', optionValues='" + optionValues + "', position='" + position + "', translations='" + translations + "', values='" + values + "'}";
   }
 
   @Override
@@ -110,7 +144,9 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
     if (o == null || getClass() != o.getClass()) return false;
     ProductOption that = (ProductOption) o;
     return Objects.equals(id, that.id) &&
+        Objects.equals(linkedMetafield, that.linkedMetafield) &&
         Objects.equals(name, that.name) &&
+        Objects.equals(optionValues, that.optionValues) &&
         position == that.position &&
         Objects.equals(translations, that.translations) &&
         Objects.equals(values, that.values);
@@ -118,7 +154,7 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, position, translations, values);
+    return Objects.hash(id, linkedMetafield, name, optionValues, position, translations, values);
   }
 
   public static Builder newBuilder() {
@@ -132,9 +168,20 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
     private String id;
 
     /**
+     * The metafield identifier linked to this option.
+     */
+    private LinkedMetafield linkedMetafield;
+
+    /**
      * The product option’s name.
      */
     private String name;
+
+    /**
+     * Similar to values, option_values returns all the corresponding option value
+     * objects to the product option, including values not assigned to any variants.
+     */
+    private List<ProductOptionValue> optionValues;
 
     /**
      * The product option's position.
@@ -154,7 +201,9 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
     public ProductOption build() {
       ProductOption result = new ProductOption();
       result.id = this.id;
+      result.linkedMetafield = this.linkedMetafield;
       result.name = this.name;
+      result.optionValues = this.optionValues;
       result.position = this.position;
       result.translations = this.translations;
       result.values = this.values;
@@ -170,10 +219,27 @@ public class ProductOption implements com.test.shopify.generated.types.HasPublis
     }
 
     /**
+     * The metafield identifier linked to this option.
+     */
+    public Builder linkedMetafield(LinkedMetafield linkedMetafield) {
+      this.linkedMetafield = linkedMetafield;
+      return this;
+    }
+
+    /**
      * The product option’s name.
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * Similar to values, option_values returns all the corresponding option value
+     * objects to the product option, including values not assigned to any variants.
+     */
+    public Builder optionValues(List<ProductOptionValue> optionValues) {
+      this.optionValues = optionValues;
       return this;
     }
 

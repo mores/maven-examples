@@ -80,6 +80,11 @@ public class ExchangeV2LineItemProjection<PARENT extends BaseSubProjectionNode<?
     return this;
   }
 
+  public ExchangeV2LineItemProjection<PARENT, ROOT> isGiftCard() {
+    getFields().put("isGiftCard", null);
+    return this;
+  }
+
   public ExchangeV2LineItemProjection<PARENT, ROOT> name() {
     getFields().put("name", null);
     return this;

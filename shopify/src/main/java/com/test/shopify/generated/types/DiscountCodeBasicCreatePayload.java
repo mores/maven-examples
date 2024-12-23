@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountCodeBasicCreatePayload {
   /**
-   * The created code discount.
+   * The discount code that was created.
    */
   private DiscountCodeNode codeDiscountNode;
 
@@ -24,7 +24,7 @@ public class DiscountCodeBasicCreatePayload {
   }
 
   /**
-   * The created code discount.
+   * The discount code that was created.
    */
   public DiscountCodeNode getCodeDiscountNode() {
     return codeDiscountNode;
@@ -70,7 +70,7 @@ public class DiscountCodeBasicCreatePayload {
 
   public static class Builder {
     /**
-     * The created code discount.
+     * The discount code that was created.
      */
     private DiscountCodeNode codeDiscountNode;
 
@@ -87,7 +87,7 @@ public class DiscountCodeBasicCreatePayload {
     }
 
     /**
-     * The created code discount.
+     * The discount code that was created.
      */
     public Builder codeDiscountNode(DiscountCodeNode codeDiscountNode) {
       this.codeDiscountNode = codeDiscountNode;

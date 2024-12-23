@@ -26,19 +26,19 @@ import java.util.Objects;
 )
 public class MarketWebPresence implements com.test.shopify.generated.types.Node {
   /**
-   * The ISO codes for the alternate locales. When a domain is used, these locales will be
+   * The ShopLocale object for the alternate locales. When a domain is used, these locales will be
    * available as language-specific subfolders. For example, if English is an
    * alternate locale, and `example.ca` is the market’s domain, then
    * `example.ca/en` will load in English.
    */
-  private List<String> alternateLocales;
+  private List<ShopLocale> alternateLocales;
 
   /**
-   * The ISO code for the default locale. When a domain is used, this is the locale that will
+   * The ShopLocale object for the default locale. When a domain is used, this is the locale that will
    * be used when the domain root is accessed. For example, if French is the default locale,
    * and `example.ca` is the market’s domain, then `example.ca` will load in French.
    */
-  private String defaultLocale;
+  private ShopLocale defaultLocale;
 
   /**
    * The web presence’s domain.
@@ -73,29 +73,29 @@ public class MarketWebPresence implements com.test.shopify.generated.types.Node 
   }
 
   /**
-   * The ISO codes for the alternate locales. When a domain is used, these locales will be
+   * The ShopLocale object for the alternate locales. When a domain is used, these locales will be
    * available as language-specific subfolders. For example, if English is an
    * alternate locale, and `example.ca` is the market’s domain, then
    * `example.ca/en` will load in English.
    */
-  public List<String> getAlternateLocales() {
+  public List<ShopLocale> getAlternateLocales() {
     return alternateLocales;
   }
 
-  public void setAlternateLocales(List<String> alternateLocales) {
+  public void setAlternateLocales(List<ShopLocale> alternateLocales) {
     this.alternateLocales = alternateLocales;
   }
 
   /**
-   * The ISO code for the default locale. When a domain is used, this is the locale that will
+   * The ShopLocale object for the default locale. When a domain is used, this is the locale that will
    * be used when the domain root is accessed. For example, if French is the default locale,
    * and `example.ca` is the market’s domain, then `example.ca` will load in French.
    */
-  public String getDefaultLocale() {
+  public ShopLocale getDefaultLocale() {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(String defaultLocale) {
+  public void setDefaultLocale(ShopLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -188,19 +188,19 @@ public class MarketWebPresence implements com.test.shopify.generated.types.Node 
 
   public static class Builder {
     /**
-     * The ISO codes for the alternate locales. When a domain is used, these locales will be
+     * The ShopLocale object for the alternate locales. When a domain is used, these locales will be
      * available as language-specific subfolders. For example, if English is an
      * alternate locale, and `example.ca` is the market’s domain, then
      * `example.ca/en` will load in English.
      */
-    private List<String> alternateLocales;
+    private List<ShopLocale> alternateLocales;
 
     /**
-     * The ISO code for the default locale. When a domain is used, this is the locale that will
+     * The ShopLocale object for the default locale. When a domain is used, this is the locale that will
      * be used when the domain root is accessed. For example, if French is the default locale,
      * and `example.ca` is the market’s domain, then `example.ca` will load in French.
      */
-    private String defaultLocale;
+    private ShopLocale defaultLocale;
 
     /**
      * The web presence’s domain.
@@ -244,22 +244,22 @@ public class MarketWebPresence implements com.test.shopify.generated.types.Node 
     }
 
     /**
-     * The ISO codes for the alternate locales. When a domain is used, these locales will be
+     * The ShopLocale object for the alternate locales. When a domain is used, these locales will be
      * available as language-specific subfolders. For example, if English is an
      * alternate locale, and `example.ca` is the market’s domain, then
      * `example.ca/en` will load in English.
      */
-    public Builder alternateLocales(List<String> alternateLocales) {
+    public Builder alternateLocales(List<ShopLocale> alternateLocales) {
       this.alternateLocales = alternateLocales;
       return this;
     }
 
     /**
-     * The ISO code for the default locale. When a domain is used, this is the locale that will
+     * The ShopLocale object for the default locale. When a domain is used, this is the locale that will
      * be used when the domain root is accessed. For example, if French is the default locale,
      * and `example.ca` is the market’s domain, then `example.ca` will load in French.
      */
-    public Builder defaultLocale(String defaultLocale) {
+    public Builder defaultLocale(ShopLocale defaultLocale) {
       this.defaultLocale = defaultLocale;
       return this;
     }

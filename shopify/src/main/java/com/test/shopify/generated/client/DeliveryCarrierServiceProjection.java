@@ -43,6 +43,16 @@ public class DeliveryCarrierServiceProjection<PARENT extends BaseSubProjectionNo
      return projection;
   }
 
+  public DeliveryCarrierServiceProjection<PARENT, ROOT> active() {
+    getFields().put("active", null);
+    return this;
+  }
+
+  public DeliveryCarrierServiceProjection<PARENT, ROOT> callbackUrl() {
+    getFields().put("callbackUrl", null);
+    return this;
+  }
+
   public DeliveryCarrierServiceProjection<PARENT, ROOT> formattedName() {
     getFields().put("formattedName", null);
     return this;
@@ -55,6 +65,11 @@ public class DeliveryCarrierServiceProjection<PARENT extends BaseSubProjectionNo
 
   public DeliveryCarrierServiceProjection<PARENT, ROOT> name() {
     getFields().put("name", null);
+    return this;
+  }
+
+  public DeliveryCarrierServiceProjection<PARENT, ROOT> supportsServiceDiscovery() {
+    getFields().put("supportsServiceDiscovery", null);
     return this;
   }
 }

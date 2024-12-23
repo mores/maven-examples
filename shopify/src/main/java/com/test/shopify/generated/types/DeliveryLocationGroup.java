@@ -27,7 +27,7 @@ public class DeliveryLocationGroup implements com.test.shopify.generated.types.N
   /**
    * A count of all locations that are part of this location group.
    */
-  private int locationsCount;
+  private Count locationsCount;
 
   public DeliveryLocationGroup() {
   }
@@ -57,11 +57,11 @@ public class DeliveryLocationGroup implements com.test.shopify.generated.types.N
   /**
    * A count of all locations that are part of this location group.
    */
-  public int getLocationsCount() {
+  public Count getLocationsCount() {
     return locationsCount;
   }
 
-  public void setLocationsCount(int locationsCount) {
+  public void setLocationsCount(Count locationsCount) {
     this.locationsCount = locationsCount;
   }
 
@@ -77,7 +77,7 @@ public class DeliveryLocationGroup implements com.test.shopify.generated.types.N
     DeliveryLocationGroup that = (DeliveryLocationGroup) o;
     return Objects.equals(id, that.id) &&
         Objects.equals(locations, that.locations) &&
-        locationsCount == that.locationsCount;
+        Objects.equals(locationsCount, that.locationsCount);
   }
 
   @Override
@@ -103,7 +103,7 @@ public class DeliveryLocationGroup implements com.test.shopify.generated.types.N
     /**
      * A count of all locations that are part of this location group.
      */
-    private int locationsCount;
+    private Count locationsCount;
 
     public DeliveryLocationGroup build() {
       DeliveryLocationGroup result = new DeliveryLocationGroup();
@@ -132,7 +132,7 @@ public class DeliveryLocationGroup implements com.test.shopify.generated.types.N
     /**
      * A count of all locations that are part of this location group.
      */
-    public Builder locationsCount(int locationsCount) {
+    public Builder locationsCount(Count locationsCount) {
       this.locationsCount = locationsCount;
       return this;
     }

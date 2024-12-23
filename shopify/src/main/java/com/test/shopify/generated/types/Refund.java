@@ -47,9 +47,19 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
   private Order order;
 
   /**
+   * The order adjustments that are attached with the refund.
+   */
+  private OrderAdjustmentConnection orderAdjustments;
+
+  /**
    * The `RefundLineItem` resources attached to the refund.
    */
   private RefundLineItemConnection refundLineItems;
+
+  /**
+   * The `RefundShippingLine` resources attached to the refund.
+   */
+  private RefundShippingLineConnection refundShippingLines;
 
   /**
    * The return associated with the refund.
@@ -151,6 +161,17 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
   }
 
   /**
+   * The order adjustments that are attached with the refund.
+   */
+  public OrderAdjustmentConnection getOrderAdjustments() {
+    return orderAdjustments;
+  }
+
+  public void setOrderAdjustments(OrderAdjustmentConnection orderAdjustments) {
+    this.orderAdjustments = orderAdjustments;
+  }
+
+  /**
    * The `RefundLineItem` resources attached to the refund.
    */
   public RefundLineItemConnection getRefundLineItems() {
@@ -159,6 +180,17 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
 
   public void setRefundLineItems(RefundLineItemConnection refundLineItems) {
     this.refundLineItems = refundLineItems;
+  }
+
+  /**
+   * The `RefundShippingLine` resources attached to the refund.
+   */
+  public RefundShippingLineConnection getRefundShippingLines() {
+    return refundShippingLines;
+  }
+
+  public void setRefundShippingLines(RefundShippingLineConnection refundShippingLines) {
+    this.refundShippingLines = refundShippingLines;
   }
 
   /**
@@ -229,7 +261,7 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
 
   @Override
   public String toString() {
-    return "Refund{createdAt='" + createdAt + "', duties='" + duties + "', id='" + id + "', legacyResourceId='" + legacyResourceId + "', note='" + note + "', order='" + order + "', refundLineItems='" + refundLineItems + "', return='" + _return + "', staffMember='" + staffMember + "', totalRefunded='" + totalRefunded + "', totalRefundedSet='" + totalRefundedSet + "', transactions='" + transactions + "', updatedAt='" + updatedAt + "'}";
+    return "Refund{createdAt='" + createdAt + "', duties='" + duties + "', id='" + id + "', legacyResourceId='" + legacyResourceId + "', note='" + note + "', order='" + order + "', orderAdjustments='" + orderAdjustments + "', refundLineItems='" + refundLineItems + "', refundShippingLines='" + refundShippingLines + "', return='" + _return + "', staffMember='" + staffMember + "', totalRefunded='" + totalRefunded + "', totalRefundedSet='" + totalRefundedSet + "', transactions='" + transactions + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -243,7 +275,9 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
         Objects.equals(legacyResourceId, that.legacyResourceId) &&
         Objects.equals(note, that.note) &&
         Objects.equals(order, that.order) &&
+        Objects.equals(orderAdjustments, that.orderAdjustments) &&
         Objects.equals(refundLineItems, that.refundLineItems) &&
+        Objects.equals(refundShippingLines, that.refundShippingLines) &&
         Objects.equals(_return, that._return) &&
         Objects.equals(staffMember, that.staffMember) &&
         Objects.equals(totalRefunded, that.totalRefunded) &&
@@ -254,7 +288,7 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, duties, id, legacyResourceId, note, order, refundLineItems, _return, staffMember, totalRefunded, totalRefundedSet, transactions, updatedAt);
+    return Objects.hash(createdAt, duties, id, legacyResourceId, note, order, orderAdjustments, refundLineItems, refundShippingLines, _return, staffMember, totalRefunded, totalRefundedSet, transactions, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -293,9 +327,19 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
     private Order order;
 
     /**
+     * The order adjustments that are attached with the refund.
+     */
+    private OrderAdjustmentConnection orderAdjustments;
+
+    /**
      * The `RefundLineItem` resources attached to the refund.
      */
     private RefundLineItemConnection refundLineItems;
+
+    /**
+     * The `RefundShippingLine` resources attached to the refund.
+     */
+    private RefundShippingLineConnection refundShippingLines;
 
     /**
      * The return associated with the refund.
@@ -335,7 +379,9 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
       result.legacyResourceId = this.legacyResourceId;
       result.note = this.note;
       result.order = this.order;
+      result.orderAdjustments = this.orderAdjustments;
       result.refundLineItems = this.refundLineItems;
+      result.refundShippingLines = this.refundShippingLines;
       result._return = this._return;
       result.staffMember = this.staffMember;
       result.totalRefunded = this.totalRefunded;
@@ -394,10 +440,26 @@ public class Refund implements com.test.shopify.generated.types.LegacyInteropera
     }
 
     /**
+     * The order adjustments that are attached with the refund.
+     */
+    public Builder orderAdjustments(OrderAdjustmentConnection orderAdjustments) {
+      this.orderAdjustments = orderAdjustments;
+      return this;
+    }
+
+    /**
      * The `RefundLineItem` resources attached to the refund.
      */
     public Builder refundLineItems(RefundLineItemConnection refundLineItems) {
       this.refundLineItems = refundLineItems;
+      return this;
+    }
+
+    /**
+     * The `RefundShippingLine` resources attached to the refund.
+     */
+    public Builder refundShippingLines(RefundShippingLineConnection refundShippingLines) {
+      this.refundShippingLines = refundShippingLines;
       return this;
     }
 

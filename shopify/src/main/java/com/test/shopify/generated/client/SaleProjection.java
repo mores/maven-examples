@@ -83,6 +83,12 @@ public class SaleProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
     return fragment;
   }
 
+  public FeeSaleFragmentProjection<SaleProjection<PARENT, ROOT>, ROOT> onFeeSale() {
+    FeeSaleFragmentProjection<SaleProjection<PARENT, ROOT>, ROOT> fragment = new FeeSaleFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
   public GiftCardSaleFragmentProjection<SaleProjection<PARENT, ROOT>, ROOT> onGiftCardSale() {
     GiftCardSaleFragmentProjection<SaleProjection<PARENT, ROOT>, ROOT> fragment = new GiftCardSaleFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);

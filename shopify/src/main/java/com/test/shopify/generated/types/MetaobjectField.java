@@ -15,6 +15,11 @@ public class MetaobjectField {
   private MetaobjectFieldDefinition definition;
 
   /**
+   * The assigned field value in JSON format.
+   */
+  private String jsonValue;
+
+  /**
    * The object key of this field.
    */
   private String key;
@@ -56,6 +61,17 @@ public class MetaobjectField {
 
   public void setDefinition(MetaobjectFieldDefinition definition) {
     this.definition = definition;
+  }
+
+  /**
+   * The assigned field value in JSON format.
+   */
+  public String getJsonValue() {
+    return jsonValue;
+  }
+
+  public void setJsonValue(String jsonValue) {
+    this.jsonValue = jsonValue;
   }
 
   /**
@@ -126,7 +142,7 @@ public class MetaobjectField {
 
   @Override
   public String toString() {
-    return "MetaobjectField{definition='" + definition + "', key='" + key + "', reference='" + reference + "', references='" + references + "', thumbnail='" + thumbnail + "', type='" + type + "', value='" + value + "'}";
+    return "MetaobjectField{definition='" + definition + "', jsonValue='" + jsonValue + "', key='" + key + "', reference='" + reference + "', references='" + references + "', thumbnail='" + thumbnail + "', type='" + type + "', value='" + value + "'}";
   }
 
   @Override
@@ -135,6 +151,7 @@ public class MetaobjectField {
     if (o == null || getClass() != o.getClass()) return false;
     MetaobjectField that = (MetaobjectField) o;
     return Objects.equals(definition, that.definition) &&
+        Objects.equals(jsonValue, that.jsonValue) &&
         Objects.equals(key, that.key) &&
         Objects.equals(reference, that.reference) &&
         Objects.equals(references, that.references) &&
@@ -145,7 +162,7 @@ public class MetaobjectField {
 
   @Override
   public int hashCode() {
-    return Objects.hash(definition, key, reference, references, thumbnail, type, value);
+    return Objects.hash(definition, jsonValue, key, reference, references, thumbnail, type, value);
   }
 
   public static Builder newBuilder() {
@@ -157,6 +174,11 @@ public class MetaobjectField {
      * The field definition for this object key.
      */
     private MetaobjectFieldDefinition definition;
+
+    /**
+     * The assigned field value in JSON format.
+     */
+    private String jsonValue;
 
     /**
      * The object key of this field.
@@ -191,6 +213,7 @@ public class MetaobjectField {
     public MetaobjectField build() {
       MetaobjectField result = new MetaobjectField();
       result.definition = this.definition;
+      result.jsonValue = this.jsonValue;
       result.key = this.key;
       result.reference = this.reference;
       result.references = this.references;
@@ -205,6 +228,14 @@ public class MetaobjectField {
      */
     public Builder definition(MetaobjectFieldDefinition definition) {
       this.definition = definition;
+      return this;
+    }
+
+    /**
+     * The assigned field value in JSON format.
+     */
+    public Builder jsonValue(String jsonValue) {
+      this.jsonValue = jsonValue;
       return this;
     }
 

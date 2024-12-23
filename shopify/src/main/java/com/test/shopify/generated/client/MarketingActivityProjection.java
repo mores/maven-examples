@@ -129,6 +129,11 @@ public class MarketingActivityProjection<PARENT extends BaseSubProjectionNode<?,
     return this;
   }
 
+  public MarketingActivityProjection<PARENT, ROOT> isExternal() {
+    getFields().put("isExternal", null);
+    return this;
+  }
+
   public MarketingActivityProjection<PARENT, ROOT> parentActivityId() {
     getFields().put("parentActivityId", null);
     return this;

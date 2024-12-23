@@ -49,6 +49,11 @@ public class WebhookSubscriptionProjection<PARENT extends BaseSubProjectionNode<
     return this;
   }
 
+  public WebhookSubscriptionProjection<PARENT, ROOT> filter() {
+    getFields().put("filter", null);
+    return this;
+  }
+
   public WebhookSubscriptionProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
     return this;
@@ -71,11 +76,6 @@ public class WebhookSubscriptionProjection<PARENT extends BaseSubProjectionNode<
 
   public WebhookSubscriptionProjection<PARENT, ROOT> privateMetafieldNamespaces() {
     getFields().put("privateMetafieldNamespaces", null);
-    return this;
-  }
-
-  public WebhookSubscriptionProjection<PARENT, ROOT> subTopic() {
-    getFields().put("subTopic", null);
     return this;
   }
 

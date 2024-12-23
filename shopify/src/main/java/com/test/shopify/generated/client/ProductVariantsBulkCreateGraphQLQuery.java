@@ -2,6 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
 import com.test.shopify.generated.types.CreateMediaInput;
+import com.test.shopify.generated.types.ProductVariantsBulkCreateStrategy;
 import com.test.shopify.generated.types.ProductVariantsBulkInput;
 import java.lang.Override;
 import java.lang.String;
@@ -14,7 +15,8 @@ import java.util.Set;
  */
 public class ProductVariantsBulkCreateGraphQLQuery extends GraphQLQuery {
   public ProductVariantsBulkCreateGraphQLQuery(List<ProductVariantsBulkInput> variants,
-      String productId, List<CreateMediaInput> media, String queryName, Set<String> fieldsSet) {
+      String productId, List<CreateMediaInput> media, ProductVariantsBulkCreateStrategy strategy,
+      String queryName, Set<String> fieldsSet) {
     super("mutation", queryName);
     if (variants != null || fieldsSet.contains("variants")) {
         getInput().put("variants", variants);
@@ -22,6 +24,8 @@ public class ProductVariantsBulkCreateGraphQLQuery extends GraphQLQuery {
         getInput().put("productId", productId);
     }if (media != null || fieldsSet.contains("media")) {
         getInput().put("media", media);
+    }if (strategy != null || fieldsSet.contains("strategy")) {
+        getInput().put("strategy", strategy);
     }
   }
 
@@ -47,10 +51,12 @@ public class ProductVariantsBulkCreateGraphQLQuery extends GraphQLQuery {
 
     private List<CreateMediaInput> media;
 
+    private ProductVariantsBulkCreateStrategy strategy;
+
     private String queryName;
 
     public ProductVariantsBulkCreateGraphQLQuery build() {
-      return new ProductVariantsBulkCreateGraphQLQuery(variants, productId, media, queryName, fieldsSet);
+      return new ProductVariantsBulkCreateGraphQLQuery(variants, productId, media, strategy, queryName, fieldsSet);
                
     }
 
@@ -78,6 +84,17 @@ public class ProductVariantsBulkCreateGraphQLQuery extends GraphQLQuery {
     public Builder media(List<CreateMediaInput> media) {
       this.media = media;
       this.fieldsSet.add("media");
+      return this;
+    }
+
+    /**
+     * The strategy defines which behavior the mutation should observe, such as
+     * whether to keep or delete the standalone variant (when product has only a
+     * single or default variant) when creating new variants in bulk.
+     */
+    public Builder strategy(ProductVariantsBulkCreateStrategy strategy) {
+      this.strategy = strategy;
+      this.fieldsSet.add("strategy");
       return this;
     }
 

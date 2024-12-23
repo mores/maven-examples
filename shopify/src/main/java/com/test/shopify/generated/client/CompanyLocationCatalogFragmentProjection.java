@@ -52,6 +52,13 @@ public class CompanyLocationCatalogFragmentProjection<PARENT extends BaseSubProj
     return projection;
   }
 
+  public CountProjection<CompanyLocationCatalogFragmentProjection<PARENT, ROOT>, ROOT> companyLocationsCount(
+      ) {
+     CountProjection<CompanyLocationCatalogFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("companyLocationsCount", projection);
+     return projection;
+  }
+
   public ResourceOperationProjection<CompanyLocationCatalogFragmentProjection<PARENT, ROOT>, ROOT> operations(
       ) {
      ResourceOperationProjection<CompanyLocationCatalogFragmentProjection<PARENT, ROOT>, ROOT> projection = new ResourceOperationProjection<>(this, getRoot());
@@ -78,11 +85,6 @@ public class CompanyLocationCatalogFragmentProjection<PARENT extends BaseSubProj
      CatalogStatusProjection<CompanyLocationCatalogFragmentProjection<PARENT, ROOT>, ROOT> projection = new CatalogStatusProjection<>(this, getRoot());
      getFields().put("status", projection);
      return projection;
-  }
-
-  public CompanyLocationCatalogFragmentProjection<PARENT, ROOT> companyLocationsCount() {
-    getFields().put("companyLocationsCount", null);
-    return this;
   }
 
   public CompanyLocationCatalogFragmentProjection<PARENT, ROOT> id() {

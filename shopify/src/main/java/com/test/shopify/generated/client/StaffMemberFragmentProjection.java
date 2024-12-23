@@ -20,6 +20,12 @@ public class StaffMemberFragmentProjection<PARENT extends BaseSubProjectionNode<
     return this;
   }
 
+  public AccountTypeProjection<StaffMemberFragmentProjection<PARENT, ROOT>, ROOT> accountType() {
+     AccountTypeProjection<StaffMemberFragmentProjection<PARENT, ROOT>, ROOT> projection = new AccountTypeProjection<>(this, getRoot());
+     getFields().put("accountType", projection);
+     return projection;
+  }
+
   public ImageProjection<StaffMemberFragmentProjection<PARENT, ROOT>, ROOT> avatar() {
      ImageProjection<StaffMemberFragmentProjection<PARENT, ROOT>, ROOT> projection = new ImageProjection<>(this, getRoot());
      getFields().put("avatar", projection);

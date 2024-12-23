@@ -24,6 +24,18 @@ public class Model3dFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?
      return projection;
   }
 
+  public FileErrorProjection<Model3dFragmentProjection<PARENT, ROOT>, ROOT> fileErrors() {
+     FileErrorProjection<Model3dFragmentProjection<PARENT, ROOT>, ROOT> projection = new FileErrorProjection<>(this, getRoot());
+     getFields().put("fileErrors", projection);
+     return projection;
+  }
+
+  public FileStatusProjection<Model3dFragmentProjection<PARENT, ROOT>, ROOT> fileStatus() {
+     FileStatusProjection<Model3dFragmentProjection<PARENT, ROOT>, ROOT> projection = new FileStatusProjection<>(this, getRoot());
+     getFields().put("fileStatus", projection);
+     return projection;
+  }
+
   public MediaContentTypeProjection<Model3dFragmentProjection<PARENT, ROOT>, ROOT> mediaContentType(
       ) {
      MediaContentTypeProjection<Model3dFragmentProjection<PARENT, ROOT>, ROOT> projection = new MediaContentTypeProjection<>(this, getRoot());
@@ -72,6 +84,11 @@ public class Model3dFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?
     return this;
   }
 
+  public Model3dFragmentProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public Model3dFragmentProjection<PARENT, ROOT> filename() {
     getFields().put("filename", null);
     return this;
@@ -79,6 +96,11 @@ public class Model3dFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?
 
   public Model3dFragmentProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
+    return this;
+  }
+
+  public Model3dFragmentProjection<PARENT, ROOT> updatedAt() {
+    getFields().put("updatedAt", null);
     return this;
   }
 

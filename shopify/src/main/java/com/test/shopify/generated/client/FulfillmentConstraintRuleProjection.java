@@ -17,6 +17,13 @@ public class FulfillmentConstraintRuleProjection<PARENT extends BaseSubProjectio
     return this;
   }
 
+  public DeliveryMethodTypeProjection<FulfillmentConstraintRuleProjection<PARENT, ROOT>, ROOT> deliveryMethodTypes(
+      ) {
+     DeliveryMethodTypeProjection<FulfillmentConstraintRuleProjection<PARENT, ROOT>, ROOT> projection = new DeliveryMethodTypeProjection<>(this, getRoot());
+     getFields().put("deliveryMethodTypes", projection);
+     return projection;
+  }
+
   public ShopifyFunctionProjection<FulfillmentConstraintRuleProjection<PARENT, ROOT>, ROOT> function(
       ) {
      ShopifyFunctionProjection<FulfillmentConstraintRuleProjection<PARENT, ROOT>, ROOT> projection = new ShopifyFunctionProjection<>(this, getRoot());

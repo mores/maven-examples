@@ -26,7 +26,8 @@ import java.util.Set;
  */
 public class ProductDuplicateGraphQLQuery extends GraphQLQuery {
   public ProductDuplicateGraphQLQuery(String productId, String newTitle, ProductStatus newStatus,
-      Boolean includeImages, Boolean includeTranslations, String queryName, Set<String> fieldsSet) {
+      Boolean includeImages, Boolean includeTranslations, Boolean synchronous, String queryName,
+      Set<String> fieldsSet) {
     super("mutation", queryName);
     if (productId != null || fieldsSet.contains("productId")) {
         getInput().put("productId", productId);
@@ -38,6 +39,8 @@ public class ProductDuplicateGraphQLQuery extends GraphQLQuery {
         getInput().put("includeImages", includeImages);
     }if (includeTranslations != null || fieldsSet.contains("includeTranslations")) {
         getInput().put("includeTranslations", includeTranslations);
+    }if (synchronous != null || fieldsSet.contains("synchronous")) {
+        getInput().put("synchronous", synchronous);
     }
   }
 
@@ -67,10 +70,12 @@ public class ProductDuplicateGraphQLQuery extends GraphQLQuery {
 
     private Boolean includeTranslations;
 
+    private Boolean synchronous;
+
     private String queryName;
 
     public ProductDuplicateGraphQLQuery build() {
-      return new ProductDuplicateGraphQLQuery(productId, newTitle, newStatus, includeImages, includeTranslations, queryName, fieldsSet);
+      return new ProductDuplicateGraphQLQuery(productId, newTitle, newStatus, includeImages, includeTranslations, synchronous, queryName, fieldsSet);
                
     }
 
@@ -116,6 +121,15 @@ public class ProductDuplicateGraphQLQuery extends GraphQLQuery {
     public Builder includeTranslations(Boolean includeTranslations) {
       this.includeTranslations = includeTranslations;
       this.fieldsSet.add("includeTranslations");
+      return this;
+    }
+
+    /**
+     * Specifies whether or not to run the mutation synchronously.
+     */
+    public Builder synchronous(Boolean synchronous) {
+      this.synchronous = synchronous;
+      this.fieldsSet.add("synchronous");
       return this;
     }
 

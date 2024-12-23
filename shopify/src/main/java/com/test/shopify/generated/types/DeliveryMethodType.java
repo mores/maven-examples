@@ -12,5 +12,7 @@ public enum DeliveryMethodType {
 
   RETAIL,
 
-  LOCAL
+  LOCAL,
+
+  PICKUP_POINT
 }

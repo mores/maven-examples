@@ -49,6 +49,12 @@ public class MarketFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?>
     return projection;
   }
 
+  public CountProjection<MarketFragmentProjection<PARENT, ROOT>, ROOT> catalogsCount() {
+     CountProjection<MarketFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("catalogsCount", projection);
+     return projection;
+  }
+
   public MarketCurrencySettingsProjection<MarketFragmentProjection<PARENT, ROOT>, ROOT> currencySettings(
       ) {
      MarketCurrencySettingsProjection<MarketFragmentProjection<PARENT, ROOT>, ROOT> projection = new MarketCurrencySettingsProjection<>(this, getRoot());

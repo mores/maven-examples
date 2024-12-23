@@ -54,6 +54,12 @@ public class DiscountCodeBasicFragmentProjection<PARENT extends BaseSubProjectio
     return projection;
   }
 
+  public CountProjection<DiscountCodeBasicFragmentProjection<PARENT, ROOT>, ROOT> codesCount() {
+     CountProjection<DiscountCodeBasicFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("codesCount", projection);
+     return projection;
+  }
+
   public DiscountCombinesWithProjection<DiscountCodeBasicFragmentProjection<PARENT, ROOT>, ROOT> combinesWith(
       ) {
      DiscountCombinesWithProjection<DiscountCodeBasicFragmentProjection<PARENT, ROOT>, ROOT> projection = new DiscountCombinesWithProjection<>(this, getRoot());
@@ -116,11 +122,6 @@ public class DiscountCodeBasicFragmentProjection<PARENT extends BaseSubProjectio
 
   public DiscountCodeBasicFragmentProjection<PARENT, ROOT> asyncUsageCount() {
     getFields().put("asyncUsageCount", null);
-    return this;
-  }
-
-  public DiscountCodeBasicFragmentProjection<PARENT, ROOT> codeCount() {
-    getFields().put("codeCount", null);
     return this;
   }
 

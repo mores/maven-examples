@@ -12,6 +12,13 @@ public class ShippingLineProjection<PARENT extends BaseSubProjectionNode<?, ?>, 
     return this;
   }
 
+  public MoneyBagProjection<ShippingLineProjection<PARENT, ROOT>, ROOT> currentDiscountedPriceSet(
+      ) {
+     MoneyBagProjection<ShippingLineProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("currentDiscountedPriceSet", projection);
+     return projection;
+  }
+
   public DiscountAllocationProjection<ShippingLineProjection<PARENT, ROOT>, ROOT> discountAllocations(
       ) {
      DiscountAllocationProjection<ShippingLineProjection<PARENT, ROOT>, ROOT> projection = new DiscountAllocationProjection<>(this, getRoot());
@@ -78,6 +85,11 @@ public class ShippingLineProjection<PARENT extends BaseSubProjectionNode<?, ?>, 
 
   public ShippingLineProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
+    return this;
+  }
+
+  public ShippingLineProjection<PARENT, ROOT> isRemoved() {
+    getFields().put("isRemoved", null);
     return this;
   }
 

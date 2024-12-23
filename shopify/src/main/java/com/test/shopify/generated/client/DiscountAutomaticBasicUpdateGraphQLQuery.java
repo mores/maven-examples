@@ -8,7 +8,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Updates a basic automatic discount.
+ * Updates an existing
+ * [amount off discount](https://help.shopify.com/manual/discounts/discount-types/percentage-fixed-amount)
+ * that's automatically applied on a cart and at checkout.
+ *   
+ * > Note:
+ * > To update code discounts, use the
+ * [`discountCodeBasicUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/discountCodeBasicUpdate)
+ * mutation instead.
  */
 public class DiscountAutomaticBasicUpdateGraphQLQuery extends GraphQLQuery {
   public DiscountAutomaticBasicUpdateGraphQLQuery(String id,
@@ -49,7 +56,7 @@ public class DiscountAutomaticBasicUpdateGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The ID of the automatic discount to update.
+     * The ID of the automatic amount off discount to update.
      */
     public Builder id(String id) {
       this.id = id;
@@ -58,7 +65,7 @@ public class DiscountAutomaticBasicUpdateGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The input data used to update the automatic discount.
+     * The input data used to update the automatic amount off discount.
      */
     public Builder automaticBasicDiscount(DiscountAutomaticBasicInput automaticBasicDiscount) {
       this.automaticBasicDiscount = automaticBasicDiscount;

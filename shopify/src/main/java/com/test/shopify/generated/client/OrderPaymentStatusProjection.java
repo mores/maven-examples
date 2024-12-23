@@ -19,6 +19,13 @@ public class OrderPaymentStatusProjection<PARENT extends BaseSubProjectionNode<?
      return projection;
   }
 
+  public OrderTransactionProjection<OrderPaymentStatusProjection<PARENT, ROOT>, ROOT> transactions(
+      ) {
+     OrderTransactionProjection<OrderPaymentStatusProjection<PARENT, ROOT>, ROOT> projection = new OrderTransactionProjection<>(this, getRoot());
+     getFields().put("transactions", projection);
+     return projection;
+  }
+
   public OrderPaymentStatusProjection<PARENT, ROOT> errorMessage() {
     getFields().put("errorMessage", null);
     return this;

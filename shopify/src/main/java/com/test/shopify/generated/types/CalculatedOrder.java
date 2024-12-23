@@ -59,12 +59,14 @@ public class CalculatedOrder implements com.test.shopify.generated.types.Node {
   /**
    * The order without any changes applied.
    */
-  private Order order;
+  private Order originalOrder;
 
   /**
-   * The order without any changes applied.
+   * Returns the shipping lines on the order that existed before starting the edit.
+   * Will include any changes that have been made as well as shipping lines added during the current edit.
+   * Returns only the first 250 shipping lines.
    */
-  private Order originalOrder;
+  private List<CalculatedShippingLine> shippingLines;
 
   /**
    * List of changes made to the order during the current edit.
@@ -196,23 +198,25 @@ public class CalculatedOrder implements com.test.shopify.generated.types.Node {
   /**
    * The order without any changes applied.
    */
-  public Order getOrder() {
-    return order;
-  }
-
-  public void setOrder(Order order) {
-    this.order = order;
-  }
-
-  /**
-   * The order without any changes applied.
-   */
   public Order getOriginalOrder() {
     return originalOrder;
   }
 
   public void setOriginalOrder(Order originalOrder) {
     this.originalOrder = originalOrder;
+  }
+
+  /**
+   * Returns the shipping lines on the order that existed before starting the edit.
+   * Will include any changes that have been made as well as shipping lines added during the current edit.
+   * Returns only the first 250 shipping lines.
+   */
+  public List<CalculatedShippingLine> getShippingLines() {
+    return shippingLines;
+  }
+
+  public void setShippingLines(List<CalculatedShippingLine> shippingLines) {
+    this.shippingLines = shippingLines;
   }
 
   /**
@@ -286,7 +290,7 @@ public class CalculatedOrder implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "CalculatedOrder{addedDiscountApplications='" + addedDiscountApplications + "', addedLineItems='" + addedLineItems + "', cartDiscountAmountSet='" + cartDiscountAmountSet + "', committed='" + committed + "', id='" + id + "', lineItems='" + lineItems + "', notificationPreviewHtml='" + notificationPreviewHtml + "', notificationPreviewTitle='" + notificationPreviewTitle + "', order='" + order + "', originalOrder='" + originalOrder + "', stagedChanges='" + stagedChanges + "', subtotalLineItemsQuantity='" + subtotalLineItemsQuantity + "', subtotalPriceSet='" + subtotalPriceSet + "', taxLines='" + taxLines + "', totalOutstandingSet='" + totalOutstandingSet + "', totalPriceSet='" + totalPriceSet + "'}";
+    return "CalculatedOrder{addedDiscountApplications='" + addedDiscountApplications + "', addedLineItems='" + addedLineItems + "', cartDiscountAmountSet='" + cartDiscountAmountSet + "', committed='" + committed + "', id='" + id + "', lineItems='" + lineItems + "', notificationPreviewHtml='" + notificationPreviewHtml + "', notificationPreviewTitle='" + notificationPreviewTitle + "', originalOrder='" + originalOrder + "', shippingLines='" + shippingLines + "', stagedChanges='" + stagedChanges + "', subtotalLineItemsQuantity='" + subtotalLineItemsQuantity + "', subtotalPriceSet='" + subtotalPriceSet + "', taxLines='" + taxLines + "', totalOutstandingSet='" + totalOutstandingSet + "', totalPriceSet='" + totalPriceSet + "'}";
   }
 
   @Override
@@ -302,8 +306,8 @@ public class CalculatedOrder implements com.test.shopify.generated.types.Node {
         Objects.equals(lineItems, that.lineItems) &&
         Objects.equals(notificationPreviewHtml, that.notificationPreviewHtml) &&
         Objects.equals(notificationPreviewTitle, that.notificationPreviewTitle) &&
-        Objects.equals(order, that.order) &&
         Objects.equals(originalOrder, that.originalOrder) &&
+        Objects.equals(shippingLines, that.shippingLines) &&
         Objects.equals(stagedChanges, that.stagedChanges) &&
         subtotalLineItemsQuantity == that.subtotalLineItemsQuantity &&
         Objects.equals(subtotalPriceSet, that.subtotalPriceSet) &&
@@ -314,7 +318,7 @@ public class CalculatedOrder implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(addedDiscountApplications, addedLineItems, cartDiscountAmountSet, committed, id, lineItems, notificationPreviewHtml, notificationPreviewTitle, order, originalOrder, stagedChanges, subtotalLineItemsQuantity, subtotalPriceSet, taxLines, totalOutstandingSet, totalPriceSet);
+    return Objects.hash(addedDiscountApplications, addedLineItems, cartDiscountAmountSet, committed, id, lineItems, notificationPreviewHtml, notificationPreviewTitle, originalOrder, shippingLines, stagedChanges, subtotalLineItemsQuantity, subtotalPriceSet, taxLines, totalOutstandingSet, totalPriceSet);
   }
 
   public static Builder newBuilder() {
@@ -367,12 +371,14 @@ public class CalculatedOrder implements com.test.shopify.generated.types.Node {
     /**
      * The order without any changes applied.
      */
-    private Order order;
+    private Order originalOrder;
 
     /**
-     * The order without any changes applied.
+     * Returns the shipping lines on the order that existed before starting the edit.
+     * Will include any changes that have been made as well as shipping lines added during the current edit.
+     * Returns only the first 250 shipping lines.
      */
-    private Order originalOrder;
+    private List<CalculatedShippingLine> shippingLines;
 
     /**
      * List of changes made to the order during the current edit.
@@ -417,8 +423,8 @@ public class CalculatedOrder implements com.test.shopify.generated.types.Node {
       result.lineItems = this.lineItems;
       result.notificationPreviewHtml = this.notificationPreviewHtml;
       result.notificationPreviewTitle = this.notificationPreviewTitle;
-      result.order = this.order;
       result.originalOrder = this.originalOrder;
+      result.shippingLines = this.shippingLines;
       result.stagedChanges = this.stagedChanges;
       result.subtotalLineItemsQuantity = this.subtotalLineItemsQuantity;
       result.subtotalPriceSet = this.subtotalPriceSet;
@@ -498,16 +504,18 @@ public class CalculatedOrder implements com.test.shopify.generated.types.Node {
     /**
      * The order without any changes applied.
      */
-    public Builder order(Order order) {
-      this.order = order;
+    public Builder originalOrder(Order originalOrder) {
+      this.originalOrder = originalOrder;
       return this;
     }
 
     /**
-     * The order without any changes applied.
+     * Returns the shipping lines on the order that existed before starting the edit.
+     * Will include any changes that have been made as well as shipping lines added during the current edit.
+     * Returns only the first 250 shipping lines.
      */
-    public Builder originalOrder(Order originalOrder) {
-      this.originalOrder = originalOrder;
+    public Builder shippingLines(List<CalculatedShippingLine> shippingLines) {
+      this.shippingLines = shippingLines;
       return this;
     }
 

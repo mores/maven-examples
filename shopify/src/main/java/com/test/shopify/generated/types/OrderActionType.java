@@ -11,5 +11,7 @@ public enum OrderActionType {
 
   REFUND,
 
+  RETURN,
+
   UNKNOWN
 }

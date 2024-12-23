@@ -38,5 +38,7 @@ public enum MetafieldDefinitionCreateUserErrorCode {
 
   GRANT_LIMIT_EXCEEDED,
 
-  INVALID_INPUT_COMBINATION
+  INVALID_INPUT_COMBINATION,
+
+  INVALID_CAPABILITY
 }

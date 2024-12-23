@@ -21,6 +21,26 @@ public class AbandonedCheckoutFragmentProjection<PARENT extends BaseSubProjectio
     return this;
   }
 
+  public MailingAddressProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> billingAddress(
+      ) {
+     MailingAddressProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new MailingAddressProjection<>(this, getRoot());
+     getFields().put("billingAddress", projection);
+     return projection;
+  }
+
+  public AttributeProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> customAttributes(
+      ) {
+     AttributeProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new AttributeProjection<>(this, getRoot());
+     getFields().put("customAttributes", projection);
+     return projection;
+  }
+
+  public CustomerProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> customer() {
+     CustomerProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new CustomerProjection<>(this, getRoot());
+     getFields().put("customer", projection);
+     return projection;
+  }
+
   public AbandonedCheckoutLineItemConnectionProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> lineItems(
       ) {
      AbandonedCheckoutLineItemConnectionProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new AbandonedCheckoutLineItemConnectionProjection<>(this, getRoot());
@@ -46,10 +66,57 @@ public class AbandonedCheckoutFragmentProjection<PARENT extends BaseSubProjectio
     return projection;
   }
 
+  public MailingAddressProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> shippingAddress(
+      ) {
+     MailingAddressProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new MailingAddressProjection<>(this, getRoot());
+     getFields().put("shippingAddress", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> subtotalPriceSet(
+      ) {
+     MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("subtotalPriceSet", projection);
+     return projection;
+  }
+
+  public TaxLineProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> taxLines() {
+     TaxLineProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new TaxLineProjection<>(this, getRoot());
+     getFields().put("taxLines", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> totalDiscountSet(
+      ) {
+     MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("totalDiscountSet", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> totalDutiesSet(
+      ) {
+     MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("totalDutiesSet", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> totalLineItemsPriceSet(
+      ) {
+     MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("totalLineItemsPriceSet", projection);
+     return projection;
+  }
+
   public MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> totalPriceSet(
       ) {
      MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
      getFields().put("totalPriceSet", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> totalTaxSet() {
+     MoneyBagProjection<AbandonedCheckoutFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("totalTaxSet", projection);
      return projection;
   }
 
@@ -58,8 +125,23 @@ public class AbandonedCheckoutFragmentProjection<PARENT extends BaseSubProjectio
     return this;
   }
 
+  public AbandonedCheckoutFragmentProjection<PARENT, ROOT> completedAt() {
+    getFields().put("completedAt", null);
+    return this;
+  }
+
+  public AbandonedCheckoutFragmentProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public AbandonedCheckoutFragmentProjection<PARENT, ROOT> defaultCursor() {
     getFields().put("defaultCursor", null);
+    return this;
+  }
+
+  public AbandonedCheckoutFragmentProjection<PARENT, ROOT> discountCodes() {
+    getFields().put("discountCodes", null);
     return this;
   }
 
@@ -70,6 +152,26 @@ public class AbandonedCheckoutFragmentProjection<PARENT extends BaseSubProjectio
 
   public AbandonedCheckoutFragmentProjection<PARENT, ROOT> lineItemsQuantity() {
     getFields().put("lineItemsQuantity", null);
+    return this;
+  }
+
+  public AbandonedCheckoutFragmentProjection<PARENT, ROOT> name() {
+    getFields().put("name", null);
+    return this;
+  }
+
+  public AbandonedCheckoutFragmentProjection<PARENT, ROOT> note() {
+    getFields().put("note", null);
+    return this;
+  }
+
+  public AbandonedCheckoutFragmentProjection<PARENT, ROOT> taxesIncluded() {
+    getFields().put("taxesIncluded", null);
+    return this;
+  }
+
+  public AbandonedCheckoutFragmentProjection<PARENT, ROOT> updatedAt() {
+    getFields().put("updatedAt", null);
     return this;
   }
 

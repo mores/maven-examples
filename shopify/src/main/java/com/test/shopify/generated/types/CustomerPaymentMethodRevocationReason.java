@@ -30,5 +30,7 @@ public enum CustomerPaymentMethodRevocationReason {
 
   MANUALLY_REVOKED,
 
+  FAILED_TO_RETRIEVE_BILLING_ADDRESS,
+
   MERGED
 }

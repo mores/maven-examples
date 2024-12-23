@@ -34,6 +34,11 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
   private CatalogConnection catalogs;
 
   /**
+   * The number of catalogs associated with the company location. Limited to a maximum of 10000.
+   */
+  private Count catalogsCount;
+
+  /**
    * The company that the company location belongs to.
    */
   private Company company;
@@ -136,6 +141,11 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
   private OrderConnection orders;
 
   /**
+   * The total number of orders placed for the location.
+   */
+  private Count ordersCount;
+
+  /**
    * The phone number of the company location.
    */
   private String phone;
@@ -159,6 +169,11 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
    * The address used as shipping address for the location.
    */
   private CompanyAddress shippingAddress;
+
+  /**
+   * The list of staff members assigned to the company location.
+   */
+  private CompanyLocationStaffMemberAssignmentConnection staffMemberAssignments;
 
   /**
    * The list of tax exemptions applied to the location.
@@ -216,6 +231,17 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
 
   public void setCatalogs(CatalogConnection catalogs) {
     this.catalogs = catalogs;
+  }
+
+  /**
+   * The number of catalogs associated with the company location. Limited to a maximum of 10000.
+   */
+  public Count getCatalogsCount() {
+    return catalogsCount;
+  }
+
+  public void setCatalogsCount(Count catalogsCount) {
+    this.catalogsCount = catalogsCount;
   }
 
   /**
@@ -435,6 +461,17 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
   }
 
   /**
+   * The total number of orders placed for the location.
+   */
+  public Count getOrdersCount() {
+    return ordersCount;
+  }
+
+  public void setOrdersCount(Count ordersCount) {
+    this.ordersCount = ordersCount;
+  }
+
+  /**
    * The phone number of the company location.
    */
   public String getPhone() {
@@ -490,6 +527,18 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
   }
 
   /**
+   * The list of staff members assigned to the company location.
+   */
+  public CompanyLocationStaffMemberAssignmentConnection getStaffMemberAssignments() {
+    return staffMemberAssignments;
+  }
+
+  public void setStaffMemberAssignments(
+      CompanyLocationStaffMemberAssignmentConnection staffMemberAssignments) {
+    this.staffMemberAssignments = staffMemberAssignments;
+  }
+
+  /**
    * The list of tax exemptions applied to the location.
    */
   public List<TaxExemption> getTaxExemptions() {
@@ -536,7 +585,7 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
 
   @Override
   public String toString() {
-    return "CompanyLocation{billingAddress='" + billingAddress + "', buyerExperienceConfiguration='" + buyerExperienceConfiguration + "', catalogs='" + catalogs + "', company='" + company + "', createdAt='" + createdAt + "', currency='" + currency + "', defaultCursor='" + defaultCursor + "', draftOrders='" + draftOrders + "', events='" + events + "', externalId='" + externalId + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', inCatalog='" + inCatalog + "', locale='" + locale + "', market='" + market + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', note='" + note + "', orderCount='" + orderCount + "', orders='" + orders + "', phone='" + phone + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', roleAssignments='" + roleAssignments + "', shippingAddress='" + shippingAddress + "', taxExemptions='" + taxExemptions + "', taxRegistrationId='" + taxRegistrationId + "', totalSpent='" + totalSpent + "', updatedAt='" + updatedAt + "'}";
+    return "CompanyLocation{billingAddress='" + billingAddress + "', buyerExperienceConfiguration='" + buyerExperienceConfiguration + "', catalogs='" + catalogs + "', catalogsCount='" + catalogsCount + "', company='" + company + "', createdAt='" + createdAt + "', currency='" + currency + "', defaultCursor='" + defaultCursor + "', draftOrders='" + draftOrders + "', events='" + events + "', externalId='" + externalId + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', inCatalog='" + inCatalog + "', locale='" + locale + "', market='" + market + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', note='" + note + "', orderCount='" + orderCount + "', orders='" + orders + "', ordersCount='" + ordersCount + "', phone='" + phone + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', roleAssignments='" + roleAssignments + "', shippingAddress='" + shippingAddress + "', staffMemberAssignments='" + staffMemberAssignments + "', taxExemptions='" + taxExemptions + "', taxRegistrationId='" + taxRegistrationId + "', totalSpent='" + totalSpent + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -547,6 +596,7 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
     return Objects.equals(billingAddress, that.billingAddress) &&
         Objects.equals(buyerExperienceConfiguration, that.buyerExperienceConfiguration) &&
         Objects.equals(catalogs, that.catalogs) &&
+        Objects.equals(catalogsCount, that.catalogsCount) &&
         Objects.equals(company, that.company) &&
         Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(currency, that.currency) &&
@@ -566,11 +616,13 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
         Objects.equals(note, that.note) &&
         orderCount == that.orderCount &&
         Objects.equals(orders, that.orders) &&
+        Objects.equals(ordersCount, that.ordersCount) &&
         Objects.equals(phone, that.phone) &&
         Objects.equals(privateMetafield, that.privateMetafield) &&
         Objects.equals(privateMetafields, that.privateMetafields) &&
         Objects.equals(roleAssignments, that.roleAssignments) &&
         Objects.equals(shippingAddress, that.shippingAddress) &&
+        Objects.equals(staffMemberAssignments, that.staffMemberAssignments) &&
         Objects.equals(taxExemptions, that.taxExemptions) &&
         Objects.equals(taxRegistrationId, that.taxRegistrationId) &&
         Objects.equals(totalSpent, that.totalSpent) &&
@@ -579,7 +631,7 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
 
   @Override
   public int hashCode() {
-    return Objects.hash(billingAddress, buyerExperienceConfiguration, catalogs, company, createdAt, currency, defaultCursor, draftOrders, events, externalId, hasTimelineComment, id, inCatalog, locale, market, metafield, metafieldDefinitions, metafields, name, note, orderCount, orders, phone, privateMetafield, privateMetafields, roleAssignments, shippingAddress, taxExemptions, taxRegistrationId, totalSpent, updatedAt);
+    return Objects.hash(billingAddress, buyerExperienceConfiguration, catalogs, catalogsCount, company, createdAt, currency, defaultCursor, draftOrders, events, externalId, hasTimelineComment, id, inCatalog, locale, market, metafield, metafieldDefinitions, metafields, name, note, orderCount, orders, ordersCount, phone, privateMetafield, privateMetafields, roleAssignments, shippingAddress, staffMemberAssignments, taxExemptions, taxRegistrationId, totalSpent, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -601,6 +653,11 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
      * The list of catalogs associated with the company location.
      */
     private CatalogConnection catalogs;
+
+    /**
+     * The number of catalogs associated with the company location. Limited to a maximum of 10000.
+     */
+    private Count catalogsCount;
 
     /**
      * The company that the company location belongs to.
@@ -705,6 +762,11 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
     private OrderConnection orders;
 
     /**
+     * The total number of orders placed for the location.
+     */
+    private Count ordersCount;
+
+    /**
      * The phone number of the company location.
      */
     private String phone;
@@ -728,6 +790,11 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
      * The address used as shipping address for the location.
      */
     private CompanyAddress shippingAddress;
+
+    /**
+     * The list of staff members assigned to the company location.
+     */
+    private CompanyLocationStaffMemberAssignmentConnection staffMemberAssignments;
 
     /**
      * The list of tax exemptions applied to the location.
@@ -755,6 +822,7 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
       result.billingAddress = this.billingAddress;
       result.buyerExperienceConfiguration = this.buyerExperienceConfiguration;
       result.catalogs = this.catalogs;
+      result.catalogsCount = this.catalogsCount;
       result.company = this.company;
       result.createdAt = this.createdAt;
       result.currency = this.currency;
@@ -774,11 +842,13 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
       result.note = this.note;
       result.orderCount = this.orderCount;
       result.orders = this.orders;
+      result.ordersCount = this.ordersCount;
       result.phone = this.phone;
       result.privateMetafield = this.privateMetafield;
       result.privateMetafields = this.privateMetafields;
       result.roleAssignments = this.roleAssignments;
       result.shippingAddress = this.shippingAddress;
+      result.staffMemberAssignments = this.staffMemberAssignments;
       result.taxExemptions = this.taxExemptions;
       result.taxRegistrationId = this.taxRegistrationId;
       result.totalSpent = this.totalSpent;
@@ -808,6 +878,14 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
      */
     public Builder catalogs(CatalogConnection catalogs) {
       this.catalogs = catalogs;
+      return this;
+    }
+
+    /**
+     * The number of catalogs associated with the company location. Limited to a maximum of 10000.
+     */
+    public Builder catalogsCount(Count catalogsCount) {
+      this.catalogsCount = catalogsCount;
       return this;
     }
 
@@ -971,6 +1049,14 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
     }
 
     /**
+     * The total number of orders placed for the location.
+     */
+    public Builder ordersCount(Count ordersCount) {
+      this.ordersCount = ordersCount;
+      return this;
+    }
+
+    /**
      * The phone number of the company location.
      */
     public Builder phone(String phone) {
@@ -1007,6 +1093,15 @@ public class CompanyLocation implements MetafieldReferencer, com.test.shopify.ge
      */
     public Builder shippingAddress(CompanyAddress shippingAddress) {
       this.shippingAddress = shippingAddress;
+      return this;
+    }
+
+    /**
+     * The list of staff members assigned to the company location.
+     */
+    public Builder staffMemberAssignments(
+        CompanyLocationStaffMemberAssignmentConnection staffMemberAssignments) {
+      this.staffMemberAssignments = staffMemberAssignments;
       return this;
     }
 

@@ -117,6 +117,18 @@ public class HasMetafieldsProjection<PARENT extends BaseSubProjectionNode<?, ?>,
     return fragment;
   }
 
+  public ArticleFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onArticle() {
+    ArticleFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new ArticleFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
+  public BlogFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onBlog() {
+    BlogFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new BlogFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
   public CartTransformFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onCartTransform(
       ) {
     CartTransformFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new CartTransformFragmentProjection<>(this, getRoot());
@@ -197,6 +209,20 @@ public class HasMetafieldsProjection<PARENT extends BaseSubProjectionNode<?, ?>,
     return fragment;
   }
 
+  public GiftCardCreditTransactionFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onGiftCardCreditTransaction(
+      ) {
+    GiftCardCreditTransactionFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new GiftCardCreditTransactionFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
+  public GiftCardDebitTransactionFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onGiftCardDebitTransaction(
+      ) {
+    GiftCardDebitTransactionFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new GiftCardDebitTransactionFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
   public ImageFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onImage() {
     ImageFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new ImageFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);
@@ -227,6 +253,12 @@ public class HasMetafieldsProjection<PARENT extends BaseSubProjectionNode<?, ?>,
     return fragment;
   }
 
+  public PageFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onPage() {
+    PageFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new PageFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
   public PaymentCustomizationFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onPaymentCustomization(
       ) {
     PaymentCustomizationFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new PaymentCustomizationFragmentProjection<>(this, getRoot());
@@ -243,6 +275,13 @@ public class HasMetafieldsProjection<PARENT extends BaseSubProjectionNode<?, ?>,
   public ProductVariantFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onProductVariant(
       ) {
     ProductVariantFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new ProductVariantFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
+  public SellingPlanFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> onSellingPlan(
+      ) {
+    SellingPlanFragmentProjection<HasMetafieldsProjection<PARENT, ROOT>, ROOT> fragment = new SellingPlanFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);
     return fragment;
   }

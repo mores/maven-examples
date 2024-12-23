@@ -26,6 +26,34 @@ public class ReturnProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT e
      return projection;
   }
 
+  public ExchangeLineItemConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> exchangeLineItems(
+      ) {
+     ExchangeLineItemConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> projection = new ExchangeLineItemConnectionProjection<>(this, getRoot());
+     getFields().put("exchangeLineItems", projection);
+     return projection;
+  }
+
+  public ExchangeLineItemConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> exchangeLineItems(
+      Boolean includeRemovedItems, Integer first, String after, Integer last, String before,
+      Boolean reverse) {
+    ExchangeLineItemConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> projection = new ExchangeLineItemConnectionProjection<>(this, getRoot());    
+    getFields().put("exchangeLineItems", projection);
+    getInputArguments().computeIfAbsent("exchangeLineItems", k -> new ArrayList<>());                      
+    InputArgument includeRemovedItemsArg = new InputArgument("includeRemovedItems", includeRemovedItems);
+    getInputArguments().get("exchangeLineItems").add(includeRemovedItemsArg);
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("exchangeLineItems").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("exchangeLineItems").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("exchangeLineItems").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("exchangeLineItems").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("exchangeLineItems").add(reverseArg);
+    return projection;
+  }
+
   public OrderProjection<ReturnProjection<PARENT, ROOT>, ROOT> order() {
      OrderProjection<ReturnProjection<PARENT, ROOT>, ROOT> projection = new OrderProjection<>(this, getRoot());
      getFields().put("order", projection);
@@ -56,16 +84,16 @@ public class ReturnProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT e
     return projection;
   }
 
-  public ReturnLineItemConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> returnLineItems(
+  public ReturnLineItemTypeConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> returnLineItems(
       ) {
-     ReturnLineItemConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> projection = new ReturnLineItemConnectionProjection<>(this, getRoot());
+     ReturnLineItemTypeConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> projection = new ReturnLineItemTypeConnectionProjection<>(this, getRoot());
      getFields().put("returnLineItems", projection);
      return projection;
   }
 
-  public ReturnLineItemConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> returnLineItems(
+  public ReturnLineItemTypeConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> returnLineItems(
       Integer first, String after, Integer last, String before, Boolean reverse) {
-    ReturnLineItemConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> projection = new ReturnLineItemConnectionProjection<>(this, getRoot());    
+    ReturnLineItemTypeConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> projection = new ReturnLineItemTypeConnectionProjection<>(this, getRoot());    
     getFields().put("returnLineItems", projection);
     getInputArguments().computeIfAbsent("returnLineItems", k -> new ArrayList<>());                      
     InputArgument firstArg = new InputArgument("first", first);
@@ -79,6 +107,12 @@ public class ReturnProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT e
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("returnLineItems").add(reverseArg);
     return projection;
+  }
+
+  public ReturnShippingFeeProjection<ReturnProjection<PARENT, ROOT>, ROOT> returnShippingFees() {
+     ReturnShippingFeeProjection<ReturnProjection<PARENT, ROOT>, ROOT> projection = new ReturnShippingFeeProjection<>(this, getRoot());
+     getFields().put("returnShippingFees", projection);
+     return projection;
   }
 
   public ReverseFulfillmentOrderConnectionProjection<ReturnProjection<PARENT, ROOT>, ROOT> reverseFulfillmentOrders(

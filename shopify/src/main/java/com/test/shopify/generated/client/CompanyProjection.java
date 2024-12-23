@@ -82,6 +82,12 @@ public class CompanyProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     return projection;
   }
 
+  public CountProjection<CompanyProjection<PARENT, ROOT>, ROOT> contactsCount() {
+     CountProjection<CompanyProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("contactsCount", projection);
+     return projection;
+  }
+
   public CompanyContactRoleProjection<CompanyProjection<PARENT, ROOT>, ROOT> defaultRole() {
      CompanyContactRoleProjection<CompanyProjection<PARENT, ROOT>, ROOT> projection = new CompanyContactRoleProjection<>(this, getRoot());
      getFields().put("defaultRole", projection);
@@ -173,6 +179,12 @@ public class CompanyProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     InputArgument queryArg = new InputArgument("query", query);
     getInputArguments().get("locations").add(queryArg);
     return projection;
+  }
+
+  public CountProjection<CompanyProjection<PARENT, ROOT>, ROOT> locationsCount() {
+     CountProjection<CompanyProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("locationsCount", projection);
+     return projection;
   }
 
   public CompanyContactProjection<CompanyProjection<PARENT, ROOT>, ROOT> mainContact() {
@@ -289,6 +301,12 @@ public class CompanyProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     return projection;
   }
 
+  public CountProjection<CompanyProjection<PARENT, ROOT>, ROOT> ordersCount() {
+     CountProjection<CompanyProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("ordersCount", projection);
+     return projection;
+  }
+
   public PrivateMetafieldProjection<CompanyProjection<PARENT, ROOT>, ROOT> privateMetafield() {
      PrivateMetafieldProjection<CompanyProjection<PARENT, ROOT>, ROOT> projection = new PrivateMetafieldProjection<>(this, getRoot());
      getFields().put("privateMetafield", projection);
@@ -380,11 +398,6 @@ public class CompanyProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     return this;
   }
 
-  public CompanyProjection<PARENT, ROOT> locationCount() {
-    getFields().put("locationCount", null);
-    return this;
-  }
-
   public CompanyProjection<PARENT, ROOT> name() {
     getFields().put("name", null);
     return this;
@@ -392,11 +405,6 @@ public class CompanyProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
 
   public CompanyProjection<PARENT, ROOT> note() {
     getFields().put("note", null);
-    return this;
-  }
-
-  public CompanyProjection<PARENT, ROOT> orderCount() {
-    getFields().put("orderCount", null);
     return this;
   }
 

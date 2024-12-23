@@ -12,6 +12,11 @@ public class EventProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
     return this;
   }
 
+  public EventProjection<PARENT, ROOT> action() {
+    getFields().put("action", null);
+    return this;
+  }
+
   public EventProjection<PARENT, ROOT> appTitle() {
     getFields().put("appTitle", null);
     return this;

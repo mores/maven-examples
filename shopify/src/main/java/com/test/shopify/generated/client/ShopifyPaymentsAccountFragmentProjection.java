@@ -2,6 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
 import com.test.shopify.generated.types.BalanceTransactionSortKeys;
+import com.test.shopify.generated.types.PayoutSortKeys;
 import com.test.shopify.generated.types.ShopifyPaymentsPayoutTransactionType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -129,20 +130,6 @@ public class ShopifyPaymentsAccountFragmentProjection<PARENT extends BaseSubProj
     return projection;
   }
 
-  public ShopifyPaymentsFraudSettingsProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> fraudSettings(
-      ) {
-     ShopifyPaymentsFraudSettingsProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsFraudSettingsProjection<>(this, getRoot());
-     getFields().put("fraudSettings", projection);
-     return projection;
-  }
-
-  public ShopifyPaymentsNotificationSettingsProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> notificationSettings(
-      ) {
-     ShopifyPaymentsNotificationSettingsProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsNotificationSettingsProjection<>(this, getRoot());
-     getFields().put("notificationSettings", projection);
-     return projection;
-  }
-
   public ShopifyPaymentsPayoutScheduleProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> payoutSchedule(
       ) {
      ShopifyPaymentsPayoutScheduleProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsPayoutScheduleProjection<>(this, getRoot());
@@ -159,7 +146,8 @@ public class ShopifyPaymentsAccountFragmentProjection<PARENT extends BaseSubProj
 
   public ShopifyPaymentsPayoutConnectionProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> payouts(
       ShopifyPaymentsPayoutTransactionType transactionType, Integer first, String after,
-      Integer last, String before, Boolean reverse) {
+      Integer last, String before, Boolean reverse, PayoutSortKeys sortKey, String query,
+      String savedSearchId) {
     ShopifyPaymentsPayoutConnectionProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsPayoutConnectionProjection<>(this, getRoot());    
     getFields().put("payouts", projection);
     getInputArguments().computeIfAbsent("payouts", k -> new ArrayList<>());                      
@@ -175,21 +163,13 @@ public class ShopifyPaymentsAccountFragmentProjection<PARENT extends BaseSubProj
     getInputArguments().get("payouts").add(beforeArg);
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("payouts").add(reverseArg);
+    InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
+    getInputArguments().get("payouts").add(sortKeyArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("payouts").add(queryArg);
+    InputArgument savedSearchIdArg = new InputArgument("savedSearchId", savedSearchId);
+    getInputArguments().get("payouts").add(savedSearchIdArg);
     return projection;
-  }
-
-  public ShopifyPaymentsVerificationDocumentProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> permittedVerificationDocuments(
-      ) {
-     ShopifyPaymentsVerificationDocumentProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsVerificationDocumentProjection<>(this, getRoot());
-     getFields().put("permittedVerificationDocuments", projection);
-     return projection;
-  }
-
-  public ShopifyPaymentsVerificationProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> verifications(
-      ) {
-     ShopifyPaymentsVerificationProjection<ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsVerificationProjection<>(this, getRoot());
-     getFields().put("verifications", projection);
-     return projection;
   }
 
   public ShopifyPaymentsAccountFragmentProjection<PARENT, ROOT> activated() {

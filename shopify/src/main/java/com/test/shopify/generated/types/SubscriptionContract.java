@@ -86,6 +86,11 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
   private String id;
 
   /**
+   * The last billing error type of the contract.
+   */
+  private SubscriptionContractLastBillingErrorType lastBillingAttemptErrorType;
+
+  /**
    * The current status of the last payment.
    */
   private SubscriptionContractLastPaymentStatus lastPaymentStatus;
@@ -99,6 +104,11 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
    * The list of subscription lines associated with the subscription contract.
    */
   private SubscriptionLineConnection lines;
+
+  /**
+   * The number of lines associated with the subscription contract.
+   */
+  private Count linesCount;
 
   /**
    * The next billing date for the subscription contract. This field is managed by the apps.
@@ -296,6 +306,18 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
   }
 
   /**
+   * The last billing error type of the contract.
+   */
+  public SubscriptionContractLastBillingErrorType getLastBillingAttemptErrorType() {
+    return lastBillingAttemptErrorType;
+  }
+
+  public void setLastBillingAttemptErrorType(
+      SubscriptionContractLastBillingErrorType lastBillingAttemptErrorType) {
+    this.lastBillingAttemptErrorType = lastBillingAttemptErrorType;
+  }
+
+  /**
    * The current status of the last payment.
    */
   public SubscriptionContractLastPaymentStatus getLastPaymentStatus() {
@@ -326,6 +348,17 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
 
   public void setLines(SubscriptionLineConnection lines) {
     this.lines = lines;
+  }
+
+  /**
+   * The number of lines associated with the subscription contract.
+   */
+  public Count getLinesCount() {
+    return linesCount;
+  }
+
+  public void setLinesCount(Count linesCount) {
+    this.linesCount = linesCount;
   }
 
   /**
@@ -410,7 +443,7 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
 
   @Override
   public String toString() {
-    return "SubscriptionContract{app='" + app + "', appAdminUrl='" + appAdminUrl + "', billingAttempts='" + billingAttempts + "', billingPolicy='" + billingPolicy + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', customAttributes='" + customAttributes + "', customer='" + customer + "', customerPaymentMethod='" + customerPaymentMethod + "', deliveryMethod='" + deliveryMethod + "', deliveryPolicy='" + deliveryPolicy + "', deliveryPrice='" + deliveryPrice + "', discounts='" + discounts + "', id='" + id + "', lastPaymentStatus='" + lastPaymentStatus + "', lineCount='" + lineCount + "', lines='" + lines + "', nextBillingDate='" + nextBillingDate + "', note='" + note + "', orders='" + orders + "', originOrder='" + originOrder + "', revisionId='" + revisionId + "', status='" + status + "', updatedAt='" + updatedAt + "'}";
+    return "SubscriptionContract{app='" + app + "', appAdminUrl='" + appAdminUrl + "', billingAttempts='" + billingAttempts + "', billingPolicy='" + billingPolicy + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', customAttributes='" + customAttributes + "', customer='" + customer + "', customerPaymentMethod='" + customerPaymentMethod + "', deliveryMethod='" + deliveryMethod + "', deliveryPolicy='" + deliveryPolicy + "', deliveryPrice='" + deliveryPrice + "', discounts='" + discounts + "', id='" + id + "', lastBillingAttemptErrorType='" + lastBillingAttemptErrorType + "', lastPaymentStatus='" + lastPaymentStatus + "', lineCount='" + lineCount + "', lines='" + lines + "', linesCount='" + linesCount + "', nextBillingDate='" + nextBillingDate + "', note='" + note + "', orders='" + orders + "', originOrder='" + originOrder + "', revisionId='" + revisionId + "', status='" + status + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -432,9 +465,11 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
         Objects.equals(deliveryPrice, that.deliveryPrice) &&
         Objects.equals(discounts, that.discounts) &&
         Objects.equals(id, that.id) &&
+        Objects.equals(lastBillingAttemptErrorType, that.lastBillingAttemptErrorType) &&
         Objects.equals(lastPaymentStatus, that.lastPaymentStatus) &&
         lineCount == that.lineCount &&
         Objects.equals(lines, that.lines) &&
+        Objects.equals(linesCount, that.linesCount) &&
         Objects.equals(nextBillingDate, that.nextBillingDate) &&
         Objects.equals(note, that.note) &&
         Objects.equals(orders, that.orders) &&
@@ -446,7 +481,7 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
 
   @Override
   public int hashCode() {
-    return Objects.hash(app, appAdminUrl, billingAttempts, billingPolicy, createdAt, currencyCode, customAttributes, customer, customerPaymentMethod, deliveryMethod, deliveryPolicy, deliveryPrice, discounts, id, lastPaymentStatus, lineCount, lines, nextBillingDate, note, orders, originOrder, revisionId, status, updatedAt);
+    return Objects.hash(app, appAdminUrl, billingAttempts, billingPolicy, createdAt, currencyCode, customAttributes, customer, customerPaymentMethod, deliveryMethod, deliveryPolicy, deliveryPrice, discounts, id, lastBillingAttemptErrorType, lastPaymentStatus, lineCount, lines, linesCount, nextBillingDate, note, orders, originOrder, revisionId, status, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -525,6 +560,11 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
     private String id;
 
     /**
+     * The last billing error type of the contract.
+     */
+    private SubscriptionContractLastBillingErrorType lastBillingAttemptErrorType;
+
+    /**
      * The current status of the last payment.
      */
     private SubscriptionContractLastPaymentStatus lastPaymentStatus;
@@ -538,6 +578,11 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
      * The list of subscription lines associated with the subscription contract.
      */
     private SubscriptionLineConnection lines;
+
+    /**
+     * The number of lines associated with the subscription contract.
+     */
+    private Count linesCount;
 
     /**
      * The next billing date for the subscription contract. This field is managed by the apps.
@@ -593,9 +638,11 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
       result.deliveryPrice = this.deliveryPrice;
       result.discounts = this.discounts;
       result.id = this.id;
+      result.lastBillingAttemptErrorType = this.lastBillingAttemptErrorType;
       result.lastPaymentStatus = this.lastPaymentStatus;
       result.lineCount = this.lineCount;
       result.lines = this.lines;
+      result.linesCount = this.linesCount;
       result.nextBillingDate = this.nextBillingDate;
       result.note = this.note;
       result.orders = this.orders;
@@ -719,6 +766,15 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
     }
 
     /**
+     * The last billing error type of the contract.
+     */
+    public Builder lastBillingAttemptErrorType(
+        SubscriptionContractLastBillingErrorType lastBillingAttemptErrorType) {
+      this.lastBillingAttemptErrorType = lastBillingAttemptErrorType;
+      return this;
+    }
+
+    /**
      * The current status of the last payment.
      */
     public Builder lastPaymentStatus(SubscriptionContractLastPaymentStatus lastPaymentStatus) {
@@ -739,6 +795,14 @@ public class SubscriptionContract implements com.test.shopify.generated.types.No
      */
     public Builder lines(SubscriptionLineConnection lines) {
       this.lines = lines;
+      return this;
+    }
+
+    /**
+     * The number of lines associated with the subscription contract.
+     */
+    public Builder linesCount(Count linesCount) {
+      this.linesCount = linesCount;
       return this;
     }
 

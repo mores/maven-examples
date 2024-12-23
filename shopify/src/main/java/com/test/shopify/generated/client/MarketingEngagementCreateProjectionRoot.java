@@ -19,9 +19,9 @@ public class MarketingEngagementCreateProjectionRoot<PARENT extends BaseSubProje
     return projection;
   }
 
-  public UserErrorProjection<MarketingEngagementCreateProjectionRoot<PARENT, ROOT>, MarketingEngagementCreateProjectionRoot<PARENT, ROOT>> userErrors(
+  public MarketingActivityUserErrorProjection<MarketingEngagementCreateProjectionRoot<PARENT, ROOT>, MarketingEngagementCreateProjectionRoot<PARENT, ROOT>> userErrors(
       ) {
-    UserErrorProjection<MarketingEngagementCreateProjectionRoot<PARENT, ROOT>, MarketingEngagementCreateProjectionRoot<PARENT, ROOT>> projection = new UserErrorProjection<>(this, this);    
+    MarketingActivityUserErrorProjection<MarketingEngagementCreateProjectionRoot<PARENT, ROOT>, MarketingEngagementCreateProjectionRoot<PARENT, ROOT>> projection = new MarketingActivityUserErrorProjection<>(this, this);    
     getFields().put("userErrors", projection);
     return projection;
   }

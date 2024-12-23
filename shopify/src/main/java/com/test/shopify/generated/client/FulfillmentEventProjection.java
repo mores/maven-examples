@@ -33,6 +33,11 @@ public class FulfillmentEventProjection<PARENT extends BaseSubProjectionNode<?, 
     return this;
   }
 
+  public FulfillmentEventProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public FulfillmentEventProjection<PARENT, ROOT> estimatedDeliveryAt() {
     getFields().put("estimatedDeliveryAt", null);
     return this;

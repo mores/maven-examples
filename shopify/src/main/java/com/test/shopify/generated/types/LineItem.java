@@ -121,6 +121,11 @@ public class LineItem implements com.test.shopify.generated.types.Node {
   private Image image;
 
   /**
+   * Whether the line item represents the purchase of a gift card.
+   */
+  private boolean isGiftCard;
+
+  /**
    * The line item group associated to the line item.
    */
   private LineItemGroup lineItemGroup;
@@ -482,6 +487,17 @@ public class LineItem implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * Whether the line item represents the purchase of a gift card.
+   */
+  public boolean getIsGiftCard() {
+    return isGiftCard;
+  }
+
+  public void setIsGiftCard(boolean isGiftCard) {
+    this.isGiftCard = isGiftCard;
+  }
+
+  /**
    * The line item group associated to the line item.
    */
   public LineItemGroup getLineItemGroup() {
@@ -812,7 +828,7 @@ public class LineItem implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "LineItem{canRestock='" + canRestock + "', contract='" + contract + "', currentQuantity='" + currentQuantity + "', customAttributes='" + customAttributes + "', discountAllocations='" + discountAllocations + "', discountedTotal='" + discountedTotal + "', discountedTotalSet='" + discountedTotalSet + "', discountedUnitPrice='" + discountedUnitPrice + "', discountedUnitPriceAfterAllDiscountsSet='" + discountedUnitPriceAfterAllDiscountsSet + "', discountedUnitPriceSet='" + discountedUnitPriceSet + "', duties='" + duties + "', fulfillableQuantity='" + fulfillableQuantity + "', fulfillmentService='" + fulfillmentService + "', fulfillmentStatus='" + fulfillmentStatus + "', id='" + id + "', image='" + image + "', lineItemGroup='" + lineItemGroup + "', merchantEditable='" + merchantEditable + "', name='" + name + "', nonFulfillableQuantity='" + nonFulfillableQuantity + "', originalTotal='" + originalTotal + "', originalTotalSet='" + originalTotalSet + "', originalUnitPrice='" + originalUnitPrice + "', originalUnitPriceSet='" + originalUnitPriceSet + "', product='" + product + "', quantity='" + quantity + "', refundableQuantity='" + refundableQuantity + "', requiresShipping='" + requiresShipping + "', restockable='" + restockable + "', sellingPlan='" + sellingPlan + "', sku='" + sku + "', staffMember='" + staffMember + "', taxLines='" + taxLines + "', taxable='" + taxable + "', title='" + title + "', totalDiscount='" + totalDiscount + "', totalDiscountSet='" + totalDiscountSet + "', unfulfilledDiscountedTotal='" + unfulfilledDiscountedTotal + "', unfulfilledDiscountedTotalSet='" + unfulfilledDiscountedTotalSet + "', unfulfilledOriginalTotal='" + unfulfilledOriginalTotal + "', unfulfilledOriginalTotalSet='" + unfulfilledOriginalTotalSet + "', unfulfilledQuantity='" + unfulfilledQuantity + "', variant='" + variant + "', variantTitle='" + variantTitle + "', vendor='" + vendor + "'}";
+    return "LineItem{canRestock='" + canRestock + "', contract='" + contract + "', currentQuantity='" + currentQuantity + "', customAttributes='" + customAttributes + "', discountAllocations='" + discountAllocations + "', discountedTotal='" + discountedTotal + "', discountedTotalSet='" + discountedTotalSet + "', discountedUnitPrice='" + discountedUnitPrice + "', discountedUnitPriceAfterAllDiscountsSet='" + discountedUnitPriceAfterAllDiscountsSet + "', discountedUnitPriceSet='" + discountedUnitPriceSet + "', duties='" + duties + "', fulfillableQuantity='" + fulfillableQuantity + "', fulfillmentService='" + fulfillmentService + "', fulfillmentStatus='" + fulfillmentStatus + "', id='" + id + "', image='" + image + "', isGiftCard='" + isGiftCard + "', lineItemGroup='" + lineItemGroup + "', merchantEditable='" + merchantEditable + "', name='" + name + "', nonFulfillableQuantity='" + nonFulfillableQuantity + "', originalTotal='" + originalTotal + "', originalTotalSet='" + originalTotalSet + "', originalUnitPrice='" + originalUnitPrice + "', originalUnitPriceSet='" + originalUnitPriceSet + "', product='" + product + "', quantity='" + quantity + "', refundableQuantity='" + refundableQuantity + "', requiresShipping='" + requiresShipping + "', restockable='" + restockable + "', sellingPlan='" + sellingPlan + "', sku='" + sku + "', staffMember='" + staffMember + "', taxLines='" + taxLines + "', taxable='" + taxable + "', title='" + title + "', totalDiscount='" + totalDiscount + "', totalDiscountSet='" + totalDiscountSet + "', unfulfilledDiscountedTotal='" + unfulfilledDiscountedTotal + "', unfulfilledDiscountedTotalSet='" + unfulfilledDiscountedTotalSet + "', unfulfilledOriginalTotal='" + unfulfilledOriginalTotal + "', unfulfilledOriginalTotalSet='" + unfulfilledOriginalTotalSet + "', unfulfilledQuantity='" + unfulfilledQuantity + "', variant='" + variant + "', variantTitle='" + variantTitle + "', vendor='" + vendor + "'}";
   }
 
   @Override
@@ -836,6 +852,7 @@ public class LineItem implements com.test.shopify.generated.types.Node {
         Objects.equals(fulfillmentStatus, that.fulfillmentStatus) &&
         Objects.equals(id, that.id) &&
         Objects.equals(image, that.image) &&
+        isGiftCard == that.isGiftCard &&
         Objects.equals(lineItemGroup, that.lineItemGroup) &&
         merchantEditable == that.merchantEditable &&
         Objects.equals(name, that.name) &&
@@ -869,7 +886,7 @@ public class LineItem implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(canRestock, contract, currentQuantity, customAttributes, discountAllocations, discountedTotal, discountedTotalSet, discountedUnitPrice, discountedUnitPriceAfterAllDiscountsSet, discountedUnitPriceSet, duties, fulfillableQuantity, fulfillmentService, fulfillmentStatus, id, image, lineItemGroup, merchantEditable, name, nonFulfillableQuantity, originalTotal, originalTotalSet, originalUnitPrice, originalUnitPriceSet, product, quantity, refundableQuantity, requiresShipping, restockable, sellingPlan, sku, staffMember, taxLines, taxable, title, totalDiscount, totalDiscountSet, unfulfilledDiscountedTotal, unfulfilledDiscountedTotalSet, unfulfilledOriginalTotal, unfulfilledOriginalTotalSet, unfulfilledQuantity, variant, variantTitle, vendor);
+    return Objects.hash(canRestock, contract, currentQuantity, customAttributes, discountAllocations, discountedTotal, discountedTotalSet, discountedUnitPrice, discountedUnitPriceAfterAllDiscountsSet, discountedUnitPriceSet, duties, fulfillableQuantity, fulfillmentService, fulfillmentStatus, id, image, isGiftCard, lineItemGroup, merchantEditable, name, nonFulfillableQuantity, originalTotal, originalTotalSet, originalUnitPrice, originalUnitPriceSet, product, quantity, refundableQuantity, requiresShipping, restockable, sellingPlan, sku, staffMember, taxLines, taxable, title, totalDiscount, totalDiscountSet, unfulfilledDiscountedTotal, unfulfilledDiscountedTotalSet, unfulfilledOriginalTotal, unfulfilledOriginalTotalSet, unfulfilledQuantity, variant, variantTitle, vendor);
   }
 
   public static Builder newBuilder() {
@@ -982,6 +999,11 @@ public class LineItem implements com.test.shopify.generated.types.Node {
      * The image associated to the line item's variant.
      */
     private Image image;
+
+    /**
+     * Whether the line item represents the purchase of a gift card.
+     */
+    private boolean isGiftCard;
 
     /**
      * The line item group associated to the line item.
@@ -1156,6 +1178,7 @@ public class LineItem implements com.test.shopify.generated.types.Node {
       result.fulfillmentStatus = this.fulfillmentStatus;
       result.id = this.id;
       result.image = this.image;
+      result.isGiftCard = this.isGiftCard;
       result.lineItemGroup = this.lineItemGroup;
       result.merchantEditable = this.merchantEditable;
       result.name = this.name;
@@ -1340,6 +1363,14 @@ public class LineItem implements com.test.shopify.generated.types.Node {
      */
     public Builder image(Image image) {
       this.image = image;
+      return this;
+    }
+
+    /**
+     * Whether the line item represents the purchase of a gift card.
+     */
+    public Builder isGiftCard(boolean isGiftCard) {
+      this.isGiftCard = isGiftCard;
       return this;
     }
 

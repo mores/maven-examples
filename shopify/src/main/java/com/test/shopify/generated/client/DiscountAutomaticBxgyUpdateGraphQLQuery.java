@@ -8,7 +8,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Updates an existing Buy X, Get Y (BXGY) automatic discount.
+ * Updates an existing
+ * [buy X get Y discount (BXGY)](https://help.shopify.com/manual/discounts/discount-types/buy-x-get-y)
+ * that's automatically applied on a cart and at checkout.
+ *   
+ * > Note:
+ * > To update code discounts, use the
+ * [`discountCodeBxgyUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/discountCodeBxgyUpdate)
+ * mutation instead.
  */
 public class DiscountAutomaticBxgyUpdateGraphQLQuery extends GraphQLQuery {
   public DiscountAutomaticBxgyUpdateGraphQLQuery(String id,
@@ -49,7 +56,7 @@ public class DiscountAutomaticBxgyUpdateGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The ID of the automatic discount to update.
+     * The ID of the automatic BXGY discount to update.
      */
     public Builder id(String id) {
       this.id = id;
@@ -58,7 +65,7 @@ public class DiscountAutomaticBxgyUpdateGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The input data used to update the automatic discount.
+     * The input data used to update the automatic BXGY discount.
      */
     public Builder automaticBxgyDiscount(DiscountAutomaticBxgyInput automaticBxgyDiscount) {
       this.automaticBxgyDiscount = automaticBxgyDiscount;

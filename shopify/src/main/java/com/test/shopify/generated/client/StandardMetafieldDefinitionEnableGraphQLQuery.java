@@ -2,6 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
 import com.test.shopify.generated.types.MetafieldOwnerType;
+import com.test.shopify.generated.types.StandardMetafieldDefinitionAccessInput;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
@@ -15,8 +16,8 @@ import java.util.Set;
  */
 public class StandardMetafieldDefinitionEnableGraphQLQuery extends GraphQLQuery {
   public StandardMetafieldDefinitionEnableGraphQLQuery(MetafieldOwnerType ownerType, String id,
-      String namespace, String key, boolean pin, Boolean visibleToStorefrontApi,
-      Boolean useAsCollectionCondition, String queryName, Set<String> fieldsSet) {
+      String namespace, String key, boolean pin, Boolean useAsCollectionCondition,
+      StandardMetafieldDefinitionAccessInput access, String queryName, Set<String> fieldsSet) {
     super("mutation", queryName);
     if (ownerType != null || fieldsSet.contains("ownerType")) {
         getInput().put("ownerType", ownerType);
@@ -26,10 +27,10 @@ public class StandardMetafieldDefinitionEnableGraphQLQuery extends GraphQLQuery 
         getInput().put("namespace", namespace);
     }if (key != null || fieldsSet.contains("key")) {
         getInput().put("key", key);
-    }getInput().put("pin", pin);                   if (visibleToStorefrontApi != null || fieldsSet.contains("visibleToStorefrontApi")) {
-        getInput().put("visibleToStorefrontApi", visibleToStorefrontApi);
-    }if (useAsCollectionCondition != null || fieldsSet.contains("useAsCollectionCondition")) {
+    }getInput().put("pin", pin);                   if (useAsCollectionCondition != null || fieldsSet.contains("useAsCollectionCondition")) {
         getInput().put("useAsCollectionCondition", useAsCollectionCondition);
+    }if (access != null || fieldsSet.contains("access")) {
+        getInput().put("access", access);
     }
   }
 
@@ -59,14 +60,14 @@ public class StandardMetafieldDefinitionEnableGraphQLQuery extends GraphQLQuery 
 
     private boolean pin;
 
-    private Boolean visibleToStorefrontApi;
-
     private Boolean useAsCollectionCondition;
+
+    private StandardMetafieldDefinitionAccessInput access;
 
     private String queryName;
 
     public StandardMetafieldDefinitionEnableGraphQLQuery build() {
-      return new StandardMetafieldDefinitionEnableGraphQLQuery(ownerType, id, namespace, key, pin, visibleToStorefrontApi, useAsCollectionCondition, queryName, fieldsSet);
+      return new StandardMetafieldDefinitionEnableGraphQLQuery(ownerType, id, namespace, key, pin, useAsCollectionCondition, access, queryName, fieldsSet);
                
     }
 
@@ -116,20 +117,20 @@ public class StandardMetafieldDefinitionEnableGraphQLQuery extends GraphQLQuery 
     }
 
     /**
-     * Whether metafields for the definition are visible using the Storefront API.
-     */
-    public Builder visibleToStorefrontApi(Boolean visibleToStorefrontApi) {
-      this.visibleToStorefrontApi = visibleToStorefrontApi;
-      this.fieldsSet.add("visibleToStorefrontApi");
-      return this;
-    }
-
-    /**
      * Whether the metafield definition can be used as a collection condition.
      */
     public Builder useAsCollectionCondition(Boolean useAsCollectionCondition) {
       this.useAsCollectionCondition = useAsCollectionCondition;
       this.fieldsSet.add("useAsCollectionCondition");
+      return this;
+    }
+
+    /**
+     * The access settings that apply to each of the metafields that belong to the metafield definition.
+     */
+    public Builder access(StandardMetafieldDefinitionAccessInput access) {
+      this.access = access;
+      this.fieldsSet.add("access");
       return this;
     }
 

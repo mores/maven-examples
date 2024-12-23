@@ -99,15 +99,16 @@ public class CalculatedOrderProjection<PARENT extends BaseSubProjectionNode<?, ?
     return projection;
   }
 
-  public OrderProjection<CalculatedOrderProjection<PARENT, ROOT>, ROOT> order() {
-     OrderProjection<CalculatedOrderProjection<PARENT, ROOT>, ROOT> projection = new OrderProjection<>(this, getRoot());
-     getFields().put("order", projection);
-     return projection;
-  }
-
   public OrderProjection<CalculatedOrderProjection<PARENT, ROOT>, ROOT> originalOrder() {
      OrderProjection<CalculatedOrderProjection<PARENT, ROOT>, ROOT> projection = new OrderProjection<>(this, getRoot());
      getFields().put("originalOrder", projection);
+     return projection;
+  }
+
+  public CalculatedShippingLineProjection<CalculatedOrderProjection<PARENT, ROOT>, ROOT> shippingLines(
+      ) {
+     CalculatedShippingLineProjection<CalculatedOrderProjection<PARENT, ROOT>, ROOT> projection = new CalculatedShippingLineProjection<>(this, getRoot());
+     getFields().put("shippingLines", projection);
      return projection;
   }
 

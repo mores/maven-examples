@@ -19,6 +19,12 @@ public class FulfillmentOrderDestinationProjection<PARENT extends BaseSubProject
      return projection;
   }
 
+  public LocationProjection<FulfillmentOrderDestinationProjection<PARENT, ROOT>, ROOT> location() {
+     LocationProjection<FulfillmentOrderDestinationProjection<PARENT, ROOT>, ROOT> projection = new LocationProjection<>(this, getRoot());
+     getFields().put("location", projection);
+     return projection;
+  }
+
   public FulfillmentOrderDestinationProjection<PARENT, ROOT> address1() {
     getFields().put("address1", null);
     return this;

@@ -11,6 +11,11 @@ import java.util.Objects;
  */
 public class FulfillmentOrderHoldPayload {
   /**
+   * The fulfillment hold created for the fulfillment order. Null if no hold was created.
+   */
+  private FulfillmentHold fulfillmentHold;
+
+  /**
    * The fulfillment order on which a fulfillment hold was applied.
    */
   private FulfillmentOrder fulfillmentOrder;
@@ -27,6 +32,17 @@ public class FulfillmentOrderHoldPayload {
   private List<FulfillmentOrderHoldUserError> userErrors;
 
   public FulfillmentOrderHoldPayload() {
+  }
+
+  /**
+   * The fulfillment hold created for the fulfillment order. Null if no hold was created.
+   */
+  public FulfillmentHold getFulfillmentHold() {
+    return fulfillmentHold;
+  }
+
+  public void setFulfillmentHold(FulfillmentHold fulfillmentHold) {
+    this.fulfillmentHold = fulfillmentHold;
   }
 
   /**
@@ -65,7 +81,7 @@ public class FulfillmentOrderHoldPayload {
 
   @Override
   public String toString() {
-    return "FulfillmentOrderHoldPayload{fulfillmentOrder='" + fulfillmentOrder + "', remainingFulfillmentOrder='" + remainingFulfillmentOrder + "', userErrors='" + userErrors + "'}";
+    return "FulfillmentOrderHoldPayload{fulfillmentHold='" + fulfillmentHold + "', fulfillmentOrder='" + fulfillmentOrder + "', remainingFulfillmentOrder='" + remainingFulfillmentOrder + "', userErrors='" + userErrors + "'}";
   }
 
   @Override
@@ -73,14 +89,15 @@ public class FulfillmentOrderHoldPayload {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     FulfillmentOrderHoldPayload that = (FulfillmentOrderHoldPayload) o;
-    return Objects.equals(fulfillmentOrder, that.fulfillmentOrder) &&
+    return Objects.equals(fulfillmentHold, that.fulfillmentHold) &&
+        Objects.equals(fulfillmentOrder, that.fulfillmentOrder) &&
         Objects.equals(remainingFulfillmentOrder, that.remainingFulfillmentOrder) &&
         Objects.equals(userErrors, that.userErrors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fulfillmentOrder, remainingFulfillmentOrder, userErrors);
+    return Objects.hash(fulfillmentHold, fulfillmentOrder, remainingFulfillmentOrder, userErrors);
   }
 
   public static Builder newBuilder() {
@@ -88,6 +105,11 @@ public class FulfillmentOrderHoldPayload {
   }
 
   public static class Builder {
+    /**
+     * The fulfillment hold created for the fulfillment order. Null if no hold was created.
+     */
+    private FulfillmentHold fulfillmentHold;
+
     /**
      * The fulfillment order on which a fulfillment hold was applied.
      */
@@ -106,10 +128,19 @@ public class FulfillmentOrderHoldPayload {
 
     public FulfillmentOrderHoldPayload build() {
       FulfillmentOrderHoldPayload result = new FulfillmentOrderHoldPayload();
+      result.fulfillmentHold = this.fulfillmentHold;
       result.fulfillmentOrder = this.fulfillmentOrder;
       result.remainingFulfillmentOrder = this.remainingFulfillmentOrder;
       result.userErrors = this.userErrors;
       return result;
+    }
+
+    /**
+     * The fulfillment hold created for the fulfillment order. Null if no hold was created.
+     */
+    public Builder fulfillmentHold(FulfillmentHold fulfillmentHold) {
+      this.fulfillmentHold = fulfillmentHold;
+      return this;
     }
 
     /**

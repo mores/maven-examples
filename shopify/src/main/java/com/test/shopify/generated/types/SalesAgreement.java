@@ -24,7 +24,8 @@ import java.time.OffsetDateTime;
 @JsonSubTypes({
     @JsonSubTypes.Type(value = OrderAgreement.class, name = "OrderAgreement"),
     @JsonSubTypes.Type(value = OrderEditAgreement.class, name = "OrderEditAgreement"),
-    @JsonSubTypes.Type(value = RefundAgreement.class, name = "RefundAgreement")
+    @JsonSubTypes.Type(value = RefundAgreement.class, name = "RefundAgreement"),
+    @JsonSubTypes.Type(value = ReturnAgreement.class, name = "ReturnAgreement")
 })
 public interface SalesAgreement {
   /**

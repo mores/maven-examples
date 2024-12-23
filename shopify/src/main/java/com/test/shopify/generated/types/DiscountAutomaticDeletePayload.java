@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountAutomaticDeletePayload {
   /**
-   * The deleted automatic discount ID.
+   * The ID of the automatic discount that was deleted.
    */
   private String deletedAutomaticDiscountId;
 
@@ -24,7 +24,7 @@ public class DiscountAutomaticDeletePayload {
   }
 
   /**
-   * The deleted automatic discount ID.
+   * The ID of the automatic discount that was deleted.
    */
   public String getDeletedAutomaticDiscountId() {
     return deletedAutomaticDiscountId;
@@ -70,7 +70,7 @@ public class DiscountAutomaticDeletePayload {
 
   public static class Builder {
     /**
-     * The deleted automatic discount ID.
+     * The ID of the automatic discount that was deleted.
      */
     private String deletedAutomaticDiscountId;
 
@@ -87,7 +87,7 @@ public class DiscountAutomaticDeletePayload {
     }
 
     /**
-     * The deleted automatic discount ID.
+     * The ID of the automatic discount that was deleted.
      */
     public Builder deletedAutomaticDiscountId(String deletedAutomaticDiscountId) {
       this.deletedAutomaticDiscountId = deletedAutomaticDiscountId;

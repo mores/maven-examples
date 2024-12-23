@@ -31,9 +31,9 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
   private Customer customer;
 
   /**
-   * The date and time at which the gift card was disabled.
+   * The date and time at which the gift card was deactivated.
    */
-  private OffsetDateTime disabledAt;
+  private OffsetDateTime deactivatedAt;
 
   /**
    * Whether the gift card is enabled.
@@ -75,6 +75,26 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
    */
   private Order order;
 
+  /**
+   * The recipient who will receive the gift card.
+   */
+  private GiftCardRecipient recipientAttributes;
+
+  /**
+   * The theme template used to render the gift card online.
+   */
+  private String templateSuffix;
+
+  /**
+   * The transaction history of the gift card.
+   */
+  private GiftCardTransactionConnection transactions;
+
+  /**
+   * The date and time at which the gift card was updated.
+   */
+  private OffsetDateTime updatedAt;
+
   public GiftCard() {
   }
 
@@ -112,14 +132,14 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
   }
 
   /**
-   * The date and time at which the gift card was disabled.
+   * The date and time at which the gift card was deactivated.
    */
-  public OffsetDateTime getDisabledAt() {
-    return disabledAt;
+  public OffsetDateTime getDeactivatedAt() {
+    return deactivatedAt;
   }
 
-  public void setDisabledAt(OffsetDateTime disabledAt) {
-    this.disabledAt = disabledAt;
+  public void setDeactivatedAt(OffsetDateTime deactivatedAt) {
+    this.deactivatedAt = deactivatedAt;
   }
 
   /**
@@ -210,9 +230,53 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
     this.order = order;
   }
 
+  /**
+   * The recipient who will receive the gift card.
+   */
+  public GiftCardRecipient getRecipientAttributes() {
+    return recipientAttributes;
+  }
+
+  public void setRecipientAttributes(GiftCardRecipient recipientAttributes) {
+    this.recipientAttributes = recipientAttributes;
+  }
+
+  /**
+   * The theme template used to render the gift card online.
+   */
+  public String getTemplateSuffix() {
+    return templateSuffix;
+  }
+
+  public void setTemplateSuffix(String templateSuffix) {
+    this.templateSuffix = templateSuffix;
+  }
+
+  /**
+   * The transaction history of the gift card.
+   */
+  public GiftCardTransactionConnection getTransactions() {
+    return transactions;
+  }
+
+  public void setTransactions(GiftCardTransactionConnection transactions) {
+    this.transactions = transactions;
+  }
+
+  /**
+   * The date and time at which the gift card was updated.
+   */
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
   @Override
   public String toString() {
-    return "GiftCard{balance='" + balance + "', createdAt='" + createdAt + "', customer='" + customer + "', disabledAt='" + disabledAt + "', enabled='" + enabled + "', expiresOn='" + expiresOn + "', id='" + id + "', initialValue='" + initialValue + "', lastCharacters='" + lastCharacters + "', maskedCode='" + maskedCode + "', note='" + note + "', order='" + order + "'}";
+    return "GiftCard{balance='" + balance + "', createdAt='" + createdAt + "', customer='" + customer + "', deactivatedAt='" + deactivatedAt + "', enabled='" + enabled + "', expiresOn='" + expiresOn + "', id='" + id + "', initialValue='" + initialValue + "', lastCharacters='" + lastCharacters + "', maskedCode='" + maskedCode + "', note='" + note + "', order='" + order + "', recipientAttributes='" + recipientAttributes + "', templateSuffix='" + templateSuffix + "', transactions='" + transactions + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -223,7 +287,7 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
     return Objects.equals(balance, that.balance) &&
         Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(customer, that.customer) &&
-        Objects.equals(disabledAt, that.disabledAt) &&
+        Objects.equals(deactivatedAt, that.deactivatedAt) &&
         enabled == that.enabled &&
         Objects.equals(expiresOn, that.expiresOn) &&
         Objects.equals(id, that.id) &&
@@ -231,12 +295,16 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
         Objects.equals(lastCharacters, that.lastCharacters) &&
         Objects.equals(maskedCode, that.maskedCode) &&
         Objects.equals(note, that.note) &&
-        Objects.equals(order, that.order);
+        Objects.equals(order, that.order) &&
+        Objects.equals(recipientAttributes, that.recipientAttributes) &&
+        Objects.equals(templateSuffix, that.templateSuffix) &&
+        Objects.equals(transactions, that.transactions) &&
+        Objects.equals(updatedAt, that.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(balance, createdAt, customer, disabledAt, enabled, expiresOn, id, initialValue, lastCharacters, maskedCode, note, order);
+    return Objects.hash(balance, createdAt, customer, deactivatedAt, enabled, expiresOn, id, initialValue, lastCharacters, maskedCode, note, order, recipientAttributes, templateSuffix, transactions, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -260,9 +328,9 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
     private Customer customer;
 
     /**
-     * The date and time at which the gift card was disabled.
+     * The date and time at which the gift card was deactivated.
      */
-    private OffsetDateTime disabledAt;
+    private OffsetDateTime deactivatedAt;
 
     /**
      * Whether the gift card is enabled.
@@ -304,12 +372,32 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
      */
     private Order order;
 
+    /**
+     * The recipient who will receive the gift card.
+     */
+    private GiftCardRecipient recipientAttributes;
+
+    /**
+     * The theme template used to render the gift card online.
+     */
+    private String templateSuffix;
+
+    /**
+     * The transaction history of the gift card.
+     */
+    private GiftCardTransactionConnection transactions;
+
+    /**
+     * The date and time at which the gift card was updated.
+     */
+    private OffsetDateTime updatedAt;
+
     public GiftCard build() {
       GiftCard result = new GiftCard();
       result.balance = this.balance;
       result.createdAt = this.createdAt;
       result.customer = this.customer;
-      result.disabledAt = this.disabledAt;
+      result.deactivatedAt = this.deactivatedAt;
       result.enabled = this.enabled;
       result.expiresOn = this.expiresOn;
       result.id = this.id;
@@ -318,6 +406,10 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
       result.maskedCode = this.maskedCode;
       result.note = this.note;
       result.order = this.order;
+      result.recipientAttributes = this.recipientAttributes;
+      result.templateSuffix = this.templateSuffix;
+      result.transactions = this.transactions;
+      result.updatedAt = this.updatedAt;
       return result;
     }
 
@@ -346,10 +438,10 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
     }
 
     /**
-     * The date and time at which the gift card was disabled.
+     * The date and time at which the gift card was deactivated.
      */
-    public Builder disabledAt(OffsetDateTime disabledAt) {
-      this.disabledAt = disabledAt;
+    public Builder deactivatedAt(OffsetDateTime deactivatedAt) {
+      this.deactivatedAt = deactivatedAt;
       return this;
     }
 
@@ -414,6 +506,38 @@ public class GiftCard implements com.test.shopify.generated.types.Node {
      */
     public Builder order(Order order) {
       this.order = order;
+      return this;
+    }
+
+    /**
+     * The recipient who will receive the gift card.
+     */
+    public Builder recipientAttributes(GiftCardRecipient recipientAttributes) {
+      this.recipientAttributes = recipientAttributes;
+      return this;
+    }
+
+    /**
+     * The theme template used to render the gift card online.
+     */
+    public Builder templateSuffix(String templateSuffix) {
+      this.templateSuffix = templateSuffix;
+      return this;
+    }
+
+    /**
+     * The transaction history of the gift card.
+     */
+    public Builder transactions(GiftCardTransactionConnection transactions) {
+      this.transactions = transactions;
+      return this;
+    }
+
+    /**
+     * The date and time at which the gift card was updated.
+     */
+    public Builder updatedAt(OffsetDateTime updatedAt) {
+      this.updatedAt = updatedAt;
       return this;
     }
   }

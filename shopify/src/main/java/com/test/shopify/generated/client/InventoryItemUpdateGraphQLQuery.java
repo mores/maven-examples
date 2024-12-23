@@ -1,7 +1,7 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
-import com.test.shopify.generated.types.InventoryItemUpdateInput;
+import com.test.shopify.generated.types.InventoryItemInput;
 import java.lang.Override;
 import java.lang.String;
 import java.util.HashSet;
@@ -11,8 +11,8 @@ import java.util.Set;
  * Updates an inventory item.
  */
 public class InventoryItemUpdateGraphQLQuery extends GraphQLQuery {
-  public InventoryItemUpdateGraphQLQuery(String id, InventoryItemUpdateInput input,
-      String queryName, Set<String> fieldsSet) {
+  public InventoryItemUpdateGraphQLQuery(String id, InventoryItemInput input, String queryName,
+      Set<String> fieldsSet) {
     super("mutation", queryName);
     if (id != null || fieldsSet.contains("id")) {
         getInput().put("id", id);
@@ -39,7 +39,7 @@ public class InventoryItemUpdateGraphQLQuery extends GraphQLQuery {
 
     private String id;
 
-    private InventoryItemUpdateInput input;
+    private InventoryItemInput input;
 
     private String queryName;
 
@@ -61,7 +61,7 @@ public class InventoryItemUpdateGraphQLQuery extends GraphQLQuery {
      * The input fields that update an
      * [`inventoryItem`](https://shopify.dev/api/admin-graphql/latest/queries/inventoryitem).
      */
-    public Builder input(InventoryItemUpdateInput input) {
+    public Builder input(InventoryItemInput input) {
       this.input = input;
       this.fieldsSet.add("input");
       return this;

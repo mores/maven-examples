@@ -38,10 +38,10 @@ public class ProductInput {
   private String productType;
 
   /**
-   * The [custom product type](https://help.shopify.com/manual/products/details/product-type)
-   * that merchants define.
+   * The ID of the [category](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17)
+   * that's associated with the product.
    */
-  private String customProductType;
+  private String category;
 
   /**
    * A comma-separated list of searchable keywords that are
@@ -100,6 +100,12 @@ public class ProductInput {
   private List<String> collectionsToLeave;
 
   /**
+   * The role of the product in a [combined listing](https://shopify.dev/apps/build/product-merchandising/combined-listings).
+   * You can specify this field only when you create a product.
+   */
+  private CombinedListingsRole combinedListingRole;
+
+  /**
    * The product's ID.
    *   
    * If you're creating a product, then you don't need to pass the `id` as input to the
@@ -115,6 +121,14 @@ public class ProductInput {
    * for the purposes of adding and storing additional information.
    */
   private List<MetafieldInput> metafields;
+
+  /**
+   * A list of product options and option values. Maximum product options: three.
+   * There's no limit on the number of option values.
+   * This input is supported only with the [`productCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productCreate)
+   * mutation.
+   */
+  private List<OptionCreateInput> productOptions;
 
   /**
    * The [product status](https://help.shopify.com/manual/products/details/product-details-page#product-status),
@@ -194,15 +208,15 @@ public class ProductInput {
   }
 
   /**
-   * The [custom product type](https://help.shopify.com/manual/products/details/product-type)
-   * that merchants define.
+   * The ID of the [category](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17)
+   * that's associated with the product.
    */
-  public String getCustomProductType() {
-    return customProductType;
+  public String getCategory() {
+    return category;
   }
 
-  public void setCustomProductType(String customProductType) {
-    this.customProductType = customProductType;
+  public void setCategory(String category) {
+    this.category = category;
   }
 
   /**
@@ -316,6 +330,18 @@ public class ProductInput {
   }
 
   /**
+   * The role of the product in a [combined listing](https://shopify.dev/apps/build/product-merchandising/combined-listings).
+   * You can specify this field only when you create a product.
+   */
+  public CombinedListingsRole getCombinedListingRole() {
+    return combinedListingRole;
+  }
+
+  public void setCombinedListingRole(CombinedListingsRole combinedListingRole) {
+    this.combinedListingRole = combinedListingRole;
+  }
+
+  /**
    * The product's ID.
    *   
    * If you're creating a product, then you don't need to pass the `id` as input to the
@@ -342,6 +368,20 @@ public class ProductInput {
 
   public void setMetafields(List<MetafieldInput> metafields) {
     this.metafields = metafields;
+  }
+
+  /**
+   * A list of product options and option values. Maximum product options: three.
+   * There's no limit on the number of option values.
+   * This input is supported only with the [`productCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productCreate)
+   * mutation.
+   */
+  public List<OptionCreateInput> getProductOptions() {
+    return productOptions;
+  }
+
+  public void setProductOptions(List<OptionCreateInput> productOptions) {
+    this.productOptions = productOptions;
   }
 
   /**
@@ -388,7 +428,7 @@ public class ProductInput {
 
   @Override
   public String toString() {
-    return "ProductInput{descriptionHtml='" + descriptionHtml + "', handle='" + handle + "', seo='" + seo + "', productType='" + productType + "', customProductType='" + customProductType + "', tags='" + tags + "', templateSuffix='" + templateSuffix + "', giftCardTemplateSuffix='" + giftCardTemplateSuffix + "', title='" + title + "', vendor='" + vendor + "', giftCard='" + giftCard + "', redirectNewHandle='" + redirectNewHandle + "', collectionsToJoin='" + collectionsToJoin + "', collectionsToLeave='" + collectionsToLeave + "', id='" + id + "', metafields='" + metafields + "', status='" + status + "', requiresSellingPlan='" + requiresSellingPlan + "', claimOwnership='" + claimOwnership + "'}";
+    return "ProductInput{descriptionHtml='" + descriptionHtml + "', handle='" + handle + "', seo='" + seo + "', productType='" + productType + "', category='" + category + "', tags='" + tags + "', templateSuffix='" + templateSuffix + "', giftCardTemplateSuffix='" + giftCardTemplateSuffix + "', title='" + title + "', vendor='" + vendor + "', giftCard='" + giftCard + "', redirectNewHandle='" + redirectNewHandle + "', collectionsToJoin='" + collectionsToJoin + "', collectionsToLeave='" + collectionsToLeave + "', combinedListingRole='" + combinedListingRole + "', id='" + id + "', metafields='" + metafields + "', productOptions='" + productOptions + "', status='" + status + "', requiresSellingPlan='" + requiresSellingPlan + "', claimOwnership='" + claimOwnership + "'}";
   }
 
   @Override
@@ -400,7 +440,7 @@ public class ProductInput {
         Objects.equals(handle, that.handle) &&
         Objects.equals(seo, that.seo) &&
         Objects.equals(productType, that.productType) &&
-        Objects.equals(customProductType, that.customProductType) &&
+        Objects.equals(category, that.category) &&
         Objects.equals(tags, that.tags) &&
         Objects.equals(templateSuffix, that.templateSuffix) &&
         Objects.equals(giftCardTemplateSuffix, that.giftCardTemplateSuffix) &&
@@ -410,8 +450,10 @@ public class ProductInput {
         Objects.equals(redirectNewHandle, that.redirectNewHandle) &&
         Objects.equals(collectionsToJoin, that.collectionsToJoin) &&
         Objects.equals(collectionsToLeave, that.collectionsToLeave) &&
+        Objects.equals(combinedListingRole, that.combinedListingRole) &&
         Objects.equals(id, that.id) &&
         Objects.equals(metafields, that.metafields) &&
+        Objects.equals(productOptions, that.productOptions) &&
         Objects.equals(status, that.status) &&
         Objects.equals(requiresSellingPlan, that.requiresSellingPlan) &&
         Objects.equals(claimOwnership, that.claimOwnership);
@@ -419,7 +461,7 @@ public class ProductInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(descriptionHtml, handle, seo, productType, customProductType, tags, templateSuffix, giftCardTemplateSuffix, title, vendor, giftCard, redirectNewHandle, collectionsToJoin, collectionsToLeave, id, metafields, status, requiresSellingPlan, claimOwnership);
+    return Objects.hash(descriptionHtml, handle, seo, productType, category, tags, templateSuffix, giftCardTemplateSuffix, title, vendor, giftCard, redirectNewHandle, collectionsToJoin, collectionsToLeave, combinedListingRole, id, metafields, productOptions, status, requiresSellingPlan, claimOwnership);
   }
 
   public static Builder newBuilder() {
@@ -454,10 +496,10 @@ public class ProductInput {
     private String productType;
 
     /**
-     * The [custom product type](https://help.shopify.com/manual/products/details/product-type)
-     * that merchants define.
+     * The ID of the [category](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17)
+     * that's associated with the product.
      */
-    private String customProductType;
+    private String category;
 
     /**
      * A comma-separated list of searchable keywords that are
@@ -516,6 +558,12 @@ public class ProductInput {
     private List<String> collectionsToLeave;
 
     /**
+     * The role of the product in a [combined listing](https://shopify.dev/apps/build/product-merchandising/combined-listings).
+     * You can specify this field only when you create a product.
+     */
+    private CombinedListingsRole combinedListingRole;
+
+    /**
      * The product's ID.
      *   
      * If you're creating a product, then you don't need to pass the `id` as input to the
@@ -531,6 +579,14 @@ public class ProductInput {
      * for the purposes of adding and storing additional information.
      */
     private List<MetafieldInput> metafields;
+
+    /**
+     * A list of product options and option values. Maximum product options: three.
+     * There's no limit on the number of option values.
+     * This input is supported only with the [`productCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productCreate)
+     * mutation.
+     */
+    private List<OptionCreateInput> productOptions;
 
     /**
      * The [product status](https://help.shopify.com/manual/products/details/product-details-page#product-status),
@@ -562,7 +618,7 @@ public class ProductInput {
       result.handle = this.handle;
       result.seo = this.seo;
       result.productType = this.productType;
-      result.customProductType = this.customProductType;
+      result.category = this.category;
       result.tags = this.tags;
       result.templateSuffix = this.templateSuffix;
       result.giftCardTemplateSuffix = this.giftCardTemplateSuffix;
@@ -572,8 +628,10 @@ public class ProductInput {
       result.redirectNewHandle = this.redirectNewHandle;
       result.collectionsToJoin = this.collectionsToJoin;
       result.collectionsToLeave = this.collectionsToLeave;
+      result.combinedListingRole = this.combinedListingRole;
       result.id = this.id;
       result.metafields = this.metafields;
+      result.productOptions = this.productOptions;
       result.status = this.status;
       result.requiresSellingPlan = this.requiresSellingPlan;
       result.claimOwnership = this.claimOwnership;
@@ -619,11 +677,11 @@ public class ProductInput {
     }
 
     /**
-     * The [custom product type](https://help.shopify.com/manual/products/details/product-type)
-     * that merchants define.
+     * The ID of the [category](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17)
+     * that's associated with the product.
      */
-    public Builder customProductType(String customProductType) {
-      this.customProductType = customProductType;
+    public Builder category(String category) {
+      this.category = category;
       return this;
     }
 
@@ -711,6 +769,15 @@ public class ProductInput {
     }
 
     /**
+     * The role of the product in a [combined listing](https://shopify.dev/apps/build/product-merchandising/combined-listings).
+     * You can specify this field only when you create a product.
+     */
+    public Builder combinedListingRole(CombinedListingsRole combinedListingRole) {
+      this.combinedListingRole = combinedListingRole;
+      return this;
+    }
+
+    /**
      * The product's ID.
      *   
      * If you're creating a product, then you don't need to pass the `id` as input to the
@@ -730,6 +797,17 @@ public class ProductInput {
      */
     public Builder metafields(List<MetafieldInput> metafields) {
       this.metafields = metafields;
+      return this;
+    }
+
+    /**
+     * A list of product options and option values. Maximum product options: three.
+     * There's no limit on the number of option values.
+     * This input is supported only with the [`productCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productCreate)
+     * mutation.
+     */
+    public Builder productOptions(List<OptionCreateInput> productOptions) {
+      this.productOptions = productOptions;
       return this;
     }
 

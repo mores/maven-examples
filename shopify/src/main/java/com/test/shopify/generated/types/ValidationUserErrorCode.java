@@ -16,6 +16,8 @@ public enum ValidationUserErrorCode {
 
   FUNCTION_PENDING_DELETION,
 
+  MAX_VALIDATIONS_ACTIVATED,
+
   INVALID_TYPE,
 
   INVALID_VALUE,
@@ -36,5 +38,9 @@ public enum ValidationUserErrorCode {
 
   TOO_LONG,
 
-  TOO_SHORT
+  TOO_SHORT,
+
+  CAPABILITY_VIOLATION,
+
+  INTERNAL_ERROR
 }

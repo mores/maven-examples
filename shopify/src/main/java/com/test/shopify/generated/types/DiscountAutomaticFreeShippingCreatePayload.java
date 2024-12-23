@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountAutomaticFreeShippingCreatePayload {
   /**
-   * The created automatic discount.
+   * The automatic free shipping discount that was created.
    */
   private DiscountAutomaticNode automaticDiscountNode;
 
@@ -24,7 +24,7 @@ public class DiscountAutomaticFreeShippingCreatePayload {
   }
 
   /**
-   * The created automatic discount.
+   * The automatic free shipping discount that was created.
    */
   public DiscountAutomaticNode getAutomaticDiscountNode() {
     return automaticDiscountNode;
@@ -70,7 +70,7 @@ public class DiscountAutomaticFreeShippingCreatePayload {
 
   public static class Builder {
     /**
-     * The created automatic discount.
+     * The automatic free shipping discount that was created.
      */
     private DiscountAutomaticNode automaticDiscountNode;
 
@@ -87,7 +87,7 @@ public class DiscountAutomaticFreeShippingCreatePayload {
     }
 
     /**
-     * The created automatic discount.
+     * The automatic free shipping discount that was created.
      */
     public Builder automaticDiscountNode(DiscountAutomaticNode automaticDiscountNode) {
       this.automaticDiscountNode = automaticDiscountNode;

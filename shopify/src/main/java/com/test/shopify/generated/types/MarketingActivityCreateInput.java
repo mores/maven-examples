@@ -38,6 +38,14 @@ public class MarketingActivityCreateInput {
   private UTMInput utm;
 
   /**
+   * Value for a query parameter that gets inserted into storefront URLs for
+   * matching storefront traffic to this activity. This feature is currently
+   * available on a limited basis to some partners only. UTMs should continue to be
+   * used for most partners. Both the URL parameter value and UTM parameters can be set.
+   */
+  private String urlParameterValue;
+
+  /**
    * The current state of the marketing activity.
    */
   private MarketingActivityStatus status;
@@ -109,6 +117,20 @@ public class MarketingActivityCreateInput {
   }
 
   /**
+   * Value for a query parameter that gets inserted into storefront URLs for
+   * matching storefront traffic to this activity. This feature is currently
+   * available on a limited basis to some partners only. UTMs should continue to be
+   * used for most partners. Both the URL parameter value and UTM parameters can be set.
+   */
+  public String getUrlParameterValue() {
+    return urlParameterValue;
+  }
+
+  public void setUrlParameterValue(String urlParameterValue) {
+    this.urlParameterValue = urlParameterValue;
+  }
+
+  /**
    * The current state of the marketing activity.
    */
   public MarketingActivityStatus getStatus() {
@@ -132,7 +154,7 @@ public class MarketingActivityCreateInput {
 
   @Override
   public String toString() {
-    return "MarketingActivityCreateInput{marketingActivityTitle='" + marketingActivityTitle + "', formData='" + formData + "', marketingActivityExtensionId='" + marketingActivityExtensionId + "', context='" + context + "', utm='" + utm + "', status='" + status + "', budget='" + budget + "'}";
+    return "MarketingActivityCreateInput{marketingActivityTitle='" + marketingActivityTitle + "', formData='" + formData + "', marketingActivityExtensionId='" + marketingActivityExtensionId + "', context='" + context + "', utm='" + utm + "', urlParameterValue='" + urlParameterValue + "', status='" + status + "', budget='" + budget + "'}";
   }
 
   @Override
@@ -145,13 +167,14 @@ public class MarketingActivityCreateInput {
         Objects.equals(marketingActivityExtensionId, that.marketingActivityExtensionId) &&
         Objects.equals(context, that.context) &&
         Objects.equals(utm, that.utm) &&
+        Objects.equals(urlParameterValue, that.urlParameterValue) &&
         Objects.equals(status, that.status) &&
         Objects.equals(budget, that.budget);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(marketingActivityTitle, formData, marketingActivityExtensionId, context, utm, status, budget);
+    return Objects.hash(marketingActivityTitle, formData, marketingActivityExtensionId, context, utm, urlParameterValue, status, budget);
   }
 
   public static Builder newBuilder() {
@@ -188,6 +211,14 @@ public class MarketingActivityCreateInput {
     private UTMInput utm;
 
     /**
+     * Value for a query parameter that gets inserted into storefront URLs for
+     * matching storefront traffic to this activity. This feature is currently
+     * available on a limited basis to some partners only. UTMs should continue to be
+     * used for most partners. Both the URL parameter value and UTM parameters can be set.
+     */
+    private String urlParameterValue;
+
+    /**
      * The current state of the marketing activity.
      */
     private MarketingActivityStatus status;
@@ -204,6 +235,7 @@ public class MarketingActivityCreateInput {
       result.marketingActivityExtensionId = this.marketingActivityExtensionId;
       result.context = this.context;
       result.utm = this.utm;
+      result.urlParameterValue = this.urlParameterValue;
       result.status = this.status;
       result.budget = this.budget;
       return result;
@@ -249,6 +281,17 @@ public class MarketingActivityCreateInput {
      */
     public Builder utm(UTMInput utm) {
       this.utm = utm;
+      return this;
+    }
+
+    /**
+     * Value for a query parameter that gets inserted into storefront URLs for
+     * matching storefront traffic to this activity. This feature is currently
+     * available on a limited basis to some partners only. UTMs should continue to be
+     * used for most partners. Both the URL parameter value and UTM parameters can be set.
+     */
+    public Builder urlParameterValue(String urlParameterValue) {
+      this.urlParameterValue = urlParameterValue;
       return this;
     }
 

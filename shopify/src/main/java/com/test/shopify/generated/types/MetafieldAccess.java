@@ -16,6 +16,11 @@ public class MetafieldAccess {
   private MetafieldAdminAccess admin;
 
   /**
+   * The customer account access setting used for the metafields under this definition.
+   */
+  private MetafieldCustomerAccountAccess customerAccount;
+
+  /**
    * The explicit grants for this metafield definition, superseding the default admin access
    * for the specified grantees.
    */
@@ -38,6 +43,17 @@ public class MetafieldAccess {
 
   public void setAdmin(MetafieldAdminAccess admin) {
     this.admin = admin;
+  }
+
+  /**
+   * The customer account access setting used for the metafields under this definition.
+   */
+  public MetafieldCustomerAccountAccess getCustomerAccount() {
+    return customerAccount;
+  }
+
+  public void setCustomerAccount(MetafieldCustomerAccountAccess customerAccount) {
+    this.customerAccount = customerAccount;
   }
 
   /**
@@ -65,7 +81,7 @@ public class MetafieldAccess {
 
   @Override
   public String toString() {
-    return "MetafieldAccess{admin='" + admin + "', grants='" + grants + "', storefront='" + storefront + "'}";
+    return "MetafieldAccess{admin='" + admin + "', customerAccount='" + customerAccount + "', grants='" + grants + "', storefront='" + storefront + "'}";
   }
 
   @Override
@@ -74,13 +90,14 @@ public class MetafieldAccess {
     if (o == null || getClass() != o.getClass()) return false;
     MetafieldAccess that = (MetafieldAccess) o;
     return Objects.equals(admin, that.admin) &&
+        Objects.equals(customerAccount, that.customerAccount) &&
         Objects.equals(grants, that.grants) &&
         Objects.equals(storefront, that.storefront);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(admin, grants, storefront);
+    return Objects.hash(admin, customerAccount, grants, storefront);
   }
 
   public static Builder newBuilder() {
@@ -92,6 +109,11 @@ public class MetafieldAccess {
      * The default admin access setting used for the metafields under this definition.
      */
     private MetafieldAdminAccess admin;
+
+    /**
+     * The customer account access setting used for the metafields under this definition.
+     */
+    private MetafieldCustomerAccountAccess customerAccount;
 
     /**
      * The explicit grants for this metafield definition, superseding the default admin access
@@ -107,6 +129,7 @@ public class MetafieldAccess {
     public MetafieldAccess build() {
       MetafieldAccess result = new MetafieldAccess();
       result.admin = this.admin;
+      result.customerAccount = this.customerAccount;
       result.grants = this.grants;
       result.storefront = this.storefront;
       return result;
@@ -117,6 +140,14 @@ public class MetafieldAccess {
      */
     public Builder admin(MetafieldAdminAccess admin) {
       this.admin = admin;
+      return this;
+    }
+
+    /**
+     * The customer account access setting used for the metafields under this definition.
+     */
+    public Builder customerAccount(MetafieldCustomerAccountAccess customerAccount) {
+      this.customerAccount = customerAccount;
       return this;
     }
 

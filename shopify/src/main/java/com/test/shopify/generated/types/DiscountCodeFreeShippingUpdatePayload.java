@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountCodeFreeShippingUpdatePayload {
   /**
-   * The updated code discount.
+   * The discount code that was updated.
    */
   private DiscountCodeNode codeDiscountNode;
 
@@ -24,7 +24,7 @@ public class DiscountCodeFreeShippingUpdatePayload {
   }
 
   /**
-   * The updated code discount.
+   * The discount code that was updated.
    */
   public DiscountCodeNode getCodeDiscountNode() {
     return codeDiscountNode;
@@ -70,7 +70,7 @@ public class DiscountCodeFreeShippingUpdatePayload {
 
   public static class Builder {
     /**
-     * The updated code discount.
+     * The discount code that was updated.
      */
     private DiscountCodeNode codeDiscountNode;
 
@@ -87,7 +87,7 @@ public class DiscountCodeFreeShippingUpdatePayload {
     }
 
     /**
-     * The updated code discount.
+     * The discount code that was updated.
      */
     public Builder codeDiscountNode(DiscountCodeNode codeDiscountNode) {
       this.codeDiscountNode = codeDiscountNode;

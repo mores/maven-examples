@@ -6,6 +6,10 @@ package com.test.shopify.generated.types;
 public enum MetafieldsSetUserErrorCode {
   CAPABILITY_VIOLATION,
 
+  STALE_OBJECT,
+
+  INVALID_COMPARE_DIGEST,
+
   INVALID_TYPE,
 
   INVALID_VALUE,
@@ -22,5 +26,7 @@ public enum MetafieldsSetUserErrorCode {
 
   TOO_SHORT,
 
-  LESS_THAN_OR_EQUAL_TO
+  LESS_THAN_OR_EQUAL_TO,
+
+  INTERNAL_ERROR
 }

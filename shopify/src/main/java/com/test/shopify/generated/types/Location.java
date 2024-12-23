@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,6 +33,11 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
    * Whether the location address has been verified.
    */
   private boolean addressVerified;
+
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) that the location was added to a shop.
+   */
+  private OffsetDateTime createdAt;
 
   /**
    * Whether this location can be deactivated. If `true`, then the location can be deactivated by calling the
@@ -98,6 +104,11 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
   private boolean isActive;
 
   /**
+   * Whether this location is a fulfillment service.
+   */
+  private boolean isFulfillmentService;
+
+  /**
    * Whether the location is your primary location for shipping inventory.
    */
   private boolean isPrimary;
@@ -155,6 +166,11 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
    */
   private List<LocationSuggestedAddress> suggestedAddresses;
 
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the location was last updated.
+   */
+  private OffsetDateTime updatedAt;
+
   public Location() {
   }
 
@@ -191,6 +207,17 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
 
   public void setAddressVerified(boolean addressVerified) {
     this.addressVerified = addressVerified;
+  }
+
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) that the location was added to a shop.
+   */
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
   /**
@@ -324,6 +351,17 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
   }
 
   /**
+   * Whether this location is a fulfillment service.
+   */
+  public boolean getIsFulfillmentService() {
+    return isFulfillmentService;
+  }
+
+  public void setIsFulfillmentService(boolean isFulfillmentService) {
+    this.isFulfillmentService = isFulfillmentService;
+  }
+
+  /**
    * Whether the location is your primary location for shipping inventory.
    */
   public boolean getIsPrimary() {
@@ -447,9 +485,20 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
     this.suggestedAddresses = suggestedAddresses;
   }
 
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the location was last updated.
+   */
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
   @Override
   public String toString() {
-    return "Location{activatable='" + activatable + "', address='" + address + "', addressVerified='" + addressVerified + "', deactivatable='" + deactivatable + "', deactivatedAt='" + deactivatedAt + "', deletable='" + deletable + "', fulfillmentService='" + fulfillmentService + "', fulfillsOnlineOrders='" + fulfillsOnlineOrders + "', hasActiveInventory='" + hasActiveInventory + "', hasUnfulfilledOrders='" + hasUnfulfilledOrders + "', id='" + id + "', inventoryLevel='" + inventoryLevel + "', inventoryLevels='" + inventoryLevels + "', isActive='" + isActive + "', isPrimary='" + isPrimary + "', legacyResourceId='" + legacyResourceId + "', localPickupSettingsV2='" + localPickupSettingsV2 + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', shipsInventory='" + shipsInventory + "', suggestedAddresses='" + suggestedAddresses + "'}";
+    return "Location{activatable='" + activatable + "', address='" + address + "', addressVerified='" + addressVerified + "', createdAt='" + createdAt + "', deactivatable='" + deactivatable + "', deactivatedAt='" + deactivatedAt + "', deletable='" + deletable + "', fulfillmentService='" + fulfillmentService + "', fulfillsOnlineOrders='" + fulfillsOnlineOrders + "', hasActiveInventory='" + hasActiveInventory + "', hasUnfulfilledOrders='" + hasUnfulfilledOrders + "', id='" + id + "', inventoryLevel='" + inventoryLevel + "', inventoryLevels='" + inventoryLevels + "', isActive='" + isActive + "', isFulfillmentService='" + isFulfillmentService + "', isPrimary='" + isPrimary + "', legacyResourceId='" + legacyResourceId + "', localPickupSettingsV2='" + localPickupSettingsV2 + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', shipsInventory='" + shipsInventory + "', suggestedAddresses='" + suggestedAddresses + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -460,6 +509,7 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
     return activatable == that.activatable &&
         Objects.equals(address, that.address) &&
         addressVerified == that.addressVerified &&
+        Objects.equals(createdAt, that.createdAt) &&
         deactivatable == that.deactivatable &&
         Objects.equals(deactivatedAt, that.deactivatedAt) &&
         deletable == that.deletable &&
@@ -471,6 +521,7 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
         Objects.equals(inventoryLevel, that.inventoryLevel) &&
         Objects.equals(inventoryLevels, that.inventoryLevels) &&
         isActive == that.isActive &&
+        isFulfillmentService == that.isFulfillmentService &&
         isPrimary == that.isPrimary &&
         Objects.equals(legacyResourceId, that.legacyResourceId) &&
         Objects.equals(localPickupSettingsV2, that.localPickupSettingsV2) &&
@@ -481,12 +532,13 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
         Objects.equals(privateMetafield, that.privateMetafield) &&
         Objects.equals(privateMetafields, that.privateMetafields) &&
         shipsInventory == that.shipsInventory &&
-        Objects.equals(suggestedAddresses, that.suggestedAddresses);
+        Objects.equals(suggestedAddresses, that.suggestedAddresses) &&
+        Objects.equals(updatedAt, that.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(activatable, address, addressVerified, deactivatable, deactivatedAt, deletable, fulfillmentService, fulfillsOnlineOrders, hasActiveInventory, hasUnfulfilledOrders, id, inventoryLevel, inventoryLevels, isActive, isPrimary, legacyResourceId, localPickupSettingsV2, metafield, metafieldDefinitions, metafields, name, privateMetafield, privateMetafields, shipsInventory, suggestedAddresses);
+    return Objects.hash(activatable, address, addressVerified, createdAt, deactivatable, deactivatedAt, deletable, fulfillmentService, fulfillsOnlineOrders, hasActiveInventory, hasUnfulfilledOrders, id, inventoryLevel, inventoryLevels, isActive, isFulfillmentService, isPrimary, legacyResourceId, localPickupSettingsV2, metafield, metafieldDefinitions, metafields, name, privateMetafield, privateMetafields, shipsInventory, suggestedAddresses, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -510,6 +562,11 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
      * Whether the location address has been verified.
      */
     private boolean addressVerified;
+
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) that the location was added to a shop.
+     */
+    private OffsetDateTime createdAt;
 
     /**
      * Whether this location can be deactivated. If `true`, then the location can be deactivated by calling the
@@ -576,6 +633,11 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
     private boolean isActive;
 
     /**
+     * Whether this location is a fulfillment service.
+     */
+    private boolean isFulfillmentService;
+
+    /**
      * Whether the location is your primary location for shipping inventory.
      */
     private boolean isPrimary;
@@ -633,11 +695,17 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
      */
     private List<LocationSuggestedAddress> suggestedAddresses;
 
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the location was last updated.
+     */
+    private OffsetDateTime updatedAt;
+
     public Location build() {
       Location result = new Location();
       result.activatable = this.activatable;
       result.address = this.address;
       result.addressVerified = this.addressVerified;
+      result.createdAt = this.createdAt;
       result.deactivatable = this.deactivatable;
       result.deactivatedAt = this.deactivatedAt;
       result.deletable = this.deletable;
@@ -649,6 +717,7 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
       result.inventoryLevel = this.inventoryLevel;
       result.inventoryLevels = this.inventoryLevels;
       result.isActive = this.isActive;
+      result.isFulfillmentService = this.isFulfillmentService;
       result.isPrimary = this.isPrimary;
       result.legacyResourceId = this.legacyResourceId;
       result.localPickupSettingsV2 = this.localPickupSettingsV2;
@@ -660,6 +729,7 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
       result.privateMetafields = this.privateMetafields;
       result.shipsInventory = this.shipsInventory;
       result.suggestedAddresses = this.suggestedAddresses;
+      result.updatedAt = this.updatedAt;
       return result;
     }
 
@@ -686,6 +756,14 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
      */
     public Builder addressVerified(boolean addressVerified) {
       this.addressVerified = addressVerified;
+      return this;
+    }
+
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) that the location was added to a shop.
+     */
+    public Builder createdAt(OffsetDateTime createdAt) {
+      this.createdAt = createdAt;
       return this;
     }
 
@@ -787,6 +865,14 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
     }
 
     /**
+     * Whether this location is a fulfillment service.
+     */
+    public Builder isFulfillmentService(boolean isFulfillmentService) {
+      this.isFulfillmentService = isFulfillmentService;
+      return this;
+    }
+
+    /**
      * Whether the location is your primary location for shipping inventory.
      */
     public Builder isPrimary(boolean isPrimary) {
@@ -874,6 +960,14 @@ public class Location implements MetafieldReferencer, com.test.shopify.generated
      */
     public Builder suggestedAddresses(List<LocationSuggestedAddress> suggestedAddresses) {
       this.suggestedAddresses = suggestedAddresses;
+      return this;
+    }
+
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the location was last updated.
+     */
+    public Builder updatedAt(OffsetDateTime updatedAt) {
+      this.updatedAt = updatedAt;
       return this;
     }
   }

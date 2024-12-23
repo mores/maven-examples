@@ -76,24 +76,24 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
   private Integer position;
 
   /**
-   * A count of products associated to the selling plan group.
-   */
-  private int productCount;
-
-  /**
-   * A count of product variants associated to the selling plan group.
-   */
-  private int productVariantCount;
-
-  /**
    * Product variants associated to the selling plan group.
    */
   private ProductVariantConnection productVariants;
 
   /**
+   * A count of product variants associated to the selling plan group.
+   */
+  private Count productVariantsCount;
+
+  /**
    * Products associated to the selling plan group.
    */
   private ProductConnection products;
+
+  /**
+   * A count of products associated to the selling plan group.
+   */
+  private Count productsCount;
 
   /**
    * Selling plans associated to the selling plan group.
@@ -237,28 +237,6 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
   }
 
   /**
-   * A count of products associated to the selling plan group.
-   */
-  public int getProductCount() {
-    return productCount;
-  }
-
-  public void setProductCount(int productCount) {
-    this.productCount = productCount;
-  }
-
-  /**
-   * A count of product variants associated to the selling plan group.
-   */
-  public int getProductVariantCount() {
-    return productVariantCount;
-  }
-
-  public void setProductVariantCount(int productVariantCount) {
-    this.productVariantCount = productVariantCount;
-  }
-
-  /**
    * Product variants associated to the selling plan group.
    */
   public ProductVariantConnection getProductVariants() {
@@ -270,6 +248,17 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
   }
 
   /**
+   * A count of product variants associated to the selling plan group.
+   */
+  public Count getProductVariantsCount() {
+    return productVariantsCount;
+  }
+
+  public void setProductVariantsCount(Count productVariantsCount) {
+    this.productVariantsCount = productVariantsCount;
+  }
+
+  /**
    * Products associated to the selling plan group.
    */
   public ProductConnection getProducts() {
@@ -278,6 +267,17 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
 
   public void setProducts(ProductConnection products) {
     this.products = products;
+  }
+
+  /**
+   * A count of products associated to the selling plan group.
+   */
+  public Count getProductsCount() {
+    return productsCount;
+  }
+
+  public void setProductsCount(Count productsCount) {
+    this.productsCount = productsCount;
   }
 
   /**
@@ -315,7 +315,7 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
 
   @Override
   public String toString() {
-    return "SellingPlanGroup{appId='" + appId + "', appliesToProduct='" + appliesToProduct + "', appliesToProductVariant='" + appliesToProductVariant + "', appliesToProductVariants='" + appliesToProductVariants + "', createdAt='" + createdAt + "', description='" + description + "', id='" + id + "', merchantCode='" + merchantCode + "', name='" + name + "', options='" + options + "', position='" + position + "', productCount='" + productCount + "', productVariantCount='" + productVariantCount + "', productVariants='" + productVariants + "', products='" + products + "', sellingPlans='" + sellingPlans + "', summary='" + summary + "', translations='" + translations + "'}";
+    return "SellingPlanGroup{appId='" + appId + "', appliesToProduct='" + appliesToProduct + "', appliesToProductVariant='" + appliesToProductVariant + "', appliesToProductVariants='" + appliesToProductVariants + "', createdAt='" + createdAt + "', description='" + description + "', id='" + id + "', merchantCode='" + merchantCode + "', name='" + name + "', options='" + options + "', position='" + position + "', productVariants='" + productVariants + "', productVariantsCount='" + productVariantsCount + "', products='" + products + "', productsCount='" + productsCount + "', sellingPlans='" + sellingPlans + "', summary='" + summary + "', translations='" + translations + "'}";
   }
 
   @Override
@@ -334,10 +334,10 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
         Objects.equals(name, that.name) &&
         Objects.equals(options, that.options) &&
         Objects.equals(position, that.position) &&
-        productCount == that.productCount &&
-        productVariantCount == that.productVariantCount &&
         Objects.equals(productVariants, that.productVariants) &&
+        Objects.equals(productVariantsCount, that.productVariantsCount) &&
         Objects.equals(products, that.products) &&
+        Objects.equals(productsCount, that.productsCount) &&
         Objects.equals(sellingPlans, that.sellingPlans) &&
         Objects.equals(summary, that.summary) &&
         Objects.equals(translations, that.translations);
@@ -345,7 +345,7 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
 
   @Override
   public int hashCode() {
-    return Objects.hash(appId, appliesToProduct, appliesToProductVariant, appliesToProductVariants, createdAt, description, id, merchantCode, name, options, position, productCount, productVariantCount, productVariants, products, sellingPlans, summary, translations);
+    return Objects.hash(appId, appliesToProduct, appliesToProductVariant, appliesToProductVariants, createdAt, description, id, merchantCode, name, options, position, productVariants, productVariantsCount, products, productsCount, sellingPlans, summary, translations);
   }
 
   public static Builder newBuilder() {
@@ -411,24 +411,24 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
     private Integer position;
 
     /**
-     * A count of products associated to the selling plan group.
-     */
-    private int productCount;
-
-    /**
-     * A count of product variants associated to the selling plan group.
-     */
-    private int productVariantCount;
-
-    /**
      * Product variants associated to the selling plan group.
      */
     private ProductVariantConnection productVariants;
 
     /**
+     * A count of product variants associated to the selling plan group.
+     */
+    private Count productVariantsCount;
+
+    /**
      * Products associated to the selling plan group.
      */
     private ProductConnection products;
+
+    /**
+     * A count of products associated to the selling plan group.
+     */
+    private Count productsCount;
 
     /**
      * Selling plans associated to the selling plan group.
@@ -458,10 +458,10 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
       result.name = this.name;
       result.options = this.options;
       result.position = this.position;
-      result.productCount = this.productCount;
-      result.productVariantCount = this.productVariantCount;
       result.productVariants = this.productVariants;
+      result.productVariantsCount = this.productVariantsCount;
       result.products = this.products;
+      result.productsCount = this.productsCount;
       result.sellingPlans = this.sellingPlans;
       result.summary = this.summary;
       result.translations = this.translations;
@@ -559,22 +559,6 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
     }
 
     /**
-     * A count of products associated to the selling plan group.
-     */
-    public Builder productCount(int productCount) {
-      this.productCount = productCount;
-      return this;
-    }
-
-    /**
-     * A count of product variants associated to the selling plan group.
-     */
-    public Builder productVariantCount(int productVariantCount) {
-      this.productVariantCount = productVariantCount;
-      return this;
-    }
-
-    /**
      * Product variants associated to the selling plan group.
      */
     public Builder productVariants(ProductVariantConnection productVariants) {
@@ -583,10 +567,26 @@ public class SellingPlanGroup implements com.test.shopify.generated.types.HasPub
     }
 
     /**
+     * A count of product variants associated to the selling plan group.
+     */
+    public Builder productVariantsCount(Count productVariantsCount) {
+      this.productVariantsCount = productVariantsCount;
+      return this;
+    }
+
+    /**
      * Products associated to the selling plan group.
      */
     public Builder products(ProductConnection products) {
       this.products = products;
+      return this;
+    }
+
+    /**
+     * A count of products associated to the selling plan group.
+     */
+    public Builder productsCount(Count productsCount) {
+      this.productsCount = productsCount;
       return this;
     }
 

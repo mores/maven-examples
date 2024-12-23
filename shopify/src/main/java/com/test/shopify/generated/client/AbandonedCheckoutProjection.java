@@ -16,6 +16,25 @@ public class AbandonedCheckoutProjection<PARENT extends BaseSubProjectionNode<?,
     return this;
   }
 
+  public MailingAddressProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> billingAddress(
+      ) {
+     MailingAddressProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new MailingAddressProjection<>(this, getRoot());
+     getFields().put("billingAddress", projection);
+     return projection;
+  }
+
+  public AttributeProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> customAttributes() {
+     AttributeProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new AttributeProjection<>(this, getRoot());
+     getFields().put("customAttributes", projection);
+     return projection;
+  }
+
+  public CustomerProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> customer() {
+     CustomerProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new CustomerProjection<>(this, getRoot());
+     getFields().put("customer", projection);
+     return projection;
+  }
+
   public AbandonedCheckoutLineItemConnectionProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> lineItems(
       ) {
      AbandonedCheckoutLineItemConnectionProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new AbandonedCheckoutLineItemConnectionProjection<>(this, getRoot());
@@ -41,9 +60,53 @@ public class AbandonedCheckoutProjection<PARENT extends BaseSubProjectionNode<?,
     return projection;
   }
 
+  public MailingAddressProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> shippingAddress(
+      ) {
+     MailingAddressProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new MailingAddressProjection<>(this, getRoot());
+     getFields().put("shippingAddress", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> subtotalPriceSet() {
+     MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("subtotalPriceSet", projection);
+     return projection;
+  }
+
+  public TaxLineProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> taxLines() {
+     TaxLineProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new TaxLineProjection<>(this, getRoot());
+     getFields().put("taxLines", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> totalDiscountSet() {
+     MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("totalDiscountSet", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> totalDutiesSet() {
+     MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("totalDutiesSet", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> totalLineItemsPriceSet(
+      ) {
+     MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("totalLineItemsPriceSet", projection);
+     return projection;
+  }
+
   public MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> totalPriceSet() {
      MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
      getFields().put("totalPriceSet", projection);
+     return projection;
+  }
+
+  public MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> totalTaxSet() {
+     MoneyBagProjection<AbandonedCheckoutProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("totalTaxSet", projection);
      return projection;
   }
 
@@ -52,8 +115,23 @@ public class AbandonedCheckoutProjection<PARENT extends BaseSubProjectionNode<?,
     return this;
   }
 
+  public AbandonedCheckoutProjection<PARENT, ROOT> completedAt() {
+    getFields().put("completedAt", null);
+    return this;
+  }
+
+  public AbandonedCheckoutProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public AbandonedCheckoutProjection<PARENT, ROOT> defaultCursor() {
     getFields().put("defaultCursor", null);
+    return this;
+  }
+
+  public AbandonedCheckoutProjection<PARENT, ROOT> discountCodes() {
+    getFields().put("discountCodes", null);
     return this;
   }
 
@@ -64,6 +142,26 @@ public class AbandonedCheckoutProjection<PARENT extends BaseSubProjectionNode<?,
 
   public AbandonedCheckoutProjection<PARENT, ROOT> lineItemsQuantity() {
     getFields().put("lineItemsQuantity", null);
+    return this;
+  }
+
+  public AbandonedCheckoutProjection<PARENT, ROOT> name() {
+    getFields().put("name", null);
+    return this;
+  }
+
+  public AbandonedCheckoutProjection<PARENT, ROOT> note() {
+    getFields().put("note", null);
+    return this;
+  }
+
+  public AbandonedCheckoutProjection<PARENT, ROOT> taxesIncluded() {
+    getFields().put("taxesIncluded", null);
+    return this;
+  }
+
+  public AbandonedCheckoutProjection<PARENT, ROOT> updatedAt() {
+    getFields().put("updatedAt", null);
     return this;
   }
 }

@@ -16,5 +16,9 @@ public enum GiftCardErrorCode {
 
   MISSING_ARGUMENT,
 
-  GREATER_THAN
+  GREATER_THAN,
+
+  CUSTOMER_NOT_FOUND,
+
+  RECIPIENT_NOT_FOUND
 }

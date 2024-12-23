@@ -48,6 +48,23 @@ public class SellingPlanGroupFragmentProjection<PARENT extends BaseSubProjection
     return projection;
   }
 
+  public CountProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> productVariantsCount(
+      ) {
+     CountProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("productVariantsCount", projection);
+     return projection;
+  }
+
+  public CountProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> productVariantsCount(
+      String productId) {
+    CountProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());    
+    getFields().put("productVariantsCount", projection);
+    getInputArguments().computeIfAbsent("productVariantsCount", k -> new ArrayList<>());                      
+    InputArgument productIdArg = new InputArgument("productId", productId);
+    getInputArguments().get("productVariantsCount").add(productIdArg);
+    return projection;
+  }
+
   public ProductConnectionProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> products(
       ) {
      ProductConnectionProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> projection = new ProductConnectionProjection<>(this, getRoot());
@@ -71,6 +88,12 @@ public class SellingPlanGroupFragmentProjection<PARENT extends BaseSubProjection
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("products").add(reverseArg);
     return projection;
+  }
+
+  public CountProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> productsCount() {
+     CountProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("productsCount", projection);
+     return projection;
   }
 
   public SellingPlanConnectionProjection<SellingPlanGroupFragmentProjection<PARENT, ROOT>, ROOT> sellingPlans(
@@ -193,24 +216,6 @@ public class SellingPlanGroupFragmentProjection<PARENT extends BaseSubProjection
 
   public SellingPlanGroupFragmentProjection<PARENT, ROOT> position() {
     getFields().put("position", null);
-    return this;
-  }
-
-  public SellingPlanGroupFragmentProjection<PARENT, ROOT> productCount() {
-    getFields().put("productCount", null);
-    return this;
-  }
-
-  public SellingPlanGroupFragmentProjection<PARENT, ROOT> productVariantCount() {
-    getFields().put("productVariantCount", null);
-    return this;
-  }
-
-  public SellingPlanGroupFragmentProjection productVariantCount(String productId) {
-    getFields().put("productVariantCount", null);
-    getInputArguments().computeIfAbsent("productVariantCount", k -> new ArrayList<>());
-    InputArgument productIdArg = new InputArgument("productId", productId);
-    getInputArguments().get("productVariantCount").add(productIdArg);
     return this;
   }
 

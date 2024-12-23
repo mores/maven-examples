@@ -19,6 +19,13 @@ public class ShopifyPaymentsPayoutProjection<PARENT extends BaseSubProjectionNod
      return projection;
   }
 
+  public BusinessEntityProjection<ShopifyPaymentsPayoutProjection<PARENT, ROOT>, ROOT> businessEntity(
+      ) {
+     BusinessEntityProjection<ShopifyPaymentsPayoutProjection<PARENT, ROOT>, ROOT> projection = new BusinessEntityProjection<>(this, getRoot());
+     getFields().put("businessEntity", projection);
+     return projection;
+  }
+
   public MoneyV2Projection<ShopifyPaymentsPayoutProjection<PARENT, ROOT>, ROOT> gross() {
      MoneyV2Projection<ShopifyPaymentsPayoutProjection<PARENT, ROOT>, ROOT> projection = new MoneyV2Projection<>(this, getRoot());
      getFields().put("gross", projection);

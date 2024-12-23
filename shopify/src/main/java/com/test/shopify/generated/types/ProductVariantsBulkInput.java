@@ -59,6 +59,11 @@ public class ProductVariantsBulkInput {
   private List<MetafieldInput> metafields;
 
   /**
+   * The custom properties that a shop owner uses to define product variants.
+   */
+  private List<VariantOptionValueInput> optionValues;
+
+  /**
    * The price of the variant.
    */
   private String price;
@@ -72,6 +77,13 @@ public class ProductVariantsBulkInput {
    * The tax code associated with the variant.
    */
   private String taxCode;
+
+  /**
+   * Whether a product variant requires components. The default value is `false`.
+   * If `true`, then the product variant can only be purchased as a parent bundle with components and it will be
+   * omitted from channels that don't support bundles.
+   */
+  private Boolean requiresComponents;
 
   public ProductVariantsBulkInput() {
   }
@@ -178,6 +190,17 @@ public class ProductVariantsBulkInput {
   }
 
   /**
+   * The custom properties that a shop owner uses to define product variants.
+   */
+  public List<VariantOptionValueInput> getOptionValues() {
+    return optionValues;
+  }
+
+  public void setOptionValues(List<VariantOptionValueInput> optionValues) {
+    this.optionValues = optionValues;
+  }
+
+  /**
    * The price of the variant.
    */
   public String getPrice() {
@@ -210,9 +233,22 @@ public class ProductVariantsBulkInput {
     this.taxCode = taxCode;
   }
 
+  /**
+   * Whether a product variant requires components. The default value is `false`.
+   * If `true`, then the product variant can only be purchased as a parent bundle with components and it will be
+   * omitted from channels that don't support bundles.
+   */
+  public Boolean getRequiresComponents() {
+    return requiresComponents;
+  }
+
+  public void setRequiresComponents(Boolean requiresComponents) {
+    this.requiresComponents = requiresComponents;
+  }
+
   @Override
   public String toString() {
-    return "ProductVariantsBulkInput{barcode='" + barcode + "', compareAtPrice='" + compareAtPrice + "', id='" + id + "', mediaSrc='" + mediaSrc + "', inventoryPolicy='" + inventoryPolicy + "', inventoryQuantities='" + inventoryQuantities + "', inventoryItem='" + inventoryItem + "', mediaId='" + mediaId + "', metafields='" + metafields + "', price='" + price + "', taxable='" + taxable + "', taxCode='" + taxCode + "'}";
+    return "ProductVariantsBulkInput{barcode='" + barcode + "', compareAtPrice='" + compareAtPrice + "', id='" + id + "', mediaSrc='" + mediaSrc + "', inventoryPolicy='" + inventoryPolicy + "', inventoryQuantities='" + inventoryQuantities + "', inventoryItem='" + inventoryItem + "', mediaId='" + mediaId + "', metafields='" + metafields + "', optionValues='" + optionValues + "', price='" + price + "', taxable='" + taxable + "', taxCode='" + taxCode + "', requiresComponents='" + requiresComponents + "'}";
   }
 
   @Override
@@ -229,14 +265,16 @@ public class ProductVariantsBulkInput {
         Objects.equals(inventoryItem, that.inventoryItem) &&
         Objects.equals(mediaId, that.mediaId) &&
         Objects.equals(metafields, that.metafields) &&
+        Objects.equals(optionValues, that.optionValues) &&
         Objects.equals(price, that.price) &&
         Objects.equals(taxable, that.taxable) &&
-        Objects.equals(taxCode, that.taxCode);
+        Objects.equals(taxCode, that.taxCode) &&
+        Objects.equals(requiresComponents, that.requiresComponents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(barcode, compareAtPrice, id, mediaSrc, inventoryPolicy, inventoryQuantities, inventoryItem, mediaId, metafields, price, taxable, taxCode);
+    return Objects.hash(barcode, compareAtPrice, id, mediaSrc, inventoryPolicy, inventoryQuantities, inventoryItem, mediaId, metafields, optionValues, price, taxable, taxCode, requiresComponents);
   }
 
   public static Builder newBuilder() {
@@ -292,6 +330,11 @@ public class ProductVariantsBulkInput {
     private List<MetafieldInput> metafields;
 
     /**
+     * The custom properties that a shop owner uses to define product variants.
+     */
+    private List<VariantOptionValueInput> optionValues;
+
+    /**
      * The price of the variant.
      */
     private String price;
@@ -306,6 +349,13 @@ public class ProductVariantsBulkInput {
      */
     private String taxCode;
 
+    /**
+     * Whether a product variant requires components. The default value is `false`.
+     * If `true`, then the product variant can only be purchased as a parent bundle with components and it will be
+     * omitted from channels that don't support bundles.
+     */
+    private Boolean requiresComponents;
+
     public ProductVariantsBulkInput build() {
       ProductVariantsBulkInput result = new ProductVariantsBulkInput();
       result.barcode = this.barcode;
@@ -317,9 +367,11 @@ public class ProductVariantsBulkInput {
       result.inventoryItem = this.inventoryItem;
       result.mediaId = this.mediaId;
       result.metafields = this.metafields;
+      result.optionValues = this.optionValues;
       result.price = this.price;
       result.taxable = this.taxable;
       result.taxCode = this.taxCode;
+      result.requiresComponents = this.requiresComponents;
       return result;
     }
 
@@ -398,6 +450,14 @@ public class ProductVariantsBulkInput {
     }
 
     /**
+     * The custom properties that a shop owner uses to define product variants.
+     */
+    public Builder optionValues(List<VariantOptionValueInput> optionValues) {
+      this.optionValues = optionValues;
+      return this;
+    }
+
+    /**
      * The price of the variant.
      */
     public Builder price(String price) {
@@ -418,6 +478,16 @@ public class ProductVariantsBulkInput {
      */
     public Builder taxCode(String taxCode) {
       this.taxCode = taxCode;
+      return this;
+    }
+
+    /**
+     * Whether a product variant requires components. The default value is `false`.
+     * If `true`, then the product variant can only be purchased as a parent bundle with components and it will be
+     * omitted from channels that don't support bundles.
+     */
+    public Builder requiresComponents(Boolean requiresComponents) {
+      this.requiresComponents = requiresComponents;
       return this;
     }
   }

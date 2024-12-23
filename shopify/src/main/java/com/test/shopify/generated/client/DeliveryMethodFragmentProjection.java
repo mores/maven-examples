@@ -18,6 +18,13 @@ public class DeliveryMethodFragmentProjection<PARENT extends BaseSubProjectionNo
     return this;
   }
 
+  public DeliveryMethodAdditionalInformationProjection<DeliveryMethodFragmentProjection<PARENT, ROOT>, ROOT> additionalInformation(
+      ) {
+     DeliveryMethodAdditionalInformationProjection<DeliveryMethodFragmentProjection<PARENT, ROOT>, ROOT> projection = new DeliveryMethodAdditionalInformationProjection<>(this, getRoot());
+     getFields().put("additionalInformation", projection);
+     return projection;
+  }
+
   public DeliveryBrandedPromiseProjection<DeliveryMethodFragmentProjection<PARENT, ROOT>, ROOT> brandedPromise(
       ) {
      DeliveryBrandedPromiseProjection<DeliveryMethodFragmentProjection<PARENT, ROOT>, ROOT> projection = new DeliveryBrandedPromiseProjection<>(this, getRoot());
@@ -47,8 +54,18 @@ public class DeliveryMethodFragmentProjection<PARENT extends BaseSubProjectionNo
     return this;
   }
 
+  public DeliveryMethodFragmentProjection<PARENT, ROOT> presentedName() {
+    getFields().put("presentedName", null);
+    return this;
+  }
+
   public DeliveryMethodFragmentProjection<PARENT, ROOT> serviceCode() {
     getFields().put("serviceCode", null);
+    return this;
+  }
+
+  public DeliveryMethodFragmentProjection<PARENT, ROOT> sourceReference() {
+    getFields().put("sourceReference", null);
     return this;
   }
 

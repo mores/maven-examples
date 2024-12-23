@@ -10,6 +10,11 @@ import java.util.Objects;
  */
 public class RefundLineItem {
   /**
+   * A globally-unique ID.
+   */
+  private String id;
+
+  /**
    * The `LineItem` resource associated to the refunded line item.
    */
   private LineItem lineItem;
@@ -65,6 +70,17 @@ public class RefundLineItem {
   private MoneyBag totalTaxSet;
 
   public RefundLineItem() {
+  }
+
+  /**
+   * A globally-unique ID.
+   */
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   /**
@@ -190,7 +206,7 @@ public class RefundLineItem {
 
   @Override
   public String toString() {
-    return "RefundLineItem{lineItem='" + lineItem + "', location='" + location + "', price='" + price + "', priceSet='" + priceSet + "', quantity='" + quantity + "', restockType='" + restockType + "', restocked='" + restocked + "', subtotal='" + subtotal + "', subtotalSet='" + subtotalSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "'}";
+    return "RefundLineItem{id='" + id + "', lineItem='" + lineItem + "', location='" + location + "', price='" + price + "', priceSet='" + priceSet + "', quantity='" + quantity + "', restockType='" + restockType + "', restocked='" + restocked + "', subtotal='" + subtotal + "', subtotalSet='" + subtotalSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "'}";
   }
 
   @Override
@@ -198,7 +214,8 @@ public class RefundLineItem {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     RefundLineItem that = (RefundLineItem) o;
-    return Objects.equals(lineItem, that.lineItem) &&
+    return Objects.equals(id, that.id) &&
+        Objects.equals(lineItem, that.lineItem) &&
         Objects.equals(location, that.location) &&
         Objects.equals(price, that.price) &&
         Objects.equals(priceSet, that.priceSet) &&
@@ -213,7 +230,7 @@ public class RefundLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lineItem, location, price, priceSet, quantity, restockType, restocked, subtotal, subtotalSet, totalTax, totalTaxSet);
+    return Objects.hash(id, lineItem, location, price, priceSet, quantity, restockType, restocked, subtotal, subtotalSet, totalTax, totalTaxSet);
   }
 
   public static Builder newBuilder() {
@@ -221,6 +238,11 @@ public class RefundLineItem {
   }
 
   public static class Builder {
+    /**
+     * A globally-unique ID.
+     */
+    private String id;
+
     /**
      * The `LineItem` resource associated to the refunded line item.
      */
@@ -278,6 +300,7 @@ public class RefundLineItem {
 
     public RefundLineItem build() {
       RefundLineItem result = new RefundLineItem();
+      result.id = this.id;
       result.lineItem = this.lineItem;
       result.location = this.location;
       result.price = this.price;
@@ -290,6 +313,14 @@ public class RefundLineItem {
       result.totalTax = this.totalTax;
       result.totalTaxSet = this.totalTaxSet;
       return result;
+    }
+
+    /**
+     * A globally-unique ID.
+     */
+    public Builder id(String id) {
+      this.id = id;
+      return this;
     }
 
     /**

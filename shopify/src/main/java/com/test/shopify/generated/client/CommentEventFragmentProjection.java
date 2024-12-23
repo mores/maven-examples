@@ -44,6 +44,11 @@ public class CommentEventFragmentProjection<PARENT extends BaseSubProjectionNode
      return projection;
   }
 
+  public CommentEventFragmentProjection<PARENT, ROOT> action() {
+    getFields().put("action", null);
+    return this;
+  }
+
   public CommentEventFragmentProjection<PARENT, ROOT> appTitle() {
     getFields().put("appTitle", null);
     return this;

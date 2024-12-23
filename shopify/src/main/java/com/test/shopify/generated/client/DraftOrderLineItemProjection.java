@@ -19,6 +19,20 @@ public class DraftOrderLineItemProjection<PARENT extends BaseSubProjectionNode<?
      return projection;
   }
 
+  public MoneyBagProjection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> approximateDiscountedUnitPriceSet(
+      ) {
+     MoneyBagProjection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("approximateDiscountedUnitPriceSet", projection);
+     return projection;
+  }
+
+  public DraftOrderLineItemProjection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> bundleComponents(
+      ) {
+     DraftOrderLineItemProjection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new DraftOrderLineItemProjection<>(this, getRoot());
+     getFields().put("bundleComponents", projection);
+     return projection;
+  }
+
   public AttributeProjection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> customAttributes() {
      AttributeProjection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new AttributeProjection<>(this, getRoot());
      getFields().put("customAttributes", projection);
@@ -68,6 +82,13 @@ public class DraftOrderLineItemProjection<PARENT extends BaseSubProjectionNode<?
       ) {
      MoneyBagProjection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
      getFields().put("originalUnitPriceSet", projection);
+     return projection;
+  }
+
+  public MoneyV2Projection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> originalUnitPriceWithCurrency(
+      ) {
+     MoneyV2Projection<DraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new MoneyV2Projection<>(this, getRoot());
+     getFields().put("originalUnitPriceWithCurrency", projection);
      return projection;
   }
 
@@ -173,6 +194,11 @@ public class DraftOrderLineItemProjection<PARENT extends BaseSubProjectionNode<?
 
   public DraftOrderLineItemProjection<PARENT, ROOT> totalDiscount() {
     getFields().put("totalDiscount", null);
+    return this;
+  }
+
+  public DraftOrderLineItemProjection<PARENT, ROOT> uuid() {
+    getFields().put("uuid", null);
     return this;
   }
 

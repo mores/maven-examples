@@ -56,13 +56,15 @@ public class DeliveryLocationGroupFragmentProjection<PARENT extends BaseSubProje
     return projection;
   }
 
-  public DeliveryLocationGroupFragmentProjection<PARENT, ROOT> id() {
-    getFields().put("id", null);
-    return this;
+  public CountProjection<DeliveryLocationGroupFragmentProjection<PARENT, ROOT>, ROOT> locationsCount(
+      ) {
+     CountProjection<DeliveryLocationGroupFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("locationsCount", projection);
+     return projection;
   }
 
-  public DeliveryLocationGroupFragmentProjection<PARENT, ROOT> locationsCount() {
-    getFields().put("locationsCount", null);
+  public DeliveryLocationGroupFragmentProjection<PARENT, ROOT> id() {
+    getFields().put("id", null);
     return this;
   }
 

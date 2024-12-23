@@ -1,6 +1,7 @@
 package com.test.shopify.generated.types;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -34,6 +35,18 @@ import java.util.Objects;
     use = JsonTypeInfo.Id.NONE
 )
 public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.test.shopify.generated.types.CommentEventSubject, com.test.shopify.generated.types.HasEvents, com.test.shopify.generated.types.HasLocalizationExtensions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Navigable, com.test.shopify.generated.types.Node {
+  /**
+   * Whether or not to accept automatic discounts on the draft order during calculation.
+   * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+   * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+   */
+  private Boolean acceptAutomaticDiscounts;
+
+  /**
+   * Whether discount codes are allowed during checkout of this draft order.
+   */
+  private boolean allowDiscountCodesInCheckout;
+
   /**
    * The custom order-level discount applied.
    */
@@ -80,6 +93,11 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
    * returns the single next record, sorted ascending by ID.
    */
   private String defaultCursor;
+
+  /**
+   * All discount codes applied.
+   */
+  private List<String> discountCodes;
 
   /**
    * The email address of the customer, which is used to send notifications.
@@ -184,6 +202,11 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
    * The assigned phone number.
    */
   private String phone;
+
+  /**
+   * The list of platform discounts applied.
+   */
+  private List<DraftOrderPlatformDiscount> platformDiscounts;
 
   /**
    * The purchase order number.
@@ -291,6 +314,12 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
   private MoneyBag totalPriceSet;
 
   /**
+   * The sum of individual line item quantities.
+   * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+   */
+  private int totalQuantityOfLineItems;
+
+  /**
    * The total shipping price in shop currency.
    */
   private String totalShippingPrice;
@@ -316,6 +345,13 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
   private String totalWeight;
 
   /**
+   * Fingerprint of the current cart.
+   * In order to have bundles work, the fingerprint must be passed to
+   * each request as it was previously returned, unmodified.
+   */
+  private String transformerFingerprint;
+
+  /**
    * The date and time when the draft order was last changed.
    * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
    */
@@ -326,7 +362,36 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
    */
   private boolean visibleToCustomer;
 
+  /**
+   * The list of warnings raised while calculating.
+   */
+  private List<DraftOrderWarning> warnings;
+
   public DraftOrder() {
+  }
+
+  /**
+   * Whether or not to accept automatic discounts on the draft order during calculation.
+   * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+   * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+   */
+  public Boolean getAcceptAutomaticDiscounts() {
+    return acceptAutomaticDiscounts;
+  }
+
+  public void setAcceptAutomaticDiscounts(Boolean acceptAutomaticDiscounts) {
+    this.acceptAutomaticDiscounts = acceptAutomaticDiscounts;
+  }
+
+  /**
+   * Whether discount codes are allowed during checkout of this draft order.
+   */
+  public boolean getAllowDiscountCodesInCheckout() {
+    return allowDiscountCodesInCheckout;
+  }
+
+  public void setAllowDiscountCodesInCheckout(boolean allowDiscountCodesInCheckout) {
+    this.allowDiscountCodesInCheckout = allowDiscountCodesInCheckout;
   }
 
   /**
@@ -429,6 +494,17 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
 
   public void setDefaultCursor(String defaultCursor) {
     this.defaultCursor = defaultCursor;
+  }
+
+  /**
+   * All discount codes applied.
+   */
+  public List<String> getDiscountCodes() {
+    return discountCodes;
+  }
+
+  public void setDiscountCodes(List<String> discountCodes) {
+    this.discountCodes = discountCodes;
   }
 
   /**
@@ -653,6 +729,17 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
 
   public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+  /**
+   * The list of platform discounts applied.
+   */
+  public List<DraftOrderPlatformDiscount> getPlatformDiscounts() {
+    return platformDiscounts;
+  }
+
+  public void setPlatformDiscounts(List<DraftOrderPlatformDiscount> platformDiscounts) {
+    this.platformDiscounts = platformDiscounts;
   }
 
   /**
@@ -881,6 +968,18 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
   }
 
   /**
+   * The sum of individual line item quantities.
+   * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+   */
+  public int getTotalQuantityOfLineItems() {
+    return totalQuantityOfLineItems;
+  }
+
+  public void setTotalQuantityOfLineItems(int totalQuantityOfLineItems) {
+    this.totalQuantityOfLineItems = totalQuantityOfLineItems;
+  }
+
+  /**
    * The total shipping price in shop currency.
    */
   public String getTotalShippingPrice() {
@@ -936,6 +1035,19 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
   }
 
   /**
+   * Fingerprint of the current cart.
+   * In order to have bundles work, the fingerprint must be passed to
+   * each request as it was previously returned, unmodified.
+   */
+  public String getTransformerFingerprint() {
+    return transformerFingerprint;
+  }
+
+  public void setTransformerFingerprint(String transformerFingerprint) {
+    this.transformerFingerprint = transformerFingerprint;
+  }
+
+  /**
    * The date and time when the draft order was last changed.
    * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
    */
@@ -958,9 +1070,20 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
     this.visibleToCustomer = visibleToCustomer;
   }
 
+  /**
+   * The list of warnings raised while calculating.
+   */
+  public List<DraftOrderWarning> getWarnings() {
+    return warnings;
+  }
+
+  public void setWarnings(List<DraftOrderWarning> warnings) {
+    this.warnings = warnings;
+  }
+
   @Override
   public String toString() {
-    return "DraftOrder{appliedDiscount='" + appliedDiscount + "', billingAddress='" + billingAddress + "', billingAddressMatchesShippingAddress='" + billingAddressMatchesShippingAddress + "', completedAt='" + completedAt + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', customAttributes='" + customAttributes + "', customer='" + customer + "', defaultCursor='" + defaultCursor + "', email='" + email + "', events='" + events + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', invoiceEmailTemplateSubject='" + invoiceEmailTemplateSubject + "', invoiceSentAt='" + invoiceSentAt + "', invoiceUrl='" + invoiceUrl + "', legacyResourceId='" + legacyResourceId + "', lineItems='" + lineItems + "', lineItemsSubtotalPrice='" + lineItemsSubtotalPrice + "', localizationExtensions='" + localizationExtensions + "', marketName='" + marketName + "', marketRegionCountryCode='" + marketRegionCountryCode + "', metafield='" + metafield + "', metafields='" + metafields + "', name='" + name + "', note2='" + note2 + "', order='" + order + "', paymentTerms='" + paymentTerms + "', phone='" + phone + "', poNumber='" + poNumber + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', purchasingEntity='" + purchasingEntity + "', ready='" + ready + "', reserveInventoryUntil='" + reserveInventoryUntil + "', shippingAddress='" + shippingAddress + "', shippingLine='" + shippingLine + "', status='" + status + "', subtotalPrice='" + subtotalPrice + "', subtotalPriceSet='" + subtotalPriceSet + "', tags='" + tags + "', taxExempt='" + taxExempt + "', taxLines='" + taxLines + "', taxesIncluded='" + taxesIncluded + "', totalDiscountsSet='" + totalDiscountsSet + "', totalLineItemsPriceSet='" + totalLineItemsPriceSet + "', totalPrice='" + totalPrice + "', totalPriceSet='" + totalPriceSet + "', totalShippingPrice='" + totalShippingPrice + "', totalShippingPriceSet='" + totalShippingPriceSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "', totalWeight='" + totalWeight + "', updatedAt='" + updatedAt + "', visibleToCustomer='" + visibleToCustomer + "'}";
+    return "DraftOrder{acceptAutomaticDiscounts='" + acceptAutomaticDiscounts + "', allowDiscountCodesInCheckout='" + allowDiscountCodesInCheckout + "', appliedDiscount='" + appliedDiscount + "', billingAddress='" + billingAddress + "', billingAddressMatchesShippingAddress='" + billingAddressMatchesShippingAddress + "', completedAt='" + completedAt + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', customAttributes='" + customAttributes + "', customer='" + customer + "', defaultCursor='" + defaultCursor + "', discountCodes='" + discountCodes + "', email='" + email + "', events='" + events + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', invoiceEmailTemplateSubject='" + invoiceEmailTemplateSubject + "', invoiceSentAt='" + invoiceSentAt + "', invoiceUrl='" + invoiceUrl + "', legacyResourceId='" + legacyResourceId + "', lineItems='" + lineItems + "', lineItemsSubtotalPrice='" + lineItemsSubtotalPrice + "', localizationExtensions='" + localizationExtensions + "', marketName='" + marketName + "', marketRegionCountryCode='" + marketRegionCountryCode + "', metafield='" + metafield + "', metafields='" + metafields + "', name='" + name + "', note2='" + note2 + "', order='" + order + "', paymentTerms='" + paymentTerms + "', phone='" + phone + "', platformDiscounts='" + platformDiscounts + "', poNumber='" + poNumber + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', purchasingEntity='" + purchasingEntity + "', ready='" + ready + "', reserveInventoryUntil='" + reserveInventoryUntil + "', shippingAddress='" + shippingAddress + "', shippingLine='" + shippingLine + "', status='" + status + "', subtotalPrice='" + subtotalPrice + "', subtotalPriceSet='" + subtotalPriceSet + "', tags='" + tags + "', taxExempt='" + taxExempt + "', taxLines='" + taxLines + "', taxesIncluded='" + taxesIncluded + "', totalDiscountsSet='" + totalDiscountsSet + "', totalLineItemsPriceSet='" + totalLineItemsPriceSet + "', totalPrice='" + totalPrice + "', totalPriceSet='" + totalPriceSet + "', totalQuantityOfLineItems='" + totalQuantityOfLineItems + "', totalShippingPrice='" + totalShippingPrice + "', totalShippingPriceSet='" + totalShippingPriceSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "', totalWeight='" + totalWeight + "', transformerFingerprint='" + transformerFingerprint + "', updatedAt='" + updatedAt + "', visibleToCustomer='" + visibleToCustomer + "', warnings='" + warnings + "'}";
   }
 
   @Override
@@ -968,7 +1091,9 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     DraftOrder that = (DraftOrder) o;
-    return Objects.equals(appliedDiscount, that.appliedDiscount) &&
+    return Objects.equals(acceptAutomaticDiscounts, that.acceptAutomaticDiscounts) &&
+        allowDiscountCodesInCheckout == that.allowDiscountCodesInCheckout &&
+        Objects.equals(appliedDiscount, that.appliedDiscount) &&
         Objects.equals(billingAddress, that.billingAddress) &&
         billingAddressMatchesShippingAddress == that.billingAddressMatchesShippingAddress &&
         Objects.equals(completedAt, that.completedAt) &&
@@ -977,6 +1102,7 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
         Objects.equals(customAttributes, that.customAttributes) &&
         Objects.equals(customer, that.customer) &&
         Objects.equals(defaultCursor, that.defaultCursor) &&
+        Objects.equals(discountCodes, that.discountCodes) &&
         Objects.equals(email, that.email) &&
         Objects.equals(events, that.events) &&
         hasTimelineComment == that.hasTimelineComment &&
@@ -997,6 +1123,7 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
         Objects.equals(order, that.order) &&
         Objects.equals(paymentTerms, that.paymentTerms) &&
         Objects.equals(phone, that.phone) &&
+        Objects.equals(platformDiscounts, that.platformDiscounts) &&
         Objects.equals(poNumber, that.poNumber) &&
         Objects.equals(presentmentCurrencyCode, that.presentmentCurrencyCode) &&
         Objects.equals(privateMetafield, that.privateMetafield) &&
@@ -1017,18 +1144,21 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
         Objects.equals(totalLineItemsPriceSet, that.totalLineItemsPriceSet) &&
         Objects.equals(totalPrice, that.totalPrice) &&
         Objects.equals(totalPriceSet, that.totalPriceSet) &&
+        totalQuantityOfLineItems == that.totalQuantityOfLineItems &&
         Objects.equals(totalShippingPrice, that.totalShippingPrice) &&
         Objects.equals(totalShippingPriceSet, that.totalShippingPriceSet) &&
         Objects.equals(totalTax, that.totalTax) &&
         Objects.equals(totalTaxSet, that.totalTaxSet) &&
         Objects.equals(totalWeight, that.totalWeight) &&
+        Objects.equals(transformerFingerprint, that.transformerFingerprint) &&
         Objects.equals(updatedAt, that.updatedAt) &&
-        visibleToCustomer == that.visibleToCustomer;
+        visibleToCustomer == that.visibleToCustomer &&
+        Objects.equals(warnings, that.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appliedDiscount, billingAddress, billingAddressMatchesShippingAddress, completedAt, createdAt, currencyCode, customAttributes, customer, defaultCursor, email, events, hasTimelineComment, id, invoiceEmailTemplateSubject, invoiceSentAt, invoiceUrl, legacyResourceId, lineItems, lineItemsSubtotalPrice, localizationExtensions, marketName, marketRegionCountryCode, metafield, metafields, name, note2, order, paymentTerms, phone, poNumber, presentmentCurrencyCode, privateMetafield, privateMetafields, purchasingEntity, ready, reserveInventoryUntil, shippingAddress, shippingLine, status, subtotalPrice, subtotalPriceSet, tags, taxExempt, taxLines, taxesIncluded, totalDiscountsSet, totalLineItemsPriceSet, totalPrice, totalPriceSet, totalShippingPrice, totalShippingPriceSet, totalTax, totalTaxSet, totalWeight, updatedAt, visibleToCustomer);
+    return Objects.hash(acceptAutomaticDiscounts, allowDiscountCodesInCheckout, appliedDiscount, billingAddress, billingAddressMatchesShippingAddress, completedAt, createdAt, currencyCode, customAttributes, customer, defaultCursor, discountCodes, email, events, hasTimelineComment, id, invoiceEmailTemplateSubject, invoiceSentAt, invoiceUrl, legacyResourceId, lineItems, lineItemsSubtotalPrice, localizationExtensions, marketName, marketRegionCountryCode, metafield, metafields, name, note2, order, paymentTerms, phone, platformDiscounts, poNumber, presentmentCurrencyCode, privateMetafield, privateMetafields, purchasingEntity, ready, reserveInventoryUntil, shippingAddress, shippingLine, status, subtotalPrice, subtotalPriceSet, tags, taxExempt, taxLines, taxesIncluded, totalDiscountsSet, totalLineItemsPriceSet, totalPrice, totalPriceSet, totalQuantityOfLineItems, totalShippingPrice, totalShippingPriceSet, totalTax, totalTaxSet, totalWeight, transformerFingerprint, updatedAt, visibleToCustomer, warnings);
   }
 
   public static Builder newBuilder() {
@@ -1036,6 +1166,18 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
   }
 
   public static class Builder {
+    /**
+     * Whether or not to accept automatic discounts on the draft order during calculation.
+     * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+     * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+     */
+    private Boolean acceptAutomaticDiscounts;
+
+    /**
+     * Whether discount codes are allowed during checkout of this draft order.
+     */
+    private boolean allowDiscountCodesInCheckout;
+
     /**
      * The custom order-level discount applied.
      */
@@ -1082,6 +1224,11 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
      * returns the single next record, sorted ascending by ID.
      */
     private String defaultCursor;
+
+    /**
+     * All discount codes applied.
+     */
+    private List<String> discountCodes;
 
     /**
      * The email address of the customer, which is used to send notifications.
@@ -1186,6 +1333,11 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
      * The assigned phone number.
      */
     private String phone;
+
+    /**
+     * The list of platform discounts applied.
+     */
+    private List<DraftOrderPlatformDiscount> platformDiscounts;
 
     /**
      * The purchase order number.
@@ -1293,6 +1445,12 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
     private MoneyBag totalPriceSet;
 
     /**
+     * The sum of individual line item quantities.
+     * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+     */
+    private int totalQuantityOfLineItems;
+
+    /**
      * The total shipping price in shop currency.
      */
     private String totalShippingPrice;
@@ -1318,6 +1476,13 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
     private String totalWeight;
 
     /**
+     * Fingerprint of the current cart.
+     * In order to have bundles work, the fingerprint must be passed to
+     * each request as it was previously returned, unmodified.
+     */
+    private String transformerFingerprint;
+
+    /**
      * The date and time when the draft order was last changed.
      * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
      */
@@ -1328,8 +1493,15 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
      */
     private boolean visibleToCustomer;
 
+    /**
+     * The list of warnings raised while calculating.
+     */
+    private List<DraftOrderWarning> warnings;
+
     public DraftOrder build() {
       DraftOrder result = new DraftOrder();
+      result.acceptAutomaticDiscounts = this.acceptAutomaticDiscounts;
+      result.allowDiscountCodesInCheckout = this.allowDiscountCodesInCheckout;
       result.appliedDiscount = this.appliedDiscount;
       result.billingAddress = this.billingAddress;
       result.billingAddressMatchesShippingAddress = this.billingAddressMatchesShippingAddress;
@@ -1339,6 +1511,7 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
       result.customAttributes = this.customAttributes;
       result.customer = this.customer;
       result.defaultCursor = this.defaultCursor;
+      result.discountCodes = this.discountCodes;
       result.email = this.email;
       result.events = this.events;
       result.hasTimelineComment = this.hasTimelineComment;
@@ -1359,6 +1532,7 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
       result.order = this.order;
       result.paymentTerms = this.paymentTerms;
       result.phone = this.phone;
+      result.platformDiscounts = this.platformDiscounts;
       result.poNumber = this.poNumber;
       result.presentmentCurrencyCode = this.presentmentCurrencyCode;
       result.privateMetafield = this.privateMetafield;
@@ -1379,14 +1553,35 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
       result.totalLineItemsPriceSet = this.totalLineItemsPriceSet;
       result.totalPrice = this.totalPrice;
       result.totalPriceSet = this.totalPriceSet;
+      result.totalQuantityOfLineItems = this.totalQuantityOfLineItems;
       result.totalShippingPrice = this.totalShippingPrice;
       result.totalShippingPriceSet = this.totalShippingPriceSet;
       result.totalTax = this.totalTax;
       result.totalTaxSet = this.totalTaxSet;
       result.totalWeight = this.totalWeight;
+      result.transformerFingerprint = this.transformerFingerprint;
       result.updatedAt = this.updatedAt;
       result.visibleToCustomer = this.visibleToCustomer;
+      result.warnings = this.warnings;
       return result;
+    }
+
+    /**
+     * Whether or not to accept automatic discounts on the draft order during calculation.
+     * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+     * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+     */
+    public Builder acceptAutomaticDiscounts(Boolean acceptAutomaticDiscounts) {
+      this.acceptAutomaticDiscounts = acceptAutomaticDiscounts;
+      return this;
+    }
+
+    /**
+     * Whether discount codes are allowed during checkout of this draft order.
+     */
+    public Builder allowDiscountCodesInCheckout(boolean allowDiscountCodesInCheckout) {
+      this.allowDiscountCodesInCheckout = allowDiscountCodesInCheckout;
+      return this;
     }
 
     /**
@@ -1461,6 +1656,14 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
      */
     public Builder defaultCursor(String defaultCursor) {
       this.defaultCursor = defaultCursor;
+      return this;
+    }
+
+    /**
+     * All discount codes applied.
+     */
+    public Builder discountCodes(List<String> discountCodes) {
+      this.discountCodes = discountCodes;
       return this;
     }
 
@@ -1625,6 +1828,14 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
      */
     public Builder phone(String phone) {
       this.phone = phone;
+      return this;
+    }
+
+    /**
+     * The list of platform discounts applied.
+     */
+    public Builder platformDiscounts(List<DraftOrderPlatformDiscount> platformDiscounts) {
+      this.platformDiscounts = platformDiscounts;
       return this;
     }
 
@@ -1794,6 +2005,15 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
     }
 
     /**
+     * The sum of individual line item quantities.
+     * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+     */
+    public Builder totalQuantityOfLineItems(int totalQuantityOfLineItems) {
+      this.totalQuantityOfLineItems = totalQuantityOfLineItems;
+      return this;
+    }
+
+    /**
      * The total shipping price in shop currency.
      */
     public Builder totalShippingPrice(String totalShippingPrice) {
@@ -1834,6 +2054,16 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
     }
 
     /**
+     * Fingerprint of the current cart.
+     * In order to have bundles work, the fingerprint must be passed to
+     * each request as it was previously returned, unmodified.
+     */
+    public Builder transformerFingerprint(String transformerFingerprint) {
+      this.transformerFingerprint = transformerFingerprint;
+      return this;
+    }
+
+    /**
      * The date and time when the draft order was last changed.
      * The format is YYYY-MM-DD HH:mm:ss. For example, 2016-02-05 17:04:01.
      */
@@ -1847,6 +2077,14 @@ public class DraftOrder implements CommentEventEmbed, MetafieldReferencer, com.t
      */
     public Builder visibleToCustomer(boolean visibleToCustomer) {
       this.visibleToCustomer = visibleToCustomer;
+      return this;
+    }
+
+    /**
+     * The list of warnings raised while calculating.
+     */
+    public Builder warnings(List<DraftOrderWarning> warnings) {
+      this.warnings = warnings;
       return this;
     }
   }

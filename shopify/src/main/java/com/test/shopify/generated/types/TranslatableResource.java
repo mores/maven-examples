@@ -11,6 +11,11 @@ import java.util.Objects;
  */
 public class TranslatableResource {
   /**
+   * Nested translatable resources under the current resource.
+   */
+  private TranslatableResourceConnection nestedTranslatableResources;
+
+  /**
    * GID of the resource.
    */
   private String resourceId;
@@ -26,6 +31,18 @@ public class TranslatableResource {
   private List<Translation> translations;
 
   public TranslatableResource() {
+  }
+
+  /**
+   * Nested translatable resources under the current resource.
+   */
+  public TranslatableResourceConnection getNestedTranslatableResources() {
+    return nestedTranslatableResources;
+  }
+
+  public void setNestedTranslatableResources(
+      TranslatableResourceConnection nestedTranslatableResources) {
+    this.nestedTranslatableResources = nestedTranslatableResources;
   }
 
   /**
@@ -63,7 +80,7 @@ public class TranslatableResource {
 
   @Override
   public String toString() {
-    return "TranslatableResource{resourceId='" + resourceId + "', translatableContent='" + translatableContent + "', translations='" + translations + "'}";
+    return "TranslatableResource{nestedTranslatableResources='" + nestedTranslatableResources + "', resourceId='" + resourceId + "', translatableContent='" + translatableContent + "', translations='" + translations + "'}";
   }
 
   @Override
@@ -71,14 +88,15 @@ public class TranslatableResource {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     TranslatableResource that = (TranslatableResource) o;
-    return Objects.equals(resourceId, that.resourceId) &&
+    return Objects.equals(nestedTranslatableResources, that.nestedTranslatableResources) &&
+        Objects.equals(resourceId, that.resourceId) &&
         Objects.equals(translatableContent, that.translatableContent) &&
         Objects.equals(translations, that.translations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourceId, translatableContent, translations);
+    return Objects.hash(nestedTranslatableResources, resourceId, translatableContent, translations);
   }
 
   public static Builder newBuilder() {
@@ -86,6 +104,11 @@ public class TranslatableResource {
   }
 
   public static class Builder {
+    /**
+     * Nested translatable resources under the current resource.
+     */
+    private TranslatableResourceConnection nestedTranslatableResources;
+
     /**
      * GID of the resource.
      */
@@ -103,10 +126,20 @@ public class TranslatableResource {
 
     public TranslatableResource build() {
       TranslatableResource result = new TranslatableResource();
+      result.nestedTranslatableResources = this.nestedTranslatableResources;
       result.resourceId = this.resourceId;
       result.translatableContent = this.translatableContent;
       result.translations = this.translations;
       return result;
+    }
+
+    /**
+     * Nested translatable resources under the current resource.
+     */
+    public Builder nestedTranslatableResources(
+        TranslatableResourceConnection nestedTranslatableResources) {
+      this.nestedTranslatableResources = nestedTranslatableResources;
+      return this;
     }
 
     /**

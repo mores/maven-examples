@@ -19,6 +19,11 @@ public class MetafieldDefinitionCreateUserErrorProjection<PARENT extends BaseSub
      return projection;
   }
 
+  public MetafieldDefinitionCreateUserErrorProjection<PARENT, ROOT> elementIndex() {
+    getFields().put("elementIndex", null);
+    return this;
+  }
+
   public MetafieldDefinitionCreateUserErrorProjection<PARENT, ROOT> field() {
     getFields().put("field", null);
     return this;

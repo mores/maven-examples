@@ -7,26 +7,32 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
- * The input fields to create or update an automatic Buy X, Get Y (BXGY) discount.
+ * The input fields for creating or updating a
+ * [buy X get Y discount (BXGY)](https://help.shopify.com/manual/discounts/discount-types/buy-x-get-y)
+ * that's automatically applied on a cart and at checkout.
  */
 public class DiscountAutomaticBxgyInput {
   /**
-   * Determines which discount classes the discount can combine with.
+   * The
+   * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that you can use in combination with
+   * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
    */
   private DiscountCombinesWithInput combinesWith;
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   private OffsetDateTime startsAt;
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   private OffsetDateTime endsAt;
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   private String title;
 
@@ -36,12 +42,12 @@ public class DiscountAutomaticBxgyInput {
   private String usesPerOrderLimit;
 
   /**
-   * The qualifying items and the quantity of each one that the customer has to buy to be eligible for the discount.
+   * The items eligible for the discount and the required quantity of each to receive the discount.
    */
   private DiscountCustomerBuysInput customerBuys;
 
   /**
-   * The qualifying items in an order, the quantity of each one, and the total value of the discount.
+   * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
    */
   private DiscountCustomerGetsInput customerGets;
 
@@ -49,7 +55,10 @@ public class DiscountAutomaticBxgyInput {
   }
 
   /**
-   * Determines which discount classes the discount can combine with.
+   * The
+   * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that you can use in combination with
+   * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
    */
   public DiscountCombinesWithInput getCombinesWith() {
     return combinesWith;
@@ -60,7 +69,7 @@ public class DiscountAutomaticBxgyInput {
   }
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   public OffsetDateTime getStartsAt() {
     return startsAt;
@@ -71,7 +80,8 @@ public class DiscountAutomaticBxgyInput {
   }
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   public OffsetDateTime getEndsAt() {
     return endsAt;
@@ -82,7 +92,7 @@ public class DiscountAutomaticBxgyInput {
   }
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   public String getTitle() {
     return title;
@@ -104,7 +114,7 @@ public class DiscountAutomaticBxgyInput {
   }
 
   /**
-   * The qualifying items and the quantity of each one that the customer has to buy to be eligible for the discount.
+   * The items eligible for the discount and the required quantity of each to receive the discount.
    */
   public DiscountCustomerBuysInput getCustomerBuys() {
     return customerBuys;
@@ -115,7 +125,7 @@ public class DiscountAutomaticBxgyInput {
   }
 
   /**
-   * The qualifying items in an order, the quantity of each one, and the total value of the discount.
+   * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
    */
   public DiscountCustomerGetsInput getCustomerGets() {
     return customerGets;
@@ -155,22 +165,26 @@ public class DiscountAutomaticBxgyInput {
 
   public static class Builder {
     /**
-     * Determines which discount classes the discount can combine with.
+     * The
+     * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
      */
     private DiscountCombinesWithInput combinesWith;
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     private OffsetDateTime startsAt;
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     private OffsetDateTime endsAt;
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     private String title;
 
@@ -180,12 +194,12 @@ public class DiscountAutomaticBxgyInput {
     private String usesPerOrderLimit;
 
     /**
-     * The qualifying items and the quantity of each one that the customer has to buy to be eligible for the discount.
+     * The items eligible for the discount and the required quantity of each to receive the discount.
      */
     private DiscountCustomerBuysInput customerBuys;
 
     /**
-     * The qualifying items in an order, the quantity of each one, and the total value of the discount.
+     * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
      */
     private DiscountCustomerGetsInput customerGets;
 
@@ -202,7 +216,10 @@ public class DiscountAutomaticBxgyInput {
     }
 
     /**
-     * Determines which discount classes the discount can combine with.
+     * The
+     * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
      */
     public Builder combinesWith(DiscountCombinesWithInput combinesWith) {
       this.combinesWith = combinesWith;
@@ -210,7 +227,7 @@ public class DiscountAutomaticBxgyInput {
     }
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     public Builder startsAt(OffsetDateTime startsAt) {
       this.startsAt = startsAt;
@@ -218,7 +235,8 @@ public class DiscountAutomaticBxgyInput {
     }
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     public Builder endsAt(OffsetDateTime endsAt) {
       this.endsAt = endsAt;
@@ -226,7 +244,7 @@ public class DiscountAutomaticBxgyInput {
     }
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     public Builder title(String title) {
       this.title = title;
@@ -242,7 +260,7 @@ public class DiscountAutomaticBxgyInput {
     }
 
     /**
-     * The qualifying items and the quantity of each one that the customer has to buy to be eligible for the discount.
+     * The items eligible for the discount and the required quantity of each to receive the discount.
      */
     public Builder customerBuys(DiscountCustomerBuysInput customerBuys) {
       this.customerBuys = customerBuys;
@@ -250,7 +268,7 @@ public class DiscountAutomaticBxgyInput {
     }
 
     /**
-     * The qualifying items in an order, the quantity of each one, and the total value of the discount.
+     * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
      */
     public Builder customerGets(DiscountCustomerGetsInput customerGets) {
       this.customerGets = customerGets;

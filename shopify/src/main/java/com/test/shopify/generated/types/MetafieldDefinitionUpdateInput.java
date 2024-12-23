@@ -57,6 +57,11 @@ public class MetafieldDefinitionUpdateInput {
    */
   private MetafieldAccessUpdateInput access;
 
+  /**
+   * The capabilities of the metafield definition.
+   */
+  private MetafieldCapabilityUpdateInput capabilities;
+
   public MetafieldDefinitionUpdateInput() {
   }
 
@@ -154,9 +159,20 @@ public class MetafieldDefinitionUpdateInput {
     this.access = access;
   }
 
+  /**
+   * The capabilities of the metafield definition.
+   */
+  public MetafieldCapabilityUpdateInput getCapabilities() {
+    return capabilities;
+  }
+
+  public void setCapabilities(MetafieldCapabilityUpdateInput capabilities) {
+    this.capabilities = capabilities;
+  }
+
   @Override
   public String toString() {
-    return "MetafieldDefinitionUpdateInput{namespace='" + namespace + "', key='" + key + "', name='" + name + "', description='" + description + "', ownerType='" + ownerType + "', validations='" + validations + "', pin='" + pin + "', access='" + access + "'}";
+    return "MetafieldDefinitionUpdateInput{namespace='" + namespace + "', key='" + key + "', name='" + name + "', description='" + description + "', ownerType='" + ownerType + "', validations='" + validations + "', pin='" + pin + "', access='" + access + "', capabilities='" + capabilities + "'}";
   }
 
   @Override
@@ -171,12 +187,13 @@ public class MetafieldDefinitionUpdateInput {
         Objects.equals(ownerType, that.ownerType) &&
         Objects.equals(validations, that.validations) &&
         Objects.equals(pin, that.pin) &&
-        Objects.equals(access, that.access);
+        Objects.equals(access, that.access) &&
+        Objects.equals(capabilities, that.capabilities);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(namespace, key, name, description, ownerType, validations, pin, access);
+    return Objects.hash(namespace, key, name, description, ownerType, validations, pin, access, capabilities);
   }
 
   public static Builder newBuilder() {
@@ -230,6 +247,11 @@ public class MetafieldDefinitionUpdateInput {
      */
     private MetafieldAccessUpdateInput access;
 
+    /**
+     * The capabilities of the metafield definition.
+     */
+    private MetafieldCapabilityUpdateInput capabilities;
+
     public MetafieldDefinitionUpdateInput build() {
       MetafieldDefinitionUpdateInput result = new MetafieldDefinitionUpdateInput();
       result.namespace = this.namespace;
@@ -240,6 +262,7 @@ public class MetafieldDefinitionUpdateInput {
       result.validations = this.validations;
       result.pin = this.pin;
       result.access = this.access;
+      result.capabilities = this.capabilities;
       return result;
     }
 
@@ -310,6 +333,14 @@ public class MetafieldDefinitionUpdateInput {
      */
     public Builder access(MetafieldAccessUpdateInput access) {
       this.access = access;
+      return this;
+    }
+
+    /**
+     * The capabilities of the metafield definition.
+     */
+    public Builder capabilities(MetafieldCapabilityUpdateInput capabilities) {
+      this.capabilities = capabilities;
       return this;
     }
   }

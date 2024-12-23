@@ -23,7 +23,7 @@ public interface Publishable {
    * that a resource is published to, without
    * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
    */
-  int getAvailablePublicationCount();
+  Count getAvailablePublicationsCount();
 
   /**
    * The number of
@@ -63,6 +63,14 @@ public interface Publishable {
    * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
    */
   ResourcePublicationConnection getResourcePublications();
+
+  /**
+   * The number of
+   * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+   * that a resource is published to, without
+   * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+   */
+  Count getResourcePublicationsCount();
 
   /**
    * The list of resources that are either published or staged to be published to a

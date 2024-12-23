@@ -24,6 +24,11 @@ public class Market implements MetafieldReferencer, com.test.shopify.generated.t
   private MarketCatalogConnection catalogs;
 
   /**
+   * The number of catalogs that belong to the market.
+   */
+  private Count catalogsCount;
+
+  /**
    * The market’s currency settings.
    */
   private MarketCurrencySettings currencySettings;
@@ -127,6 +132,17 @@ public class Market implements MetafieldReferencer, com.test.shopify.generated.t
 
   public void setCatalogs(MarketCatalogConnection catalogs) {
     this.catalogs = catalogs;
+  }
+
+  /**
+   * The number of catalogs that belong to the market.
+   */
+  public Count getCatalogsCount() {
+    return catalogsCount;
+  }
+
+  public void setCatalogsCount(Count catalogsCount) {
+    this.catalogsCount = catalogsCount;
   }
 
   /**
@@ -313,7 +329,7 @@ public class Market implements MetafieldReferencer, com.test.shopify.generated.t
 
   @Override
   public String toString() {
-    return "Market{catalogs='" + catalogs + "', currencySettings='" + currencySettings + "', enabled='" + enabled + "', handle='" + handle + "', id='" + id + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', priceList='" + priceList + "', primary='" + primary + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', regions='" + regions + "', webPresence='" + webPresence + "', webPresences='" + webPresences + "'}";
+    return "Market{catalogs='" + catalogs + "', catalogsCount='" + catalogsCount + "', currencySettings='" + currencySettings + "', enabled='" + enabled + "', handle='" + handle + "', id='" + id + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', priceList='" + priceList + "', primary='" + primary + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', regions='" + regions + "', webPresence='" + webPresence + "', webPresences='" + webPresences + "'}";
   }
 
   @Override
@@ -322,6 +338,7 @@ public class Market implements MetafieldReferencer, com.test.shopify.generated.t
     if (o == null || getClass() != o.getClass()) return false;
     Market that = (Market) o;
     return Objects.equals(catalogs, that.catalogs) &&
+        Objects.equals(catalogsCount, that.catalogsCount) &&
         Objects.equals(currencySettings, that.currencySettings) &&
         enabled == that.enabled &&
         Objects.equals(handle, that.handle) &&
@@ -341,7 +358,7 @@ public class Market implements MetafieldReferencer, com.test.shopify.generated.t
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogs, currencySettings, enabled, handle, id, metafield, metafieldDefinitions, metafields, name, priceList, primary, privateMetafield, privateMetafields, regions, webPresence, webPresences);
+    return Objects.hash(catalogs, catalogsCount, currencySettings, enabled, handle, id, metafield, metafieldDefinitions, metafields, name, priceList, primary, privateMetafield, privateMetafields, regions, webPresence, webPresences);
   }
 
   public static Builder newBuilder() {
@@ -353,6 +370,11 @@ public class Market implements MetafieldReferencer, com.test.shopify.generated.t
      * The catalogs that belong to the market.
      */
     private MarketCatalogConnection catalogs;
+
+    /**
+     * The number of catalogs that belong to the market.
+     */
+    private Count catalogsCount;
 
     /**
      * The market’s currency settings.
@@ -449,6 +471,7 @@ public class Market implements MetafieldReferencer, com.test.shopify.generated.t
     public Market build() {
       Market result = new Market();
       result.catalogs = this.catalogs;
+      result.catalogsCount = this.catalogsCount;
       result.currencySettings = this.currencySettings;
       result.enabled = this.enabled;
       result.handle = this.handle;
@@ -472,6 +495,14 @@ public class Market implements MetafieldReferencer, com.test.shopify.generated.t
      */
     public Builder catalogs(MarketCatalogConnection catalogs) {
       this.catalogs = catalogs;
+      return this;
+    }
+
+    /**
+     * The number of catalogs that belong to the market.
+     */
+    public Builder catalogsCount(Count catalogsCount) {
+      this.catalogsCount = catalogsCount;
       return this;
     }
 

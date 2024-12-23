@@ -48,8 +48,23 @@ public class ShopPolicyFragmentProjection<PARENT extends BaseSubProjectionNode<?
     return this;
   }
 
+  public ShopPolicyFragmentProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public ShopPolicyFragmentProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
+    return this;
+  }
+
+  public ShopPolicyFragmentProjection<PARENT, ROOT> title() {
+    getFields().put("title", null);
+    return this;
+  }
+
+  public ShopPolicyFragmentProjection<PARENT, ROOT> updatedAt() {
+    getFields().put("updatedAt", null);
     return this;
   }
 

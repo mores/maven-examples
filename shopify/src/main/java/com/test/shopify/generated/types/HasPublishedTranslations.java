@@ -13,13 +13,16 @@ import java.util.List;
     property = "__typename"
 )
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = Article.class, name = "Article"),
+    @JsonSubTypes.Type(value = Blog.class, name = "Blog"),
     @JsonSubTypes.Type(value = Collection.class, name = "Collection"),
     @JsonSubTypes.Type(value = Link.class, name = "Link"),
-    @JsonSubTypes.Type(value = OnlineStoreArticle.class, name = "OnlineStoreArticle"),
-    @JsonSubTypes.Type(value = OnlineStoreBlog.class, name = "OnlineStoreBlog"),
-    @JsonSubTypes.Type(value = OnlineStorePage.class, name = "OnlineStorePage"),
+    @JsonSubTypes.Type(value = Menu.class, name = "Menu"),
+    @JsonSubTypes.Type(value = OnlineStoreTheme.class, name = "OnlineStoreTheme"),
+    @JsonSubTypes.Type(value = Page.class, name = "Page"),
     @JsonSubTypes.Type(value = Product.class, name = "Product"),
     @JsonSubTypes.Type(value = ProductOption.class, name = "ProductOption"),
+    @JsonSubTypes.Type(value = ProductOptionValue.class, name = "ProductOptionValue"),
     @JsonSubTypes.Type(value = ProductVariant.class, name = "ProductVariant"),
     @JsonSubTypes.Type(value = SellingPlan.class, name = "SellingPlan"),
     @JsonSubTypes.Type(value = SellingPlanGroup.class, name = "SellingPlanGroup"),

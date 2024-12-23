@@ -126,12 +126,6 @@ public class FulfillmentProjection<PARENT extends BaseSubProjectionNode<?, ?>, R
      return projection;
   }
 
-  public ShippingLabelProjection<FulfillmentProjection<PARENT, ROOT>, ROOT> shippingLabel() {
-     ShippingLabelProjection<FulfillmentProjection<PARENT, ROOT>, ROOT> projection = new ShippingLabelProjection<>(this, getRoot());
-     getFields().put("shippingLabel", projection);
-     return projection;
-  }
-
   public FulfillmentStatusProjection<FulfillmentProjection<PARENT, ROOT>, ROOT> status() {
      FulfillmentStatusProjection<FulfillmentProjection<PARENT, ROOT>, ROOT> projection = new FulfillmentStatusProjection<>(this, getRoot());
      getFields().put("status", projection);

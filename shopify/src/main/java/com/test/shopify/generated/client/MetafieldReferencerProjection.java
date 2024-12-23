@@ -19,6 +19,18 @@ public class MetafieldReferencerProjection<PARENT extends BaseSubProjectionNode<
     return fragment;
   }
 
+  public ArticleFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> onArticle() {
+    ArticleFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> fragment = new ArticleFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
+  public BlogFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> onBlog() {
+    BlogFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> fragment = new BlogFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
   public CollectionFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> onCollection(
       ) {
     CollectionFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> fragment = new CollectionFragmentProjection<>(this, getRoot());
@@ -108,29 +120,14 @@ public class MetafieldReferencerProjection<PARENT extends BaseSubProjectionNode<
     return fragment;
   }
 
-  public OnlineStoreArticleFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> onOnlineStoreArticle(
-      ) {
-    OnlineStoreArticleFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> fragment = new OnlineStoreArticleFragmentProjection<>(this, getRoot());
-    getFragments().add(fragment);
-    return fragment;
-  }
-
-  public OnlineStoreBlogFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> onOnlineStoreBlog(
-      ) {
-    OnlineStoreBlogFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> fragment = new OnlineStoreBlogFragmentProjection<>(this, getRoot());
-    getFragments().add(fragment);
-    return fragment;
-  }
-
-  public OnlineStorePageFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> onOnlineStorePage(
-      ) {
-    OnlineStorePageFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> fragment = new OnlineStorePageFragmentProjection<>(this, getRoot());
-    getFragments().add(fragment);
-    return fragment;
-  }
-
   public OrderFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> onOrder() {
     OrderFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> fragment = new OrderFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
+  public PageFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> onPage() {
+    PageFragmentProjection<MetafieldReferencerProjection<PARENT, ROOT>, ROOT> fragment = new PageFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);
     return fragment;
   }

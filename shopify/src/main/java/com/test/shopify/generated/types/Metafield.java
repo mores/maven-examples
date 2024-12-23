@@ -20,7 +20,12 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class Metafield implements com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Node {
+public class Metafield implements com.test.shopify.generated.types.HasCompareDigest, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Node {
+  /**
+   * The data stored in the resource, represented as a digest.
+   */
+  private String compareDigest;
+
   /**
    * The date and time when the metafield was created.
    */
@@ -40,6 +45,11 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
    * A globally-unique ID.
    */
   private String id;
+
+  /**
+   * The data stored in the metafield in JSON format.
+   */
+  private String jsonValue;
 
   /**
    * The unique identifier for the metafield within its namespace.
@@ -96,6 +106,17 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
   }
 
   /**
+   * The data stored in the resource, represented as a digest.
+   */
+  public String getCompareDigest() {
+    return compareDigest;
+  }
+
+  public void setCompareDigest(String compareDigest) {
+    this.compareDigest = compareDigest;
+  }
+
+  /**
    * The date and time when the metafield was created.
    */
   public OffsetDateTime getCreatedAt() {
@@ -137,6 +158,17 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  /**
+   * The data stored in the metafield in JSON format.
+   */
+  public String getJsonValue() {
+    return jsonValue;
+  }
+
+  public void setJsonValue(String jsonValue) {
+    this.jsonValue = jsonValue;
   }
 
   /**
@@ -252,7 +284,7 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
 
   @Override
   public String toString() {
-    return "Metafield{createdAt='" + createdAt + "', definition='" + definition + "', description='" + description + "', id='" + id + "', key='" + key + "', legacyResourceId='" + legacyResourceId + "', namespace='" + namespace + "', owner='" + owner + "', ownerType='" + ownerType + "', reference='" + reference + "', references='" + references + "', type='" + type + "', updatedAt='" + updatedAt + "', value='" + value + "'}";
+    return "Metafield{compareDigest='" + compareDigest + "', createdAt='" + createdAt + "', definition='" + definition + "', description='" + description + "', id='" + id + "', jsonValue='" + jsonValue + "', key='" + key + "', legacyResourceId='" + legacyResourceId + "', namespace='" + namespace + "', owner='" + owner + "', ownerType='" + ownerType + "', reference='" + reference + "', references='" + references + "', type='" + type + "', updatedAt='" + updatedAt + "', value='" + value + "'}";
   }
 
   @Override
@@ -260,10 +292,12 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Metafield that = (Metafield) o;
-    return Objects.equals(createdAt, that.createdAt) &&
+    return Objects.equals(compareDigest, that.compareDigest) &&
+        Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(definition, that.definition) &&
         Objects.equals(description, that.description) &&
         Objects.equals(id, that.id) &&
+        Objects.equals(jsonValue, that.jsonValue) &&
         Objects.equals(key, that.key) &&
         Objects.equals(legacyResourceId, that.legacyResourceId) &&
         Objects.equals(namespace, that.namespace) &&
@@ -278,7 +312,7 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, definition, description, id, key, legacyResourceId, namespace, owner, ownerType, reference, references, type, updatedAt, value);
+    return Objects.hash(compareDigest, createdAt, definition, description, id, jsonValue, key, legacyResourceId, namespace, owner, ownerType, reference, references, type, updatedAt, value);
   }
 
   public static Builder newBuilder() {
@@ -286,6 +320,11 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
   }
 
   public static class Builder {
+    /**
+     * The data stored in the resource, represented as a digest.
+     */
+    private String compareDigest;
+
     /**
      * The date and time when the metafield was created.
      */
@@ -305,6 +344,11 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
      * A globally-unique ID.
      */
     private String id;
+
+    /**
+     * The data stored in the metafield in JSON format.
+     */
+    private String jsonValue;
 
     /**
      * The unique identifier for the metafield within its namespace.
@@ -359,10 +403,12 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
 
     public Metafield build() {
       Metafield result = new Metafield();
+      result.compareDigest = this.compareDigest;
       result.createdAt = this.createdAt;
       result.definition = this.definition;
       result.description = this.description;
       result.id = this.id;
+      result.jsonValue = this.jsonValue;
       result.key = this.key;
       result.legacyResourceId = this.legacyResourceId;
       result.namespace = this.namespace;
@@ -374,6 +420,14 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
       result.updatedAt = this.updatedAt;
       result.value = this.value;
       return result;
+    }
+
+    /**
+     * The data stored in the resource, represented as a digest.
+     */
+    public Builder compareDigest(String compareDigest) {
+      this.compareDigest = compareDigest;
+      return this;
     }
 
     /**
@@ -405,6 +459,14 @@ public class Metafield implements com.test.shopify.generated.types.LegacyInterop
      */
     public Builder id(String id) {
       this.id = id;
+      return this;
+    }
+
+    /**
+     * The data stored in the metafield in JSON format.
+     */
+    public Builder jsonValue(String jsonValue) {
+      this.jsonValue = jsonValue;
       return this;
     }
 

@@ -15,8 +15,10 @@ import java.util.List;
     property = "__typename"
 )
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = ExternalVideo.class, name = "ExternalVideo"),
     @JsonSubTypes.Type(value = GenericFile.class, name = "GenericFile"),
     @JsonSubTypes.Type(value = MediaImage.class, name = "MediaImage"),
+    @JsonSubTypes.Type(value = Model3d.class, name = "Model3d"),
     @JsonSubTypes.Type(value = Video.class, name = "Video")
 })
 public interface File {

@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountCodeDeletePayload {
   /**
-   * The deleted code discount ID.
+   * The ID of the code discount that was deleted.
    */
   private String deletedCodeDiscountId;
 
@@ -24,7 +24,7 @@ public class DiscountCodeDeletePayload {
   }
 
   /**
-   * The deleted code discount ID.
+   * The ID of the code discount that was deleted.
    */
   public String getDeletedCodeDiscountId() {
     return deletedCodeDiscountId;
@@ -70,7 +70,7 @@ public class DiscountCodeDeletePayload {
 
   public static class Builder {
     /**
-     * The deleted code discount ID.
+     * The ID of the code discount that was deleted.
      */
     private String deletedCodeDiscountId;
 
@@ -87,7 +87,7 @@ public class DiscountCodeDeletePayload {
     }
 
     /**
-     * The deleted code discount ID.
+     * The ID of the code discount that was deleted.
      */
     public Builder deletedCodeDiscountId(String deletedCodeDiscountId) {
       this.deletedCodeDiscountId = deletedCodeDiscountId;

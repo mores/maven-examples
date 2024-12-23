@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,9 +21,19 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
   private String body;
 
   /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was created.
+   */
+  private LocalDate createdAt;
+
+  /**
    * A globally-unique ID.
    */
   private String id;
+
+  /**
+   * The translated title of the policy. For example, Refund Policy or Politique de remboursement.
+   */
+  private String title;
 
   /**
    * The published translations associated with the resource.
@@ -33,6 +44,11 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
    * The shop policy type.
    */
   private ShopPolicyType type;
+
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was last modified.
+   */
+  private LocalDate updatedAt;
 
   /**
    * The public URL of the policy.
@@ -54,6 +70,17 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
   }
 
   /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was created.
+   */
+  public LocalDate getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDate createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  /**
    * A globally-unique ID.
    */
   public String getId() {
@@ -62,6 +89,17 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  /**
+   * The translated title of the policy. For example, Refund Policy or Politique de remboursement.
+   */
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   /**
@@ -87,6 +125,17 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
   }
 
   /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was last modified.
+   */
+  public LocalDate getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(LocalDate updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  /**
    * The public URL of the policy.
    */
   public String getUrl() {
@@ -99,7 +148,7 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
 
   @Override
   public String toString() {
-    return "ShopPolicy{body='" + body + "', id='" + id + "', translations='" + translations + "', type='" + type + "', url='" + url + "'}";
+    return "ShopPolicy{body='" + body + "', createdAt='" + createdAt + "', id='" + id + "', title='" + title + "', translations='" + translations + "', type='" + type + "', updatedAt='" + updatedAt + "', url='" + url + "'}";
   }
 
   @Override
@@ -108,15 +157,18 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
     if (o == null || getClass() != o.getClass()) return false;
     ShopPolicy that = (ShopPolicy) o;
     return Objects.equals(body, that.body) &&
+        Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(id, that.id) &&
+        Objects.equals(title, that.title) &&
         Objects.equals(translations, that.translations) &&
         Objects.equals(type, that.type) &&
+        Objects.equals(updatedAt, that.updatedAt) &&
         Objects.equals(url, that.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(body, id, translations, type, url);
+    return Objects.hash(body, createdAt, id, title, translations, type, updatedAt, url);
   }
 
   public static Builder newBuilder() {
@@ -130,9 +182,19 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
     private String body;
 
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was created.
+     */
+    private LocalDate createdAt;
+
+    /**
      * A globally-unique ID.
      */
     private String id;
+
+    /**
+     * The translated title of the policy. For example, Refund Policy or Politique de remboursement.
+     */
+    private String title;
 
     /**
      * The published translations associated with the resource.
@@ -145,6 +207,11 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
     private ShopPolicyType type;
 
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was last modified.
+     */
+    private LocalDate updatedAt;
+
+    /**
      * The public URL of the policy.
      */
     private String url;
@@ -152,9 +219,12 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
     public ShopPolicy build() {
       ShopPolicy result = new ShopPolicy();
       result.body = this.body;
+      result.createdAt = this.createdAt;
       result.id = this.id;
+      result.title = this.title;
       result.translations = this.translations;
       result.type = this.type;
+      result.updatedAt = this.updatedAt;
       result.url = this.url;
       return result;
     }
@@ -168,10 +238,26 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
     }
 
     /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was created.
+     */
+    public Builder createdAt(LocalDate createdAt) {
+      this.createdAt = createdAt;
+      return this;
+    }
+
+    /**
      * A globally-unique ID.
      */
     public Builder id(String id) {
       this.id = id;
+      return this;
+    }
+
+    /**
+     * The translated title of the policy. For example, Refund Policy or Politique de remboursement.
+     */
+    public Builder title(String title) {
+      this.title = title;
       return this;
     }
 
@@ -188,6 +274,14 @@ public class ShopPolicy implements com.test.shopify.generated.types.HasPublished
      */
     public Builder type(ShopPolicyType type) {
       this.type = type;
+      return this;
+    }
+
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the policy was last modified.
+     */
+    public Builder updatedAt(LocalDate updatedAt) {
+      this.updatedAt = updatedAt;
       return this;
     }
 

@@ -60,6 +60,12 @@ public class AppProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT exte
      return projection;
   }
 
+  public AccessScopeProjection<AppProjection<PARENT, ROOT>, ROOT> optionalAccessScopes() {
+     AccessScopeProjection<AppProjection<PARENT, ROOT>, ROOT> projection = new AccessScopeProjection<>(this, getRoot());
+     getFields().put("optionalAccessScopes", projection);
+     return projection;
+  }
+
   public AppPublicCategoryProjection<AppProjection<PARENT, ROOT>, ROOT> publicCategory() {
      AppPublicCategoryProjection<AppProjection<PARENT, ROOT>, ROOT> projection = new AppPublicCategoryProjection<>(this, getRoot());
      getFields().put("publicCategory", projection);

@@ -12,6 +12,12 @@ public class CalculatedDraftOrderProjection<PARENT extends BaseSubProjectionNode
     return this;
   }
 
+  public ResourceAlertProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> alerts() {
+     ResourceAlertProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> projection = new ResourceAlertProjection<>(this, getRoot());
+     getFields().put("alerts", projection);
+     return projection;
+  }
+
   public DraftOrderAppliedDiscountProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> appliedDiscount(
       ) {
      DraftOrderAppliedDiscountProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> projection = new DraftOrderAppliedDiscountProjection<>(this, getRoot());
@@ -56,6 +62,13 @@ public class CalculatedDraftOrderProjection<PARENT extends BaseSubProjectionNode
       ) {
      CountryCodeProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> projection = new CountryCodeProjection<>(this, getRoot());
      getFields().put("marketRegionCountryCode", projection);
+     return projection;
+  }
+
+  public DraftOrderPlatformDiscountProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> platformDiscounts(
+      ) {
+     DraftOrderPlatformDiscountProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> projection = new DraftOrderPlatformDiscountProjection<>(this, getRoot());
+     getFields().put("platformDiscounts", projection);
      return projection;
   }
 
@@ -124,8 +137,25 @@ public class CalculatedDraftOrderProjection<PARENT extends BaseSubProjectionNode
      return projection;
   }
 
+  public DraftOrderWarningProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> warnings(
+      ) {
+     DraftOrderWarningProjection<CalculatedDraftOrderProjection<PARENT, ROOT>, ROOT> projection = new DraftOrderWarningProjection<>(this, getRoot());
+     getFields().put("warnings", projection);
+     return projection;
+  }
+
+  public CalculatedDraftOrderProjection<PARENT, ROOT> acceptAutomaticDiscounts() {
+    getFields().put("acceptAutomaticDiscounts", null);
+    return this;
+  }
+
   public CalculatedDraftOrderProjection<PARENT, ROOT> billingAddressMatchesShippingAddress() {
     getFields().put("billingAddressMatchesShippingAddress", null);
+    return this;
+  }
+
+  public CalculatedDraftOrderProjection<PARENT, ROOT> discountCodes() {
+    getFields().put("discountCodes", null);
     return this;
   }
 
@@ -144,8 +174,18 @@ public class CalculatedDraftOrderProjection<PARENT extends BaseSubProjectionNode
     return this;
   }
 
+  public CalculatedDraftOrderProjection<PARENT, ROOT> taxesIncluded() {
+    getFields().put("taxesIncluded", null);
+    return this;
+  }
+
   public CalculatedDraftOrderProjection<PARENT, ROOT> totalPrice() {
     getFields().put("totalPrice", null);
+    return this;
+  }
+
+  public CalculatedDraftOrderProjection<PARENT, ROOT> totalQuantityOfLineItems() {
+    getFields().put("totalQuantityOfLineItems", null);
     return this;
   }
 
@@ -156,6 +196,11 @@ public class CalculatedDraftOrderProjection<PARENT extends BaseSubProjectionNode
 
   public CalculatedDraftOrderProjection<PARENT, ROOT> totalTax() {
     getFields().put("totalTax", null);
+    return this;
+  }
+
+  public CalculatedDraftOrderProjection<PARENT, ROOT> transformerFingerprint() {
+    getFields().put("transformerFingerprint", null);
     return this;
   }
 }

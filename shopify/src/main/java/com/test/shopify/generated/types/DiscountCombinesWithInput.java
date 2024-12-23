@@ -11,17 +11,24 @@ import java.util.Objects;
  */
 public class DiscountCombinesWithInput {
   /**
-   * Combines with product discounts.
+   * Whether the discount combines with the
+   * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * class.
    */
   private Boolean productDiscounts = false;
 
   /**
-   * Combines with order discounts.
+   * Whether the discount combines with the
+   * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * class.
    */
   private Boolean orderDiscounts = false;
 
   /**
-   * Combines with shipping discounts.
+   * Whether the discount combines
+   * with the
+   * [shipping discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * class.
    */
   private Boolean shippingDiscounts = false;
 
@@ -29,7 +36,9 @@ public class DiscountCombinesWithInput {
   }
 
   /**
-   * Combines with product discounts.
+   * Whether the discount combines with the
+   * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * class.
    */
   public Boolean getProductDiscounts() {
     return productDiscounts;
@@ -40,7 +49,9 @@ public class DiscountCombinesWithInput {
   }
 
   /**
-   * Combines with order discounts.
+   * Whether the discount combines with the
+   * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * class.
    */
   public Boolean getOrderDiscounts() {
     return orderDiscounts;
@@ -51,7 +62,10 @@ public class DiscountCombinesWithInput {
   }
 
   /**
-   * Combines with shipping discounts.
+   * Whether the discount combines
+   * with the
+   * [shipping discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * class.
    */
   public Boolean getShippingDiscounts() {
     return shippingDiscounts;
@@ -87,17 +101,24 @@ public class DiscountCombinesWithInput {
 
   public static class Builder {
     /**
-     * Combines with product discounts.
+     * Whether the discount combines with the
+     * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
      */
     private Boolean productDiscounts = false;
 
     /**
-     * Combines with order discounts.
+     * Whether the discount combines with the
+     * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
      */
     private Boolean orderDiscounts = false;
 
     /**
-     * Combines with shipping discounts.
+     * Whether the discount combines
+     * with the
+     * [shipping discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
      */
     private Boolean shippingDiscounts = false;
 
@@ -110,7 +131,9 @@ public class DiscountCombinesWithInput {
     }
 
     /**
-     * Combines with product discounts.
+     * Whether the discount combines with the
+     * [product discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
      */
     public Builder productDiscounts(Boolean productDiscounts) {
       this.productDiscounts = productDiscounts;
@@ -118,7 +141,9 @@ public class DiscountCombinesWithInput {
     }
 
     /**
-     * Combines with order discounts.
+     * Whether the discount combines with the
+     * [order discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
      */
     public Builder orderDiscounts(Boolean orderDiscounts) {
       this.orderDiscounts = orderDiscounts;
@@ -126,7 +151,10 @@ public class DiscountCombinesWithInput {
     }
 
     /**
-     * Combines with shipping discounts.
+     * Whether the discount combines
+     * with the
+     * [shipping discount](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * class.
      */
     public Builder shippingDiscounts(Boolean shippingDiscounts) {
       this.shippingDiscounts = shippingDiscounts;

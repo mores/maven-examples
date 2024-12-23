@@ -19,6 +19,19 @@ public class DraftOrderInput {
   private DraftOrderAppliedDiscountInput appliedDiscount;
 
   /**
+   * The list of discount codes that will be attempted to be applied to the draft order.
+   * If the draft isn't eligible for any given discount code it will be skipped during calculation.
+   */
+  private List<String> discountCodes;
+
+  /**
+   * Whether or not to accept automatic discounts on the draft order during calculation.
+   * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+   * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+   */
+  private Boolean acceptAutomaticDiscounts;
+
+  /**
    * The mailing address associated with the payment method.
    */
   private MailingAddressInput billingAddress;
@@ -45,11 +58,6 @@ public class DraftOrderInput {
    * The list of metafields attached to the draft order. An existing metafield can not be used when creating a draft order.
    */
   private List<MetafieldInput> metafields;
-
-  /**
-   * The localization extensions attached to the draft order. For example, Tax IDs.
-   */
-  private List<LocalizationExtensionInput> localizationExtensions;
 
   /**
    * The text of an optional note that a shop owner can attach to the draft order.
@@ -126,9 +134,24 @@ public class DraftOrderInput {
   private String sourceName;
 
   /**
+   * Whether discount codes are allowed during checkout of this draft order.
+   */
+  private Boolean allowDiscountCodesInCheckout;
+
+  /**
    * The purchase order number.
    */
   private String poNumber;
+
+  /**
+   * The unique token identifying the draft order.
+   */
+  private String sessionToken;
+
+  /**
+   * Fingerprint to guarantee bundles are handled correctly.
+   */
+  private String transformerFingerprint;
 
   public DraftOrderInput() {
   }
@@ -143,6 +166,31 @@ public class DraftOrderInput {
 
   public void setAppliedDiscount(DraftOrderAppliedDiscountInput appliedDiscount) {
     this.appliedDiscount = appliedDiscount;
+  }
+
+  /**
+   * The list of discount codes that will be attempted to be applied to the draft order.
+   * If the draft isn't eligible for any given discount code it will be skipped during calculation.
+   */
+  public List<String> getDiscountCodes() {
+    return discountCodes;
+  }
+
+  public void setDiscountCodes(List<String> discountCodes) {
+    this.discountCodes = discountCodes;
+  }
+
+  /**
+   * Whether or not to accept automatic discounts on the draft order during calculation.
+   * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+   * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+   */
+  public Boolean getAcceptAutomaticDiscounts() {
+    return acceptAutomaticDiscounts;
+  }
+
+  public void setAcceptAutomaticDiscounts(Boolean acceptAutomaticDiscounts) {
+    this.acceptAutomaticDiscounts = acceptAutomaticDiscounts;
   }
 
   /**
@@ -201,17 +249,6 @@ public class DraftOrderInput {
 
   public void setMetafields(List<MetafieldInput> metafields) {
     this.metafields = metafields;
-  }
-
-  /**
-   * The localization extensions attached to the draft order. For example, Tax IDs.
-   */
-  public List<LocalizationExtensionInput> getLocalizationExtensions() {
-    return localizationExtensions;
-  }
-
-  public void setLocalizationExtensions(List<LocalizationExtensionInput> localizationExtensions) {
-    this.localizationExtensions = localizationExtensions;
   }
 
   /**
@@ -367,6 +404,17 @@ public class DraftOrderInput {
   }
 
   /**
+   * Whether discount codes are allowed during checkout of this draft order.
+   */
+  public Boolean getAllowDiscountCodesInCheckout() {
+    return allowDiscountCodesInCheckout;
+  }
+
+  public void setAllowDiscountCodesInCheckout(Boolean allowDiscountCodesInCheckout) {
+    this.allowDiscountCodesInCheckout = allowDiscountCodesInCheckout;
+  }
+
+  /**
    * The purchase order number.
    */
   public String getPoNumber() {
@@ -377,9 +425,31 @@ public class DraftOrderInput {
     this.poNumber = poNumber;
   }
 
+  /**
+   * The unique token identifying the draft order.
+   */
+  public String getSessionToken() {
+    return sessionToken;
+  }
+
+  public void setSessionToken(String sessionToken) {
+    this.sessionToken = sessionToken;
+  }
+
+  /**
+   * Fingerprint to guarantee bundles are handled correctly.
+   */
+  public String getTransformerFingerprint() {
+    return transformerFingerprint;
+  }
+
+  public void setTransformerFingerprint(String transformerFingerprint) {
+    this.transformerFingerprint = transformerFingerprint;
+  }
+
   @Override
   public String toString() {
-    return "DraftOrderInput{appliedDiscount='" + appliedDiscount + "', billingAddress='" + billingAddress + "', customAttributes='" + customAttributes + "', email='" + email + "', lineItems='" + lineItems + "', metafields='" + metafields + "', localizationExtensions='" + localizationExtensions + "', note='" + note + "', shippingAddress='" + shippingAddress + "', shippingLine='" + shippingLine + "', tags='" + tags + "', taxExempt='" + taxExempt + "', useCustomerDefaultAddress='" + useCustomerDefaultAddress + "', visibleToCustomer='" + visibleToCustomer + "', reserveInventoryUntil='" + reserveInventoryUntil + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', phone='" + phone + "', paymentTerms='" + paymentTerms + "', purchasingEntity='" + purchasingEntity + "', sourceName='" + sourceName + "', poNumber='" + poNumber + "'}";
+    return "DraftOrderInput{appliedDiscount='" + appliedDiscount + "', discountCodes='" + discountCodes + "', acceptAutomaticDiscounts='" + acceptAutomaticDiscounts + "', billingAddress='" + billingAddress + "', customAttributes='" + customAttributes + "', email='" + email + "', lineItems='" + lineItems + "', metafields='" + metafields + "', note='" + note + "', shippingAddress='" + shippingAddress + "', shippingLine='" + shippingLine + "', tags='" + tags + "', taxExempt='" + taxExempt + "', useCustomerDefaultAddress='" + useCustomerDefaultAddress + "', visibleToCustomer='" + visibleToCustomer + "', reserveInventoryUntil='" + reserveInventoryUntil + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', phone='" + phone + "', paymentTerms='" + paymentTerms + "', purchasingEntity='" + purchasingEntity + "', sourceName='" + sourceName + "', allowDiscountCodesInCheckout='" + allowDiscountCodesInCheckout + "', poNumber='" + poNumber + "', sessionToken='" + sessionToken + "', transformerFingerprint='" + transformerFingerprint + "'}";
   }
 
   @Override
@@ -388,12 +458,13 @@ public class DraftOrderInput {
     if (o == null || getClass() != o.getClass()) return false;
     DraftOrderInput that = (DraftOrderInput) o;
     return Objects.equals(appliedDiscount, that.appliedDiscount) &&
+        Objects.equals(discountCodes, that.discountCodes) &&
+        Objects.equals(acceptAutomaticDiscounts, that.acceptAutomaticDiscounts) &&
         Objects.equals(billingAddress, that.billingAddress) &&
         Objects.equals(customAttributes, that.customAttributes) &&
         Objects.equals(email, that.email) &&
         Objects.equals(lineItems, that.lineItems) &&
         Objects.equals(metafields, that.metafields) &&
-        Objects.equals(localizationExtensions, that.localizationExtensions) &&
         Objects.equals(note, that.note) &&
         Objects.equals(shippingAddress, that.shippingAddress) &&
         Objects.equals(shippingLine, that.shippingLine) &&
@@ -407,12 +478,15 @@ public class DraftOrderInput {
         Objects.equals(paymentTerms, that.paymentTerms) &&
         Objects.equals(purchasingEntity, that.purchasingEntity) &&
         Objects.equals(sourceName, that.sourceName) &&
-        Objects.equals(poNumber, that.poNumber);
+        Objects.equals(allowDiscountCodesInCheckout, that.allowDiscountCodesInCheckout) &&
+        Objects.equals(poNumber, that.poNumber) &&
+        Objects.equals(sessionToken, that.sessionToken) &&
+        Objects.equals(transformerFingerprint, that.transformerFingerprint);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appliedDiscount, billingAddress, customAttributes, email, lineItems, metafields, localizationExtensions, note, shippingAddress, shippingLine, tags, taxExempt, useCustomerDefaultAddress, visibleToCustomer, reserveInventoryUntil, presentmentCurrencyCode, phone, paymentTerms, purchasingEntity, sourceName, poNumber);
+    return Objects.hash(appliedDiscount, discountCodes, acceptAutomaticDiscounts, billingAddress, customAttributes, email, lineItems, metafields, note, shippingAddress, shippingLine, tags, taxExempt, useCustomerDefaultAddress, visibleToCustomer, reserveInventoryUntil, presentmentCurrencyCode, phone, paymentTerms, purchasingEntity, sourceName, allowDiscountCodesInCheckout, poNumber, sessionToken, transformerFingerprint);
   }
 
   public static Builder newBuilder() {
@@ -425,6 +499,19 @@ public class DraftOrderInput {
      * A draft order line item can have one discount. A draft order can also have one order-level discount.
      */
     private DraftOrderAppliedDiscountInput appliedDiscount;
+
+    /**
+     * The list of discount codes that will be attempted to be applied to the draft order.
+     * If the draft isn't eligible for any given discount code it will be skipped during calculation.
+     */
+    private List<String> discountCodes;
+
+    /**
+     * Whether or not to accept automatic discounts on the draft order during calculation.
+     * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+     * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+     */
+    private Boolean acceptAutomaticDiscounts;
 
     /**
      * The mailing address associated with the payment method.
@@ -453,11 +540,6 @@ public class DraftOrderInput {
      * The list of metafields attached to the draft order. An existing metafield can not be used when creating a draft order.
      */
     private List<MetafieldInput> metafields;
-
-    /**
-     * The localization extensions attached to the draft order. For example, Tax IDs.
-     */
-    private List<LocalizationExtensionInput> localizationExtensions;
 
     /**
      * The text of an optional note that a shop owner can attach to the draft order.
@@ -534,19 +616,35 @@ public class DraftOrderInput {
     private String sourceName;
 
     /**
+     * Whether discount codes are allowed during checkout of this draft order.
+     */
+    private Boolean allowDiscountCodesInCheckout;
+
+    /**
      * The purchase order number.
      */
     private String poNumber;
 
+    /**
+     * The unique token identifying the draft order.
+     */
+    private String sessionToken;
+
+    /**
+     * Fingerprint to guarantee bundles are handled correctly.
+     */
+    private String transformerFingerprint;
+
     public DraftOrderInput build() {
       DraftOrderInput result = new DraftOrderInput();
       result.appliedDiscount = this.appliedDiscount;
+      result.discountCodes = this.discountCodes;
+      result.acceptAutomaticDiscounts = this.acceptAutomaticDiscounts;
       result.billingAddress = this.billingAddress;
       result.customAttributes = this.customAttributes;
       result.email = this.email;
       result.lineItems = this.lineItems;
       result.metafields = this.metafields;
-      result.localizationExtensions = this.localizationExtensions;
       result.note = this.note;
       result.shippingAddress = this.shippingAddress;
       result.shippingLine = this.shippingLine;
@@ -560,7 +658,10 @@ public class DraftOrderInput {
       result.paymentTerms = this.paymentTerms;
       result.purchasingEntity = this.purchasingEntity;
       result.sourceName = this.sourceName;
+      result.allowDiscountCodesInCheckout = this.allowDiscountCodesInCheckout;
       result.poNumber = this.poNumber;
+      result.sessionToken = this.sessionToken;
+      result.transformerFingerprint = this.transformerFingerprint;
       return result;
     }
 
@@ -570,6 +671,25 @@ public class DraftOrderInput {
      */
     public Builder appliedDiscount(DraftOrderAppliedDiscountInput appliedDiscount) {
       this.appliedDiscount = appliedDiscount;
+      return this;
+    }
+
+    /**
+     * The list of discount codes that will be attempted to be applied to the draft order.
+     * If the draft isn't eligible for any given discount code it will be skipped during calculation.
+     */
+    public Builder discountCodes(List<String> discountCodes) {
+      this.discountCodes = discountCodes;
+      return this;
+    }
+
+    /**
+     * Whether or not to accept automatic discounts on the draft order during calculation.
+     * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+     * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+     */
+    public Builder acceptAutomaticDiscounts(Boolean acceptAutomaticDiscounts) {
+      this.acceptAutomaticDiscounts = acceptAutomaticDiscounts;
       return this;
     }
 
@@ -613,14 +733,6 @@ public class DraftOrderInput {
      */
     public Builder metafields(List<MetafieldInput> metafields) {
       this.metafields = metafields;
-      return this;
-    }
-
-    /**
-     * The localization extensions attached to the draft order. For example, Tax IDs.
-     */
-    public Builder localizationExtensions(List<LocalizationExtensionInput> localizationExtensions) {
-      this.localizationExtensions = localizationExtensions;
       return this;
     }
 
@@ -738,10 +850,34 @@ public class DraftOrderInput {
     }
 
     /**
+     * Whether discount codes are allowed during checkout of this draft order.
+     */
+    public Builder allowDiscountCodesInCheckout(Boolean allowDiscountCodesInCheckout) {
+      this.allowDiscountCodesInCheckout = allowDiscountCodesInCheckout;
+      return this;
+    }
+
+    /**
      * The purchase order number.
      */
     public Builder poNumber(String poNumber) {
       this.poNumber = poNumber;
+      return this;
+    }
+
+    /**
+     * The unique token identifying the draft order.
+     */
+    public Builder sessionToken(String sessionToken) {
+      this.sessionToken = sessionToken;
+      return this;
+    }
+
+    /**
+     * Fingerprint to guarantee bundles are handled correctly.
+     */
+    public Builder transformerFingerprint(String transformerFingerprint) {
+      this.transformerFingerprint = transformerFingerprint;
       return this;
     }
   }

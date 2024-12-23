@@ -23,6 +23,20 @@ public class MetafieldDefinitionProjection<PARENT extends BaseSubProjectionNode<
      return projection;
   }
 
+  public MetafieldCapabilitiesProjection<MetafieldDefinitionProjection<PARENT, ROOT>, ROOT> capabilities(
+      ) {
+     MetafieldCapabilitiesProjection<MetafieldDefinitionProjection<PARENT, ROOT>, ROOT> projection = new MetafieldCapabilitiesProjection<>(this, getRoot());
+     getFields().put("capabilities", projection);
+     return projection;
+  }
+
+  public MetafieldDefinitionConstraintsProjection<MetafieldDefinitionProjection<PARENT, ROOT>, ROOT> constraints(
+      ) {
+     MetafieldDefinitionConstraintsProjection<MetafieldDefinitionProjection<PARENT, ROOT>, ROOT> projection = new MetafieldDefinitionConstraintsProjection<>(this, getRoot());
+     getFields().put("constraints", projection);
+     return projection;
+  }
+
   public MetafieldConnectionProjection<MetafieldDefinitionProjection<PARENT, ROOT>, ROOT> metafields(
       ) {
      MetafieldConnectionProjection<MetafieldDefinitionProjection<PARENT, ROOT>, ROOT> projection = new MetafieldConnectionProjection<>(this, getRoot());

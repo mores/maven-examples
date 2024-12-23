@@ -25,6 +25,10 @@ public enum LocalizableContentType {
 
   URL,
 
+  LINK,
+
+  LIST_LINK,
+
   FILE_REFERENCE,
 
   LIST_FILE_REFERENCE,

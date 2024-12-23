@@ -10,7 +10,6 @@ import com.test.shopify.generated.types.FulfillmentOrderSortKeys;
 import com.test.shopify.generated.types.LocationSortKeys;
 import com.test.shopify.generated.types.MarketingEventSortKeys;
 import com.test.shopify.generated.types.OrderSortKeys;
-import com.test.shopify.generated.types.PriceRuleSortKeys;
 import com.test.shopify.generated.types.ProductImageSortKeys;
 import com.test.shopify.generated.types.ProductSortKeys;
 import com.test.shopify.generated.types.ProductVariantSortKeys;
@@ -32,6 +31,12 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
     return this;
   }
 
+  public StaffMemberProjection<ShopProjection<PARENT, ROOT>, ROOT> accountOwner() {
+     StaffMemberProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new StaffMemberProjection<>(this, getRoot());
+     getFields().put("accountOwner", projection);
+     return projection;
+  }
+
   public ShopAlertProjection<ShopProjection<PARENT, ROOT>, ROOT> alerts() {
      ShopAlertProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new ShopAlertProjection<>(this, getRoot());
      getFields().put("alerts", projection);
@@ -41,6 +46,12 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
   public ProductCategoryProjection<ShopProjection<PARENT, ROOT>, ROOT> allProductCategories() {
      ProductCategoryProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new ProductCategoryProjection<>(this, getRoot());
      getFields().put("allProductCategories", projection);
+     return projection;
+  }
+
+  public TaxonomyCategoryProjection<ShopProjection<PARENT, ROOT>, ROOT> allProductCategoriesList() {
+     TaxonomyCategoryProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new TaxonomyCategoryProjection<>(this, getRoot());
+     getFields().put("allProductCategoriesList", projection);
      return projection;
   }
 
@@ -704,62 +715,6 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
      return projection;
   }
 
-  public SavedSearchConnectionProjection<ShopProjection<PARENT, ROOT>, ROOT> priceRuleSavedSearches(
-      ) {
-     SavedSearchConnectionProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new SavedSearchConnectionProjection<>(this, getRoot());
-     getFields().put("priceRuleSavedSearches", projection);
-     return projection;
-  }
-
-  public SavedSearchConnectionProjection<ShopProjection<PARENT, ROOT>, ROOT> priceRuleSavedSearches(
-      Integer first, String after, Integer last, String before, Boolean reverse) {
-    SavedSearchConnectionProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new SavedSearchConnectionProjection<>(this, getRoot());    
-    getFields().put("priceRuleSavedSearches", projection);
-    getInputArguments().computeIfAbsent("priceRuleSavedSearches", k -> new ArrayList<>());                      
-    InputArgument firstArg = new InputArgument("first", first);
-    getInputArguments().get("priceRuleSavedSearches").add(firstArg);
-    InputArgument afterArg = new InputArgument("after", after);
-    getInputArguments().get("priceRuleSavedSearches").add(afterArg);
-    InputArgument lastArg = new InputArgument("last", last);
-    getInputArguments().get("priceRuleSavedSearches").add(lastArg);
-    InputArgument beforeArg = new InputArgument("before", before);
-    getInputArguments().get("priceRuleSavedSearches").add(beforeArg);
-    InputArgument reverseArg = new InputArgument("reverse", reverse);
-    getInputArguments().get("priceRuleSavedSearches").add(reverseArg);
-    return projection;
-  }
-
-  public PriceRuleConnectionProjection<ShopProjection<PARENT, ROOT>, ROOT> priceRules() {
-     PriceRuleConnectionProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new PriceRuleConnectionProjection<>(this, getRoot());
-     getFields().put("priceRules", projection);
-     return projection;
-  }
-
-  public PriceRuleConnectionProjection<ShopProjection<PARENT, ROOT>, ROOT> priceRules(Integer first,
-      String after, Integer last, String before, Boolean reverse, PriceRuleSortKeys sortKey,
-      String query, String savedSearchId) {
-    PriceRuleConnectionProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new PriceRuleConnectionProjection<>(this, getRoot());    
-    getFields().put("priceRules", projection);
-    getInputArguments().computeIfAbsent("priceRules", k -> new ArrayList<>());                      
-    InputArgument firstArg = new InputArgument("first", first);
-    getInputArguments().get("priceRules").add(firstArg);
-    InputArgument afterArg = new InputArgument("after", after);
-    getInputArguments().get("priceRules").add(afterArg);
-    InputArgument lastArg = new InputArgument("last", last);
-    getInputArguments().get("priceRules").add(lastArg);
-    InputArgument beforeArg = new InputArgument("before", before);
-    getInputArguments().get("priceRules").add(beforeArg);
-    InputArgument reverseArg = new InputArgument("reverse", reverse);
-    getInputArguments().get("priceRules").add(reverseArg);
-    InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
-    getInputArguments().get("priceRules").add(sortKeyArg);
-    InputArgument queryArg = new InputArgument("query", query);
-    getInputArguments().get("priceRules").add(queryArg);
-    InputArgument savedSearchIdArg = new InputArgument("savedSearchId", savedSearchId);
-    getInputArguments().get("priceRules").add(savedSearchIdArg);
-    return projection;
-  }
-
   public DomainProjection<ShopProjection<PARENT, ROOT>, ROOT> primaryDomain() {
      DomainProjection<ShopProjection<PARENT, ROOT>, ROOT> projection = new DomainProjection<>(this, getRoot());
      getFields().put("primaryDomain", projection);
@@ -1128,11 +1083,6 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
     return this;
   }
 
-  public ShopProjection<PARENT, ROOT> channelCount() {
-    getFields().put("channelCount", null);
-    return this;
-  }
-
   public ShopProjection<PARENT, ROOT> checkoutApiSupported() {
     getFields().put("checkoutApiSupported", null);
     return this;
@@ -1140,6 +1090,11 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
 
   public ShopProjection<PARENT, ROOT> contactEmail() {
     getFields().put("contactEmail", null);
+    return this;
+  }
+
+  public ShopProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
     return this;
   }
 
@@ -1163,6 +1118,11 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
     return this;
   }
 
+  public ShopProjection<PARENT, ROOT> marketingSmsConsentEnabledAtCheckout() {
+    getFields().put("marketingSmsConsentEnabledAtCheckout", null);
+    return this;
+  }
+
   public ShopProjection<PARENT, ROOT> myshopifyDomain() {
     getFields().put("myshopifyDomain", null);
     return this;
@@ -1183,11 +1143,6 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
     return this;
   }
 
-  public ShopProjection<PARENT, ROOT> pendingOrderCount() {
-    getFields().put("pendingOrderCount", null);
-    return this;
-  }
-
   public ShopProjection<PARENT, ROOT> publicationCount() {
     getFields().put("publicationCount", null);
     return this;
@@ -1200,6 +1155,11 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
 
   public ShopProjection<PARENT, ROOT> setupRequired() {
     getFields().put("setupRequired", null);
+    return this;
+  }
+
+  public ShopProjection<PARENT, ROOT> shopOwnerName() {
+    getFields().put("shopOwnerName", null);
     return this;
   }
 
@@ -1235,6 +1195,11 @@ public class ShopProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
 
   public ShopProjection<PARENT, ROOT> transactionalSmsDisabled() {
     getFields().put("transactionalSmsDisabled", null);
+    return this;
+  }
+
+  public ShopProjection<PARENT, ROOT> updatedAt() {
+    getFields().put("updatedAt", null);
     return this;
   }
 

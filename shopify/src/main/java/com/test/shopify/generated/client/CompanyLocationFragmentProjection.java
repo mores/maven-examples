@@ -2,6 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
 import com.test.shopify.generated.types.CompanyContactRoleAssignmentSortKeys;
+import com.test.shopify.generated.types.CompanyLocationStaffMemberAssignmentSortKeys;
 import com.test.shopify.generated.types.DraftOrderSortKeys;
 import com.test.shopify.generated.types.EventSortKeys;
 import com.test.shopify.generated.types.MetafieldDefinitionPinnedStatus;
@@ -65,6 +66,12 @@ public class CompanyLocationFragmentProjection<PARENT extends BaseSubProjectionN
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("catalogs").add(reverseArg);
     return projection;
+  }
+
+  public CountProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> catalogsCount() {
+     CountProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("catalogsCount", projection);
+     return projection;
   }
 
   public CompanyProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> company() {
@@ -254,6 +261,12 @@ public class CompanyLocationFragmentProjection<PARENT extends BaseSubProjectionN
     return projection;
   }
 
+  public CountProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> ordersCount() {
+     CountProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("ordersCount", projection);
+     return projection;
+  }
+
   public PrivateMetafieldProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> privateMetafield(
       ) {
      PrivateMetafieldProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> projection = new PrivateMetafieldProjection<>(this, getRoot());
@@ -335,6 +348,36 @@ public class CompanyLocationFragmentProjection<PARENT extends BaseSubProjectionN
      CompanyAddressProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> projection = new CompanyAddressProjection<>(this, getRoot());
      getFields().put("shippingAddress", projection);
      return projection;
+  }
+
+  public CompanyLocationStaffMemberAssignmentConnectionProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> staffMemberAssignments(
+      ) {
+     CompanyLocationStaffMemberAssignmentConnectionProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> projection = new CompanyLocationStaffMemberAssignmentConnectionProjection<>(this, getRoot());
+     getFields().put("staffMemberAssignments", projection);
+     return projection;
+  }
+
+  public CompanyLocationStaffMemberAssignmentConnectionProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> staffMemberAssignments(
+      Integer first, String after, Integer last, String before, Boolean reverse,
+      CompanyLocationStaffMemberAssignmentSortKeys sortKey, String query) {
+    CompanyLocationStaffMemberAssignmentConnectionProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> projection = new CompanyLocationStaffMemberAssignmentConnectionProjection<>(this, getRoot());    
+    getFields().put("staffMemberAssignments", projection);
+    getInputArguments().computeIfAbsent("staffMemberAssignments", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("staffMemberAssignments").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("staffMemberAssignments").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("staffMemberAssignments").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("staffMemberAssignments").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("staffMemberAssignments").add(reverseArg);
+    InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
+    getInputArguments().get("staffMemberAssignments").add(sortKeyArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("staffMemberAssignments").add(queryArg);
+    return projection;
   }
 
   public TaxExemptionProjection<CompanyLocationFragmentProjection<PARENT, ROOT>, ROOT> taxExemptions(

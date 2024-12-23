@@ -233,6 +233,11 @@ public class LocationFragmentProjection<PARENT extends BaseSubProjectionNode<?, 
     return this;
   }
 
+  public LocationFragmentProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public LocationFragmentProjection<PARENT, ROOT> deactivatable() {
     getFields().put("deactivatable", null);
     return this;
@@ -273,6 +278,11 @@ public class LocationFragmentProjection<PARENT extends BaseSubProjectionNode<?, 
     return this;
   }
 
+  public LocationFragmentProjection<PARENT, ROOT> isFulfillmentService() {
+    getFields().put("isFulfillmentService", null);
+    return this;
+  }
+
   public LocationFragmentProjection<PARENT, ROOT> isPrimary() {
     getFields().put("isPrimary", null);
     return this;
@@ -290,6 +300,11 @@ public class LocationFragmentProjection<PARENT extends BaseSubProjectionNode<?, 
 
   public LocationFragmentProjection<PARENT, ROOT> shipsInventory() {
     getFields().put("shipsInventory", null);
+    return this;
+  }
+
+  public LocationFragmentProjection<PARENT, ROOT> updatedAt() {
+    getFields().put("updatedAt", null);
     return this;
   }
 

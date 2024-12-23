@@ -12,6 +12,8 @@ public enum CollectionRuleColumn {
 
   PRODUCT_TAXONOMY_NODE_ID,
 
+  PRODUCT_CATEGORY_ID,
+
   VENDOR,
 
   VARIANT_PRICE,

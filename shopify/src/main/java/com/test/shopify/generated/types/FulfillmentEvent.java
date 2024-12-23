@@ -31,6 +31,11 @@ public class FulfillmentEvent implements com.test.shopify.generated.types.Node {
   private String country;
 
   /**
+   * The date and time when the fulfillment event was created.
+   */
+  private OffsetDateTime createdAt;
+
+  /**
    * The estimated delivery date and time of the fulfillment.
    */
   private OffsetDateTime estimatedDeliveryAt;
@@ -109,6 +114,17 @@ public class FulfillmentEvent implements com.test.shopify.generated.types.Node {
 
   public void setCountry(String country) {
     this.country = country;
+  }
+
+  /**
+   * The date and time when the fulfillment event was created.
+   */
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
   /**
@@ -212,7 +228,7 @@ public class FulfillmentEvent implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "FulfillmentEvent{address1='" + address1 + "', city='" + city + "', country='" + country + "', estimatedDeliveryAt='" + estimatedDeliveryAt + "', happenedAt='" + happenedAt + "', id='" + id + "', latitude='" + latitude + "', longitude='" + longitude + "', message='" + message + "', province='" + province + "', status='" + status + "', zip='" + zip + "'}";
+    return "FulfillmentEvent{address1='" + address1 + "', city='" + city + "', country='" + country + "', createdAt='" + createdAt + "', estimatedDeliveryAt='" + estimatedDeliveryAt + "', happenedAt='" + happenedAt + "', id='" + id + "', latitude='" + latitude + "', longitude='" + longitude + "', message='" + message + "', province='" + province + "', status='" + status + "', zip='" + zip + "'}";
   }
 
   @Override
@@ -223,6 +239,7 @@ public class FulfillmentEvent implements com.test.shopify.generated.types.Node {
     return Objects.equals(address1, that.address1) &&
         Objects.equals(city, that.city) &&
         Objects.equals(country, that.country) &&
+        Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(estimatedDeliveryAt, that.estimatedDeliveryAt) &&
         Objects.equals(happenedAt, that.happenedAt) &&
         Objects.equals(id, that.id) &&
@@ -236,7 +253,7 @@ public class FulfillmentEvent implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address1, city, country, estimatedDeliveryAt, happenedAt, id, latitude, longitude, message, province, status, zip);
+    return Objects.hash(address1, city, country, createdAt, estimatedDeliveryAt, happenedAt, id, latitude, longitude, message, province, status, zip);
   }
 
   public static Builder newBuilder() {
@@ -258,6 +275,11 @@ public class FulfillmentEvent implements com.test.shopify.generated.types.Node {
      * The country where this fulfillment event occurred.
      */
     private String country;
+
+    /**
+     * The date and time when the fulfillment event was created.
+     */
+    private OffsetDateTime createdAt;
 
     /**
      * The estimated delivery date and time of the fulfillment.
@@ -309,6 +331,7 @@ public class FulfillmentEvent implements com.test.shopify.generated.types.Node {
       result.address1 = this.address1;
       result.city = this.city;
       result.country = this.country;
+      result.createdAt = this.createdAt;
       result.estimatedDeliveryAt = this.estimatedDeliveryAt;
       result.happenedAt = this.happenedAt;
       result.id = this.id;
@@ -342,6 +365,14 @@ public class FulfillmentEvent implements com.test.shopify.generated.types.Node {
      */
     public Builder country(String country) {
       this.country = country;
+      return this;
+    }
+
+    /**
+     * The date and time when the fulfillment event was created.
+     */
+    public Builder createdAt(OffsetDateTime createdAt) {
+      this.createdAt = createdAt;
       return this;
     }
 

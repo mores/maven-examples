@@ -12,6 +12,13 @@ public class CollectionRuleConditionObjectProjection<PARENT extends BaseSubProje
     return this;
   }
 
+  public CollectionRuleCategoryConditionFragmentProjection<CollectionRuleConditionObjectProjection<PARENT, ROOT>, ROOT> onCollectionRuleCategoryCondition(
+      ) {
+    CollectionRuleCategoryConditionFragmentProjection<CollectionRuleConditionObjectProjection<PARENT, ROOT>, ROOT> fragment = new CollectionRuleCategoryConditionFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
   public CollectionRuleMetafieldConditionFragmentProjection<CollectionRuleConditionObjectProjection<PARENT, ROOT>, ROOT> onCollectionRuleMetafieldCondition(
       ) {
     CollectionRuleMetafieldConditionFragmentProjection<CollectionRuleConditionObjectProjection<PARENT, ROOT>, ROOT> fragment = new CollectionRuleMetafieldConditionFragmentProjection<>(this, getRoot());

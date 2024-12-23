@@ -38,6 +38,11 @@ public class TaxLine {
   private Double ratePercentage;
 
   /**
+   * The source of the tax.
+   */
+  private String source;
+
+  /**
    * The name of the tax.
    */
   private String title;
@@ -102,6 +107,17 @@ public class TaxLine {
   }
 
   /**
+   * The source of the tax.
+   */
+  public String getSource() {
+    return source;
+  }
+
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+  /**
    * The name of the tax.
    */
   public String getTitle() {
@@ -114,7 +130,7 @@ public class TaxLine {
 
   @Override
   public String toString() {
-    return "TaxLine{channelLiable='" + channelLiable + "', price='" + price + "', priceSet='" + priceSet + "', rate='" + rate + "', ratePercentage='" + ratePercentage + "', title='" + title + "'}";
+    return "TaxLine{channelLiable='" + channelLiable + "', price='" + price + "', priceSet='" + priceSet + "', rate='" + rate + "', ratePercentage='" + ratePercentage + "', source='" + source + "', title='" + title + "'}";
   }
 
   @Override
@@ -127,12 +143,13 @@ public class TaxLine {
         Objects.equals(priceSet, that.priceSet) &&
         Objects.equals(rate, that.rate) &&
         Objects.equals(ratePercentage, that.ratePercentage) &&
+        Objects.equals(source, that.source) &&
         Objects.equals(title, that.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channelLiable, price, priceSet, rate, ratePercentage, title);
+    return Objects.hash(channelLiable, price, priceSet, rate, ratePercentage, source, title);
   }
 
   public static Builder newBuilder() {
@@ -167,6 +184,11 @@ public class TaxLine {
     private Double ratePercentage;
 
     /**
+     * The source of the tax.
+     */
+    private String source;
+
+    /**
      * The name of the tax.
      */
     private String title;
@@ -178,6 +200,7 @@ public class TaxLine {
       result.priceSet = this.priceSet;
       result.rate = this.rate;
       result.ratePercentage = this.ratePercentage;
+      result.source = this.source;
       result.title = this.title;
       return result;
     }
@@ -220,6 +243,14 @@ public class TaxLine {
      */
     public Builder ratePercentage(Double ratePercentage) {
       this.ratePercentage = ratePercentage;
+      return this;
+    }
+
+    /**
+     * The source of the tax.
+     */
+    public Builder source(String source) {
+      this.source = source;
       return this;
     }
 

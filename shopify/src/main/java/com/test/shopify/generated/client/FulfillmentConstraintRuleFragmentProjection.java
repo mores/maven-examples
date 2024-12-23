@@ -22,6 +22,13 @@ public class FulfillmentConstraintRuleFragmentProjection<PARENT extends BaseSubP
     return this;
   }
 
+  public DeliveryMethodTypeProjection<FulfillmentConstraintRuleFragmentProjection<PARENT, ROOT>, ROOT> deliveryMethodTypes(
+      ) {
+     DeliveryMethodTypeProjection<FulfillmentConstraintRuleFragmentProjection<PARENT, ROOT>, ROOT> projection = new DeliveryMethodTypeProjection<>(this, getRoot());
+     getFields().put("deliveryMethodTypes", projection);
+     return projection;
+  }
+
   public ShopifyFunctionProjection<FulfillmentConstraintRuleFragmentProjection<PARENT, ROOT>, ROOT> function(
       ) {
      ShopifyFunctionProjection<FulfillmentConstraintRuleFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShopifyFunctionProjection<>(this, getRoot());

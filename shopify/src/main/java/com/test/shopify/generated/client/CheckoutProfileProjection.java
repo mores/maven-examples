@@ -37,6 +37,11 @@ public class CheckoutProfileProjection<PARENT extends BaseSubProjectionNode<?, ?
     return this;
   }
 
+  public CheckoutProfileProjection<PARENT, ROOT> typOspPagesActive() {
+    getFields().put("typOspPagesActive", null);
+    return this;
+  }
+
   public CheckoutProfileProjection<PARENT, ROOT> updatedAt() {
     getFields().put("updatedAt", null);
     return this;

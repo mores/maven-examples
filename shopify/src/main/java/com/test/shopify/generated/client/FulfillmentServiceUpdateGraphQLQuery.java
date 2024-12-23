@@ -19,7 +19,8 @@ import java.util.Set;
  */
 public class FulfillmentServiceUpdateGraphQLQuery extends GraphQLQuery {
   public FulfillmentServiceUpdateGraphQLQuery(String id, String name, String callbackUrl,
-      Boolean trackingSupport, String queryName, Set<String> fieldsSet) {
+      Boolean trackingSupport, Boolean inventoryManagement, String queryName,
+      Set<String> fieldsSet) {
     super("mutation", queryName);
     if (id != null || fieldsSet.contains("id")) {
         getInput().put("id", id);
@@ -29,6 +30,8 @@ public class FulfillmentServiceUpdateGraphQLQuery extends GraphQLQuery {
         getInput().put("callbackUrl", callbackUrl);
     }if (trackingSupport != null || fieldsSet.contains("trackingSupport")) {
         getInput().put("trackingSupport", trackingSupport);
+    }if (inventoryManagement != null || fieldsSet.contains("inventoryManagement")) {
+        getInput().put("inventoryManagement", inventoryManagement);
     }
   }
 
@@ -56,10 +59,12 @@ public class FulfillmentServiceUpdateGraphQLQuery extends GraphQLQuery {
 
     private Boolean trackingSupport;
 
+    private Boolean inventoryManagement;
+
     private String queryName;
 
     public FulfillmentServiceUpdateGraphQLQuery build() {
-      return new FulfillmentServiceUpdateGraphQLQuery(id, name, callbackUrl, trackingSupport, queryName, fieldsSet);
+      return new FulfillmentServiceUpdateGraphQLQuery(id, name, callbackUrl, trackingSupport, inventoryManagement, queryName, fieldsSet);
                
     }
 
@@ -103,6 +108,15 @@ public class FulfillmentServiceUpdateGraphQLQuery extends GraphQLQuery {
     public Builder trackingSupport(Boolean trackingSupport) {
       this.trackingSupport = trackingSupport;
       this.fieldsSet.add("trackingSupport");
+      return this;
+    }
+
+    /**
+     * Whether the fulfillment service tracks product inventory and provides updates to Shopify.
+     */
+    public Builder inventoryManagement(Boolean inventoryManagement) {
+      this.inventoryManagement = inventoryManagement;
+      this.fieldsSet.add("inventoryManagement");
       return this;
     }
 

@@ -76,11 +76,6 @@ public class InventoryLevelProjection<PARENT extends BaseSubProjectionNode<?, ?>
     return projection;
   }
 
-  public InventoryLevelProjection<PARENT, ROOT> available() {
-    getFields().put("available", null);
-    return this;
-  }
-
   public InventoryLevelProjection<PARENT, ROOT> canDeactivate() {
     getFields().put("canDeactivate", null);
     return this;
@@ -96,18 +91,8 @@ public class InventoryLevelProjection<PARENT extends BaseSubProjectionNode<?, ?>
     return this;
   }
 
-  public InventoryLevelProjection<PARENT, ROOT> deactivationAlertHtml() {
-    getFields().put("deactivationAlertHtml", null);
-    return this;
-  }
-
   public InventoryLevelProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
-    return this;
-  }
-
-  public InventoryLevelProjection<PARENT, ROOT> incoming() {
-    getFields().put("incoming", null);
     return this;
   }
 

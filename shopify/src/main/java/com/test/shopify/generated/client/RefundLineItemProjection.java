@@ -49,6 +49,11 @@ public class RefundLineItemProjection<PARENT extends BaseSubProjectionNode<?, ?>
      return projection;
   }
 
+  public RefundLineItemProjection<PARENT, ROOT> id() {
+    getFields().put("id", null);
+    return this;
+  }
+
   public RefundLineItemProjection<PARENT, ROOT> price() {
     getFields().put("price", null);
     return this;

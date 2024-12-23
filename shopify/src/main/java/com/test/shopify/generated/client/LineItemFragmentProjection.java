@@ -1,6 +1,7 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
@@ -43,6 +44,16 @@ public class LineItemFragmentProjection<PARENT extends BaseSubProjectionNode<?, 
      MoneyBagProjection<LineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
      getFields().put("discountedTotalSet", projection);
      return projection;
+  }
+
+  public MoneyBagProjection<LineItemFragmentProjection<PARENT, ROOT>, ROOT> discountedTotalSet(
+      Boolean withCodeDiscounts) {
+    MoneyBagProjection<LineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());    
+    getFields().put("discountedTotalSet", projection);
+    getInputArguments().computeIfAbsent("discountedTotalSet", k -> new ArrayList<>());                      
+    InputArgument withCodeDiscountsArg = new InputArgument("withCodeDiscounts", withCodeDiscounts);
+    getInputArguments().get("discountedTotalSet").add(withCodeDiscountsArg);
+    return projection;
   }
 
   public MoneyBagProjection<LineItemFragmentProjection<PARENT, ROOT>, ROOT> discountedUnitPriceAfterAllDiscountsSet(
@@ -188,6 +199,11 @@ public class LineItemFragmentProjection<PARENT extends BaseSubProjectionNode<?, 
 
   public LineItemFragmentProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
+    return this;
+  }
+
+  public LineItemFragmentProjection<PARENT, ROOT> isGiftCard() {
+    getFields().put("isGiftCard", null);
     return this;
   }
 

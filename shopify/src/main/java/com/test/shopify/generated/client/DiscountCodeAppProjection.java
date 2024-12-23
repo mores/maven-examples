@@ -56,6 +56,12 @@ public class DiscountCodeAppProjection<PARENT extends BaseSubProjectionNode<?, ?
     return projection;
   }
 
+  public CountProjection<DiscountCodeAppProjection<PARENT, ROOT>, ROOT> codesCount() {
+     CountProjection<DiscountCodeAppProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("codesCount", projection);
+     return projection;
+  }
+
   public DiscountCombinesWithProjection<DiscountCodeAppProjection<PARENT, ROOT>, ROOT> combinesWith(
       ) {
      DiscountCombinesWithProjection<DiscountCodeAppProjection<PARENT, ROOT>, ROOT> projection = new DiscountCombinesWithProjection<>(this, getRoot());
@@ -109,11 +115,6 @@ public class DiscountCodeAppProjection<PARENT extends BaseSubProjectionNode<?, ?
 
   public DiscountCodeAppProjection<PARENT, ROOT> asyncUsageCount() {
     getFields().put("asyncUsageCount", null);
-    return this;
-  }
-
-  public DiscountCodeAppProjection<PARENT, ROOT> codeCount() {
-    getFields().put("codeCount", null);
     return this;
   }
 

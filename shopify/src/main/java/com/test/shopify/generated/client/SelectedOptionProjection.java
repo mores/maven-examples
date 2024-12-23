@@ -12,6 +12,12 @@ public class SelectedOptionProjection<PARENT extends BaseSubProjectionNode<?, ?>
     return this;
   }
 
+  public ProductOptionValueProjection<SelectedOptionProjection<PARENT, ROOT>, ROOT> optionValue() {
+     ProductOptionValueProjection<SelectedOptionProjection<PARENT, ROOT>, ROOT> projection = new ProductOptionValueProjection<>(this, getRoot());
+     getFields().put("optionValue", projection);
+     return projection;
+  }
+
   public SelectedOptionProjection<PARENT, ROOT> name() {
     getFields().put("name", null);
     return this;

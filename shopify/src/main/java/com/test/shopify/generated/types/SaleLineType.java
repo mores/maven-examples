@@ -25,6 +25,8 @@ public enum SaleLineType {
 
   ADDITIONAL_FEE,
 
+  FEE,
+
   UNKNOWN,
 
   ADJUSTMENT

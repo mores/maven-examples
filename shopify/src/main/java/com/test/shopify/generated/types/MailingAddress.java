@@ -38,7 +38,7 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
   private String company;
 
   /**
-   * Whether the address coordinates are valid.
+   * Whether the address corresponds to recognized latitude and longitude values.
    */
   private boolean coordinatesValidated;
 
@@ -124,6 +124,13 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
   private String timeZone;
 
   /**
+   * The validation status that is leveraged by the address validation feature in the Shopify Admin.
+   * See ["Validating addresses in your Shopify admin"](https://help.shopify.com/manual/fulfillment/managing-orders/validating-order-address)
+   * for more details.
+   */
+  private MailingAddressValidationResult validationResultSummary;
+
+  /**
    * The zip or postal code of the address.
    */
   private String zip;
@@ -176,7 +183,7 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
   }
 
   /**
-   * Whether the address coordinates are valid.
+   * Whether the address corresponds to recognized latitude and longitude values.
    */
   public boolean getCoordinatesValidated() {
     return coordinatesValidated;
@@ -358,6 +365,19 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * The validation status that is leveraged by the address validation feature in the Shopify Admin.
+   * See ["Validating addresses in your Shopify admin"](https://help.shopify.com/manual/fulfillment/managing-orders/validating-order-address)
+   * for more details.
+   */
+  public MailingAddressValidationResult getValidationResultSummary() {
+    return validationResultSummary;
+  }
+
+  public void setValidationResultSummary(MailingAddressValidationResult validationResultSummary) {
+    this.validationResultSummary = validationResultSummary;
+  }
+
+  /**
    * The zip or postal code of the address.
    */
   public String getZip() {
@@ -370,7 +390,7 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "MailingAddress{address1='" + address1 + "', address2='" + address2 + "', city='" + city + "', company='" + company + "', coordinatesValidated='" + coordinatesValidated + "', country='" + country + "', countryCode='" + countryCode + "', countryCodeV2='" + countryCodeV2 + "', firstName='" + firstName + "', formatted='" + formatted + "', formattedArea='" + formattedArea + "', id='" + id + "', lastName='" + lastName + "', latitude='" + latitude + "', longitude='" + longitude + "', name='" + name + "', phone='" + phone + "', province='" + province + "', provinceCode='" + provinceCode + "', timeZone='" + timeZone + "', zip='" + zip + "'}";
+    return "MailingAddress{address1='" + address1 + "', address2='" + address2 + "', city='" + city + "', company='" + company + "', coordinatesValidated='" + coordinatesValidated + "', country='" + country + "', countryCode='" + countryCode + "', countryCodeV2='" + countryCodeV2 + "', firstName='" + firstName + "', formatted='" + formatted + "', formattedArea='" + formattedArea + "', id='" + id + "', lastName='" + lastName + "', latitude='" + latitude + "', longitude='" + longitude + "', name='" + name + "', phone='" + phone + "', province='" + province + "', provinceCode='" + provinceCode + "', timeZone='" + timeZone + "', validationResultSummary='" + validationResultSummary + "', zip='" + zip + "'}";
   }
 
   @Override
@@ -398,12 +418,13 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
         Objects.equals(province, that.province) &&
         Objects.equals(provinceCode, that.provinceCode) &&
         Objects.equals(timeZone, that.timeZone) &&
+        Objects.equals(validationResultSummary, that.validationResultSummary) &&
         Objects.equals(zip, that.zip);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address1, address2, city, company, coordinatesValidated, country, countryCode, countryCodeV2, firstName, formatted, formattedArea, id, lastName, latitude, longitude, name, phone, province, provinceCode, timeZone, zip);
+    return Objects.hash(address1, address2, city, company, coordinatesValidated, country, countryCode, countryCodeV2, firstName, formatted, formattedArea, id, lastName, latitude, longitude, name, phone, province, provinceCode, timeZone, validationResultSummary, zip);
   }
 
   public static Builder newBuilder() {
@@ -432,7 +453,7 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
     private String company;
 
     /**
-     * Whether the address coordinates are valid.
+     * Whether the address corresponds to recognized latitude and longitude values.
      */
     private boolean coordinatesValidated;
 
@@ -518,6 +539,13 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
     private String timeZone;
 
     /**
+     * The validation status that is leveraged by the address validation feature in the Shopify Admin.
+     * See ["Validating addresses in your Shopify admin"](https://help.shopify.com/manual/fulfillment/managing-orders/validating-order-address)
+     * for more details.
+     */
+    private MailingAddressValidationResult validationResultSummary;
+
+    /**
      * The zip or postal code of the address.
      */
     private String zip;
@@ -544,6 +572,7 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
       result.province = this.province;
       result.provinceCode = this.provinceCode;
       result.timeZone = this.timeZone;
+      result.validationResultSummary = this.validationResultSummary;
       result.zip = this.zip;
       return result;
     }
@@ -581,7 +610,7 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
     }
 
     /**
-     * Whether the address coordinates are valid.
+     * Whether the address corresponds to recognized latitude and longitude values.
      */
     public Builder coordinatesValidated(boolean coordinatesValidated) {
       this.coordinatesValidated = coordinatesValidated;
@@ -711,6 +740,16 @@ public class MailingAddress implements com.test.shopify.generated.types.Node {
      */
     public Builder timeZone(String timeZone) {
       this.timeZone = timeZone;
+      return this;
+    }
+
+    /**
+     * The validation status that is leveraged by the address validation feature in the Shopify Admin.
+     * See ["Validating addresses in your Shopify admin"](https://help.shopify.com/manual/fulfillment/managing-orders/validating-order-address)
+     * for more details.
+     */
+    public Builder validationResultSummary(MailingAddressValidationResult validationResultSummary) {
+      this.validationResultSummary = validationResultSummary;
       return this;
     }
 

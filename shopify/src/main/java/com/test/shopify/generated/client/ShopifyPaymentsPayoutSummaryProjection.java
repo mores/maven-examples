@@ -26,6 +26,20 @@ public class ShopifyPaymentsPayoutSummaryProjection<PARENT extends BaseSubProjec
      return projection;
   }
 
+  public MoneyV2Projection<ShopifyPaymentsPayoutSummaryProjection<PARENT, ROOT>, ROOT> advanceFees(
+      ) {
+     MoneyV2Projection<ShopifyPaymentsPayoutSummaryProjection<PARENT, ROOT>, ROOT> projection = new MoneyV2Projection<>(this, getRoot());
+     getFields().put("advanceFees", projection);
+     return projection;
+  }
+
+  public MoneyV2Projection<ShopifyPaymentsPayoutSummaryProjection<PARENT, ROOT>, ROOT> advanceGross(
+      ) {
+     MoneyV2Projection<ShopifyPaymentsPayoutSummaryProjection<PARENT, ROOT>, ROOT> projection = new MoneyV2Projection<>(this, getRoot());
+     getFields().put("advanceGross", projection);
+     return projection;
+  }
+
   public MoneyV2Projection<ShopifyPaymentsPayoutSummaryProjection<PARENT, ROOT>, ROOT> chargesFee(
       ) {
      MoneyV2Projection<ShopifyPaymentsPayoutSummaryProjection<PARENT, ROOT>, ROOT> projection = new MoneyV2Projection<>(this, getRoot());

@@ -18,6 +18,18 @@ public class ExternalVideoFragmentProjection<PARENT extends BaseSubProjectionNod
     return this;
   }
 
+  public FileErrorProjection<ExternalVideoFragmentProjection<PARENT, ROOT>, ROOT> fileErrors() {
+     FileErrorProjection<ExternalVideoFragmentProjection<PARENT, ROOT>, ROOT> projection = new FileErrorProjection<>(this, getRoot());
+     getFields().put("fileErrors", projection);
+     return projection;
+  }
+
+  public FileStatusProjection<ExternalVideoFragmentProjection<PARENT, ROOT>, ROOT> fileStatus() {
+     FileStatusProjection<ExternalVideoFragmentProjection<PARENT, ROOT>, ROOT> projection = new FileStatusProjection<>(this, getRoot());
+     getFields().put("fileStatus", projection);
+     return projection;
+  }
+
   public MediaHostProjection<ExternalVideoFragmentProjection<PARENT, ROOT>, ROOT> host() {
      MediaHostProjection<ExternalVideoFragmentProjection<PARENT, ROOT>, ROOT> projection = new MediaHostProjection<>(this, getRoot());
      getFields().put("host", projection);
@@ -62,6 +74,11 @@ public class ExternalVideoFragmentProjection<PARENT extends BaseSubProjectionNod
     return this;
   }
 
+  public ExternalVideoFragmentProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public ExternalVideoFragmentProjection<PARENT, ROOT> embedUrl() {
     getFields().put("embedUrl", null);
     return this;
@@ -79,6 +96,11 @@ public class ExternalVideoFragmentProjection<PARENT extends BaseSubProjectionNod
 
   public ExternalVideoFragmentProjection<PARENT, ROOT> originUrl() {
     getFields().put("originUrl", null);
+    return this;
+  }
+
+  public ExternalVideoFragmentProjection<PARENT, ROOT> updatedAt() {
+    getFields().put("updatedAt", null);
     return this;
   }
 

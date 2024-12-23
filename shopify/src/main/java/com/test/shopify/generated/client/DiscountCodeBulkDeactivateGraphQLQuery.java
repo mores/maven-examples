@@ -8,7 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Asynchronously deactivate code discounts in bulk using a search query, a saved search ID, or a list of code discount IDs.
+ * Deactivates multiple [code-based discounts](https://help.shopify.com/manual/discounts/discount-types#discount-codes)
+ * asynchronously using one of the following:
+ * - A search query
+ * - A saved search ID
+ * - A list of discount code IDs
+ *   
+ * For example, you can deactivate discounts for all codes that match a search
+ * criteria, or deactivate a predefined set of discount codes.
  */
 public class DiscountCodeBulkDeactivateGraphQLQuery extends GraphQLQuery {
   public DiscountCodeBulkDeactivateGraphQLQuery(String search, String savedSearchId,
@@ -53,10 +60,9 @@ public class DiscountCodeBulkDeactivateGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The search query for filtering code discounts.
-     *     
-     * For more information on the list of supported fields and search syntax,
-     * refer to the [CodeDiscountNodes query section](https://shopify.dev/api/admin-graphql/latest/queries/codeDiscountNodes#argument-codediscountnodes-query).
+     * The search query for filtering discounts.
+     * <br><br>
+     * For more information on the list of supported fields and search syntax, refer to the [`codeDiscountNodes`](https://shopify.dev/docs/api/admin-graphql/latest/queries/codeDiscountNodes#query-arguments) query.
      */
     public Builder search(String search) {
       this.search = search;
@@ -65,7 +71,10 @@ public class DiscountCodeBulkDeactivateGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The ID of the saved search.
+     * The ID of the saved search for filtering discounts to deactivate. Saved
+     * searches represent [customer
+     * segments](https://help.shopify.com/manual/customers/customer-segments) that
+     * merchants have built in the Shopify admin.
      */
     public Builder savedSearchId(String savedSearchId) {
       this.savedSearchId = savedSearchId;
@@ -74,7 +83,7 @@ public class DiscountCodeBulkDeactivateGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The IDs of the code discounts to deactivate.
+     * The IDs of the discounts to deactivate.
      */
     public Builder ids(List<String> ids) {
       this.ids = ids;

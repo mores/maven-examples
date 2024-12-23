@@ -14,6 +14,8 @@ public enum CustomerMergeErrorFieldType {
 
   GIFT_CARDS,
 
+  STORE_CREDIT,
+
   COMPANY_CONTACT,
 
   CUSTOMER_PAYMENT_METHODS,

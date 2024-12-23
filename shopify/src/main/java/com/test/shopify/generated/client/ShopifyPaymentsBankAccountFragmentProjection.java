@@ -1,6 +1,7 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
+import com.test.shopify.generated.types.PayoutSortKeys;
 import com.test.shopify.generated.types.ShopifyPaymentsPayoutTransactionType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -45,7 +46,8 @@ public class ShopifyPaymentsBankAccountFragmentProjection<PARENT extends BaseSub
 
   public ShopifyPaymentsPayoutConnectionProjection<ShopifyPaymentsBankAccountFragmentProjection<PARENT, ROOT>, ROOT> payouts(
       ShopifyPaymentsPayoutTransactionType transactionType, Integer first, String after,
-      Integer last, String before, Boolean reverse) {
+      Integer last, String before, Boolean reverse, PayoutSortKeys sortKey, String query,
+      String savedSearchId) {
     ShopifyPaymentsPayoutConnectionProjection<ShopifyPaymentsBankAccountFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsPayoutConnectionProjection<>(this, getRoot());    
     getFields().put("payouts", projection);
     getInputArguments().computeIfAbsent("payouts", k -> new ArrayList<>());                      
@@ -61,6 +63,12 @@ public class ShopifyPaymentsBankAccountFragmentProjection<PARENT extends BaseSub
     getInputArguments().get("payouts").add(beforeArg);
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("payouts").add(reverseArg);
+    InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
+    getInputArguments().get("payouts").add(sortKeyArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("payouts").add(queryArg);
+    InputArgument savedSearchIdArg = new InputArgument("savedSearchId", savedSearchId);
+    getInputArguments().get("payouts").add(savedSearchIdArg);
     return projection;
   }
 

@@ -81,6 +81,11 @@ public class SubscriptionBillingCycleEditedContract implements com.test.shopify.
   private SubscriptionLineConnection lines;
 
   /**
+   * The number of lines associated with the subscription contract.
+   */
+  private Count linesCount;
+
+  /**
    * The note field that will be applied to the generated orders.
    */
   private String note;
@@ -242,6 +247,17 @@ public class SubscriptionBillingCycleEditedContract implements com.test.shopify.
   }
 
   /**
+   * The number of lines associated with the subscription contract.
+   */
+  public Count getLinesCount() {
+    return linesCount;
+  }
+
+  public void setLinesCount(Count linesCount) {
+    this.linesCount = linesCount;
+  }
+
+  /**
    * The note field that will be applied to the generated orders.
    */
   public String getNote() {
@@ -276,7 +292,7 @@ public class SubscriptionBillingCycleEditedContract implements com.test.shopify.
 
   @Override
   public String toString() {
-    return "SubscriptionBillingCycleEditedContract{app='" + app + "', appAdminUrl='" + appAdminUrl + "', billingCycles='" + billingCycles + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', customAttributes='" + customAttributes + "', customer='" + customer + "', customerPaymentMethod='" + customerPaymentMethod + "', deliveryMethod='" + deliveryMethod + "', deliveryPrice='" + deliveryPrice + "', discounts='" + discounts + "', lineCount='" + lineCount + "', lines='" + lines + "', note='" + note + "', orders='" + orders + "', updatedAt='" + updatedAt + "'}";
+    return "SubscriptionBillingCycleEditedContract{app='" + app + "', appAdminUrl='" + appAdminUrl + "', billingCycles='" + billingCycles + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', customAttributes='" + customAttributes + "', customer='" + customer + "', customerPaymentMethod='" + customerPaymentMethod + "', deliveryMethod='" + deliveryMethod + "', deliveryPrice='" + deliveryPrice + "', discounts='" + discounts + "', lineCount='" + lineCount + "', lines='" + lines + "', linesCount='" + linesCount + "', note='" + note + "', orders='" + orders + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -297,6 +313,7 @@ public class SubscriptionBillingCycleEditedContract implements com.test.shopify.
         Objects.equals(discounts, that.discounts) &&
         lineCount == that.lineCount &&
         Objects.equals(lines, that.lines) &&
+        Objects.equals(linesCount, that.linesCount) &&
         Objects.equals(note, that.note) &&
         Objects.equals(orders, that.orders) &&
         Objects.equals(updatedAt, that.updatedAt);
@@ -304,7 +321,7 @@ public class SubscriptionBillingCycleEditedContract implements com.test.shopify.
 
   @Override
   public int hashCode() {
-    return Objects.hash(app, appAdminUrl, billingCycles, createdAt, currencyCode, customAttributes, customer, customerPaymentMethod, deliveryMethod, deliveryPrice, discounts, lineCount, lines, note, orders, updatedAt);
+    return Objects.hash(app, appAdminUrl, billingCycles, createdAt, currencyCode, customAttributes, customer, customerPaymentMethod, deliveryMethod, deliveryPrice, discounts, lineCount, lines, linesCount, note, orders, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -378,6 +395,11 @@ public class SubscriptionBillingCycleEditedContract implements com.test.shopify.
     private SubscriptionLineConnection lines;
 
     /**
+     * The number of lines associated with the subscription contract.
+     */
+    private Count linesCount;
+
+    /**
      * The note field that will be applied to the generated orders.
      */
     private String note;
@@ -407,6 +429,7 @@ public class SubscriptionBillingCycleEditedContract implements com.test.shopify.
       result.discounts = this.discounts;
       result.lineCount = this.lineCount;
       result.lines = this.lines;
+      result.linesCount = this.linesCount;
       result.note = this.note;
       result.orders = this.orders;
       result.updatedAt = this.updatedAt;
@@ -514,6 +537,14 @@ public class SubscriptionBillingCycleEditedContract implements com.test.shopify.
      */
     public Builder lines(SubscriptionLineConnection lines) {
       this.lines = lines;
+      return this;
+    }
+
+    /**
+     * The number of lines associated with the subscription contract.
+     */
+    public Builder linesCount(Count linesCount) {
+      this.linesCount = linesCount;
       return this;
     }
 

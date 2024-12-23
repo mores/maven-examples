@@ -27,6 +27,11 @@ public class ValidationUpdateInput {
    */
   private List<MetafieldInput> metafields = Collections.emptyList();
 
+  /**
+   * The title of the validation.
+   */
+  private String title;
+
   public ValidationUpdateInput() {
   }
 
@@ -63,9 +68,20 @@ public class ValidationUpdateInput {
     this.metafields = metafields;
   }
 
+  /**
+   * The title of the validation.
+   */
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
   @Override
   public String toString() {
-    return "ValidationUpdateInput{enable='" + enable + "', blockOnFailure='" + blockOnFailure + "', metafields='" + metafields + "'}";
+    return "ValidationUpdateInput{enable='" + enable + "', blockOnFailure='" + blockOnFailure + "', metafields='" + metafields + "', title='" + title + "'}";
   }
 
   @Override
@@ -75,12 +91,13 @@ public class ValidationUpdateInput {
     ValidationUpdateInput that = (ValidationUpdateInput) o;
     return Objects.equals(enable, that.enable) &&
         Objects.equals(blockOnFailure, that.blockOnFailure) &&
-        Objects.equals(metafields, that.metafields);
+        Objects.equals(metafields, that.metafields) &&
+        Objects.equals(title, that.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(enable, blockOnFailure, metafields);
+    return Objects.hash(enable, blockOnFailure, metafields, title);
   }
 
   public static Builder newBuilder() {
@@ -103,11 +120,17 @@ public class ValidationUpdateInput {
      */
     private List<MetafieldInput> metafields = Collections.emptyList();
 
+    /**
+     * The title of the validation.
+     */
+    private String title;
+
     public ValidationUpdateInput build() {
       ValidationUpdateInput result = new ValidationUpdateInput();
       result.enable = this.enable;
       result.blockOnFailure = this.blockOnFailure;
       result.metafields = this.metafields;
+      result.title = this.title;
       return result;
     }
 
@@ -132,6 +155,14 @@ public class ValidationUpdateInput {
      */
     public Builder metafields(List<MetafieldInput> metafields) {
       this.metafields = metafields;
+      return this;
+    }
+
+    /**
+     * The title of the validation.
+     */
+    public Builder title(String title) {
+      this.title = title;
       return this;
     }
   }

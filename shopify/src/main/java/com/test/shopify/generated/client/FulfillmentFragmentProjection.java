@@ -132,13 +132,6 @@ public class FulfillmentFragmentProjection<PARENT extends BaseSubProjectionNode<
      return projection;
   }
 
-  public ShippingLabelProjection<FulfillmentFragmentProjection<PARENT, ROOT>, ROOT> shippingLabel(
-      ) {
-     ShippingLabelProjection<FulfillmentFragmentProjection<PARENT, ROOT>, ROOT> projection = new ShippingLabelProjection<>(this, getRoot());
-     getFields().put("shippingLabel", projection);
-     return projection;
-  }
-
   public FulfillmentStatusProjection<FulfillmentFragmentProjection<PARENT, ROOT>, ROOT> status() {
      FulfillmentStatusProjection<FulfillmentFragmentProjection<PARENT, ROOT>, ROOT> projection = new FulfillmentStatusProjection<>(this, getRoot());
      getFields().put("status", projection);

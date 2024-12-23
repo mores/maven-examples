@@ -25,8 +25,8 @@ import java.util.Set;
  */
 public class FulfillmentServiceCreateGraphQLQuery extends GraphQLQuery {
   public FulfillmentServiceCreateGraphQLQuery(String name, String callbackUrl,
-      Boolean trackingSupport, boolean fulfillmentOrdersOptIn, Boolean inventoryManagement,
-      String queryName, Set<String> fieldsSet) {
+      Boolean trackingSupport, Boolean inventoryManagement, String queryName,
+      Set<String> fieldsSet) {
     super("mutation", queryName);
     if (name != null || fieldsSet.contains("name")) {
         getInput().put("name", name);
@@ -34,7 +34,7 @@ public class FulfillmentServiceCreateGraphQLQuery extends GraphQLQuery {
         getInput().put("callbackUrl", callbackUrl);
     }if (trackingSupport != null || fieldsSet.contains("trackingSupport")) {
         getInput().put("trackingSupport", trackingSupport);
-    }getInput().put("fulfillmentOrdersOptIn", fulfillmentOrdersOptIn);                   if (inventoryManagement != null || fieldsSet.contains("inventoryManagement")) {
+    }if (inventoryManagement != null || fieldsSet.contains("inventoryManagement")) {
         getInput().put("inventoryManagement", inventoryManagement);
     }
   }
@@ -61,14 +61,12 @@ public class FulfillmentServiceCreateGraphQLQuery extends GraphQLQuery {
 
     private Boolean trackingSupport;
 
-    private boolean fulfillmentOrdersOptIn;
-
     private Boolean inventoryManagement;
 
     private String queryName;
 
     public FulfillmentServiceCreateGraphQLQuery build() {
-      return new FulfillmentServiceCreateGraphQLQuery(name, callbackUrl, trackingSupport, fulfillmentOrdersOptIn, inventoryManagement, queryName, fieldsSet);
+      return new FulfillmentServiceCreateGraphQLQuery(name, callbackUrl, trackingSupport, inventoryManagement, queryName, fieldsSet);
                
     }
 
@@ -103,21 +101,6 @@ public class FulfillmentServiceCreateGraphQLQuery extends GraphQLQuery {
     public Builder trackingSupport(Boolean trackingSupport) {
       this.trackingSupport = trackingSupport;
       this.fieldsSet.add("trackingSupport");
-      return this;
-    }
-
-    /**
-     * Whether the fulfillment service uses the [fulfillment order based workflow](
-     *   https://shopify.dev/apps/fulfillment/fulfillment-service-apps/manage-fulfillments
-     * ) for managing fulfillments.
-     *     
-     * [As of 2022-07 API version](https://shopify.dev/changelog/legacy-fulfillment-api-deprecation),
-     * the fulfillment order based workflow is the only way to manage fulfillments,
-     * and `fulfillmentOrdersOptIn` must be set to `true`.
-     */
-    public Builder fulfillmentOrdersOptIn(boolean fulfillmentOrdersOptIn) {
-      this.fulfillmentOrdersOptIn = fulfillmentOrdersOptIn;
-      this.fieldsSet.add("fulfillmentOrdersOptIn");
       return this;
     }
 

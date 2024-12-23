@@ -90,6 +90,19 @@ public class InventoryItemProjection<PARENT extends BaseSubProjectionNode<?, ?>,
     return projection;
   }
 
+  public CountProjection<InventoryItemProjection<PARENT, ROOT>, ROOT> locationsCount() {
+     CountProjection<InventoryItemProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("locationsCount", projection);
+     return projection;
+  }
+
+  public InventoryItemMeasurementProjection<InventoryItemProjection<PARENT, ROOT>, ROOT> measurement(
+      ) {
+     InventoryItemMeasurementProjection<InventoryItemProjection<PARENT, ROOT>, ROOT> projection = new InventoryItemMeasurementProjection<>(this, getRoot());
+     getFields().put("measurement", projection);
+     return projection;
+  }
+
   public EditablePropertyProjection<InventoryItemProjection<PARENT, ROOT>, ROOT> trackedEditable() {
      EditablePropertyProjection<InventoryItemProjection<PARENT, ROOT>, ROOT> projection = new EditablePropertyProjection<>(this, getRoot());
      getFields().put("trackedEditable", projection);
@@ -135,11 +148,6 @@ public class InventoryItemProjection<PARENT extends BaseSubProjectionNode<?, ?>,
 
   public InventoryItemProjection<PARENT, ROOT> legacyResourceId() {
     getFields().put("legacyResourceId", null);
-    return this;
-  }
-
-  public InventoryItemProjection<PARENT, ROOT> locationsCount() {
-    getFields().put("locationsCount", null);
     return this;
   }
 

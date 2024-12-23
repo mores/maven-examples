@@ -54,6 +54,12 @@ public class CustomerJourneySummaryProjection<PARENT extends BaseSubProjectionNo
     return projection;
   }
 
+  public CountProjection<CustomerJourneySummaryProjection<PARENT, ROOT>, ROOT> momentsCount() {
+     CountProjection<CustomerJourneySummaryProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("momentsCount", projection);
+     return projection;
+  }
+
   public CustomerJourneySummaryProjection<PARENT, ROOT> customerOrderIndex() {
     getFields().put("customerOrderIndex", null);
     return this;
@@ -61,11 +67,6 @@ public class CustomerJourneySummaryProjection<PARENT extends BaseSubProjectionNo
 
   public CustomerJourneySummaryProjection<PARENT, ROOT> daysToConversion() {
     getFields().put("daysToConversion", null);
-    return this;
-  }
-
-  public CustomerJourneySummaryProjection<PARENT, ROOT> momentsCount() {
-    getFields().put("momentsCount", null);
     return this;
   }
 

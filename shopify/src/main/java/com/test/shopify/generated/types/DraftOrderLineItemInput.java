@@ -22,10 +22,12 @@ public class DraftOrderLineItemInput {
   private List<AttributeInput> customAttributes;
 
   /**
-   * The custom line item price without any discounts applied in shop currency.
-   * This field is ignored when `variantId` is provided.
+   * The price in presentment currency, without any discounts applied, for a custom line item.
+   * If this value is provided, `original_unit_price` will be ignored. This field is ignored when `variantId` is provided.
+   * Note: All presentment currencies for a single draft should be the same and match the
+   * presentment currency of the draft order.
    */
-  private String originalUnitPrice;
+  private MoneyInput originalUnitPriceWithCurrency;
 
   /**
    * The line item quantity.
@@ -64,6 +66,17 @@ public class DraftOrderLineItemInput {
    */
   private WeightInput weight;
 
+  /**
+   * The UUID of the draft order line item. Must be unique and consistent across requests.
+   * This field is mandatory in order to manipulate drafts with bundles.
+   */
+  private String uuid;
+
+  /**
+   * The bundle components when the line item is a bundle.
+   */
+  private List<BundlesDraftOrderBundleLineItemComponentInput> bundleComponents;
+
   public DraftOrderLineItemInput() {
   }
 
@@ -90,15 +103,17 @@ public class DraftOrderLineItemInput {
   }
 
   /**
-   * The custom line item price without any discounts applied in shop currency.
-   * This field is ignored when `variantId` is provided.
+   * The price in presentment currency, without any discounts applied, for a custom line item.
+   * If this value is provided, `original_unit_price` will be ignored. This field is ignored when `variantId` is provided.
+   * Note: All presentment currencies for a single draft should be the same and match the
+   * presentment currency of the draft order.
    */
-  public String getOriginalUnitPrice() {
-    return originalUnitPrice;
+  public MoneyInput getOriginalUnitPriceWithCurrency() {
+    return originalUnitPriceWithCurrency;
   }
 
-  public void setOriginalUnitPrice(String originalUnitPrice) {
-    this.originalUnitPrice = originalUnitPrice;
+  public void setOriginalUnitPriceWithCurrency(MoneyInput originalUnitPriceWithCurrency) {
+    this.originalUnitPriceWithCurrency = originalUnitPriceWithCurrency;
   }
 
   /**
@@ -180,9 +195,33 @@ public class DraftOrderLineItemInput {
     this.weight = weight;
   }
 
+  /**
+   * The UUID of the draft order line item. Must be unique and consistent across requests.
+   * This field is mandatory in order to manipulate drafts with bundles.
+   */
+  public String getUuid() {
+    return uuid;
+  }
+
+  public void setUuid(String uuid) {
+    this.uuid = uuid;
+  }
+
+  /**
+   * The bundle components when the line item is a bundle.
+   */
+  public List<BundlesDraftOrderBundleLineItemComponentInput> getBundleComponents() {
+    return bundleComponents;
+  }
+
+  public void setBundleComponents(
+      List<BundlesDraftOrderBundleLineItemComponentInput> bundleComponents) {
+    this.bundleComponents = bundleComponents;
+  }
+
   @Override
   public String toString() {
-    return "DraftOrderLineItemInput{appliedDiscount='" + appliedDiscount + "', customAttributes='" + customAttributes + "', originalUnitPrice='" + originalUnitPrice + "', quantity='" + quantity + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', taxable='" + taxable + "', title='" + title + "', variantId='" + variantId + "', weight='" + weight + "'}";
+    return "DraftOrderLineItemInput{appliedDiscount='" + appliedDiscount + "', customAttributes='" + customAttributes + "', originalUnitPriceWithCurrency='" + originalUnitPriceWithCurrency + "', quantity='" + quantity + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', taxable='" + taxable + "', title='" + title + "', variantId='" + variantId + "', weight='" + weight + "', uuid='" + uuid + "', bundleComponents='" + bundleComponents + "'}";
   }
 
   @Override
@@ -192,19 +231,21 @@ public class DraftOrderLineItemInput {
     DraftOrderLineItemInput that = (DraftOrderLineItemInput) o;
     return Objects.equals(appliedDiscount, that.appliedDiscount) &&
         Objects.equals(customAttributes, that.customAttributes) &&
-        Objects.equals(originalUnitPrice, that.originalUnitPrice) &&
+        Objects.equals(originalUnitPriceWithCurrency, that.originalUnitPriceWithCurrency) &&
         quantity == that.quantity &&
         Objects.equals(requiresShipping, that.requiresShipping) &&
         Objects.equals(sku, that.sku) &&
         Objects.equals(taxable, that.taxable) &&
         Objects.equals(title, that.title) &&
         Objects.equals(variantId, that.variantId) &&
-        Objects.equals(weight, that.weight);
+        Objects.equals(weight, that.weight) &&
+        Objects.equals(uuid, that.uuid) &&
+        Objects.equals(bundleComponents, that.bundleComponents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appliedDiscount, customAttributes, originalUnitPrice, quantity, requiresShipping, sku, taxable, title, variantId, weight);
+    return Objects.hash(appliedDiscount, customAttributes, originalUnitPriceWithCurrency, quantity, requiresShipping, sku, taxable, title, variantId, weight, uuid, bundleComponents);
   }
 
   public static Builder newBuilder() {
@@ -223,10 +264,12 @@ public class DraftOrderLineItemInput {
     private List<AttributeInput> customAttributes;
 
     /**
-     * The custom line item price without any discounts applied in shop currency.
-     * This field is ignored when `variantId` is provided.
+     * The price in presentment currency, without any discounts applied, for a custom line item.
+     * If this value is provided, `original_unit_price` will be ignored. This field is ignored when `variantId` is provided.
+     * Note: All presentment currencies for a single draft should be the same and match the
+     * presentment currency of the draft order.
      */
-    private String originalUnitPrice;
+    private MoneyInput originalUnitPriceWithCurrency;
 
     /**
      * The line item quantity.
@@ -265,11 +308,22 @@ public class DraftOrderLineItemInput {
      */
     private WeightInput weight;
 
+    /**
+     * The UUID of the draft order line item. Must be unique and consistent across requests.
+     * This field is mandatory in order to manipulate drafts with bundles.
+     */
+    private String uuid;
+
+    /**
+     * The bundle components when the line item is a bundle.
+     */
+    private List<BundlesDraftOrderBundleLineItemComponentInput> bundleComponents;
+
     public DraftOrderLineItemInput build() {
       DraftOrderLineItemInput result = new DraftOrderLineItemInput();
       result.appliedDiscount = this.appliedDiscount;
       result.customAttributes = this.customAttributes;
-      result.originalUnitPrice = this.originalUnitPrice;
+      result.originalUnitPriceWithCurrency = this.originalUnitPriceWithCurrency;
       result.quantity = this.quantity;
       result.requiresShipping = this.requiresShipping;
       result.sku = this.sku;
@@ -277,6 +331,8 @@ public class DraftOrderLineItemInput {
       result.title = this.title;
       result.variantId = this.variantId;
       result.weight = this.weight;
+      result.uuid = this.uuid;
+      result.bundleComponents = this.bundleComponents;
       return result;
     }
 
@@ -297,11 +353,13 @@ public class DraftOrderLineItemInput {
     }
 
     /**
-     * The custom line item price without any discounts applied in shop currency.
-     * This field is ignored when `variantId` is provided.
+     * The price in presentment currency, without any discounts applied, for a custom line item.
+     * If this value is provided, `original_unit_price` will be ignored. This field is ignored when `variantId` is provided.
+     * Note: All presentment currencies for a single draft should be the same and match the
+     * presentment currency of the draft order.
      */
-    public Builder originalUnitPrice(String originalUnitPrice) {
-      this.originalUnitPrice = originalUnitPrice;
+    public Builder originalUnitPriceWithCurrency(MoneyInput originalUnitPriceWithCurrency) {
+      this.originalUnitPriceWithCurrency = originalUnitPriceWithCurrency;
       return this;
     }
 
@@ -360,6 +418,24 @@ public class DraftOrderLineItemInput {
      */
     public Builder weight(WeightInput weight) {
       this.weight = weight;
+      return this;
+    }
+
+    /**
+     * The UUID of the draft order line item. Must be unique and consistent across requests.
+     * This field is mandatory in order to manipulate drafts with bundles.
+     */
+    public Builder uuid(String uuid) {
+      this.uuid = uuid;
+      return this;
+    }
+
+    /**
+     * The bundle components when the line item is a bundle.
+     */
+    public Builder bundleComponents(
+        List<BundlesDraftOrderBundleLineItemComponentInput> bundleComponents) {
+      this.bundleComponents = bundleComponents;
       return this;
     }
   }

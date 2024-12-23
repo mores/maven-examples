@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountAutomaticAppCreatePayload {
   /**
-   * The created app discount.
+   * The automatic discount that the app manages.
    */
   private DiscountAutomaticApp automaticAppDiscount;
 
@@ -24,7 +24,7 @@ public class DiscountAutomaticAppCreatePayload {
   }
 
   /**
-   * The created app discount.
+   * The automatic discount that the app manages.
    */
   public DiscountAutomaticApp getAutomaticAppDiscount() {
     return automaticAppDiscount;
@@ -70,7 +70,7 @@ public class DiscountAutomaticAppCreatePayload {
 
   public static class Builder {
     /**
-     * The created app discount.
+     * The automatic discount that the app manages.
      */
     private DiscountAutomaticApp automaticAppDiscount;
 
@@ -87,7 +87,7 @@ public class DiscountAutomaticAppCreatePayload {
     }
 
     /**
-     * The created app discount.
+     * The automatic discount that the app manages.
      */
     public Builder automaticAppDiscount(DiscountAutomaticApp automaticAppDiscount) {
       this.automaticAppDiscount = automaticAppDiscount;

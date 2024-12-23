@@ -75,6 +75,11 @@ public interface SubscriptionContractBase {
   SubscriptionLineConnection getLines();
 
   /**
+   * The number of lines associated with the subscription contract.
+   */
+  Count getLinesCount();
+
+  /**
    * The note field that will be applied to the generated orders.
    */
   String getNote();

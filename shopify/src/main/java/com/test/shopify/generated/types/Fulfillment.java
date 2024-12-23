@@ -106,11 +106,6 @@ public class Fulfillment implements com.test.shopify.generated.types.LegacyInter
   private FulfillmentService service;
 
   /**
-   * The optional shipping label for this fulfillment.
-   */
-  private ShippingLabel shippingLabel;
-
-  /**
    * The status of the fulfillment.
    */
   private FulfillmentStatus status;
@@ -317,17 +312,6 @@ public class Fulfillment implements com.test.shopify.generated.types.LegacyInter
   }
 
   /**
-   * The optional shipping label for this fulfillment.
-   */
-  public ShippingLabel getShippingLabel() {
-    return shippingLabel;
-  }
-
-  public void setShippingLabel(ShippingLabel shippingLabel) {
-    this.shippingLabel = shippingLabel;
-  }
-
-  /**
    * The status of the fulfillment.
    */
   public FulfillmentStatus getStatus() {
@@ -374,7 +358,7 @@ public class Fulfillment implements com.test.shopify.generated.types.LegacyInter
 
   @Override
   public String toString() {
-    return "Fulfillment{createdAt='" + createdAt + "', deliveredAt='" + deliveredAt + "', displayStatus='" + displayStatus + "', estimatedDeliveryAt='" + estimatedDeliveryAt + "', events='" + events + "', fulfillmentLineItems='" + fulfillmentLineItems + "', fulfillmentOrders='" + fulfillmentOrders + "', id='" + id + "', inTransitAt='" + inTransitAt + "', legacyResourceId='" + legacyResourceId + "', location='" + location + "', name='" + name + "', order='" + order + "', originAddress='" + originAddress + "', requiresShipping='" + requiresShipping + "', service='" + service + "', shippingLabel='" + shippingLabel + "', status='" + status + "', totalQuantity='" + totalQuantity + "', trackingInfo='" + trackingInfo + "', updatedAt='" + updatedAt + "'}";
+    return "Fulfillment{createdAt='" + createdAt + "', deliveredAt='" + deliveredAt + "', displayStatus='" + displayStatus + "', estimatedDeliveryAt='" + estimatedDeliveryAt + "', events='" + events + "', fulfillmentLineItems='" + fulfillmentLineItems + "', fulfillmentOrders='" + fulfillmentOrders + "', id='" + id + "', inTransitAt='" + inTransitAt + "', legacyResourceId='" + legacyResourceId + "', location='" + location + "', name='" + name + "', order='" + order + "', originAddress='" + originAddress + "', requiresShipping='" + requiresShipping + "', service='" + service + "', status='" + status + "', totalQuantity='" + totalQuantity + "', trackingInfo='" + trackingInfo + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -398,7 +382,6 @@ public class Fulfillment implements com.test.shopify.generated.types.LegacyInter
         Objects.equals(originAddress, that.originAddress) &&
         requiresShipping == that.requiresShipping &&
         Objects.equals(service, that.service) &&
-        Objects.equals(shippingLabel, that.shippingLabel) &&
         Objects.equals(status, that.status) &&
         totalQuantity == that.totalQuantity &&
         Objects.equals(trackingInfo, that.trackingInfo) &&
@@ -407,7 +390,7 @@ public class Fulfillment implements com.test.shopify.generated.types.LegacyInter
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, deliveredAt, displayStatus, estimatedDeliveryAt, events, fulfillmentLineItems, fulfillmentOrders, id, inTransitAt, legacyResourceId, location, name, order, originAddress, requiresShipping, service, shippingLabel, status, totalQuantity, trackingInfo, updatedAt);
+    return Objects.hash(createdAt, deliveredAt, displayStatus, estimatedDeliveryAt, events, fulfillmentLineItems, fulfillmentOrders, id, inTransitAt, legacyResourceId, location, name, order, originAddress, requiresShipping, service, status, totalQuantity, trackingInfo, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -502,11 +485,6 @@ public class Fulfillment implements com.test.shopify.generated.types.LegacyInter
     private FulfillmentService service;
 
     /**
-     * The optional shipping label for this fulfillment.
-     */
-    private ShippingLabel shippingLabel;
-
-    /**
      * The status of the fulfillment.
      */
     private FulfillmentStatus status;
@@ -545,7 +523,6 @@ public class Fulfillment implements com.test.shopify.generated.types.LegacyInter
       result.originAddress = this.originAddress;
       result.requiresShipping = this.requiresShipping;
       result.service = this.service;
-      result.shippingLabel = this.shippingLabel;
       result.status = this.status;
       result.totalQuantity = this.totalQuantity;
       result.trackingInfo = this.trackingInfo;
@@ -684,14 +661,6 @@ public class Fulfillment implements com.test.shopify.generated.types.LegacyInter
      */
     public Builder service(FulfillmentService service) {
       this.service = service;
-      return this;
-    }
-
-    /**
-     * The optional shipping label for this fulfillment.
-     */
-    public Builder shippingLabel(ShippingLabel shippingLabel) {
-      this.shippingLabel = shippingLabel;
       return this;
     }
 

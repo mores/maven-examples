@@ -1,6 +1,7 @@
 package com.test.shopify.generated.types;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -18,6 +19,11 @@ public class MetafieldDefinitionCreateUserError implements com.test.shopify.gene
    * The error code.
    */
   private MetafieldDefinitionCreateUserErrorCode code;
+
+  /**
+   * The index of the array element that's causing the error.
+   */
+  private Integer elementIndex;
 
   /**
    * The path to the input field that caused the error.
@@ -44,6 +50,17 @@ public class MetafieldDefinitionCreateUserError implements com.test.shopify.gene
   }
 
   /**
+   * The index of the array element that's causing the error.
+   */
+  public Integer getElementIndex() {
+    return elementIndex;
+  }
+
+  public void setElementIndex(Integer elementIndex) {
+    this.elementIndex = elementIndex;
+  }
+
+  /**
    * The path to the input field that caused the error.
    */
   public List<String> getField() {
@@ -67,7 +84,7 @@ public class MetafieldDefinitionCreateUserError implements com.test.shopify.gene
 
   @Override
   public String toString() {
-    return "MetafieldDefinitionCreateUserError{code='" + code + "', field='" + field + "', message='" + message + "'}";
+    return "MetafieldDefinitionCreateUserError{code='" + code + "', elementIndex='" + elementIndex + "', field='" + field + "', message='" + message + "'}";
   }
 
   @Override
@@ -76,13 +93,14 @@ public class MetafieldDefinitionCreateUserError implements com.test.shopify.gene
     if (o == null || getClass() != o.getClass()) return false;
     MetafieldDefinitionCreateUserError that = (MetafieldDefinitionCreateUserError) o;
     return Objects.equals(code, that.code) &&
+        Objects.equals(elementIndex, that.elementIndex) &&
         Objects.equals(field, that.field) &&
         Objects.equals(message, that.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, field, message);
+    return Objects.hash(code, elementIndex, field, message);
   }
 
   public static Builder newBuilder() {
@@ -94,6 +112,11 @@ public class MetafieldDefinitionCreateUserError implements com.test.shopify.gene
      * The error code.
      */
     private MetafieldDefinitionCreateUserErrorCode code;
+
+    /**
+     * The index of the array element that's causing the error.
+     */
+    private Integer elementIndex;
 
     /**
      * The path to the input field that caused the error.
@@ -108,6 +131,7 @@ public class MetafieldDefinitionCreateUserError implements com.test.shopify.gene
     public MetafieldDefinitionCreateUserError build() {
       MetafieldDefinitionCreateUserError result = new MetafieldDefinitionCreateUserError();
       result.code = this.code;
+      result.elementIndex = this.elementIndex;
       result.field = this.field;
       result.message = this.message;
       return result;
@@ -118,6 +142,14 @@ public class MetafieldDefinitionCreateUserError implements com.test.shopify.gene
      */
     public Builder code(MetafieldDefinitionCreateUserErrorCode code) {
       this.code = code;
+      return this;
+    }
+
+    /**
+     * The index of the array element that's causing the error.
+     */
+    public Builder elementIndex(Integer elementIndex) {
+      this.elementIndex = elementIndex;
       return this;
     }
 

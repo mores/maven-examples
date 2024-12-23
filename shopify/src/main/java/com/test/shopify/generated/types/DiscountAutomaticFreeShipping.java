@@ -8,19 +8,41 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
- * An automatic discount that offers customers free shipping on their order.
+ * The `DiscountAutomaticFreeShipping` object lets you manage
+ * [free shipping discounts](https://help.shopify.com/manual/discounts/discount-types/free-shipping)
+ * that are automatically applied on a cart and at checkout. Free shipping discounts are promotional deals that
+ * merchants offer to customers to waive shipping costs and encourage online purchases.
+ *
+ * The `DiscountAutomaticFreeShipping` object stores information about automatic free shipping discounts that apply to
+ * specific [products and variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountProducts),
+ * [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCollections),
+ * or [all items in a cart](https://shopify.dev/docs/api/admin-graphql/latest/objects/AllDiscountItems).
+ *
+ * Learn more about working with [Shopify's discount model](https://shopify.dev/docs/apps/build/discounts),
+ * including limitations and considerations.
+ *
+ * > Note:
+ * > The [`DiscountCodeFreeShipping`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCodeFreeShipping)
+ * object has similar functionality to the `DiscountAutomaticFreeShipping` object, but customers need to enter a code to
+ * receive a discount.
  */
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
 public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomatic {
   /**
-   * Whether the discount applies on regular one-time-purchase shipping lines.
+   * Whether the discount applies on one-time purchases.
+   * A one-time purchase is a transaction where you pay a
+   * single time for a product, without any ongoing
+   * commitments or recurring charges.
    */
   private boolean appliesOnOneTimePurchase;
 
   /**
-   * Whether the discount applies on subscription shipping lines.
+   * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
    */
   private boolean appliesOnSubscription;
 
@@ -49,7 +71,11 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   private OffsetDateTime createdAt;
 
   /**
-   * A shipping destination that qualifies for the discount.
+   * The countries that qualify for the discount.
+   * You can define
+   * [a list of countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountries)
+   * or specify [all countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountryAll)
+   * to be eligible for the discount.
    */
   private DiscountShippingDestinationSelection destinationSelection;
 
@@ -66,7 +92,9 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   private OffsetDateTime endsAt;
 
   /**
-   * Indicates whether there are any timeline comments on the discount.
+   * Whether there are
+   * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+   * associated with the discount.
    */
   private boolean hasTimelineComment;
 
@@ -76,17 +104,22 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   private MoneyV2 maximumShippingPrice;
 
   /**
-   * The minimum subtotal or quantity that's required for the discount to be applied.
+   * The minimum subtotal or quantity of items that are required for the discount to be applied.
    */
   private DiscountMinimumRequirement minimumRequirement;
 
   /**
-   * The number of times a discount applies on recurring purchases (subscriptions).
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
    */
   private int recurringCycleLimit;
 
   /**
-   * A short summary of the discount.
+   * An abbreviated version of the discount
+   * [`summary`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAutomaticFreeShipping#field-summary)
+   * field.
    */
   private String shortSummary;
 
@@ -127,7 +160,10 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   }
 
   /**
-   * Whether the discount applies on regular one-time-purchase shipping lines.
+   * Whether the discount applies on one-time purchases.
+   * A one-time purchase is a transaction where you pay a
+   * single time for a product, without any ongoing
+   * commitments or recurring charges.
    */
   public boolean getAppliesOnOneTimePurchase() {
     return appliesOnOneTimePurchase;
@@ -138,7 +174,10 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   }
 
   /**
-   * Whether the discount applies on subscription shipping lines.
+   * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
    */
   public boolean getAppliesOnSubscription() {
     return appliesOnSubscription;
@@ -191,7 +230,11 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   }
 
   /**
-   * A shipping destination that qualifies for the discount.
+   * The countries that qualify for the discount.
+   * You can define
+   * [a list of countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountries)
+   * or specify [all countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountryAll)
+   * to be eligible for the discount.
    */
   public DiscountShippingDestinationSelection getDestinationSelection() {
     return destinationSelection;
@@ -226,7 +269,9 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   }
 
   /**
-   * Indicates whether there are any timeline comments on the discount.
+   * Whether there are
+   * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+   * associated with the discount.
    */
   public boolean getHasTimelineComment() {
     return hasTimelineComment;
@@ -248,7 +293,7 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   }
 
   /**
-   * The minimum subtotal or quantity that's required for the discount to be applied.
+   * The minimum subtotal or quantity of items that are required for the discount to be applied.
    */
   public DiscountMinimumRequirement getMinimumRequirement() {
     return minimumRequirement;
@@ -259,7 +304,10 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   }
 
   /**
-   * The number of times a discount applies on recurring purchases (subscriptions).
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
    */
   public int getRecurringCycleLimit() {
     return recurringCycleLimit;
@@ -270,7 +318,9 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
   }
 
   /**
-   * A short summary of the discount.
+   * An abbreviated version of the discount
+   * [`summary`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAutomaticFreeShipping#field-summary)
+   * field.
    */
   public String getShortSummary() {
     return shortSummary;
@@ -391,12 +441,18 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
 
   public static class Builder {
     /**
-     * Whether the discount applies on regular one-time-purchase shipping lines.
+     * Whether the discount applies on one-time purchases.
+     * A one-time purchase is a transaction where you pay a
+     * single time for a product, without any ongoing
+     * commitments or recurring charges.
      */
     private boolean appliesOnOneTimePurchase;
 
     /**
-     * Whether the discount applies on subscription shipping lines.
+     * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
      */
     private boolean appliesOnSubscription;
 
@@ -425,7 +481,11 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     private OffsetDateTime createdAt;
 
     /**
-     * A shipping destination that qualifies for the discount.
+     * The countries that qualify for the discount.
+     * You can define
+     * [a list of countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountries)
+     * or specify [all countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountryAll)
+     * to be eligible for the discount.
      */
     private DiscountShippingDestinationSelection destinationSelection;
 
@@ -442,7 +502,9 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     private OffsetDateTime endsAt;
 
     /**
-     * Indicates whether there are any timeline comments on the discount.
+     * Whether there are
+     * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+     * associated with the discount.
      */
     private boolean hasTimelineComment;
 
@@ -452,17 +514,22 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     private MoneyV2 maximumShippingPrice;
 
     /**
-     * The minimum subtotal or quantity that's required for the discount to be applied.
+     * The minimum subtotal or quantity of items that are required for the discount to be applied.
      */
     private DiscountMinimumRequirement minimumRequirement;
 
     /**
-     * The number of times a discount applies on recurring purchases (subscriptions).
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
      */
     private int recurringCycleLimit;
 
     /**
-     * A short summary of the discount.
+     * An abbreviated version of the discount
+     * [`summary`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAutomaticFreeShipping#field-summary)
+     * field.
      */
     private String shortSummary;
 
@@ -524,7 +591,10 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     }
 
     /**
-     * Whether the discount applies on regular one-time-purchase shipping lines.
+     * Whether the discount applies on one-time purchases.
+     * A one-time purchase is a transaction where you pay a
+     * single time for a product, without any ongoing
+     * commitments or recurring charges.
      */
     public Builder appliesOnOneTimePurchase(boolean appliesOnOneTimePurchase) {
       this.appliesOnOneTimePurchase = appliesOnOneTimePurchase;
@@ -532,7 +602,10 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     }
 
     /**
-     * Whether the discount applies on subscription shipping lines.
+     * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
      */
     public Builder appliesOnSubscription(boolean appliesOnSubscription) {
       this.appliesOnSubscription = appliesOnSubscription;
@@ -573,7 +646,11 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     }
 
     /**
-     * A shipping destination that qualifies for the discount.
+     * The countries that qualify for the discount.
+     * You can define
+     * [a list of countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountries)
+     * or specify [all countries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCountryAll)
+     * to be eligible for the discount.
      */
     public Builder destinationSelection(DiscountShippingDestinationSelection destinationSelection) {
       this.destinationSelection = destinationSelection;
@@ -599,7 +676,9 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     }
 
     /**
-     * Indicates whether there are any timeline comments on the discount.
+     * Whether there are
+     * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+     * associated with the discount.
      */
     public Builder hasTimelineComment(boolean hasTimelineComment) {
       this.hasTimelineComment = hasTimelineComment;
@@ -615,7 +694,7 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     }
 
     /**
-     * The minimum subtotal or quantity that's required for the discount to be applied.
+     * The minimum subtotal or quantity of items that are required for the discount to be applied.
      */
     public Builder minimumRequirement(DiscountMinimumRequirement minimumRequirement) {
       this.minimumRequirement = minimumRequirement;
@@ -623,7 +702,10 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     }
 
     /**
-     * The number of times a discount applies on recurring purchases (subscriptions).
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
      */
     public Builder recurringCycleLimit(int recurringCycleLimit) {
       this.recurringCycleLimit = recurringCycleLimit;
@@ -631,7 +713,9 @@ public class DiscountAutomaticFreeShipping implements Discount, DiscountAutomati
     }
 
     /**
-     * A short summary of the discount.
+     * An abbreviated version of the discount
+     * [`summary`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAutomaticFreeShipping#field-summary)
+     * field.
      */
     public Builder shortSummary(String shortSummary) {
       this.shortSummary = shortSummary;

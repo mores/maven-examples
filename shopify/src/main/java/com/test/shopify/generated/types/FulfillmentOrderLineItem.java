@@ -70,6 +70,11 @@ public class FulfillmentOrderLineItem implements com.test.shopify.generated.type
   private int totalQuantity;
 
   /**
+   * The product variant associated to the fulfillment order line item.
+   */
+  private ProductVariant variant;
+
+  /**
    * The name of the variant.
    */
   private String variantTitle;
@@ -215,6 +220,17 @@ public class FulfillmentOrderLineItem implements com.test.shopify.generated.type
   }
 
   /**
+   * The product variant associated to the fulfillment order line item.
+   */
+  public ProductVariant getVariant() {
+    return variant;
+  }
+
+  public void setVariant(ProductVariant variant) {
+    this.variant = variant;
+  }
+
+  /**
    * The name of the variant.
    */
   public String getVariantTitle() {
@@ -260,7 +276,7 @@ public class FulfillmentOrderLineItem implements com.test.shopify.generated.type
 
   @Override
   public String toString() {
-    return "FulfillmentOrderLineItem{financialSummaries='" + financialSummaries + "', id='" + id + "', image='" + image + "', inventoryItemId='" + inventoryItemId + "', lineItem='" + lineItem + "', originalUnitPriceSet='" + originalUnitPriceSet + "', productTitle='" + productTitle + "', remainingQuantity='" + remainingQuantity + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', totalQuantity='" + totalQuantity + "', variantTitle='" + variantTitle + "', vendor='" + vendor + "', warnings='" + warnings + "', weight='" + weight + "'}";
+    return "FulfillmentOrderLineItem{financialSummaries='" + financialSummaries + "', id='" + id + "', image='" + image + "', inventoryItemId='" + inventoryItemId + "', lineItem='" + lineItem + "', originalUnitPriceSet='" + originalUnitPriceSet + "', productTitle='" + productTitle + "', remainingQuantity='" + remainingQuantity + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', totalQuantity='" + totalQuantity + "', variant='" + variant + "', variantTitle='" + variantTitle + "', vendor='" + vendor + "', warnings='" + warnings + "', weight='" + weight + "'}";
   }
 
   @Override
@@ -279,6 +295,7 @@ public class FulfillmentOrderLineItem implements com.test.shopify.generated.type
         requiresShipping == that.requiresShipping &&
         Objects.equals(sku, that.sku) &&
         totalQuantity == that.totalQuantity &&
+        Objects.equals(variant, that.variant) &&
         Objects.equals(variantTitle, that.variantTitle) &&
         Objects.equals(vendor, that.vendor) &&
         Objects.equals(warnings, that.warnings) &&
@@ -287,7 +304,7 @@ public class FulfillmentOrderLineItem implements com.test.shopify.generated.type
 
   @Override
   public int hashCode() {
-    return Objects.hash(financialSummaries, id, image, inventoryItemId, lineItem, originalUnitPriceSet, productTitle, remainingQuantity, requiresShipping, sku, totalQuantity, variantTitle, vendor, warnings, weight);
+    return Objects.hash(financialSummaries, id, image, inventoryItemId, lineItem, originalUnitPriceSet, productTitle, remainingQuantity, requiresShipping, sku, totalQuantity, variant, variantTitle, vendor, warnings, weight);
   }
 
   public static Builder newBuilder() {
@@ -351,6 +368,11 @@ public class FulfillmentOrderLineItem implements com.test.shopify.generated.type
     private int totalQuantity;
 
     /**
+     * The product variant associated to the fulfillment order line item.
+     */
+    private ProductVariant variant;
+
+    /**
      * The name of the variant.
      */
     private String variantTitle;
@@ -383,6 +405,7 @@ public class FulfillmentOrderLineItem implements com.test.shopify.generated.type
       result.requiresShipping = this.requiresShipping;
       result.sku = this.sku;
       result.totalQuantity = this.totalQuantity;
+      result.variant = this.variant;
       result.variantTitle = this.variantTitle;
       result.vendor = this.vendor;
       result.warnings = this.warnings;
@@ -476,6 +499,14 @@ public class FulfillmentOrderLineItem implements com.test.shopify.generated.type
      */
     public Builder totalQuantity(int totalQuantity) {
       this.totalQuantity = totalQuantity;
+      return this;
+    }
+
+    /**
+     * The product variant associated to the fulfillment order line item.
+     */
+    public Builder variant(ProductVariant variant) {
+      this.variant = variant;
       return this;
     }
 

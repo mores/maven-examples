@@ -1,5 +1,6 @@
 package com.test.shopify.generated.types;
 
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -10,6 +11,18 @@ import java.util.Objects;
  * The calculated fields for a draft order.
  */
 public class CalculatedDraftOrder {
+  /**
+   * Whether or not to accept automatic discounts on the draft order during calculation.
+   * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+   * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+   */
+  private Boolean acceptAutomaticDiscounts;
+
+  /**
+   * The list of alerts raised while calculating.
+   */
+  private List<ResourceAlert> alerts;
+
   /**
    * The custom order-level discount applied.
    */
@@ -37,6 +50,11 @@ public class CalculatedDraftOrder {
   private Customer customer;
 
   /**
+   * All discount codes applied.
+   */
+  private List<String> discountCodes;
+
+  /**
    * The list of the line items in the calculated draft order.
    */
   private List<CalculatedDraftOrderLineItem> lineItems;
@@ -61,6 +79,11 @@ public class CalculatedDraftOrder {
    * The assigned phone number.
    */
   private String phone;
+
+  /**
+   * The list of platform discounts applied.
+   */
+  private List<DraftOrderPlatformDiscount> platformDiscounts;
 
   /**
    * The payment currency used for calculation.
@@ -94,6 +117,11 @@ public class CalculatedDraftOrder {
   private List<TaxLine> taxLines;
 
   /**
+   * Whether the line item prices include taxes.
+   */
+  private boolean taxesIncluded;
+
+  /**
    * Total discounts.
    */
   private MoneyBag totalDiscountsSet;
@@ -112,6 +140,12 @@ public class CalculatedDraftOrder {
    * The total price, includes taxes, shipping charges, and discounts.
    */
   private MoneyBag totalPriceSet;
+
+  /**
+   * The sum of individual line item quantities.
+   * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+   */
+  private int totalQuantityOfLineItems;
 
   /**
    * The total shipping price in shop currency.
@@ -133,7 +167,43 @@ public class CalculatedDraftOrder {
    */
   private MoneyBag totalTaxSet;
 
+  /**
+   * Fingerprint of the current cart.
+   * In order to have bundles work, the fingerprint must be passed to
+   * each request as it was previously returned, unmodified.
+   */
+  private String transformerFingerprint;
+
+  /**
+   * The list of warnings raised while calculating.
+   */
+  private List<DraftOrderWarning> warnings;
+
   public CalculatedDraftOrder() {
+  }
+
+  /**
+   * Whether or not to accept automatic discounts on the draft order during calculation.
+   * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+   * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+   */
+  public Boolean getAcceptAutomaticDiscounts() {
+    return acceptAutomaticDiscounts;
+  }
+
+  public void setAcceptAutomaticDiscounts(Boolean acceptAutomaticDiscounts) {
+    this.acceptAutomaticDiscounts = acceptAutomaticDiscounts;
+  }
+
+  /**
+   * The list of alerts raised while calculating.
+   */
+  public List<ResourceAlert> getAlerts() {
+    return alerts;
+  }
+
+  public void setAlerts(List<ResourceAlert> alerts) {
+    this.alerts = alerts;
   }
 
   /**
@@ -194,6 +264,17 @@ public class CalculatedDraftOrder {
   }
 
   /**
+   * All discount codes applied.
+   */
+  public List<String> getDiscountCodes() {
+    return discountCodes;
+  }
+
+  public void setDiscountCodes(List<String> discountCodes) {
+    this.discountCodes = discountCodes;
+  }
+
+  /**
    * The list of the line items in the calculated draft order.
    */
   public List<CalculatedDraftOrderLineItem> getLineItems() {
@@ -247,6 +328,17 @@ public class CalculatedDraftOrder {
 
   public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+  /**
+   * The list of platform discounts applied.
+   */
+  public List<DraftOrderPlatformDiscount> getPlatformDiscounts() {
+    return platformDiscounts;
+  }
+
+  public void setPlatformDiscounts(List<DraftOrderPlatformDiscount> platformDiscounts) {
+    this.platformDiscounts = platformDiscounts;
   }
 
   /**
@@ -317,6 +409,17 @@ public class CalculatedDraftOrder {
   }
 
   /**
+   * Whether the line item prices include taxes.
+   */
+  public boolean getTaxesIncluded() {
+    return taxesIncluded;
+  }
+
+  public void setTaxesIncluded(boolean taxesIncluded) {
+    this.taxesIncluded = taxesIncluded;
+  }
+
+  /**
    * Total discounts.
    */
   public MoneyBag getTotalDiscountsSet() {
@@ -358,6 +461,18 @@ public class CalculatedDraftOrder {
 
   public void setTotalPriceSet(MoneyBag totalPriceSet) {
     this.totalPriceSet = totalPriceSet;
+  }
+
+  /**
+   * The sum of individual line item quantities.
+   * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+   */
+  public int getTotalQuantityOfLineItems() {
+    return totalQuantityOfLineItems;
+  }
+
+  public void setTotalQuantityOfLineItems(int totalQuantityOfLineItems) {
+    this.totalQuantityOfLineItems = totalQuantityOfLineItems;
   }
 
   /**
@@ -404,9 +519,33 @@ public class CalculatedDraftOrder {
     this.totalTaxSet = totalTaxSet;
   }
 
+  /**
+   * Fingerprint of the current cart.
+   * In order to have bundles work, the fingerprint must be passed to
+   * each request as it was previously returned, unmodified.
+   */
+  public String getTransformerFingerprint() {
+    return transformerFingerprint;
+  }
+
+  public void setTransformerFingerprint(String transformerFingerprint) {
+    this.transformerFingerprint = transformerFingerprint;
+  }
+
+  /**
+   * The list of warnings raised while calculating.
+   */
+  public List<DraftOrderWarning> getWarnings() {
+    return warnings;
+  }
+
+  public void setWarnings(List<DraftOrderWarning> warnings) {
+    this.warnings = warnings;
+  }
+
   @Override
   public String toString() {
-    return "CalculatedDraftOrder{appliedDiscount='" + appliedDiscount + "', availableShippingRates='" + availableShippingRates + "', billingAddressMatchesShippingAddress='" + billingAddressMatchesShippingAddress + "', currencyCode='" + currencyCode + "', customer='" + customer + "', lineItems='" + lineItems + "', lineItemsSubtotalPrice='" + lineItemsSubtotalPrice + "', marketName='" + marketName + "', marketRegionCountryCode='" + marketRegionCountryCode + "', phone='" + phone + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', purchasingEntity='" + purchasingEntity + "', shippingLine='" + shippingLine + "', subtotalPrice='" + subtotalPrice + "', subtotalPriceSet='" + subtotalPriceSet + "', taxLines='" + taxLines + "', totalDiscountsSet='" + totalDiscountsSet + "', totalLineItemsPriceSet='" + totalLineItemsPriceSet + "', totalPrice='" + totalPrice + "', totalPriceSet='" + totalPriceSet + "', totalShippingPrice='" + totalShippingPrice + "', totalShippingPriceSet='" + totalShippingPriceSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "'}";
+    return "CalculatedDraftOrder{acceptAutomaticDiscounts='" + acceptAutomaticDiscounts + "', alerts='" + alerts + "', appliedDiscount='" + appliedDiscount + "', availableShippingRates='" + availableShippingRates + "', billingAddressMatchesShippingAddress='" + billingAddressMatchesShippingAddress + "', currencyCode='" + currencyCode + "', customer='" + customer + "', discountCodes='" + discountCodes + "', lineItems='" + lineItems + "', lineItemsSubtotalPrice='" + lineItemsSubtotalPrice + "', marketName='" + marketName + "', marketRegionCountryCode='" + marketRegionCountryCode + "', phone='" + phone + "', platformDiscounts='" + platformDiscounts + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', purchasingEntity='" + purchasingEntity + "', shippingLine='" + shippingLine + "', subtotalPrice='" + subtotalPrice + "', subtotalPriceSet='" + subtotalPriceSet + "', taxLines='" + taxLines + "', taxesIncluded='" + taxesIncluded + "', totalDiscountsSet='" + totalDiscountsSet + "', totalLineItemsPriceSet='" + totalLineItemsPriceSet + "', totalPrice='" + totalPrice + "', totalPriceSet='" + totalPriceSet + "', totalQuantityOfLineItems='" + totalQuantityOfLineItems + "', totalShippingPrice='" + totalShippingPrice + "', totalShippingPriceSet='" + totalShippingPriceSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "', transformerFingerprint='" + transformerFingerprint + "', warnings='" + warnings + "'}";
   }
 
   @Override
@@ -414,35 +553,43 @@ public class CalculatedDraftOrder {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     CalculatedDraftOrder that = (CalculatedDraftOrder) o;
-    return Objects.equals(appliedDiscount, that.appliedDiscount) &&
+    return Objects.equals(acceptAutomaticDiscounts, that.acceptAutomaticDiscounts) &&
+        Objects.equals(alerts, that.alerts) &&
+        Objects.equals(appliedDiscount, that.appliedDiscount) &&
         Objects.equals(availableShippingRates, that.availableShippingRates) &&
         billingAddressMatchesShippingAddress == that.billingAddressMatchesShippingAddress &&
         Objects.equals(currencyCode, that.currencyCode) &&
         Objects.equals(customer, that.customer) &&
+        Objects.equals(discountCodes, that.discountCodes) &&
         Objects.equals(lineItems, that.lineItems) &&
         Objects.equals(lineItemsSubtotalPrice, that.lineItemsSubtotalPrice) &&
         Objects.equals(marketName, that.marketName) &&
         Objects.equals(marketRegionCountryCode, that.marketRegionCountryCode) &&
         Objects.equals(phone, that.phone) &&
+        Objects.equals(platformDiscounts, that.platformDiscounts) &&
         Objects.equals(presentmentCurrencyCode, that.presentmentCurrencyCode) &&
         Objects.equals(purchasingEntity, that.purchasingEntity) &&
         Objects.equals(shippingLine, that.shippingLine) &&
         Objects.equals(subtotalPrice, that.subtotalPrice) &&
         Objects.equals(subtotalPriceSet, that.subtotalPriceSet) &&
         Objects.equals(taxLines, that.taxLines) &&
+        taxesIncluded == that.taxesIncluded &&
         Objects.equals(totalDiscountsSet, that.totalDiscountsSet) &&
         Objects.equals(totalLineItemsPriceSet, that.totalLineItemsPriceSet) &&
         Objects.equals(totalPrice, that.totalPrice) &&
         Objects.equals(totalPriceSet, that.totalPriceSet) &&
+        totalQuantityOfLineItems == that.totalQuantityOfLineItems &&
         Objects.equals(totalShippingPrice, that.totalShippingPrice) &&
         Objects.equals(totalShippingPriceSet, that.totalShippingPriceSet) &&
         Objects.equals(totalTax, that.totalTax) &&
-        Objects.equals(totalTaxSet, that.totalTaxSet);
+        Objects.equals(totalTaxSet, that.totalTaxSet) &&
+        Objects.equals(transformerFingerprint, that.transformerFingerprint) &&
+        Objects.equals(warnings, that.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appliedDiscount, availableShippingRates, billingAddressMatchesShippingAddress, currencyCode, customer, lineItems, lineItemsSubtotalPrice, marketName, marketRegionCountryCode, phone, presentmentCurrencyCode, purchasingEntity, shippingLine, subtotalPrice, subtotalPriceSet, taxLines, totalDiscountsSet, totalLineItemsPriceSet, totalPrice, totalPriceSet, totalShippingPrice, totalShippingPriceSet, totalTax, totalTaxSet);
+    return Objects.hash(acceptAutomaticDiscounts, alerts, appliedDiscount, availableShippingRates, billingAddressMatchesShippingAddress, currencyCode, customer, discountCodes, lineItems, lineItemsSubtotalPrice, marketName, marketRegionCountryCode, phone, platformDiscounts, presentmentCurrencyCode, purchasingEntity, shippingLine, subtotalPrice, subtotalPriceSet, taxLines, taxesIncluded, totalDiscountsSet, totalLineItemsPriceSet, totalPrice, totalPriceSet, totalQuantityOfLineItems, totalShippingPrice, totalShippingPriceSet, totalTax, totalTaxSet, transformerFingerprint, warnings);
   }
 
   public static Builder newBuilder() {
@@ -450,6 +597,18 @@ public class CalculatedDraftOrder {
   }
 
   public static class Builder {
+    /**
+     * Whether or not to accept automatic discounts on the draft order during calculation.
+     * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+     * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+     */
+    private Boolean acceptAutomaticDiscounts;
+
+    /**
+     * The list of alerts raised while calculating.
+     */
+    private List<ResourceAlert> alerts;
+
     /**
      * The custom order-level discount applied.
      */
@@ -477,6 +636,11 @@ public class CalculatedDraftOrder {
     private Customer customer;
 
     /**
+     * All discount codes applied.
+     */
+    private List<String> discountCodes;
+
+    /**
      * The list of the line items in the calculated draft order.
      */
     private List<CalculatedDraftOrderLineItem> lineItems;
@@ -501,6 +665,11 @@ public class CalculatedDraftOrder {
      * The assigned phone number.
      */
     private String phone;
+
+    /**
+     * The list of platform discounts applied.
+     */
+    private List<DraftOrderPlatformDiscount> platformDiscounts;
 
     /**
      * The payment currency used for calculation.
@@ -534,6 +703,11 @@ public class CalculatedDraftOrder {
     private List<TaxLine> taxLines;
 
     /**
+     * Whether the line item prices include taxes.
+     */
+    private boolean taxesIncluded;
+
+    /**
      * Total discounts.
      */
     private MoneyBag totalDiscountsSet;
@@ -552,6 +726,12 @@ public class CalculatedDraftOrder {
      * The total price, includes taxes, shipping charges, and discounts.
      */
     private MoneyBag totalPriceSet;
+
+    /**
+     * The sum of individual line item quantities.
+     * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+     */
+    private int totalQuantityOfLineItems;
 
     /**
      * The total shipping price in shop currency.
@@ -573,33 +753,71 @@ public class CalculatedDraftOrder {
      */
     private MoneyBag totalTaxSet;
 
+    /**
+     * Fingerprint of the current cart.
+     * In order to have bundles work, the fingerprint must be passed to
+     * each request as it was previously returned, unmodified.
+     */
+    private String transformerFingerprint;
+
+    /**
+     * The list of warnings raised while calculating.
+     */
+    private List<DraftOrderWarning> warnings;
+
     public CalculatedDraftOrder build() {
       CalculatedDraftOrder result = new CalculatedDraftOrder();
+      result.acceptAutomaticDiscounts = this.acceptAutomaticDiscounts;
+      result.alerts = this.alerts;
       result.appliedDiscount = this.appliedDiscount;
       result.availableShippingRates = this.availableShippingRates;
       result.billingAddressMatchesShippingAddress = this.billingAddressMatchesShippingAddress;
       result.currencyCode = this.currencyCode;
       result.customer = this.customer;
+      result.discountCodes = this.discountCodes;
       result.lineItems = this.lineItems;
       result.lineItemsSubtotalPrice = this.lineItemsSubtotalPrice;
       result.marketName = this.marketName;
       result.marketRegionCountryCode = this.marketRegionCountryCode;
       result.phone = this.phone;
+      result.platformDiscounts = this.platformDiscounts;
       result.presentmentCurrencyCode = this.presentmentCurrencyCode;
       result.purchasingEntity = this.purchasingEntity;
       result.shippingLine = this.shippingLine;
       result.subtotalPrice = this.subtotalPrice;
       result.subtotalPriceSet = this.subtotalPriceSet;
       result.taxLines = this.taxLines;
+      result.taxesIncluded = this.taxesIncluded;
       result.totalDiscountsSet = this.totalDiscountsSet;
       result.totalLineItemsPriceSet = this.totalLineItemsPriceSet;
       result.totalPrice = this.totalPrice;
       result.totalPriceSet = this.totalPriceSet;
+      result.totalQuantityOfLineItems = this.totalQuantityOfLineItems;
       result.totalShippingPrice = this.totalShippingPrice;
       result.totalShippingPriceSet = this.totalShippingPriceSet;
       result.totalTax = this.totalTax;
       result.totalTaxSet = this.totalTaxSet;
+      result.transformerFingerprint = this.transformerFingerprint;
+      result.warnings = this.warnings;
       return result;
+    }
+
+    /**
+     * Whether or not to accept automatic discounts on the draft order during calculation.
+     * If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
+     * If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+     */
+    public Builder acceptAutomaticDiscounts(Boolean acceptAutomaticDiscounts) {
+      this.acceptAutomaticDiscounts = acceptAutomaticDiscounts;
+      return this;
+    }
+
+    /**
+     * The list of alerts raised while calculating.
+     */
+    public Builder alerts(List<ResourceAlert> alerts) {
+      this.alerts = alerts;
+      return this;
     }
 
     /**
@@ -645,6 +863,14 @@ public class CalculatedDraftOrder {
     }
 
     /**
+     * All discount codes applied.
+     */
+    public Builder discountCodes(List<String> discountCodes) {
+      this.discountCodes = discountCodes;
+      return this;
+    }
+
+    /**
      * The list of the line items in the calculated draft order.
      */
     public Builder lineItems(List<CalculatedDraftOrderLineItem> lineItems) {
@@ -682,6 +908,14 @@ public class CalculatedDraftOrder {
      */
     public Builder phone(String phone) {
       this.phone = phone;
+      return this;
+    }
+
+    /**
+     * The list of platform discounts applied.
+     */
+    public Builder platformDiscounts(List<DraftOrderPlatformDiscount> platformDiscounts) {
+      this.platformDiscounts = platformDiscounts;
       return this;
     }
 
@@ -735,6 +969,14 @@ public class CalculatedDraftOrder {
     }
 
     /**
+     * Whether the line item prices include taxes.
+     */
+    public Builder taxesIncluded(boolean taxesIncluded) {
+      this.taxesIncluded = taxesIncluded;
+      return this;
+    }
+
+    /**
      * Total discounts.
      */
     public Builder totalDiscountsSet(MoneyBag totalDiscountsSet) {
@@ -767,6 +1009,15 @@ public class CalculatedDraftOrder {
     }
 
     /**
+     * The sum of individual line item quantities.
+     * If the draft order has bundle items, this is the sum containing the quantities of individual items in the bundle.
+     */
+    public Builder totalQuantityOfLineItems(int totalQuantityOfLineItems) {
+      this.totalQuantityOfLineItems = totalQuantityOfLineItems;
+      return this;
+    }
+
+    /**
      * The total shipping price in shop currency.
      */
     public Builder totalShippingPrice(String totalShippingPrice) {
@@ -795,6 +1046,24 @@ public class CalculatedDraftOrder {
      */
     public Builder totalTaxSet(MoneyBag totalTaxSet) {
       this.totalTaxSet = totalTaxSet;
+      return this;
+    }
+
+    /**
+     * Fingerprint of the current cart.
+     * In order to have bundles work, the fingerprint must be passed to
+     * each request as it was previously returned, unmodified.
+     */
+    public Builder transformerFingerprint(String transformerFingerprint) {
+      this.transformerFingerprint = transformerFingerprint;
+      return this;
+    }
+
+    /**
+     * The list of warnings raised while calculating.
+     */
+    public Builder warnings(List<DraftOrderWarning> warnings) {
+      this.warnings = warnings;
       return this;
     }
   }

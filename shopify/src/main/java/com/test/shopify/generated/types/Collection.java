@@ -22,14 +22,14 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class Collection implements MetafieldReference, MetafieldReferencer, com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.HasPublishedTranslations, com.test.shopify.generated.types.Node, com.test.shopify.generated.types.Publishable {
+public class Collection implements MetafieldReference, MetafieldReferencer, com.test.shopify.generated.types.HasEvents, com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.HasPublishedTranslations, com.test.shopify.generated.types.Node, com.test.shopify.generated.types.Publishable {
   /**
    * The number of
    * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
    * that a resource is published to, without
    * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
    */
-  private int availablePublicationCount;
+  private Count availablePublicationsCount;
 
   /**
    * A single-line, text-only description of the collection, stripped of any HTML
@@ -43,6 +43,11 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
    * depending on the theme.
    */
   private String descriptionHtml;
+
+  /**
+   * The paginated list of events associated with the host subject.
+   */
+  private EventConnection events;
 
   /**
    * Information about the collection that's provided through resource feedback.
@@ -119,7 +124,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
   /**
    * The number of products in the collection.
    */
-  private int productsCount;
+  private Count productsCount;
 
   /**
    * The number of
@@ -164,6 +169,14 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
    * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
    */
   private ResourcePublicationConnection resourcePublications;
+
+  /**
+   * The number of
+   * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+   * that a resource is published to, without
+   * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+   */
+  private Count resourcePublicationsCount;
 
   /**
    * The list of resources that are either published or staged to be published to a
@@ -240,12 +253,12 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
    * that a resource is published to, without
    * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
    */
-  public int getAvailablePublicationCount() {
-    return availablePublicationCount;
+  public Count getAvailablePublicationsCount() {
+    return availablePublicationsCount;
   }
 
-  public void setAvailablePublicationCount(int availablePublicationCount) {
-    this.availablePublicationCount = availablePublicationCount;
+  public void setAvailablePublicationsCount(Count availablePublicationsCount) {
+    this.availablePublicationsCount = availablePublicationsCount;
   }
 
   /**
@@ -271,6 +284,17 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
 
   public void setDescriptionHtml(String descriptionHtml) {
     this.descriptionHtml = descriptionHtml;
+  }
+
+  /**
+   * The paginated list of events associated with the host subject.
+   */
+  public EventConnection getEvents() {
+    return events;
+  }
+
+  public void setEvents(EventConnection events) {
+    this.events = events;
   }
 
   /**
@@ -420,11 +444,11 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
   /**
    * The number of products in the collection.
    */
-  public int getProductsCount() {
+  public Count getProductsCount() {
     return productsCount;
   }
 
-  public void setProductsCount(int productsCount) {
+  public void setProductsCount(Count productsCount) {
     this.productsCount = productsCount;
   }
 
@@ -512,6 +536,20 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
 
   public void setResourcePublications(ResourcePublicationConnection resourcePublications) {
     this.resourcePublications = resourcePublications;
+  }
+
+  /**
+   * The number of
+   * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+   * that a resource is published to, without
+   * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+   */
+  public Count getResourcePublicationsCount() {
+    return resourcePublicationsCount;
+  }
+
+  public void setResourcePublicationsCount(Count resourcePublicationsCount) {
+    this.resourcePublicationsCount = resourcePublicationsCount;
   }
 
   /**
@@ -648,7 +686,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
 
   @Override
   public String toString() {
-    return "Collection{availablePublicationCount='" + availablePublicationCount + "', description='" + description + "', descriptionHtml='" + descriptionHtml + "', feedback='" + feedback + "', handle='" + handle + "', hasProduct='" + hasProduct + "', id='" + id + "', image='" + image + "', legacyResourceId='" + legacyResourceId + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', products='" + products + "', productsCount='" + productsCount + "', publicationCount='" + publicationCount + "', publications='" + publications + "', publishedOnChannel='" + publishedOnChannel + "', publishedOnCurrentChannel='" + publishedOnCurrentChannel + "', publishedOnCurrentPublication='" + publishedOnCurrentPublication + "', publishedOnPublication='" + publishedOnPublication + "', resourcePublications='" + resourcePublications + "', resourcePublicationsV2='" + resourcePublicationsV2 + "', ruleSet='" + ruleSet + "', seo='" + seo + "', sortOrder='" + sortOrder + "', storefrontId='" + storefrontId + "', templateSuffix='" + templateSuffix + "', title='" + title + "', translations='" + translations + "', unpublishedChannels='" + unpublishedChannels + "', unpublishedPublications='" + unpublishedPublications + "', updatedAt='" + updatedAt + "'}";
+    return "Collection{availablePublicationsCount='" + availablePublicationsCount + "', description='" + description + "', descriptionHtml='" + descriptionHtml + "', events='" + events + "', feedback='" + feedback + "', handle='" + handle + "', hasProduct='" + hasProduct + "', id='" + id + "', image='" + image + "', legacyResourceId='" + legacyResourceId + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', products='" + products + "', productsCount='" + productsCount + "', publicationCount='" + publicationCount + "', publications='" + publications + "', publishedOnChannel='" + publishedOnChannel + "', publishedOnCurrentChannel='" + publishedOnCurrentChannel + "', publishedOnCurrentPublication='" + publishedOnCurrentPublication + "', publishedOnPublication='" + publishedOnPublication + "', resourcePublications='" + resourcePublications + "', resourcePublicationsCount='" + resourcePublicationsCount + "', resourcePublicationsV2='" + resourcePublicationsV2 + "', ruleSet='" + ruleSet + "', seo='" + seo + "', sortOrder='" + sortOrder + "', storefrontId='" + storefrontId + "', templateSuffix='" + templateSuffix + "', title='" + title + "', translations='" + translations + "', unpublishedChannels='" + unpublishedChannels + "', unpublishedPublications='" + unpublishedPublications + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -656,9 +694,10 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Collection that = (Collection) o;
-    return availablePublicationCount == that.availablePublicationCount &&
+    return Objects.equals(availablePublicationsCount, that.availablePublicationsCount) &&
         Objects.equals(description, that.description) &&
         Objects.equals(descriptionHtml, that.descriptionHtml) &&
+        Objects.equals(events, that.events) &&
         Objects.equals(feedback, that.feedback) &&
         Objects.equals(handle, that.handle) &&
         hasProduct == that.hasProduct &&
@@ -671,7 +710,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
         Objects.equals(privateMetafield, that.privateMetafield) &&
         Objects.equals(privateMetafields, that.privateMetafields) &&
         Objects.equals(products, that.products) &&
-        productsCount == that.productsCount &&
+        Objects.equals(productsCount, that.productsCount) &&
         publicationCount == that.publicationCount &&
         Objects.equals(publications, that.publications) &&
         publishedOnChannel == that.publishedOnChannel &&
@@ -679,6 +718,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
         publishedOnCurrentPublication == that.publishedOnCurrentPublication &&
         publishedOnPublication == that.publishedOnPublication &&
         Objects.equals(resourcePublications, that.resourcePublications) &&
+        Objects.equals(resourcePublicationsCount, that.resourcePublicationsCount) &&
         Objects.equals(resourcePublicationsV2, that.resourcePublicationsV2) &&
         Objects.equals(ruleSet, that.ruleSet) &&
         Objects.equals(seo, that.seo) &&
@@ -694,7 +734,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
 
   @Override
   public int hashCode() {
-    return Objects.hash(availablePublicationCount, description, descriptionHtml, feedback, handle, hasProduct, id, image, legacyResourceId, metafield, metafieldDefinitions, metafields, privateMetafield, privateMetafields, products, productsCount, publicationCount, publications, publishedOnChannel, publishedOnCurrentChannel, publishedOnCurrentPublication, publishedOnPublication, resourcePublications, resourcePublicationsV2, ruleSet, seo, sortOrder, storefrontId, templateSuffix, title, translations, unpublishedChannels, unpublishedPublications, updatedAt);
+    return Objects.hash(availablePublicationsCount, description, descriptionHtml, events, feedback, handle, hasProduct, id, image, legacyResourceId, metafield, metafieldDefinitions, metafields, privateMetafield, privateMetafields, products, productsCount, publicationCount, publications, publishedOnChannel, publishedOnCurrentChannel, publishedOnCurrentPublication, publishedOnPublication, resourcePublications, resourcePublicationsCount, resourcePublicationsV2, ruleSet, seo, sortOrder, storefrontId, templateSuffix, title, translations, unpublishedChannels, unpublishedPublications, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -708,7 +748,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
      * that a resource is published to, without
      * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
      */
-    private int availablePublicationCount;
+    private Count availablePublicationsCount;
 
     /**
      * A single-line, text-only description of the collection, stripped of any HTML
@@ -722,6 +762,11 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
      * depending on the theme.
      */
     private String descriptionHtml;
+
+    /**
+     * The paginated list of events associated with the host subject.
+     */
+    private EventConnection events;
 
     /**
      * Information about the collection that's provided through resource feedback.
@@ -798,7 +843,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
     /**
      * The number of products in the collection.
      */
-    private int productsCount;
+    private Count productsCount;
 
     /**
      * The number of
@@ -843,6 +888,14 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
      * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
      */
     private ResourcePublicationConnection resourcePublications;
+
+    /**
+     * The number of
+     * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+     * that a resource is published to, without
+     * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+     */
+    private Count resourcePublicationsCount;
 
     /**
      * The list of resources that are either published or staged to be published to a
@@ -912,9 +965,10 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
 
     public Collection build() {
       Collection result = new Collection();
-      result.availablePublicationCount = this.availablePublicationCount;
+      result.availablePublicationsCount = this.availablePublicationsCount;
       result.description = this.description;
       result.descriptionHtml = this.descriptionHtml;
+      result.events = this.events;
       result.feedback = this.feedback;
       result.handle = this.handle;
       result.hasProduct = this.hasProduct;
@@ -935,6 +989,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
       result.publishedOnCurrentPublication = this.publishedOnCurrentPublication;
       result.publishedOnPublication = this.publishedOnPublication;
       result.resourcePublications = this.resourcePublications;
+      result.resourcePublicationsCount = this.resourcePublicationsCount;
       result.resourcePublicationsV2 = this.resourcePublicationsV2;
       result.ruleSet = this.ruleSet;
       result.seo = this.seo;
@@ -955,8 +1010,8 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
      * that a resource is published to, without
      * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
      */
-    public Builder availablePublicationCount(int availablePublicationCount) {
-      this.availablePublicationCount = availablePublicationCount;
+    public Builder availablePublicationsCount(Count availablePublicationsCount) {
+      this.availablePublicationsCount = availablePublicationsCount;
       return this;
     }
 
@@ -976,6 +1031,14 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
      */
     public Builder descriptionHtml(String descriptionHtml) {
       this.descriptionHtml = descriptionHtml;
+      return this;
+    }
+
+    /**
+     * The paginated list of events associated with the host subject.
+     */
+    public Builder events(EventConnection events) {
+      this.events = events;
       return this;
     }
 
@@ -1090,7 +1153,7 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
     /**
      * The number of products in the collection.
      */
-    public Builder productsCount(int productsCount) {
+    public Builder productsCount(Count productsCount) {
       this.productsCount = productsCount;
       return this;
     }
@@ -1157,6 +1220,17 @@ public class Collection implements MetafieldReference, MetafieldReferencer, com.
      */
     public Builder resourcePublications(ResourcePublicationConnection resourcePublications) {
       this.resourcePublications = resourcePublications;
+      return this;
+    }
+
+    /**
+     * The number of
+     * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+     * that a resource is published to, without
+     * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+     */
+    public Builder resourcePublicationsCount(Count resourcePublicationsCount) {
+      this.resourcePublicationsCount = resourcePublicationsCount;
       return this;
     }
 

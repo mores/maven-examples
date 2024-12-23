@@ -57,6 +57,14 @@ public class MarketingActivityUpdateInput {
   private UTMInput utm;
 
   /**
+   * Value for a query parameter that gets inserted into storefront URLs for
+   * matching storefront traffic to this activity. This feature is currently
+   * available on a limited basis to some partners only. UTMs should continue to be
+   * used for most partners. Both the URL parameter value and UTM parameters can be set.
+   */
+  private String urlParameterValue;
+
+  /**
    * A list of the item IDs that were marketed in this marketing activity. Valid types for these items are:
    * * `Product`
    * * `Shop`
@@ -168,6 +176,20 @@ public class MarketingActivityUpdateInput {
   }
 
   /**
+   * Value for a query parameter that gets inserted into storefront URLs for
+   * matching storefront traffic to this activity. This feature is currently
+   * available on a limited basis to some partners only. UTMs should continue to be
+   * used for most partners. Both the URL parameter value and UTM parameters can be set.
+   */
+  public String getUrlParameterValue() {
+    return urlParameterValue;
+  }
+
+  public void setUrlParameterValue(String urlParameterValue) {
+    this.urlParameterValue = urlParameterValue;
+  }
+
+  /**
    * A list of the item IDs that were marketed in this marketing activity. Valid types for these items are:
    * * `Product`
    * * `Shop`
@@ -195,7 +217,7 @@ public class MarketingActivityUpdateInput {
 
   @Override
   public String toString() {
-    return "MarketingActivityUpdateInput{id='" + id + "', marketingRecommendationId='" + marketingRecommendationId + "', title='" + title + "', budget='" + budget + "', status='" + status + "', targetStatus='" + targetStatus + "', formData='" + formData + "', utm='" + utm + "', marketedResources='" + marketedResources + "', errors='" + errors + "'}";
+    return "MarketingActivityUpdateInput{id='" + id + "', marketingRecommendationId='" + marketingRecommendationId + "', title='" + title + "', budget='" + budget + "', status='" + status + "', targetStatus='" + targetStatus + "', formData='" + formData + "', utm='" + utm + "', urlParameterValue='" + urlParameterValue + "', marketedResources='" + marketedResources + "', errors='" + errors + "'}";
   }
 
   @Override
@@ -211,13 +233,14 @@ public class MarketingActivityUpdateInput {
         Objects.equals(targetStatus, that.targetStatus) &&
         Objects.equals(formData, that.formData) &&
         Objects.equals(utm, that.utm) &&
+        Objects.equals(urlParameterValue, that.urlParameterValue) &&
         Objects.equals(marketedResources, that.marketedResources) &&
         Objects.equals(errors, that.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, marketingRecommendationId, title, budget, status, targetStatus, formData, utm, marketedResources, errors);
+    return Objects.hash(id, marketingRecommendationId, title, budget, status, targetStatus, formData, utm, urlParameterValue, marketedResources, errors);
   }
 
   public static Builder newBuilder() {
@@ -272,6 +295,14 @@ public class MarketingActivityUpdateInput {
     private UTMInput utm;
 
     /**
+     * Value for a query parameter that gets inserted into storefront URLs for
+     * matching storefront traffic to this activity. This feature is currently
+     * available on a limited basis to some partners only. UTMs should continue to be
+     * used for most partners. Both the URL parameter value and UTM parameters can be set.
+     */
+    private String urlParameterValue;
+
+    /**
      * A list of the item IDs that were marketed in this marketing activity. Valid types for these items are:
      * * `Product`
      * * `Shop`
@@ -295,6 +326,7 @@ public class MarketingActivityUpdateInput {
       result.targetStatus = this.targetStatus;
       result.formData = this.formData;
       result.utm = this.utm;
+      result.urlParameterValue = this.urlParameterValue;
       result.marketedResources = this.marketedResources;
       result.errors = this.errors;
       return result;
@@ -367,6 +399,17 @@ public class MarketingActivityUpdateInput {
      */
     public Builder utm(UTMInput utm) {
       this.utm = utm;
+      return this;
+    }
+
+    /**
+     * Value for a query parameter that gets inserted into storefront URLs for
+     * matching storefront traffic to this activity. This feature is currently
+     * available on a limited basis to some partners only. UTMs should continue to be
+     * used for most partners. Both the URL parameter value and UTM parameters can be set.
+     */
+    public Builder urlParameterValue(String urlParameterValue) {
+      this.urlParameterValue = urlParameterValue;
       return this;
     }
 

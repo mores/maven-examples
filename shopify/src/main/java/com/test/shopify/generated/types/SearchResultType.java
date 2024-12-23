@@ -14,11 +14,11 @@ public enum SearchResultType {
 
   FILE,
 
-  ONLINE_STORE_PAGE,
+  PAGE,
 
-  ONLINE_STORE_BLOG,
+  BLOG,
 
-  ONLINE_STORE_ARTICLE,
+  ARTICLE,
 
   URL_REDIRECT,
 

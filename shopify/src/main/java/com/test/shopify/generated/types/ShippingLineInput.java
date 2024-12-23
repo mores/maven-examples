@@ -15,9 +15,9 @@ import java.util.Objects;
  */
 public class ShippingLineInput {
   /**
-   * Price of the shipping rate in shop currency.
+   * Price of the shipping rate with currency. If provided, `price` will be ignored.
    */
-  private String price;
+  private MoneyInput priceWithCurrency;
 
   /**
    * A unique identifier for the shipping rate.
@@ -33,14 +33,14 @@ public class ShippingLineInput {
   }
 
   /**
-   * Price of the shipping rate in shop currency.
+   * Price of the shipping rate with currency. If provided, `price` will be ignored.
    */
-  public String getPrice() {
-    return price;
+  public MoneyInput getPriceWithCurrency() {
+    return priceWithCurrency;
   }
 
-  public void setPrice(String price) {
-    this.price = price;
+  public void setPriceWithCurrency(MoneyInput priceWithCurrency) {
+    this.priceWithCurrency = priceWithCurrency;
   }
 
   /**
@@ -67,7 +67,7 @@ public class ShippingLineInput {
 
   @Override
   public String toString() {
-    return "ShippingLineInput{price='" + price + "', shippingRateHandle='" + shippingRateHandle + "', title='" + title + "'}";
+    return "ShippingLineInput{priceWithCurrency='" + priceWithCurrency + "', shippingRateHandle='" + shippingRateHandle + "', title='" + title + "'}";
   }
 
   @Override
@@ -75,14 +75,14 @@ public class ShippingLineInput {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ShippingLineInput that = (ShippingLineInput) o;
-    return Objects.equals(price, that.price) &&
+    return Objects.equals(priceWithCurrency, that.priceWithCurrency) &&
         Objects.equals(shippingRateHandle, that.shippingRateHandle) &&
         Objects.equals(title, that.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(price, shippingRateHandle, title);
+    return Objects.hash(priceWithCurrency, shippingRateHandle, title);
   }
 
   public static Builder newBuilder() {
@@ -91,9 +91,9 @@ public class ShippingLineInput {
 
   public static class Builder {
     /**
-     * Price of the shipping rate in shop currency.
+     * Price of the shipping rate with currency. If provided, `price` will be ignored.
      */
-    private String price;
+    private MoneyInput priceWithCurrency;
 
     /**
      * A unique identifier for the shipping rate.
@@ -107,17 +107,17 @@ public class ShippingLineInput {
 
     public ShippingLineInput build() {
       ShippingLineInput result = new ShippingLineInput();
-      result.price = this.price;
+      result.priceWithCurrency = this.priceWithCurrency;
       result.shippingRateHandle = this.shippingRateHandle;
       result.title = this.title;
       return result;
     }
 
     /**
-     * Price of the shipping rate in shop currency.
+     * Price of the shipping rate with currency. If provided, `price` will be ignored.
      */
-    public Builder price(String price) {
-      this.price = price;
+    public Builder priceWithCurrency(MoneyInput priceWithCurrency) {
+      this.priceWithCurrency = priceWithCurrency;
       return this;
     }
 

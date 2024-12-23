@@ -20,6 +20,11 @@ import java.time.OffsetDateTime;
 })
 public interface Event {
   /**
+   * The action that occured.
+   */
+  String getAction();
+
+  /**
    * The name of the app that created the event.
    */
   String getAppTitle();

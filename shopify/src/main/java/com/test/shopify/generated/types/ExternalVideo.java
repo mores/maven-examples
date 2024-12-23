@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,11 +14,16 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class ExternalVideo implements com.test.shopify.generated.types.Media, com.test.shopify.generated.types.Node {
+public class ExternalVideo implements com.test.shopify.generated.types.File, com.test.shopify.generated.types.Media, com.test.shopify.generated.types.Node {
   /**
-   * A word or phrase to share the nature or contents of a media.
+   * A word or phrase to describe the contents or the function of a file.
    */
   private String alt;
+
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was created.
+   */
+  private OffsetDateTime createdAt;
 
   /**
    * The embed URL of the video for the respective host.
@@ -28,6 +34,16 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
    * The URL.
    */
   private String embeddedUrl;
+
+  /**
+   * Any errors that have occurred on the file.
+   */
+  private List<FileError> fileErrors;
+
+  /**
+   * The status of the file.
+   */
+  private FileStatus fileStatus;
 
   /**
    * The host of the external video.
@@ -69,11 +85,16 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
    */
   private MediaStatus status;
 
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was last updated.
+   */
+  private OffsetDateTime updatedAt;
+
   public ExternalVideo() {
   }
 
   /**
-   * A word or phrase to share the nature or contents of a media.
+   * A word or phrase to describe the contents or the function of a file.
    */
   public String getAlt() {
     return alt;
@@ -81,6 +102,17 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
 
   public void setAlt(String alt) {
     this.alt = alt;
+  }
+
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was created.
+   */
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
   /**
@@ -103,6 +135,28 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
 
   public void setEmbeddedUrl(String embeddedUrl) {
     this.embeddedUrl = embeddedUrl;
+  }
+
+  /**
+   * Any errors that have occurred on the file.
+   */
+  public List<FileError> getFileErrors() {
+    return fileErrors;
+  }
+
+  public void setFileErrors(List<FileError> fileErrors) {
+    this.fileErrors = fileErrors;
+  }
+
+  /**
+   * The status of the file.
+   */
+  public FileStatus getFileStatus() {
+    return fileStatus;
+  }
+
+  public void setFileStatus(FileStatus fileStatus) {
+    this.fileStatus = fileStatus;
   }
 
   /**
@@ -193,9 +247,20 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
     this.status = status;
   }
 
+  /**
+   * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was last updated.
+   */
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
   @Override
   public String toString() {
-    return "ExternalVideo{alt='" + alt + "', embedUrl='" + embedUrl + "', embeddedUrl='" + embeddedUrl + "', host='" + host + "', id='" + id + "', mediaContentType='" + mediaContentType + "', mediaErrors='" + mediaErrors + "', mediaWarnings='" + mediaWarnings + "', originUrl='" + originUrl + "', preview='" + preview + "', status='" + status + "'}";
+    return "ExternalVideo{alt='" + alt + "', createdAt='" + createdAt + "', embedUrl='" + embedUrl + "', embeddedUrl='" + embeddedUrl + "', fileErrors='" + fileErrors + "', fileStatus='" + fileStatus + "', host='" + host + "', id='" + id + "', mediaContentType='" + mediaContentType + "', mediaErrors='" + mediaErrors + "', mediaWarnings='" + mediaWarnings + "', originUrl='" + originUrl + "', preview='" + preview + "', status='" + status + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -204,8 +269,11 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
     if (o == null || getClass() != o.getClass()) return false;
     ExternalVideo that = (ExternalVideo) o;
     return Objects.equals(alt, that.alt) &&
+        Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(embedUrl, that.embedUrl) &&
         Objects.equals(embeddedUrl, that.embeddedUrl) &&
+        Objects.equals(fileErrors, that.fileErrors) &&
+        Objects.equals(fileStatus, that.fileStatus) &&
         Objects.equals(host, that.host) &&
         Objects.equals(id, that.id) &&
         Objects.equals(mediaContentType, that.mediaContentType) &&
@@ -213,12 +281,13 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
         Objects.equals(mediaWarnings, that.mediaWarnings) &&
         Objects.equals(originUrl, that.originUrl) &&
         Objects.equals(preview, that.preview) &&
-        Objects.equals(status, that.status);
+        Objects.equals(status, that.status) &&
+        Objects.equals(updatedAt, that.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alt, embedUrl, embeddedUrl, host, id, mediaContentType, mediaErrors, mediaWarnings, originUrl, preview, status);
+    return Objects.hash(alt, createdAt, embedUrl, embeddedUrl, fileErrors, fileStatus, host, id, mediaContentType, mediaErrors, mediaWarnings, originUrl, preview, status, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -227,9 +296,14 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
 
   public static class Builder {
     /**
-     * A word or phrase to share the nature or contents of a media.
+     * A word or phrase to describe the contents or the function of a file.
      */
     private String alt;
+
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was created.
+     */
+    private OffsetDateTime createdAt;
 
     /**
      * The embed URL of the video for the respective host.
@@ -240,6 +314,16 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
      * The URL.
      */
     private String embeddedUrl;
+
+    /**
+     * Any errors that have occurred on the file.
+     */
+    private List<FileError> fileErrors;
+
+    /**
+     * The status of the file.
+     */
+    private FileStatus fileStatus;
 
     /**
      * The host of the external video.
@@ -281,11 +365,19 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
      */
     private MediaStatus status;
 
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was last updated.
+     */
+    private OffsetDateTime updatedAt;
+
     public ExternalVideo build() {
       ExternalVideo result = new ExternalVideo();
       result.alt = this.alt;
+      result.createdAt = this.createdAt;
       result.embedUrl = this.embedUrl;
       result.embeddedUrl = this.embeddedUrl;
+      result.fileErrors = this.fileErrors;
+      result.fileStatus = this.fileStatus;
       result.host = this.host;
       result.id = this.id;
       result.mediaContentType = this.mediaContentType;
@@ -294,14 +386,23 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
       result.originUrl = this.originUrl;
       result.preview = this.preview;
       result.status = this.status;
+      result.updatedAt = this.updatedAt;
       return result;
     }
 
     /**
-     * A word or phrase to share the nature or contents of a media.
+     * A word or phrase to describe the contents or the function of a file.
      */
     public Builder alt(String alt) {
       this.alt = alt;
+      return this;
+    }
+
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was created.
+     */
+    public Builder createdAt(OffsetDateTime createdAt) {
+      this.createdAt = createdAt;
       return this;
     }
 
@@ -318,6 +419,22 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
      */
     public Builder embeddedUrl(String embeddedUrl) {
       this.embeddedUrl = embeddedUrl;
+      return this;
+    }
+
+    /**
+     * Any errors that have occurred on the file.
+     */
+    public Builder fileErrors(List<FileError> fileErrors) {
+      this.fileErrors = fileErrors;
+      return this;
+    }
+
+    /**
+     * The status of the file.
+     */
+    public Builder fileStatus(FileStatus fileStatus) {
+      this.fileStatus = fileStatus;
       return this;
     }
 
@@ -382,6 +499,14 @@ public class ExternalVideo implements com.test.shopify.generated.types.Media, co
      */
     public Builder status(MediaStatus status) {
       this.status = status;
+      return this;
+    }
+
+    /**
+     * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) when the file was last updated.
+     */
+    public Builder updatedAt(OffsetDateTime updatedAt) {
+      this.updatedAt = updatedAt;
       return this;
     }
   }

@@ -20,6 +20,8 @@ public enum MetafieldOwnerType {
 
   DRAFTORDER,
 
+  GIFT_CARD_TRANSACTION,
+
   MARKET,
 
   CARTTRANSFORM,
@@ -28,11 +30,11 @@ public enum MetafieldOwnerType {
 
   MEDIA_IMAGE,
 
-  PRODUCTIMAGE,
-
   PRODUCT,
 
   PRODUCTVARIANT,
+
+  SELLING_PLAN,
 
   ARTICLE,
 

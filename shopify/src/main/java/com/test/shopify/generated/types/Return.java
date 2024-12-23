@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -17,6 +18,11 @@ public class Return implements com.test.shopify.generated.types.Node {
    * Additional information about the declined return.
    */
   private ReturnDecline decline;
+
+  /**
+   * The exchange line items attached to the return.
+   */
+  private ExchangeLineItemConnection exchangeLineItems;
 
   /**
    * A globally-unique ID.
@@ -41,7 +47,12 @@ public class Return implements com.test.shopify.generated.types.Node {
   /**
    * The return line items attached to the return.
    */
-  private ReturnLineItemConnection returnLineItems;
+  private ReturnLineItemTypeConnection returnLineItems;
+
+  /**
+   * The return shipping fees for the return.
+   */
+  private List<ReturnShippingFee> returnShippingFees;
 
   /**
    * The list of reverse fulfillment orders for the return.
@@ -75,6 +86,17 @@ public class Return implements com.test.shopify.generated.types.Node {
 
   public void setDecline(ReturnDecline decline) {
     this.decline = decline;
+  }
+
+  /**
+   * The exchange line items attached to the return.
+   */
+  public ExchangeLineItemConnection getExchangeLineItems() {
+    return exchangeLineItems;
+  }
+
+  public void setExchangeLineItems(ExchangeLineItemConnection exchangeLineItems) {
+    this.exchangeLineItems = exchangeLineItems;
   }
 
   /**
@@ -124,12 +146,23 @@ public class Return implements com.test.shopify.generated.types.Node {
   /**
    * The return line items attached to the return.
    */
-  public ReturnLineItemConnection getReturnLineItems() {
+  public ReturnLineItemTypeConnection getReturnLineItems() {
     return returnLineItems;
   }
 
-  public void setReturnLineItems(ReturnLineItemConnection returnLineItems) {
+  public void setReturnLineItems(ReturnLineItemTypeConnection returnLineItems) {
     this.returnLineItems = returnLineItems;
+  }
+
+  /**
+   * The return shipping fees for the return.
+   */
+  public List<ReturnShippingFee> getReturnShippingFees() {
+    return returnShippingFees;
+  }
+
+  public void setReturnShippingFees(List<ReturnShippingFee> returnShippingFees) {
+    this.returnShippingFees = returnShippingFees;
   }
 
   /**
@@ -179,7 +212,7 @@ public class Return implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "Return{decline='" + decline + "', id='" + id + "', name='" + name + "', order='" + order + "', refunds='" + refunds + "', returnLineItems='" + returnLineItems + "', reverseFulfillmentOrders='" + reverseFulfillmentOrders + "', status='" + status + "', suggestedRefund='" + suggestedRefund + "', totalQuantity='" + totalQuantity + "'}";
+    return "Return{decline='" + decline + "', exchangeLineItems='" + exchangeLineItems + "', id='" + id + "', name='" + name + "', order='" + order + "', refunds='" + refunds + "', returnLineItems='" + returnLineItems + "', returnShippingFees='" + returnShippingFees + "', reverseFulfillmentOrders='" + reverseFulfillmentOrders + "', status='" + status + "', suggestedRefund='" + suggestedRefund + "', totalQuantity='" + totalQuantity + "'}";
   }
 
   @Override
@@ -188,11 +221,13 @@ public class Return implements com.test.shopify.generated.types.Node {
     if (o == null || getClass() != o.getClass()) return false;
     Return that = (Return) o;
     return Objects.equals(decline, that.decline) &&
+        Objects.equals(exchangeLineItems, that.exchangeLineItems) &&
         Objects.equals(id, that.id) &&
         Objects.equals(name, that.name) &&
         Objects.equals(order, that.order) &&
         Objects.equals(refunds, that.refunds) &&
         Objects.equals(returnLineItems, that.returnLineItems) &&
+        Objects.equals(returnShippingFees, that.returnShippingFees) &&
         Objects.equals(reverseFulfillmentOrders, that.reverseFulfillmentOrders) &&
         Objects.equals(status, that.status) &&
         Objects.equals(suggestedRefund, that.suggestedRefund) &&
@@ -201,7 +236,7 @@ public class Return implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(decline, id, name, order, refunds, returnLineItems, reverseFulfillmentOrders, status, suggestedRefund, totalQuantity);
+    return Objects.hash(decline, exchangeLineItems, id, name, order, refunds, returnLineItems, returnShippingFees, reverseFulfillmentOrders, status, suggestedRefund, totalQuantity);
   }
 
   public static Builder newBuilder() {
@@ -213,6 +248,11 @@ public class Return implements com.test.shopify.generated.types.Node {
      * Additional information about the declined return.
      */
     private ReturnDecline decline;
+
+    /**
+     * The exchange line items attached to the return.
+     */
+    private ExchangeLineItemConnection exchangeLineItems;
 
     /**
      * A globally-unique ID.
@@ -237,7 +277,12 @@ public class Return implements com.test.shopify.generated.types.Node {
     /**
      * The return line items attached to the return.
      */
-    private ReturnLineItemConnection returnLineItems;
+    private ReturnLineItemTypeConnection returnLineItems;
+
+    /**
+     * The return shipping fees for the return.
+     */
+    private List<ReturnShippingFee> returnShippingFees;
 
     /**
      * The list of reverse fulfillment orders for the return.
@@ -262,11 +307,13 @@ public class Return implements com.test.shopify.generated.types.Node {
     public Return build() {
       Return result = new Return();
       result.decline = this.decline;
+      result.exchangeLineItems = this.exchangeLineItems;
       result.id = this.id;
       result.name = this.name;
       result.order = this.order;
       result.refunds = this.refunds;
       result.returnLineItems = this.returnLineItems;
+      result.returnShippingFees = this.returnShippingFees;
       result.reverseFulfillmentOrders = this.reverseFulfillmentOrders;
       result.status = this.status;
       result.suggestedRefund = this.suggestedRefund;
@@ -279,6 +326,14 @@ public class Return implements com.test.shopify.generated.types.Node {
      */
     public Builder decline(ReturnDecline decline) {
       this.decline = decline;
+      return this;
+    }
+
+    /**
+     * The exchange line items attached to the return.
+     */
+    public Builder exchangeLineItems(ExchangeLineItemConnection exchangeLineItems) {
+      this.exchangeLineItems = exchangeLineItems;
       return this;
     }
 
@@ -317,8 +372,16 @@ public class Return implements com.test.shopify.generated.types.Node {
     /**
      * The return line items attached to the return.
      */
-    public Builder returnLineItems(ReturnLineItemConnection returnLineItems) {
+    public Builder returnLineItems(ReturnLineItemTypeConnection returnLineItems) {
       this.returnLineItems = returnLineItems;
+      return this;
+    }
+
+    /**
+     * The return shipping fees for the return.
+     */
+    public Builder returnShippingFees(List<ReturnShippingFee> returnShippingFees) {
+      this.returnShippingFees = returnShippingFees;
       return this;
     }
 

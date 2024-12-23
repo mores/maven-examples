@@ -24,6 +24,12 @@ public class TenderTransactionFragmentProjection<PARENT extends BaseSubProjectio
      return projection;
   }
 
+  public OrderProjection<TenderTransactionFragmentProjection<PARENT, ROOT>, ROOT> order() {
+     OrderProjection<TenderTransactionFragmentProjection<PARENT, ROOT>, ROOT> projection = new OrderProjection<>(this, getRoot());
+     getFields().put("order", projection);
+     return projection;
+  }
+
   public TenderTransactionDetailsProjection<TenderTransactionFragmentProjection<PARENT, ROOT>, ROOT> transactionDetails(
       ) {
      TenderTransactionDetailsProjection<TenderTransactionFragmentProjection<PARENT, ROOT>, ROOT> projection = new TenderTransactionDetailsProjection<>(this, getRoot());

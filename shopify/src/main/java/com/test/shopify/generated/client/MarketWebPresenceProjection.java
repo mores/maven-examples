@@ -12,6 +12,18 @@ public class MarketWebPresenceProjection<PARENT extends BaseSubProjectionNode<?,
     return this;
   }
 
+  public ShopLocaleProjection<MarketWebPresenceProjection<PARENT, ROOT>, ROOT> alternateLocales() {
+     ShopLocaleProjection<MarketWebPresenceProjection<PARENT, ROOT>, ROOT> projection = new ShopLocaleProjection<>(this, getRoot());
+     getFields().put("alternateLocales", projection);
+     return projection;
+  }
+
+  public ShopLocaleProjection<MarketWebPresenceProjection<PARENT, ROOT>, ROOT> defaultLocale() {
+     ShopLocaleProjection<MarketWebPresenceProjection<PARENT, ROOT>, ROOT> projection = new ShopLocaleProjection<>(this, getRoot());
+     getFields().put("defaultLocale", projection);
+     return projection;
+  }
+
   public DomainProjection<MarketWebPresenceProjection<PARENT, ROOT>, ROOT> domain() {
      DomainProjection<MarketWebPresenceProjection<PARENT, ROOT>, ROOT> projection = new DomainProjection<>(this, getRoot());
      getFields().put("domain", projection);
@@ -29,16 +41,6 @@ public class MarketWebPresenceProjection<PARENT extends BaseSubProjectionNode<?,
      MarketWebPresenceRootUrlProjection<MarketWebPresenceProjection<PARENT, ROOT>, ROOT> projection = new MarketWebPresenceRootUrlProjection<>(this, getRoot());
      getFields().put("rootUrls", projection);
      return projection;
-  }
-
-  public MarketWebPresenceProjection<PARENT, ROOT> alternateLocales() {
-    getFields().put("alternateLocales", null);
-    return this;
-  }
-
-  public MarketWebPresenceProjection<PARENT, ROOT> defaultLocale() {
-    getFields().put("defaultLocale", null);
-    return this;
   }
 
   public MarketWebPresenceProjection<PARENT, ROOT> id() {

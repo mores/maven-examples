@@ -15,6 +15,11 @@ public class BuyerExperienceConfiguration {
   private boolean checkoutToDraft;
 
   /**
+   * The portion required to be paid at checkout.
+   */
+  private DepositConfiguration deposit;
+
+  /**
    * Whether to allow customers to use editable shipping addresses.
    */
   private boolean editableShippingAddress;
@@ -42,6 +47,17 @@ public class BuyerExperienceConfiguration {
 
   public void setCheckoutToDraft(boolean checkoutToDraft) {
     this.checkoutToDraft = checkoutToDraft;
+  }
+
+  /**
+   * The portion required to be paid at checkout.
+   */
+  public DepositConfiguration getDeposit() {
+    return deposit;
+  }
+
+  public void setDeposit(DepositConfiguration deposit) {
+    this.deposit = deposit;
   }
 
   /**
@@ -80,7 +96,7 @@ public class BuyerExperienceConfiguration {
 
   @Override
   public String toString() {
-    return "BuyerExperienceConfiguration{checkoutToDraft='" + checkoutToDraft + "', editableShippingAddress='" + editableShippingAddress + "', payNowOnly='" + payNowOnly + "', paymentTermsTemplate='" + paymentTermsTemplate + "'}";
+    return "BuyerExperienceConfiguration{checkoutToDraft='" + checkoutToDraft + "', deposit='" + deposit + "', editableShippingAddress='" + editableShippingAddress + "', payNowOnly='" + payNowOnly + "', paymentTermsTemplate='" + paymentTermsTemplate + "'}";
   }
 
   @Override
@@ -89,6 +105,7 @@ public class BuyerExperienceConfiguration {
     if (o == null || getClass() != o.getClass()) return false;
     BuyerExperienceConfiguration that = (BuyerExperienceConfiguration) o;
     return checkoutToDraft == that.checkoutToDraft &&
+        Objects.equals(deposit, that.deposit) &&
         editableShippingAddress == that.editableShippingAddress &&
         payNowOnly == that.payNowOnly &&
         Objects.equals(paymentTermsTemplate, that.paymentTermsTemplate);
@@ -96,7 +113,7 @@ public class BuyerExperienceConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkoutToDraft, editableShippingAddress, payNowOnly, paymentTermsTemplate);
+    return Objects.hash(checkoutToDraft, deposit, editableShippingAddress, payNowOnly, paymentTermsTemplate);
   }
 
   public static Builder newBuilder() {
@@ -108,6 +125,11 @@ public class BuyerExperienceConfiguration {
      * Whether to checkout to draft order for merchant review.
      */
     private boolean checkoutToDraft;
+
+    /**
+     * The portion required to be paid at checkout.
+     */
+    private DepositConfiguration deposit;
 
     /**
      * Whether to allow customers to use editable shipping addresses.
@@ -128,6 +150,7 @@ public class BuyerExperienceConfiguration {
     public BuyerExperienceConfiguration build() {
       BuyerExperienceConfiguration result = new BuyerExperienceConfiguration();
       result.checkoutToDraft = this.checkoutToDraft;
+      result.deposit = this.deposit;
       result.editableShippingAddress = this.editableShippingAddress;
       result.payNowOnly = this.payNowOnly;
       result.paymentTermsTemplate = this.paymentTermsTemplate;
@@ -139,6 +162,14 @@ public class BuyerExperienceConfiguration {
      */
     public Builder checkoutToDraft(boolean checkoutToDraft) {
       this.checkoutToDraft = checkoutToDraft;
+      return this;
+    }
+
+    /**
+     * The portion required to be paid at checkout.
+     */
+    public Builder deposit(DepositConfiguration deposit) {
+      this.deposit = deposit;
       return this;
     }
 

@@ -26,6 +26,13 @@ public class ProductDuplicateProjectionRoot<PARENT extends BaseSubProjectionNode
     return projection;
   }
 
+  public ProductDuplicateOperationProjection<ProductDuplicateProjectionRoot<PARENT, ROOT>, ProductDuplicateProjectionRoot<PARENT, ROOT>> productDuplicateOperation(
+      ) {
+    ProductDuplicateOperationProjection<ProductDuplicateProjectionRoot<PARENT, ROOT>, ProductDuplicateProjectionRoot<PARENT, ROOT>> projection = new ProductDuplicateOperationProjection<>(this, this);    
+    getFields().put("productDuplicateOperation", projection);
+    return projection;
+  }
+
   public ShopProjection<ProductDuplicateProjectionRoot<PARENT, ROOT>, ProductDuplicateProjectionRoot<PARENT, ROOT>> shop(
       ) {
     ShopProjection<ProductDuplicateProjectionRoot<PARENT, ROOT>, ProductDuplicateProjectionRoot<PARENT, ROOT>> projection = new ShopProjection<>(this, this);    

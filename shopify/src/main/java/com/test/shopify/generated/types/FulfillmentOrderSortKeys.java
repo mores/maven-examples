@@ -6,5 +6,7 @@ package com.test.shopify.generated.types;
 public enum FulfillmentOrderSortKeys {
   ID,
 
-  RELEVANCE
+  RELEVANCE,
+
+  UPDATED_AT
 }

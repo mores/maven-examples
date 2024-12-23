@@ -1,6 +1,7 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
@@ -12,7 +13,7 @@ import java.util.Set;
  */
 public class InventoryActivateGraphQLQuery extends GraphQLQuery {
   public InventoryActivateGraphQLQuery(String inventoryItemId, String locationId, Integer available,
-      Integer onHand, String queryName, Set<String> fieldsSet) {
+      Integer onHand, Boolean stockAtLegacyLocation, String queryName, Set<String> fieldsSet) {
     super("mutation", queryName);
     if (inventoryItemId != null || fieldsSet.contains("inventoryItemId")) {
         getInput().put("inventoryItemId", inventoryItemId);
@@ -22,6 +23,8 @@ public class InventoryActivateGraphQLQuery extends GraphQLQuery {
         getInput().put("available", available);
     }if (onHand != null || fieldsSet.contains("onHand")) {
         getInput().put("onHand", onHand);
+    }if (stockAtLegacyLocation != null || fieldsSet.contains("stockAtLegacyLocation")) {
+        getInput().put("stockAtLegacyLocation", stockAtLegacyLocation);
     }
   }
 
@@ -49,10 +52,12 @@ public class InventoryActivateGraphQLQuery extends GraphQLQuery {
 
     private Integer onHand;
 
+    private Boolean stockAtLegacyLocation;
+
     private String queryName;
 
     public InventoryActivateGraphQLQuery build() {
-      return new InventoryActivateGraphQLQuery(inventoryItemId, locationId, available, onHand, queryName, fieldsSet);
+      return new InventoryActivateGraphQLQuery(inventoryItemId, locationId, available, onHand, stockAtLegacyLocation, queryName, fieldsSet);
                
     }
 
@@ -89,6 +94,16 @@ public class InventoryActivateGraphQLQuery extends GraphQLQuery {
     public Builder onHand(Integer onHand) {
       this.onHand = onHand;
       this.fieldsSet.add("onHand");
+      return this;
+    }
+
+    /**
+     * Allow activation at or away from fulfillment service location with sku
+     * sharing off. This will deactivate inventory at all other locations.
+     */
+    public Builder stockAtLegacyLocation(Boolean stockAtLegacyLocation) {
+      this.stockAtLegacyLocation = stockAtLegacyLocation;
+      this.fieldsSet.add("stockAtLegacyLocation");
       return this;
     }
 

@@ -21,6 +21,11 @@ public class ShopifyPaymentsPayout implements com.test.shopify.generated.types.L
   private ShopifyPaymentsBankAccount bankAccount;
 
   /**
+   * The business entity associated with the payout.
+   */
+  private BusinessEntity businessEntity;
+
+  /**
    * The total amount and currency of the payout.
    */
   private MoneyV2 gross;
@@ -73,6 +78,17 @@ public class ShopifyPaymentsPayout implements com.test.shopify.generated.types.L
 
   public void setBankAccount(ShopifyPaymentsBankAccount bankAccount) {
     this.bankAccount = bankAccount;
+  }
+
+  /**
+   * The business entity associated with the payout.
+   */
+  public BusinessEntity getBusinessEntity() {
+    return businessEntity;
+  }
+
+  public void setBusinessEntity(BusinessEntity businessEntity) {
+    this.businessEntity = businessEntity;
   }
 
   /**
@@ -166,7 +182,7 @@ public class ShopifyPaymentsPayout implements com.test.shopify.generated.types.L
 
   @Override
   public String toString() {
-    return "ShopifyPaymentsPayout{bankAccount='" + bankAccount + "', gross='" + gross + "', id='" + id + "', issuedAt='" + issuedAt + "', legacyResourceId='" + legacyResourceId + "', net='" + net + "', status='" + status + "', summary='" + summary + "', transactionType='" + transactionType + "'}";
+    return "ShopifyPaymentsPayout{bankAccount='" + bankAccount + "', businessEntity='" + businessEntity + "', gross='" + gross + "', id='" + id + "', issuedAt='" + issuedAt + "', legacyResourceId='" + legacyResourceId + "', net='" + net + "', status='" + status + "', summary='" + summary + "', transactionType='" + transactionType + "'}";
   }
 
   @Override
@@ -175,6 +191,7 @@ public class ShopifyPaymentsPayout implements com.test.shopify.generated.types.L
     if (o == null || getClass() != o.getClass()) return false;
     ShopifyPaymentsPayout that = (ShopifyPaymentsPayout) o;
     return Objects.equals(bankAccount, that.bankAccount) &&
+        Objects.equals(businessEntity, that.businessEntity) &&
         Objects.equals(gross, that.gross) &&
         Objects.equals(id, that.id) &&
         Objects.equals(issuedAt, that.issuedAt) &&
@@ -187,7 +204,7 @@ public class ShopifyPaymentsPayout implements com.test.shopify.generated.types.L
 
   @Override
   public int hashCode() {
-    return Objects.hash(bankAccount, gross, id, issuedAt, legacyResourceId, net, status, summary, transactionType);
+    return Objects.hash(bankAccount, businessEntity, gross, id, issuedAt, legacyResourceId, net, status, summary, transactionType);
   }
 
   public static Builder newBuilder() {
@@ -199,6 +216,11 @@ public class ShopifyPaymentsPayout implements com.test.shopify.generated.types.L
      * The bank account for the payout.
      */
     private ShopifyPaymentsBankAccount bankAccount;
+
+    /**
+     * The business entity associated with the payout.
+     */
+    private BusinessEntity businessEntity;
 
     /**
      * The total amount and currency of the payout.
@@ -244,6 +266,7 @@ public class ShopifyPaymentsPayout implements com.test.shopify.generated.types.L
     public ShopifyPaymentsPayout build() {
       ShopifyPaymentsPayout result = new ShopifyPaymentsPayout();
       result.bankAccount = this.bankAccount;
+      result.businessEntity = this.businessEntity;
       result.gross = this.gross;
       result.id = this.id;
       result.issuedAt = this.issuedAt;
@@ -260,6 +283,14 @@ public class ShopifyPaymentsPayout implements com.test.shopify.generated.types.L
      */
     public Builder bankAccount(ShopifyPaymentsBankAccount bankAccount) {
       this.bankAccount = bankAccount;
+      return this;
+    }
+
+    /**
+     * The business entity associated with the payout.
+     */
+    public Builder businessEntity(BusinessEntity businessEntity) {
+      this.businessEntity = businessEntity;
       return this;
     }
 

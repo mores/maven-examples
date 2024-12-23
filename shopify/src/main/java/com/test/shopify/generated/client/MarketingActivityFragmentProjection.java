@@ -139,6 +139,11 @@ public class MarketingActivityFragmentProjection<PARENT extends BaseSubProjectio
     return this;
   }
 
+  public MarketingActivityFragmentProjection<PARENT, ROOT> isExternal() {
+    getFields().put("isExternal", null);
+    return this;
+  }
+
   public MarketingActivityFragmentProjection<PARENT, ROOT> parentActivityId() {
     getFields().put("parentActivityId", null);
     return this;

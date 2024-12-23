@@ -3,6 +3,7 @@ package com.test.shopify.generated.types;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,6 +19,11 @@ public class AppFeedback {
   private App app;
 
   /**
+   * The date and time when the app feedback was generated.
+   */
+  private OffsetDateTime feedbackGeneratedAt;
+
+  /**
    * A link to where merchants can resolve errors.
    */
   private Link link;
@@ -26,6 +32,11 @@ public class AppFeedback {
    * The feedback message presented to the merchant.
    */
   private List<UserError> messages;
+
+  /**
+   * Conveys the state of the feedback and whether it requires merchant action or not.
+   */
+  private ResourceFeedbackState state;
 
   public AppFeedback() {
   }
@@ -39,6 +50,17 @@ public class AppFeedback {
 
   public void setApp(App app) {
     this.app = app;
+  }
+
+  /**
+   * The date and time when the app feedback was generated.
+   */
+  public OffsetDateTime getFeedbackGeneratedAt() {
+    return feedbackGeneratedAt;
+  }
+
+  public void setFeedbackGeneratedAt(OffsetDateTime feedbackGeneratedAt) {
+    this.feedbackGeneratedAt = feedbackGeneratedAt;
   }
 
   /**
@@ -63,9 +85,20 @@ public class AppFeedback {
     this.messages = messages;
   }
 
+  /**
+   * Conveys the state of the feedback and whether it requires merchant action or not.
+   */
+  public ResourceFeedbackState getState() {
+    return state;
+  }
+
+  public void setState(ResourceFeedbackState state) {
+    this.state = state;
+  }
+
   @Override
   public String toString() {
-    return "AppFeedback{app='" + app + "', link='" + link + "', messages='" + messages + "'}";
+    return "AppFeedback{app='" + app + "', feedbackGeneratedAt='" + feedbackGeneratedAt + "', link='" + link + "', messages='" + messages + "', state='" + state + "'}";
   }
 
   @Override
@@ -74,13 +107,15 @@ public class AppFeedback {
     if (o == null || getClass() != o.getClass()) return false;
     AppFeedback that = (AppFeedback) o;
     return Objects.equals(app, that.app) &&
+        Objects.equals(feedbackGeneratedAt, that.feedbackGeneratedAt) &&
         Objects.equals(link, that.link) &&
-        Objects.equals(messages, that.messages);
+        Objects.equals(messages, that.messages) &&
+        Objects.equals(state, that.state);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(app, link, messages);
+    return Objects.hash(app, feedbackGeneratedAt, link, messages, state);
   }
 
   public static Builder newBuilder() {
@@ -94,6 +129,11 @@ public class AppFeedback {
     private App app;
 
     /**
+     * The date and time when the app feedback was generated.
+     */
+    private OffsetDateTime feedbackGeneratedAt;
+
+    /**
      * A link to where merchants can resolve errors.
      */
     private Link link;
@@ -103,11 +143,18 @@ public class AppFeedback {
      */
     private List<UserError> messages;
 
+    /**
+     * Conveys the state of the feedback and whether it requires merchant action or not.
+     */
+    private ResourceFeedbackState state;
+
     public AppFeedback build() {
       AppFeedback result = new AppFeedback();
       result.app = this.app;
+      result.feedbackGeneratedAt = this.feedbackGeneratedAt;
       result.link = this.link;
       result.messages = this.messages;
+      result.state = this.state;
       return result;
     }
 
@@ -116,6 +163,14 @@ public class AppFeedback {
      */
     public Builder app(App app) {
       this.app = app;
+      return this;
+    }
+
+    /**
+     * The date and time when the app feedback was generated.
+     */
+    public Builder feedbackGeneratedAt(OffsetDateTime feedbackGeneratedAt) {
+      this.feedbackGeneratedAt = feedbackGeneratedAt;
       return this;
     }
 
@@ -132,6 +187,14 @@ public class AppFeedback {
      */
     public Builder messages(List<UserError> messages) {
       this.messages = messages;
+      return this;
+    }
+
+    /**
+     * Conveys the state of the feedback and whether it requires merchant action or not.
+     */
+    public Builder state(ResourceFeedbackState state) {
+      this.state = state;
       return this;
     }
   }

@@ -135,6 +135,13 @@ public class SubscriptionContractProjection<PARENT extends BaseSubProjectionNode
     return projection;
   }
 
+  public SubscriptionContractLastBillingErrorTypeProjection<SubscriptionContractProjection<PARENT, ROOT>, ROOT> lastBillingAttemptErrorType(
+      ) {
+     SubscriptionContractLastBillingErrorTypeProjection<SubscriptionContractProjection<PARENT, ROOT>, ROOT> projection = new SubscriptionContractLastBillingErrorTypeProjection<>(this, getRoot());
+     getFields().put("lastBillingAttemptErrorType", projection);
+     return projection;
+  }
+
   public SubscriptionContractLastPaymentStatusProjection<SubscriptionContractProjection<PARENT, ROOT>, ROOT> lastPaymentStatus(
       ) {
      SubscriptionContractLastPaymentStatusProjection<SubscriptionContractProjection<PARENT, ROOT>, ROOT> projection = new SubscriptionContractLastPaymentStatusProjection<>(this, getRoot());
@@ -165,6 +172,12 @@ public class SubscriptionContractProjection<PARENT extends BaseSubProjectionNode
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("lines").add(reverseArg);
     return projection;
+  }
+
+  public CountProjection<SubscriptionContractProjection<PARENT, ROOT>, ROOT> linesCount() {
+     CountProjection<SubscriptionContractProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("linesCount", projection);
+     return projection;
   }
 
   public OrderConnectionProjection<SubscriptionContractProjection<PARENT, ROOT>, ROOT> orders() {

@@ -88,6 +88,12 @@ public class CompanyFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?
     return projection;
   }
 
+  public CountProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> contactsCount() {
+     CountProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("contactsCount", projection);
+     return projection;
+  }
+
   public CompanyContactRoleProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> defaultRole() {
      CompanyContactRoleProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> projection = new CompanyContactRoleProjection<>(this, getRoot());
      getFields().put("defaultRole", projection);
@@ -181,6 +187,12 @@ public class CompanyFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?
     InputArgument queryArg = new InputArgument("query", query);
     getInputArguments().get("locations").add(queryArg);
     return projection;
+  }
+
+  public CountProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> locationsCount() {
+     CountProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("locationsCount", projection);
+     return projection;
   }
 
   public CompanyContactProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> mainContact() {
@@ -298,6 +310,12 @@ public class CompanyFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?
     return projection;
   }
 
+  public CountProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> ordersCount() {
+     CountProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("ordersCount", projection);
+     return projection;
+  }
+
   public PrivateMetafieldProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> privateMetafield(
       ) {
      PrivateMetafieldProjection<CompanyFragmentProjection<PARENT, ROOT>, ROOT> projection = new PrivateMetafieldProjection<>(this, getRoot());
@@ -390,11 +408,6 @@ public class CompanyFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?
     return this;
   }
 
-  public CompanyFragmentProjection<PARENT, ROOT> locationCount() {
-    getFields().put("locationCount", null);
-    return this;
-  }
-
   public CompanyFragmentProjection<PARENT, ROOT> name() {
     getFields().put("name", null);
     return this;
@@ -402,11 +415,6 @@ public class CompanyFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?
 
   public CompanyFragmentProjection<PARENT, ROOT> note() {
     getFields().put("note", null);
-    return this;
-  }
-
-  public CompanyFragmentProjection<PARENT, ROOT> orderCount() {
-    getFields().put("orderCount", null);
     return this;
   }
 

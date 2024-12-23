@@ -12,6 +12,13 @@ public class FulfillmentOrderHoldProjectionRoot<PARENT extends BaseSubProjection
     return this;
   }
 
+  public FulfillmentHoldProjection<FulfillmentOrderHoldProjectionRoot<PARENT, ROOT>, FulfillmentOrderHoldProjectionRoot<PARENT, ROOT>> fulfillmentHold(
+      ) {
+    FulfillmentHoldProjection<FulfillmentOrderHoldProjectionRoot<PARENT, ROOT>, FulfillmentOrderHoldProjectionRoot<PARENT, ROOT>> projection = new FulfillmentHoldProjection<>(this, this);    
+    getFields().put("fulfillmentHold", projection);
+    return projection;
+  }
+
   public FulfillmentOrderProjection<FulfillmentOrderHoldProjectionRoot<PARENT, ROOT>, FulfillmentOrderHoldProjectionRoot<PARENT, ROOT>> fulfillmentOrder(
       ) {
     FulfillmentOrderProjection<FulfillmentOrderHoldProjectionRoot<PARENT, ROOT>, FulfillmentOrderHoldProjectionRoot<PARENT, ROOT>> projection = new FulfillmentOrderProjection<>(this, this);    

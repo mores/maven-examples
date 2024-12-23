@@ -26,5 +26,7 @@ public enum InventorySetScheduledChangesUserErrorCode {
 
   INVENTORY_ITEM_NOT_FOUND,
 
-  INCLUSION
+  INCLUSION,
+
+  LEDGER_DOCUMENT_INVALID
 }

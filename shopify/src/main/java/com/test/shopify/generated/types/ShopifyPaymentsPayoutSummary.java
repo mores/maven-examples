@@ -21,6 +21,16 @@ public class ShopifyPaymentsPayoutSummary {
   private MoneyV2 adjustmentsGross;
 
   /**
+   * Total fees for all advances.
+   */
+  private MoneyV2 advanceFees;
+
+  /**
+   * Total gross amount for all advances.
+   */
+  private MoneyV2 advanceGross;
+
+  /**
    * Total fees for all charges.
    */
   private MoneyV2 chargesFee;
@@ -83,6 +93,28 @@ public class ShopifyPaymentsPayoutSummary {
 
   public void setAdjustmentsGross(MoneyV2 adjustmentsGross) {
     this.adjustmentsGross = adjustmentsGross;
+  }
+
+  /**
+   * Total fees for all advances.
+   */
+  public MoneyV2 getAdvanceFees() {
+    return advanceFees;
+  }
+
+  public void setAdvanceFees(MoneyV2 advanceFees) {
+    this.advanceFees = advanceFees;
+  }
+
+  /**
+   * Total gross amount for all advances.
+   */
+  public MoneyV2 getAdvanceGross() {
+    return advanceGross;
+  }
+
+  public void setAdvanceGross(MoneyV2 advanceGross) {
+    this.advanceGross = advanceGross;
   }
 
   /**
@@ -175,7 +207,7 @@ public class ShopifyPaymentsPayoutSummary {
 
   @Override
   public String toString() {
-    return "ShopifyPaymentsPayoutSummary{adjustmentsFee='" + adjustmentsFee + "', adjustmentsGross='" + adjustmentsGross + "', chargesFee='" + chargesFee + "', chargesGross='" + chargesGross + "', refundsFee='" + refundsFee + "', refundsFeeGross='" + refundsFeeGross + "', reservedFundsFee='" + reservedFundsFee + "', reservedFundsGross='" + reservedFundsGross + "', retriedPayoutsFee='" + retriedPayoutsFee + "', retriedPayoutsGross='" + retriedPayoutsGross + "'}";
+    return "ShopifyPaymentsPayoutSummary{adjustmentsFee='" + adjustmentsFee + "', adjustmentsGross='" + adjustmentsGross + "', advanceFees='" + advanceFees + "', advanceGross='" + advanceGross + "', chargesFee='" + chargesFee + "', chargesGross='" + chargesGross + "', refundsFee='" + refundsFee + "', refundsFeeGross='" + refundsFeeGross + "', reservedFundsFee='" + reservedFundsFee + "', reservedFundsGross='" + reservedFundsGross + "', retriedPayoutsFee='" + retriedPayoutsFee + "', retriedPayoutsGross='" + retriedPayoutsGross + "'}";
   }
 
   @Override
@@ -185,6 +217,8 @@ public class ShopifyPaymentsPayoutSummary {
     ShopifyPaymentsPayoutSummary that = (ShopifyPaymentsPayoutSummary) o;
     return Objects.equals(adjustmentsFee, that.adjustmentsFee) &&
         Objects.equals(adjustmentsGross, that.adjustmentsGross) &&
+        Objects.equals(advanceFees, that.advanceFees) &&
+        Objects.equals(advanceGross, that.advanceGross) &&
         Objects.equals(chargesFee, that.chargesFee) &&
         Objects.equals(chargesGross, that.chargesGross) &&
         Objects.equals(refundsFee, that.refundsFee) &&
@@ -197,7 +231,7 @@ public class ShopifyPaymentsPayoutSummary {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adjustmentsFee, adjustmentsGross, chargesFee, chargesGross, refundsFee, refundsFeeGross, reservedFundsFee, reservedFundsGross, retriedPayoutsFee, retriedPayoutsGross);
+    return Objects.hash(adjustmentsFee, adjustmentsGross, advanceFees, advanceGross, chargesFee, chargesGross, refundsFee, refundsFeeGross, reservedFundsFee, reservedFundsGross, retriedPayoutsFee, retriedPayoutsGross);
   }
 
   public static Builder newBuilder() {
@@ -214,6 +248,16 @@ public class ShopifyPaymentsPayoutSummary {
      * Total gross amount for all adjustments including disputes.
      */
     private MoneyV2 adjustmentsGross;
+
+    /**
+     * Total fees for all advances.
+     */
+    private MoneyV2 advanceFees;
+
+    /**
+     * Total gross amount for all advances.
+     */
+    private MoneyV2 advanceGross;
 
     /**
      * Total fees for all charges.
@@ -259,6 +303,8 @@ public class ShopifyPaymentsPayoutSummary {
       ShopifyPaymentsPayoutSummary result = new ShopifyPaymentsPayoutSummary();
       result.adjustmentsFee = this.adjustmentsFee;
       result.adjustmentsGross = this.adjustmentsGross;
+      result.advanceFees = this.advanceFees;
+      result.advanceGross = this.advanceGross;
       result.chargesFee = this.chargesFee;
       result.chargesGross = this.chargesGross;
       result.refundsFee = this.refundsFee;
@@ -283,6 +329,22 @@ public class ShopifyPaymentsPayoutSummary {
      */
     public Builder adjustmentsGross(MoneyV2 adjustmentsGross) {
       this.adjustmentsGross = adjustmentsGross;
+      return this;
+    }
+
+    /**
+     * Total fees for all advances.
+     */
+    public Builder advanceFees(MoneyV2 advanceFees) {
+      this.advanceFees = advanceFees;
+      return this;
+    }
+
+    /**
+     * Total gross amount for all advances.
+     */
+    public Builder advanceGross(MoneyV2 advanceGross) {
+      this.advanceGross = advanceGross;
       return this;
     }
 

@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountCodeBulkActivatePayload {
   /**
-   * The asynchronous job that activates the code discounts.
+   * The asynchronous job that activates the discounts.
    */
   private Job job;
 
@@ -24,7 +24,7 @@ public class DiscountCodeBulkActivatePayload {
   }
 
   /**
-   * The asynchronous job that activates the code discounts.
+   * The asynchronous job that activates the discounts.
    */
   public Job getJob() {
     return job;
@@ -70,7 +70,7 @@ public class DiscountCodeBulkActivatePayload {
 
   public static class Builder {
     /**
-     * The asynchronous job that activates the code discounts.
+     * The asynchronous job that activates the discounts.
      */
     private Job job;
 
@@ -87,7 +87,7 @@ public class DiscountCodeBulkActivatePayload {
     }
 
     /**
-     * The asynchronous job that activates the code discounts.
+     * The asynchronous job that activates the discounts.
      */
     public Builder job(Job job) {
       this.job = job;

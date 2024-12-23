@@ -62,6 +62,11 @@ public class MetafieldProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROO
     return projection;
   }
 
+  public MetafieldProjection<PARENT, ROOT> compareDigest() {
+    getFields().put("compareDigest", null);
+    return this;
+  }
+
   public MetafieldProjection<PARENT, ROOT> createdAt() {
     getFields().put("createdAt", null);
     return this;
@@ -74,6 +79,11 @@ public class MetafieldProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROO
 
   public MetafieldProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
+    return this;
+  }
+
+  public MetafieldProjection<PARENT, ROOT> jsonValue() {
+    getFields().put("jsonValue", null);
     return this;
   }
 

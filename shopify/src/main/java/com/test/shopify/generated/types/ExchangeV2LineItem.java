@@ -47,6 +47,11 @@ public class ExchangeV2LineItem {
   private List<GiftCard> giftCards;
 
   /**
+   * Whether the line item represents the purchase of a gift card.
+   */
+  private boolean isGiftCard;
+
+  /**
    * The line item associated with this object.
    */
   private LineItem lineItem;
@@ -185,6 +190,17 @@ public class ExchangeV2LineItem {
 
   public void setGiftCards(List<GiftCard> giftCards) {
     this.giftCards = giftCards;
+  }
+
+  /**
+   * Whether the line item represents the purchase of a gift card.
+   */
+  public boolean getIsGiftCard() {
+    return isGiftCard;
+  }
+
+  public void setIsGiftCard(boolean isGiftCard) {
+    this.isGiftCard = isGiftCard;
   }
 
   /**
@@ -333,7 +349,7 @@ public class ExchangeV2LineItem {
 
   @Override
   public String toString() {
-    return "ExchangeV2LineItem{customAttributes='" + customAttributes + "', discountedTotalSet='" + discountedTotalSet + "', discountedUnitPriceSet='" + discountedUnitPriceSet + "', fulfillmentService='" + fulfillmentService + "', giftCard='" + giftCard + "', giftCards='" + giftCards + "', lineItem='" + lineItem + "', name='" + name + "', originalTotalSet='" + originalTotalSet + "', originalUnitPriceSet='" + originalUnitPriceSet + "', quantity='" + quantity + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', taxLines='" + taxLines + "', taxable='" + taxable + "', title='" + title + "', variant='" + variant + "', variantTitle='" + variantTitle + "', vendor='" + vendor + "'}";
+    return "ExchangeV2LineItem{customAttributes='" + customAttributes + "', discountedTotalSet='" + discountedTotalSet + "', discountedUnitPriceSet='" + discountedUnitPriceSet + "', fulfillmentService='" + fulfillmentService + "', giftCard='" + giftCard + "', giftCards='" + giftCards + "', isGiftCard='" + isGiftCard + "', lineItem='" + lineItem + "', name='" + name + "', originalTotalSet='" + originalTotalSet + "', originalUnitPriceSet='" + originalUnitPriceSet + "', quantity='" + quantity + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', taxLines='" + taxLines + "', taxable='" + taxable + "', title='" + title + "', variant='" + variant + "', variantTitle='" + variantTitle + "', vendor='" + vendor + "'}";
   }
 
   @Override
@@ -347,6 +363,7 @@ public class ExchangeV2LineItem {
         Objects.equals(fulfillmentService, that.fulfillmentService) &&
         giftCard == that.giftCard &&
         Objects.equals(giftCards, that.giftCards) &&
+        isGiftCard == that.isGiftCard &&
         Objects.equals(lineItem, that.lineItem) &&
         Objects.equals(name, that.name) &&
         Objects.equals(originalTotalSet, that.originalTotalSet) &&
@@ -364,7 +381,7 @@ public class ExchangeV2LineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customAttributes, discountedTotalSet, discountedUnitPriceSet, fulfillmentService, giftCard, giftCards, lineItem, name, originalTotalSet, originalUnitPriceSet, quantity, requiresShipping, sku, taxLines, taxable, title, variant, variantTitle, vendor);
+    return Objects.hash(customAttributes, discountedTotalSet, discountedUnitPriceSet, fulfillmentService, giftCard, giftCards, isGiftCard, lineItem, name, originalTotalSet, originalUnitPriceSet, quantity, requiresShipping, sku, taxLines, taxable, title, variant, variantTitle, vendor);
   }
 
   public static Builder newBuilder() {
@@ -407,6 +424,11 @@ public class ExchangeV2LineItem {
      * The gift cards associated with the line item.
      */
     private List<GiftCard> giftCards;
+
+    /**
+     * Whether the line item represents the purchase of a gift card.
+     */
+    private boolean isGiftCard;
 
     /**
      * The line item associated with this object.
@@ -482,6 +504,7 @@ public class ExchangeV2LineItem {
       result.fulfillmentService = this.fulfillmentService;
       result.giftCard = this.giftCard;
       result.giftCards = this.giftCards;
+      result.isGiftCard = this.isGiftCard;
       result.lineItem = this.lineItem;
       result.name = this.name;
       result.originalTotalSet = this.originalTotalSet;
@@ -549,6 +572,14 @@ public class ExchangeV2LineItem {
      */
     public Builder giftCards(List<GiftCard> giftCards) {
       this.giftCards = giftCards;
+      return this;
+    }
+
+    /**
+     * Whether the line item represents the purchase of a gift card.
+     */
+    public Builder isGiftCard(boolean isGiftCard) {
+      this.isGiftCard = isGiftCard;
       return this;
     }
 

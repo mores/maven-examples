@@ -6,46 +6,65 @@ import java.lang.String;
 import java.util.Objects;
 
 /**
- * A script that defines a discount type.
+ * The details about the app extension that's providing the
+ * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+ * This information includes the app extension's name and
+ * [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets),
+ * [App Bridge configuration](https://shopify.dev/docs/api/app-bridge),
+ * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations),
+ * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries),
+ * and other metadata about the discount type, including the discount type's name and description.
  */
 public class AppDiscountType {
   /**
-   * The app providing the app discount type.
+   * The name of the app extension that's providing the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   private App app;
 
   /**
-   * The App Bridge details for discount type configuration.
+   * The [App Bridge configuration](https://shopify.dev/docs/api/app-bridge)
+   * for the [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   private FunctionsAppBridge appBridge;
 
   /**
-   * The client ID of the app providing the app discount type.
+   * The [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets)
+   * of the app extension that's providing the [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   private String appKey;
 
   /**
-   * A description of the app discount type.
+   * A description of the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types)
+   * provided by the app extension.
    */
   private String description;
 
   /**
-   * The class of the app discount type.
+   * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that's used to control how discounts can be combined.
    */
   private DiscountClass discountClass;
 
   /**
-   * The ID of the function providing the app discount type.
+   * The
+   * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+   * associated with the app extension providing the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   private String functionId;
 
   /**
-   * The target type of the app discount type. Possible values: `SHIPPING_LINE` and `LINE_ITEM`.
+   * The type of line item on an order that the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types) applies to.
+   * Valid values: `SHIPPING_LINE` and `LINE_ITEM`.
    */
   private DiscountApplicationTargetType targetType;
 
   /**
-   * The title of the app discount type.
+   * The name of the [discount type](https://help.shopify.com/manual/discounts/discount-types)
+   * that the app extension is providing.
    */
   private String title;
 
@@ -53,7 +72,8 @@ public class AppDiscountType {
   }
 
   /**
-   * The app providing the app discount type.
+   * The name of the app extension that's providing the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   public App getApp() {
     return app;
@@ -64,7 +84,8 @@ public class AppDiscountType {
   }
 
   /**
-   * The App Bridge details for discount type configuration.
+   * The [App Bridge configuration](https://shopify.dev/docs/api/app-bridge)
+   * for the [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   public FunctionsAppBridge getAppBridge() {
     return appBridge;
@@ -75,7 +96,8 @@ public class AppDiscountType {
   }
 
   /**
-   * The client ID of the app providing the app discount type.
+   * The [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets)
+   * of the app extension that's providing the [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   public String getAppKey() {
     return appKey;
@@ -86,7 +108,9 @@ public class AppDiscountType {
   }
 
   /**
-   * A description of the app discount type.
+   * A description of the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types)
+   * provided by the app extension.
    */
   public String getDescription() {
     return description;
@@ -97,7 +121,8 @@ public class AppDiscountType {
   }
 
   /**
-   * The class of the app discount type.
+   * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that's used to control how discounts can be combined.
    */
   public DiscountClass getDiscountClass() {
     return discountClass;
@@ -108,7 +133,10 @@ public class AppDiscountType {
   }
 
   /**
-   * The ID of the function providing the app discount type.
+   * The
+   * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+   * associated with the app extension providing the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   public String getFunctionId() {
     return functionId;
@@ -119,7 +147,9 @@ public class AppDiscountType {
   }
 
   /**
-   * The target type of the app discount type. Possible values: `SHIPPING_LINE` and `LINE_ITEM`.
+   * The type of line item on an order that the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types) applies to.
+   * Valid values: `SHIPPING_LINE` and `LINE_ITEM`.
    */
   public DiscountApplicationTargetType getTargetType() {
     return targetType;
@@ -130,7 +160,8 @@ public class AppDiscountType {
   }
 
   /**
-   * The title of the app discount type.
+   * The name of the [discount type](https://help.shopify.com/manual/discounts/discount-types)
+   * that the app extension is providing.
    */
   public String getTitle() {
     return title;
@@ -171,42 +202,54 @@ public class AppDiscountType {
 
   public static class Builder {
     /**
-     * The app providing the app discount type.
+     * The name of the app extension that's providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     private App app;
 
     /**
-     * The App Bridge details for discount type configuration.
+     * The [App Bridge configuration](https://shopify.dev/docs/api/app-bridge)
+     * for the [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     private FunctionsAppBridge appBridge;
 
     /**
-     * The client ID of the app providing the app discount type.
+     * The [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets)
+     * of the app extension that's providing the [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     private String appKey;
 
     /**
-     * A description of the app discount type.
+     * A description of the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types)
+     * provided by the app extension.
      */
     private String description;
 
     /**
-     * The class of the app discount type.
+     * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that's used to control how discounts can be combined.
      */
     private DiscountClass discountClass;
 
     /**
-     * The ID of the function providing the app discount type.
+     * The
+     * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+     * associated with the app extension providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     private String functionId;
 
     /**
-     * The target type of the app discount type. Possible values: `SHIPPING_LINE` and `LINE_ITEM`.
+     * The type of line item on an order that the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types) applies to.
+     * Valid values: `SHIPPING_LINE` and `LINE_ITEM`.
      */
     private DiscountApplicationTargetType targetType;
 
     /**
-     * The title of the app discount type.
+     * The name of the [discount type](https://help.shopify.com/manual/discounts/discount-types)
+     * that the app extension is providing.
      */
     private String title;
 
@@ -224,7 +267,8 @@ public class AppDiscountType {
     }
 
     /**
-     * The app providing the app discount type.
+     * The name of the app extension that's providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     public Builder app(App app) {
       this.app = app;
@@ -232,7 +276,8 @@ public class AppDiscountType {
     }
 
     /**
-     * The App Bridge details for discount type configuration.
+     * The [App Bridge configuration](https://shopify.dev/docs/api/app-bridge)
+     * for the [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     public Builder appBridge(FunctionsAppBridge appBridge) {
       this.appBridge = appBridge;
@@ -240,7 +285,8 @@ public class AppDiscountType {
     }
 
     /**
-     * The client ID of the app providing the app discount type.
+     * The [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets)
+     * of the app extension that's providing the [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     public Builder appKey(String appKey) {
       this.appKey = appKey;
@@ -248,7 +294,9 @@ public class AppDiscountType {
     }
 
     /**
-     * A description of the app discount type.
+     * A description of the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types)
+     * provided by the app extension.
      */
     public Builder description(String description) {
       this.description = description;
@@ -256,7 +304,8 @@ public class AppDiscountType {
     }
 
     /**
-     * The class of the app discount type.
+     * The [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that's used to control how discounts can be combined.
      */
     public Builder discountClass(DiscountClass discountClass) {
       this.discountClass = discountClass;
@@ -264,7 +313,10 @@ public class AppDiscountType {
     }
 
     /**
-     * The ID of the function providing the app discount type.
+     * The
+     * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+     * associated with the app extension providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     public Builder functionId(String functionId) {
       this.functionId = functionId;
@@ -272,7 +324,9 @@ public class AppDiscountType {
     }
 
     /**
-     * The target type of the app discount type. Possible values: `SHIPPING_LINE` and `LINE_ITEM`.
+     * The type of line item on an order that the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types) applies to.
+     * Valid values: `SHIPPING_LINE` and `LINE_ITEM`.
      */
     public Builder targetType(DiscountApplicationTargetType targetType) {
       this.targetType = targetType;
@@ -280,7 +334,8 @@ public class AppDiscountType {
     }
 
     /**
-     * The title of the app discount type.
+     * The name of the [discount type](https://help.shopify.com/manual/discounts/discount-types)
+     * that the app extension is providing.
      */
     public Builder title(String title) {
       this.title = title;

@@ -16,6 +16,11 @@ public class SelectedOption {
   private String name;
 
   /**
+   * The product option’s value object.
+   */
+  private ProductOptionValue optionValue;
+
+  /**
    * The product option’s value.
    */
   private String value;
@@ -35,6 +40,17 @@ public class SelectedOption {
   }
 
   /**
+   * The product option’s value object.
+   */
+  public ProductOptionValue getOptionValue() {
+    return optionValue;
+  }
+
+  public void setOptionValue(ProductOptionValue optionValue) {
+    this.optionValue = optionValue;
+  }
+
+  /**
    * The product option’s value.
    */
   public String getValue() {
@@ -47,7 +63,7 @@ public class SelectedOption {
 
   @Override
   public String toString() {
-    return "SelectedOption{name='" + name + "', value='" + value + "'}";
+    return "SelectedOption{name='" + name + "', optionValue='" + optionValue + "', value='" + value + "'}";
   }
 
   @Override
@@ -56,12 +72,13 @@ public class SelectedOption {
     if (o == null || getClass() != o.getClass()) return false;
     SelectedOption that = (SelectedOption) o;
     return Objects.equals(name, that.name) &&
+        Objects.equals(optionValue, that.optionValue) &&
         Objects.equals(value, that.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value);
+    return Objects.hash(name, optionValue, value);
   }
 
   public static Builder newBuilder() {
@@ -75,6 +92,11 @@ public class SelectedOption {
     private String name;
 
     /**
+     * The product option’s value object.
+     */
+    private ProductOptionValue optionValue;
+
+    /**
      * The product option’s value.
      */
     private String value;
@@ -82,6 +104,7 @@ public class SelectedOption {
     public SelectedOption build() {
       SelectedOption result = new SelectedOption();
       result.name = this.name;
+      result.optionValue = this.optionValue;
       result.value = this.value;
       return result;
     }
@@ -91,6 +114,14 @@ public class SelectedOption {
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * The product option’s value object.
+     */
+    public Builder optionValue(ProductOptionValue optionValue) {
+      this.optionValue = optionValue;
       return this;
     }
 

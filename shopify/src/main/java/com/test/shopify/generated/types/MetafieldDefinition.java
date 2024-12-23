@@ -22,6 +22,16 @@ public class MetafieldDefinition implements com.test.shopify.generated.types.Nod
   private MetafieldAccess access;
 
   /**
+   * The capabilities of the metafield definition.
+   */
+  private MetafieldCapabilities capabilities;
+
+  /**
+   * The constraints that determine what subtypes of resources a metafield definition applies to.
+   */
+  private MetafieldDefinitionConstraints constraints;
+
+  /**
    * The description of the metafield definition.
    */
   private String description;
@@ -112,6 +122,28 @@ public class MetafieldDefinition implements com.test.shopify.generated.types.Nod
 
   public void setAccess(MetafieldAccess access) {
     this.access = access;
+  }
+
+  /**
+   * The capabilities of the metafield definition.
+   */
+  public MetafieldCapabilities getCapabilities() {
+    return capabilities;
+  }
+
+  public void setCapabilities(MetafieldCapabilities capabilities) {
+    this.capabilities = capabilities;
+  }
+
+  /**
+   * The constraints that determine what subtypes of resources a metafield definition applies to.
+   */
+  public MetafieldDefinitionConstraints getConstraints() {
+    return constraints;
+  }
+
+  public void setConstraints(MetafieldDefinitionConstraints constraints) {
+    this.constraints = constraints;
   }
 
   /**
@@ -285,7 +317,7 @@ public class MetafieldDefinition implements com.test.shopify.generated.types.Nod
 
   @Override
   public String toString() {
-    return "MetafieldDefinition{access='" + access + "', description='" + description + "', id='" + id + "', key='" + key + "', metafields='" + metafields + "', metafieldsCount='" + metafieldsCount + "', name='" + name + "', namespace='" + namespace + "', ownerType='" + ownerType + "', pinnedPosition='" + pinnedPosition + "', standardTemplate='" + standardTemplate + "', type='" + type + "', useAsCollectionCondition='" + useAsCollectionCondition + "', validationStatus='" + validationStatus + "', validations='" + validations + "', visibleToStorefrontApi='" + visibleToStorefrontApi + "'}";
+    return "MetafieldDefinition{access='" + access + "', capabilities='" + capabilities + "', constraints='" + constraints + "', description='" + description + "', id='" + id + "', key='" + key + "', metafields='" + metafields + "', metafieldsCount='" + metafieldsCount + "', name='" + name + "', namespace='" + namespace + "', ownerType='" + ownerType + "', pinnedPosition='" + pinnedPosition + "', standardTemplate='" + standardTemplate + "', type='" + type + "', useAsCollectionCondition='" + useAsCollectionCondition + "', validationStatus='" + validationStatus + "', validations='" + validations + "', visibleToStorefrontApi='" + visibleToStorefrontApi + "'}";
   }
 
   @Override
@@ -294,6 +326,8 @@ public class MetafieldDefinition implements com.test.shopify.generated.types.Nod
     if (o == null || getClass() != o.getClass()) return false;
     MetafieldDefinition that = (MetafieldDefinition) o;
     return Objects.equals(access, that.access) &&
+        Objects.equals(capabilities, that.capabilities) &&
+        Objects.equals(constraints, that.constraints) &&
         Objects.equals(description, that.description) &&
         Objects.equals(id, that.id) &&
         Objects.equals(key, that.key) &&
@@ -313,7 +347,7 @@ public class MetafieldDefinition implements com.test.shopify.generated.types.Nod
 
   @Override
   public int hashCode() {
-    return Objects.hash(access, description, id, key, metafields, metafieldsCount, name, namespace, ownerType, pinnedPosition, standardTemplate, type, useAsCollectionCondition, validationStatus, validations, visibleToStorefrontApi);
+    return Objects.hash(access, capabilities, constraints, description, id, key, metafields, metafieldsCount, name, namespace, ownerType, pinnedPosition, standardTemplate, type, useAsCollectionCondition, validationStatus, validations, visibleToStorefrontApi);
   }
 
   public static Builder newBuilder() {
@@ -325,6 +359,16 @@ public class MetafieldDefinition implements com.test.shopify.generated.types.Nod
      * The access settings associated with the metafield definition.
      */
     private MetafieldAccess access;
+
+    /**
+     * The capabilities of the metafield definition.
+     */
+    private MetafieldCapabilities capabilities;
+
+    /**
+     * The constraints that determine what subtypes of resources a metafield definition applies to.
+     */
+    private MetafieldDefinitionConstraints constraints;
 
     /**
      * The description of the metafield definition.
@@ -408,6 +452,8 @@ public class MetafieldDefinition implements com.test.shopify.generated.types.Nod
     public MetafieldDefinition build() {
       MetafieldDefinition result = new MetafieldDefinition();
       result.access = this.access;
+      result.capabilities = this.capabilities;
+      result.constraints = this.constraints;
       result.description = this.description;
       result.id = this.id;
       result.key = this.key;
@@ -431,6 +477,22 @@ public class MetafieldDefinition implements com.test.shopify.generated.types.Nod
      */
     public Builder access(MetafieldAccess access) {
       this.access = access;
+      return this;
+    }
+
+    /**
+     * The capabilities of the metafield definition.
+     */
+    public Builder capabilities(MetafieldCapabilities capabilities) {
+      this.capabilities = capabilities;
+      return this;
+    }
+
+    /**
+     * The constraints that determine what subtypes of resources a metafield definition applies to.
+     */
+    public Builder constraints(MetafieldDefinitionConstraints constraints) {
+      this.constraints = constraints;
       return this;
     }
 

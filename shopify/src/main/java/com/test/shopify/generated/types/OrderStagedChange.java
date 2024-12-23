@@ -14,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     @JsonSubTypes.Type(value = OrderStagedChangeAddShippingLine.class, name = "OrderStagedChangeAddShippingLine"),
     @JsonSubTypes.Type(value = OrderStagedChangeAddVariant.class, name = "OrderStagedChangeAddVariant"),
     @JsonSubTypes.Type(value = OrderStagedChangeDecrementItem.class, name = "OrderStagedChangeDecrementItem"),
-    @JsonSubTypes.Type(value = OrderStagedChangeIncrementItem.class, name = "OrderStagedChangeIncrementItem")
+    @JsonSubTypes.Type(value = OrderStagedChangeIncrementItem.class, name = "OrderStagedChangeIncrementItem"),
+    @JsonSubTypes.Type(value = OrderStagedChangeRemoveShippingLine.class, name = "OrderStagedChangeRemoveShippingLine")
 })
 public interface OrderStagedChange {
 }

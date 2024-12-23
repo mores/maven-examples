@@ -69,7 +69,12 @@ public class InventoryItem implements com.test.shopify.generated.types.LegacyInt
   /**
    * The number of locations where this inventory item is stocked.
    */
-  private int locationsCount;
+  private Count locationsCount;
+
+  /**
+   * The packaging dimensions of the inventory item.
+   */
+  private InventoryItemMeasurement measurement;
 
   /**
    * The ISO 3166-2 alpha-2 province code of where the item originated from.
@@ -230,12 +235,23 @@ public class InventoryItem implements com.test.shopify.generated.types.LegacyInt
   /**
    * The number of locations where this inventory item is stocked.
    */
-  public int getLocationsCount() {
+  public Count getLocationsCount() {
     return locationsCount;
   }
 
-  public void setLocationsCount(int locationsCount) {
+  public void setLocationsCount(Count locationsCount) {
     this.locationsCount = locationsCount;
+  }
+
+  /**
+   * The packaging dimensions of the inventory item.
+   */
+  public InventoryItemMeasurement getMeasurement() {
+    return measurement;
+  }
+
+  public void setMeasurement(InventoryItemMeasurement measurement) {
+    this.measurement = measurement;
   }
 
   /**
@@ -330,7 +346,7 @@ public class InventoryItem implements com.test.shopify.generated.types.LegacyInt
 
   @Override
   public String toString() {
-    return "InventoryItem{countryCodeOfOrigin='" + countryCodeOfOrigin + "', countryHarmonizedSystemCodes='" + countryHarmonizedSystemCodes + "', createdAt='" + createdAt + "', duplicateSkuCount='" + duplicateSkuCount + "', harmonizedSystemCode='" + harmonizedSystemCode + "', id='" + id + "', inventoryHistoryUrl='" + inventoryHistoryUrl + "', inventoryLevel='" + inventoryLevel + "', inventoryLevels='" + inventoryLevels + "', legacyResourceId='" + legacyResourceId + "', locationsCount='" + locationsCount + "', provinceCodeOfOrigin='" + provinceCodeOfOrigin + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', tracked='" + tracked + "', trackedEditable='" + trackedEditable + "', unitCost='" + unitCost + "', updatedAt='" + updatedAt + "', variant='" + variant + "'}";
+    return "InventoryItem{countryCodeOfOrigin='" + countryCodeOfOrigin + "', countryHarmonizedSystemCodes='" + countryHarmonizedSystemCodes + "', createdAt='" + createdAt + "', duplicateSkuCount='" + duplicateSkuCount + "', harmonizedSystemCode='" + harmonizedSystemCode + "', id='" + id + "', inventoryHistoryUrl='" + inventoryHistoryUrl + "', inventoryLevel='" + inventoryLevel + "', inventoryLevels='" + inventoryLevels + "', legacyResourceId='" + legacyResourceId + "', locationsCount='" + locationsCount + "', measurement='" + measurement + "', provinceCodeOfOrigin='" + provinceCodeOfOrigin + "', requiresShipping='" + requiresShipping + "', sku='" + sku + "', tracked='" + tracked + "', trackedEditable='" + trackedEditable + "', unitCost='" + unitCost + "', updatedAt='" + updatedAt + "', variant='" + variant + "'}";
   }
 
   @Override
@@ -348,7 +364,8 @@ public class InventoryItem implements com.test.shopify.generated.types.LegacyInt
         Objects.equals(inventoryLevel, that.inventoryLevel) &&
         Objects.equals(inventoryLevels, that.inventoryLevels) &&
         Objects.equals(legacyResourceId, that.legacyResourceId) &&
-        locationsCount == that.locationsCount &&
+        Objects.equals(locationsCount, that.locationsCount) &&
+        Objects.equals(measurement, that.measurement) &&
         Objects.equals(provinceCodeOfOrigin, that.provinceCodeOfOrigin) &&
         requiresShipping == that.requiresShipping &&
         Objects.equals(sku, that.sku) &&
@@ -361,7 +378,7 @@ public class InventoryItem implements com.test.shopify.generated.types.LegacyInt
 
   @Override
   public int hashCode() {
-    return Objects.hash(countryCodeOfOrigin, countryHarmonizedSystemCodes, createdAt, duplicateSkuCount, harmonizedSystemCode, id, inventoryHistoryUrl, inventoryLevel, inventoryLevels, legacyResourceId, locationsCount, provinceCodeOfOrigin, requiresShipping, sku, tracked, trackedEditable, unitCost, updatedAt, variant);
+    return Objects.hash(countryCodeOfOrigin, countryHarmonizedSystemCodes, createdAt, duplicateSkuCount, harmonizedSystemCode, id, inventoryHistoryUrl, inventoryLevel, inventoryLevels, legacyResourceId, locationsCount, measurement, provinceCodeOfOrigin, requiresShipping, sku, tracked, trackedEditable, unitCost, updatedAt, variant);
   }
 
   public static Builder newBuilder() {
@@ -422,7 +439,12 @@ public class InventoryItem implements com.test.shopify.generated.types.LegacyInt
     /**
      * The number of locations where this inventory item is stocked.
      */
-    private int locationsCount;
+    private Count locationsCount;
+
+    /**
+     * The packaging dimensions of the inventory item.
+     */
+    private InventoryItemMeasurement measurement;
 
     /**
      * The ISO 3166-2 alpha-2 province code of where the item originated from.
@@ -479,6 +501,7 @@ public class InventoryItem implements com.test.shopify.generated.types.LegacyInt
       result.inventoryLevels = this.inventoryLevels;
       result.legacyResourceId = this.legacyResourceId;
       result.locationsCount = this.locationsCount;
+      result.measurement = this.measurement;
       result.provinceCodeOfOrigin = this.provinceCodeOfOrigin;
       result.requiresShipping = this.requiresShipping;
       result.sku = this.sku;
@@ -574,8 +597,16 @@ public class InventoryItem implements com.test.shopify.generated.types.LegacyInt
     /**
      * The number of locations where this inventory item is stocked.
      */
-    public Builder locationsCount(int locationsCount) {
+    public Builder locationsCount(Count locationsCount) {
       this.locationsCount = locationsCount;
+      return this;
+    }
+
+    /**
+     * The packaging dimensions of the inventory item.
+     */
+    public Builder measurement(InventoryItemMeasurement measurement) {
+      this.measurement = measurement;
       return this;
     }
 

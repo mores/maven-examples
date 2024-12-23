@@ -13,6 +13,11 @@ import java.util.Objects;
  */
 public class ReturnInput {
   /**
+   * The new line items to be added to the order.
+   */
+  private List<ExchangeLineItemInput> exchangeLineItems;
+
+  /**
    * The UTC date and time when the return was first solicited by the customer.
    */
   private OffsetDateTime requestedAt;
@@ -28,11 +33,27 @@ public class ReturnInput {
   private List<ReturnLineItemInput> returnLineItems;
 
   /**
+   * The return shipping fee to capture.
+   */
+  private ReturnShippingFeeInput returnShippingFee;
+
+  /**
    * When `true` the customer will receive a notification if there's an `Order.email` present.
    */
   private Boolean notifyCustomer = false;
 
   public ReturnInput() {
+  }
+
+  /**
+   * The new line items to be added to the order.
+   */
+  public List<ExchangeLineItemInput> getExchangeLineItems() {
+    return exchangeLineItems;
+  }
+
+  public void setExchangeLineItems(List<ExchangeLineItemInput> exchangeLineItems) {
+    this.exchangeLineItems = exchangeLineItems;
   }
 
   /**
@@ -69,6 +90,17 @@ public class ReturnInput {
   }
 
   /**
+   * The return shipping fee to capture.
+   */
+  public ReturnShippingFeeInput getReturnShippingFee() {
+    return returnShippingFee;
+  }
+
+  public void setReturnShippingFee(ReturnShippingFeeInput returnShippingFee) {
+    this.returnShippingFee = returnShippingFee;
+  }
+
+  /**
    * When `true` the customer will receive a notification if there's an `Order.email` present.
    */
   public Boolean getNotifyCustomer() {
@@ -81,7 +113,7 @@ public class ReturnInput {
 
   @Override
   public String toString() {
-    return "ReturnInput{requestedAt='" + requestedAt + "', orderId='" + orderId + "', returnLineItems='" + returnLineItems + "', notifyCustomer='" + notifyCustomer + "'}";
+    return "ReturnInput{exchangeLineItems='" + exchangeLineItems + "', requestedAt='" + requestedAt + "', orderId='" + orderId + "', returnLineItems='" + returnLineItems + "', returnShippingFee='" + returnShippingFee + "', notifyCustomer='" + notifyCustomer + "'}";
   }
 
   @Override
@@ -89,15 +121,17 @@ public class ReturnInput {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ReturnInput that = (ReturnInput) o;
-    return Objects.equals(requestedAt, that.requestedAt) &&
+    return Objects.equals(exchangeLineItems, that.exchangeLineItems) &&
+        Objects.equals(requestedAt, that.requestedAt) &&
         Objects.equals(orderId, that.orderId) &&
         Objects.equals(returnLineItems, that.returnLineItems) &&
+        Objects.equals(returnShippingFee, that.returnShippingFee) &&
         Objects.equals(notifyCustomer, that.notifyCustomer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestedAt, orderId, returnLineItems, notifyCustomer);
+    return Objects.hash(exchangeLineItems, requestedAt, orderId, returnLineItems, returnShippingFee, notifyCustomer);
   }
 
   public static Builder newBuilder() {
@@ -105,6 +139,11 @@ public class ReturnInput {
   }
 
   public static class Builder {
+    /**
+     * The new line items to be added to the order.
+     */
+    private List<ExchangeLineItemInput> exchangeLineItems;
+
     /**
      * The UTC date and time when the return was first solicited by the customer.
      */
@@ -121,17 +160,32 @@ public class ReturnInput {
     private List<ReturnLineItemInput> returnLineItems;
 
     /**
+     * The return shipping fee to capture.
+     */
+    private ReturnShippingFeeInput returnShippingFee;
+
+    /**
      * When `true` the customer will receive a notification if there's an `Order.email` present.
      */
     private Boolean notifyCustomer = false;
 
     public ReturnInput build() {
       ReturnInput result = new ReturnInput();
+      result.exchangeLineItems = this.exchangeLineItems;
       result.requestedAt = this.requestedAt;
       result.orderId = this.orderId;
       result.returnLineItems = this.returnLineItems;
+      result.returnShippingFee = this.returnShippingFee;
       result.notifyCustomer = this.notifyCustomer;
       return result;
+    }
+
+    /**
+     * The new line items to be added to the order.
+     */
+    public Builder exchangeLineItems(List<ExchangeLineItemInput> exchangeLineItems) {
+      this.exchangeLineItems = exchangeLineItems;
+      return this;
     }
 
     /**
@@ -155,6 +209,14 @@ public class ReturnInput {
      */
     public Builder returnLineItems(List<ReturnLineItemInput> returnLineItems) {
       this.returnLineItems = returnLineItems;
+      return this;
+    }
+
+    /**
+     * The return shipping fee to capture.
+     */
+    public Builder returnShippingFee(ReturnShippingFeeInput returnShippingFee) {
+      this.returnShippingFee = returnShippingFee;
       return this;
     }
 

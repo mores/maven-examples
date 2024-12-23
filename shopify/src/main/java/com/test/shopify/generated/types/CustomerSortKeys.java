@@ -8,17 +8,11 @@ public enum CustomerSortKeys {
 
   ID,
 
-  LAST_ORDER_DATE,
-
   LOCATION,
 
   NAME,
 
-  ORDERS_COUNT,
-
   RELEVANCE,
-
-  TOTAL_SPENT,
 
   UPDATED_AT
 }

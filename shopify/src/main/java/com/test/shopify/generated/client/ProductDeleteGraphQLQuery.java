@@ -2,6 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
 import com.test.shopify.generated.types.ProductDeleteInput;
+import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.util.HashSet;
@@ -19,11 +20,13 @@ import java.util.Set;
  * mutation.
  */
 public class ProductDeleteGraphQLQuery extends GraphQLQuery {
-  public ProductDeleteGraphQLQuery(ProductDeleteInput input, String queryName,
+  public ProductDeleteGraphQLQuery(ProductDeleteInput input, Boolean synchronous, String queryName,
       Set<String> fieldsSet) {
     super("mutation", queryName);
     if (input != null || fieldsSet.contains("input")) {
         getInput().put("input", input);
+    }if (synchronous != null || fieldsSet.contains("synchronous")) {
+        getInput().put("synchronous", synchronous);
     }
   }
 
@@ -45,10 +48,12 @@ public class ProductDeleteGraphQLQuery extends GraphQLQuery {
 
     private ProductDeleteInput input;
 
+    private Boolean synchronous;
+
     private String queryName;
 
     public ProductDeleteGraphQLQuery build() {
-      return new ProductDeleteGraphQLQuery(input, queryName, fieldsSet);
+      return new ProductDeleteGraphQLQuery(input, synchronous, queryName, fieldsSet);
                
     }
 
@@ -58,6 +63,15 @@ public class ProductDeleteGraphQLQuery extends GraphQLQuery {
     public Builder input(ProductDeleteInput input) {
       this.input = input;
       this.fieldsSet.add("input");
+      return this;
+    }
+
+    /**
+     * Specifies whether or not to run the mutation synchronously.
+     */
+    public Builder synchronous(Boolean synchronous) {
+      this.synchronous = synchronous;
+      this.fieldsSet.add("synchronous");
       return this;
     }
 

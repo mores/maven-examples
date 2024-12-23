@@ -1,5 +1,6 @@
 package com.test.shopify.generated.types;
 
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -30,6 +31,18 @@ public class OrderCaptureInput {
    * field for orders where the currency and presentment currency differ.
    */
   private CurrencyCode currency;
+
+  /**
+   * Indicates whether this is to be the final capture for the order transaction. Only applies to
+   * Shopify Payments authorizations which are multi-capturable. If true, any uncaptured amount from the
+   * authorization will be voided after the capture is completed. If false, the authorization will remain open
+   * for future captures.
+   *   
+   * For multi-capturable authorizations, this defaults to false if not provided. This field has no effect on
+   * authorizations which aren't multi-capturable (can only be captured once), or on other types of
+   * transactions.
+   */
+  private Boolean finalCapture;
 
   public OrderCaptureInput() {
   }
@@ -80,9 +93,27 @@ public class OrderCaptureInput {
     this.currency = currency;
   }
 
+  /**
+   * Indicates whether this is to be the final capture for the order transaction. Only applies to
+   * Shopify Payments authorizations which are multi-capturable. If true, any uncaptured amount from the
+   * authorization will be voided after the capture is completed. If false, the authorization will remain open
+   * for future captures.
+   *   
+   * For multi-capturable authorizations, this defaults to false if not provided. This field has no effect on
+   * authorizations which aren't multi-capturable (can only be captured once), or on other types of
+   * transactions.
+   */
+  public Boolean getFinalCapture() {
+    return finalCapture;
+  }
+
+  public void setFinalCapture(Boolean finalCapture) {
+    this.finalCapture = finalCapture;
+  }
+
   @Override
   public String toString() {
-    return "OrderCaptureInput{id='" + id + "', parentTransactionId='" + parentTransactionId + "', amount='" + amount + "', currency='" + currency + "'}";
+    return "OrderCaptureInput{id='" + id + "', parentTransactionId='" + parentTransactionId + "', amount='" + amount + "', currency='" + currency + "', finalCapture='" + finalCapture + "'}";
   }
 
   @Override
@@ -93,12 +124,13 @@ public class OrderCaptureInput {
     return Objects.equals(id, that.id) &&
         Objects.equals(parentTransactionId, that.parentTransactionId) &&
         Objects.equals(amount, that.amount) &&
-        Objects.equals(currency, that.currency);
+        Objects.equals(currency, that.currency) &&
+        Objects.equals(finalCapture, that.finalCapture);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, parentTransactionId, amount, currency);
+    return Objects.hash(id, parentTransactionId, amount, currency, finalCapture);
   }
 
   public static Builder newBuilder() {
@@ -128,12 +160,25 @@ public class OrderCaptureInput {
      */
     private CurrencyCode currency;
 
+    /**
+     * Indicates whether this is to be the final capture for the order transaction. Only applies to
+     * Shopify Payments authorizations which are multi-capturable. If true, any uncaptured amount from the
+     * authorization will be voided after the capture is completed. If false, the authorization will remain open
+     * for future captures.
+     *   
+     * For multi-capturable authorizations, this defaults to false if not provided. This field has no effect on
+     * authorizations which aren't multi-capturable (can only be captured once), or on other types of
+     * transactions.
+     */
+    private Boolean finalCapture;
+
     public OrderCaptureInput build() {
       OrderCaptureInput result = new OrderCaptureInput();
       result.id = this.id;
       result.parentTransactionId = this.parentTransactionId;
       result.amount = this.amount;
       result.currency = this.currency;
+      result.finalCapture = this.finalCapture;
       return result;
     }
 
@@ -168,6 +213,21 @@ public class OrderCaptureInput {
      */
     public Builder currency(CurrencyCode currency) {
       this.currency = currency;
+      return this;
+    }
+
+    /**
+     * Indicates whether this is to be the final capture for the order transaction. Only applies to
+     * Shopify Payments authorizations which are multi-capturable. If true, any uncaptured amount from the
+     * authorization will be voided after the capture is completed. If false, the authorization will remain open
+     * for future captures.
+     *   
+     * For multi-capturable authorizations, this defaults to false if not provided. This field has no effect on
+     * authorizations which aren't multi-capturable (can only be captured once), or on other types of
+     * transactions.
+     */
+    public Builder finalCapture(Boolean finalCapture) {
+      this.finalCapture = finalCapture;
       return this;
     }
   }

@@ -121,6 +121,13 @@ public class App implements com.test.shopify.generated.types.Node {
   private List<NavigationItem> navigationItems;
 
   /**
+   * The optional scopes requested by the app. Lists the optional access scopes the
+   * app has declared in its configuration. These scopes are optionally requested
+   * by the app after installation.
+   */
+  private List<AccessScope> optionalAccessScopes;
+
+  /**
    * Whether the app was previously installed on the current shop.
    */
   private boolean previouslyInstalled;
@@ -426,6 +433,19 @@ public class App implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * The optional scopes requested by the app. Lists the optional access scopes the
+   * app has declared in its configuration. These scopes are optionally requested
+   * by the app after installation.
+   */
+  public List<AccessScope> getOptionalAccessScopes() {
+    return optionalAccessScopes;
+  }
+
+  public void setOptionalAccessScopes(List<AccessScope> optionalAccessScopes) {
+    this.optionalAccessScopes = optionalAccessScopes;
+  }
+
+  /**
    * Whether the app was previously installed on the current shop.
    */
   public boolean getPreviouslyInstalled() {
@@ -575,7 +595,7 @@ public class App implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "App{apiKey='" + apiKey + "', appStoreAppUrl='" + appStoreAppUrl + "', appStoreDeveloperUrl='" + appStoreDeveloperUrl + "', availableAccessScopes='" + availableAccessScopes + "', banner='" + banner + "', description='" + description + "', developerName='" + developerName + "', developerType='" + developerType + "', developerUrl='" + developerUrl + "', embedded='" + embedded + "', failedRequirements='" + failedRequirements + "', features='" + features + "', feedback='" + feedback + "', handle='" + handle + "', icon='" + icon + "', id='" + id + "', installUrl='" + installUrl + "', installation='" + installation + "', isPostPurchaseAppInUse='" + isPostPurchaseAppInUse + "', launchUrl='" + launchUrl + "', navigationItems='" + navigationItems + "', previouslyInstalled='" + previouslyInstalled + "', pricingDetails='" + pricingDetails + "', pricingDetailsSummary='" + pricingDetailsSummary + "', privacyPolicyUrl='" + privacyPolicyUrl + "', publicCategory='" + publicCategory + "', published='" + published + "', requestedAccessScopes='" + requestedAccessScopes + "', screenshots='" + screenshots + "', shopifyDeveloped='" + shopifyDeveloped + "', title='" + title + "', uninstallMessage='" + uninstallMessage + "', uninstallUrl='" + uninstallUrl + "', webhookApiVersion='" + webhookApiVersion + "'}";
+    return "App{apiKey='" + apiKey + "', appStoreAppUrl='" + appStoreAppUrl + "', appStoreDeveloperUrl='" + appStoreDeveloperUrl + "', availableAccessScopes='" + availableAccessScopes + "', banner='" + banner + "', description='" + description + "', developerName='" + developerName + "', developerType='" + developerType + "', developerUrl='" + developerUrl + "', embedded='" + embedded + "', failedRequirements='" + failedRequirements + "', features='" + features + "', feedback='" + feedback + "', handle='" + handle + "', icon='" + icon + "', id='" + id + "', installUrl='" + installUrl + "', installation='" + installation + "', isPostPurchaseAppInUse='" + isPostPurchaseAppInUse + "', launchUrl='" + launchUrl + "', navigationItems='" + navigationItems + "', optionalAccessScopes='" + optionalAccessScopes + "', previouslyInstalled='" + previouslyInstalled + "', pricingDetails='" + pricingDetails + "', pricingDetailsSummary='" + pricingDetailsSummary + "', privacyPolicyUrl='" + privacyPolicyUrl + "', publicCategory='" + publicCategory + "', published='" + published + "', requestedAccessScopes='" + requestedAccessScopes + "', screenshots='" + screenshots + "', shopifyDeveloped='" + shopifyDeveloped + "', title='" + title + "', uninstallMessage='" + uninstallMessage + "', uninstallUrl='" + uninstallUrl + "', webhookApiVersion='" + webhookApiVersion + "'}";
   }
 
   @Override
@@ -604,6 +624,7 @@ public class App implements com.test.shopify.generated.types.Node {
         isPostPurchaseAppInUse == that.isPostPurchaseAppInUse &&
         Objects.equals(launchUrl, that.launchUrl) &&
         Objects.equals(navigationItems, that.navigationItems) &&
+        Objects.equals(optionalAccessScopes, that.optionalAccessScopes) &&
         previouslyInstalled == that.previouslyInstalled &&
         Objects.equals(pricingDetails, that.pricingDetails) &&
         Objects.equals(pricingDetailsSummary, that.pricingDetailsSummary) &&
@@ -621,7 +642,7 @@ public class App implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiKey, appStoreAppUrl, appStoreDeveloperUrl, availableAccessScopes, banner, description, developerName, developerType, developerUrl, embedded, failedRequirements, features, feedback, handle, icon, id, installUrl, installation, isPostPurchaseAppInUse, launchUrl, navigationItems, previouslyInstalled, pricingDetails, pricingDetailsSummary, privacyPolicyUrl, publicCategory, published, requestedAccessScopes, screenshots, shopifyDeveloped, title, uninstallMessage, uninstallUrl, webhookApiVersion);
+    return Objects.hash(apiKey, appStoreAppUrl, appStoreDeveloperUrl, availableAccessScopes, banner, description, developerName, developerType, developerUrl, embedded, failedRequirements, features, feedback, handle, icon, id, installUrl, installation, isPostPurchaseAppInUse, launchUrl, navigationItems, optionalAccessScopes, previouslyInstalled, pricingDetails, pricingDetailsSummary, privacyPolicyUrl, publicCategory, published, requestedAccessScopes, screenshots, shopifyDeveloped, title, uninstallMessage, uninstallUrl, webhookApiVersion);
   }
 
   public static Builder newBuilder() {
@@ -736,6 +757,13 @@ public class App implements com.test.shopify.generated.types.Node {
     private List<NavigationItem> navigationItems;
 
     /**
+     * The optional scopes requested by the app. Lists the optional access scopes the
+     * app has declared in its configuration. These scopes are optionally requested
+     * by the app after installation.
+     */
+    private List<AccessScope> optionalAccessScopes;
+
+    /**
      * Whether the app was previously installed on the current shop.
      */
     private boolean previouslyInstalled;
@@ -828,6 +856,7 @@ public class App implements com.test.shopify.generated.types.Node {
       result.isPostPurchaseAppInUse = this.isPostPurchaseAppInUse;
       result.launchUrl = this.launchUrl;
       result.navigationItems = this.navigationItems;
+      result.optionalAccessScopes = this.optionalAccessScopes;
       result.previouslyInstalled = this.previouslyInstalled;
       result.pricingDetails = this.pricingDetails;
       result.pricingDetailsSummary = this.pricingDetailsSummary;
@@ -1010,6 +1039,16 @@ public class App implements com.test.shopify.generated.types.Node {
      */
     public Builder navigationItems(List<NavigationItem> navigationItems) {
       this.navigationItems = navigationItems;
+      return this;
+    }
+
+    /**
+     * The optional scopes requested by the app. Lists the optional access scopes the
+     * app has declared in its configuration. These scopes are optionally requested
+     * by the app after installation.
+     */
+    public Builder optionalAccessScopes(List<AccessScope> optionalAccessScopes) {
+      this.optionalAccessScopes = optionalAccessScopes;
       return this;
     }
 

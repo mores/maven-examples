@@ -58,15 +58,14 @@ public class MetafieldReferenceProjection<PARENT extends BaseSubProjectionNode<?
     return fragment;
   }
 
-  public OnlineStorePageFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> onOnlineStorePage(
-      ) {
-    OnlineStorePageFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> fragment = new OnlineStorePageFragmentProjection<>(this, getRoot());
+  public OrderFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> onOrder() {
+    OrderFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> fragment = new OrderFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);
     return fragment;
   }
 
-  public OrderFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> onOrder() {
-    OrderFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> fragment = new OrderFragmentProjection<>(this, getRoot());
+  public PageFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> onPage() {
+    PageFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> fragment = new PageFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);
     return fragment;
   }
@@ -80,6 +79,13 @@ public class MetafieldReferenceProjection<PARENT extends BaseSubProjectionNode<?
   public ProductVariantFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> onProductVariant(
       ) {
     ProductVariantFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> fragment = new ProductVariantFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
+  public TaxonomyValueFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> onTaxonomyValue(
+      ) {
+    TaxonomyValueFragmentProjection<MetafieldReferenceProjection<PARENT, ROOT>, ROOT> fragment = new TaxonomyValueFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);
     return fragment;
   }

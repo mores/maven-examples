@@ -21,6 +21,11 @@ public class ReturnRequestLineItemInput {
   private int quantity;
 
   /**
+   * The restocking fee to capture.
+   */
+  private RestockingFeeInput restockingFee;
+
+  /**
    * The reason why the line item is being returned.
    */
   private ReturnReason returnReason;
@@ -59,6 +64,17 @@ public class ReturnRequestLineItemInput {
   }
 
   /**
+   * The restocking fee to capture.
+   */
+  public RestockingFeeInput getRestockingFee() {
+    return restockingFee;
+  }
+
+  public void setRestockingFee(RestockingFeeInput restockingFee) {
+    this.restockingFee = restockingFee;
+  }
+
+  /**
    * The reason why the line item is being returned.
    */
   public ReturnReason getReturnReason() {
@@ -84,7 +100,7 @@ public class ReturnRequestLineItemInput {
 
   @Override
   public String toString() {
-    return "ReturnRequestLineItemInput{fulfillmentLineItemId='" + fulfillmentLineItemId + "', quantity='" + quantity + "', returnReason='" + returnReason + "', customerNote='" + customerNote + "'}";
+    return "ReturnRequestLineItemInput{fulfillmentLineItemId='" + fulfillmentLineItemId + "', quantity='" + quantity + "', restockingFee='" + restockingFee + "', returnReason='" + returnReason + "', customerNote='" + customerNote + "'}";
   }
 
   @Override
@@ -94,13 +110,14 @@ public class ReturnRequestLineItemInput {
     ReturnRequestLineItemInput that = (ReturnRequestLineItemInput) o;
     return Objects.equals(fulfillmentLineItemId, that.fulfillmentLineItemId) &&
         quantity == that.quantity &&
+        Objects.equals(restockingFee, that.restockingFee) &&
         Objects.equals(returnReason, that.returnReason) &&
         Objects.equals(customerNote, that.customerNote);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fulfillmentLineItemId, quantity, returnReason, customerNote);
+    return Objects.hash(fulfillmentLineItemId, quantity, restockingFee, returnReason, customerNote);
   }
 
   public static Builder newBuilder() {
@@ -120,6 +137,11 @@ public class ReturnRequestLineItemInput {
     private int quantity;
 
     /**
+     * The restocking fee to capture.
+     */
+    private RestockingFeeInput restockingFee;
+
+    /**
      * The reason why the line item is being returned.
      */
     private ReturnReason returnReason;
@@ -135,6 +157,7 @@ public class ReturnRequestLineItemInput {
       ReturnRequestLineItemInput result = new ReturnRequestLineItemInput();
       result.fulfillmentLineItemId = this.fulfillmentLineItemId;
       result.quantity = this.quantity;
+      result.restockingFee = this.restockingFee;
       result.returnReason = this.returnReason;
       result.customerNote = this.customerNote;
       return result;
@@ -154,6 +177,14 @@ public class ReturnRequestLineItemInput {
      */
     public Builder quantity(int quantity) {
       this.quantity = quantity;
+      return this;
+    }
+
+    /**
+     * The restocking fee to capture.
+     */
+    public Builder restockingFee(RestockingFeeInput restockingFee) {
+      this.restockingFee = restockingFee;
       return this;
     }
 

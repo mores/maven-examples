@@ -16,6 +16,11 @@ import java.util.Objects;
 )
 public class StaffMember implements com.test.shopify.generated.types.Node {
   /**
+   * The type of account the staff member has.
+   */
+  private AccountType accountType;
+
+  /**
    * Whether the staff member is active.
    */
   private boolean active;
@@ -83,6 +88,17 @@ public class StaffMember implements com.test.shopify.generated.types.Node {
   private StaffMemberPrivateData privateData;
 
   public StaffMember() {
+  }
+
+  /**
+   * The type of account the staff member has.
+   */
+  public AccountType getAccountType() {
+    return accountType;
+  }
+
+  public void setAccountType(AccountType accountType) {
+    this.accountType = accountType;
   }
 
   /**
@@ -232,7 +248,7 @@ public class StaffMember implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "StaffMember{active='" + active + "', avatar='" + avatar + "', email='" + email + "', exists='" + exists + "', firstName='" + firstName + "', id='" + id + "', initials='" + initials + "', isShopOwner='" + isShopOwner + "', lastName='" + lastName + "', locale='" + locale + "', name='" + name + "', phone='" + phone + "', privateData='" + privateData + "'}";
+    return "StaffMember{accountType='" + accountType + "', active='" + active + "', avatar='" + avatar + "', email='" + email + "', exists='" + exists + "', firstName='" + firstName + "', id='" + id + "', initials='" + initials + "', isShopOwner='" + isShopOwner + "', lastName='" + lastName + "', locale='" + locale + "', name='" + name + "', phone='" + phone + "', privateData='" + privateData + "'}";
   }
 
   @Override
@@ -240,7 +256,8 @@ public class StaffMember implements com.test.shopify.generated.types.Node {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     StaffMember that = (StaffMember) o;
-    return active == that.active &&
+    return Objects.equals(accountType, that.accountType) &&
+        active == that.active &&
         Objects.equals(avatar, that.avatar) &&
         Objects.equals(email, that.email) &&
         exists == that.exists &&
@@ -257,7 +274,7 @@ public class StaffMember implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, avatar, email, exists, firstName, id, initials, isShopOwner, lastName, locale, name, phone, privateData);
+    return Objects.hash(accountType, active, avatar, email, exists, firstName, id, initials, isShopOwner, lastName, locale, name, phone, privateData);
   }
 
   public static Builder newBuilder() {
@@ -265,6 +282,11 @@ public class StaffMember implements com.test.shopify.generated.types.Node {
   }
 
   public static class Builder {
+    /**
+     * The type of account the staff member has.
+     */
+    private AccountType accountType;
+
     /**
      * Whether the staff member is active.
      */
@@ -334,6 +356,7 @@ public class StaffMember implements com.test.shopify.generated.types.Node {
 
     public StaffMember build() {
       StaffMember result = new StaffMember();
+      result.accountType = this.accountType;
       result.active = this.active;
       result.avatar = this.avatar;
       result.email = this.email;
@@ -348,6 +371,14 @@ public class StaffMember implements com.test.shopify.generated.types.Node {
       result.phone = this.phone;
       result.privateData = this.privateData;
       return result;
+    }
+
+    /**
+     * The type of account the staff member has.
+     */
+    public Builder accountType(AccountType accountType) {
+      this.accountType = accountType;
+      return this;
     }
 
     /**

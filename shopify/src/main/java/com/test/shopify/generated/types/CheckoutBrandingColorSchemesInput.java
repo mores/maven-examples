@@ -19,6 +19,16 @@ public class CheckoutBrandingColorSchemesInput {
    */
   private CheckoutBrandingColorSchemeInput scheme2;
 
+  /**
+   * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+   */
+  private CheckoutBrandingColorSchemeInput scheme3;
+
+  /**
+   * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+   */
+  private CheckoutBrandingColorSchemeInput scheme4;
+
   public CheckoutBrandingColorSchemesInput() {
   }
 
@@ -44,9 +54,31 @@ public class CheckoutBrandingColorSchemesInput {
     this.scheme2 = scheme2;
   }
 
+  /**
+   * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+   */
+  public CheckoutBrandingColorSchemeInput getScheme3() {
+    return scheme3;
+  }
+
+  public void setScheme3(CheckoutBrandingColorSchemeInput scheme3) {
+    this.scheme3 = scheme3;
+  }
+
+  /**
+   * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+   */
+  public CheckoutBrandingColorSchemeInput getScheme4() {
+    return scheme4;
+  }
+
+  public void setScheme4(CheckoutBrandingColorSchemeInput scheme4) {
+    this.scheme4 = scheme4;
+  }
+
   @Override
   public String toString() {
-    return "CheckoutBrandingColorSchemesInput{scheme1='" + scheme1 + "', scheme2='" + scheme2 + "'}";
+    return "CheckoutBrandingColorSchemesInput{scheme1='" + scheme1 + "', scheme2='" + scheme2 + "', scheme3='" + scheme3 + "', scheme4='" + scheme4 + "'}";
   }
 
   @Override
@@ -55,12 +87,14 @@ public class CheckoutBrandingColorSchemesInput {
     if (o == null || getClass() != o.getClass()) return false;
     CheckoutBrandingColorSchemesInput that = (CheckoutBrandingColorSchemesInput) o;
     return Objects.equals(scheme1, that.scheme1) &&
-        Objects.equals(scheme2, that.scheme2);
+        Objects.equals(scheme2, that.scheme2) &&
+        Objects.equals(scheme3, that.scheme3) &&
+        Objects.equals(scheme4, that.scheme4);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(scheme1, scheme2);
+    return Objects.hash(scheme1, scheme2, scheme3, scheme4);
   }
 
   public static Builder newBuilder() {
@@ -78,10 +112,22 @@ public class CheckoutBrandingColorSchemesInput {
      */
     private CheckoutBrandingColorSchemeInput scheme2;
 
+    /**
+     * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+     */
+    private CheckoutBrandingColorSchemeInput scheme3;
+
+    /**
+     * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+     */
+    private CheckoutBrandingColorSchemeInput scheme4;
+
     public CheckoutBrandingColorSchemesInput build() {
       CheckoutBrandingColorSchemesInput result = new CheckoutBrandingColorSchemesInput();
       result.scheme1 = this.scheme1;
       result.scheme2 = this.scheme2;
+      result.scheme3 = this.scheme3;
+      result.scheme4 = this.scheme4;
       return result;
     }
 
@@ -98,6 +144,22 @@ public class CheckoutBrandingColorSchemesInput {
      */
     public Builder scheme2(CheckoutBrandingColorSchemeInput scheme2) {
       this.scheme2 = scheme2;
+      return this;
+    }
+
+    /**
+     * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+     */
+    public Builder scheme3(CheckoutBrandingColorSchemeInput scheme3) {
+      this.scheme3 = scheme3;
+      return this;
+    }
+
+    /**
+     * An extra scheme available to customize more surfaces, components or specific states of the user interface.
+     */
+    public Builder scheme4(CheckoutBrandingColorSchemeInput scheme4) {
+      this.scheme4 = scheme4;
       return this;
     }
   }

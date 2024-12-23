@@ -12,6 +12,12 @@ public class LineItemGroupProjection<PARENT extends BaseSubProjectionNode<?, ?>,
     return this;
   }
 
+  public AttributeProjection<LineItemGroupProjection<PARENT, ROOT>, ROOT> customAttributes() {
+     AttributeProjection<LineItemGroupProjection<PARENT, ROOT>, ROOT> projection = new AttributeProjection<>(this, getRoot());
+     getFields().put("customAttributes", projection);
+     return projection;
+  }
+
   public LineItemGroupProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
     return this;

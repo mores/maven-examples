@@ -1,14 +1,24 @@
 package com.test.shopify.generated.types;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * A line item group (bundle) to which a line item belongs to.
  */
-public class LineItemGroup {
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NONE
+)
+public class LineItemGroup implements com.test.shopify.generated.types.Node {
+  /**
+   * A list of attributes that represent custom features or special requests.
+   */
+  private List<Attribute> customAttributes;
+
   /**
    * A globally-unique ID.
    */
@@ -35,6 +45,17 @@ public class LineItemGroup {
   private String variantSku;
 
   public LineItemGroup() {
+  }
+
+  /**
+   * A list of attributes that represent custom features or special requests.
+   */
+  public List<Attribute> getCustomAttributes() {
+    return customAttributes;
+  }
+
+  public void setCustomAttributes(List<Attribute> customAttributes) {
+    this.customAttributes = customAttributes;
   }
 
   /**
@@ -94,7 +115,7 @@ public class LineItemGroup {
 
   @Override
   public String toString() {
-    return "LineItemGroup{id='" + id + "', quantity='" + quantity + "', title='" + title + "', variantId='" + variantId + "', variantSku='" + variantSku + "'}";
+    return "LineItemGroup{customAttributes='" + customAttributes + "', id='" + id + "', quantity='" + quantity + "', title='" + title + "', variantId='" + variantId + "', variantSku='" + variantSku + "'}";
   }
 
   @Override
@@ -102,7 +123,8 @@ public class LineItemGroup {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     LineItemGroup that = (LineItemGroup) o;
-    return Objects.equals(id, that.id) &&
+    return Objects.equals(customAttributes, that.customAttributes) &&
+        Objects.equals(id, that.id) &&
         quantity == that.quantity &&
         Objects.equals(title, that.title) &&
         Objects.equals(variantId, that.variantId) &&
@@ -111,7 +133,7 @@ public class LineItemGroup {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, quantity, title, variantId, variantSku);
+    return Objects.hash(customAttributes, id, quantity, title, variantId, variantSku);
   }
 
   public static Builder newBuilder() {
@@ -119,6 +141,11 @@ public class LineItemGroup {
   }
 
   public static class Builder {
+    /**
+     * A list of attributes that represent custom features or special requests.
+     */
+    private List<Attribute> customAttributes;
+
     /**
      * A globally-unique ID.
      */
@@ -146,12 +173,21 @@ public class LineItemGroup {
 
     public LineItemGroup build() {
       LineItemGroup result = new LineItemGroup();
+      result.customAttributes = this.customAttributes;
       result.id = this.id;
       result.quantity = this.quantity;
       result.title = this.title;
       result.variantId = this.variantId;
       result.variantSku = this.variantSku;
       return result;
+    }
+
+    /**
+     * A list of attributes that represent custom features or special requests.
+     */
+    public Builder customAttributes(List<Attribute> customAttributes) {
+      this.customAttributes = customAttributes;
+      return this;
     }
 
     /**

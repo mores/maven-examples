@@ -27,6 +27,9 @@ public class DiscountCustomerGetsInput {
 
   /**
    * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
    */
   private Boolean appliesOnSubscription;
 
@@ -68,6 +71,9 @@ public class DiscountCustomerGetsInput {
 
   /**
    * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
    */
   public Boolean getAppliesOnSubscription() {
     return appliesOnSubscription;
@@ -120,6 +126,9 @@ public class DiscountCustomerGetsInput {
 
     /**
      * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
      */
     private Boolean appliesOnSubscription;
 
@@ -158,6 +167,9 @@ public class DiscountCustomerGetsInput {
 
     /**
      * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
      */
     public Builder appliesOnSubscription(Boolean appliesOnSubscription) {
       this.appliesOnSubscription = appliesOnSubscription;

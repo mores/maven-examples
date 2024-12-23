@@ -35,6 +35,11 @@ public class CheckoutBrandingCustomizationsInput {
   private CheckoutBrandingHeadingLevelInput headingLevel3;
 
   /**
+   * The footer customizations.
+   */
+  private CheckoutBrandingFooterInput footer;
+
+  /**
    * The main area customizations.
    */
   private CheckoutBrandingMainInput main;
@@ -88,6 +93,35 @@ public class CheckoutBrandingCustomizationsInput {
    * The merchandise thumbnails customizations.
    */
   private CheckoutBrandingMerchandiseThumbnailInput merchandiseThumbnail;
+
+  /**
+   * The express checkout customizations.
+   */
+  private CheckoutBrandingExpressCheckoutInput expressCheckout;
+
+  /**
+   * The content container customizations.
+   */
+  private CheckoutBrandingContentInput content;
+
+  /**
+   * The customizations for the breadcrumbs that represent a buyer's journey to the checkout.
+   */
+  private CheckoutBrandingBuyerJourneyInput buyerJourney;
+
+  /**
+   * The input for checkout cart link customizations. For example, by setting the
+   * visibility field to `HIDDEN`, you can hide the cart icon in the header for
+   * one-page checkout, and the cart link in breadcrumbs in three-page checkout.
+   */
+  private CheckoutBrandingCartLinkInput cartLink;
+
+  /**
+   * The input for the page, content, main, and order summary dividers
+   * customizations. For example, by setting the borderStyle to `DOTTED`, you can
+   * make these dividers render as dotted lines.
+   */
+  private CheckoutBrandingDividerStyleInput divider;
 
   public CheckoutBrandingCustomizationsInput() {
   }
@@ -145,6 +179,17 @@ public class CheckoutBrandingCustomizationsInput {
 
   public void setHeadingLevel3(CheckoutBrandingHeadingLevelInput headingLevel3) {
     this.headingLevel3 = headingLevel3;
+  }
+
+  /**
+   * The footer customizations.
+   */
+  public CheckoutBrandingFooterInput getFooter() {
+    return footer;
+  }
+
+  public void setFooter(CheckoutBrandingFooterInput footer) {
+    this.footer = footer;
   }
 
   /**
@@ -269,9 +314,68 @@ public class CheckoutBrandingCustomizationsInput {
     this.merchandiseThumbnail = merchandiseThumbnail;
   }
 
+  /**
+   * The express checkout customizations.
+   */
+  public CheckoutBrandingExpressCheckoutInput getExpressCheckout() {
+    return expressCheckout;
+  }
+
+  public void setExpressCheckout(CheckoutBrandingExpressCheckoutInput expressCheckout) {
+    this.expressCheckout = expressCheckout;
+  }
+
+  /**
+   * The content container customizations.
+   */
+  public CheckoutBrandingContentInput getContent() {
+    return content;
+  }
+
+  public void setContent(CheckoutBrandingContentInput content) {
+    this.content = content;
+  }
+
+  /**
+   * The customizations for the breadcrumbs that represent a buyer's journey to the checkout.
+   */
+  public CheckoutBrandingBuyerJourneyInput getBuyerJourney() {
+    return buyerJourney;
+  }
+
+  public void setBuyerJourney(CheckoutBrandingBuyerJourneyInput buyerJourney) {
+    this.buyerJourney = buyerJourney;
+  }
+
+  /**
+   * The input for checkout cart link customizations. For example, by setting the
+   * visibility field to `HIDDEN`, you can hide the cart icon in the header for
+   * one-page checkout, and the cart link in breadcrumbs in three-page checkout.
+   */
+  public CheckoutBrandingCartLinkInput getCartLink() {
+    return cartLink;
+  }
+
+  public void setCartLink(CheckoutBrandingCartLinkInput cartLink) {
+    this.cartLink = cartLink;
+  }
+
+  /**
+   * The input for the page, content, main, and order summary dividers
+   * customizations. For example, by setting the borderStyle to `DOTTED`, you can
+   * make these dividers render as dotted lines.
+   */
+  public CheckoutBrandingDividerStyleInput getDivider() {
+    return divider;
+  }
+
+  public void setDivider(CheckoutBrandingDividerStyleInput divider) {
+    this.divider = divider;
+  }
+
   @Override
   public String toString() {
-    return "CheckoutBrandingCustomizationsInput{global='" + global + "', header='" + header + "', headingLevel1='" + headingLevel1 + "', headingLevel2='" + headingLevel2 + "', headingLevel3='" + headingLevel3 + "', main='" + main + "', orderSummary='" + orderSummary + "', control='" + control + "', textField='" + textField + "', checkbox='" + checkbox + "', select='" + select + "', primaryButton='" + primaryButton + "', secondaryButton='" + secondaryButton + "', favicon='" + favicon + "', choiceList='" + choiceList + "', merchandiseThumbnail='" + merchandiseThumbnail + "'}";
+    return "CheckoutBrandingCustomizationsInput{global='" + global + "', header='" + header + "', headingLevel1='" + headingLevel1 + "', headingLevel2='" + headingLevel2 + "', headingLevel3='" + headingLevel3 + "', footer='" + footer + "', main='" + main + "', orderSummary='" + orderSummary + "', control='" + control + "', textField='" + textField + "', checkbox='" + checkbox + "', select='" + select + "', primaryButton='" + primaryButton + "', secondaryButton='" + secondaryButton + "', favicon='" + favicon + "', choiceList='" + choiceList + "', merchandiseThumbnail='" + merchandiseThumbnail + "', expressCheckout='" + expressCheckout + "', content='" + content + "', buyerJourney='" + buyerJourney + "', cartLink='" + cartLink + "', divider='" + divider + "'}";
   }
 
   @Override
@@ -284,6 +388,7 @@ public class CheckoutBrandingCustomizationsInput {
         Objects.equals(headingLevel1, that.headingLevel1) &&
         Objects.equals(headingLevel2, that.headingLevel2) &&
         Objects.equals(headingLevel3, that.headingLevel3) &&
+        Objects.equals(footer, that.footer) &&
         Objects.equals(main, that.main) &&
         Objects.equals(orderSummary, that.orderSummary) &&
         Objects.equals(control, that.control) &&
@@ -294,12 +399,17 @@ public class CheckoutBrandingCustomizationsInput {
         Objects.equals(secondaryButton, that.secondaryButton) &&
         Objects.equals(favicon, that.favicon) &&
         Objects.equals(choiceList, that.choiceList) &&
-        Objects.equals(merchandiseThumbnail, that.merchandiseThumbnail);
+        Objects.equals(merchandiseThumbnail, that.merchandiseThumbnail) &&
+        Objects.equals(expressCheckout, that.expressCheckout) &&
+        Objects.equals(content, that.content) &&
+        Objects.equals(buyerJourney, that.buyerJourney) &&
+        Objects.equals(cartLink, that.cartLink) &&
+        Objects.equals(divider, that.divider);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(global, header, headingLevel1, headingLevel2, headingLevel3, main, orderSummary, control, textField, checkbox, select, primaryButton, secondaryButton, favicon, choiceList, merchandiseThumbnail);
+    return Objects.hash(global, header, headingLevel1, headingLevel2, headingLevel3, footer, main, orderSummary, control, textField, checkbox, select, primaryButton, secondaryButton, favicon, choiceList, merchandiseThumbnail, expressCheckout, content, buyerJourney, cartLink, divider);
   }
 
   public static Builder newBuilder() {
@@ -331,6 +441,11 @@ public class CheckoutBrandingCustomizationsInput {
      * The Heading Level 3 customizations.
      */
     private CheckoutBrandingHeadingLevelInput headingLevel3;
+
+    /**
+     * The footer customizations.
+     */
+    private CheckoutBrandingFooterInput footer;
 
     /**
      * The main area customizations.
@@ -387,6 +502,35 @@ public class CheckoutBrandingCustomizationsInput {
      */
     private CheckoutBrandingMerchandiseThumbnailInput merchandiseThumbnail;
 
+    /**
+     * The express checkout customizations.
+     */
+    private CheckoutBrandingExpressCheckoutInput expressCheckout;
+
+    /**
+     * The content container customizations.
+     */
+    private CheckoutBrandingContentInput content;
+
+    /**
+     * The customizations for the breadcrumbs that represent a buyer's journey to the checkout.
+     */
+    private CheckoutBrandingBuyerJourneyInput buyerJourney;
+
+    /**
+     * The input for checkout cart link customizations. For example, by setting the
+     * visibility field to `HIDDEN`, you can hide the cart icon in the header for
+     * one-page checkout, and the cart link in breadcrumbs in three-page checkout.
+     */
+    private CheckoutBrandingCartLinkInput cartLink;
+
+    /**
+     * The input for the page, content, main, and order summary dividers
+     * customizations. For example, by setting the borderStyle to `DOTTED`, you can
+     * make these dividers render as dotted lines.
+     */
+    private CheckoutBrandingDividerStyleInput divider;
+
     public CheckoutBrandingCustomizationsInput build() {
       CheckoutBrandingCustomizationsInput result = new CheckoutBrandingCustomizationsInput();
       result.global = this.global;
@@ -394,6 +538,7 @@ public class CheckoutBrandingCustomizationsInput {
       result.headingLevel1 = this.headingLevel1;
       result.headingLevel2 = this.headingLevel2;
       result.headingLevel3 = this.headingLevel3;
+      result.footer = this.footer;
       result.main = this.main;
       result.orderSummary = this.orderSummary;
       result.control = this.control;
@@ -405,6 +550,11 @@ public class CheckoutBrandingCustomizationsInput {
       result.favicon = this.favicon;
       result.choiceList = this.choiceList;
       result.merchandiseThumbnail = this.merchandiseThumbnail;
+      result.expressCheckout = this.expressCheckout;
+      result.content = this.content;
+      result.buyerJourney = this.buyerJourney;
+      result.cartLink = this.cartLink;
+      result.divider = this.divider;
       return result;
     }
 
@@ -445,6 +595,14 @@ public class CheckoutBrandingCustomizationsInput {
      */
     public Builder headingLevel3(CheckoutBrandingHeadingLevelInput headingLevel3) {
       this.headingLevel3 = headingLevel3;
+      return this;
+    }
+
+    /**
+     * The footer customizations.
+     */
+    public Builder footer(CheckoutBrandingFooterInput footer) {
+      this.footer = footer;
       return this;
     }
 
@@ -534,6 +692,50 @@ public class CheckoutBrandingCustomizationsInput {
     public Builder merchandiseThumbnail(
         CheckoutBrandingMerchandiseThumbnailInput merchandiseThumbnail) {
       this.merchandiseThumbnail = merchandiseThumbnail;
+      return this;
+    }
+
+    /**
+     * The express checkout customizations.
+     */
+    public Builder expressCheckout(CheckoutBrandingExpressCheckoutInput expressCheckout) {
+      this.expressCheckout = expressCheckout;
+      return this;
+    }
+
+    /**
+     * The content container customizations.
+     */
+    public Builder content(CheckoutBrandingContentInput content) {
+      this.content = content;
+      return this;
+    }
+
+    /**
+     * The customizations for the breadcrumbs that represent a buyer's journey to the checkout.
+     */
+    public Builder buyerJourney(CheckoutBrandingBuyerJourneyInput buyerJourney) {
+      this.buyerJourney = buyerJourney;
+      return this;
+    }
+
+    /**
+     * The input for checkout cart link customizations. For example, by setting the
+     * visibility field to `HIDDEN`, you can hide the cart icon in the header for
+     * one-page checkout, and the cart link in breadcrumbs in three-page checkout.
+     */
+    public Builder cartLink(CheckoutBrandingCartLinkInput cartLink) {
+      this.cartLink = cartLink;
+      return this;
+    }
+
+    /**
+     * The input for the page, content, main, and order summary dividers
+     * customizations. For example, by setting the borderStyle to `DOTTED`, you can
+     * make these dividers render as dotted lines.
+     */
+    public Builder divider(CheckoutBrandingDividerStyleInput divider) {
+      this.divider = divider;
       return this;
     }
   }

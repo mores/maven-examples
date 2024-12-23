@@ -20,6 +20,11 @@ public class AbandonedCheckoutLineItem implements com.test.shopify.generated.typ
   private List<Attribute> customAttributes;
 
   /**
+   * Discount allocations that have been applied on the line item.
+   */
+  private DiscountAllocationConnection discountAllocations;
+
+  /**
    * Final total price for the entire quantity of this line item, including discounts.
    */
   private MoneyBag discountedTotalPriceSet;
@@ -106,6 +111,17 @@ public class AbandonedCheckoutLineItem implements com.test.shopify.generated.typ
 
   public void setCustomAttributes(List<Attribute> customAttributes) {
     this.customAttributes = customAttributes;
+  }
+
+  /**
+   * Discount allocations that have been applied on the line item.
+   */
+  public DiscountAllocationConnection getDiscountAllocations() {
+    return discountAllocations;
+  }
+
+  public void setDiscountAllocations(DiscountAllocationConnection discountAllocations) {
+    this.discountAllocations = discountAllocations;
   }
 
   /**
@@ -270,7 +286,7 @@ public class AbandonedCheckoutLineItem implements com.test.shopify.generated.typ
 
   @Override
   public String toString() {
-    return "AbandonedCheckoutLineItem{customAttributes='" + customAttributes + "', discountedTotalPriceSet='" + discountedTotalPriceSet + "', discountedTotalPriceWithCodeDiscount='" + discountedTotalPriceWithCodeDiscount + "', discountedUnitPriceSet='" + discountedUnitPriceSet + "', discountedUnitPriceWithCodeDiscount='" + discountedUnitPriceWithCodeDiscount + "', id='" + id + "', image='" + image + "', originalTotalPriceSet='" + originalTotalPriceSet + "', originalUnitPriceSet='" + originalUnitPriceSet + "', product='" + product + "', quantity='" + quantity + "', sku='" + sku + "', title='" + title + "', variant='" + variant + "', variantTitle='" + variantTitle + "'}";
+    return "AbandonedCheckoutLineItem{customAttributes='" + customAttributes + "', discountAllocations='" + discountAllocations + "', discountedTotalPriceSet='" + discountedTotalPriceSet + "', discountedTotalPriceWithCodeDiscount='" + discountedTotalPriceWithCodeDiscount + "', discountedUnitPriceSet='" + discountedUnitPriceSet + "', discountedUnitPriceWithCodeDiscount='" + discountedUnitPriceWithCodeDiscount + "', id='" + id + "', image='" + image + "', originalTotalPriceSet='" + originalTotalPriceSet + "', originalUnitPriceSet='" + originalUnitPriceSet + "', product='" + product + "', quantity='" + quantity + "', sku='" + sku + "', title='" + title + "', variant='" + variant + "', variantTitle='" + variantTitle + "'}";
   }
 
   @Override
@@ -279,6 +295,7 @@ public class AbandonedCheckoutLineItem implements com.test.shopify.generated.typ
     if (o == null || getClass() != o.getClass()) return false;
     AbandonedCheckoutLineItem that = (AbandonedCheckoutLineItem) o;
     return Objects.equals(customAttributes, that.customAttributes) &&
+        Objects.equals(discountAllocations, that.discountAllocations) &&
         Objects.equals(discountedTotalPriceSet, that.discountedTotalPriceSet) &&
         Objects.equals(discountedTotalPriceWithCodeDiscount, that.discountedTotalPriceWithCodeDiscount) &&
         Objects.equals(discountedUnitPriceSet, that.discountedUnitPriceSet) &&
@@ -297,7 +314,7 @@ public class AbandonedCheckoutLineItem implements com.test.shopify.generated.typ
 
   @Override
   public int hashCode() {
-    return Objects.hash(customAttributes, discountedTotalPriceSet, discountedTotalPriceWithCodeDiscount, discountedUnitPriceSet, discountedUnitPriceWithCodeDiscount, id, image, originalTotalPriceSet, originalUnitPriceSet, product, quantity, sku, title, variant, variantTitle);
+    return Objects.hash(customAttributes, discountAllocations, discountedTotalPriceSet, discountedTotalPriceWithCodeDiscount, discountedUnitPriceSet, discountedUnitPriceWithCodeDiscount, id, image, originalTotalPriceSet, originalUnitPriceSet, product, quantity, sku, title, variant, variantTitle);
   }
 
   public static Builder newBuilder() {
@@ -309,6 +326,11 @@ public class AbandonedCheckoutLineItem implements com.test.shopify.generated.typ
      * A list of extra information that has been added to the line item.
      */
     private List<Attribute> customAttributes;
+
+    /**
+     * Discount allocations that have been applied on the line item.
+     */
+    private DiscountAllocationConnection discountAllocations;
 
     /**
      * Final total price for the entire quantity of this line item, including discounts.
@@ -388,6 +410,7 @@ public class AbandonedCheckoutLineItem implements com.test.shopify.generated.typ
     public AbandonedCheckoutLineItem build() {
       AbandonedCheckoutLineItem result = new AbandonedCheckoutLineItem();
       result.customAttributes = this.customAttributes;
+      result.discountAllocations = this.discountAllocations;
       result.discountedTotalPriceSet = this.discountedTotalPriceSet;
       result.discountedTotalPriceWithCodeDiscount = this.discountedTotalPriceWithCodeDiscount;
       result.discountedUnitPriceSet = this.discountedUnitPriceSet;
@@ -410,6 +433,14 @@ public class AbandonedCheckoutLineItem implements com.test.shopify.generated.typ
      */
     public Builder customAttributes(List<Attribute> customAttributes) {
       this.customAttributes = customAttributes;
+      return this;
+    }
+
+    /**
+     * Discount allocations that have been applied on the line item.
+     */
+    public Builder discountAllocations(DiscountAllocationConnection discountAllocations) {
+      this.discountAllocations = discountAllocations;
       return this;
     }
 

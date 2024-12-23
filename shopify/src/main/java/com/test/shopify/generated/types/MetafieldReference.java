@@ -16,10 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     @JsonSubTypes.Type(value = MediaImage.class, name = "MediaImage"),
     @JsonSubTypes.Type(value = Metaobject.class, name = "Metaobject"),
     @JsonSubTypes.Type(value = Model3d.class, name = "Model3d"),
-    @JsonSubTypes.Type(value = OnlineStorePage.class, name = "OnlineStorePage"),
     @JsonSubTypes.Type(value = Order.class, name = "Order"),
+    @JsonSubTypes.Type(value = Page.class, name = "Page"),
     @JsonSubTypes.Type(value = Product.class, name = "Product"),
     @JsonSubTypes.Type(value = ProductVariant.class, name = "ProductVariant"),
+    @JsonSubTypes.Type(value = TaxonomyValue.class, name = "TaxonomyValue"),
     @JsonSubTypes.Type(value = Video.class, name = "Video")
 })
 public interface MetafieldReference {

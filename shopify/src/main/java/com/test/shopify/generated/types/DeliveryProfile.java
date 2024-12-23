@@ -52,9 +52,9 @@ public class DeliveryProfile implements com.test.shopify.generated.types.Node {
   private int originLocationCount;
 
   /**
-   * The number of product variants for this profile. The count for the default profile isn't supported and will return -1.
+   * How many product variants are in this profile.
    */
-  private int productVariantsCount;
+  private Count productVariantsCount;
 
   /**
    * How many product variants are in this profile.
@@ -172,13 +172,13 @@ public class DeliveryProfile implements com.test.shopify.generated.types.Node {
   }
 
   /**
-   * The number of product variants for this profile. The count for the default profile isn't supported and will return -1.
+   * How many product variants are in this profile.
    */
-  public int getProductVariantsCount() {
+  public Count getProductVariantsCount() {
     return productVariantsCount;
   }
 
-  public void setProductVariantsCount(int productVariantsCount) {
+  public void setProductVariantsCount(Count productVariantsCount) {
     this.productVariantsCount = productVariantsCount;
   }
 
@@ -276,7 +276,7 @@ public class DeliveryProfile implements com.test.shopify.generated.types.Node {
         locationsWithoutRatesCount == that.locationsWithoutRatesCount &&
         Objects.equals(name, that.name) &&
         originLocationCount == that.originLocationCount &&
-        productVariantsCount == that.productVariantsCount &&
+        Objects.equals(productVariantsCount, that.productVariantsCount) &&
         Objects.equals(productVariantsCountV2, that.productVariantsCountV2) &&
         Objects.equals(profileItems, that.profileItems) &&
         Objects.equals(profileLocationGroups, that.profileLocationGroups) &&
@@ -332,9 +332,9 @@ public class DeliveryProfile implements com.test.shopify.generated.types.Node {
     private int originLocationCount;
 
     /**
-     * The number of product variants for this profile. The count for the default profile isn't supported and will return -1.
+     * How many product variants are in this profile.
      */
-    private int productVariantsCount;
+    private Count productVariantsCount;
 
     /**
      * How many product variants are in this profile.
@@ -448,9 +448,9 @@ public class DeliveryProfile implements com.test.shopify.generated.types.Node {
     }
 
     /**
-     * The number of product variants for this profile. The count for the default profile isn't supported and will return -1.
+     * How many product variants are in this profile.
      */
-    public Builder productVariantsCount(int productVariantsCount) {
+    public Builder productVariantsCount(Count productVariantsCount) {
       this.productVariantsCount = productVariantsCount;
       return this;
     }

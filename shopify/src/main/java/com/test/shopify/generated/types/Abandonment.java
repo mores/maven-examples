@@ -86,6 +86,11 @@ public class Abandonment implements com.test.shopify.generated.types.Node {
   private boolean inventoryAvailable;
 
   /**
+   * Whether the abandonment event comes from a custom storefront channel.
+   */
+  private boolean isFromCustomStorefront;
+
+  /**
    * Whether the abandonment event comes from the Online Store sales channel.
    */
   private boolean isFromOnlineStore;
@@ -299,6 +304,17 @@ public class Abandonment implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * Whether the abandonment event comes from a custom storefront channel.
+   */
+  public boolean getIsFromCustomStorefront() {
+    return isFromCustomStorefront;
+  }
+
+  public void setIsFromCustomStorefront(boolean isFromCustomStorefront) {
+    this.isFromCustomStorefront = isFromCustomStorefront;
+  }
+
+  /**
    * Whether the abandonment event comes from the Online Store sales channel.
    */
   public boolean getIsFromOnlineStore() {
@@ -421,7 +437,7 @@ public class Abandonment implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "Abandonment{abandonedCheckoutPayload='" + abandonedCheckoutPayload + "', abandonmentType='" + abandonmentType + "', app='" + app + "', cartUrl='" + cartUrl + "', createdAt='" + createdAt + "', customer='" + customer + "', customerHasNoDraftOrderSinceAbandonment='" + customerHasNoDraftOrderSinceAbandonment + "', customerHasNoOrderSinceAbandonment='" + customerHasNoOrderSinceAbandonment + "', daysSinceLastAbandonmentEmail='" + daysSinceLastAbandonmentEmail + "', emailSentAt='" + emailSentAt + "', emailState='" + emailState + "', hoursSinceLastAbandonedCheckout='" + hoursSinceLastAbandonedCheckout + "', id='" + id + "', inventoryAvailable='" + inventoryAvailable + "', isFromOnlineStore='" + isFromOnlineStore + "', isFromShopApp='" + isFromShopApp + "', isFromShopPay='" + isFromShopPay + "', isMostSignificantAbandonment='" + isMostSignificantAbandonment + "', lastBrowseAbandonmentDate='" + lastBrowseAbandonmentDate + "', lastCartAbandonmentDate='" + lastCartAbandonmentDate + "', lastCheckoutAbandonmentDate='" + lastCheckoutAbandonmentDate + "', mostRecentStep='" + mostRecentStep + "', productsAddedToCart='" + productsAddedToCart + "', productsViewed='" + productsViewed + "', visitStartedAt='" + visitStartedAt + "'}";
+    return "Abandonment{abandonedCheckoutPayload='" + abandonedCheckoutPayload + "', abandonmentType='" + abandonmentType + "', app='" + app + "', cartUrl='" + cartUrl + "', createdAt='" + createdAt + "', customer='" + customer + "', customerHasNoDraftOrderSinceAbandonment='" + customerHasNoDraftOrderSinceAbandonment + "', customerHasNoOrderSinceAbandonment='" + customerHasNoOrderSinceAbandonment + "', daysSinceLastAbandonmentEmail='" + daysSinceLastAbandonmentEmail + "', emailSentAt='" + emailSentAt + "', emailState='" + emailState + "', hoursSinceLastAbandonedCheckout='" + hoursSinceLastAbandonedCheckout + "', id='" + id + "', inventoryAvailable='" + inventoryAvailable + "', isFromCustomStorefront='" + isFromCustomStorefront + "', isFromOnlineStore='" + isFromOnlineStore + "', isFromShopApp='" + isFromShopApp + "', isFromShopPay='" + isFromShopPay + "', isMostSignificantAbandonment='" + isMostSignificantAbandonment + "', lastBrowseAbandonmentDate='" + lastBrowseAbandonmentDate + "', lastCartAbandonmentDate='" + lastCartAbandonmentDate + "', lastCheckoutAbandonmentDate='" + lastCheckoutAbandonmentDate + "', mostRecentStep='" + mostRecentStep + "', productsAddedToCart='" + productsAddedToCart + "', productsViewed='" + productsViewed + "', visitStartedAt='" + visitStartedAt + "'}";
   }
 
   @Override
@@ -443,6 +459,7 @@ public class Abandonment implements com.test.shopify.generated.types.Node {
         Objects.equals(hoursSinceLastAbandonedCheckout, that.hoursSinceLastAbandonedCheckout) &&
         Objects.equals(id, that.id) &&
         inventoryAvailable == that.inventoryAvailable &&
+        isFromCustomStorefront == that.isFromCustomStorefront &&
         isFromOnlineStore == that.isFromOnlineStore &&
         isFromShopApp == that.isFromShopApp &&
         isFromShopPay == that.isFromShopPay &&
@@ -458,7 +475,7 @@ public class Abandonment implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(abandonedCheckoutPayload, abandonmentType, app, cartUrl, createdAt, customer, customerHasNoDraftOrderSinceAbandonment, customerHasNoOrderSinceAbandonment, daysSinceLastAbandonmentEmail, emailSentAt, emailState, hoursSinceLastAbandonedCheckout, id, inventoryAvailable, isFromOnlineStore, isFromShopApp, isFromShopPay, isMostSignificantAbandonment, lastBrowseAbandonmentDate, lastCartAbandonmentDate, lastCheckoutAbandonmentDate, mostRecentStep, productsAddedToCart, productsViewed, visitStartedAt);
+    return Objects.hash(abandonedCheckoutPayload, abandonmentType, app, cartUrl, createdAt, customer, customerHasNoDraftOrderSinceAbandonment, customerHasNoOrderSinceAbandonment, daysSinceLastAbandonmentEmail, emailSentAt, emailState, hoursSinceLastAbandonedCheckout, id, inventoryAvailable, isFromCustomStorefront, isFromOnlineStore, isFromShopApp, isFromShopPay, isMostSignificantAbandonment, lastBrowseAbandonmentDate, lastCartAbandonmentDate, lastCheckoutAbandonmentDate, mostRecentStep, productsAddedToCart, productsViewed, visitStartedAt);
   }
 
   public static Builder newBuilder() {
@@ -537,6 +554,11 @@ public class Abandonment implements com.test.shopify.generated.types.Node {
     private boolean inventoryAvailable;
 
     /**
+     * Whether the abandonment event comes from a custom storefront channel.
+     */
+    private boolean isFromCustomStorefront;
+
+    /**
      * Whether the abandonment event comes from the Online Store sales channel.
      */
     private boolean isFromOnlineStore;
@@ -607,6 +629,7 @@ public class Abandonment implements com.test.shopify.generated.types.Node {
       result.hoursSinceLastAbandonedCheckout = this.hoursSinceLastAbandonedCheckout;
       result.id = this.id;
       result.inventoryAvailable = this.inventoryAvailable;
+      result.isFromCustomStorefront = this.isFromCustomStorefront;
       result.isFromOnlineStore = this.isFromOnlineStore;
       result.isFromShopApp = this.isFromShopApp;
       result.isFromShopPay = this.isFromShopPay;
@@ -731,6 +754,14 @@ public class Abandonment implements com.test.shopify.generated.types.Node {
      */
     public Builder inventoryAvailable(boolean inventoryAvailable) {
       this.inventoryAvailable = inventoryAvailable;
+      return this;
+    }
+
+    /**
+     * Whether the abandonment event comes from a custom storefront channel.
+     */
+    public Builder isFromCustomStorefront(boolean isFromCustomStorefront) {
+      this.isFromCustomStorefront = isFromCustomStorefront;
       return this;
     }
 

@@ -25,6 +25,11 @@ public class BuyerExperienceConfigurationInput {
    */
   private Boolean editableShippingAddress;
 
+  /**
+   * The input fields configuring the deposit a B2B buyer.
+   */
+  private DepositInput deposit;
+
   public BuyerExperienceConfigurationInput() {
   }
 
@@ -61,9 +66,20 @@ public class BuyerExperienceConfigurationInput {
     this.editableShippingAddress = editableShippingAddress;
   }
 
+  /**
+   * The input fields configuring the deposit a B2B buyer.
+   */
+  public DepositInput getDeposit() {
+    return deposit;
+  }
+
+  public void setDeposit(DepositInput deposit) {
+    this.deposit = deposit;
+  }
+
   @Override
   public String toString() {
-    return "BuyerExperienceConfigurationInput{checkoutToDraft='" + checkoutToDraft + "', paymentTermsTemplateId='" + paymentTermsTemplateId + "', editableShippingAddress='" + editableShippingAddress + "'}";
+    return "BuyerExperienceConfigurationInput{checkoutToDraft='" + checkoutToDraft + "', paymentTermsTemplateId='" + paymentTermsTemplateId + "', editableShippingAddress='" + editableShippingAddress + "', deposit='" + deposit + "'}";
   }
 
   @Override
@@ -73,12 +89,13 @@ public class BuyerExperienceConfigurationInput {
     BuyerExperienceConfigurationInput that = (BuyerExperienceConfigurationInput) o;
     return Objects.equals(checkoutToDraft, that.checkoutToDraft) &&
         Objects.equals(paymentTermsTemplateId, that.paymentTermsTemplateId) &&
-        Objects.equals(editableShippingAddress, that.editableShippingAddress);
+        Objects.equals(editableShippingAddress, that.editableShippingAddress) &&
+        Objects.equals(deposit, that.deposit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkoutToDraft, paymentTermsTemplateId, editableShippingAddress);
+    return Objects.hash(checkoutToDraft, paymentTermsTemplateId, editableShippingAddress, deposit);
   }
 
   public static Builder newBuilder() {
@@ -101,11 +118,17 @@ public class BuyerExperienceConfigurationInput {
      */
     private Boolean editableShippingAddress;
 
+    /**
+     * The input fields configuring the deposit a B2B buyer.
+     */
+    private DepositInput deposit;
+
     public BuyerExperienceConfigurationInput build() {
       BuyerExperienceConfigurationInput result = new BuyerExperienceConfigurationInput();
       result.checkoutToDraft = this.checkoutToDraft;
       result.paymentTermsTemplateId = this.paymentTermsTemplateId;
       result.editableShippingAddress = this.editableShippingAddress;
+      result.deposit = this.deposit;
       return result;
     }
 
@@ -130,6 +153,14 @@ public class BuyerExperienceConfigurationInput {
      */
     public Builder editableShippingAddress(Boolean editableShippingAddress) {
       this.editableShippingAddress = editableShippingAddress;
+      return this;
+    }
+
+    /**
+     * The input fields configuring the deposit a B2B buyer.
+     */
+    public Builder deposit(DepositInput deposit) {
+      this.deposit = deposit;
       return this;
     }
   }

@@ -12,12 +12,17 @@ public class MetafieldAccessInput {
   /**
    * The admin access setting to use for the metafields under this definition.
    */
-  private MetafieldAdminAccess admin;
+  private MetafieldAdminAccessInput admin;
 
   /**
    * The storefront access setting to use for the metafields under this definition.
    */
-  private MetafieldStorefrontAccess storefront;
+  private MetafieldStorefrontAccessInput storefront;
+
+  /**
+   * The Customer Account API access setting to use for the metafields under this definition.
+   */
+  private MetafieldCustomerAccountAccessInput customerAccount;
 
   public MetafieldAccessInput() {
   }
@@ -25,28 +30,39 @@ public class MetafieldAccessInput {
   /**
    * The admin access setting to use for the metafields under this definition.
    */
-  public MetafieldAdminAccess getAdmin() {
+  public MetafieldAdminAccessInput getAdmin() {
     return admin;
   }
 
-  public void setAdmin(MetafieldAdminAccess admin) {
+  public void setAdmin(MetafieldAdminAccessInput admin) {
     this.admin = admin;
   }
 
   /**
    * The storefront access setting to use for the metafields under this definition.
    */
-  public MetafieldStorefrontAccess getStorefront() {
+  public MetafieldStorefrontAccessInput getStorefront() {
     return storefront;
   }
 
-  public void setStorefront(MetafieldStorefrontAccess storefront) {
+  public void setStorefront(MetafieldStorefrontAccessInput storefront) {
     this.storefront = storefront;
+  }
+
+  /**
+   * The Customer Account API access setting to use for the metafields under this definition.
+   */
+  public MetafieldCustomerAccountAccessInput getCustomerAccount() {
+    return customerAccount;
+  }
+
+  public void setCustomerAccount(MetafieldCustomerAccountAccessInput customerAccount) {
+    this.customerAccount = customerAccount;
   }
 
   @Override
   public String toString() {
-    return "MetafieldAccessInput{admin='" + admin + "', storefront='" + storefront + "'}";
+    return "MetafieldAccessInput{admin='" + admin + "', storefront='" + storefront + "', customerAccount='" + customerAccount + "'}";
   }
 
   @Override
@@ -55,12 +71,13 @@ public class MetafieldAccessInput {
     if (o == null || getClass() != o.getClass()) return false;
     MetafieldAccessInput that = (MetafieldAccessInput) o;
     return Objects.equals(admin, that.admin) &&
-        Objects.equals(storefront, that.storefront);
+        Objects.equals(storefront, that.storefront) &&
+        Objects.equals(customerAccount, that.customerAccount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(admin, storefront);
+    return Objects.hash(admin, storefront, customerAccount);
   }
 
   public static Builder newBuilder() {
@@ -71,24 +88,30 @@ public class MetafieldAccessInput {
     /**
      * The admin access setting to use for the metafields under this definition.
      */
-    private MetafieldAdminAccess admin;
+    private MetafieldAdminAccessInput admin;
 
     /**
      * The storefront access setting to use for the metafields under this definition.
      */
-    private MetafieldStorefrontAccess storefront;
+    private MetafieldStorefrontAccessInput storefront;
+
+    /**
+     * The Customer Account API access setting to use for the metafields under this definition.
+     */
+    private MetafieldCustomerAccountAccessInput customerAccount;
 
     public MetafieldAccessInput build() {
       MetafieldAccessInput result = new MetafieldAccessInput();
       result.admin = this.admin;
       result.storefront = this.storefront;
+      result.customerAccount = this.customerAccount;
       return result;
     }
 
     /**
      * The admin access setting to use for the metafields under this definition.
      */
-    public Builder admin(MetafieldAdminAccess admin) {
+    public Builder admin(MetafieldAdminAccessInput admin) {
       this.admin = admin;
       return this;
     }
@@ -96,8 +119,16 @@ public class MetafieldAccessInput {
     /**
      * The storefront access setting to use for the metafields under this definition.
      */
-    public Builder storefront(MetafieldStorefrontAccess storefront) {
+    public Builder storefront(MetafieldStorefrontAccessInput storefront) {
       this.storefront = storefront;
+      return this;
+    }
+
+    /**
+     * The Customer Account API access setting to use for the metafields under this definition.
+     */
+    public Builder customerAccount(MetafieldCustomerAccountAccessInput customerAccount) {
+      this.customerAccount = customerAccount;
       return this;
     }
   }

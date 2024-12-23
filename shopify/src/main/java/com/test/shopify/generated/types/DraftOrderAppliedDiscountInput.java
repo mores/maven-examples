@@ -10,6 +10,11 @@ import java.util.Objects;
  */
 public class DraftOrderAppliedDiscountInput {
   /**
+   * The applied amount of the discount in the specified currency.
+   */
+  private MoneyInput amountWithCurrency;
+
+  /**
    * Reason for the discount.
    */
   private String description;
@@ -32,6 +37,17 @@ public class DraftOrderAppliedDiscountInput {
   private DraftOrderAppliedDiscountType valueType;
 
   public DraftOrderAppliedDiscountInput() {
+  }
+
+  /**
+   * The applied amount of the discount in the specified currency.
+   */
+  public MoneyInput getAmountWithCurrency() {
+    return amountWithCurrency;
+  }
+
+  public void setAmountWithCurrency(MoneyInput amountWithCurrency) {
+    this.amountWithCurrency = amountWithCurrency;
   }
 
   /**
@@ -82,7 +98,7 @@ public class DraftOrderAppliedDiscountInput {
 
   @Override
   public String toString() {
-    return "DraftOrderAppliedDiscountInput{description='" + description + "', title='" + title + "', value='" + value + "', valueType='" + valueType + "'}";
+    return "DraftOrderAppliedDiscountInput{amountWithCurrency='" + amountWithCurrency + "', description='" + description + "', title='" + title + "', value='" + value + "', valueType='" + valueType + "'}";
   }
 
   @Override
@@ -90,7 +106,8 @@ public class DraftOrderAppliedDiscountInput {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     DraftOrderAppliedDiscountInput that = (DraftOrderAppliedDiscountInput) o;
-    return Objects.equals(description, that.description) &&
+    return Objects.equals(amountWithCurrency, that.amountWithCurrency) &&
+        Objects.equals(description, that.description) &&
         Objects.equals(title, that.title) &&
         value == that.value &&
         Objects.equals(valueType, that.valueType);
@@ -98,7 +115,7 @@ public class DraftOrderAppliedDiscountInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, title, value, valueType);
+    return Objects.hash(amountWithCurrency, description, title, value, valueType);
   }
 
   public static Builder newBuilder() {
@@ -106,6 +123,11 @@ public class DraftOrderAppliedDiscountInput {
   }
 
   public static class Builder {
+    /**
+     * The applied amount of the discount in the specified currency.
+     */
+    private MoneyInput amountWithCurrency;
+
     /**
      * Reason for the discount.
      */
@@ -130,11 +152,20 @@ public class DraftOrderAppliedDiscountInput {
 
     public DraftOrderAppliedDiscountInput build() {
       DraftOrderAppliedDiscountInput result = new DraftOrderAppliedDiscountInput();
+      result.amountWithCurrency = this.amountWithCurrency;
       result.description = this.description;
       result.title = this.title;
       result.value = this.value;
       result.valueType = this.valueType;
       return result;
+    }
+
+    /**
+     * The applied amount of the discount in the specified currency.
+     */
+    public Builder amountWithCurrency(MoneyInput amountWithCurrency) {
+      this.amountWithCurrency = amountWithCurrency;
+      return this;
     }
 
     /**

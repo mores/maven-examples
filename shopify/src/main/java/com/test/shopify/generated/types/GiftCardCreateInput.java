@@ -37,6 +37,11 @@ public class GiftCardCreateInput {
   private String note;
 
   /**
+   * The recipient attributes of the gift card.
+   */
+  private GiftCardRecipientInput recipientAttributes;
+
+  /**
    * The suffix of the Liquid template that's used to render the gift card online.
    * For example, if the value is `birthday`, then the gift card is rendered using the template `gift_card.birthday.liquid`.
    * If not provided, then the default `gift_card.liquid` template is used.
@@ -103,6 +108,17 @@ public class GiftCardCreateInput {
   }
 
   /**
+   * The recipient attributes of the gift card.
+   */
+  public GiftCardRecipientInput getRecipientAttributes() {
+    return recipientAttributes;
+  }
+
+  public void setRecipientAttributes(GiftCardRecipientInput recipientAttributes) {
+    this.recipientAttributes = recipientAttributes;
+  }
+
+  /**
    * The suffix of the Liquid template that's used to render the gift card online.
    * For example, if the value is `birthday`, then the gift card is rendered using the template `gift_card.birthday.liquid`.
    * If not provided, then the default `gift_card.liquid` template is used.
@@ -117,7 +133,7 @@ public class GiftCardCreateInput {
 
   @Override
   public String toString() {
-    return "GiftCardCreateInput{initialValue='" + initialValue + "', code='" + code + "', customerId='" + customerId + "', expiresOn='" + expiresOn + "', note='" + note + "', templateSuffix='" + templateSuffix + "'}";
+    return "GiftCardCreateInput{initialValue='" + initialValue + "', code='" + code + "', customerId='" + customerId + "', expiresOn='" + expiresOn + "', note='" + note + "', recipientAttributes='" + recipientAttributes + "', templateSuffix='" + templateSuffix + "'}";
   }
 
   @Override
@@ -130,12 +146,13 @@ public class GiftCardCreateInput {
         Objects.equals(customerId, that.customerId) &&
         Objects.equals(expiresOn, that.expiresOn) &&
         Objects.equals(note, that.note) &&
+        Objects.equals(recipientAttributes, that.recipientAttributes) &&
         Objects.equals(templateSuffix, that.templateSuffix);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(initialValue, code, customerId, expiresOn, note, templateSuffix);
+    return Objects.hash(initialValue, code, customerId, expiresOn, note, recipientAttributes, templateSuffix);
   }
 
   public static Builder newBuilder() {
@@ -170,6 +187,11 @@ public class GiftCardCreateInput {
     private String note;
 
     /**
+     * The recipient attributes of the gift card.
+     */
+    private GiftCardRecipientInput recipientAttributes;
+
+    /**
      * The suffix of the Liquid template that's used to render the gift card online.
      * For example, if the value is `birthday`, then the gift card is rendered using the template `gift_card.birthday.liquid`.
      * If not provided, then the default `gift_card.liquid` template is used.
@@ -183,6 +205,7 @@ public class GiftCardCreateInput {
       result.customerId = this.customerId;
       result.expiresOn = this.expiresOn;
       result.note = this.note;
+      result.recipientAttributes = this.recipientAttributes;
       result.templateSuffix = this.templateSuffix;
       return result;
     }
@@ -225,6 +248,14 @@ public class GiftCardCreateInput {
      */
     public Builder note(String note) {
       this.note = note;
+      return this;
+    }
+
+    /**
+     * The recipient attributes of the gift card.
+     */
+    public Builder recipientAttributes(GiftCardRecipientInput recipientAttributes) {
+      this.recipientAttributes = recipientAttributes;
       return this;
     }
 

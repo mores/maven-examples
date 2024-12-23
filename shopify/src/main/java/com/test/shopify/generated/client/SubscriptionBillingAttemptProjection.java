@@ -1,6 +1,10 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.String;
+import java.util.ArrayList;
 
 public class SubscriptionBillingAttemptProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT extends BaseSubProjectionNode<?, ?>> extends BaseSubProjectionNode<PARENT, ROOT> {
   public SubscriptionBillingAttemptProjection(PARENT parent, ROOT root) {
@@ -30,6 +34,31 @@ public class SubscriptionBillingAttemptProjection<PARENT extends BaseSubProjecti
      SubscriptionContractProjection<SubscriptionBillingAttemptProjection<PARENT, ROOT>, ROOT> projection = new SubscriptionContractProjection<>(this, getRoot());
      getFields().put("subscriptionContract", projection);
      return projection;
+  }
+
+  public OrderTransactionConnectionProjection<SubscriptionBillingAttemptProjection<PARENT, ROOT>, ROOT> transactions(
+      ) {
+     OrderTransactionConnectionProjection<SubscriptionBillingAttemptProjection<PARENT, ROOT>, ROOT> projection = new OrderTransactionConnectionProjection<>(this, getRoot());
+     getFields().put("transactions", projection);
+     return projection;
+  }
+
+  public OrderTransactionConnectionProjection<SubscriptionBillingAttemptProjection<PARENT, ROOT>, ROOT> transactions(
+      Integer first, String after, Integer last, String before, Boolean reverse) {
+    OrderTransactionConnectionProjection<SubscriptionBillingAttemptProjection<PARENT, ROOT>, ROOT> projection = new OrderTransactionConnectionProjection<>(this, getRoot());    
+    getFields().put("transactions", projection);
+    getInputArguments().computeIfAbsent("transactions", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("transactions").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("transactions").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("transactions").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("transactions").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("transactions").add(reverseArg);
+    return projection;
   }
 
   public SubscriptionBillingAttemptProjection<PARENT, ROOT> completedAt() {
@@ -64,6 +93,16 @@ public class SubscriptionBillingAttemptProjection<PARENT extends BaseSubProjecti
 
   public SubscriptionBillingAttemptProjection<PARENT, ROOT> originTime() {
     getFields().put("originTime", null);
+    return this;
+  }
+
+  public SubscriptionBillingAttemptProjection<PARENT, ROOT> paymentGroupId() {
+    getFields().put("paymentGroupId", null);
+    return this;
+  }
+
+  public SubscriptionBillingAttemptProjection<PARENT, ROOT> paymentSessionId() {
+    getFields().put("paymentSessionId", null);
     return this;
   }
 

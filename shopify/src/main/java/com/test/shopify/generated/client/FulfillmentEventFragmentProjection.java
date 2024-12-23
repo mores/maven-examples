@@ -40,6 +40,11 @@ public class FulfillmentEventFragmentProjection<PARENT extends BaseSubProjection
     return this;
   }
 
+  public FulfillmentEventFragmentProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public FulfillmentEventFragmentProjection<PARENT, ROOT> estimatedDeliveryAt() {
     getFields().put("estimatedDeliveryAt", null);
     return this;

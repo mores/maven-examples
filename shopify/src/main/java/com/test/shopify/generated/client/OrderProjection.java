@@ -116,6 +116,12 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
      return projection;
   }
 
+  public MoneyBagProjection<OrderProjection<PARENT, ROOT>, ROOT> currentShippingPriceSet() {
+     MoneyBagProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("currentShippingPriceSet", projection);
+     return projection;
+  }
+
   public MoneyBagProjection<OrderProjection<PARENT, ROOT>, ROOT> currentSubtotalPriceSet() {
      MoneyBagProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
      getFields().put("currentSubtotalPriceSet", projection);
@@ -334,6 +340,12 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
     return projection;
   }
 
+  public CountProjection<OrderProjection<PARENT, ROOT>, ROOT> fulfillmentsCount() {
+     CountProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("fulfillmentsCount", projection);
+     return projection;
+  }
+
   public LineItemConnectionProjection<OrderProjection<PARENT, ROOT>, ROOT> lineItems() {
      LineItemConnectionProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new LineItemConnectionProjection<>(this, getRoot());
      getFields().put("lineItems", projection);
@@ -355,31 +367,6 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
     getInputArguments().get("lineItems").add(beforeArg);
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("lineItems").add(reverseArg);
-    return projection;
-  }
-
-  public LineItemMutableConnectionProjection<OrderProjection<PARENT, ROOT>, ROOT> lineItemsMutable(
-      ) {
-     LineItemMutableConnectionProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new LineItemMutableConnectionProjection<>(this, getRoot());
-     getFields().put("lineItemsMutable", projection);
-     return projection;
-  }
-
-  public LineItemMutableConnectionProjection<OrderProjection<PARENT, ROOT>, ROOT> lineItemsMutable(
-      Integer first, String after, Integer last, String before, Boolean reverse) {
-    LineItemMutableConnectionProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new LineItemMutableConnectionProjection<>(this, getRoot());    
-    getFields().put("lineItemsMutable", projection);
-    getInputArguments().computeIfAbsent("lineItemsMutable", k -> new ArrayList<>());                      
-    InputArgument firstArg = new InputArgument("first", first);
-    getInputArguments().get("lineItemsMutable").add(firstArg);
-    InputArgument afterArg = new InputArgument("after", after);
-    getInputArguments().get("lineItemsMutable").add(afterArg);
-    InputArgument lastArg = new InputArgument("last", last);
-    getInputArguments().get("lineItemsMutable").add(lastArg);
-    InputArgument beforeArg = new InputArgument("before", before);
-    getInputArguments().get("lineItemsMutable").add(beforeArg);
-    InputArgument reverseArg = new InputArgument("reverse", reverse);
-    getInputArguments().get("lineItemsMutable").add(reverseArg);
     return projection;
   }
 
@@ -411,6 +398,12 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("localizationExtensions").add(reverseArg);
     return projection;
+  }
+
+  public BusinessEntityProjection<OrderProjection<PARENT, ROOT>, ROOT> merchantBusinessEntity() {
+     BusinessEntityProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new BusinessEntityProjection<>(this, getRoot());
+     getFields().put("merchantBusinessEntity", projection);
+     return projection;
   }
 
   public OrderAppProjection<OrderProjection<PARENT, ROOT>, ROOT> merchantOfRecordApp() {
@@ -653,6 +646,12 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
     return projection;
   }
 
+  public LocationProjection<OrderProjection<PARENT, ROOT>, ROOT> retailLocation() {
+     LocationProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new LocationProjection<>(this, getRoot());
+     getFields().put("retailLocation", projection);
+     return projection;
+  }
+
   public OrderReturnStatusProjection<OrderProjection<PARENT, ROOT>, ROOT> returnStatus() {
      OrderReturnStatusProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new OrderReturnStatusProjection<>(this, getRoot());
      getFields().put("returnStatus", projection);
@@ -683,6 +682,12 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
     InputArgument queryArg = new InputArgument("query", query);
     getInputArguments().get("returns").add(queryArg);
     return projection;
+  }
+
+  public OrderRiskSummaryProjection<OrderProjection<PARENT, ROOT>, ROOT> risk() {
+     OrderRiskSummaryProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new OrderRiskSummaryProjection<>(this, getRoot());
+     getFields().put("risk", projection);
+     return projection;
   }
 
   public OrderRiskLevelProjection<OrderProjection<PARENT, ROOT>, ROOT> riskLevel() {
@@ -725,10 +730,13 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
   }
 
   public ShippingLineConnectionProjection<OrderProjection<PARENT, ROOT>, ROOT> shippingLines(
-      Integer first, String after, Integer last, String before, Boolean reverse) {
+      Boolean includeRemovals, Integer first, String after, Integer last, String before,
+      Boolean reverse) {
     ShippingLineConnectionProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new ShippingLineConnectionProjection<>(this, getRoot());    
     getFields().put("shippingLines", projection);
     getInputArguments().computeIfAbsent("shippingLines", k -> new ArrayList<>());                      
+    InputArgument includeRemovalsArg = new InputArgument("includeRemovals", includeRemovals);
+    getInputArguments().get("shippingLines").add(includeRemovalsArg);
     InputArgument firstArg = new InputArgument("first", first);
     getInputArguments().get("shippingLines").add(firstArg);
     InputArgument afterArg = new InputArgument("after", after);
@@ -746,6 +754,12 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
       ) {
      ShopifyProtectOrderSummaryProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new ShopifyProtectOrderSummaryProjection<>(this, getRoot());
      getFields().put("shopifyProtect", projection);
+     return projection;
+  }
+
+  public StaffMemberProjection<OrderProjection<PARENT, ROOT>, ROOT> staffMember() {
+     StaffMemberProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new StaffMemberProjection<>(this, getRoot());
+     getFields().put("staffMember", projection);
      return projection;
   }
 
@@ -789,6 +803,13 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
   public MoneyBagProjection<OrderProjection<PARENT, ROOT>, ROOT> totalCapturableSet() {
      MoneyBagProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
      getFields().put("totalCapturableSet", projection);
+     return projection;
+  }
+
+  public CashRoundingAdjustmentProjection<OrderProjection<PARENT, ROOT>, ROOT> totalCashRoundingAdjustment(
+      ) {
+     CashRoundingAdjustmentProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new CashRoundingAdjustmentProjection<>(this, getRoot());
+     getFields().put("totalCashRoundingAdjustment", projection);
      return projection;
   }
 
@@ -870,6 +891,12 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
     InputArgument manuallyResolvableArg = new InputArgument("manuallyResolvable", manuallyResolvable);
     getInputArguments().get("transactions").add(manuallyResolvableArg);
     return projection;
+  }
+
+  public CountProjection<OrderProjection<PARENT, ROOT>, ROOT> transactionsCount() {
+     CountProjection<OrderProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("transactionsCount", projection);
+     return projection;
   }
 
   public OrderProjection<PARENT, ROOT> billingAddressMatchesShippingAddress() {
@@ -962,6 +989,11 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
     return this;
   }
 
+  public OrderProjection<PARENT, ROOT> dutiesIncluded() {
+    getFields().put("dutiesIncluded", null);
+    return this;
+  }
+
   public OrderProjection<PARENT, ROOT> edited() {
     getFields().put("edited", null);
     return this;
@@ -1009,11 +1041,6 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
 
   public OrderProjection<PARENT, ROOT> legacyResourceId() {
     getFields().put("legacyResourceId", null);
-    return this;
-  }
-
-  public OrderProjection<PARENT, ROOT> location() {
-    getFields().put("location", null);
     return this;
   }
 
@@ -1099,6 +1126,16 @@ public class OrderProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ex
 
   public OrderProjection<PARENT, ROOT> sourceIdentifier() {
     getFields().put("sourceIdentifier", null);
+    return this;
+  }
+
+  public OrderProjection<PARENT, ROOT> sourceName() {
+    getFields().put("sourceName", null);
+    return this;
+  }
+
+  public OrderProjection<PARENT, ROOT> statusPageUrl() {
+    getFields().put("statusPageUrl", null);
     return this;
   }
 

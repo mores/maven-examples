@@ -26,6 +26,13 @@ public class EventBridgeWebhookSubscriptionInput {
   private List<String> includeFields;
 
   /**
+   * A constraint specified using search syntax that ensures only webhooks that
+   * match the specified filter are emitted. See our [guide on
+   * filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+   */
+  private String filter;
+
+  /**
    * The list of namespaces for any metafields that should be included in the webhook subscription.
    */
   private List<String> metafieldNamespaces;
@@ -67,6 +74,19 @@ public class EventBridgeWebhookSubscriptionInput {
   }
 
   /**
+   * A constraint specified using search syntax that ensures only webhooks that
+   * match the specified filter are emitted. See our [guide on
+   * filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+   */
+  public String getFilter() {
+    return filter;
+  }
+
+  public void setFilter(String filter) {
+    this.filter = filter;
+  }
+
+  /**
    * The list of namespaces for any metafields that should be included in the webhook subscription.
    */
   public List<String> getMetafieldNamespaces() {
@@ -79,7 +99,7 @@ public class EventBridgeWebhookSubscriptionInput {
 
   @Override
   public String toString() {
-    return "EventBridgeWebhookSubscriptionInput{arn='" + arn + "', format='" + format + "', includeFields='" + includeFields + "', metafieldNamespaces='" + metafieldNamespaces + "'}";
+    return "EventBridgeWebhookSubscriptionInput{arn='" + arn + "', format='" + format + "', includeFields='" + includeFields + "', filter='" + filter + "', metafieldNamespaces='" + metafieldNamespaces + "'}";
   }
 
   @Override
@@ -90,12 +110,13 @@ public class EventBridgeWebhookSubscriptionInput {
     return Objects.equals(arn, that.arn) &&
         Objects.equals(format, that.format) &&
         Objects.equals(includeFields, that.includeFields) &&
+        Objects.equals(filter, that.filter) &&
         Objects.equals(metafieldNamespaces, that.metafieldNamespaces);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(arn, format, includeFields, metafieldNamespaces);
+    return Objects.hash(arn, format, includeFields, filter, metafieldNamespaces);
   }
 
   public static Builder newBuilder() {
@@ -119,6 +140,13 @@ public class EventBridgeWebhookSubscriptionInput {
     private List<String> includeFields;
 
     /**
+     * A constraint specified using search syntax that ensures only webhooks that
+     * match the specified filter are emitted. See our [guide on
+     * filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+     */
+    private String filter;
+
+    /**
      * The list of namespaces for any metafields that should be included in the webhook subscription.
      */
     private List<String> metafieldNamespaces;
@@ -128,6 +156,7 @@ public class EventBridgeWebhookSubscriptionInput {
       result.arn = this.arn;
       result.format = this.format;
       result.includeFields = this.includeFields;
+      result.filter = this.filter;
       result.metafieldNamespaces = this.metafieldNamespaces;
       return result;
     }
@@ -153,6 +182,16 @@ public class EventBridgeWebhookSubscriptionInput {
      */
     public Builder includeFields(List<String> includeFields) {
       this.includeFields = includeFields;
+      return this;
+    }
+
+    /**
+     * A constraint specified using search syntax that ensures only webhooks that
+     * match the specified filter are emitted. See our [guide on
+     * filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+     */
+    public Builder filter(String filter) {
+      this.filter = filter;
       return this;
     }
 

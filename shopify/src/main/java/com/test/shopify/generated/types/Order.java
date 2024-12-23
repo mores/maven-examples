@@ -158,6 +158,13 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   private MoneyBag currentCartDiscountAmountSet;
 
   /**
+   * The current shipping price after applying refunds and discounts. If the parent
+   * `order.taxesIncluded` field is true, then this price includes taxes.
+   * Otherwise, this field is the pre-tax price.
+   */
+  private MoneyBag currentShippingPriceSet;
+
+  /**
    * The sum of the quantities for all line items that contribute to the order's current subtotal price.
    */
   private int currentSubtotalLineItemsQuantity;
@@ -282,6 +289,11 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   private List<OrderDisputeSummary> disputes;
 
   /**
+   * Whether duties are included in the subtotal price of the order.
+   */
+  private boolean dutiesIncluded;
+
+  /**
    * Whether the order has had any edits applied.
    */
   private boolean edited;
@@ -332,6 +344,11 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   private List<Fulfillment> fulfillments;
 
   /**
+   * The count of fulfillments including the cancelled fulfillments.
+   */
+  private Count fulfillmentsCount;
+
+  /**
    * Whether the order has been paid in full.
    */
   private boolean fullyPaid;
@@ -367,25 +384,14 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   private LineItemConnection lineItems;
 
   /**
-   * A list of the order's line items.
-   */
-  private LineItemMutableConnection lineItemsMutable;
-
-  /**
    * List of localization extensions for the resource.
    */
   private LocalizationExtensionConnection localizationExtensions;
 
   /**
-   * The fulfillment location that was assigned when the order was created.
-   * Orders can have multiple fulfillment orders. These fulfillment orders can each
-   * be assigned to a different location which is responsible for fulfilling a
-   * subset of the items in an order. The `Order.location` field will only point to
-   * one of these locations.
-   * Use the [`FulfillmentOrder`](https://shopify.dev/api/admin-graphql/latest/objects/fulfillmentorder)
-   * object for up-to-date fulfillment location information.
+   * The merchant's business entity associated with the order.
    */
-  private String location;
+  private BusinessEntity merchantBusinessEntity;
 
   /**
    * Whether the order can be edited by the merchant. For example, canceled orders can’t be edited.
@@ -587,6 +593,12 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   private boolean restockable;
 
   /**
+   * The physical location where a retail order is created or completed, except for
+   * draft POS orders completed via the “mark as paid” flow in Admin, which return null.
+   */
+  private Location retailLocation;
+
+  /**
    * The order's aggregated return status for display purposes.
    */
   private OrderReturnStatus returnStatus;
@@ -595,6 +607,11 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
    * A list of returns for the order.
    */
   private ReturnConnection returns;
+
+  /**
+   * The risk characteristics for the order.
+   */
+  private OrderRiskSummary risk;
 
   /**
    * The fraud risk level of the order.
@@ -631,6 +648,21 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
    * For example, "1234-12-1000" or "111-98567-54". The `receipt_number` field is derived from this value for POS orders.
    */
   private String sourceIdentifier;
+
+  /**
+   * The name of the source associated with the order.
+   */
+  private String sourceName;
+
+  /**
+   * The staff member associated with the order.
+   */
+  private StaffMember staffMember;
+
+  /**
+   * The URL where the customer can check the order's current status.
+   */
+  private String statusPageUrl;
 
   /**
    * The sum of the quantities for all line items that contribute to the order's subtotal price.
@@ -696,6 +728,13 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
    * This amount isn't adjusted for returns.
    */
   private MoneyBag totalCapturableSet;
+
+  /**
+   * The total rounding adjustment applied to payments or refunds for an Order
+   * involving cash payments. Applies to some countries where cash transactions are
+   * rounded to the nearest currency denomination.
+   */
+  private CashRoundingAdjustment totalCashRoundingAdjustment;
 
   /**
    * The total amount discounted on the order before returns, in shop currency.
@@ -793,6 +832,11 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
    * A list of transactions associated with the order.
    */
   private List<OrderTransaction> transactions;
+
+  /**
+   * The number of transactions associated with the order.
+   */
+  private Count transactionsCount;
 
   /**
    * Whether no payments have been made for the order.
@@ -1078,6 +1122,19 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   }
 
   /**
+   * The current shipping price after applying refunds and discounts. If the parent
+   * `order.taxesIncluded` field is true, then this price includes taxes.
+   * Otherwise, this field is the pre-tax price.
+   */
+  public MoneyBag getCurrentShippingPriceSet() {
+    return currentShippingPriceSet;
+  }
+
+  public void setCurrentShippingPriceSet(MoneyBag currentShippingPriceSet) {
+    this.currentShippingPriceSet = currentShippingPriceSet;
+  }
+
+  /**
    * The sum of the quantities for all line items that contribute to the order's current subtotal price.
    */
   public int getCurrentSubtotalLineItemsQuantity() {
@@ -1334,6 +1391,17 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   }
 
   /**
+   * Whether duties are included in the subtotal price of the order.
+   */
+  public boolean getDutiesIncluded() {
+    return dutiesIncluded;
+  }
+
+  public void setDutiesIncluded(boolean dutiesIncluded) {
+    this.dutiesIncluded = dutiesIncluded;
+  }
+
+  /**
    * Whether the order has had any edits applied.
    */
   public boolean getEdited() {
@@ -1432,6 +1500,17 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   }
 
   /**
+   * The count of fulfillments including the cancelled fulfillments.
+   */
+  public Count getFulfillmentsCount() {
+    return fulfillmentsCount;
+  }
+
+  public void setFulfillmentsCount(Count fulfillmentsCount) {
+    this.fulfillmentsCount = fulfillmentsCount;
+  }
+
+  /**
    * Whether the order has been paid in full.
    */
   public boolean getFullyPaid() {
@@ -1509,17 +1588,6 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   }
 
   /**
-   * A list of the order's line items.
-   */
-  public LineItemMutableConnection getLineItemsMutable() {
-    return lineItemsMutable;
-  }
-
-  public void setLineItemsMutable(LineItemMutableConnection lineItemsMutable) {
-    this.lineItemsMutable = lineItemsMutable;
-  }
-
-  /**
    * List of localization extensions for the resource.
    */
   public LocalizationExtensionConnection getLocalizationExtensions() {
@@ -1531,20 +1599,14 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   }
 
   /**
-   * The fulfillment location that was assigned when the order was created.
-   * Orders can have multiple fulfillment orders. These fulfillment orders can each
-   * be assigned to a different location which is responsible for fulfilling a
-   * subset of the items in an order. The `Order.location` field will only point to
-   * one of these locations.
-   * Use the [`FulfillmentOrder`](https://shopify.dev/api/admin-graphql/latest/objects/fulfillmentorder)
-   * object for up-to-date fulfillment location information.
+   * The merchant's business entity associated with the order.
    */
-  public String getLocation() {
-    return location;
+  public BusinessEntity getMerchantBusinessEntity() {
+    return merchantBusinessEntity;
   }
 
-  public void setLocation(String location) {
-    this.location = location;
+  public void setMerchantBusinessEntity(BusinessEntity merchantBusinessEntity) {
+    this.merchantBusinessEntity = merchantBusinessEntity;
   }
 
   /**
@@ -1957,6 +2019,18 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   }
 
   /**
+   * The physical location where a retail order is created or completed, except for
+   * draft POS orders completed via the “mark as paid” flow in Admin, which return null.
+   */
+  public Location getRetailLocation() {
+    return retailLocation;
+  }
+
+  public void setRetailLocation(Location retailLocation) {
+    this.retailLocation = retailLocation;
+  }
+
+  /**
    * The order's aggregated return status for display purposes.
    */
   public OrderReturnStatus getReturnStatus() {
@@ -1976,6 +2050,17 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
 
   public void setReturns(ReturnConnection returns) {
     this.returns = returns;
+  }
+
+  /**
+   * The risk characteristics for the order.
+   */
+  public OrderRiskSummary getRisk() {
+    return risk;
+  }
+
+  public void setRisk(OrderRiskSummary risk) {
+    this.risk = risk;
   }
 
   /**
@@ -2054,6 +2139,39 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
 
   public void setSourceIdentifier(String sourceIdentifier) {
     this.sourceIdentifier = sourceIdentifier;
+  }
+
+  /**
+   * The name of the source associated with the order.
+   */
+  public String getSourceName() {
+    return sourceName;
+  }
+
+  public void setSourceName(String sourceName) {
+    this.sourceName = sourceName;
+  }
+
+  /**
+   * The staff member associated with the order.
+   */
+  public StaffMember getStaffMember() {
+    return staffMember;
+  }
+
+  public void setStaffMember(StaffMember staffMember) {
+    this.staffMember = staffMember;
+  }
+
+  /**
+   * The URL where the customer can check the order's current status.
+   */
+  public String getStatusPageUrl() {
+    return statusPageUrl;
+  }
+
+  public void setStatusPageUrl(String statusPageUrl) {
+    this.statusPageUrl = statusPageUrl;
   }
 
   /**
@@ -2185,6 +2303,19 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
 
   public void setTotalCapturableSet(MoneyBag totalCapturableSet) {
     this.totalCapturableSet = totalCapturableSet;
+  }
+
+  /**
+   * The total rounding adjustment applied to payments or refunds for an Order
+   * involving cash payments. Applies to some countries where cash transactions are
+   * rounded to the nearest currency denomination.
+   */
+  public CashRoundingAdjustment getTotalCashRoundingAdjustment() {
+    return totalCashRoundingAdjustment;
+  }
+
+  public void setTotalCashRoundingAdjustment(CashRoundingAdjustment totalCashRoundingAdjustment) {
+    this.totalCashRoundingAdjustment = totalCashRoundingAdjustment;
   }
 
   /**
@@ -2393,6 +2524,17 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
   }
 
   /**
+   * The number of transactions associated with the order.
+   */
+  public Count getTransactionsCount() {
+    return transactionsCount;
+  }
+
+  public void setTransactionsCount(Count transactionsCount) {
+    this.transactionsCount = transactionsCount;
+  }
+
+  /**
    * Whether no payments have been made for the order.
    */
   public boolean getUnpaid() {
@@ -2416,7 +2558,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
 
   @Override
   public String toString() {
-    return "Order{additionalFees='" + additionalFees + "', agreements='" + agreements + "', alerts='" + alerts + "', app='" + app + "', billingAddress='" + billingAddress + "', billingAddressMatchesShippingAddress='" + billingAddressMatchesShippingAddress + "', canMarkAsPaid='" + canMarkAsPaid + "', canNotifyCustomer='" + canNotifyCustomer + "', cancelReason='" + cancelReason + "', cancellation='" + cancellation + "', cancelledAt='" + cancelledAt + "', capturable='" + capturable + "', cartDiscountAmount='" + cartDiscountAmount + "', cartDiscountAmountSet='" + cartDiscountAmountSet + "', channel='" + channel + "', channelInformation='" + channelInformation + "', clientIp='" + clientIp + "', closed='" + closed + "', closedAt='" + closedAt + "', confirmationNumber='" + confirmationNumber + "', confirmed='" + confirmed + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', currentCartDiscountAmountSet='" + currentCartDiscountAmountSet + "', currentSubtotalLineItemsQuantity='" + currentSubtotalLineItemsQuantity + "', currentSubtotalPriceSet='" + currentSubtotalPriceSet + "', currentTaxLines='" + currentTaxLines + "', currentTotalAdditionalFeesSet='" + currentTotalAdditionalFeesSet + "', currentTotalDiscountsSet='" + currentTotalDiscountsSet + "', currentTotalDutiesSet='" + currentTotalDutiesSet + "', currentTotalPriceSet='" + currentTotalPriceSet + "', currentTotalTaxSet='" + currentTotalTaxSet + "', currentTotalWeight='" + currentTotalWeight + "', customAttributes='" + customAttributes + "', customer='" + customer + "', customerAcceptsMarketing='" + customerAcceptsMarketing + "', customerJourney='" + customerJourney + "', customerJourneySummary='" + customerJourneySummary + "', customerLocale='" + customerLocale + "', discountApplications='" + discountApplications + "', discountCode='" + discountCode + "', discountCodes='" + discountCodes + "', displayAddress='" + displayAddress + "', displayFinancialStatus='" + displayFinancialStatus + "', displayFulfillmentStatus='" + displayFulfillmentStatus + "', disputes='" + disputes + "', edited='" + edited + "', email='" + email + "', estimatedTaxes='" + estimatedTaxes + "', events='" + events + "', exchangeV2s='" + exchangeV2s + "', fulfillable='" + fulfillable + "', fulfillmentOrders='" + fulfillmentOrders + "', fulfillments='" + fulfillments + "', fullyPaid='" + fullyPaid + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', landingPageDisplayText='" + landingPageDisplayText + "', landingPageUrl='" + landingPageUrl + "', legacyResourceId='" + legacyResourceId + "', lineItems='" + lineItems + "', lineItemsMutable='" + lineItemsMutable + "', localizationExtensions='" + localizationExtensions + "', location='" + location + "', merchantEditable='" + merchantEditable + "', merchantEditableErrors='" + merchantEditableErrors + "', merchantOfRecordApp='" + merchantOfRecordApp + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', netPayment='" + netPayment + "', netPaymentSet='" + netPaymentSet + "', nonFulfillableLineItems='" + nonFulfillableLineItems + "', note='" + note + "', originalTotalAdditionalFeesSet='" + originalTotalAdditionalFeesSet + "', originalTotalDutiesSet='" + originalTotalDutiesSet + "', originalTotalPriceSet='" + originalTotalPriceSet + "', paymentCollectionDetails='" + paymentCollectionDetails + "', paymentGatewayNames='" + paymentGatewayNames + "', paymentTerms='" + paymentTerms + "', phone='" + phone + "', physicalLocation='" + physicalLocation + "', poNumber='" + poNumber + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', processedAt='" + processedAt + "', publication='" + publication + "', purchasingEntity='" + purchasingEntity + "', referralCode='" + referralCode + "', referrerDisplayText='" + referrerDisplayText + "', referrerUrl='" + referrerUrl + "', refundDiscrepancySet='" + refundDiscrepancySet + "', refundable='" + refundable + "', refunds='" + refunds + "', registeredSourceUrl='" + registeredSourceUrl + "', requiresShipping='" + requiresShipping + "', restockable='" + restockable + "', returnStatus='" + returnStatus + "', returns='" + returns + "', riskLevel='" + riskLevel + "', risks='" + risks + "', shippingAddress='" + shippingAddress + "', shippingLine='" + shippingLine + "', shippingLines='" + shippingLines + "', shopifyProtect='" + shopifyProtect + "', sourceIdentifier='" + sourceIdentifier + "', subtotalLineItemsQuantity='" + subtotalLineItemsQuantity + "', subtotalPrice='" + subtotalPrice + "', subtotalPriceSet='" + subtotalPriceSet + "', suggestedRefund='" + suggestedRefund + "', tags='" + tags + "', taxExempt='" + taxExempt + "', taxLines='" + taxLines + "', taxesIncluded='" + taxesIncluded + "', test='" + test + "', totalCapturable='" + totalCapturable + "', totalCapturableSet='" + totalCapturableSet + "', totalDiscounts='" + totalDiscounts + "', totalDiscountsSet='" + totalDiscountsSet + "', totalOutstandingSet='" + totalOutstandingSet + "', totalPrice='" + totalPrice + "', totalPriceSet='" + totalPriceSet + "', totalReceived='" + totalReceived + "', totalReceivedSet='" + totalReceivedSet + "', totalRefunded='" + totalRefunded + "', totalRefundedSet='" + totalRefundedSet + "', totalRefundedShippingSet='" + totalRefundedShippingSet + "', totalShippingPrice='" + totalShippingPrice + "', totalShippingPriceSet='" + totalShippingPriceSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "', totalTipReceived='" + totalTipReceived + "', totalTipReceivedSet='" + totalTipReceivedSet + "', totalWeight='" + totalWeight + "', transactions='" + transactions + "', unpaid='" + unpaid + "', updatedAt='" + updatedAt + "'}";
+    return "Order{additionalFees='" + additionalFees + "', agreements='" + agreements + "', alerts='" + alerts + "', app='" + app + "', billingAddress='" + billingAddress + "', billingAddressMatchesShippingAddress='" + billingAddressMatchesShippingAddress + "', canMarkAsPaid='" + canMarkAsPaid + "', canNotifyCustomer='" + canNotifyCustomer + "', cancelReason='" + cancelReason + "', cancellation='" + cancellation + "', cancelledAt='" + cancelledAt + "', capturable='" + capturable + "', cartDiscountAmount='" + cartDiscountAmount + "', cartDiscountAmountSet='" + cartDiscountAmountSet + "', channel='" + channel + "', channelInformation='" + channelInformation + "', clientIp='" + clientIp + "', closed='" + closed + "', closedAt='" + closedAt + "', confirmationNumber='" + confirmationNumber + "', confirmed='" + confirmed + "', createdAt='" + createdAt + "', currencyCode='" + currencyCode + "', currentCartDiscountAmountSet='" + currentCartDiscountAmountSet + "', currentShippingPriceSet='" + currentShippingPriceSet + "', currentSubtotalLineItemsQuantity='" + currentSubtotalLineItemsQuantity + "', currentSubtotalPriceSet='" + currentSubtotalPriceSet + "', currentTaxLines='" + currentTaxLines + "', currentTotalAdditionalFeesSet='" + currentTotalAdditionalFeesSet + "', currentTotalDiscountsSet='" + currentTotalDiscountsSet + "', currentTotalDutiesSet='" + currentTotalDutiesSet + "', currentTotalPriceSet='" + currentTotalPriceSet + "', currentTotalTaxSet='" + currentTotalTaxSet + "', currentTotalWeight='" + currentTotalWeight + "', customAttributes='" + customAttributes + "', customer='" + customer + "', customerAcceptsMarketing='" + customerAcceptsMarketing + "', customerJourney='" + customerJourney + "', customerJourneySummary='" + customerJourneySummary + "', customerLocale='" + customerLocale + "', discountApplications='" + discountApplications + "', discountCode='" + discountCode + "', discountCodes='" + discountCodes + "', displayAddress='" + displayAddress + "', displayFinancialStatus='" + displayFinancialStatus + "', displayFulfillmentStatus='" + displayFulfillmentStatus + "', disputes='" + disputes + "', dutiesIncluded='" + dutiesIncluded + "', edited='" + edited + "', email='" + email + "', estimatedTaxes='" + estimatedTaxes + "', events='" + events + "', exchangeV2s='" + exchangeV2s + "', fulfillable='" + fulfillable + "', fulfillmentOrders='" + fulfillmentOrders + "', fulfillments='" + fulfillments + "', fulfillmentsCount='" + fulfillmentsCount + "', fullyPaid='" + fullyPaid + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', landingPageDisplayText='" + landingPageDisplayText + "', landingPageUrl='" + landingPageUrl + "', legacyResourceId='" + legacyResourceId + "', lineItems='" + lineItems + "', localizationExtensions='" + localizationExtensions + "', merchantBusinessEntity='" + merchantBusinessEntity + "', merchantEditable='" + merchantEditable + "', merchantEditableErrors='" + merchantEditableErrors + "', merchantOfRecordApp='" + merchantOfRecordApp + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', netPayment='" + netPayment + "', netPaymentSet='" + netPaymentSet + "', nonFulfillableLineItems='" + nonFulfillableLineItems + "', note='" + note + "', originalTotalAdditionalFeesSet='" + originalTotalAdditionalFeesSet + "', originalTotalDutiesSet='" + originalTotalDutiesSet + "', originalTotalPriceSet='" + originalTotalPriceSet + "', paymentCollectionDetails='" + paymentCollectionDetails + "', paymentGatewayNames='" + paymentGatewayNames + "', paymentTerms='" + paymentTerms + "', phone='" + phone + "', physicalLocation='" + physicalLocation + "', poNumber='" + poNumber + "', presentmentCurrencyCode='" + presentmentCurrencyCode + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', processedAt='" + processedAt + "', publication='" + publication + "', purchasingEntity='" + purchasingEntity + "', referralCode='" + referralCode + "', referrerDisplayText='" + referrerDisplayText + "', referrerUrl='" + referrerUrl + "', refundDiscrepancySet='" + refundDiscrepancySet + "', refundable='" + refundable + "', refunds='" + refunds + "', registeredSourceUrl='" + registeredSourceUrl + "', requiresShipping='" + requiresShipping + "', restockable='" + restockable + "', retailLocation='" + retailLocation + "', returnStatus='" + returnStatus + "', returns='" + returns + "', risk='" + risk + "', riskLevel='" + riskLevel + "', risks='" + risks + "', shippingAddress='" + shippingAddress + "', shippingLine='" + shippingLine + "', shippingLines='" + shippingLines + "', shopifyProtect='" + shopifyProtect + "', sourceIdentifier='" + sourceIdentifier + "', sourceName='" + sourceName + "', staffMember='" + staffMember + "', statusPageUrl='" + statusPageUrl + "', subtotalLineItemsQuantity='" + subtotalLineItemsQuantity + "', subtotalPrice='" + subtotalPrice + "', subtotalPriceSet='" + subtotalPriceSet + "', suggestedRefund='" + suggestedRefund + "', tags='" + tags + "', taxExempt='" + taxExempt + "', taxLines='" + taxLines + "', taxesIncluded='" + taxesIncluded + "', test='" + test + "', totalCapturable='" + totalCapturable + "', totalCapturableSet='" + totalCapturableSet + "', totalCashRoundingAdjustment='" + totalCashRoundingAdjustment + "', totalDiscounts='" + totalDiscounts + "', totalDiscountsSet='" + totalDiscountsSet + "', totalOutstandingSet='" + totalOutstandingSet + "', totalPrice='" + totalPrice + "', totalPriceSet='" + totalPriceSet + "', totalReceived='" + totalReceived + "', totalReceivedSet='" + totalReceivedSet + "', totalRefunded='" + totalRefunded + "', totalRefundedSet='" + totalRefundedSet + "', totalRefundedShippingSet='" + totalRefundedShippingSet + "', totalShippingPrice='" + totalShippingPrice + "', totalShippingPriceSet='" + totalShippingPriceSet + "', totalTax='" + totalTax + "', totalTaxSet='" + totalTaxSet + "', totalTipReceived='" + totalTipReceived + "', totalTipReceivedSet='" + totalTipReceivedSet + "', totalWeight='" + totalWeight + "', transactions='" + transactions + "', transactionsCount='" + transactionsCount + "', unpaid='" + unpaid + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -2448,6 +2590,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
         Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(currencyCode, that.currencyCode) &&
         Objects.equals(currentCartDiscountAmountSet, that.currentCartDiscountAmountSet) &&
+        Objects.equals(currentShippingPriceSet, that.currentShippingPriceSet) &&
         currentSubtotalLineItemsQuantity == that.currentSubtotalLineItemsQuantity &&
         Objects.equals(currentSubtotalPriceSet, that.currentSubtotalPriceSet) &&
         Objects.equals(currentTaxLines, that.currentTaxLines) &&
@@ -2470,6 +2613,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
         Objects.equals(displayFinancialStatus, that.displayFinancialStatus) &&
         Objects.equals(displayFulfillmentStatus, that.displayFulfillmentStatus) &&
         Objects.equals(disputes, that.disputes) &&
+        dutiesIncluded == that.dutiesIncluded &&
         edited == that.edited &&
         Objects.equals(email, that.email) &&
         estimatedTaxes == that.estimatedTaxes &&
@@ -2478,6 +2622,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
         fulfillable == that.fulfillable &&
         Objects.equals(fulfillmentOrders, that.fulfillmentOrders) &&
         Objects.equals(fulfillments, that.fulfillments) &&
+        Objects.equals(fulfillmentsCount, that.fulfillmentsCount) &&
         fullyPaid == that.fullyPaid &&
         hasTimelineComment == that.hasTimelineComment &&
         Objects.equals(id, that.id) &&
@@ -2485,9 +2630,8 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
         Objects.equals(landingPageUrl, that.landingPageUrl) &&
         Objects.equals(legacyResourceId, that.legacyResourceId) &&
         Objects.equals(lineItems, that.lineItems) &&
-        Objects.equals(lineItemsMutable, that.lineItemsMutable) &&
         Objects.equals(localizationExtensions, that.localizationExtensions) &&
-        Objects.equals(location, that.location) &&
+        Objects.equals(merchantBusinessEntity, that.merchantBusinessEntity) &&
         merchantEditable == that.merchantEditable &&
         Objects.equals(merchantEditableErrors, that.merchantEditableErrors) &&
         Objects.equals(merchantOfRecordApp, that.merchantOfRecordApp) &&
@@ -2523,8 +2667,10 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
         Objects.equals(registeredSourceUrl, that.registeredSourceUrl) &&
         requiresShipping == that.requiresShipping &&
         restockable == that.restockable &&
+        Objects.equals(retailLocation, that.retailLocation) &&
         Objects.equals(returnStatus, that.returnStatus) &&
         Objects.equals(returns, that.returns) &&
+        Objects.equals(risk, that.risk) &&
         Objects.equals(riskLevel, that.riskLevel) &&
         Objects.equals(risks, that.risks) &&
         Objects.equals(shippingAddress, that.shippingAddress) &&
@@ -2532,6 +2678,9 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
         Objects.equals(shippingLines, that.shippingLines) &&
         Objects.equals(shopifyProtect, that.shopifyProtect) &&
         Objects.equals(sourceIdentifier, that.sourceIdentifier) &&
+        Objects.equals(sourceName, that.sourceName) &&
+        Objects.equals(staffMember, that.staffMember) &&
+        Objects.equals(statusPageUrl, that.statusPageUrl) &&
         subtotalLineItemsQuantity == that.subtotalLineItemsQuantity &&
         Objects.equals(subtotalPrice, that.subtotalPrice) &&
         Objects.equals(subtotalPriceSet, that.subtotalPriceSet) &&
@@ -2543,6 +2692,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
         test == that.test &&
         Objects.equals(totalCapturable, that.totalCapturable) &&
         Objects.equals(totalCapturableSet, that.totalCapturableSet) &&
+        Objects.equals(totalCashRoundingAdjustment, that.totalCashRoundingAdjustment) &&
         Objects.equals(totalDiscounts, that.totalDiscounts) &&
         Objects.equals(totalDiscountsSet, that.totalDiscountsSet) &&
         Objects.equals(totalOutstandingSet, that.totalOutstandingSet) &&
@@ -2561,13 +2711,14 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
         Objects.equals(totalTipReceivedSet, that.totalTipReceivedSet) &&
         Objects.equals(totalWeight, that.totalWeight) &&
         Objects.equals(transactions, that.transactions) &&
+        Objects.equals(transactionsCount, that.transactionsCount) &&
         unpaid == that.unpaid &&
         Objects.equals(updatedAt, that.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(additionalFees, agreements, alerts, app, billingAddress, billingAddressMatchesShippingAddress, canMarkAsPaid, canNotifyCustomer, cancelReason, cancellation, cancelledAt, capturable, cartDiscountAmount, cartDiscountAmountSet, channel, channelInformation, clientIp, closed, closedAt, confirmationNumber, confirmed, createdAt, currencyCode, currentCartDiscountAmountSet, currentSubtotalLineItemsQuantity, currentSubtotalPriceSet, currentTaxLines, currentTotalAdditionalFeesSet, currentTotalDiscountsSet, currentTotalDutiesSet, currentTotalPriceSet, currentTotalTaxSet, currentTotalWeight, customAttributes, customer, customerAcceptsMarketing, customerJourney, customerJourneySummary, customerLocale, discountApplications, discountCode, discountCodes, displayAddress, displayFinancialStatus, displayFulfillmentStatus, disputes, edited, email, estimatedTaxes, events, exchangeV2s, fulfillable, fulfillmentOrders, fulfillments, fullyPaid, hasTimelineComment, id, landingPageDisplayText, landingPageUrl, legacyResourceId, lineItems, lineItemsMutable, localizationExtensions, location, merchantEditable, merchantEditableErrors, merchantOfRecordApp, metafield, metafieldDefinitions, metafields, name, netPayment, netPaymentSet, nonFulfillableLineItems, note, originalTotalAdditionalFeesSet, originalTotalDutiesSet, originalTotalPriceSet, paymentCollectionDetails, paymentGatewayNames, paymentTerms, phone, physicalLocation, poNumber, presentmentCurrencyCode, privateMetafield, privateMetafields, processedAt, publication, purchasingEntity, referralCode, referrerDisplayText, referrerUrl, refundDiscrepancySet, refundable, refunds, registeredSourceUrl, requiresShipping, restockable, returnStatus, returns, riskLevel, risks, shippingAddress, shippingLine, shippingLines, shopifyProtect, sourceIdentifier, subtotalLineItemsQuantity, subtotalPrice, subtotalPriceSet, suggestedRefund, tags, taxExempt, taxLines, taxesIncluded, test, totalCapturable, totalCapturableSet, totalDiscounts, totalDiscountsSet, totalOutstandingSet, totalPrice, totalPriceSet, totalReceived, totalReceivedSet, totalRefunded, totalRefundedSet, totalRefundedShippingSet, totalShippingPrice, totalShippingPriceSet, totalTax, totalTaxSet, totalTipReceived, totalTipReceivedSet, totalWeight, transactions, unpaid, updatedAt);
+    return Objects.hash(additionalFees, agreements, alerts, app, billingAddress, billingAddressMatchesShippingAddress, canMarkAsPaid, canNotifyCustomer, cancelReason, cancellation, cancelledAt, capturable, cartDiscountAmount, cartDiscountAmountSet, channel, channelInformation, clientIp, closed, closedAt, confirmationNumber, confirmed, createdAt, currencyCode, currentCartDiscountAmountSet, currentShippingPriceSet, currentSubtotalLineItemsQuantity, currentSubtotalPriceSet, currentTaxLines, currentTotalAdditionalFeesSet, currentTotalDiscountsSet, currentTotalDutiesSet, currentTotalPriceSet, currentTotalTaxSet, currentTotalWeight, customAttributes, customer, customerAcceptsMarketing, customerJourney, customerJourneySummary, customerLocale, discountApplications, discountCode, discountCodes, displayAddress, displayFinancialStatus, displayFulfillmentStatus, disputes, dutiesIncluded, edited, email, estimatedTaxes, events, exchangeV2s, fulfillable, fulfillmentOrders, fulfillments, fulfillmentsCount, fullyPaid, hasTimelineComment, id, landingPageDisplayText, landingPageUrl, legacyResourceId, lineItems, localizationExtensions, merchantBusinessEntity, merchantEditable, merchantEditableErrors, merchantOfRecordApp, metafield, metafieldDefinitions, metafields, name, netPayment, netPaymentSet, nonFulfillableLineItems, note, originalTotalAdditionalFeesSet, originalTotalDutiesSet, originalTotalPriceSet, paymentCollectionDetails, paymentGatewayNames, paymentTerms, phone, physicalLocation, poNumber, presentmentCurrencyCode, privateMetafield, privateMetafields, processedAt, publication, purchasingEntity, referralCode, referrerDisplayText, referrerUrl, refundDiscrepancySet, refundable, refunds, registeredSourceUrl, requiresShipping, restockable, retailLocation, returnStatus, returns, risk, riskLevel, risks, shippingAddress, shippingLine, shippingLines, shopifyProtect, sourceIdentifier, sourceName, staffMember, statusPageUrl, subtotalLineItemsQuantity, subtotalPrice, subtotalPriceSet, suggestedRefund, tags, taxExempt, taxLines, taxesIncluded, test, totalCapturable, totalCapturableSet, totalCashRoundingAdjustment, totalDiscounts, totalDiscountsSet, totalOutstandingSet, totalPrice, totalPriceSet, totalReceived, totalReceivedSet, totalRefunded, totalRefundedSet, totalRefundedShippingSet, totalShippingPrice, totalShippingPriceSet, totalTax, totalTaxSet, totalTipReceived, totalTipReceivedSet, totalWeight, transactions, transactionsCount, unpaid, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -2701,6 +2852,13 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     private MoneyBag currentCartDiscountAmountSet;
 
     /**
+     * The current shipping price after applying refunds and discounts. If the parent
+     * `order.taxesIncluded` field is true, then this price includes taxes.
+     * Otherwise, this field is the pre-tax price.
+     */
+    private MoneyBag currentShippingPriceSet;
+
+    /**
      * The sum of the quantities for all line items that contribute to the order's current subtotal price.
      */
     private int currentSubtotalLineItemsQuantity;
@@ -2825,6 +2983,11 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     private List<OrderDisputeSummary> disputes;
 
     /**
+     * Whether duties are included in the subtotal price of the order.
+     */
+    private boolean dutiesIncluded;
+
+    /**
      * Whether the order has had any edits applied.
      */
     private boolean edited;
@@ -2875,6 +3038,11 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     private List<Fulfillment> fulfillments;
 
     /**
+     * The count of fulfillments including the cancelled fulfillments.
+     */
+    private Count fulfillmentsCount;
+
+    /**
      * Whether the order has been paid in full.
      */
     private boolean fullyPaid;
@@ -2910,25 +3078,14 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     private LineItemConnection lineItems;
 
     /**
-     * A list of the order's line items.
-     */
-    private LineItemMutableConnection lineItemsMutable;
-
-    /**
      * List of localization extensions for the resource.
      */
     private LocalizationExtensionConnection localizationExtensions;
 
     /**
-     * The fulfillment location that was assigned when the order was created.
-     * Orders can have multiple fulfillment orders. These fulfillment orders can each
-     * be assigned to a different location which is responsible for fulfilling a
-     * subset of the items in an order. The `Order.location` field will only point to
-     * one of these locations.
-     * Use the [`FulfillmentOrder`](https://shopify.dev/api/admin-graphql/latest/objects/fulfillmentorder)
-     * object for up-to-date fulfillment location information.
+     * The merchant's business entity associated with the order.
      */
-    private String location;
+    private BusinessEntity merchantBusinessEntity;
 
     /**
      * Whether the order can be edited by the merchant. For example, canceled orders can’t be edited.
@@ -3130,6 +3287,12 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     private boolean restockable;
 
     /**
+     * The physical location where a retail order is created or completed, except for
+     * draft POS orders completed via the “mark as paid” flow in Admin, which return null.
+     */
+    private Location retailLocation;
+
+    /**
      * The order's aggregated return status for display purposes.
      */
     private OrderReturnStatus returnStatus;
@@ -3138,6 +3301,11 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
      * A list of returns for the order.
      */
     private ReturnConnection returns;
+
+    /**
+     * The risk characteristics for the order.
+     */
+    private OrderRiskSummary risk;
 
     /**
      * The fraud risk level of the order.
@@ -3174,6 +3342,21 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
      * For example, "1234-12-1000" or "111-98567-54". The `receipt_number` field is derived from this value for POS orders.
      */
     private String sourceIdentifier;
+
+    /**
+     * The name of the source associated with the order.
+     */
+    private String sourceName;
+
+    /**
+     * The staff member associated with the order.
+     */
+    private StaffMember staffMember;
+
+    /**
+     * The URL where the customer can check the order's current status.
+     */
+    private String statusPageUrl;
 
     /**
      * The sum of the quantities for all line items that contribute to the order's subtotal price.
@@ -3239,6 +3422,13 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
      * This amount isn't adjusted for returns.
      */
     private MoneyBag totalCapturableSet;
+
+    /**
+     * The total rounding adjustment applied to payments or refunds for an Order
+     * involving cash payments. Applies to some countries where cash transactions are
+     * rounded to the nearest currency denomination.
+     */
+    private CashRoundingAdjustment totalCashRoundingAdjustment;
 
     /**
      * The total amount discounted on the order before returns, in shop currency.
@@ -3338,6 +3528,11 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     private List<OrderTransaction> transactions;
 
     /**
+     * The number of transactions associated with the order.
+     */
+    private Count transactionsCount;
+
+    /**
      * Whether no payments have been made for the order.
      */
     private boolean unpaid;
@@ -3373,6 +3568,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
       result.createdAt = this.createdAt;
       result.currencyCode = this.currencyCode;
       result.currentCartDiscountAmountSet = this.currentCartDiscountAmountSet;
+      result.currentShippingPriceSet = this.currentShippingPriceSet;
       result.currentSubtotalLineItemsQuantity = this.currentSubtotalLineItemsQuantity;
       result.currentSubtotalPriceSet = this.currentSubtotalPriceSet;
       result.currentTaxLines = this.currentTaxLines;
@@ -3395,6 +3591,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
       result.displayFinancialStatus = this.displayFinancialStatus;
       result.displayFulfillmentStatus = this.displayFulfillmentStatus;
       result.disputes = this.disputes;
+      result.dutiesIncluded = this.dutiesIncluded;
       result.edited = this.edited;
       result.email = this.email;
       result.estimatedTaxes = this.estimatedTaxes;
@@ -3403,6 +3600,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
       result.fulfillable = this.fulfillable;
       result.fulfillmentOrders = this.fulfillmentOrders;
       result.fulfillments = this.fulfillments;
+      result.fulfillmentsCount = this.fulfillmentsCount;
       result.fullyPaid = this.fullyPaid;
       result.hasTimelineComment = this.hasTimelineComment;
       result.id = this.id;
@@ -3410,9 +3608,8 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
       result.landingPageUrl = this.landingPageUrl;
       result.legacyResourceId = this.legacyResourceId;
       result.lineItems = this.lineItems;
-      result.lineItemsMutable = this.lineItemsMutable;
       result.localizationExtensions = this.localizationExtensions;
-      result.location = this.location;
+      result.merchantBusinessEntity = this.merchantBusinessEntity;
       result.merchantEditable = this.merchantEditable;
       result.merchantEditableErrors = this.merchantEditableErrors;
       result.merchantOfRecordApp = this.merchantOfRecordApp;
@@ -3448,8 +3645,10 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
       result.registeredSourceUrl = this.registeredSourceUrl;
       result.requiresShipping = this.requiresShipping;
       result.restockable = this.restockable;
+      result.retailLocation = this.retailLocation;
       result.returnStatus = this.returnStatus;
       result.returns = this.returns;
+      result.risk = this.risk;
       result.riskLevel = this.riskLevel;
       result.risks = this.risks;
       result.shippingAddress = this.shippingAddress;
@@ -3457,6 +3656,9 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
       result.shippingLines = this.shippingLines;
       result.shopifyProtect = this.shopifyProtect;
       result.sourceIdentifier = this.sourceIdentifier;
+      result.sourceName = this.sourceName;
+      result.staffMember = this.staffMember;
+      result.statusPageUrl = this.statusPageUrl;
       result.subtotalLineItemsQuantity = this.subtotalLineItemsQuantity;
       result.subtotalPrice = this.subtotalPrice;
       result.subtotalPriceSet = this.subtotalPriceSet;
@@ -3468,6 +3670,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
       result.test = this.test;
       result.totalCapturable = this.totalCapturable;
       result.totalCapturableSet = this.totalCapturableSet;
+      result.totalCashRoundingAdjustment = this.totalCashRoundingAdjustment;
       result.totalDiscounts = this.totalDiscounts;
       result.totalDiscountsSet = this.totalDiscountsSet;
       result.totalOutstandingSet = this.totalOutstandingSet;
@@ -3486,6 +3689,7 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
       result.totalTipReceivedSet = this.totalTipReceivedSet;
       result.totalWeight = this.totalWeight;
       result.transactions = this.transactions;
+      result.transactionsCount = this.transactionsCount;
       result.unpaid = this.unpaid;
       result.updatedAt = this.updatedAt;
       return result;
@@ -3690,6 +3894,16 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     }
 
     /**
+     * The current shipping price after applying refunds and discounts. If the parent
+     * `order.taxesIncluded` field is true, then this price includes taxes.
+     * Otherwise, this field is the pre-tax price.
+     */
+    public Builder currentShippingPriceSet(MoneyBag currentShippingPriceSet) {
+      this.currentShippingPriceSet = currentShippingPriceSet;
+      return this;
+    }
+
+    /**
      * The sum of the quantities for all line items that contribute to the order's current subtotal price.
      */
     public Builder currentSubtotalLineItemsQuantity(int currentSubtotalLineItemsQuantity) {
@@ -3881,6 +4095,14 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     }
 
     /**
+     * Whether duties are included in the subtotal price of the order.
+     */
+    public Builder dutiesIncluded(boolean dutiesIncluded) {
+      this.dutiesIncluded = dutiesIncluded;
+      return this;
+    }
+
+    /**
      * Whether the order has had any edits applied.
      */
     public Builder edited(boolean edited) {
@@ -3955,6 +4177,14 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     }
 
     /**
+     * The count of fulfillments including the cancelled fulfillments.
+     */
+    public Builder fulfillmentsCount(Count fulfillmentsCount) {
+      this.fulfillmentsCount = fulfillmentsCount;
+      return this;
+    }
+
+    /**
      * Whether the order has been paid in full.
      */
     public Builder fullyPaid(boolean fullyPaid) {
@@ -4011,14 +4241,6 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     }
 
     /**
-     * A list of the order's line items.
-     */
-    public Builder lineItemsMutable(LineItemMutableConnection lineItemsMutable) {
-      this.lineItemsMutable = lineItemsMutable;
-      return this;
-    }
-
-    /**
      * List of localization extensions for the resource.
      */
     public Builder localizationExtensions(LocalizationExtensionConnection localizationExtensions) {
@@ -4027,16 +4249,10 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     }
 
     /**
-     * The fulfillment location that was assigned when the order was created.
-     * Orders can have multiple fulfillment orders. These fulfillment orders can each
-     * be assigned to a different location which is responsible for fulfilling a
-     * subset of the items in an order. The `Order.location` field will only point to
-     * one of these locations.
-     * Use the [`FulfillmentOrder`](https://shopify.dev/api/admin-graphql/latest/objects/fulfillmentorder)
-     * object for up-to-date fulfillment location information.
+     * The merchant's business entity associated with the order.
      */
-    public Builder location(String location) {
-      this.location = location;
+    public Builder merchantBusinessEntity(BusinessEntity merchantBusinessEntity) {
+      this.merchantBusinessEntity = merchantBusinessEntity;
       return this;
     }
 
@@ -4346,6 +4562,15 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
     }
 
     /**
+     * The physical location where a retail order is created or completed, except for
+     * draft POS orders completed via the “mark as paid” flow in Admin, which return null.
+     */
+    public Builder retailLocation(Location retailLocation) {
+      this.retailLocation = retailLocation;
+      return this;
+    }
+
+    /**
      * The order's aggregated return status for display purposes.
      */
     public Builder returnStatus(OrderReturnStatus returnStatus) {
@@ -4358,6 +4583,14 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
      */
     public Builder returns(ReturnConnection returns) {
       this.returns = returns;
+      return this;
+    }
+
+    /**
+     * The risk characteristics for the order.
+     */
+    public Builder risk(OrderRiskSummary risk) {
+      this.risk = risk;
       return this;
     }
 
@@ -4415,6 +4648,30 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
      */
     public Builder sourceIdentifier(String sourceIdentifier) {
       this.sourceIdentifier = sourceIdentifier;
+      return this;
+    }
+
+    /**
+     * The name of the source associated with the order.
+     */
+    public Builder sourceName(String sourceName) {
+      this.sourceName = sourceName;
+      return this;
+    }
+
+    /**
+     * The staff member associated with the order.
+     */
+    public Builder staffMember(StaffMember staffMember) {
+      this.staffMember = staffMember;
+      return this;
+    }
+
+    /**
+     * The URL where the customer can check the order's current status.
+     */
+    public Builder statusPageUrl(String statusPageUrl) {
+      this.statusPageUrl = statusPageUrl;
       return this;
     }
 
@@ -4513,6 +4770,16 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
      */
     public Builder totalCapturableSet(MoneyBag totalCapturableSet) {
       this.totalCapturableSet = totalCapturableSet;
+      return this;
+    }
+
+    /**
+     * The total rounding adjustment applied to payments or refunds for an Order
+     * involving cash payments. Applies to some countries where cash transactions are
+     * rounded to the nearest currency denomination.
+     */
+    public Builder totalCashRoundingAdjustment(CashRoundingAdjustment totalCashRoundingAdjustment) {
+      this.totalCashRoundingAdjustment = totalCashRoundingAdjustment;
       return this;
     }
 
@@ -4664,6 +4931,14 @@ public class Order implements CommentEventEmbed, MetafieldReference, MetafieldRe
      */
     public Builder transactions(List<OrderTransaction> transactions) {
       this.transactions = transactions;
+      return this;
+    }
+
+    /**
+     * The number of transactions associated with the order.
+     */
+    public Builder transactionsCount(Count transactionsCount) {
+      this.transactionsCount = transactionsCount;
       return this;
     }
 

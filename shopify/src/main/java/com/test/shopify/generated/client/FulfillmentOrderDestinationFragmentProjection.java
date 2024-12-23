@@ -25,6 +25,13 @@ public class FulfillmentOrderDestinationFragmentProjection<PARENT extends BaseSu
      return projection;
   }
 
+  public LocationProjection<FulfillmentOrderDestinationFragmentProjection<PARENT, ROOT>, ROOT> location(
+      ) {
+     LocationProjection<FulfillmentOrderDestinationFragmentProjection<PARENT, ROOT>, ROOT> projection = new LocationProjection<>(this, getRoot());
+     getFields().put("location", projection);
+     return projection;
+  }
+
   public FulfillmentOrderDestinationFragmentProjection<PARENT, ROOT> address1() {
     getFields().put("address1", null);
     return this;

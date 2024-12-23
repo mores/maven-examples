@@ -29,9 +29,4 @@ public class CatalogConnectionProjection<PARENT extends BaseSubProjectionNode<?,
      getFields().put("pageInfo", projection);
      return projection;
   }
-
-  public CatalogConnectionProjection<PARENT, ROOT> totalCount() {
-    getFields().put("totalCount", null);
-    return this;
-  }
 }

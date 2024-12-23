@@ -13,6 +13,7 @@ public class RefundShippingInput {
   /**
    * The input fields required to refund shipping cost, in the presentment currency of the order.
    * This overrides the `fullRefund` argument.
+   * This field defaults to 0.00 when not provided and when the `fullRefund` argument is false.
    */
   private MoneyInput shippingRefundAmount;
 
@@ -27,6 +28,7 @@ public class RefundShippingInput {
   /**
    * The input fields required to refund shipping cost, in the presentment currency of the order.
    * This overrides the `fullRefund` argument.
+   * This field defaults to 0.00 when not provided and when the `fullRefund` argument is false.
    */
   public MoneyInput getShippingRefundAmount() {
     return shippingRefundAmount;
@@ -74,6 +76,7 @@ public class RefundShippingInput {
     /**
      * The input fields required to refund shipping cost, in the presentment currency of the order.
      * This overrides the `fullRefund` argument.
+     * This field defaults to 0.00 when not provided and when the `fullRefund` argument is false.
      */
     private MoneyInput shippingRefundAmount;
 
@@ -92,6 +95,7 @@ public class RefundShippingInput {
     /**
      * The input fields required to refund shipping cost, in the presentment currency of the order.
      * This overrides the `fullRefund` argument.
+     * This field defaults to 0.00 when not provided and when the `fullRefund` argument is false.
      */
     public Builder shippingRefundAmount(MoneyInput shippingRefundAmount) {
       this.shippingRefundAmount = shippingRefundAmount;

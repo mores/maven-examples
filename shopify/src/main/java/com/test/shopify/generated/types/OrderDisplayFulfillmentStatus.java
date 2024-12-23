@@ -20,5 +20,7 @@ public enum OrderDisplayFulfillmentStatus {
 
   ON_HOLD,
 
-  SCHEDULED
+  SCHEDULED,
+
+  REQUEST_DECLINED
 }

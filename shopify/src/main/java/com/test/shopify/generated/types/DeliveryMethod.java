@@ -15,6 +15,11 @@ import java.util.Objects;
 )
 public class DeliveryMethod implements com.test.shopify.generated.types.Node {
   /**
+   * The Additional information to consider when performing the delivery.
+   */
+  private DeliveryMethodAdditionalInformation additionalInformation;
+
+  /**
    * The branded promise that was presented to the buyer during checkout.  For example: Shop Promise.
    */
   private DeliveryBrandedPromise brandedPromise;
@@ -40,11 +45,32 @@ public class DeliveryMethod implements com.test.shopify.generated.types.Node {
   private OffsetDateTime minDeliveryDateTime;
 
   /**
+   * The name of the delivery option that was presented to the buyer during checkout.
+   */
+  private String presentedName;
+
+  /**
    * A reference to the shipping method.
    */
   private String serviceCode;
 
+  /**
+   * Source reference is promise provider specific data associated with delivery promise.
+   */
+  private String sourceReference;
+
   public DeliveryMethod() {
+  }
+
+  /**
+   * The Additional information to consider when performing the delivery.
+   */
+  public DeliveryMethodAdditionalInformation getAdditionalInformation() {
+    return additionalInformation;
+  }
+
+  public void setAdditionalInformation(DeliveryMethodAdditionalInformation additionalInformation) {
+    this.additionalInformation = additionalInformation;
   }
 
   /**
@@ -103,6 +129,17 @@ public class DeliveryMethod implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * The name of the delivery option that was presented to the buyer during checkout.
+   */
+  public String getPresentedName() {
+    return presentedName;
+  }
+
+  public void setPresentedName(String presentedName) {
+    this.presentedName = presentedName;
+  }
+
+  /**
    * A reference to the shipping method.
    */
   public String getServiceCode() {
@@ -113,9 +150,20 @@ public class DeliveryMethod implements com.test.shopify.generated.types.Node {
     this.serviceCode = serviceCode;
   }
 
+  /**
+   * Source reference is promise provider specific data associated with delivery promise.
+   */
+  public String getSourceReference() {
+    return sourceReference;
+  }
+
+  public void setSourceReference(String sourceReference) {
+    this.sourceReference = sourceReference;
+  }
+
   @Override
   public String toString() {
-    return "DeliveryMethod{brandedPromise='" + brandedPromise + "', id='" + id + "', maxDeliveryDateTime='" + maxDeliveryDateTime + "', methodType='" + methodType + "', minDeliveryDateTime='" + minDeliveryDateTime + "', serviceCode='" + serviceCode + "'}";
+    return "DeliveryMethod{additionalInformation='" + additionalInformation + "', brandedPromise='" + brandedPromise + "', id='" + id + "', maxDeliveryDateTime='" + maxDeliveryDateTime + "', methodType='" + methodType + "', minDeliveryDateTime='" + minDeliveryDateTime + "', presentedName='" + presentedName + "', serviceCode='" + serviceCode + "', sourceReference='" + sourceReference + "'}";
   }
 
   @Override
@@ -123,17 +171,20 @@ public class DeliveryMethod implements com.test.shopify.generated.types.Node {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     DeliveryMethod that = (DeliveryMethod) o;
-    return Objects.equals(brandedPromise, that.brandedPromise) &&
+    return Objects.equals(additionalInformation, that.additionalInformation) &&
+        Objects.equals(brandedPromise, that.brandedPromise) &&
         Objects.equals(id, that.id) &&
         Objects.equals(maxDeliveryDateTime, that.maxDeliveryDateTime) &&
         Objects.equals(methodType, that.methodType) &&
         Objects.equals(minDeliveryDateTime, that.minDeliveryDateTime) &&
-        Objects.equals(serviceCode, that.serviceCode);
+        Objects.equals(presentedName, that.presentedName) &&
+        Objects.equals(serviceCode, that.serviceCode) &&
+        Objects.equals(sourceReference, that.sourceReference);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(brandedPromise, id, maxDeliveryDateTime, methodType, minDeliveryDateTime, serviceCode);
+    return Objects.hash(additionalInformation, brandedPromise, id, maxDeliveryDateTime, methodType, minDeliveryDateTime, presentedName, serviceCode, sourceReference);
   }
 
   public static Builder newBuilder() {
@@ -141,6 +192,11 @@ public class DeliveryMethod implements com.test.shopify.generated.types.Node {
   }
 
   public static class Builder {
+    /**
+     * The Additional information to consider when performing the delivery.
+     */
+    private DeliveryMethodAdditionalInformation additionalInformation;
+
     /**
      * The branded promise that was presented to the buyer during checkout.  For example: Shop Promise.
      */
@@ -167,19 +223,41 @@ public class DeliveryMethod implements com.test.shopify.generated.types.Node {
     private OffsetDateTime minDeliveryDateTime;
 
     /**
+     * The name of the delivery option that was presented to the buyer during checkout.
+     */
+    private String presentedName;
+
+    /**
      * A reference to the shipping method.
      */
     private String serviceCode;
 
+    /**
+     * Source reference is promise provider specific data associated with delivery promise.
+     */
+    private String sourceReference;
+
     public DeliveryMethod build() {
       DeliveryMethod result = new DeliveryMethod();
+      result.additionalInformation = this.additionalInformation;
       result.brandedPromise = this.brandedPromise;
       result.id = this.id;
       result.maxDeliveryDateTime = this.maxDeliveryDateTime;
       result.methodType = this.methodType;
       result.minDeliveryDateTime = this.minDeliveryDateTime;
+      result.presentedName = this.presentedName;
       result.serviceCode = this.serviceCode;
+      result.sourceReference = this.sourceReference;
       return result;
+    }
+
+    /**
+     * The Additional information to consider when performing the delivery.
+     */
+    public Builder additionalInformation(
+        DeliveryMethodAdditionalInformation additionalInformation) {
+      this.additionalInformation = additionalInformation;
+      return this;
     }
 
     /**
@@ -223,10 +301,26 @@ public class DeliveryMethod implements com.test.shopify.generated.types.Node {
     }
 
     /**
+     * The name of the delivery option that was presented to the buyer during checkout.
+     */
+    public Builder presentedName(String presentedName) {
+      this.presentedName = presentedName;
+      return this;
+    }
+
+    /**
      * A reference to the shipping method.
      */
     public Builder serviceCode(String serviceCode) {
       this.serviceCode = serviceCode;
+      return this;
+    }
+
+    /**
+     * Source reference is promise provider specific data associated with delivery promise.
+     */
+    public Builder sourceReference(String sourceReference) {
+      this.sourceReference = sourceReference;
       return this;
     }
   }

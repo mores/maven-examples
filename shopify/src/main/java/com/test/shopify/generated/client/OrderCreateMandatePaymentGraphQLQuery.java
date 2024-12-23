@@ -1,6 +1,7 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
+import com.test.shopify.generated.types.MoneyInput;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
@@ -12,8 +13,8 @@ import java.util.Set;
  */
 public class OrderCreateMandatePaymentGraphQLQuery extends GraphQLQuery {
   public OrderCreateMandatePaymentGraphQLQuery(String id, String paymentScheduleId,
-      String idempotencyKey, String mandateId, Boolean autoCapture, String queryName,
-      Set<String> fieldsSet) {
+      String idempotencyKey, String mandateId, MoneyInput amount, Boolean autoCapture,
+      String queryName, Set<String> fieldsSet) {
     super("mutation", queryName);
     if (id != null || fieldsSet.contains("id")) {
         getInput().put("id", id);
@@ -23,6 +24,8 @@ public class OrderCreateMandatePaymentGraphQLQuery extends GraphQLQuery {
         getInput().put("idempotencyKey", idempotencyKey);
     }if (mandateId != null || fieldsSet.contains("mandateId")) {
         getInput().put("mandateId", mandateId);
+    }if (amount != null || fieldsSet.contains("amount")) {
+        getInput().put("amount", amount);
     }if (autoCapture != null || fieldsSet.contains("autoCapture")) {
         getInput().put("autoCapture", autoCapture);
     }
@@ -52,12 +55,14 @@ public class OrderCreateMandatePaymentGraphQLQuery extends GraphQLQuery {
 
     private String mandateId;
 
+    private MoneyInput amount;
+
     private Boolean autoCapture;
 
     private String queryName;
 
     public OrderCreateMandatePaymentGraphQLQuery build() {
-      return new OrderCreateMandatePaymentGraphQLQuery(id, paymentScheduleId, idempotencyKey, mandateId, autoCapture, queryName, fieldsSet);
+      return new OrderCreateMandatePaymentGraphQLQuery(id, paymentScheduleId, idempotencyKey, mandateId, amount, autoCapture, queryName, fieldsSet);
                
     }
 
@@ -94,6 +99,15 @@ public class OrderCreateMandatePaymentGraphQLQuery extends GraphQLQuery {
     public Builder mandateId(String mandateId) {
       this.mandateId = mandateId;
       this.fieldsSet.add("mandateId");
+      return this;
+    }
+
+    /**
+     * The payment amount to collect.
+     */
+    public Builder amount(MoneyInput amount) {
+      this.amount = amount;
+      this.fieldsSet.add("amount");
       return this;
     }
 

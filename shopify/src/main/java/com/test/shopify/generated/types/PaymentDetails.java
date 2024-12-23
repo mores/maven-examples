@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 )
 @JsonSubTypes({
     @JsonSubTypes.Type(value = CardPaymentDetails.class, name = "CardPaymentDetails"),
+    @JsonSubTypes.Type(value = LocalPaymentMethodsPaymentDetails.class, name = "LocalPaymentMethodsPaymentDetails"),
     @JsonSubTypes.Type(value = ShopPayInstallmentsPaymentDetails.class, name = "ShopPayInstallmentsPaymentDetails")
 })
 public interface PaymentDetails {

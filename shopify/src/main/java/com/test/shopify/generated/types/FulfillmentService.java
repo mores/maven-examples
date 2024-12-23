@@ -3,7 +3,6 @@ package com.test.shopify.generated.types;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -121,19 +120,14 @@ public class FulfillmentService {
   private boolean permitsSkuSharing;
 
   /**
-   * Whether the fulfillment service supports local deliveries.
-   */
-  private boolean productBased;
-
-  /**
    * The name of the fulfillment service as seen by merchants.
    */
   private String serviceName;
 
   /**
-   * Shipping methods associated with the fulfillment service provider. Applies only to Fulfill By Amazon fulfillment service.
+   * Whether the fulfillment service implemented the /fetch_tracking_numbers endpoint.
    */
-  private List<ShippingMethod> shippingMethods;
+  private boolean trackingSupport;
 
   /**
    * Type associated with the fulfillment service.
@@ -235,17 +229,6 @@ public class FulfillmentService {
   }
 
   /**
-   * Whether the fulfillment service supports local deliveries.
-   */
-  public boolean getProductBased() {
-    return productBased;
-  }
-
-  public void setProductBased(boolean productBased) {
-    this.productBased = productBased;
-  }
-
-  /**
    * The name of the fulfillment service as seen by merchants.
    */
   public String getServiceName() {
@@ -257,14 +240,14 @@ public class FulfillmentService {
   }
 
   /**
-   * Shipping methods associated with the fulfillment service provider. Applies only to Fulfill By Amazon fulfillment service.
+   * Whether the fulfillment service implemented the /fetch_tracking_numbers endpoint.
    */
-  public List<ShippingMethod> getShippingMethods() {
-    return shippingMethods;
+  public boolean getTrackingSupport() {
+    return trackingSupport;
   }
 
-  public void setShippingMethods(List<ShippingMethod> shippingMethods) {
-    this.shippingMethods = shippingMethods;
+  public void setTrackingSupport(boolean trackingSupport) {
+    this.trackingSupport = trackingSupport;
   }
 
   /**
@@ -280,7 +263,7 @@ public class FulfillmentService {
 
   @Override
   public String toString() {
-    return "FulfillmentService{callbackUrl='" + callbackUrl + "', fulfillmentOrdersOptIn='" + fulfillmentOrdersOptIn + "', handle='" + handle + "', id='" + id + "', inventoryManagement='" + inventoryManagement + "', location='" + location + "', permitsSkuSharing='" + permitsSkuSharing + "', productBased='" + productBased + "', serviceName='" + serviceName + "', shippingMethods='" + shippingMethods + "', type='" + type + "'}";
+    return "FulfillmentService{callbackUrl='" + callbackUrl + "', fulfillmentOrdersOptIn='" + fulfillmentOrdersOptIn + "', handle='" + handle + "', id='" + id + "', inventoryManagement='" + inventoryManagement + "', location='" + location + "', permitsSkuSharing='" + permitsSkuSharing + "', serviceName='" + serviceName + "', trackingSupport='" + trackingSupport + "', type='" + type + "'}";
   }
 
   @Override
@@ -295,15 +278,14 @@ public class FulfillmentService {
         inventoryManagement == that.inventoryManagement &&
         Objects.equals(location, that.location) &&
         permitsSkuSharing == that.permitsSkuSharing &&
-        productBased == that.productBased &&
         Objects.equals(serviceName, that.serviceName) &&
-        Objects.equals(shippingMethods, that.shippingMethods) &&
+        trackingSupport == that.trackingSupport &&
         Objects.equals(type, that.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(callbackUrl, fulfillmentOrdersOptIn, handle, id, inventoryManagement, location, permitsSkuSharing, productBased, serviceName, shippingMethods, type);
+    return Objects.hash(callbackUrl, fulfillmentOrdersOptIn, handle, id, inventoryManagement, location, permitsSkuSharing, serviceName, trackingSupport, type);
   }
 
   public static Builder newBuilder() {
@@ -361,19 +343,14 @@ public class FulfillmentService {
     private boolean permitsSkuSharing;
 
     /**
-     * Whether the fulfillment service supports local deliveries.
-     */
-    private boolean productBased;
-
-    /**
      * The name of the fulfillment service as seen by merchants.
      */
     private String serviceName;
 
     /**
-     * Shipping methods associated with the fulfillment service provider. Applies only to Fulfill By Amazon fulfillment service.
+     * Whether the fulfillment service implemented the /fetch_tracking_numbers endpoint.
      */
-    private List<ShippingMethod> shippingMethods;
+    private boolean trackingSupport;
 
     /**
      * Type associated with the fulfillment service.
@@ -389,9 +366,8 @@ public class FulfillmentService {
       result.inventoryManagement = this.inventoryManagement;
       result.location = this.location;
       result.permitsSkuSharing = this.permitsSkuSharing;
-      result.productBased = this.productBased;
       result.serviceName = this.serviceName;
-      result.shippingMethods = this.shippingMethods;
+      result.trackingSupport = this.trackingSupport;
       result.type = this.type;
       return result;
     }
@@ -467,14 +443,6 @@ public class FulfillmentService {
     }
 
     /**
-     * Whether the fulfillment service supports local deliveries.
-     */
-    public Builder productBased(boolean productBased) {
-      this.productBased = productBased;
-      return this;
-    }
-
-    /**
      * The name of the fulfillment service as seen by merchants.
      */
     public Builder serviceName(String serviceName) {
@@ -483,10 +451,10 @@ public class FulfillmentService {
     }
 
     /**
-     * Shipping methods associated with the fulfillment service provider. Applies only to Fulfill By Amazon fulfillment service.
+     * Whether the fulfillment service implemented the /fetch_tracking_numbers endpoint.
      */
-    public Builder shippingMethods(List<ShippingMethod> shippingMethods) {
-      this.shippingMethods = shippingMethods;
+    public Builder trackingSupport(boolean trackingSupport) {
+      this.trackingSupport = trackingSupport;
       return this;
     }
 

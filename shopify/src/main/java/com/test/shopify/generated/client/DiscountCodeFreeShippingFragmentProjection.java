@@ -54,6 +54,13 @@ public class DiscountCodeFreeShippingFragmentProjection<PARENT extends BaseSubPr
     return projection;
   }
 
+  public CountProjection<DiscountCodeFreeShippingFragmentProjection<PARENT, ROOT>, ROOT> codesCount(
+      ) {
+     CountProjection<DiscountCodeFreeShippingFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("codesCount", projection);
+     return projection;
+  }
+
   public DiscountCombinesWithProjection<DiscountCodeFreeShippingFragmentProjection<PARENT, ROOT>, ROOT> combinesWith(
       ) {
      DiscountCombinesWithProjection<DiscountCodeFreeShippingFragmentProjection<PARENT, ROOT>, ROOT> projection = new DiscountCombinesWithProjection<>(this, getRoot());
@@ -134,11 +141,6 @@ public class DiscountCodeFreeShippingFragmentProjection<PARENT extends BaseSubPr
 
   public DiscountCodeFreeShippingFragmentProjection<PARENT, ROOT> asyncUsageCount() {
     getFields().put("asyncUsageCount", null);
-    return this;
-  }
-
-  public DiscountCodeFreeShippingFragmentProjection<PARENT, ROOT> codeCount() {
-    getFields().put("codeCount", null);
     return this;
   }
 

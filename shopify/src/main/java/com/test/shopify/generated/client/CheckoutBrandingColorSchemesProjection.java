@@ -25,4 +25,18 @@ public class CheckoutBrandingColorSchemesProjection<PARENT extends BaseSubProjec
      getFields().put("scheme2", projection);
      return projection;
   }
+
+  public CheckoutBrandingColorSchemeProjection<CheckoutBrandingColorSchemesProjection<PARENT, ROOT>, ROOT> scheme3(
+      ) {
+     CheckoutBrandingColorSchemeProjection<CheckoutBrandingColorSchemesProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingColorSchemeProjection<>(this, getRoot());
+     getFields().put("scheme3", projection);
+     return projection;
+  }
+
+  public CheckoutBrandingColorSchemeProjection<CheckoutBrandingColorSchemesProjection<PARENT, ROOT>, ROOT> scheme4(
+      ) {
+     CheckoutBrandingColorSchemeProjection<CheckoutBrandingColorSchemesProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingColorSchemeProjection<>(this, getRoot());
+     getFields().put("scheme4", projection);
+     return projection;
+  }
 }

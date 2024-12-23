@@ -8,7 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Asynchronously delete code discounts in bulk using a search query, a saved search ID, or a list of code discount IDs.
+ * Deletes multiple [code-based discounts](https://help.shopify.com/manual/discounts/discount-types#discount-codes)
+ * asynchronously using one of the following:
+ * - A search query
+ * - A saved search ID
+ * - A list of discount code IDs
+ *   
+ * For example, you can delete discounts for all codes that match a search
+ * criteria, or delete a predefined set of discount codes.
  */
 public class DiscountCodeBulkDeleteGraphQLQuery extends GraphQLQuery {
   public DiscountCodeBulkDeleteGraphQLQuery(String search, String savedSearchId, List<String> ids,
@@ -53,10 +60,9 @@ public class DiscountCodeBulkDeleteGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The search query for filtering code discounts to delete.
-     *     
-     * For more information on the list of supported fields and search syntax,
-     * refer to the [CodeDiscountNodes query section](https://shopify.dev/api/admin-graphql/latest/queries/codeDiscountNodes#argument-codediscountnodes-query).
+     * The search query for filtering discounts.
+     * <br><br>
+     * For more information on the list of supported fields and search syntax, refer to the [`codeDiscountNodes`](https://shopify.dev/docs/api/admin-graphql/latest/queries/codeDiscountNodes#query-arguments) query.
      */
     public Builder search(String search) {
       this.search = search;
@@ -65,7 +71,10 @@ public class DiscountCodeBulkDeleteGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The ID of the saved search to use for filtering code discounts to delete.
+     * The ID of the saved search for filtering discounts to delete. Saved searches
+     * represent [customer
+     * segments](https://help.shopify.com/manual/customers/customer-segments) that
+     * merchants have built in the Shopify admin.
      */
     public Builder savedSearchId(String savedSearchId) {
       this.savedSearchId = savedSearchId;
@@ -74,7 +83,7 @@ public class DiscountCodeBulkDeleteGraphQLQuery extends GraphQLQuery {
     }
 
     /**
-     * The IDs of the code discounts to delete.
+     * The IDs of the discounts to delete.
      */
     public Builder ids(List<String> ids) {
       this.ids = ids;

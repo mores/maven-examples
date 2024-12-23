@@ -2,6 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
 import com.test.shopify.generated.types.CatalogType;
+import com.test.shopify.generated.types.EventSortKeys;
 import com.test.shopify.generated.types.MetafieldDefinitionPinnedStatus;
 import com.test.shopify.generated.types.MetafieldDefinitionSortKeys;
 import com.test.shopify.generated.types.ProductCollectionSortKeys;
@@ -24,6 +25,42 @@ public class CollectionFragmentProjection<PARENT extends BaseSubProjectionNode<?
   public CollectionFragmentProjection<PARENT, ROOT> __typename() {
     getFields().put("__typename", null);
     return this;
+  }
+
+  public CountProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> availablePublicationsCount(
+      ) {
+     CountProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("availablePublicationsCount", projection);
+     return projection;
+  }
+
+  public EventConnectionProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> events() {
+     EventConnectionProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> projection = new EventConnectionProjection<>(this, getRoot());
+     getFields().put("events", projection);
+     return projection;
+  }
+
+  public EventConnectionProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> events(
+      Integer first, String after, Integer last, String before, Boolean reverse,
+      EventSortKeys sortKey, String query) {
+    EventConnectionProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> projection = new EventConnectionProjection<>(this, getRoot());    
+    getFields().put("events", projection);
+    getInputArguments().computeIfAbsent("events", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("events").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("events").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("events").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("events").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("events").add(reverseArg);
+    InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
+    getInputArguments().get("events").add(sortKeyArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("events").add(queryArg);
+    return projection;
   }
 
   public ResourceFeedbackProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> feedback() {
@@ -194,6 +231,12 @@ public class CollectionFragmentProjection<PARENT extends BaseSubProjectionNode<?
     return projection;
   }
 
+  public CountProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> productsCount() {
+     CountProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("productsCount", projection);
+     return projection;
+  }
+
   public CollectionPublicationConnectionProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> publications(
       ) {
      CollectionPublicationConnectionProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> projection = new CollectionPublicationConnectionProjection<>(this, getRoot());
@@ -247,6 +290,23 @@ public class CollectionFragmentProjection<PARENT extends BaseSubProjectionNode<?
     getInputArguments().get("resourcePublications").add(beforeArg);
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("resourcePublications").add(reverseArg);
+    return projection;
+  }
+
+  public CountProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> resourcePublicationsCount(
+      ) {
+     CountProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("resourcePublicationsCount", projection);
+     return projection;
+  }
+
+  public CountProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> resourcePublicationsCount(
+      Boolean onlyPublished) {
+    CountProjection<CollectionFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());    
+    getFields().put("resourcePublicationsCount", projection);
+    getInputArguments().computeIfAbsent("resourcePublicationsCount", k -> new ArrayList<>());                      
+    InputArgument onlyPublishedArg = new InputArgument("onlyPublished", onlyPublished);
+    getInputArguments().get("resourcePublicationsCount").add(onlyPublishedArg);
     return projection;
   }
 
@@ -367,11 +427,6 @@ public class CollectionFragmentProjection<PARENT extends BaseSubProjectionNode<?
     return projection;
   }
 
-  public CollectionFragmentProjection<PARENT, ROOT> availablePublicationCount() {
-    getFields().put("availablePublicationCount", null);
-    return this;
-  }
-
   public CollectionFragmentProjection<PARENT, ROOT> description() {
     getFields().put("description", null);
     return this;
@@ -415,11 +470,6 @@ public class CollectionFragmentProjection<PARENT extends BaseSubProjectionNode<?
 
   public CollectionFragmentProjection<PARENT, ROOT> legacyResourceId() {
     getFields().put("legacyResourceId", null);
-    return this;
-  }
-
-  public CollectionFragmentProjection<PARENT, ROOT> productsCount() {
-    getFields().put("productsCount", null);
     return this;
   }
 

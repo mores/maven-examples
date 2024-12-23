@@ -22,7 +22,7 @@ public class CompanyLocationCatalog implements com.test.shopify.generated.types.
   /**
    * The number of company locations associated with the catalog.
    */
-  private int companyLocationsCount;
+  private Count companyLocationsCount;
 
   /**
    * A globally-unique ID.
@@ -71,11 +71,11 @@ public class CompanyLocationCatalog implements com.test.shopify.generated.types.
   /**
    * The number of company locations associated with the catalog.
    */
-  public int getCompanyLocationsCount() {
+  public Count getCompanyLocationsCount() {
     return companyLocationsCount;
   }
 
-  public void setCompanyLocationsCount(int companyLocationsCount) {
+  public void setCompanyLocationsCount(Count companyLocationsCount) {
     this.companyLocationsCount = companyLocationsCount;
   }
 
@@ -156,7 +156,7 @@ public class CompanyLocationCatalog implements com.test.shopify.generated.types.
     if (o == null || getClass() != o.getClass()) return false;
     CompanyLocationCatalog that = (CompanyLocationCatalog) o;
     return Objects.equals(companyLocations, that.companyLocations) &&
-        companyLocationsCount == that.companyLocationsCount &&
+        Objects.equals(companyLocationsCount, that.companyLocationsCount) &&
         Objects.equals(id, that.id) &&
         Objects.equals(operations, that.operations) &&
         Objects.equals(priceList, that.priceList) &&
@@ -183,7 +183,7 @@ public class CompanyLocationCatalog implements com.test.shopify.generated.types.
     /**
      * The number of company locations associated with the catalog.
      */
-    private int companyLocationsCount;
+    private Count companyLocationsCount;
 
     /**
      * A globally-unique ID.
@@ -239,7 +239,7 @@ public class CompanyLocationCatalog implements com.test.shopify.generated.types.
     /**
      * The number of company locations associated with the catalog.
      */
-    public Builder companyLocationsCount(int companyLocationsCount) {
+    public Builder companyLocationsCount(Count companyLocationsCount) {
       this.companyLocationsCount = companyLocationsCount;
       return this;
     }

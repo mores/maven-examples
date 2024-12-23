@@ -67,19 +67,9 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
   private ShopifyPaymentsDisputeConnection disputes;
 
   /**
-   * The fraud settings of the Shopify Payments account.
-   */
-  private ShopifyPaymentsFraudSettings fraudSettings;
-
-  /**
    * A globally-unique ID.
    */
   private String id;
-
-  /**
-   * The notifications settings for the account.
-   */
-  private ShopifyPaymentsNotificationSettings notificationSettings;
 
   /**
    * Whether the Shopify Payments account can be onboarded.
@@ -102,16 +92,6 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
    * All current and previous payouts made between the account and the bank account.
    */
   private ShopifyPaymentsPayoutConnection payouts;
-
-  /**
-   * The permitted documents for identity verification.
-   */
-  private List<ShopifyPaymentsVerificationDocument> permittedVerificationDocuments;
-
-  /**
-   * The verifications necessary for this account.
-   */
-  private List<ShopifyPaymentsVerification> verifications;
 
   public ShopifyPaymentsAccount() {
   }
@@ -222,17 +202,6 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
   }
 
   /**
-   * The fraud settings of the Shopify Payments account.
-   */
-  public ShopifyPaymentsFraudSettings getFraudSettings() {
-    return fraudSettings;
-  }
-
-  public void setFraudSettings(ShopifyPaymentsFraudSettings fraudSettings) {
-    this.fraudSettings = fraudSettings;
-  }
-
-  /**
    * A globally-unique ID.
    */
   public String getId() {
@@ -241,17 +210,6 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  /**
-   * The notifications settings for the account.
-   */
-  public ShopifyPaymentsNotificationSettings getNotificationSettings() {
-    return notificationSettings;
-  }
-
-  public void setNotificationSettings(ShopifyPaymentsNotificationSettings notificationSettings) {
-    this.notificationSettings = notificationSettings;
   }
 
   /**
@@ -300,32 +258,9 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
     this.payouts = payouts;
   }
 
-  /**
-   * The permitted documents for identity verification.
-   */
-  public List<ShopifyPaymentsVerificationDocument> getPermittedVerificationDocuments() {
-    return permittedVerificationDocuments;
-  }
-
-  public void setPermittedVerificationDocuments(
-      List<ShopifyPaymentsVerificationDocument> permittedVerificationDocuments) {
-    this.permittedVerificationDocuments = permittedVerificationDocuments;
-  }
-
-  /**
-   * The verifications necessary for this account.
-   */
-  public List<ShopifyPaymentsVerification> getVerifications() {
-    return verifications;
-  }
-
-  public void setVerifications(List<ShopifyPaymentsVerification> verifications) {
-    this.verifications = verifications;
-  }
-
   @Override
   public String toString() {
-    return "ShopifyPaymentsAccount{activated='" + activated + "', balance='" + balance + "', balanceTransactions='" + balanceTransactions + "', bankAccounts='" + bankAccounts + "', chargeStatementDescriptor='" + chargeStatementDescriptor + "', chargeStatementDescriptors='" + chargeStatementDescriptors + "', country='" + country + "', defaultCurrency='" + defaultCurrency + "', disputes='" + disputes + "', fraudSettings='" + fraudSettings + "', id='" + id + "', notificationSettings='" + notificationSettings + "', onboardable='" + onboardable + "', payoutSchedule='" + payoutSchedule + "', payoutStatementDescriptor='" + payoutStatementDescriptor + "', payouts='" + payouts + "', permittedVerificationDocuments='" + permittedVerificationDocuments + "', verifications='" + verifications + "'}";
+    return "ShopifyPaymentsAccount{activated='" + activated + "', balance='" + balance + "', balanceTransactions='" + balanceTransactions + "', bankAccounts='" + bankAccounts + "', chargeStatementDescriptor='" + chargeStatementDescriptor + "', chargeStatementDescriptors='" + chargeStatementDescriptors + "', country='" + country + "', defaultCurrency='" + defaultCurrency + "', disputes='" + disputes + "', id='" + id + "', onboardable='" + onboardable + "', payoutSchedule='" + payoutSchedule + "', payoutStatementDescriptor='" + payoutStatementDescriptor + "', payouts='" + payouts + "'}";
   }
 
   @Override
@@ -342,20 +277,16 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
         Objects.equals(country, that.country) &&
         Objects.equals(defaultCurrency, that.defaultCurrency) &&
         Objects.equals(disputes, that.disputes) &&
-        Objects.equals(fraudSettings, that.fraudSettings) &&
         Objects.equals(id, that.id) &&
-        Objects.equals(notificationSettings, that.notificationSettings) &&
         onboardable == that.onboardable &&
         Objects.equals(payoutSchedule, that.payoutSchedule) &&
         Objects.equals(payoutStatementDescriptor, that.payoutStatementDescriptor) &&
-        Objects.equals(payouts, that.payouts) &&
-        Objects.equals(permittedVerificationDocuments, that.permittedVerificationDocuments) &&
-        Objects.equals(verifications, that.verifications);
+        Objects.equals(payouts, that.payouts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(activated, balance, balanceTransactions, bankAccounts, chargeStatementDescriptor, chargeStatementDescriptors, country, defaultCurrency, disputes, fraudSettings, id, notificationSettings, onboardable, payoutSchedule, payoutStatementDescriptor, payouts, permittedVerificationDocuments, verifications);
+    return Objects.hash(activated, balance, balanceTransactions, bankAccounts, chargeStatementDescriptor, chargeStatementDescriptors, country, defaultCurrency, disputes, id, onboardable, payoutSchedule, payoutStatementDescriptor, payouts);
   }
 
   public static Builder newBuilder() {
@@ -413,19 +344,9 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
     private ShopifyPaymentsDisputeConnection disputes;
 
     /**
-     * The fraud settings of the Shopify Payments account.
-     */
-    private ShopifyPaymentsFraudSettings fraudSettings;
-
-    /**
      * A globally-unique ID.
      */
     private String id;
-
-    /**
-     * The notifications settings for the account.
-     */
-    private ShopifyPaymentsNotificationSettings notificationSettings;
 
     /**
      * Whether the Shopify Payments account can be onboarded.
@@ -449,16 +370,6 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
      */
     private ShopifyPaymentsPayoutConnection payouts;
 
-    /**
-     * The permitted documents for identity verification.
-     */
-    private List<ShopifyPaymentsVerificationDocument> permittedVerificationDocuments;
-
-    /**
-     * The verifications necessary for this account.
-     */
-    private List<ShopifyPaymentsVerification> verifications;
-
     public ShopifyPaymentsAccount build() {
       ShopifyPaymentsAccount result = new ShopifyPaymentsAccount();
       result.activated = this.activated;
@@ -470,15 +381,11 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
       result.country = this.country;
       result.defaultCurrency = this.defaultCurrency;
       result.disputes = this.disputes;
-      result.fraudSettings = this.fraudSettings;
       result.id = this.id;
-      result.notificationSettings = this.notificationSettings;
       result.onboardable = this.onboardable;
       result.payoutSchedule = this.payoutSchedule;
       result.payoutStatementDescriptor = this.payoutStatementDescriptor;
       result.payouts = this.payouts;
-      result.permittedVerificationDocuments = this.permittedVerificationDocuments;
-      result.verifications = this.verifications;
       return result;
     }
 
@@ -561,26 +468,10 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
     }
 
     /**
-     * The fraud settings of the Shopify Payments account.
-     */
-    public Builder fraudSettings(ShopifyPaymentsFraudSettings fraudSettings) {
-      this.fraudSettings = fraudSettings;
-      return this;
-    }
-
-    /**
      * A globally-unique ID.
      */
     public Builder id(String id) {
       this.id = id;
-      return this;
-    }
-
-    /**
-     * The notifications settings for the account.
-     */
-    public Builder notificationSettings(ShopifyPaymentsNotificationSettings notificationSettings) {
-      this.notificationSettings = notificationSettings;
       return this;
     }
 
@@ -615,23 +506,6 @@ public class ShopifyPaymentsAccount implements com.test.shopify.generated.types.
      */
     public Builder payouts(ShopifyPaymentsPayoutConnection payouts) {
       this.payouts = payouts;
-      return this;
-    }
-
-    /**
-     * The permitted documents for identity verification.
-     */
-    public Builder permittedVerificationDocuments(
-        List<ShopifyPaymentsVerificationDocument> permittedVerificationDocuments) {
-      this.permittedVerificationDocuments = permittedVerificationDocuments;
-      return this;
-    }
-
-    /**
-     * The verifications necessary for this account.
-     */
-    public Builder verifications(List<ShopifyPaymentsVerification> verifications) {
-      this.verifications = verifications;
       return this;
     }
   }

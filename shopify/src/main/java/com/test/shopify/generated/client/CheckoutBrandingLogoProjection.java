@@ -18,6 +18,13 @@ public class CheckoutBrandingLogoProjection<PARENT extends BaseSubProjectionNode
      return projection;
   }
 
+  public CheckoutBrandingVisibilityProjection<CheckoutBrandingLogoProjection<PARENT, ROOT>, ROOT> visibility(
+      ) {
+     CheckoutBrandingVisibilityProjection<CheckoutBrandingLogoProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingVisibilityProjection<>(this, getRoot());
+     getFields().put("visibility", projection);
+     return projection;
+  }
+
   public CheckoutBrandingLogoProjection<PARENT, ROOT> maxWidth() {
     getFields().put("maxWidth", null);
     return this;

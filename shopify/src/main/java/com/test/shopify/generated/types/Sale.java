@@ -29,6 +29,7 @@ import java.util.List;
     @JsonSubTypes.Type(value = AdditionalFeeSale.class, name = "AdditionalFeeSale"),
     @JsonSubTypes.Type(value = AdjustmentSale.class, name = "AdjustmentSale"),
     @JsonSubTypes.Type(value = DutySale.class, name = "DutySale"),
+    @JsonSubTypes.Type(value = FeeSale.class, name = "FeeSale"),
     @JsonSubTypes.Type(value = GiftCardSale.class, name = "GiftCardSale"),
     @JsonSubTypes.Type(value = ProductSale.class, name = "ProductSale"),
     @JsonSubTypes.Type(value = ShippingLineSale.class, name = "ShippingLineSale"),

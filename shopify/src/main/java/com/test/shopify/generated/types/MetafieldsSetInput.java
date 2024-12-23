@@ -36,6 +36,12 @@ public class MetafieldsSetInput {
   private String value;
 
   /**
+   * The `compareDigest` value obtained from a previous query. Provide this with
+   * updates to ensure the metafield is modified safely.
+   */
+  private String compareDigest;
+
+  /**
    * The type of data that is stored in the metafield.
    * The type must be one of the [supported types](https://shopify.dev/apps/metafields/types).
    *   
@@ -98,6 +104,18 @@ public class MetafieldsSetInput {
   }
 
   /**
+   * The `compareDigest` value obtained from a previous query. Provide this with
+   * updates to ensure the metafield is modified safely.
+   */
+  public String getCompareDigest() {
+    return compareDigest;
+  }
+
+  public void setCompareDigest(String compareDigest) {
+    this.compareDigest = compareDigest;
+  }
+
+  /**
    * The type of data that is stored in the metafield.
    * The type must be one of the [supported types](https://shopify.dev/apps/metafields/types).
    *   
@@ -114,7 +132,7 @@ public class MetafieldsSetInput {
 
   @Override
   public String toString() {
-    return "MetafieldsSetInput{ownerId='" + ownerId + "', namespace='" + namespace + "', key='" + key + "', value='" + value + "', type='" + type + "'}";
+    return "MetafieldsSetInput{ownerId='" + ownerId + "', namespace='" + namespace + "', key='" + key + "', value='" + value + "', compareDigest='" + compareDigest + "', type='" + type + "'}";
   }
 
   @Override
@@ -126,12 +144,13 @@ public class MetafieldsSetInput {
         Objects.equals(namespace, that.namespace) &&
         Objects.equals(key, that.key) &&
         Objects.equals(value, that.value) &&
+        Objects.equals(compareDigest, that.compareDigest) &&
         Objects.equals(type, that.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ownerId, namespace, key, value, type);
+    return Objects.hash(ownerId, namespace, key, value, compareDigest, type);
   }
 
   public static Builder newBuilder() {
@@ -166,6 +185,12 @@ public class MetafieldsSetInput {
     private String value;
 
     /**
+     * The `compareDigest` value obtained from a previous query. Provide this with
+     * updates to ensure the metafield is modified safely.
+     */
+    private String compareDigest;
+
+    /**
      * The type of data that is stored in the metafield.
      * The type must be one of the [supported types](https://shopify.dev/apps/metafields/types).
      *   
@@ -180,6 +205,7 @@ public class MetafieldsSetInput {
       result.namespace = this.namespace;
       result.key = this.key;
       result.value = this.value;
+      result.compareDigest = this.compareDigest;
       result.type = this.type;
       return result;
     }
@@ -219,6 +245,15 @@ public class MetafieldsSetInput {
      */
     public Builder value(String value) {
       this.value = value;
+      return this;
+    }
+
+    /**
+     * The `compareDigest` value obtained from a previous query. Provide this with
+     * updates to ensure the metafield is modified safely.
+     */
+    public Builder compareDigest(String compareDigest) {
+      this.compareDigest = compareDigest;
       return this;
     }
 

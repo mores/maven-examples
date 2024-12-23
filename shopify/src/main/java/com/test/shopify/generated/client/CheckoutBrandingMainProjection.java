@@ -25,4 +25,18 @@ public class CheckoutBrandingMainProjection<PARENT extends BaseSubProjectionNode
      getFields().put("colorScheme", projection);
      return projection;
   }
+
+  public CheckoutBrandingContainerDividerProjection<CheckoutBrandingMainProjection<PARENT, ROOT>, ROOT> divider(
+      ) {
+     CheckoutBrandingContainerDividerProjection<CheckoutBrandingMainProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingContainerDividerProjection<>(this, getRoot());
+     getFields().put("divider", projection);
+     return projection;
+  }
+
+  public CheckoutBrandingMainSectionProjection<CheckoutBrandingMainProjection<PARENT, ROOT>, ROOT> section(
+      ) {
+     CheckoutBrandingMainSectionProjection<CheckoutBrandingMainProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingMainSectionProjection<>(this, getRoot());
+     getFields().put("section", projection);
+     return projection;
+  }
 }

@@ -153,6 +153,13 @@ public class SubscriptionBillingCycleEditedContractProjection<PARENT extends Bas
     return projection;
   }
 
+  public CountProjection<SubscriptionBillingCycleEditedContractProjection<PARENT, ROOT>, ROOT> linesCount(
+      ) {
+     CountProjection<SubscriptionBillingCycleEditedContractProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("linesCount", projection);
+     return projection;
+  }
+
   public OrderConnectionProjection<SubscriptionBillingCycleEditedContractProjection<PARENT, ROOT>, ROOT> orders(
       ) {
      OrderConnectionProjection<SubscriptionBillingCycleEditedContractProjection<PARENT, ROOT>, ROOT> projection = new OrderConnectionProjection<>(this, getRoot());

@@ -28,15 +28,5 @@ public enum MarketingTactic {
 
   STOREFRONT_APP,
 
-  SEO,
-
-  DIRECT,
-
-  DISPLAY,
-
-  SEARCH,
-
-  FOLLOW_UP,
-
-  RECEIPT
+  SEO
 }

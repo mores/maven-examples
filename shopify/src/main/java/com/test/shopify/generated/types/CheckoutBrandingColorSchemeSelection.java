@@ -8,5 +8,9 @@ public enum CheckoutBrandingColorSchemeSelection {
 
   COLOR_SCHEME1,
 
-  COLOR_SCHEME2
+  COLOR_SCHEME2,
+
+  COLOR_SCHEME3,
+
+  COLOR_SCHEME4
 }

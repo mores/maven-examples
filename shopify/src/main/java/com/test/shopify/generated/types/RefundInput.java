@@ -53,6 +53,11 @@ public class RefundInput {
    */
   private List<OrderTransactionInput> transactions;
 
+  /**
+   * An optional reason for a discrepancy between calculated and actual refund amounts.
+   */
+  private OrderAdjustmentInputDiscrepancyReason discrepancyReason;
+
   public RefundInput() {
   }
 
@@ -146,9 +151,20 @@ public class RefundInput {
     this.transactions = transactions;
   }
 
+  /**
+   * An optional reason for a discrepancy between calculated and actual refund amounts.
+   */
+  public OrderAdjustmentInputDiscrepancyReason getDiscrepancyReason() {
+    return discrepancyReason;
+  }
+
+  public void setDiscrepancyReason(OrderAdjustmentInputDiscrepancyReason discrepancyReason) {
+    this.discrepancyReason = discrepancyReason;
+  }
+
   @Override
   public String toString() {
-    return "RefundInput{currency='" + currency + "', orderId='" + orderId + "', note='" + note + "', notify='" + notify + "', shipping='" + shipping + "', refundLineItems='" + refundLineItems + "', refundDuties='" + refundDuties + "', transactions='" + transactions + "'}";
+    return "RefundInput{currency='" + currency + "', orderId='" + orderId + "', note='" + note + "', notify='" + notify + "', shipping='" + shipping + "', refundLineItems='" + refundLineItems + "', refundDuties='" + refundDuties + "', transactions='" + transactions + "', discrepancyReason='" + discrepancyReason + "'}";
   }
 
   @Override
@@ -163,12 +179,13 @@ public class RefundInput {
         Objects.equals(shipping, that.shipping) &&
         Objects.equals(refundLineItems, that.refundLineItems) &&
         Objects.equals(refundDuties, that.refundDuties) &&
-        Objects.equals(transactions, that.transactions);
+        Objects.equals(transactions, that.transactions) &&
+        Objects.equals(discrepancyReason, that.discrepancyReason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, orderId, note, notify, shipping, refundLineItems, refundDuties, transactions);
+    return Objects.hash(currency, orderId, note, notify, shipping, refundLineItems, refundDuties, transactions, discrepancyReason);
   }
 
   public static Builder newBuilder() {
@@ -218,6 +235,11 @@ public class RefundInput {
      */
     private List<OrderTransactionInput> transactions;
 
+    /**
+     * An optional reason for a discrepancy between calculated and actual refund amounts.
+     */
+    private OrderAdjustmentInputDiscrepancyReason discrepancyReason;
+
     public RefundInput build() {
       RefundInput result = new RefundInput();
       result.currency = this.currency;
@@ -228,6 +250,7 @@ public class RefundInput {
       result.refundLineItems = this.refundLineItems;
       result.refundDuties = this.refundDuties;
       result.transactions = this.transactions;
+      result.discrepancyReason = this.discrepancyReason;
       return result;
     }
 
@@ -294,6 +317,14 @@ public class RefundInput {
      */
     public Builder transactions(List<OrderTransactionInput> transactions) {
       this.transactions = transactions;
+      return this;
+    }
+
+    /**
+     * An optional reason for a discrepancy between calculated and actual refund amounts.
+     */
+    public Builder discrepancyReason(OrderAdjustmentInputDiscrepancyReason discrepancyReason) {
+      this.discrepancyReason = discrepancyReason;
       return this;
     }
   }

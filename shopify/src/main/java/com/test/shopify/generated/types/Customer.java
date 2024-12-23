@@ -20,11 +20,16 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class Customer implements CommentEventEmbed, MetafieldReference, MetafieldReferencer, PurchasingEntity, com.test.shopify.generated.types.CommentEventSubject, com.test.shopify.generated.types.HasEvents, com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Node {
+public class Customer implements CommentEventEmbed, MetafieldReference, MetafieldReferencer, PurchasingEntity, com.test.shopify.generated.types.CommentEventSubject, com.test.shopify.generated.types.HasEvents, com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.HasStoreCreditAccounts, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Node {
   /**
    * A list of addresses associated with the customer.
    */
   private List<MailingAddress> addresses;
+
+  /**
+   * The addresses associated with the customer.
+   */
+  private MailingAddressConnection addressesV2;
 
   /**
    * The total amount that the customer has spent on orders in their lifetime.
@@ -48,6 +53,11 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
    * The date and time when the customer was added to the store.
    */
   private OffsetDateTime createdAt;
+
+  /**
+   * Whether the customer has opted out of having their data sold.
+   */
+  private boolean dataSaleOptOut;
 
   /**
    * The default address associated with the customer.
@@ -217,6 +227,11 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
   private CustomerStatistics statistics;
 
   /**
+   * Returns a list of store credit accounts that belong to the owner resource.
+   */
+  private StoreCreditAccountConnection storeCreditAccounts;
+
+  /**
    * A list of the customer's subscription contracts.
    */
   private SubscriptionContractConnection subscriptionContracts;
@@ -276,6 +291,17 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
   }
 
   /**
+   * The addresses associated with the customer.
+   */
+  public MailingAddressConnection getAddressesV2() {
+    return addressesV2;
+  }
+
+  public void setAddressesV2(MailingAddressConnection addressesV2) {
+    this.addressesV2 = addressesV2;
+  }
+
+  /**
    * The total amount that the customer has spent on orders in their lifetime.
    */
   public MoneyV2 getAmountSpent() {
@@ -320,6 +346,17 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
 
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
+  }
+
+  /**
+   * Whether the customer has opted out of having their data sold.
+   */
+  public boolean getDataSaleOptOut() {
+    return dataSaleOptOut;
+  }
+
+  public void setDataSaleOptOut(boolean dataSaleOptOut) {
+    this.dataSaleOptOut = dataSaleOptOut;
   }
 
   /**
@@ -676,6 +713,17 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
   }
 
   /**
+   * Returns a list of store credit accounts that belong to the owner resource.
+   */
+  public StoreCreditAccountConnection getStoreCreditAccounts() {
+    return storeCreditAccounts;
+  }
+
+  public void setStoreCreditAccounts(StoreCreditAccountConnection storeCreditAccounts) {
+    this.storeCreditAccounts = storeCreditAccounts;
+  }
+
+  /**
    * A list of the customer's subscription contracts.
    */
   public SubscriptionContractConnection getSubscriptionContracts() {
@@ -770,7 +818,7 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
 
   @Override
   public String toString() {
-    return "Customer{addresses='" + addresses + "', amountSpent='" + amountSpent + "', canDelete='" + canDelete + "', companyContactProfiles='" + companyContactProfiles + "', createdAt='" + createdAt + "', defaultAddress='" + defaultAddress + "', displayName='" + displayName + "', email='" + email + "', emailMarketingConsent='" + emailMarketingConsent + "', events='" + events + "', firstName='" + firstName + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', image='" + image + "', lastName='" + lastName + "', lastOrder='" + lastOrder + "', legacyResourceId='" + legacyResourceId + "', lifetimeDuration='" + lifetimeDuration + "', locale='" + locale + "', market='" + market + "', mergeable='" + mergeable + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', multipassIdentifier='" + multipassIdentifier + "', note='" + note + "', numberOfOrders='" + numberOfOrders + "', orders='" + orders + "', paymentMethods='" + paymentMethods + "', phone='" + phone + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', productSubscriberStatus='" + productSubscriberStatus + "', smsMarketingConsent='" + smsMarketingConsent + "', state='" + state + "', statistics='" + statistics + "', subscriptionContracts='" + subscriptionContracts + "', tags='" + tags + "', taxExempt='" + taxExempt + "', taxExemptions='" + taxExemptions + "', unsubscribeUrl='" + unsubscribeUrl + "', updatedAt='" + updatedAt + "', validEmailAddress='" + validEmailAddress + "', verifiedEmail='" + verifiedEmail + "'}";
+    return "Customer{addresses='" + addresses + "', addressesV2='" + addressesV2 + "', amountSpent='" + amountSpent + "', canDelete='" + canDelete + "', companyContactProfiles='" + companyContactProfiles + "', createdAt='" + createdAt + "', dataSaleOptOut='" + dataSaleOptOut + "', defaultAddress='" + defaultAddress + "', displayName='" + displayName + "', email='" + email + "', emailMarketingConsent='" + emailMarketingConsent + "', events='" + events + "', firstName='" + firstName + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', image='" + image + "', lastName='" + lastName + "', lastOrder='" + lastOrder + "', legacyResourceId='" + legacyResourceId + "', lifetimeDuration='" + lifetimeDuration + "', locale='" + locale + "', market='" + market + "', mergeable='" + mergeable + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', multipassIdentifier='" + multipassIdentifier + "', note='" + note + "', numberOfOrders='" + numberOfOrders + "', orders='" + orders + "', paymentMethods='" + paymentMethods + "', phone='" + phone + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', productSubscriberStatus='" + productSubscriberStatus + "', smsMarketingConsent='" + smsMarketingConsent + "', state='" + state + "', statistics='" + statistics + "', storeCreditAccounts='" + storeCreditAccounts + "', subscriptionContracts='" + subscriptionContracts + "', tags='" + tags + "', taxExempt='" + taxExempt + "', taxExemptions='" + taxExemptions + "', unsubscribeUrl='" + unsubscribeUrl + "', updatedAt='" + updatedAt + "', validEmailAddress='" + validEmailAddress + "', verifiedEmail='" + verifiedEmail + "'}";
   }
 
   @Override
@@ -779,10 +827,12 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
     if (o == null || getClass() != o.getClass()) return false;
     Customer that = (Customer) o;
     return Objects.equals(addresses, that.addresses) &&
+        Objects.equals(addressesV2, that.addressesV2) &&
         Objects.equals(amountSpent, that.amountSpent) &&
         canDelete == that.canDelete &&
         Objects.equals(companyContactProfiles, that.companyContactProfiles) &&
         Objects.equals(createdAt, that.createdAt) &&
+        dataSaleOptOut == that.dataSaleOptOut &&
         Objects.equals(defaultAddress, that.defaultAddress) &&
         Objects.equals(displayName, that.displayName) &&
         Objects.equals(email, that.email) &&
@@ -814,6 +864,7 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
         Objects.equals(smsMarketingConsent, that.smsMarketingConsent) &&
         Objects.equals(state, that.state) &&
         Objects.equals(statistics, that.statistics) &&
+        Objects.equals(storeCreditAccounts, that.storeCreditAccounts) &&
         Objects.equals(subscriptionContracts, that.subscriptionContracts) &&
         Objects.equals(tags, that.tags) &&
         taxExempt == that.taxExempt &&
@@ -826,7 +877,7 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
 
   @Override
   public int hashCode() {
-    return Objects.hash(addresses, amountSpent, canDelete, companyContactProfiles, createdAt, defaultAddress, displayName, email, emailMarketingConsent, events, firstName, hasTimelineComment, id, image, lastName, lastOrder, legacyResourceId, lifetimeDuration, locale, market, mergeable, metafield, metafieldDefinitions, metafields, multipassIdentifier, note, numberOfOrders, orders, paymentMethods, phone, privateMetafield, privateMetafields, productSubscriberStatus, smsMarketingConsent, state, statistics, subscriptionContracts, tags, taxExempt, taxExemptions, unsubscribeUrl, updatedAt, validEmailAddress, verifiedEmail);
+    return Objects.hash(addresses, addressesV2, amountSpent, canDelete, companyContactProfiles, createdAt, dataSaleOptOut, defaultAddress, displayName, email, emailMarketingConsent, events, firstName, hasTimelineComment, id, image, lastName, lastOrder, legacyResourceId, lifetimeDuration, locale, market, mergeable, metafield, metafieldDefinitions, metafields, multipassIdentifier, note, numberOfOrders, orders, paymentMethods, phone, privateMetafield, privateMetafields, productSubscriberStatus, smsMarketingConsent, state, statistics, storeCreditAccounts, subscriptionContracts, tags, taxExempt, taxExemptions, unsubscribeUrl, updatedAt, validEmailAddress, verifiedEmail);
   }
 
   public static Builder newBuilder() {
@@ -838,6 +889,11 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
      * A list of addresses associated with the customer.
      */
     private List<MailingAddress> addresses;
+
+    /**
+     * The addresses associated with the customer.
+     */
+    private MailingAddressConnection addressesV2;
 
     /**
      * The total amount that the customer has spent on orders in their lifetime.
@@ -861,6 +917,11 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
      * The date and time when the customer was added to the store.
      */
     private OffsetDateTime createdAt;
+
+    /**
+     * Whether the customer has opted out of having their data sold.
+     */
+    private boolean dataSaleOptOut;
 
     /**
      * The default address associated with the customer.
@@ -1030,6 +1091,11 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
     private CustomerStatistics statistics;
 
     /**
+     * Returns a list of store credit accounts that belong to the owner resource.
+     */
+    private StoreCreditAccountConnection storeCreditAccounts;
+
+    /**
      * A list of the customer's subscription contracts.
      */
     private SubscriptionContractConnection subscriptionContracts;
@@ -1077,10 +1143,12 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
     public Customer build() {
       Customer result = new Customer();
       result.addresses = this.addresses;
+      result.addressesV2 = this.addressesV2;
       result.amountSpent = this.amountSpent;
       result.canDelete = this.canDelete;
       result.companyContactProfiles = this.companyContactProfiles;
       result.createdAt = this.createdAt;
+      result.dataSaleOptOut = this.dataSaleOptOut;
       result.defaultAddress = this.defaultAddress;
       result.displayName = this.displayName;
       result.email = this.email;
@@ -1112,6 +1180,7 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
       result.smsMarketingConsent = this.smsMarketingConsent;
       result.state = this.state;
       result.statistics = this.statistics;
+      result.storeCreditAccounts = this.storeCreditAccounts;
       result.subscriptionContracts = this.subscriptionContracts;
       result.tags = this.tags;
       result.taxExempt = this.taxExempt;
@@ -1128,6 +1197,14 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
      */
     public Builder addresses(List<MailingAddress> addresses) {
       this.addresses = addresses;
+      return this;
+    }
+
+    /**
+     * The addresses associated with the customer.
+     */
+    public Builder addressesV2(MailingAddressConnection addressesV2) {
+      this.addressesV2 = addressesV2;
       return this;
     }
 
@@ -1163,6 +1240,14 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
      */
     public Builder createdAt(OffsetDateTime createdAt) {
       this.createdAt = createdAt;
+      return this;
+    }
+
+    /**
+     * Whether the customer has opted out of having their data sold.
+     */
+    public Builder dataSaleOptOut(boolean dataSaleOptOut) {
+      this.dataSaleOptOut = dataSaleOptOut;
       return this;
     }
 
@@ -1424,6 +1509,14 @@ public class Customer implements CommentEventEmbed, MetafieldReference, Metafiel
      */
     public Builder statistics(CustomerStatistics statistics) {
       this.statistics = statistics;
+      return this;
+    }
+
+    /**
+     * Returns a list of store credit accounts that belong to the owner resource.
+     */
+    public Builder storeCreditAccounts(StoreCreditAccountConnection storeCreditAccounts) {
+      this.storeCreditAccounts = storeCreditAccounts;
       return this;
     }
 

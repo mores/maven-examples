@@ -2,7 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
 import com.test.shopify.generated.types.CreateMediaInput;
-import com.test.shopify.generated.types.ProductInput;
+import com.test.shopify.generated.types.ProductUpdateInput;
 import java.lang.Override;
 import java.lang.String;
 import java.util.HashSet;
@@ -24,11 +24,11 @@ import java.util.Set;
  * [productVariantUpdate](https://shopify.dev/api/admin-graphql/latest/mutations/productvariantupdate).
  */
 public class ProductUpdateGraphQLQuery extends GraphQLQuery {
-  public ProductUpdateGraphQLQuery(ProductInput input, List<CreateMediaInput> media,
+  public ProductUpdateGraphQLQuery(ProductUpdateInput product, List<CreateMediaInput> media,
       String queryName, Set<String> fieldsSet) {
     super("mutation", queryName);
-    if (input != null || fieldsSet.contains("input")) {
-        getInput().put("input", input);
+    if (product != null || fieldsSet.contains("product")) {
+        getInput().put("product", product);
     }if (media != null || fieldsSet.contains("media")) {
         getInput().put("media", media);
     }
@@ -50,23 +50,23 @@ public class ProductUpdateGraphQLQuery extends GraphQLQuery {
   public static class Builder {
     private Set<String> fieldsSet = new HashSet<>();
 
-    private ProductInput input;
+    private ProductUpdateInput product;
 
     private List<CreateMediaInput> media;
 
     private String queryName;
 
     public ProductUpdateGraphQLQuery build() {
-      return new ProductUpdateGraphQLQuery(input, media, queryName, fieldsSet);
+      return new ProductUpdateGraphQLQuery(product, media, queryName, fieldsSet);
                
     }
 
     /**
      * The updated properties for a product.
      */
-    public Builder input(ProductInput input) {
-      this.input = input;
-      this.fieldsSet.add("input");
+    public Builder product(ProductUpdateInput product) {
+      this.product = product;
+      this.fieldsSet.add("product");
       return this;
     }
 

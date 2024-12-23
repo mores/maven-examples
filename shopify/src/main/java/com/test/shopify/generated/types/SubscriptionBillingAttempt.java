@@ -64,6 +64,16 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
   private OffsetDateTime originTime;
 
   /**
+   * The reference shared between retried payment attempts.
+   */
+  private String paymentGroupId;
+
+  /**
+   * The reference shared between payment attempts with similar payment details.
+   */
+  private String paymentSessionId;
+
+  /**
    * Whether the billing attempt is still processing.
    */
   private boolean ready;
@@ -72,6 +82,11 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
    * The subscription contract.
    */
   private SubscriptionContract subscriptionContract;
+
+  /**
+   * The transactions created by the billing attempt.
+   */
+  private OrderTransactionConnection transactions;
 
   public SubscriptionBillingAttempt() {
   }
@@ -178,6 +193,28 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
   }
 
   /**
+   * The reference shared between retried payment attempts.
+   */
+  public String getPaymentGroupId() {
+    return paymentGroupId;
+  }
+
+  public void setPaymentGroupId(String paymentGroupId) {
+    this.paymentGroupId = paymentGroupId;
+  }
+
+  /**
+   * The reference shared between payment attempts with similar payment details.
+   */
+  public String getPaymentSessionId() {
+    return paymentSessionId;
+  }
+
+  public void setPaymentSessionId(String paymentSessionId) {
+    this.paymentSessionId = paymentSessionId;
+  }
+
+  /**
    * Whether the billing attempt is still processing.
    */
   public boolean getReady() {
@@ -199,9 +236,20 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
     this.subscriptionContract = subscriptionContract;
   }
 
+  /**
+   * The transactions created by the billing attempt.
+   */
+  public OrderTransactionConnection getTransactions() {
+    return transactions;
+  }
+
+  public void setTransactions(OrderTransactionConnection transactions) {
+    this.transactions = transactions;
+  }
+
   @Override
   public String toString() {
-    return "SubscriptionBillingAttempt{completedAt='" + completedAt + "', createdAt='" + createdAt + "', errorCode='" + errorCode + "', errorMessage='" + errorMessage + "', id='" + id + "', idempotencyKey='" + idempotencyKey + "', nextActionUrl='" + nextActionUrl + "', order='" + order + "', originTime='" + originTime + "', ready='" + ready + "', subscriptionContract='" + subscriptionContract + "'}";
+    return "SubscriptionBillingAttempt{completedAt='" + completedAt + "', createdAt='" + createdAt + "', errorCode='" + errorCode + "', errorMessage='" + errorMessage + "', id='" + id + "', idempotencyKey='" + idempotencyKey + "', nextActionUrl='" + nextActionUrl + "', order='" + order + "', originTime='" + originTime + "', paymentGroupId='" + paymentGroupId + "', paymentSessionId='" + paymentSessionId + "', ready='" + ready + "', subscriptionContract='" + subscriptionContract + "', transactions='" + transactions + "'}";
   }
 
   @Override
@@ -218,13 +266,16 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
         Objects.equals(nextActionUrl, that.nextActionUrl) &&
         Objects.equals(order, that.order) &&
         Objects.equals(originTime, that.originTime) &&
+        Objects.equals(paymentGroupId, that.paymentGroupId) &&
+        Objects.equals(paymentSessionId, that.paymentSessionId) &&
         ready == that.ready &&
-        Objects.equals(subscriptionContract, that.subscriptionContract);
+        Objects.equals(subscriptionContract, that.subscriptionContract) &&
+        Objects.equals(transactions, that.transactions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(completedAt, createdAt, errorCode, errorMessage, id, idempotencyKey, nextActionUrl, order, originTime, ready, subscriptionContract);
+    return Objects.hash(completedAt, createdAt, errorCode, errorMessage, id, idempotencyKey, nextActionUrl, order, originTime, paymentGroupId, paymentSessionId, ready, subscriptionContract, transactions);
   }
 
   public static Builder newBuilder() {
@@ -280,6 +331,16 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
     private OffsetDateTime originTime;
 
     /**
+     * The reference shared between retried payment attempts.
+     */
+    private String paymentGroupId;
+
+    /**
+     * The reference shared between payment attempts with similar payment details.
+     */
+    private String paymentSessionId;
+
+    /**
      * Whether the billing attempt is still processing.
      */
     private boolean ready;
@@ -288,6 +349,11 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
      * The subscription contract.
      */
     private SubscriptionContract subscriptionContract;
+
+    /**
+     * The transactions created by the billing attempt.
+     */
+    private OrderTransactionConnection transactions;
 
     public SubscriptionBillingAttempt build() {
       SubscriptionBillingAttempt result = new SubscriptionBillingAttempt();
@@ -300,8 +366,11 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
       result.nextActionUrl = this.nextActionUrl;
       result.order = this.order;
       result.originTime = this.originTime;
+      result.paymentGroupId = this.paymentGroupId;
+      result.paymentSessionId = this.paymentSessionId;
       result.ready = this.ready;
       result.subscriptionContract = this.subscriptionContract;
+      result.transactions = this.transactions;
       return result;
     }
 
@@ -380,6 +449,22 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
     }
 
     /**
+     * The reference shared between retried payment attempts.
+     */
+    public Builder paymentGroupId(String paymentGroupId) {
+      this.paymentGroupId = paymentGroupId;
+      return this;
+    }
+
+    /**
+     * The reference shared between payment attempts with similar payment details.
+     */
+    public Builder paymentSessionId(String paymentSessionId) {
+      this.paymentSessionId = paymentSessionId;
+      return this;
+    }
+
+    /**
      * Whether the billing attempt is still processing.
      */
     public Builder ready(boolean ready) {
@@ -392,6 +477,14 @@ public class SubscriptionBillingAttempt implements com.test.shopify.generated.ty
      */
     public Builder subscriptionContract(SubscriptionContract subscriptionContract) {
       this.subscriptionContract = subscriptionContract;
+      return this;
+    }
+
+    /**
+     * The transactions created by the billing attempt.
+     */
+    public Builder transactions(OrderTransactionConnection transactions) {
+      this.transactions = transactions;
       return this;
     }
   }

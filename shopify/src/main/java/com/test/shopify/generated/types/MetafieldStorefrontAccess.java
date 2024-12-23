@@ -7,5 +7,7 @@ package com.test.shopify.generated.types;
 public enum MetafieldStorefrontAccess {
   PUBLIC_READ,
 
-  NONE
+  NONE,
+
+  LEGACY_LIQUID_ONLY
 }

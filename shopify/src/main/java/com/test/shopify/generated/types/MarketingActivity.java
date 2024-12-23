@@ -66,6 +66,11 @@ public class MarketingActivity implements com.test.shopify.generated.types.Node 
   private boolean inMainWorkflowVersion;
 
   /**
+   * The marketing activity represents an external marketing activity.
+   */
+  private boolean isExternal;
+
+  /**
    * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
    */
   private MarketingChannel marketingChannel;
@@ -268,6 +273,17 @@ public class MarketingActivity implements com.test.shopify.generated.types.Node 
   }
 
   /**
+   * The marketing activity represents an external marketing activity.
+   */
+  public boolean getIsExternal() {
+    return isExternal;
+  }
+
+  public void setIsExternal(boolean isExternal) {
+    this.isExternal = isExternal;
+  }
+
+  /**
    * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
    */
   public MarketingChannel getMarketingChannel() {
@@ -460,7 +476,7 @@ public class MarketingActivity implements com.test.shopify.generated.types.Node 
 
   @Override
   public String toString() {
-    return "MarketingActivity{activityListUrl='" + activityListUrl + "', adSpend='" + adSpend + "', app='" + app + "', appErrors='" + appErrors + "', budget='" + budget + "', createdAt='" + createdAt + "', formData='" + formData + "', hierarchyLevel='" + hierarchyLevel + "', id='" + id + "', inMainWorkflowVersion='" + inMainWorkflowVersion + "', marketingChannel='" + marketingChannel + "', marketingChannelType='" + marketingChannelType + "', marketingEvent='" + marketingEvent + "', parentActivityId='" + parentActivityId + "', parentRemoteId='" + parentRemoteId + "', sourceAndMedium='" + sourceAndMedium + "', status='" + status + "', statusBadgeType='" + statusBadgeType + "', statusBadgeTypeV2='" + statusBadgeTypeV2 + "', statusLabel='" + statusLabel + "', statusTransitionedAt='" + statusTransitionedAt + "', tactic='" + tactic + "', targetStatus='" + targetStatus + "', title='" + title + "', updatedAt='" + updatedAt + "', urlParameterValue='" + urlParameterValue + "', utmParameters='" + utmParameters + "'}";
+    return "MarketingActivity{activityListUrl='" + activityListUrl + "', adSpend='" + adSpend + "', app='" + app + "', appErrors='" + appErrors + "', budget='" + budget + "', createdAt='" + createdAt + "', formData='" + formData + "', hierarchyLevel='" + hierarchyLevel + "', id='" + id + "', inMainWorkflowVersion='" + inMainWorkflowVersion + "', isExternal='" + isExternal + "', marketingChannel='" + marketingChannel + "', marketingChannelType='" + marketingChannelType + "', marketingEvent='" + marketingEvent + "', parentActivityId='" + parentActivityId + "', parentRemoteId='" + parentRemoteId + "', sourceAndMedium='" + sourceAndMedium + "', status='" + status + "', statusBadgeType='" + statusBadgeType + "', statusBadgeTypeV2='" + statusBadgeTypeV2 + "', statusLabel='" + statusLabel + "', statusTransitionedAt='" + statusTransitionedAt + "', tactic='" + tactic + "', targetStatus='" + targetStatus + "', title='" + title + "', updatedAt='" + updatedAt + "', urlParameterValue='" + urlParameterValue + "', utmParameters='" + utmParameters + "'}";
   }
 
   @Override
@@ -478,6 +494,7 @@ public class MarketingActivity implements com.test.shopify.generated.types.Node 
         Objects.equals(hierarchyLevel, that.hierarchyLevel) &&
         Objects.equals(id, that.id) &&
         inMainWorkflowVersion == that.inMainWorkflowVersion &&
+        isExternal == that.isExternal &&
         Objects.equals(marketingChannel, that.marketingChannel) &&
         Objects.equals(marketingChannelType, that.marketingChannelType) &&
         Objects.equals(marketingEvent, that.marketingEvent) &&
@@ -499,7 +516,7 @@ public class MarketingActivity implements com.test.shopify.generated.types.Node 
 
   @Override
   public int hashCode() {
-    return Objects.hash(activityListUrl, adSpend, app, appErrors, budget, createdAt, formData, hierarchyLevel, id, inMainWorkflowVersion, marketingChannel, marketingChannelType, marketingEvent, parentActivityId, parentRemoteId, sourceAndMedium, status, statusBadgeType, statusBadgeTypeV2, statusLabel, statusTransitionedAt, tactic, targetStatus, title, updatedAt, urlParameterValue, utmParameters);
+    return Objects.hash(activityListUrl, adSpend, app, appErrors, budget, createdAt, formData, hierarchyLevel, id, inMainWorkflowVersion, isExternal, marketingChannel, marketingChannelType, marketingEvent, parentActivityId, parentRemoteId, sourceAndMedium, status, statusBadgeType, statusBadgeTypeV2, statusLabel, statusTransitionedAt, tactic, targetStatus, title, updatedAt, urlParameterValue, utmParameters);
   }
 
   public static Builder newBuilder() {
@@ -556,6 +573,11 @@ public class MarketingActivity implements com.test.shopify.generated.types.Node 
      * Whether the marketing activity is in the main workflow version of the marketing automation.
      */
     private boolean inMainWorkflowVersion;
+
+    /**
+     * The marketing activity represents an external marketing activity.
+     */
+    private boolean isExternal;
 
     /**
      * The medium through which the marketing activity and event reached consumers. This is used for reporting aggregation.
@@ -658,6 +680,7 @@ public class MarketingActivity implements com.test.shopify.generated.types.Node 
       result.hierarchyLevel = this.hierarchyLevel;
       result.id = this.id;
       result.inMainWorkflowVersion = this.inMainWorkflowVersion;
+      result.isExternal = this.isExternal;
       result.marketingChannel = this.marketingChannel;
       result.marketingChannelType = this.marketingChannelType;
       result.marketingEvent = this.marketingEvent;
@@ -755,6 +778,14 @@ public class MarketingActivity implements com.test.shopify.generated.types.Node 
      */
     public Builder inMainWorkflowVersion(boolean inMainWorkflowVersion) {
       this.inMainWorkflowVersion = inMainWorkflowVersion;
+      return this;
+    }
+
+    /**
+     * The marketing activity represents an external marketing activity.
+     */
+    public Builder isExternal(boolean isExternal) {
+      this.isExternal = isExternal;
       return this;
     }
 

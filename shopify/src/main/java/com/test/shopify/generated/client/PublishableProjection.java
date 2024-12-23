@@ -17,6 +17,12 @@ public class PublishableProjection<PARENT extends BaseSubProjectionNode<?, ?>, R
     return this;
   }
 
+  public CountProjection<PublishableProjection<PARENT, ROOT>, ROOT> availablePublicationsCount() {
+     CountProjection<PublishableProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("availablePublicationsCount", projection);
+     return projection;
+  }
+
   public ResourcePublicationConnectionProjection<PublishableProjection<PARENT, ROOT>, ROOT> resourcePublications(
       ) {
      ResourcePublicationConnectionProjection<PublishableProjection<PARENT, ROOT>, ROOT> projection = new ResourcePublicationConnectionProjection<>(this, getRoot());
@@ -42,6 +48,22 @@ public class PublishableProjection<PARENT extends BaseSubProjectionNode<?, ?>, R
     getInputArguments().get("resourcePublications").add(beforeArg);
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("resourcePublications").add(reverseArg);
+    return projection;
+  }
+
+  public CountProjection<PublishableProjection<PARENT, ROOT>, ROOT> resourcePublicationsCount() {
+     CountProjection<PublishableProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("resourcePublicationsCount", projection);
+     return projection;
+  }
+
+  public CountProjection<PublishableProjection<PARENT, ROOT>, ROOT> resourcePublicationsCount(
+      Boolean onlyPublished) {
+    CountProjection<PublishableProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());    
+    getFields().put("resourcePublicationsCount", projection);
+    getInputArguments().computeIfAbsent("resourcePublicationsCount", k -> new ArrayList<>());                      
+    InputArgument onlyPublishedArg = new InputArgument("onlyPublished", onlyPublished);
+    getInputArguments().get("resourcePublicationsCount").add(onlyPublishedArg);
     return projection;
   }
 
@@ -123,11 +145,6 @@ public class PublishableProjection<PARENT extends BaseSubProjectionNode<?, ?>, R
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("unpublishedPublications").add(reverseArg);
     return projection;
-  }
-
-  public PublishableProjection<PARENT, ROOT> availablePublicationCount() {
-    getFields().put("availablePublicationCount", null);
-    return this;
   }
 
   public PublishableProjection<PARENT, ROOT> publicationCount() {

@@ -24,6 +24,11 @@ public class ShopifyPaymentsAdjustmentOrder {
    */
   private String name;
 
+  /**
+   * The ID of the order transaction.
+   */
+  private String orderTransactionId;
+
   public ShopifyPaymentsAdjustmentOrder() {
   }
 
@@ -60,9 +65,20 @@ public class ShopifyPaymentsAdjustmentOrder {
     this.name = name;
   }
 
+  /**
+   * The ID of the order transaction.
+   */
+  public String getOrderTransactionId() {
+    return orderTransactionId;
+  }
+
+  public void setOrderTransactionId(String orderTransactionId) {
+    this.orderTransactionId = orderTransactionId;
+  }
+
   @Override
   public String toString() {
-    return "ShopifyPaymentsAdjustmentOrder{amount='" + amount + "', link='" + link + "', name='" + name + "'}";
+    return "ShopifyPaymentsAdjustmentOrder{amount='" + amount + "', link='" + link + "', name='" + name + "', orderTransactionId='" + orderTransactionId + "'}";
   }
 
   @Override
@@ -72,12 +88,13 @@ public class ShopifyPaymentsAdjustmentOrder {
     ShopifyPaymentsAdjustmentOrder that = (ShopifyPaymentsAdjustmentOrder) o;
     return Objects.equals(amount, that.amount) &&
         Objects.equals(link, that.link) &&
-        Objects.equals(name, that.name);
+        Objects.equals(name, that.name) &&
+        Objects.equals(orderTransactionId, that.orderTransactionId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, link, name);
+    return Objects.hash(amount, link, name, orderTransactionId);
   }
 
   public static Builder newBuilder() {
@@ -100,11 +117,17 @@ public class ShopifyPaymentsAdjustmentOrder {
      */
     private String name;
 
+    /**
+     * The ID of the order transaction.
+     */
+    private String orderTransactionId;
+
     public ShopifyPaymentsAdjustmentOrder build() {
       ShopifyPaymentsAdjustmentOrder result = new ShopifyPaymentsAdjustmentOrder();
       result.amount = this.amount;
       result.link = this.link;
       result.name = this.name;
+      result.orderTransactionId = this.orderTransactionId;
       return result;
     }
 
@@ -129,6 +152,14 @@ public class ShopifyPaymentsAdjustmentOrder {
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * The ID of the order transaction.
+     */
+    public Builder orderTransactionId(String orderTransactionId) {
+      this.orderTransactionId = orderTransactionId;
       return this;
     }
   }

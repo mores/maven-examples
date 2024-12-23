@@ -12,6 +12,20 @@ public class CheckoutBrandingCustomizationsProjection<PARENT extends BaseSubProj
     return this;
   }
 
+  public CheckoutBrandingBuyerJourneyProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> buyerJourney(
+      ) {
+     CheckoutBrandingBuyerJourneyProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingBuyerJourneyProjection<>(this, getRoot());
+     getFields().put("buyerJourney", projection);
+     return projection;
+  }
+
+  public CheckoutBrandingCartLinkProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> cartLink(
+      ) {
+     CheckoutBrandingCartLinkProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingCartLinkProjection<>(this, getRoot());
+     getFields().put("cartLink", projection);
+     return projection;
+  }
+
   public CheckoutBrandingCheckboxProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> checkbox(
       ) {
      CheckoutBrandingCheckboxProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingCheckboxProjection<>(this, getRoot());
@@ -26,6 +40,13 @@ public class CheckoutBrandingCustomizationsProjection<PARENT extends BaseSubProj
      return projection;
   }
 
+  public CheckoutBrandingContentProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> content(
+      ) {
+     CheckoutBrandingContentProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingContentProjection<>(this, getRoot());
+     getFields().put("content", projection);
+     return projection;
+  }
+
   public CheckoutBrandingControlProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> control(
       ) {
      CheckoutBrandingControlProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingControlProjection<>(this, getRoot());
@@ -33,10 +54,31 @@ public class CheckoutBrandingCustomizationsProjection<PARENT extends BaseSubProj
      return projection;
   }
 
+  public CheckoutBrandingDividerStyleProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> divider(
+      ) {
+     CheckoutBrandingDividerStyleProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingDividerStyleProjection<>(this, getRoot());
+     getFields().put("divider", projection);
+     return projection;
+  }
+
+  public CheckoutBrandingExpressCheckoutProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> expressCheckout(
+      ) {
+     CheckoutBrandingExpressCheckoutProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingExpressCheckoutProjection<>(this, getRoot());
+     getFields().put("expressCheckout", projection);
+     return projection;
+  }
+
   public CheckoutBrandingImageProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> favicon(
       ) {
      CheckoutBrandingImageProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingImageProjection<>(this, getRoot());
      getFields().put("favicon", projection);
+     return projection;
+  }
+
+  public CheckoutBrandingFooterProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> footer(
+      ) {
+     CheckoutBrandingFooterProjection<CheckoutBrandingCustomizationsProjection<PARENT, ROOT>, ROOT> projection = new CheckoutBrandingFooterProjection<>(this, getRoot());
+     getFields().put("footer", projection);
      return projection;
   }
 

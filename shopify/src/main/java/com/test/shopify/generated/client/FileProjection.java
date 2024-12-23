@@ -50,6 +50,12 @@ public class FileProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
     return this;
   }
 
+  public ExternalVideoFragmentProjection<FileProjection<PARENT, ROOT>, ROOT> onExternalVideo() {
+    ExternalVideoFragmentProjection<FileProjection<PARENT, ROOT>, ROOT> fragment = new ExternalVideoFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
   public GenericFileFragmentProjection<FileProjection<PARENT, ROOT>, ROOT> onGenericFile() {
     GenericFileFragmentProjection<FileProjection<PARENT, ROOT>, ROOT> fragment = new GenericFileFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);
@@ -58,6 +64,12 @@ public class FileProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT ext
 
   public MediaImageFragmentProjection<FileProjection<PARENT, ROOT>, ROOT> onMediaImage() {
     MediaImageFragmentProjection<FileProjection<PARENT, ROOT>, ROOT> fragment = new MediaImageFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
+
+  public Model3dFragmentProjection<FileProjection<PARENT, ROOT>, ROOT> onModel3d() {
+    Model3dFragmentProjection<FileProjection<PARENT, ROOT>, ROOT> fragment = new Model3dFragmentProjection<>(this, getRoot());
     getFragments().add(fragment);
     return fragment;
   }

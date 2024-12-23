@@ -6,7 +6,5 @@ package com.test.shopify.generated.types;
 public enum FulfillmentOrderReleaseHoldUserErrorCode {
   FULFILLMENT_ORDER_NOT_FOUND,
 
-  GREATER_THAN_ZERO,
-
-  INVALID_LINE_ITEM_QUANTITY
+  INVALID_ACCESS
 }

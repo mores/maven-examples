@@ -51,13 +51,14 @@ public class DeliveryLocationGroupProjection<PARENT extends BaseSubProjectionNod
     return projection;
   }
 
-  public DeliveryLocationGroupProjection<PARENT, ROOT> id() {
-    getFields().put("id", null);
-    return this;
+  public CountProjection<DeliveryLocationGroupProjection<PARENT, ROOT>, ROOT> locationsCount() {
+     CountProjection<DeliveryLocationGroupProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("locationsCount", projection);
+     return projection;
   }
 
-  public DeliveryLocationGroupProjection<PARENT, ROOT> locationsCount() {
-    getFields().put("locationsCount", null);
+  public DeliveryLocationGroupProjection<PARENT, ROOT> id() {
+    getFields().put("id", null);
     return this;
   }
 }

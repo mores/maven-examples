@@ -48,6 +48,8 @@ public enum MetaobjectUserErrorCode {
 
   RESERVED_NAME,
 
+  DISPLAY_NAME_CONFLICT,
+
   CAPABILITY_NOT_ENABLED,
 
   URL_HANDLE_TAKEN,

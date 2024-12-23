@@ -69,7 +69,7 @@ public class PriceRule implements com.test.shopify.generated.types.CommentEventS
   /**
    * How many discount codes associated with the price rule.
    */
-  private int discountCodesCount;
+  private Count discountCodesCount;
 
   /**
    * The date and time when the price rule ends. For open-ended price rules, use `null`.
@@ -311,11 +311,11 @@ public class PriceRule implements com.test.shopify.generated.types.CommentEventS
   /**
    * How many discount codes associated with the price rule.
    */
-  public int getDiscountCodesCount() {
+  public Count getDiscountCodesCount() {
     return discountCodesCount;
   }
 
-  public void setDiscountCodesCount(int discountCodesCount) {
+  public void setDiscountCodesCount(Count discountCodesCount) {
     this.discountCodesCount = discountCodesCount;
   }
 
@@ -651,7 +651,7 @@ public class PriceRule implements com.test.shopify.generated.types.CommentEventS
         Objects.equals(customerSelection, that.customerSelection) &&
         Objects.equals(discountClass, that.discountClass) &&
         Objects.equals(discountCodes, that.discountCodes) &&
-        discountCodesCount == that.discountCodesCount &&
+        Objects.equals(discountCodesCount, that.discountCodesCount) &&
         Objects.equals(endsAt, that.endsAt) &&
         Objects.equals(entitlementToPrerequisiteQuantityRatio, that.entitlementToPrerequisiteQuantityRatio) &&
         Objects.equals(events, that.events) &&
@@ -740,7 +740,7 @@ public class PriceRule implements com.test.shopify.generated.types.CommentEventS
     /**
      * How many discount codes associated with the price rule.
      */
-    private int discountCodesCount;
+    private Count discountCodesCount;
 
     /**
      * The date and time when the price rule ends. For open-ended price rules, use `null`.
@@ -997,7 +997,7 @@ public class PriceRule implements com.test.shopify.generated.types.CommentEventS
     /**
      * How many discount codes associated with the price rule.
      */
-    public Builder discountCodesCount(int discountCodesCount) {
+    public Builder discountCodesCount(Count discountCodesCount) {
       this.discountCodesCount = discountCodesCount;
       return this;
     }

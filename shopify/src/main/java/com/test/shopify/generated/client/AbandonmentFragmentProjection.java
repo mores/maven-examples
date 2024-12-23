@@ -156,6 +156,11 @@ public class AbandonmentFragmentProjection<PARENT extends BaseSubProjectionNode<
     return this;
   }
 
+  public AbandonmentFragmentProjection<PARENT, ROOT> isFromCustomStorefront() {
+    getFields().put("isFromCustomStorefront", null);
+    return this;
+  }
+
   public AbandonmentFragmentProjection<PARENT, ROOT> isFromOnlineStore() {
     getFields().put("isFromOnlineStore", null);
     return this;

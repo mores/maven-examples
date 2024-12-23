@@ -10,31 +10,54 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * A code discount that offers customers a Buy X, Get Y (BXGY) discount.
+ * The `DiscountCodeBxgy` object lets you manage
+ * [buy X get Y discounts (BXGY)](https://help.shopify.com/manual/discounts/discount-types/buy-x-get-y)
+ * that are applied on a cart and at checkout when a customer enters a code. BXGY discounts incentivize customers
+ * by offering them additional items at a discounted price or for free when they purchase a specified quantity
+ * of items.
+ *
+ * The `DiscountCodeBxgy` object stores information about BXGY code discounts that apply to
+ * specific [products and variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountProducts),
+ * [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCollections),
+ * or [all items in a cart](https://shopify.dev/docs/api/admin-graphql/latest/objects/AllDiscountItems).
+ *
+ * Learn more about working with [Shopify's discount model](https://shopify.dev/docs/apps/build/discounts),
+ * including limitations and considerations.
+ *
+ * > Note:
+ * > The [`DiscountAutomaticBxgy`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountAutomaticBxgy)
+ * object has similar functionality to the `DiscountCodeBxgy` object, but discounts are automatically applied,
+ * without the need for customers to enter a code.
  */
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
 public class DiscountCodeBxgy implements Discount, DiscountCode {
   /**
-   * Whether the discount can be applied only once per customer.
+   * Whether a customer can only use the discount once.
    */
   private boolean appliesOncePerCustomer;
 
   /**
    * The number of times that the discount has been used.
+   * For example, if a "Buy 3, Get 1 Free" t-shirt discount
+   * is automatically applied in 200 transactions, then the
+   * discount has been used 200 times.
+   * This value is updated asynchronously. As a result,
+   * it might be lower than the actual usage count until the
+   * asynchronous process is completed.
    */
   private int asyncUsageCount;
 
   /**
-   * The number of redeem codes for the discount.
-   */
-  private int codeCount;
-
-  /**
-   * A list of redeem codes for the discount.
+   * A list codes that customers can use to redeem the discount.
    */
   private DiscountRedeemCodeConnection codes;
+
+  /**
+   * The number of codes that a customer can use to redeem the discount.
+   */
+  private Count codesCount;
 
   /**
    * The
@@ -50,12 +73,12 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   private OffsetDateTime createdAt;
 
   /**
-   * The qualifying items and the quantity of each one that the customer has to buy to be eligible for the discount.
+   * The items eligible for the discount and the required quantity of each to receive the discount.
    */
   private DiscountCustomerBuys customerBuys;
 
   /**
-   * The qualifying items in an order, the quantity of each one, and the total value of the discount.
+   * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
    */
   private DiscountCustomerGets customerGets;
 
@@ -71,37 +94,43 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   private MerchandiseDiscountClass discountClass;
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   private OffsetDateTime endsAt;
 
   /**
-   * Indicates whether there are any timeline comments on the discount.
+   * Whether there are
+   * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+   * associated with the discount.
    */
   private boolean hasTimelineComment;
 
   /**
-   * URLs that can be used to share the discount.
+   * A list of URLs that the app can use to share the discount.
    */
   private List<DiscountShareableUrl> shareableUrls;
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   private OffsetDateTime startsAt;
 
   /**
-   * The status of the discount.
+   * The status of the discount that describes its availability,
+   * expiration, or pending activation.
    */
   private DiscountStatus status;
 
   /**
-   * A detailed summary of the discount.
+   * A detailed explanation of what the discount is,
+   * who can use it, when and where it applies, and any associated
+   * rules or limitations.
    */
   private String summary;
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   private String title;
 
@@ -116,7 +145,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   private OffsetDateTime updatedAt;
 
   /**
-   * The maximum number of times that the discount can be used.
+   * The maximum number of times that a customer can use the discount.
+   * For discounts with unlimited usage, specify `null`.
    */
   private Integer usageLimit;
 
@@ -129,7 +159,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * Whether the discount can be applied only once per customer.
+   * Whether a customer can only use the discount once.
    */
   public boolean getAppliesOncePerCustomer() {
     return appliesOncePerCustomer;
@@ -141,6 +171,12 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
 
   /**
    * The number of times that the discount has been used.
+   * For example, if a "Buy 3, Get 1 Free" t-shirt discount
+   * is automatically applied in 200 transactions, then the
+   * discount has been used 200 times.
+   * This value is updated asynchronously. As a result,
+   * it might be lower than the actual usage count until the
+   * asynchronous process is completed.
    */
   public int getAsyncUsageCount() {
     return asyncUsageCount;
@@ -151,18 +187,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * The number of redeem codes for the discount.
-   */
-  public int getCodeCount() {
-    return codeCount;
-  }
-
-  public void setCodeCount(int codeCount) {
-    this.codeCount = codeCount;
-  }
-
-  /**
-   * A list of redeem codes for the discount.
+   * A list codes that customers can use to redeem the discount.
    */
   public DiscountRedeemCodeConnection getCodes() {
     return codes;
@@ -170,6 +195,17 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
 
   public void setCodes(DiscountRedeemCodeConnection codes) {
     this.codes = codes;
+  }
+
+  /**
+   * The number of codes that a customer can use to redeem the discount.
+   */
+  public Count getCodesCount() {
+    return codesCount;
+  }
+
+  public void setCodesCount(Count codesCount) {
+    this.codesCount = codesCount;
   }
 
   /**
@@ -198,7 +234,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * The qualifying items and the quantity of each one that the customer has to buy to be eligible for the discount.
+   * The items eligible for the discount and the required quantity of each to receive the discount.
    */
   public DiscountCustomerBuys getCustomerBuys() {
     return customerBuys;
@@ -209,7 +245,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * The qualifying items in an order, the quantity of each one, and the total value of the discount.
+   * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
    */
   public DiscountCustomerGets getCustomerGets() {
     return customerGets;
@@ -243,7 +279,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   public OffsetDateTime getEndsAt() {
     return endsAt;
@@ -254,7 +291,9 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * Indicates whether there are any timeline comments on the discount.
+   * Whether there are
+   * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+   * associated with the discount.
    */
   public boolean getHasTimelineComment() {
     return hasTimelineComment;
@@ -265,7 +304,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * URLs that can be used to share the discount.
+   * A list of URLs that the app can use to share the discount.
    */
   public List<DiscountShareableUrl> getShareableUrls() {
     return shareableUrls;
@@ -276,7 +315,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   public OffsetDateTime getStartsAt() {
     return startsAt;
@@ -287,7 +326,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * The status of the discount.
+   * The status of the discount that describes its availability,
+   * expiration, or pending activation.
    */
   public DiscountStatus getStatus() {
     return status;
@@ -298,7 +338,9 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * A detailed summary of the discount.
+   * A detailed explanation of what the discount is,
+   * who can use it, when and where it applies, and any associated
+   * rules or limitations.
    */
   public String getSummary() {
     return summary;
@@ -309,7 +351,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   public String getTitle() {
     return title;
@@ -342,7 +384,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
   }
 
   /**
-   * The maximum number of times that the discount can be used.
+   * The maximum number of times that a customer can use the discount.
+   * For discounts with unlimited usage, specify `null`.
    */
   public Integer getUsageLimit() {
     return usageLimit;
@@ -365,7 +408,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
 
   @Override
   public String toString() {
-    return "DiscountCodeBxgy{appliesOncePerCustomer='" + appliesOncePerCustomer + "', asyncUsageCount='" + asyncUsageCount + "', codeCount='" + codeCount + "', codes='" + codes + "', combinesWith='" + combinesWith + "', createdAt='" + createdAt + "', customerBuys='" + customerBuys + "', customerGets='" + customerGets + "', customerSelection='" + customerSelection + "', discountClass='" + discountClass + "', endsAt='" + endsAt + "', hasTimelineComment='" + hasTimelineComment + "', shareableUrls='" + shareableUrls + "', startsAt='" + startsAt + "', status='" + status + "', summary='" + summary + "', title='" + title + "', totalSales='" + totalSales + "', updatedAt='" + updatedAt + "', usageLimit='" + usageLimit + "', usesPerOrderLimit='" + usesPerOrderLimit + "'}";
+    return "DiscountCodeBxgy{appliesOncePerCustomer='" + appliesOncePerCustomer + "', asyncUsageCount='" + asyncUsageCount + "', codes='" + codes + "', codesCount='" + codesCount + "', combinesWith='" + combinesWith + "', createdAt='" + createdAt + "', customerBuys='" + customerBuys + "', customerGets='" + customerGets + "', customerSelection='" + customerSelection + "', discountClass='" + discountClass + "', endsAt='" + endsAt + "', hasTimelineComment='" + hasTimelineComment + "', shareableUrls='" + shareableUrls + "', startsAt='" + startsAt + "', status='" + status + "', summary='" + summary + "', title='" + title + "', totalSales='" + totalSales + "', updatedAt='" + updatedAt + "', usageLimit='" + usageLimit + "', usesPerOrderLimit='" + usesPerOrderLimit + "'}";
   }
 
   @Override
@@ -375,8 +418,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     DiscountCodeBxgy that = (DiscountCodeBxgy) o;
     return appliesOncePerCustomer == that.appliesOncePerCustomer &&
         asyncUsageCount == that.asyncUsageCount &&
-        codeCount == that.codeCount &&
         Objects.equals(codes, that.codes) &&
+        Objects.equals(codesCount, that.codesCount) &&
         Objects.equals(combinesWith, that.combinesWith) &&
         Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(customerBuys, that.customerBuys) &&
@@ -398,7 +441,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
 
   @Override
   public int hashCode() {
-    return Objects.hash(appliesOncePerCustomer, asyncUsageCount, codeCount, codes, combinesWith, createdAt, customerBuys, customerGets, customerSelection, discountClass, endsAt, hasTimelineComment, shareableUrls, startsAt, status, summary, title, totalSales, updatedAt, usageLimit, usesPerOrderLimit);
+    return Objects.hash(appliesOncePerCustomer, asyncUsageCount, codes, codesCount, combinesWith, createdAt, customerBuys, customerGets, customerSelection, discountClass, endsAt, hasTimelineComment, shareableUrls, startsAt, status, summary, title, totalSales, updatedAt, usageLimit, usesPerOrderLimit);
   }
 
   public static Builder newBuilder() {
@@ -407,24 +450,30 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
 
   public static class Builder {
     /**
-     * Whether the discount can be applied only once per customer.
+     * Whether a customer can only use the discount once.
      */
     private boolean appliesOncePerCustomer;
 
     /**
      * The number of times that the discount has been used.
+     * For example, if a "Buy 3, Get 1 Free" t-shirt discount
+     * is automatically applied in 200 transactions, then the
+     * discount has been used 200 times.
+     * This value is updated asynchronously. As a result,
+     * it might be lower than the actual usage count until the
+     * asynchronous process is completed.
      */
     private int asyncUsageCount;
 
     /**
-     * The number of redeem codes for the discount.
-     */
-    private int codeCount;
-
-    /**
-     * A list of redeem codes for the discount.
+     * A list codes that customers can use to redeem the discount.
      */
     private DiscountRedeemCodeConnection codes;
+
+    /**
+     * The number of codes that a customer can use to redeem the discount.
+     */
+    private Count codesCount;
 
     /**
      * The
@@ -440,12 +489,12 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     private OffsetDateTime createdAt;
 
     /**
-     * The qualifying items and the quantity of each one that the customer has to buy to be eligible for the discount.
+     * The items eligible for the discount and the required quantity of each to receive the discount.
      */
     private DiscountCustomerBuys customerBuys;
 
     /**
-     * The qualifying items in an order, the quantity of each one, and the total value of the discount.
+     * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
      */
     private DiscountCustomerGets customerGets;
 
@@ -461,37 +510,43 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     private MerchandiseDiscountClass discountClass;
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     private OffsetDateTime endsAt;
 
     /**
-     * Indicates whether there are any timeline comments on the discount.
+     * Whether there are
+     * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+     * associated with the discount.
      */
     private boolean hasTimelineComment;
 
     /**
-     * URLs that can be used to share the discount.
+     * A list of URLs that the app can use to share the discount.
      */
     private List<DiscountShareableUrl> shareableUrls;
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     private OffsetDateTime startsAt;
 
     /**
-     * The status of the discount.
+     * The status of the discount that describes its availability,
+     * expiration, or pending activation.
      */
     private DiscountStatus status;
 
     /**
-     * A detailed summary of the discount.
+     * A detailed explanation of what the discount is,
+     * who can use it, when and where it applies, and any associated
+     * rules or limitations.
      */
     private String summary;
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     private String title;
 
@@ -506,7 +561,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     private OffsetDateTime updatedAt;
 
     /**
-     * The maximum number of times that the discount can be used.
+     * The maximum number of times that a customer can use the discount.
+     * For discounts with unlimited usage, specify `null`.
      */
     private Integer usageLimit;
 
@@ -519,8 +575,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
       DiscountCodeBxgy result = new DiscountCodeBxgy();
       result.appliesOncePerCustomer = this.appliesOncePerCustomer;
       result.asyncUsageCount = this.asyncUsageCount;
-      result.codeCount = this.codeCount;
       result.codes = this.codes;
+      result.codesCount = this.codesCount;
       result.combinesWith = this.combinesWith;
       result.createdAt = this.createdAt;
       result.customerBuys = this.customerBuys;
@@ -542,7 +598,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * Whether the discount can be applied only once per customer.
+     * Whether a customer can only use the discount once.
      */
     public Builder appliesOncePerCustomer(boolean appliesOncePerCustomer) {
       this.appliesOncePerCustomer = appliesOncePerCustomer;
@@ -551,6 +607,12 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
 
     /**
      * The number of times that the discount has been used.
+     * For example, if a "Buy 3, Get 1 Free" t-shirt discount
+     * is automatically applied in 200 transactions, then the
+     * discount has been used 200 times.
+     * This value is updated asynchronously. As a result,
+     * it might be lower than the actual usage count until the
+     * asynchronous process is completed.
      */
     public Builder asyncUsageCount(int asyncUsageCount) {
       this.asyncUsageCount = asyncUsageCount;
@@ -558,18 +620,18 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * The number of redeem codes for the discount.
+     * A list codes that customers can use to redeem the discount.
      */
-    public Builder codeCount(int codeCount) {
-      this.codeCount = codeCount;
+    public Builder codes(DiscountRedeemCodeConnection codes) {
+      this.codes = codes;
       return this;
     }
 
     /**
-     * A list of redeem codes for the discount.
+     * The number of codes that a customer can use to redeem the discount.
      */
-    public Builder codes(DiscountRedeemCodeConnection codes) {
-      this.codes = codes;
+    public Builder codesCount(Count codesCount) {
+      this.codesCount = codesCount;
       return this;
     }
 
@@ -593,7 +655,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * The qualifying items and the quantity of each one that the customer has to buy to be eligible for the discount.
+     * The items eligible for the discount and the required quantity of each to receive the discount.
      */
     public Builder customerBuys(DiscountCustomerBuys customerBuys) {
       this.customerBuys = customerBuys;
@@ -601,7 +663,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * The qualifying items in an order, the quantity of each one, and the total value of the discount.
+     * The items in the order that qualify for the discount, their quantities, and the total value of the discount.
      */
     public Builder customerGets(DiscountCustomerGets customerGets) {
       this.customerGets = customerGets;
@@ -626,7 +688,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     public Builder endsAt(OffsetDateTime endsAt) {
       this.endsAt = endsAt;
@@ -634,7 +697,9 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * Indicates whether there are any timeline comments on the discount.
+     * Whether there are
+     * [timeline comments](https://help.shopify.com/manual/discounts/managing-discount-codes#use-the-discount-timeline)
+     * associated with the discount.
      */
     public Builder hasTimelineComment(boolean hasTimelineComment) {
       this.hasTimelineComment = hasTimelineComment;
@@ -642,7 +707,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * URLs that can be used to share the discount.
+     * A list of URLs that the app can use to share the discount.
      */
     public Builder shareableUrls(List<DiscountShareableUrl> shareableUrls) {
       this.shareableUrls = shareableUrls;
@@ -650,7 +715,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     public Builder startsAt(OffsetDateTime startsAt) {
       this.startsAt = startsAt;
@@ -658,7 +723,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * The status of the discount.
+     * The status of the discount that describes its availability,
+     * expiration, or pending activation.
      */
     public Builder status(DiscountStatus status) {
       this.status = status;
@@ -666,7 +732,9 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * A detailed summary of the discount.
+     * A detailed explanation of what the discount is,
+     * who can use it, when and where it applies, and any associated
+     * rules or limitations.
      */
     public Builder summary(String summary) {
       this.summary = summary;
@@ -674,7 +742,7 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     public Builder title(String title) {
       this.title = title;
@@ -698,7 +766,8 @@ public class DiscountCodeBxgy implements Discount, DiscountCode {
     }
 
     /**
-     * The maximum number of times that the discount can be used.
+     * The maximum number of times that a customer can use the discount.
+     * For discounts with unlimited usage, specify `null`.
      */
     public Builder usageLimit(Integer usageLimit) {
       this.usageLimit = usageLimit;

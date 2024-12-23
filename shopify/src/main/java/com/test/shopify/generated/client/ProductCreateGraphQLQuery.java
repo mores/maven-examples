@@ -2,7 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
 import com.test.shopify.generated.types.CreateMediaInput;
-import com.test.shopify.generated.types.ProductInput;
+import com.test.shopify.generated.types.ProductCreateInput;
 import java.lang.Override;
 import java.lang.String;
 import java.util.HashSet;
@@ -16,11 +16,11 @@ import java.util.Set;
  * and [adding product data](https://shopify.dev/docs/apps/build/graphql/migrate/new-product-model/add-data).
  */
 public class ProductCreateGraphQLQuery extends GraphQLQuery {
-  public ProductCreateGraphQLQuery(ProductInput input, List<CreateMediaInput> media,
+  public ProductCreateGraphQLQuery(ProductCreateInput product, List<CreateMediaInput> media,
       String queryName, Set<String> fieldsSet) {
     super("mutation", queryName);
-    if (input != null || fieldsSet.contains("input")) {
-        getInput().put("input", input);
+    if (product != null || fieldsSet.contains("product")) {
+        getInput().put("product", product);
     }if (media != null || fieldsSet.contains("media")) {
         getInput().put("media", media);
     }
@@ -42,23 +42,23 @@ public class ProductCreateGraphQLQuery extends GraphQLQuery {
   public static class Builder {
     private Set<String> fieldsSet = new HashSet<>();
 
-    private ProductInput input;
+    private ProductCreateInput product;
 
     private List<CreateMediaInput> media;
 
     private String queryName;
 
     public ProductCreateGraphQLQuery build() {
-      return new ProductCreateGraphQLQuery(input, media, queryName, fieldsSet);
+      return new ProductCreateGraphQLQuery(product, media, queryName, fieldsSet);
                
     }
 
     /**
      * The properties of the new product.
      */
-    public Builder input(ProductInput input) {
-      this.input = input;
-      this.fieldsSet.add("input");
+    public Builder product(ProductCreateInput product) {
+      this.product = product;
+      this.fieldsSet.add("product");
       return this;
     }
 

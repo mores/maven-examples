@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountCodeAppUpdatePayload {
   /**
-   * The updated code app discount.
+   * The updated discount that the app provides.
    */
   private DiscountCodeApp codeAppDiscount;
 
@@ -24,7 +24,7 @@ public class DiscountCodeAppUpdatePayload {
   }
 
   /**
-   * The updated code app discount.
+   * The updated discount that the app provides.
    */
   public DiscountCodeApp getCodeAppDiscount() {
     return codeAppDiscount;
@@ -70,7 +70,7 @@ public class DiscountCodeAppUpdatePayload {
 
   public static class Builder {
     /**
-     * The updated code app discount.
+     * The updated discount that the app provides.
      */
     private DiscountCodeApp codeAppDiscount;
 
@@ -87,7 +87,7 @@ public class DiscountCodeAppUpdatePayload {
     }
 
     /**
-     * The updated code app discount.
+     * The updated discount that the app provides.
      */
     public Builder codeAppDiscount(DiscountCodeApp codeAppDiscount) {
       this.codeAppDiscount = codeAppDiscount;

@@ -46,6 +46,11 @@ public class DiscountAutomaticAppProjection<PARENT extends BaseSubProjectionNode
      return projection;
   }
 
+  public DiscountAutomaticAppProjection<PARENT, ROOT> appliesOnSubscription() {
+    getFields().put("appliesOnSubscription", null);
+    return this;
+  }
+
   public DiscountAutomaticAppProjection<PARENT, ROOT> asyncUsageCount() {
     getFields().put("asyncUsageCount", null);
     return this;
@@ -63,6 +68,11 @@ public class DiscountAutomaticAppProjection<PARENT extends BaseSubProjectionNode
 
   public DiscountAutomaticAppProjection<PARENT, ROOT> endsAt() {
     getFields().put("endsAt", null);
+    return this;
+  }
+
+  public DiscountAutomaticAppProjection<PARENT, ROOT> recurringCycleLimit() {
+    getFields().put("recurringCycleLimit", null);
     return this;
   }
 

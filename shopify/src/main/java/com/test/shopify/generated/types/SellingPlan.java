@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class SellingPlan implements com.test.shopify.generated.types.HasPublishedTranslations, com.test.shopify.generated.types.Node {
+public class SellingPlan implements com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.HasPublishedTranslations, com.test.shopify.generated.types.Node {
   /**
    * A selling plan policy which describes the recurring billing details.
    */
@@ -57,6 +57,24 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
   private SellingPlanInventoryPolicy inventoryPolicy;
 
   /**
+   * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+   * including its `namespace` and `key`, that's associated with a Shopify resource
+   * for the purposes of adding and storing additional information.
+   */
+  private Metafield metafield;
+
+  /**
+   * List of metafield definitions.
+   */
+  private MetafieldDefinitionConnection metafieldDefinitions;
+
+  /**
+   * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+   * that a merchant associates with a Shopify resource.
+   */
+  private MetafieldConnection metafields;
+
+  /**
    * A customer-facing description of the selling plan.
    *   
    * If your store supports multiple currencies, then don't include
@@ -81,6 +99,16 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
    * Selling plan pricing details.
    */
   private List<SellingPlanPricingPolicy> pricingPolicies;
+
+  /**
+   * Returns a private metafield by namespace and key that belongs to the resource.
+   */
+  private PrivateMetafield privateMetafield;
+
+  /**
+   * List of private metafields that belong to the resource.
+   */
+  private PrivateMetafieldConnection privateMetafields;
 
   /**
    * The published translations associated with the resource.
@@ -168,6 +196,42 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
   }
 
   /**
+   * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+   * including its `namespace` and `key`, that's associated with a Shopify resource
+   * for the purposes of adding and storing additional information.
+   */
+  public Metafield getMetafield() {
+    return metafield;
+  }
+
+  public void setMetafield(Metafield metafield) {
+    this.metafield = metafield;
+  }
+
+  /**
+   * List of metafield definitions.
+   */
+  public MetafieldDefinitionConnection getMetafieldDefinitions() {
+    return metafieldDefinitions;
+  }
+
+  public void setMetafieldDefinitions(MetafieldDefinitionConnection metafieldDefinitions) {
+    this.metafieldDefinitions = metafieldDefinitions;
+  }
+
+  /**
+   * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+   * that a merchant associates with a Shopify resource.
+   */
+  public MetafieldConnection getMetafields() {
+    return metafields;
+  }
+
+  public void setMetafields(MetafieldConnection metafields) {
+    this.metafields = metafields;
+  }
+
+  /**
    * A customer-facing description of the selling plan.
    *   
    * If your store supports multiple currencies, then don't include
@@ -218,6 +282,28 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
   }
 
   /**
+   * Returns a private metafield by namespace and key that belongs to the resource.
+   */
+  public PrivateMetafield getPrivateMetafield() {
+    return privateMetafield;
+  }
+
+  public void setPrivateMetafield(PrivateMetafield privateMetafield) {
+    this.privateMetafield = privateMetafield;
+  }
+
+  /**
+   * List of private metafields that belong to the resource.
+   */
+  public PrivateMetafieldConnection getPrivateMetafields() {
+    return privateMetafields;
+  }
+
+  public void setPrivateMetafields(PrivateMetafieldConnection privateMetafields) {
+    this.privateMetafields = privateMetafields;
+  }
+
+  /**
    * The published translations associated with the resource.
    */
   public List<Translation> getTranslations() {
@@ -230,7 +316,7 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
 
   @Override
   public String toString() {
-    return "SellingPlan{billingPolicy='" + billingPolicy + "', category='" + category + "', createdAt='" + createdAt + "', deliveryPolicy='" + deliveryPolicy + "', description='" + description + "', id='" + id + "', inventoryPolicy='" + inventoryPolicy + "', name='" + name + "', options='" + options + "', position='" + position + "', pricingPolicies='" + pricingPolicies + "', translations='" + translations + "'}";
+    return "SellingPlan{billingPolicy='" + billingPolicy + "', category='" + category + "', createdAt='" + createdAt + "', deliveryPolicy='" + deliveryPolicy + "', description='" + description + "', id='" + id + "', inventoryPolicy='" + inventoryPolicy + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', options='" + options + "', position='" + position + "', pricingPolicies='" + pricingPolicies + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', translations='" + translations + "'}";
   }
 
   @Override
@@ -245,16 +331,21 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
         Objects.equals(description, that.description) &&
         Objects.equals(id, that.id) &&
         Objects.equals(inventoryPolicy, that.inventoryPolicy) &&
+        Objects.equals(metafield, that.metafield) &&
+        Objects.equals(metafieldDefinitions, that.metafieldDefinitions) &&
+        Objects.equals(metafields, that.metafields) &&
         Objects.equals(name, that.name) &&
         Objects.equals(options, that.options) &&
         Objects.equals(position, that.position) &&
         Objects.equals(pricingPolicies, that.pricingPolicies) &&
+        Objects.equals(privateMetafield, that.privateMetafield) &&
+        Objects.equals(privateMetafields, that.privateMetafields) &&
         Objects.equals(translations, that.translations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(billingPolicy, category, createdAt, deliveryPolicy, description, id, inventoryPolicy, name, options, position, pricingPolicies, translations);
+    return Objects.hash(billingPolicy, category, createdAt, deliveryPolicy, description, id, inventoryPolicy, metafield, metafieldDefinitions, metafields, name, options, position, pricingPolicies, privateMetafield, privateMetafields, translations);
   }
 
   public static Builder newBuilder() {
@@ -298,6 +389,24 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
     private SellingPlanInventoryPolicy inventoryPolicy;
 
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     */
+    private Metafield metafield;
+
+    /**
+     * List of metafield definitions.
+     */
+    private MetafieldDefinitionConnection metafieldDefinitions;
+
+    /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     */
+    private MetafieldConnection metafields;
+
+    /**
      * A customer-facing description of the selling plan.
      *   
      * If your store supports multiple currencies, then don't include
@@ -324,6 +433,16 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
     private List<SellingPlanPricingPolicy> pricingPolicies;
 
     /**
+     * Returns a private metafield by namespace and key that belongs to the resource.
+     */
+    private PrivateMetafield privateMetafield;
+
+    /**
+     * List of private metafields that belong to the resource.
+     */
+    private PrivateMetafieldConnection privateMetafields;
+
+    /**
      * The published translations associated with the resource.
      */
     private List<Translation> translations;
@@ -337,10 +456,15 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
       result.description = this.description;
       result.id = this.id;
       result.inventoryPolicy = this.inventoryPolicy;
+      result.metafield = this.metafield;
+      result.metafieldDefinitions = this.metafieldDefinitions;
+      result.metafields = this.metafields;
       result.name = this.name;
       result.options = this.options;
       result.position = this.position;
       result.pricingPolicies = this.pricingPolicies;
+      result.privateMetafield = this.privateMetafield;
+      result.privateMetafields = this.privateMetafields;
       result.translations = this.translations;
       return result;
     }
@@ -402,6 +526,33 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
     }
 
     /**
+     * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
+     * including its `namespace` and `key`, that's associated with a Shopify resource
+     * for the purposes of adding and storing additional information.
+     */
+    public Builder metafield(Metafield metafield) {
+      this.metafield = metafield;
+      return this;
+    }
+
+    /**
+     * List of metafield definitions.
+     */
+    public Builder metafieldDefinitions(MetafieldDefinitionConnection metafieldDefinitions) {
+      this.metafieldDefinitions = metafieldDefinitions;
+      return this;
+    }
+
+    /**
+     * A list of [custom fields](https://shopify.dev/docs/apps/build/custom-data)
+     * that a merchant associates with a Shopify resource.
+     */
+    public Builder metafields(MetafieldConnection metafields) {
+      this.metafields = metafields;
+      return this;
+    }
+
+    /**
      * A customer-facing description of the selling plan.
      *   
      * If your store supports multiple currencies, then don't include
@@ -436,6 +587,22 @@ public class SellingPlan implements com.test.shopify.generated.types.HasPublishe
      */
     public Builder pricingPolicies(List<SellingPlanPricingPolicy> pricingPolicies) {
       this.pricingPolicies = pricingPolicies;
+      return this;
+    }
+
+    /**
+     * Returns a private metafield by namespace and key that belongs to the resource.
+     */
+    public Builder privateMetafield(PrivateMetafield privateMetafield) {
+      this.privateMetafield = privateMetafield;
+      return this;
+    }
+
+    /**
+     * List of private metafields that belong to the resource.
+     */
+    public Builder privateMetafields(PrivateMetafieldConnection privateMetafields) {
+      this.privateMetafields = privateMetafields;
       return this;
     }
 

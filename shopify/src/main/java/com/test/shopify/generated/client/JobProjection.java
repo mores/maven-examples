@@ -12,8 +12,8 @@ public class JobProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT exte
     return this;
   }
 
-  public QueryRootProjection<JobProjection<PARENT, ROOT>, ROOT> query() {
-     QueryRootProjection<JobProjection<PARENT, ROOT>, ROOT> projection = new QueryRootProjection<>(this, getRoot());
+  public QueryProjection<JobProjection<PARENT, ROOT>, ROOT> query() {
+     QueryProjection<JobProjection<PARENT, ROOT>, ROOT> projection = new QueryProjection<>(this, getRoot());
      getFields().put("query", projection);
      return projection;
   }

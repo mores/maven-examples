@@ -82,6 +82,12 @@ public class PriceRuleProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROO
     return projection;
   }
 
+  public CountProjection<PriceRuleProjection<PARENT, ROOT>, ROOT> discountCodesCount() {
+     CountProjection<PriceRuleProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("discountCodesCount", projection);
+     return projection;
+  }
+
   public PriceRuleEntitlementToPrerequisiteQuantityRatioProjection<PriceRuleProjection<PARENT, ROOT>, ROOT> entitlementToPrerequisiteQuantityRatio(
       ) {
      PriceRuleEntitlementToPrerequisiteQuantityRatioProjection<PriceRuleProjection<PARENT, ROOT>, ROOT> projection = new PriceRuleEntitlementToPrerequisiteQuantityRatioProjection<>(this, getRoot());
@@ -229,11 +235,6 @@ public class PriceRuleProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROO
 
   public PriceRuleProjection<PARENT, ROOT> createdAt() {
     getFields().put("createdAt", null);
-    return this;
-  }
-
-  public PriceRuleProjection<PARENT, ROOT> discountCodesCount() {
-    getFields().put("discountCodesCount", null);
     return this;
   }
 

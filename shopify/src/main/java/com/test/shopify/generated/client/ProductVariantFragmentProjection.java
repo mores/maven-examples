@@ -3,6 +3,7 @@ package com.test.shopify.generated.client;
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
 import com.test.shopify.generated.types.ContextualPricingContext;
 import com.test.shopify.generated.types.CurrencyCode;
+import com.test.shopify.generated.types.EventSortKeys;
 import com.test.shopify.generated.types.MetafieldDefinitionPinnedStatus;
 import com.test.shopify.generated.types.MetafieldDefinitionSortKeys;
 import java.lang.Boolean;
@@ -50,18 +51,33 @@ public class ProductVariantFragmentProjection<PARENT extends BaseSubProjectionNo
      return projection;
   }
 
-  public FulfillmentServiceProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> fulfillmentService(
-      ) {
-     FulfillmentServiceProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new FulfillmentServiceProjection<>(this, getRoot());
-     getFields().put("fulfillmentService", projection);
+  public EventConnectionProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> events() {
+     EventConnectionProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new EventConnectionProjection<>(this, getRoot());
+     getFields().put("events", projection);
      return projection;
   }
 
-  public EditablePropertyProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> fulfillmentServiceEditable(
-      ) {
-     EditablePropertyProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new EditablePropertyProjection<>(this, getRoot());
-     getFields().put("fulfillmentServiceEditable", projection);
-     return projection;
+  public EventConnectionProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> events(
+      Integer first, String after, Integer last, String before, Boolean reverse,
+      EventSortKeys sortKey, String query) {
+    EventConnectionProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new EventConnectionProjection<>(this, getRoot());    
+    getFields().put("events", projection);
+    getInputArguments().computeIfAbsent("events", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("events").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("events").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("events").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("events").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("events").add(reverseArg);
+    InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
+    getInputArguments().get("events").add(sortKeyArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("events").add(queryArg);
+    return projection;
   }
 
   public ImageProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> image() {
@@ -74,13 +90,6 @@ public class ProductVariantFragmentProjection<PARENT extends BaseSubProjectionNo
       ) {
      InventoryItemProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new InventoryItemProjection<>(this, getRoot());
      getFields().put("inventoryItem", projection);
-     return projection;
-  }
-
-  public ProductVariantInventoryManagementProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> inventoryManagement(
-      ) {
-     ProductVariantInventoryManagementProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new ProductVariantInventoryManagementProjection<>(this, getRoot());
-     getFields().put("inventoryManagement", projection);
      return projection;
   }
 
@@ -335,6 +344,13 @@ public class ProductVariantFragmentProjection<PARENT extends BaseSubProjectionNo
     return projection;
   }
 
+  public CountProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> sellingPlanGroupsCount(
+      ) {
+     CountProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("sellingPlanGroupsCount", projection);
+     return projection;
+  }
+
   public TranslationProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> translations(
       ) {
      TranslationProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new TranslationProjection<>(this, getRoot());
@@ -354,9 +370,10 @@ public class ProductVariantFragmentProjection<PARENT extends BaseSubProjectionNo
     return projection;
   }
 
-  public WeightUnitProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> weightUnit() {
-     WeightUnitProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new WeightUnitProjection<>(this, getRoot());
-     getFields().put("weightUnit", projection);
+  public UnitPriceMeasurementProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> unitPriceMeasurement(
+      ) {
+     UnitPriceMeasurementProjection<ProductVariantFragmentProjection<PARENT, ROOT>, ROOT> projection = new UnitPriceMeasurementProjection<>(this, getRoot());
+     getFields().put("unitPriceMeasurement", projection);
      return projection;
   }
 
@@ -390,11 +407,6 @@ public class ProductVariantFragmentProjection<PARENT extends BaseSubProjectionNo
     return this;
   }
 
-  public ProductVariantFragmentProjection<PARENT, ROOT> harmonizedSystemCode() {
-    getFields().put("harmonizedSystemCode", null);
-    return this;
-  }
-
   public ProductVariantFragmentProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
     return this;
@@ -422,11 +434,6 @@ public class ProductVariantFragmentProjection<PARENT extends BaseSubProjectionNo
 
   public ProductVariantFragmentProjection<PARENT, ROOT> requiresComponents() {
     getFields().put("requiresComponents", null);
-    return this;
-  }
-
-  public ProductVariantFragmentProjection<PARENT, ROOT> requiresShipping() {
-    getFields().put("requiresShipping", null);
     return this;
   }
 
@@ -467,11 +474,6 @@ public class ProductVariantFragmentProjection<PARENT extends BaseSubProjectionNo
 
   public ProductVariantFragmentProjection<PARENT, ROOT> updatedAt() {
     getFields().put("updatedAt", null);
-    return this;
-  }
-
-  public ProductVariantFragmentProjection<PARENT, ROOT> weight() {
-    getFields().put("weight", null);
     return this;
   }
 

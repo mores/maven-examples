@@ -16,6 +16,11 @@ public class ProductDeletePayload {
   private String deletedProductId;
 
   /**
+   * The product delete operation, returned when run in asynchronous mode.
+   */
+  private ProductDeleteOperation productDeleteOperation;
+
+  /**
    * The shop associated with the product.
    */
   private Shop shop;
@@ -37,6 +42,17 @@ public class ProductDeletePayload {
 
   public void setDeletedProductId(String deletedProductId) {
     this.deletedProductId = deletedProductId;
+  }
+
+  /**
+   * The product delete operation, returned when run in asynchronous mode.
+   */
+  public ProductDeleteOperation getProductDeleteOperation() {
+    return productDeleteOperation;
+  }
+
+  public void setProductDeleteOperation(ProductDeleteOperation productDeleteOperation) {
+    this.productDeleteOperation = productDeleteOperation;
   }
 
   /**
@@ -63,7 +79,7 @@ public class ProductDeletePayload {
 
   @Override
   public String toString() {
-    return "ProductDeletePayload{deletedProductId='" + deletedProductId + "', shop='" + shop + "', userErrors='" + userErrors + "'}";
+    return "ProductDeletePayload{deletedProductId='" + deletedProductId + "', productDeleteOperation='" + productDeleteOperation + "', shop='" + shop + "', userErrors='" + userErrors + "'}";
   }
 
   @Override
@@ -72,13 +88,14 @@ public class ProductDeletePayload {
     if (o == null || getClass() != o.getClass()) return false;
     ProductDeletePayload that = (ProductDeletePayload) o;
     return Objects.equals(deletedProductId, that.deletedProductId) &&
+        Objects.equals(productDeleteOperation, that.productDeleteOperation) &&
         Objects.equals(shop, that.shop) &&
         Objects.equals(userErrors, that.userErrors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(deletedProductId, shop, userErrors);
+    return Objects.hash(deletedProductId, productDeleteOperation, shop, userErrors);
   }
 
   public static Builder newBuilder() {
@@ -90,6 +107,11 @@ public class ProductDeletePayload {
      * The ID of the deleted product.
      */
     private String deletedProductId;
+
+    /**
+     * The product delete operation, returned when run in asynchronous mode.
+     */
+    private ProductDeleteOperation productDeleteOperation;
 
     /**
      * The shop associated with the product.
@@ -104,6 +126,7 @@ public class ProductDeletePayload {
     public ProductDeletePayload build() {
       ProductDeletePayload result = new ProductDeletePayload();
       result.deletedProductId = this.deletedProductId;
+      result.productDeleteOperation = this.productDeleteOperation;
       result.shop = this.shop;
       result.userErrors = this.userErrors;
       return result;
@@ -114,6 +137,14 @@ public class ProductDeletePayload {
      */
     public Builder deletedProductId(String deletedProductId) {
       this.deletedProductId = deletedProductId;
+      return this;
+    }
+
+    /**
+     * The product delete operation, returned when run in asynchronous mode.
+     */
+    public Builder productDeleteOperation(ProductDeleteOperation productDeleteOperation) {
+      this.productDeleteOperation = productDeleteOperation;
       return this;
     }
 

@@ -19,6 +19,20 @@ public class CalculatedDraftOrderLineItemProjection<PARENT extends BaseSubProjec
      return projection;
   }
 
+  public MoneyBagProjection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> approximateDiscountedUnitPriceSet(
+      ) {
+     MoneyBagProjection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("approximateDiscountedUnitPriceSet", projection);
+     return projection;
+  }
+
+  public CalculatedDraftOrderLineItemProjection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> bundleComponents(
+      ) {
+     CalculatedDraftOrderLineItemProjection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new CalculatedDraftOrderLineItemProjection<>(this, getRoot());
+     getFields().put("bundleComponents", projection);
+     return projection;
+  }
+
   public AttributeProjection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> customAttributes(
       ) {
      AttributeProjection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new AttributeProjection<>(this, getRoot());
@@ -102,6 +116,13 @@ public class CalculatedDraftOrderLineItemProjection<PARENT extends BaseSubProjec
      return projection;
   }
 
+  public MoneyV2Projection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> originalUnitPriceWithCurrency(
+      ) {
+     MoneyV2Projection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new MoneyV2Projection<>(this, getRoot());
+     getFields().put("originalUnitPriceWithCurrency", projection);
+     return projection;
+  }
+
   public ProductProjection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> product() {
      ProductProjection<CalculatedDraftOrderLineItemProjection<PARENT, ROOT>, ROOT> projection = new ProductProjection<>(this, getRoot());
      getFields().put("product", projection);
@@ -172,6 +193,11 @@ public class CalculatedDraftOrderLineItemProjection<PARENT extends BaseSubProjec
 
   public CalculatedDraftOrderLineItemProjection<PARENT, ROOT> title() {
     getFields().put("title", null);
+    return this;
+  }
+
+  public CalculatedDraftOrderLineItemProjection<PARENT, ROOT> uuid() {
+    getFields().put("uuid", null);
     return this;
   }
 

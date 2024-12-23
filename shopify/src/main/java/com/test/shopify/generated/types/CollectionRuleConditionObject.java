@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     property = "__typename"
 )
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = CollectionRuleCategoryCondition.class, name = "CollectionRuleCategoryCondition"),
     @JsonSubTypes.Type(value = CollectionRuleMetafieldCondition.class, name = "CollectionRuleMetafieldCondition"),
     @JsonSubTypes.Type(value = CollectionRuleProductCategoryCondition.class, name = "CollectionRuleProductCategoryCondition"),
     @JsonSubTypes.Type(value = CollectionRuleTextCondition.class, name = "CollectionRuleTextCondition")

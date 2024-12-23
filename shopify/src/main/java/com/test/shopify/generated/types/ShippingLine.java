@@ -1,5 +1,6 @@
 package com.test.shopify.generated.types;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -9,7 +10,10 @@ import java.util.Objects;
 /**
  * Represents the shipping details that the customer chose for their order.
  */
-public class ShippingLine {
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NONE
+)
+public class ShippingLine implements DraftOrderPlatformDiscountAllocationTarget {
   /**
    * A reference to the carrier service that provided the rate.
    * Present when the rate was computed by a third-party carrier service.
@@ -20,6 +24,13 @@ public class ShippingLine {
    * A reference to the shipping method.
    */
   private String code;
+
+  /**
+   * The current shipping price after applying refunds, after applying discounts.
+   * If the parent `order.taxesIncluded`` field is true, then this price includes
+   * taxes. Otherwise, this field is the pre-tax price.
+   */
+  private MoneyBag currentDiscountedPriceSet;
 
   /**
    * Whether the shipping line is custom or not.
@@ -53,6 +64,11 @@ public class ShippingLine {
    * A globally-unique ID.
    */
   private String id;
+
+  /**
+   * Whether the shipping line has been removed.
+   */
+  private boolean isRemoved;
 
   /**
    * The pre-tax shipping price without any discounts applied.
@@ -127,6 +143,19 @@ public class ShippingLine {
   }
 
   /**
+   * The current shipping price after applying refunds, after applying discounts.
+   * If the parent `order.taxesIncluded`` field is true, then this price includes
+   * taxes. Otherwise, this field is the pre-tax price.
+   */
+  public MoneyBag getCurrentDiscountedPriceSet() {
+    return currentDiscountedPriceSet;
+  }
+
+  public void setCurrentDiscountedPriceSet(MoneyBag currentDiscountedPriceSet) {
+    this.currentDiscountedPriceSet = currentDiscountedPriceSet;
+  }
+
+  /**
    * Whether the shipping line is custom or not.
    */
   public boolean getCustom() {
@@ -193,6 +222,17 @@ public class ShippingLine {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  /**
+   * Whether the shipping line has been removed.
+   */
+  public boolean getIsRemoved() {
+    return isRemoved;
+  }
+
+  public void setIsRemoved(boolean isRemoved) {
+    this.isRemoved = isRemoved;
   }
 
   /**
@@ -297,7 +337,7 @@ public class ShippingLine {
 
   @Override
   public String toString() {
-    return "ShippingLine{carrierIdentifier='" + carrierIdentifier + "', code='" + code + "', custom='" + custom + "', deliveryCategory='" + deliveryCategory + "', discountAllocations='" + discountAllocations + "', discountedPrice='" + discountedPrice + "', discountedPriceSet='" + discountedPriceSet + "', id='" + id + "', originalPrice='" + originalPrice + "', originalPriceSet='" + originalPriceSet + "', phone='" + phone + "', price='" + price + "', requestedFulfillmentService='" + requestedFulfillmentService + "', shippingRateHandle='" + shippingRateHandle + "', source='" + source + "', taxLines='" + taxLines + "', title='" + title + "'}";
+    return "ShippingLine{carrierIdentifier='" + carrierIdentifier + "', code='" + code + "', currentDiscountedPriceSet='" + currentDiscountedPriceSet + "', custom='" + custom + "', deliveryCategory='" + deliveryCategory + "', discountAllocations='" + discountAllocations + "', discountedPrice='" + discountedPrice + "', discountedPriceSet='" + discountedPriceSet + "', id='" + id + "', isRemoved='" + isRemoved + "', originalPrice='" + originalPrice + "', originalPriceSet='" + originalPriceSet + "', phone='" + phone + "', price='" + price + "', requestedFulfillmentService='" + requestedFulfillmentService + "', shippingRateHandle='" + shippingRateHandle + "', source='" + source + "', taxLines='" + taxLines + "', title='" + title + "'}";
   }
 
   @Override
@@ -307,12 +347,14 @@ public class ShippingLine {
     ShippingLine that = (ShippingLine) o;
     return Objects.equals(carrierIdentifier, that.carrierIdentifier) &&
         Objects.equals(code, that.code) &&
+        Objects.equals(currentDiscountedPriceSet, that.currentDiscountedPriceSet) &&
         custom == that.custom &&
         Objects.equals(deliveryCategory, that.deliveryCategory) &&
         Objects.equals(discountAllocations, that.discountAllocations) &&
         Objects.equals(discountedPrice, that.discountedPrice) &&
         Objects.equals(discountedPriceSet, that.discountedPriceSet) &&
         Objects.equals(id, that.id) &&
+        isRemoved == that.isRemoved &&
         Objects.equals(originalPrice, that.originalPrice) &&
         Objects.equals(originalPriceSet, that.originalPriceSet) &&
         Objects.equals(phone, that.phone) &&
@@ -326,7 +368,7 @@ public class ShippingLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(carrierIdentifier, code, custom, deliveryCategory, discountAllocations, discountedPrice, discountedPriceSet, id, originalPrice, originalPriceSet, phone, price, requestedFulfillmentService, shippingRateHandle, source, taxLines, title);
+    return Objects.hash(carrierIdentifier, code, currentDiscountedPriceSet, custom, deliveryCategory, discountAllocations, discountedPrice, discountedPriceSet, id, isRemoved, originalPrice, originalPriceSet, phone, price, requestedFulfillmentService, shippingRateHandle, source, taxLines, title);
   }
 
   public static Builder newBuilder() {
@@ -344,6 +386,13 @@ public class ShippingLine {
      * A reference to the shipping method.
      */
     private String code;
+
+    /**
+     * The current shipping price after applying refunds, after applying discounts.
+     * If the parent `order.taxesIncluded`` field is true, then this price includes
+     * taxes. Otherwise, this field is the pre-tax price.
+     */
+    private MoneyBag currentDiscountedPriceSet;
 
     /**
      * Whether the shipping line is custom or not.
@@ -377,6 +426,11 @@ public class ShippingLine {
      * A globally-unique ID.
      */
     private String id;
+
+    /**
+     * Whether the shipping line has been removed.
+     */
+    private boolean isRemoved;
 
     /**
      * The pre-tax shipping price without any discounts applied.
@@ -428,12 +482,14 @@ public class ShippingLine {
       ShippingLine result = new ShippingLine();
       result.carrierIdentifier = this.carrierIdentifier;
       result.code = this.code;
+      result.currentDiscountedPriceSet = this.currentDiscountedPriceSet;
       result.custom = this.custom;
       result.deliveryCategory = this.deliveryCategory;
       result.discountAllocations = this.discountAllocations;
       result.discountedPrice = this.discountedPrice;
       result.discountedPriceSet = this.discountedPriceSet;
       result.id = this.id;
+      result.isRemoved = this.isRemoved;
       result.originalPrice = this.originalPrice;
       result.originalPriceSet = this.originalPriceSet;
       result.phone = this.phone;
@@ -460,6 +516,16 @@ public class ShippingLine {
      */
     public Builder code(String code) {
       this.code = code;
+      return this;
+    }
+
+    /**
+     * The current shipping price after applying refunds, after applying discounts.
+     * If the parent `order.taxesIncluded`` field is true, then this price includes
+     * taxes. Otherwise, this field is the pre-tax price.
+     */
+    public Builder currentDiscountedPriceSet(MoneyBag currentDiscountedPriceSet) {
+      this.currentDiscountedPriceSet = currentDiscountedPriceSet;
       return this;
     }
 
@@ -511,6 +577,14 @@ public class ShippingLine {
      */
     public Builder id(String id) {
       this.id = id;
+      return this;
+    }
+
+    /**
+     * Whether the shipping line has been removed.
+     */
+    public Builder isRemoved(boolean isRemoved) {
+      this.isRemoved = isRemoved;
       return this;
     }
 

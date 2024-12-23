@@ -18,13 +18,6 @@ public class FulfillmentServiceProjection<PARENT extends BaseSubProjectionNode<?
      return projection;
   }
 
-  public ShippingMethodProjection<FulfillmentServiceProjection<PARENT, ROOT>, ROOT> shippingMethods(
-      ) {
-     ShippingMethodProjection<FulfillmentServiceProjection<PARENT, ROOT>, ROOT> projection = new ShippingMethodProjection<>(this, getRoot());
-     getFields().put("shippingMethods", projection);
-     return projection;
-  }
-
   public FulfillmentServiceTypeProjection<FulfillmentServiceProjection<PARENT, ROOT>, ROOT> type() {
      FulfillmentServiceTypeProjection<FulfillmentServiceProjection<PARENT, ROOT>, ROOT> projection = new FulfillmentServiceTypeProjection<>(this, getRoot());
      getFields().put("type", projection);
@@ -61,13 +54,13 @@ public class FulfillmentServiceProjection<PARENT extends BaseSubProjectionNode<?
     return this;
   }
 
-  public FulfillmentServiceProjection<PARENT, ROOT> productBased() {
-    getFields().put("productBased", null);
+  public FulfillmentServiceProjection<PARENT, ROOT> serviceName() {
+    getFields().put("serviceName", null);
     return this;
   }
 
-  public FulfillmentServiceProjection<PARENT, ROOT> serviceName() {
-    getFields().put("serviceName", null);
+  public FulfillmentServiceProjection<PARENT, ROOT> trackingSupport() {
+    getFields().put("trackingSupport", null);
     return this;
   }
 }

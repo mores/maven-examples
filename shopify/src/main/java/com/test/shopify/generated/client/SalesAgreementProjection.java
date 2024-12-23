@@ -88,4 +88,11 @@ public class SalesAgreementProjection<PARENT extends BaseSubProjectionNode<?, ?>
     getFragments().add(fragment);
     return fragment;
   }
+
+  public ReturnAgreementFragmentProjection<SalesAgreementProjection<PARENT, ROOT>, ROOT> onReturnAgreement(
+      ) {
+    ReturnAgreementFragmentProjection<SalesAgreementProjection<PARENT, ROOT>, ROOT> fragment = new ReturnAgreementFragmentProjection<>(this, getRoot());
+    getFragments().add(fragment);
+    return fragment;
+  }
 }

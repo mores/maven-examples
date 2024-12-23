@@ -18,6 +18,13 @@ public class MetafieldAccessProjection<PARENT extends BaseSubProjectionNode<?, ?
      return projection;
   }
 
+  public MetafieldCustomerAccountAccessProjection<MetafieldAccessProjection<PARENT, ROOT>, ROOT> customerAccount(
+      ) {
+     MetafieldCustomerAccountAccessProjection<MetafieldAccessProjection<PARENT, ROOT>, ROOT> projection = new MetafieldCustomerAccountAccessProjection<>(this, getRoot());
+     getFields().put("customerAccount", projection);
+     return projection;
+  }
+
   public MetafieldAccessGrantProjection<MetafieldAccessProjection<PARENT, ROOT>, ROOT> grants() {
      MetafieldAccessGrantProjection<MetafieldAccessProjection<PARENT, ROOT>, ROOT> projection = new MetafieldAccessGrantProjection<>(this, getRoot());
      getFields().put("grants", projection);

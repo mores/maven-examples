@@ -12,6 +12,13 @@ public class ProductDeleteProjectionRoot<PARENT extends BaseSubProjectionNode<?,
     return this;
   }
 
+  public ProductDeleteOperationProjection<ProductDeleteProjectionRoot<PARENT, ROOT>, ProductDeleteProjectionRoot<PARENT, ROOT>> productDeleteOperation(
+      ) {
+    ProductDeleteOperationProjection<ProductDeleteProjectionRoot<PARENT, ROOT>, ProductDeleteProjectionRoot<PARENT, ROOT>> projection = new ProductDeleteOperationProjection<>(this, this);    
+    getFields().put("productDeleteOperation", projection);
+    return projection;
+  }
+
   public ShopProjection<ProductDeleteProjectionRoot<PARENT, ROOT>, ProductDeleteProjectionRoot<PARENT, ROOT>> shop(
       ) {
     ShopProjection<ProductDeleteProjectionRoot<PARENT, ROOT>, ProductDeleteProjectionRoot<PARENT, ROOT>> projection = new ShopProjection<>(this, this);    

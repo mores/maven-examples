@@ -38,6 +38,11 @@ public class TaxLineProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     return this;
   }
 
+  public TaxLineProjection<PARENT, ROOT> source() {
+    getFields().put("source", null);
+    return this;
+  }
+
   public TaxLineProjection<PARENT, ROOT> title() {
     getFields().put("title", null);
     return this;

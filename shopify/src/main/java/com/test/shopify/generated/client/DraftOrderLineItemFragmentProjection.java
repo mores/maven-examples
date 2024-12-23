@@ -25,6 +25,20 @@ public class DraftOrderLineItemFragmentProjection<PARENT extends BaseSubProjecti
      return projection;
   }
 
+  public MoneyBagProjection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> approximateDiscountedUnitPriceSet(
+      ) {
+     MoneyBagProjection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("approximateDiscountedUnitPriceSet", projection);
+     return projection;
+  }
+
+  public DraftOrderLineItemProjection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> bundleComponents(
+      ) {
+     DraftOrderLineItemProjection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new DraftOrderLineItemProjection<>(this, getRoot());
+     getFields().put("bundleComponents", projection);
+     return projection;
+  }
+
   public AttributeProjection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> customAttributes(
       ) {
      AttributeProjection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new AttributeProjection<>(this, getRoot());
@@ -77,6 +91,13 @@ public class DraftOrderLineItemFragmentProjection<PARENT extends BaseSubProjecti
       ) {
      MoneyBagProjection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
      getFields().put("originalUnitPriceSet", projection);
+     return projection;
+  }
+
+  public MoneyV2Projection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> originalUnitPriceWithCurrency(
+      ) {
+     MoneyV2Projection<DraftOrderLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyV2Projection<>(this, getRoot());
+     getFields().put("originalUnitPriceWithCurrency", projection);
      return projection;
   }
 
@@ -184,6 +205,11 @@ public class DraftOrderLineItemFragmentProjection<PARENT extends BaseSubProjecti
 
   public DraftOrderLineItemFragmentProjection<PARENT, ROOT> totalDiscount() {
     getFields().put("totalDiscount", null);
+    return this;
+  }
+
+  public DraftOrderLineItemFragmentProjection<PARENT, ROOT> uuid() {
+    getFields().put("uuid", null);
     return this;
   }
 

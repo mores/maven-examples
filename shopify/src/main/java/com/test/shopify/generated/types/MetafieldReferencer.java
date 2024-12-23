@@ -10,6 +10,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 )
 @JsonSubTypes({
     @JsonSubTypes.Type(value = AppInstallation.class, name = "AppInstallation"),
+    @JsonSubTypes.Type(value = Article.class, name = "Article"),
+    @JsonSubTypes.Type(value = Blog.class, name = "Blog"),
     @JsonSubTypes.Type(value = Collection.class, name = "Collection"),
     @JsonSubTypes.Type(value = Company.class, name = "Company"),
     @JsonSubTypes.Type(value = CompanyLocation.class, name = "CompanyLocation"),
@@ -23,10 +25,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     @JsonSubTypes.Type(value = Location.class, name = "Location"),
     @JsonSubTypes.Type(value = Market.class, name = "Market"),
     @JsonSubTypes.Type(value = Metaobject.class, name = "Metaobject"),
-    @JsonSubTypes.Type(value = OnlineStoreArticle.class, name = "OnlineStoreArticle"),
-    @JsonSubTypes.Type(value = OnlineStoreBlog.class, name = "OnlineStoreBlog"),
-    @JsonSubTypes.Type(value = OnlineStorePage.class, name = "OnlineStorePage"),
     @JsonSubTypes.Type(value = Order.class, name = "Order"),
+    @JsonSubTypes.Type(value = Page.class, name = "Page"),
     @JsonSubTypes.Type(value = PaymentCustomization.class, name = "PaymentCustomization"),
     @JsonSubTypes.Type(value = Product.class, name = "Product"),
     @JsonSubTypes.Type(value = ProductVariant.class, name = "ProductVariant"),

@@ -27,6 +27,13 @@ public class MailingAddressFragmentProjection<PARENT extends BaseSubProjectionNo
      return projection;
   }
 
+  public MailingAddressValidationResultProjection<MailingAddressFragmentProjection<PARENT, ROOT>, ROOT> validationResultSummary(
+      ) {
+     MailingAddressValidationResultProjection<MailingAddressFragmentProjection<PARENT, ROOT>, ROOT> projection = new MailingAddressValidationResultProjection<>(this, getRoot());
+     getFields().put("validationResultSummary", projection);
+     return projection;
+  }
+
   public MailingAddressFragmentProjection<PARENT, ROOT> address1() {
     getFields().put("address1", null);
     return this;

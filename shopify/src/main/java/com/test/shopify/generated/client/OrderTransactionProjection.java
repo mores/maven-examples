@@ -12,6 +12,12 @@ public class OrderTransactionProjection<PARENT extends BaseSubProjectionNode<?, 
     return this;
   }
 
+  public MoneyBagProjection<OrderTransactionProjection<PARENT, ROOT>, ROOT> amountRoundingSet() {
+     MoneyBagProjection<OrderTransactionProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
+     getFields().put("amountRoundingSet", projection);
+     return projection;
+  }
+
   public MoneyBagProjection<OrderTransactionProjection<PARENT, ROOT>, ROOT> amountSet() {
      MoneyBagProjection<OrderTransactionProjection<PARENT, ROOT>, ROOT> projection = new MoneyBagProjection<>(this, getRoot());
      getFields().put("amountSet", projection);
@@ -180,11 +186,6 @@ public class OrderTransactionProjection<PARENT extends BaseSubProjectionNode<?, 
 
   public OrderTransactionProjection<PARENT, ROOT> processedAt() {
     getFields().put("processedAt", null);
-    return this;
-  }
-
-  public OrderTransactionProjection<PARENT, ROOT> receipt() {
-    getFields().put("receipt", null);
     return this;
   }
 

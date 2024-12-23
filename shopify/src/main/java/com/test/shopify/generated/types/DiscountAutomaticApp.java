@@ -8,16 +8,44 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
- * An automatic app discount.
+ * The `DiscountAutomaticApp` object stores information about automatic discounts
+ * that are managed by an app using
+ * [Shopify Functions](https://shopify.dev/docs/apps/build/functions).
+ * Use `DiscountAutomaticApp`when you need advanced, custom, or
+ * dynamic discount capabilities that aren't supported by
+ * [Shopify's native discount types](https://help.shopify.com/manual/discounts/discount-types).
+ *
+ * Learn more about creating
+ * [custom discount functionality](https://shopify.dev/docs/apps/build/discounts/build-discount-function).
+ *
+ * > Note:
+ * > The [`DiscountCodeApp`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCodeApp)
+ * object has similar functionality to the `DiscountAutomaticApp` object, with the exception that `DiscountCodeApp`
+ * stores information about discount codes that are managed by an app using Shopify Functions.
  */
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
 public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
   /**
-   * The app discount type providing the discount type.
+   * The details about the app extension that's providing the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+   * This information includes the app extension's name and
+   * [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets),
+   * [App Bridge configuration](https://shopify.dev/docs/api/app-bridge),
+   * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations),
+   * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries),
+   * and other metadata about the discount type, including the discount type's name and description.
    */
   private AppDiscountType appDiscountType;
+
+  /**
+   * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
+   */
+  private boolean appliesOnSubscription;
 
   /**
    * The number of times that the discount has been used.
@@ -51,7 +79,8 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
   private DiscountClass discountClass;
 
   /**
-   * The ID for the discount.
+   * The [globally-unique ID](https://shopify.dev/docs/api/usage/gids)
+   * for the discount.
    */
   private String discountId;
 
@@ -62,9 +91,18 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
   private OffsetDateTime endsAt;
 
   /**
-   * The error history on the most recent version of the app discount.
+   * The [error history](https://shopify.dev/docs/apps/build/functions/monitoring-and-errors)
+   * for the latest version of the discount type that the app provides.
    */
   private FunctionsErrorHistory errorHistory;
+
+  /**
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
+   */
+  private int recurringCycleLimit;
 
   /**
    * The date and time when the discount becomes active and is available to customers.
@@ -91,7 +129,14 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
   }
 
   /**
-   * The app discount type providing the discount type.
+   * The details about the app extension that's providing the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+   * This information includes the app extension's name and
+   * [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets),
+   * [App Bridge configuration](https://shopify.dev/docs/api/app-bridge),
+   * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations),
+   * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries),
+   * and other metadata about the discount type, including the discount type's name and description.
    */
   public AppDiscountType getAppDiscountType() {
     return appDiscountType;
@@ -99,6 +144,20 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
 
   public void setAppDiscountType(AppDiscountType appDiscountType) {
     this.appDiscountType = appDiscountType;
+  }
+
+  /**
+   * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
+   */
+  public boolean getAppliesOnSubscription() {
+    return appliesOnSubscription;
+  }
+
+  public void setAppliesOnSubscription(boolean appliesOnSubscription) {
+    this.appliesOnSubscription = appliesOnSubscription;
   }
 
   /**
@@ -157,7 +216,8 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
   }
 
   /**
-   * The ID for the discount.
+   * The [globally-unique ID](https://shopify.dev/docs/api/usage/gids)
+   * for the discount.
    */
   public String getDiscountId() {
     return discountId;
@@ -180,7 +240,8 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
   }
 
   /**
-   * The error history on the most recent version of the app discount.
+   * The [error history](https://shopify.dev/docs/apps/build/functions/monitoring-and-errors)
+   * for the latest version of the discount type that the app provides.
    */
   public FunctionsErrorHistory getErrorHistory() {
     return errorHistory;
@@ -188,6 +249,20 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
 
   public void setErrorHistory(FunctionsErrorHistory errorHistory) {
     this.errorHistory = errorHistory;
+  }
+
+  /**
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
+   */
+  public int getRecurringCycleLimit() {
+    return recurringCycleLimit;
+  }
+
+  public void setRecurringCycleLimit(int recurringCycleLimit) {
+    this.recurringCycleLimit = recurringCycleLimit;
   }
 
   /**
@@ -237,7 +312,7 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
 
   @Override
   public String toString() {
-    return "DiscountAutomaticApp{appDiscountType='" + appDiscountType + "', asyncUsageCount='" + asyncUsageCount + "', combinesWith='" + combinesWith + "', createdAt='" + createdAt + "', discountClass='" + discountClass + "', discountId='" + discountId + "', endsAt='" + endsAt + "', errorHistory='" + errorHistory + "', startsAt='" + startsAt + "', status='" + status + "', title='" + title + "', updatedAt='" + updatedAt + "'}";
+    return "DiscountAutomaticApp{appDiscountType='" + appDiscountType + "', appliesOnSubscription='" + appliesOnSubscription + "', asyncUsageCount='" + asyncUsageCount + "', combinesWith='" + combinesWith + "', createdAt='" + createdAt + "', discountClass='" + discountClass + "', discountId='" + discountId + "', endsAt='" + endsAt + "', errorHistory='" + errorHistory + "', recurringCycleLimit='" + recurringCycleLimit + "', startsAt='" + startsAt + "', status='" + status + "', title='" + title + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -246,6 +321,7 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
     if (o == null || getClass() != o.getClass()) return false;
     DiscountAutomaticApp that = (DiscountAutomaticApp) o;
     return Objects.equals(appDiscountType, that.appDiscountType) &&
+        appliesOnSubscription == that.appliesOnSubscription &&
         asyncUsageCount == that.asyncUsageCount &&
         Objects.equals(combinesWith, that.combinesWith) &&
         Objects.equals(createdAt, that.createdAt) &&
@@ -253,6 +329,7 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
         Objects.equals(discountId, that.discountId) &&
         Objects.equals(endsAt, that.endsAt) &&
         Objects.equals(errorHistory, that.errorHistory) &&
+        recurringCycleLimit == that.recurringCycleLimit &&
         Objects.equals(startsAt, that.startsAt) &&
         Objects.equals(status, that.status) &&
         Objects.equals(title, that.title) &&
@@ -261,7 +338,7 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
 
   @Override
   public int hashCode() {
-    return Objects.hash(appDiscountType, asyncUsageCount, combinesWith, createdAt, discountClass, discountId, endsAt, errorHistory, startsAt, status, title, updatedAt);
+    return Objects.hash(appDiscountType, appliesOnSubscription, asyncUsageCount, combinesWith, createdAt, discountClass, discountId, endsAt, errorHistory, recurringCycleLimit, startsAt, status, title, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -270,9 +347,24 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
 
   public static class Builder {
     /**
-     * The app discount type providing the discount type.
+     * The details about the app extension that's providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     * This information includes the app extension's name and
+     * [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets),
+     * [App Bridge configuration](https://shopify.dev/docs/api/app-bridge),
+     * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations),
+     * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries),
+     * and other metadata about the discount type, including the discount type's name and description.
      */
     private AppDiscountType appDiscountType;
+
+    /**
+     * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
+     */
+    private boolean appliesOnSubscription;
 
     /**
      * The number of times that the discount has been used.
@@ -306,7 +398,8 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
     private DiscountClass discountClass;
 
     /**
-     * The ID for the discount.
+     * The [globally-unique ID](https://shopify.dev/docs/api/usage/gids)
+     * for the discount.
      */
     private String discountId;
 
@@ -317,9 +410,18 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
     private OffsetDateTime endsAt;
 
     /**
-     * The error history on the most recent version of the app discount.
+     * The [error history](https://shopify.dev/docs/apps/build/functions/monitoring-and-errors)
+     * for the latest version of the discount type that the app provides.
      */
     private FunctionsErrorHistory errorHistory;
+
+    /**
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
+     */
+    private int recurringCycleLimit;
 
     /**
      * The date and time when the discount becomes active and is available to customers.
@@ -345,6 +447,7 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
     public DiscountAutomaticApp build() {
       DiscountAutomaticApp result = new DiscountAutomaticApp();
       result.appDiscountType = this.appDiscountType;
+      result.appliesOnSubscription = this.appliesOnSubscription;
       result.asyncUsageCount = this.asyncUsageCount;
       result.combinesWith = this.combinesWith;
       result.createdAt = this.createdAt;
@@ -352,6 +455,7 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
       result.discountId = this.discountId;
       result.endsAt = this.endsAt;
       result.errorHistory = this.errorHistory;
+      result.recurringCycleLimit = this.recurringCycleLimit;
       result.startsAt = this.startsAt;
       result.status = this.status;
       result.title = this.title;
@@ -360,10 +464,28 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
     }
 
     /**
-     * The app discount type providing the discount type.
+     * The details about the app extension that's providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
+     * This information includes the app extension's name and
+     * [client ID](https://shopify.dev/docs/apps/build/authentication-authorization/client-secrets),
+     * [App Bridge configuration](https://shopify.dev/docs/api/app-bridge),
+     * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations),
+     * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries),
+     * and other metadata about the discount type, including the discount type's name and description.
      */
     public Builder appDiscountType(AppDiscountType appDiscountType) {
       this.appDiscountType = appDiscountType;
+      return this;
+    }
+
+    /**
+     * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
+     */
+    public Builder appliesOnSubscription(boolean appliesOnSubscription) {
+      this.appliesOnSubscription = appliesOnSubscription;
       return this;
     }
 
@@ -411,7 +533,8 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
     }
 
     /**
-     * The ID for the discount.
+     * The [globally-unique ID](https://shopify.dev/docs/api/usage/gids)
+     * for the discount.
      */
     public Builder discountId(String discountId) {
       this.discountId = discountId;
@@ -428,10 +551,22 @@ public class DiscountAutomaticApp implements Discount, DiscountAutomatic {
     }
 
     /**
-     * The error history on the most recent version of the app discount.
+     * The [error history](https://shopify.dev/docs/apps/build/functions/monitoring-and-errors)
+     * for the latest version of the discount type that the app provides.
      */
     public Builder errorHistory(FunctionsErrorHistory errorHistory) {
       this.errorHistory = errorHistory;
+      return this;
+    }
+
+    /**
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
+     */
+    public Builder recurringCycleLimit(int recurringCycleLimit) {
+      this.recurringCycleLimit = recurringCycleLimit;
       return this;
     }
 

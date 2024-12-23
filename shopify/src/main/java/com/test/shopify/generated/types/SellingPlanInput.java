@@ -42,6 +42,11 @@ public class SellingPlanInput {
   private SellingPlanInventoryPolicyInput inventoryPolicy;
 
   /**
+   * Additional customizable information to associate with the SellingPlan.
+   */
+  private List<MetafieldInput> metafields;
+
+  /**
    * The pricing policies which describe the pricing details. Each selling plan
    * can only contain a maximum of 2 pricing policies.
    */
@@ -134,6 +139,17 @@ public class SellingPlanInput {
   }
 
   /**
+   * Additional customizable information to associate with the SellingPlan.
+   */
+  public List<MetafieldInput> getMetafields() {
+    return metafields;
+  }
+
+  public void setMetafields(List<MetafieldInput> metafields) {
+    this.metafields = metafields;
+  }
+
+  /**
    * The pricing policies which describe the pricing details. Each selling plan
    * can only contain a maximum of 2 pricing policies.
    */
@@ -182,7 +198,7 @@ public class SellingPlanInput {
 
   @Override
   public String toString() {
-    return "SellingPlanInput{id='" + id + "', name='" + name + "', description='" + description + "', billingPolicy='" + billingPolicy + "', deliveryPolicy='" + deliveryPolicy + "', inventoryPolicy='" + inventoryPolicy + "', pricingPolicies='" + pricingPolicies + "', options='" + options + "', position='" + position + "', category='" + category + "'}";
+    return "SellingPlanInput{id='" + id + "', name='" + name + "', description='" + description + "', billingPolicy='" + billingPolicy + "', deliveryPolicy='" + deliveryPolicy + "', inventoryPolicy='" + inventoryPolicy + "', metafields='" + metafields + "', pricingPolicies='" + pricingPolicies + "', options='" + options + "', position='" + position + "', category='" + category + "'}";
   }
 
   @Override
@@ -196,6 +212,7 @@ public class SellingPlanInput {
         Objects.equals(billingPolicy, that.billingPolicy) &&
         Objects.equals(deliveryPolicy, that.deliveryPolicy) &&
         Objects.equals(inventoryPolicy, that.inventoryPolicy) &&
+        Objects.equals(metafields, that.metafields) &&
         Objects.equals(pricingPolicies, that.pricingPolicies) &&
         Objects.equals(options, that.options) &&
         Objects.equals(position, that.position) &&
@@ -204,7 +221,7 @@ public class SellingPlanInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, billingPolicy, deliveryPolicy, inventoryPolicy, pricingPolicies, options, position, category);
+    return Objects.hash(id, name, description, billingPolicy, deliveryPolicy, inventoryPolicy, metafields, pricingPolicies, options, position, category);
   }
 
   public static Builder newBuilder() {
@@ -243,6 +260,11 @@ public class SellingPlanInput {
     private SellingPlanInventoryPolicyInput inventoryPolicy;
 
     /**
+     * Additional customizable information to associate with the SellingPlan.
+     */
+    private List<MetafieldInput> metafields;
+
+    /**
      * The pricing policies which describe the pricing details. Each selling plan
      * can only contain a maximum of 2 pricing policies.
      */
@@ -273,6 +295,7 @@ public class SellingPlanInput {
       result.billingPolicy = this.billingPolicy;
       result.deliveryPolicy = this.deliveryPolicy;
       result.inventoryPolicy = this.inventoryPolicy;
+      result.metafields = this.metafields;
       result.pricingPolicies = this.pricingPolicies;
       result.options = this.options;
       result.position = this.position;
@@ -325,6 +348,14 @@ public class SellingPlanInput {
      */
     public Builder inventoryPolicy(SellingPlanInventoryPolicyInput inventoryPolicy) {
       this.inventoryPolicy = inventoryPolicy;
+      return this;
+    }
+
+    /**
+     * Additional customizable information to associate with the SellingPlan.
+     */
+    public Builder metafields(List<MetafieldInput> metafields) {
+      this.metafields = metafields;
       return this;
     }
 

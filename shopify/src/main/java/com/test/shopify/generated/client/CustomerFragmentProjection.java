@@ -42,6 +42,31 @@ public class CustomerFragmentProjection<PARENT extends BaseSubProjectionNode<?, 
     return projection;
   }
 
+  public MailingAddressConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> addressesV2(
+      ) {
+     MailingAddressConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> projection = new MailingAddressConnectionProjection<>(this, getRoot());
+     getFields().put("addressesV2", projection);
+     return projection;
+  }
+
+  public MailingAddressConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> addressesV2(
+      Integer first, String after, Integer last, String before, Boolean reverse) {
+    MailingAddressConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> projection = new MailingAddressConnectionProjection<>(this, getRoot());    
+    getFields().put("addressesV2", projection);
+    getInputArguments().computeIfAbsent("addressesV2", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("addressesV2").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("addressesV2").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("addressesV2").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("addressesV2").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("addressesV2").add(reverseArg);
+    return projection;
+  }
+
   public MoneyV2Projection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> amountSpent() {
      MoneyV2Projection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> projection = new MoneyV2Projection<>(this, getRoot());
      getFields().put("amountSpent", projection);
@@ -333,6 +358,31 @@ public class CustomerFragmentProjection<PARENT extends BaseSubProjectionNode<?, 
      return projection;
   }
 
+  public StoreCreditAccountConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> storeCreditAccounts(
+      ) {
+     StoreCreditAccountConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> projection = new StoreCreditAccountConnectionProjection<>(this, getRoot());
+     getFields().put("storeCreditAccounts", projection);
+     return projection;
+  }
+
+  public StoreCreditAccountConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> storeCreditAccounts(
+      Integer first, String after, Integer last, String before, String query) {
+    StoreCreditAccountConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> projection = new StoreCreditAccountConnectionProjection<>(this, getRoot());    
+    getFields().put("storeCreditAccounts", projection);
+    getInputArguments().computeIfAbsent("storeCreditAccounts", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("storeCreditAccounts").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("storeCreditAccounts").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("storeCreditAccounts").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("storeCreditAccounts").add(beforeArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("storeCreditAccounts").add(queryArg);
+    return projection;
+  }
+
   public SubscriptionContractConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> subscriptionContracts(
       ) {
      SubscriptionContractConnectionProjection<CustomerFragmentProjection<PARENT, ROOT>, ROOT> projection = new SubscriptionContractConnectionProjection<>(this, getRoot());
@@ -371,6 +421,11 @@ public class CustomerFragmentProjection<PARENT extends BaseSubProjectionNode<?, 
 
   public CustomerFragmentProjection<PARENT, ROOT> createdAt() {
     getFields().put("createdAt", null);
+    return this;
+  }
+
+  public CustomerFragmentProjection<PARENT, ROOT> dataSaleOptOut() {
+    getFields().put("dataSaleOptOut", null);
     return this;
   }
 

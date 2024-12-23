@@ -28,11 +28,6 @@ public class CatalogConnection {
    */
   private PageInfo pageInfo;
 
-  /**
-   * The total count of Catalogs.
-   */
-  private String totalCount;
-
   public CatalogConnection() {
   }
 
@@ -72,20 +67,9 @@ public class CatalogConnection {
     this.pageInfo = pageInfo;
   }
 
-  /**
-   * The total count of Catalogs.
-   */
-  public String getTotalCount() {
-    return totalCount;
-  }
-
-  public void setTotalCount(String totalCount) {
-    this.totalCount = totalCount;
-  }
-
   @Override
   public String toString() {
-    return "CatalogConnection{edges='" + edges + "', nodes='" + nodes + "', pageInfo='" + pageInfo + "', totalCount='" + totalCount + "'}";
+    return "CatalogConnection{edges='" + edges + "', nodes='" + nodes + "', pageInfo='" + pageInfo + "'}";
   }
 
   @Override
@@ -95,13 +79,12 @@ public class CatalogConnection {
     CatalogConnection that = (CatalogConnection) o;
     return Objects.equals(edges, that.edges) &&
         Objects.equals(nodes, that.nodes) &&
-        Objects.equals(pageInfo, that.pageInfo) &&
-        Objects.equals(totalCount, that.totalCount);
+        Objects.equals(pageInfo, that.pageInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(edges, nodes, pageInfo, totalCount);
+    return Objects.hash(edges, nodes, pageInfo);
   }
 
   public static Builder newBuilder() {
@@ -127,17 +110,11 @@ public class CatalogConnection {
      */
     private PageInfo pageInfo;
 
-    /**
-     * The total count of Catalogs.
-     */
-    private String totalCount;
-
     public CatalogConnection build() {
       CatalogConnection result = new CatalogConnection();
       result.edges = this.edges;
       result.nodes = this.nodes;
       result.pageInfo = this.pageInfo;
-      result.totalCount = this.totalCount;
       return result;
     }
 
@@ -165,14 +142,6 @@ public class CatalogConnection {
      */
     public Builder pageInfo(PageInfo pageInfo) {
       this.pageInfo = pageInfo;
-      return this;
-    }
-
-    /**
-     * The total count of Catalogs.
-     */
-    public Builder totalCount(String totalCount) {
-      this.totalCount = totalCount;
       return this;
     }
   }

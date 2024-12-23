@@ -1,6 +1,7 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
+import com.test.shopify.generated.types.DeliveryMethodType;
 import com.test.shopify.generated.types.MetafieldInput;
 import java.lang.Override;
 import java.lang.String;
@@ -13,10 +14,13 @@ import java.util.Set;
  */
 public class FulfillmentConstraintRuleCreateGraphQLQuery extends GraphQLQuery {
   public FulfillmentConstraintRuleCreateGraphQLQuery(String functionId,
-      List<MetafieldInput> metafields, String queryName, Set<String> fieldsSet) {
+      List<DeliveryMethodType> deliveryMethodTypes, List<MetafieldInput> metafields,
+      String queryName, Set<String> fieldsSet) {
     super("mutation", queryName);
     if (functionId != null || fieldsSet.contains("functionId")) {
         getInput().put("functionId", functionId);
+    }if (deliveryMethodTypes != null || fieldsSet.contains("deliveryMethodTypes")) {
+        getInput().put("deliveryMethodTypes", deliveryMethodTypes);
     }if (metafields != null || fieldsSet.contains("metafields")) {
         getInput().put("metafields", metafields);
     }
@@ -40,12 +44,14 @@ public class FulfillmentConstraintRuleCreateGraphQLQuery extends GraphQLQuery {
 
     private String functionId;
 
+    private List<DeliveryMethodType> deliveryMethodTypes;
+
     private List<MetafieldInput> metafields;
 
     private String queryName;
 
     public FulfillmentConstraintRuleCreateGraphQLQuery build() {
-      return new FulfillmentConstraintRuleCreateGraphQLQuery(functionId, metafields, queryName, fieldsSet);
+      return new FulfillmentConstraintRuleCreateGraphQLQuery(functionId, deliveryMethodTypes, metafields, queryName, fieldsSet);
                
     }
 
@@ -55,6 +61,15 @@ public class FulfillmentConstraintRuleCreateGraphQLQuery extends GraphQLQuery {
     public Builder functionId(String functionId) {
       this.functionId = functionId;
       this.fieldsSet.add("functionId");
+      return this;
+    }
+
+    /**
+     * Associate the function with one or multiple delivery method types.
+     */
+    public Builder deliveryMethodTypes(List<DeliveryMethodType> deliveryMethodTypes) {
+      this.deliveryMethodTypes = deliveryMethodTypes;
+      this.fieldsSet.add("deliveryMethodTypes");
       return this;
     }
 

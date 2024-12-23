@@ -215,6 +215,13 @@ public class DraftOrderFragmentProjection<PARENT extends BaseSubProjectionNode<?
      return projection;
   }
 
+  public DraftOrderPlatformDiscountProjection<DraftOrderFragmentProjection<PARENT, ROOT>, ROOT> platformDiscounts(
+      ) {
+     DraftOrderPlatformDiscountProjection<DraftOrderFragmentProjection<PARENT, ROOT>, ROOT> projection = new DraftOrderPlatformDiscountProjection<>(this, getRoot());
+     getFields().put("platformDiscounts", projection);
+     return projection;
+  }
+
   public CurrencyCodeProjection<DraftOrderFragmentProjection<PARENT, ROOT>, ROOT> presentmentCurrencyCode(
       ) {
      CurrencyCodeProjection<DraftOrderFragmentProjection<PARENT, ROOT>, ROOT> projection = new CurrencyCodeProjection<>(this, getRoot());
@@ -338,6 +345,22 @@ public class DraftOrderFragmentProjection<PARENT extends BaseSubProjectionNode<?
      return projection;
   }
 
+  public DraftOrderWarningProjection<DraftOrderFragmentProjection<PARENT, ROOT>, ROOT> warnings() {
+     DraftOrderWarningProjection<DraftOrderFragmentProjection<PARENT, ROOT>, ROOT> projection = new DraftOrderWarningProjection<>(this, getRoot());
+     getFields().put("warnings", projection);
+     return projection;
+  }
+
+  public DraftOrderFragmentProjection<PARENT, ROOT> acceptAutomaticDiscounts() {
+    getFields().put("acceptAutomaticDiscounts", null);
+    return this;
+  }
+
+  public DraftOrderFragmentProjection<PARENT, ROOT> allowDiscountCodesInCheckout() {
+    getFields().put("allowDiscountCodesInCheckout", null);
+    return this;
+  }
+
   public DraftOrderFragmentProjection<PARENT, ROOT> billingAddressMatchesShippingAddress() {
     getFields().put("billingAddressMatchesShippingAddress", null);
     return this;
@@ -355,6 +378,11 @@ public class DraftOrderFragmentProjection<PARENT extends BaseSubProjectionNode<?
 
   public DraftOrderFragmentProjection<PARENT, ROOT> defaultCursor() {
     getFields().put("defaultCursor", null);
+    return this;
+  }
+
+  public DraftOrderFragmentProjection<PARENT, ROOT> discountCodes() {
+    getFields().put("discountCodes", null);
     return this;
   }
 
@@ -453,6 +481,11 @@ public class DraftOrderFragmentProjection<PARENT extends BaseSubProjectionNode<?
     return this;
   }
 
+  public DraftOrderFragmentProjection<PARENT, ROOT> totalQuantityOfLineItems() {
+    getFields().put("totalQuantityOfLineItems", null);
+    return this;
+  }
+
   public DraftOrderFragmentProjection<PARENT, ROOT> totalShippingPrice() {
     getFields().put("totalShippingPrice", null);
     return this;
@@ -465,6 +498,11 @@ public class DraftOrderFragmentProjection<PARENT extends BaseSubProjectionNode<?
 
   public DraftOrderFragmentProjection<PARENT, ROOT> totalWeight() {
     getFields().put("totalWeight", null);
+    return this;
+  }
+
+  public DraftOrderFragmentProjection<PARENT, ROOT> transformerFingerprint() {
+    getFields().put("transformerFingerprint", null);
     return this;
   }
 

@@ -34,6 +34,7 @@ public class FulfillmentOrderHoldInput {
 
   /**
    * The fulfillment order line items to be placed on hold.
+   *   
    * If left blank, all line items of the fulfillment order are placed on hold.
    */
   private List<FulfillmentOrderLineItemInput> fulfillmentOrderLineItems = Collections.emptyList();
@@ -87,6 +88,7 @@ public class FulfillmentOrderHoldInput {
 
   /**
    * The fulfillment order line items to be placed on hold.
+   *   
    * If left blank, all line items of the fulfillment order are placed on hold.
    */
   public List<FulfillmentOrderLineItemInput> getFulfillmentOrderLineItems() {
@@ -147,6 +149,7 @@ public class FulfillmentOrderHoldInput {
 
     /**
      * The fulfillment order line items to be placed on hold.
+     *   
      * If left blank, all line items of the fulfillment order are placed on hold.
      */
     private List<FulfillmentOrderLineItemInput> fulfillmentOrderLineItems = Collections.emptyList();
@@ -195,6 +198,7 @@ public class FulfillmentOrderHoldInput {
 
     /**
      * The fulfillment order line items to be placed on hold.
+     *   
      * If left blank, all line items of the fulfillment order are placed on hold.
      */
     public Builder fulfillmentOrderLineItems(

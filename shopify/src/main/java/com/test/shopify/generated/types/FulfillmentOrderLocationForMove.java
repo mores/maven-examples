@@ -18,7 +18,7 @@ public class FulfillmentOrderLocationForMove {
    * Total number of fulfillment order line items that can be moved from their current assigned location to the
    * given location.
    */
-  private String availableLineItemsCount;
+  private Count availableLineItemsCount;
 
   /**
    * The location being considered as the fulfillment order's new assigned location.
@@ -45,7 +45,7 @@ public class FulfillmentOrderLocationForMove {
    * Total number of fulfillment order line items that can't be moved from their current assigned location to the
    * given location.
    */
-  private String unavailableLineItemsCount;
+  private Count unavailableLineItemsCount;
 
   public FulfillmentOrderLocationForMove() {
   }
@@ -65,11 +65,11 @@ public class FulfillmentOrderLocationForMove {
    * Total number of fulfillment order line items that can be moved from their current assigned location to the
    * given location.
    */
-  public String getAvailableLineItemsCount() {
+  public Count getAvailableLineItemsCount() {
     return availableLineItemsCount;
   }
 
-  public void setAvailableLineItemsCount(String availableLineItemsCount) {
+  public void setAvailableLineItemsCount(Count availableLineItemsCount) {
     this.availableLineItemsCount = availableLineItemsCount;
   }
 
@@ -122,11 +122,11 @@ public class FulfillmentOrderLocationForMove {
    * Total number of fulfillment order line items that can't be moved from their current assigned location to the
    * given location.
    */
-  public String getUnavailableLineItemsCount() {
+  public Count getUnavailableLineItemsCount() {
     return unavailableLineItemsCount;
   }
 
-  public void setUnavailableLineItemsCount(String unavailableLineItemsCount) {
+  public void setUnavailableLineItemsCount(Count unavailableLineItemsCount) {
     this.unavailableLineItemsCount = unavailableLineItemsCount;
   }
 
@@ -168,7 +168,7 @@ public class FulfillmentOrderLocationForMove {
      * Total number of fulfillment order line items that can be moved from their current assigned location to the
      * given location.
      */
-    private String availableLineItemsCount;
+    private Count availableLineItemsCount;
 
     /**
      * The location being considered as the fulfillment order's new assigned location.
@@ -195,7 +195,7 @@ public class FulfillmentOrderLocationForMove {
      * Total number of fulfillment order line items that can't be moved from their current assigned location to the
      * given location.
      */
-    private String unavailableLineItemsCount;
+    private Count unavailableLineItemsCount;
 
     public FulfillmentOrderLocationForMove build() {
       FulfillmentOrderLocationForMove result = new FulfillmentOrderLocationForMove();
@@ -221,7 +221,7 @@ public class FulfillmentOrderLocationForMove {
      * Total number of fulfillment order line items that can be moved from their current assigned location to the
      * given location.
      */
-    public Builder availableLineItemsCount(String availableLineItemsCount) {
+    public Builder availableLineItemsCount(Count availableLineItemsCount) {
       this.availableLineItemsCount = availableLineItemsCount;
       return this;
     }
@@ -263,7 +263,7 @@ public class FulfillmentOrderLocationForMove {
      * Total number of fulfillment order line items that can't be moved from their current assigned location to the
      * given location.
      */
-    public Builder unavailableLineItemsCount(String unavailableLineItemsCount) {
+    public Builder unavailableLineItemsCount(Count unavailableLineItemsCount) {
       this.unavailableLineItemsCount = unavailableLineItemsCount;
       return this;
     }

@@ -22,7 +22,7 @@ public class Job {
   /**
    * This field will only resolve once the job is done. Can be used to ask for object(s) that have been changed by the job.
    */
-  private QueryRoot query;
+  private String query;
 
   public Job() {
   }
@@ -52,11 +52,11 @@ public class Job {
   /**
    * This field will only resolve once the job is done. Can be used to ask for object(s) that have been changed by the job.
    */
-  public QueryRoot getQuery() {
+  public String getQuery() {
     return query;
   }
 
-  public void setQuery(QueryRoot query) {
+  public void setQuery(String query) {
     this.query = query;
   }
 
@@ -98,7 +98,7 @@ public class Job {
     /**
      * This field will only resolve once the job is done. Can be used to ask for object(s) that have been changed by the job.
      */
-    private QueryRoot query;
+    private String query;
 
     public Job build() {
       Job result = new Job();
@@ -127,7 +127,7 @@ public class Job {
     /**
      * This field will only resolve once the job is done. Can be used to ask for object(s) that have been changed by the job.
      */
-    public Builder query(QueryRoot query) {
+    public Builder query(String query) {
       this.query = query;
       return this;
     }

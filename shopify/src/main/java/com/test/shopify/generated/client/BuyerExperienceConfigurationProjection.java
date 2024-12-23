@@ -12,6 +12,13 @@ public class BuyerExperienceConfigurationProjection<PARENT extends BaseSubProjec
     return this;
   }
 
+  public DepositConfigurationProjection<BuyerExperienceConfigurationProjection<PARENT, ROOT>, ROOT> deposit(
+      ) {
+     DepositConfigurationProjection<BuyerExperienceConfigurationProjection<PARENT, ROOT>, ROOT> projection = new DepositConfigurationProjection<>(this, getRoot());
+     getFields().put("deposit", projection);
+     return projection;
+  }
+
   public PaymentTermsTemplateProjection<BuyerExperienceConfigurationProjection<PARENT, ROOT>, ROOT> paymentTermsTemplate(
       ) {
      PaymentTermsTemplateProjection<BuyerExperienceConfigurationProjection<PARENT, ROOT>, ROOT> projection = new PaymentTermsTemplateProjection<>(this, getRoot());

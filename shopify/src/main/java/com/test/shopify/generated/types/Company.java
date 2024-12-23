@@ -30,6 +30,11 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
   private CompanyContactConnection contacts;
 
   /**
+   * The number of contacts that belong to the company.
+   */
+  private Count contactsCount;
+
+  /**
    * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company was created in Shopify.
    */
   private OffsetDateTime createdAt;
@@ -81,14 +86,14 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
   private String lifetimeDuration;
 
   /**
-   * The number of locations that belong to the company.
-   */
-  private int locationCount;
-
-  /**
    * The list of locations in the company.
    */
   private CompanyLocationConnection locations;
+
+  /**
+   * The number of locations that belong to the company.
+   */
+  private Count locationsCount;
 
   /**
    * The main contact for the company.
@@ -124,14 +129,14 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
   private String note;
 
   /**
-   * The total number of orders placed for this company, across all its locations.
-   */
-  private int orderCount;
-
-  /**
    * The list of the company's orders.
    */
   private OrderConnection orders;
+
+  /**
+   * The total number of orders placed for this company, across all its locations.
+   */
+  private Count ordersCount;
 
   /**
    * Returns a private metafield by namespace and key that belongs to the resource.
@@ -187,6 +192,17 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
 
   public void setContacts(CompanyContactConnection contacts) {
     this.contacts = contacts;
+  }
+
+  /**
+   * The number of contacts that belong to the company.
+   */
+  public Count getContactsCount() {
+    return contactsCount;
+  }
+
+  public void setContactsCount(Count contactsCount) {
+    this.contactsCount = contactsCount;
   }
 
   /**
@@ -301,17 +317,6 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
   }
 
   /**
-   * The number of locations that belong to the company.
-   */
-  public int getLocationCount() {
-    return locationCount;
-  }
-
-  public void setLocationCount(int locationCount) {
-    this.locationCount = locationCount;
-  }
-
-  /**
    * The list of locations in the company.
    */
   public CompanyLocationConnection getLocations() {
@@ -320,6 +325,17 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
 
   public void setLocations(CompanyLocationConnection locations) {
     this.locations = locations;
+  }
+
+  /**
+   * The number of locations that belong to the company.
+   */
+  public Count getLocationsCount() {
+    return locationsCount;
+  }
+
+  public void setLocationsCount(Count locationsCount) {
+    this.locationsCount = locationsCount;
   }
 
   /**
@@ -392,17 +408,6 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
   }
 
   /**
-   * The total number of orders placed for this company, across all its locations.
-   */
-  public int getOrderCount() {
-    return orderCount;
-  }
-
-  public void setOrderCount(int orderCount) {
-    this.orderCount = orderCount;
-  }
-
-  /**
    * The list of the company's orders.
    */
   public OrderConnection getOrders() {
@@ -411,6 +416,17 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
 
   public void setOrders(OrderConnection orders) {
     this.orders = orders;
+  }
+
+  /**
+   * The total number of orders placed for this company, across all its locations.
+   */
+  public Count getOrdersCount() {
+    return ordersCount;
+  }
+
+  public void setOrdersCount(Count ordersCount) {
+    this.ordersCount = ordersCount;
   }
 
   /**
@@ -459,7 +475,7 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
 
   @Override
   public String toString() {
-    return "Company{contactCount='" + contactCount + "', contactRoles='" + contactRoles + "', contacts='" + contacts + "', createdAt='" + createdAt + "', customerSince='" + customerSince + "', defaultCursor='" + defaultCursor + "', defaultRole='" + defaultRole + "', draftOrders='" + draftOrders + "', events='" + events + "', externalId='" + externalId + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', lifetimeDuration='" + lifetimeDuration + "', locationCount='" + locationCount + "', locations='" + locations + "', mainContact='" + mainContact + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', note='" + note + "', orderCount='" + orderCount + "', orders='" + orders + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', totalSpent='" + totalSpent + "', updatedAt='" + updatedAt + "'}";
+    return "Company{contactCount='" + contactCount + "', contactRoles='" + contactRoles + "', contacts='" + contacts + "', contactsCount='" + contactsCount + "', createdAt='" + createdAt + "', customerSince='" + customerSince + "', defaultCursor='" + defaultCursor + "', defaultRole='" + defaultRole + "', draftOrders='" + draftOrders + "', events='" + events + "', externalId='" + externalId + "', hasTimelineComment='" + hasTimelineComment + "', id='" + id + "', lifetimeDuration='" + lifetimeDuration + "', locations='" + locations + "', locationsCount='" + locationsCount + "', mainContact='" + mainContact + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', name='" + name + "', note='" + note + "', orders='" + orders + "', ordersCount='" + ordersCount + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', totalSpent='" + totalSpent + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -470,6 +486,7 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
     return contactCount == that.contactCount &&
         Objects.equals(contactRoles, that.contactRoles) &&
         Objects.equals(contacts, that.contacts) &&
+        Objects.equals(contactsCount, that.contactsCount) &&
         Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(customerSince, that.customerSince) &&
         Objects.equals(defaultCursor, that.defaultCursor) &&
@@ -480,16 +497,16 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
         hasTimelineComment == that.hasTimelineComment &&
         Objects.equals(id, that.id) &&
         Objects.equals(lifetimeDuration, that.lifetimeDuration) &&
-        locationCount == that.locationCount &&
         Objects.equals(locations, that.locations) &&
+        Objects.equals(locationsCount, that.locationsCount) &&
         Objects.equals(mainContact, that.mainContact) &&
         Objects.equals(metafield, that.metafield) &&
         Objects.equals(metafieldDefinitions, that.metafieldDefinitions) &&
         Objects.equals(metafields, that.metafields) &&
         Objects.equals(name, that.name) &&
         Objects.equals(note, that.note) &&
-        orderCount == that.orderCount &&
         Objects.equals(orders, that.orders) &&
+        Objects.equals(ordersCount, that.ordersCount) &&
         Objects.equals(privateMetafield, that.privateMetafield) &&
         Objects.equals(privateMetafields, that.privateMetafields) &&
         Objects.equals(totalSpent, that.totalSpent) &&
@@ -498,7 +515,7 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactCount, contactRoles, contacts, createdAt, customerSince, defaultCursor, defaultRole, draftOrders, events, externalId, hasTimelineComment, id, lifetimeDuration, locationCount, locations, mainContact, metafield, metafieldDefinitions, metafields, name, note, orderCount, orders, privateMetafield, privateMetafields, totalSpent, updatedAt);
+    return Objects.hash(contactCount, contactRoles, contacts, contactsCount, createdAt, customerSince, defaultCursor, defaultRole, draftOrders, events, externalId, hasTimelineComment, id, lifetimeDuration, locations, locationsCount, mainContact, metafield, metafieldDefinitions, metafields, name, note, orders, ordersCount, privateMetafield, privateMetafields, totalSpent, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -520,6 +537,11 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
      * The list of contacts in the company.
      */
     private CompanyContactConnection contacts;
+
+    /**
+     * The number of contacts that belong to the company.
+     */
+    private Count contactsCount;
 
     /**
      * The date and time ([ISO 8601 format](http://en.wikipedia.org/wiki/ISO_8601)) at which the company was created in Shopify.
@@ -573,14 +595,14 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
     private String lifetimeDuration;
 
     /**
-     * The number of locations that belong to the company.
-     */
-    private int locationCount;
-
-    /**
      * The list of locations in the company.
      */
     private CompanyLocationConnection locations;
+
+    /**
+     * The number of locations that belong to the company.
+     */
+    private Count locationsCount;
 
     /**
      * The main contact for the company.
@@ -616,14 +638,14 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
     private String note;
 
     /**
-     * The total number of orders placed for this company, across all its locations.
-     */
-    private int orderCount;
-
-    /**
      * The list of the company's orders.
      */
     private OrderConnection orders;
+
+    /**
+     * The total number of orders placed for this company, across all its locations.
+     */
+    private Count ordersCount;
 
     /**
      * Returns a private metafield by namespace and key that belongs to the resource.
@@ -650,6 +672,7 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
       result.contactCount = this.contactCount;
       result.contactRoles = this.contactRoles;
       result.contacts = this.contacts;
+      result.contactsCount = this.contactsCount;
       result.createdAt = this.createdAt;
       result.customerSince = this.customerSince;
       result.defaultCursor = this.defaultCursor;
@@ -660,16 +683,16 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
       result.hasTimelineComment = this.hasTimelineComment;
       result.id = this.id;
       result.lifetimeDuration = this.lifetimeDuration;
-      result.locationCount = this.locationCount;
       result.locations = this.locations;
+      result.locationsCount = this.locationsCount;
       result.mainContact = this.mainContact;
       result.metafield = this.metafield;
       result.metafieldDefinitions = this.metafieldDefinitions;
       result.metafields = this.metafields;
       result.name = this.name;
       result.note = this.note;
-      result.orderCount = this.orderCount;
       result.orders = this.orders;
+      result.ordersCount = this.ordersCount;
       result.privateMetafield = this.privateMetafield;
       result.privateMetafields = this.privateMetafields;
       result.totalSpent = this.totalSpent;
@@ -698,6 +721,14 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
      */
     public Builder contacts(CompanyContactConnection contacts) {
       this.contacts = contacts;
+      return this;
+    }
+
+    /**
+     * The number of contacts that belong to the company.
+     */
+    public Builder contactsCount(Count contactsCount) {
+      this.contactsCount = contactsCount;
       return this;
     }
 
@@ -783,18 +814,18 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
     }
 
     /**
-     * The number of locations that belong to the company.
-     */
-    public Builder locationCount(int locationCount) {
-      this.locationCount = locationCount;
-      return this;
-    }
-
-    /**
      * The list of locations in the company.
      */
     public Builder locations(CompanyLocationConnection locations) {
       this.locations = locations;
+      return this;
+    }
+
+    /**
+     * The number of locations that belong to the company.
+     */
+    public Builder locationsCount(Count locationsCount) {
+      this.locationsCount = locationsCount;
       return this;
     }
 
@@ -850,18 +881,18 @@ public class Company implements MetafieldReference, MetafieldReferencer, com.tes
     }
 
     /**
-     * The total number of orders placed for this company, across all its locations.
-     */
-    public Builder orderCount(int orderCount) {
-      this.orderCount = orderCount;
-      return this;
-    }
-
-    /**
      * The list of the company's orders.
      */
     public Builder orders(OrderConnection orders) {
       this.orders = orders;
+      return this;
+    }
+
+    /**
+     * The total number of orders placed for this company, across all its locations.
+     */
+    public Builder ordersCount(Count ordersCount) {
+      this.ordersCount = ordersCount;
       return this;
     }
 

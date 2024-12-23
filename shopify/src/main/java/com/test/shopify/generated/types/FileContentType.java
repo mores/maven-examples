@@ -8,5 +8,9 @@ public enum FileContentType {
 
   FILE,
 
-  VIDEO
+  VIDEO,
+
+  EXTERNAL_VIDEO,
+
+  MODEL_3D
 }

@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Deletes a code discount.
+ * Deletes a
+ * [code discount](https://help.shopify.com/manual/discounts/discount-types#discount-codes).
  */
 public class DiscountCodeDeleteGraphQLQuery extends GraphQLQuery {
   public DiscountCodeDeleteGraphQLQuery(String id, String queryName, Set<String> fieldsSet) {

@@ -1,10 +1,12 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.GraphQLQuery;
+import com.test.shopify.generated.types.MetafieldInput;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,12 +14,14 @@ import java.util.Set;
  */
 public class CartTransformCreateGraphQLQuery extends GraphQLQuery {
   public CartTransformCreateGraphQLQuery(String functionId, Boolean blockOnFailure,
-      String queryName, Set<String> fieldsSet) {
+      List<MetafieldInput> metafields, String queryName, Set<String> fieldsSet) {
     super("mutation", queryName);
     if (functionId != null || fieldsSet.contains("functionId")) {
         getInput().put("functionId", functionId);
     }if (blockOnFailure != null || fieldsSet.contains("blockOnFailure")) {
         getInput().put("blockOnFailure", blockOnFailure);
+    }if (metafields != null || fieldsSet.contains("metafields")) {
+        getInput().put("metafields", metafields);
     }
   }
 
@@ -41,10 +45,12 @@ public class CartTransformCreateGraphQLQuery extends GraphQLQuery {
 
     private Boolean blockOnFailure;
 
+    private List<MetafieldInput> metafields;
+
     private String queryName;
 
     public CartTransformCreateGraphQLQuery build() {
-      return new CartTransformCreateGraphQLQuery(functionId, blockOnFailure, queryName, fieldsSet);
+      return new CartTransformCreateGraphQLQuery(functionId, blockOnFailure, metafields, queryName, fieldsSet);
                
     }
 
@@ -63,6 +69,15 @@ public class CartTransformCreateGraphQLQuery extends GraphQLQuery {
     public Builder blockOnFailure(Boolean blockOnFailure) {
       this.blockOnFailure = blockOnFailure;
       this.fieldsSet.add("blockOnFailure");
+      return this;
+    }
+
+    /**
+     * Additional metafields to associate to the cart transform.
+     */
+    public Builder metafields(List<MetafieldInput> metafields) {
+      this.metafields = metafields;
+      this.fieldsSet.add("metafields");
       return this;
     }
 

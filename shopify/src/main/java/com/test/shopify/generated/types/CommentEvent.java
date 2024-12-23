@@ -17,6 +17,11 @@ import java.util.Objects;
 )
 public class CommentEvent implements com.test.shopify.generated.types.Event, com.test.shopify.generated.types.Node {
   /**
+   * The action that occured.
+   */
+  private String action;
+
+  /**
    * The name of the app that created the event.
    */
   private String appTitle;
@@ -92,6 +97,17 @@ public class CommentEvent implements com.test.shopify.generated.types.Event, com
   private CommentEventSubject subject;
 
   public CommentEvent() {
+  }
+
+  /**
+   * The action that occured.
+   */
+  public String getAction() {
+    return action;
+  }
+
+  public void setAction(String action) {
+    this.action = action;
   }
 
   /**
@@ -261,7 +277,7 @@ public class CommentEvent implements com.test.shopify.generated.types.Event, com
 
   @Override
   public String toString() {
-    return "CommentEvent{appTitle='" + appTitle + "', attachments='" + attachments + "', attributeToApp='" + attributeToApp + "', attributeToUser='" + attributeToUser + "', author='" + author + "', canDelete='" + canDelete + "', canEdit='" + canEdit + "', createdAt='" + createdAt + "', criticalAlert='" + criticalAlert + "', edited='" + edited + "', embed='" + embed + "', id='" + id + "', message='" + message + "', rawMessage='" + rawMessage + "', subject='" + subject + "'}";
+    return "CommentEvent{action='" + action + "', appTitle='" + appTitle + "', attachments='" + attachments + "', attributeToApp='" + attributeToApp + "', attributeToUser='" + attributeToUser + "', author='" + author + "', canDelete='" + canDelete + "', canEdit='" + canEdit + "', createdAt='" + createdAt + "', criticalAlert='" + criticalAlert + "', edited='" + edited + "', embed='" + embed + "', id='" + id + "', message='" + message + "', rawMessage='" + rawMessage + "', subject='" + subject + "'}";
   }
 
   @Override
@@ -269,7 +285,8 @@ public class CommentEvent implements com.test.shopify.generated.types.Event, com
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     CommentEvent that = (CommentEvent) o;
-    return Objects.equals(appTitle, that.appTitle) &&
+    return Objects.equals(action, that.action) &&
+        Objects.equals(appTitle, that.appTitle) &&
         Objects.equals(attachments, that.attachments) &&
         attributeToApp == that.attributeToApp &&
         attributeToUser == that.attributeToUser &&
@@ -288,7 +305,7 @@ public class CommentEvent implements com.test.shopify.generated.types.Event, com
 
   @Override
   public int hashCode() {
-    return Objects.hash(appTitle, attachments, attributeToApp, attributeToUser, author, canDelete, canEdit, createdAt, criticalAlert, edited, embed, id, message, rawMessage, subject);
+    return Objects.hash(action, appTitle, attachments, attributeToApp, attributeToUser, author, canDelete, canEdit, createdAt, criticalAlert, edited, embed, id, message, rawMessage, subject);
   }
 
   public static Builder newBuilder() {
@@ -296,6 +313,11 @@ public class CommentEvent implements com.test.shopify.generated.types.Event, com
   }
 
   public static class Builder {
+    /**
+     * The action that occured.
+     */
+    private String action;
+
     /**
      * The name of the app that created the event.
      */
@@ -373,6 +395,7 @@ public class CommentEvent implements com.test.shopify.generated.types.Event, com
 
     public CommentEvent build() {
       CommentEvent result = new CommentEvent();
+      result.action = this.action;
       result.appTitle = this.appTitle;
       result.attachments = this.attachments;
       result.attributeToApp = this.attributeToApp;
@@ -389,6 +412,14 @@ public class CommentEvent implements com.test.shopify.generated.types.Event, com
       result.rawMessage = this.rawMessage;
       result.subject = this.subject;
       return result;
+    }
+
+    /**
+     * The action that occured.
+     */
+    public Builder action(String action) {
+      this.action = action;
+      return this;
     }
 
     /**

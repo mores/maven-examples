@@ -230,9 +230,19 @@ import java.util.Objects;
 )
 public class DeliveryCarrierService implements com.test.shopify.generated.types.Node {
   /**
+   * Whether the carrier service is active.
+   */
+  private boolean active;
+
+  /**
    * The list of services offered for given destinations.
    */
   private List<DeliveryAvailableService> availableServicesForCountries;
+
+  /**
+   * The URL endpoint that Shopify needs to retrieve shipping rates.
+   */
+  private String callbackUrl;
 
   /**
    * The properly formatted name of the shipping service provider, ready to display.
@@ -254,7 +264,23 @@ public class DeliveryCarrierService implements com.test.shopify.generated.types.
    */
   private String name;
 
+  /**
+   * Whether merchants are able to send dummy data to your service through the Shopify admin to see shipping rate examples.
+   */
+  private boolean supportsServiceDiscovery;
+
   public DeliveryCarrierService() {
+  }
+
+  /**
+   * Whether the carrier service is active.
+   */
+  public boolean getActive() {
+    return active;
+  }
+
+  public void setActive(boolean active) {
+    this.active = active;
   }
 
   /**
@@ -267,6 +293,17 @@ public class DeliveryCarrierService implements com.test.shopify.generated.types.
   public void setAvailableServicesForCountries(
       List<DeliveryAvailableService> availableServicesForCountries) {
     this.availableServicesForCountries = availableServicesForCountries;
+  }
+
+  /**
+   * The URL endpoint that Shopify needs to retrieve shipping rates.
+   */
+  public String getCallbackUrl() {
+    return callbackUrl;
+  }
+
+  public void setCallbackUrl(String callbackUrl) {
+    this.callbackUrl = callbackUrl;
   }
 
   /**
@@ -313,9 +350,20 @@ public class DeliveryCarrierService implements com.test.shopify.generated.types.
     this.name = name;
   }
 
+  /**
+   * Whether merchants are able to send dummy data to your service through the Shopify admin to see shipping rate examples.
+   */
+  public boolean getSupportsServiceDiscovery() {
+    return supportsServiceDiscovery;
+  }
+
+  public void setSupportsServiceDiscovery(boolean supportsServiceDiscovery) {
+    this.supportsServiceDiscovery = supportsServiceDiscovery;
+  }
+
   @Override
   public String toString() {
-    return "DeliveryCarrierService{availableServicesForCountries='" + availableServicesForCountries + "', formattedName='" + formattedName + "', icon='" + icon + "', id='" + id + "', name='" + name + "'}";
+    return "DeliveryCarrierService{active='" + active + "', availableServicesForCountries='" + availableServicesForCountries + "', callbackUrl='" + callbackUrl + "', formattedName='" + formattedName + "', icon='" + icon + "', id='" + id + "', name='" + name + "', supportsServiceDiscovery='" + supportsServiceDiscovery + "'}";
   }
 
   @Override
@@ -323,16 +371,19 @@ public class DeliveryCarrierService implements com.test.shopify.generated.types.
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     DeliveryCarrierService that = (DeliveryCarrierService) o;
-    return Objects.equals(availableServicesForCountries, that.availableServicesForCountries) &&
+    return active == that.active &&
+        Objects.equals(availableServicesForCountries, that.availableServicesForCountries) &&
+        Objects.equals(callbackUrl, that.callbackUrl) &&
         Objects.equals(formattedName, that.formattedName) &&
         Objects.equals(icon, that.icon) &&
         Objects.equals(id, that.id) &&
-        Objects.equals(name, that.name);
+        Objects.equals(name, that.name) &&
+        supportsServiceDiscovery == that.supportsServiceDiscovery;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(availableServicesForCountries, formattedName, icon, id, name);
+    return Objects.hash(active, availableServicesForCountries, callbackUrl, formattedName, icon, id, name, supportsServiceDiscovery);
   }
 
   public static Builder newBuilder() {
@@ -341,9 +392,19 @@ public class DeliveryCarrierService implements com.test.shopify.generated.types.
 
   public static class Builder {
     /**
+     * Whether the carrier service is active.
+     */
+    private boolean active;
+
+    /**
      * The list of services offered for given destinations.
      */
     private List<DeliveryAvailableService> availableServicesForCountries;
+
+    /**
+     * The URL endpoint that Shopify needs to retrieve shipping rates.
+     */
+    private String callbackUrl;
 
     /**
      * The properly formatted name of the shipping service provider, ready to display.
@@ -365,14 +426,30 @@ public class DeliveryCarrierService implements com.test.shopify.generated.types.
      */
     private String name;
 
+    /**
+     * Whether merchants are able to send dummy data to your service through the Shopify admin to see shipping rate examples.
+     */
+    private boolean supportsServiceDiscovery;
+
     public DeliveryCarrierService build() {
       DeliveryCarrierService result = new DeliveryCarrierService();
+      result.active = this.active;
       result.availableServicesForCountries = this.availableServicesForCountries;
+      result.callbackUrl = this.callbackUrl;
       result.formattedName = this.formattedName;
       result.icon = this.icon;
       result.id = this.id;
       result.name = this.name;
+      result.supportsServiceDiscovery = this.supportsServiceDiscovery;
       return result;
+    }
+
+    /**
+     * Whether the carrier service is active.
+     */
+    public Builder active(boolean active) {
+      this.active = active;
+      return this;
     }
 
     /**
@@ -381,6 +458,14 @@ public class DeliveryCarrierService implements com.test.shopify.generated.types.
     public Builder availableServicesForCountries(
         List<DeliveryAvailableService> availableServicesForCountries) {
       this.availableServicesForCountries = availableServicesForCountries;
+      return this;
+    }
+
+    /**
+     * The URL endpoint that Shopify needs to retrieve shipping rates.
+     */
+    public Builder callbackUrl(String callbackUrl) {
+      this.callbackUrl = callbackUrl;
       return this;
     }
 
@@ -413,6 +498,14 @@ public class DeliveryCarrierService implements com.test.shopify.generated.types.
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * Whether merchants are able to send dummy data to your service through the Shopify admin to see shipping rate examples.
+     */
+    public Builder supportsServiceDiscovery(boolean supportsServiceDiscovery) {
+      this.supportsServiceDiscovery = supportsServiceDiscovery;
       return this;
     }
   }

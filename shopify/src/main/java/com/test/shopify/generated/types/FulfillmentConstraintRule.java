@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,6 +14,11 @@ import java.util.Objects;
     use = JsonTypeInfo.Id.NONE
 )
 public class FulfillmentConstraintRule implements com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.Node {
+  /**
+   * Delivery method types that the function is associated with.
+   */
+  private List<DeliveryMethodType> deliveryMethodTypes;
+
   /**
    * The ID for the fulfillment constraint function.
    */
@@ -47,6 +53,17 @@ public class FulfillmentConstraintRule implements com.test.shopify.generated.typ
   private PrivateMetafieldConnection privateMetafields;
 
   public FulfillmentConstraintRule() {
+  }
+
+  /**
+   * Delivery method types that the function is associated with.
+   */
+  public List<DeliveryMethodType> getDeliveryMethodTypes() {
+    return deliveryMethodTypes;
+  }
+
+  public void setDeliveryMethodTypes(List<DeliveryMethodType> deliveryMethodTypes) {
+    this.deliveryMethodTypes = deliveryMethodTypes;
   }
 
   /**
@@ -120,7 +137,7 @@ public class FulfillmentConstraintRule implements com.test.shopify.generated.typ
 
   @Override
   public String toString() {
-    return "FulfillmentConstraintRule{function='" + function + "', id='" + id + "', metafield='" + metafield + "', metafields='" + metafields + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "'}";
+    return "FulfillmentConstraintRule{deliveryMethodTypes='" + deliveryMethodTypes + "', function='" + function + "', id='" + id + "', metafield='" + metafield + "', metafields='" + metafields + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "'}";
   }
 
   @Override
@@ -128,7 +145,8 @@ public class FulfillmentConstraintRule implements com.test.shopify.generated.typ
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     FulfillmentConstraintRule that = (FulfillmentConstraintRule) o;
-    return Objects.equals(function, that.function) &&
+    return Objects.equals(deliveryMethodTypes, that.deliveryMethodTypes) &&
+        Objects.equals(function, that.function) &&
         Objects.equals(id, that.id) &&
         Objects.equals(metafield, that.metafield) &&
         Objects.equals(metafields, that.metafields) &&
@@ -138,7 +156,7 @@ public class FulfillmentConstraintRule implements com.test.shopify.generated.typ
 
   @Override
   public int hashCode() {
-    return Objects.hash(function, id, metafield, metafields, privateMetafield, privateMetafields);
+    return Objects.hash(deliveryMethodTypes, function, id, metafield, metafields, privateMetafield, privateMetafields);
   }
 
   public static Builder newBuilder() {
@@ -146,6 +164,11 @@ public class FulfillmentConstraintRule implements com.test.shopify.generated.typ
   }
 
   public static class Builder {
+    /**
+     * Delivery method types that the function is associated with.
+     */
+    private List<DeliveryMethodType> deliveryMethodTypes;
+
     /**
      * The ID for the fulfillment constraint function.
      */
@@ -181,6 +204,7 @@ public class FulfillmentConstraintRule implements com.test.shopify.generated.typ
 
     public FulfillmentConstraintRule build() {
       FulfillmentConstraintRule result = new FulfillmentConstraintRule();
+      result.deliveryMethodTypes = this.deliveryMethodTypes;
       result.function = this.function;
       result.id = this.id;
       result.metafield = this.metafield;
@@ -188,6 +212,14 @@ public class FulfillmentConstraintRule implements com.test.shopify.generated.typ
       result.privateMetafield = this.privateMetafield;
       result.privateMetafields = this.privateMetafields;
       return result;
+    }
+
+    /**
+     * Delivery method types that the function is associated with.
+     */
+    public Builder deliveryMethodTypes(List<DeliveryMethodType> deliveryMethodTypes) {
+      this.deliveryMethodTypes = deliveryMethodTypes;
+      return this;
     }
 
     /**

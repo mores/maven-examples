@@ -21,6 +21,11 @@ public class ProductDuplicatePayload {
   private Product newProduct;
 
   /**
+   * The product duplicate operation, returned when run in asynchronous mode.
+   */
+  private ProductDuplicateOperation productDuplicateOperation;
+
+  /**
    * The user's shop.
    */
   private Shop shop;
@@ -56,6 +61,17 @@ public class ProductDuplicatePayload {
   }
 
   /**
+   * The product duplicate operation, returned when run in asynchronous mode.
+   */
+  public ProductDuplicateOperation getProductDuplicateOperation() {
+    return productDuplicateOperation;
+  }
+
+  public void setProductDuplicateOperation(ProductDuplicateOperation productDuplicateOperation) {
+    this.productDuplicateOperation = productDuplicateOperation;
+  }
+
+  /**
    * The user's shop.
    */
   public Shop getShop() {
@@ -79,7 +95,7 @@ public class ProductDuplicatePayload {
 
   @Override
   public String toString() {
-    return "ProductDuplicatePayload{imageJob='" + imageJob + "', newProduct='" + newProduct + "', shop='" + shop + "', userErrors='" + userErrors + "'}";
+    return "ProductDuplicatePayload{imageJob='" + imageJob + "', newProduct='" + newProduct + "', productDuplicateOperation='" + productDuplicateOperation + "', shop='" + shop + "', userErrors='" + userErrors + "'}";
   }
 
   @Override
@@ -89,13 +105,14 @@ public class ProductDuplicatePayload {
     ProductDuplicatePayload that = (ProductDuplicatePayload) o;
     return Objects.equals(imageJob, that.imageJob) &&
         Objects.equals(newProduct, that.newProduct) &&
+        Objects.equals(productDuplicateOperation, that.productDuplicateOperation) &&
         Objects.equals(shop, that.shop) &&
         Objects.equals(userErrors, that.userErrors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(imageJob, newProduct, shop, userErrors);
+    return Objects.hash(imageJob, newProduct, productDuplicateOperation, shop, userErrors);
   }
 
   public static Builder newBuilder() {
@@ -114,6 +131,11 @@ public class ProductDuplicatePayload {
     private Product newProduct;
 
     /**
+     * The product duplicate operation, returned when run in asynchronous mode.
+     */
+    private ProductDuplicateOperation productDuplicateOperation;
+
+    /**
      * The user's shop.
      */
     private Shop shop;
@@ -127,6 +149,7 @@ public class ProductDuplicatePayload {
       ProductDuplicatePayload result = new ProductDuplicatePayload();
       result.imageJob = this.imageJob;
       result.newProduct = this.newProduct;
+      result.productDuplicateOperation = this.productDuplicateOperation;
       result.shop = this.shop;
       result.userErrors = this.userErrors;
       return result;
@@ -145,6 +168,14 @@ public class ProductDuplicatePayload {
      */
     public Builder newProduct(Product newProduct) {
       this.newProduct = newProduct;
+      return this;
+    }
+
+    /**
+     * The product duplicate operation, returned when run in asynchronous mode.
+     */
+    public Builder productDuplicateOperation(ProductDuplicateOperation productDuplicateOperation) {
+      this.productDuplicateOperation = productDuplicateOperation;
       return this;
     }
 

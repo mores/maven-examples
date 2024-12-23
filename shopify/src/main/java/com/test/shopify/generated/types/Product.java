@@ -25,14 +25,14 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class Product implements CommentEventEmbed, MetafieldReference, MetafieldReferencer, com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.HasPublishedTranslations, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Navigable, com.test.shopify.generated.types.Node, com.test.shopify.generated.types.OnlineStorePreviewable, com.test.shopify.generated.types.Publishable {
+public class Product implements CommentEventEmbed, MetafieldReference, MetafieldReferencer, com.test.shopify.generated.types.HasEvents, com.test.shopify.generated.types.HasMetafieldDefinitions, com.test.shopify.generated.types.HasMetafields, com.test.shopify.generated.types.HasPublishedTranslations, com.test.shopify.generated.types.LegacyInteroperability, com.test.shopify.generated.types.Navigable, com.test.shopify.generated.types.Node, com.test.shopify.generated.types.OnlineStorePreviewable, com.test.shopify.generated.types.Publishable {
   /**
    * The number of
    * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
    * that a resource is published to, without
    * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
    */
-  private int availablePublicationCount;
+  private Count availablePublicationsCount;
 
   /**
    * The description of the product, with
@@ -42,10 +42,37 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
   private String bodyHtml;
 
   /**
+   * A list of [components](https://shopify.dev/docs/apps/build/product-merchandising/bundles/add-product-fixed-bundle)
+   * that are associated with a product in a bundle.
+   */
+  private ProductBundleComponentConnection bundleComponents;
+
+  /**
+   * The category of a product
+   * from [Shopify's Standard Product Taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17).
+   */
+  private TaxonomyCategory category;
+
+  /**
    * A list of [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection)
    * that include the product.
    */
   private CollectionConnection collections;
+
+  /**
+   * A special product type that combines separate products from a store into a single product listing.
+   * [Combined listings](https://shopify.dev/apps/build/product-merchandising/combined-listings) are connected
+   * by a shared option, such as color, model, or dimension.
+   */
+  private CombinedListing combinedListing;
+
+  /**
+   * The [role of the product](https://shopify.dev/docs/apps/build/product-merchandising/combined-listings/build-for-combined-listings)
+   * in a combined listing.
+   *   
+   * If `null`, then the product isn't part of any combined listing.
+   */
+  private CombinedListingsRole combinedListingRole;
 
   /**
    * The [compare-at price range](https://help.shopify.com/manual/products/details/product-pricing/sale-pricing)
@@ -93,6 +120,11 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
    * Truncated to 60 characters.
    */
   private String descriptionPlainSummary;
+
+  /**
+   * The paginated list of events associated with the host subject.
+   */
+  private EventConnection events;
 
   /**
    * The featured image for the product.
@@ -184,7 +216,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
    * The total count of [media](https://shopify.dev/docs/apps/build/online-store/product-media)
    * that's associated with a product.
    */
-  private int mediaCount;
+  private Count mediaCount;
 
   /**
    * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
@@ -331,10 +363,26 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
   private ResourcePublicationConnection resourcePublications;
 
   /**
+   * The number of
+   * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+   * that a resource is published to, without
+   * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+   */
+  private Count resourcePublicationsCount;
+
+  /**
    * The list of resources that are either published or staged to be published to a
    * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
    */
   private ResourcePublicationV2Connection resourcePublicationsV2;
+
+  /**
+   * Whether the merchant can make changes to the product when they
+   * [edit the order](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders)
+   * associated with the product. For example, a merchant might be restricted from changing product details when they
+   * edit an order.
+   */
+  private RestrictedForResource restrictedForResource;
 
   /**
    * A count of [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
@@ -347,6 +395,12 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
    * that are associated with the product either directly, or through the product's variants.
    */
   private SellingPlanGroupConnection sellingPlanGroups;
+
+  /**
+   * A count of [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
+   * that are associated with the product.
+   */
+  private Count sellingPlanGroupsCount;
 
   /**
    * The [SEO title and description](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords)
@@ -445,6 +499,12 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
   private ProductVariantConnection variants;
 
   /**
+   * The number of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+   * that are associated with the product.
+   */
+  private Count variantsCount;
+
+  /**
    * The name of the product's vendor.
    */
   private String vendor;
@@ -458,12 +518,12 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
    * that a resource is published to, without
    * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
    */
-  public int getAvailablePublicationCount() {
-    return availablePublicationCount;
+  public Count getAvailablePublicationsCount() {
+    return availablePublicationsCount;
   }
 
-  public void setAvailablePublicationCount(int availablePublicationCount) {
-    this.availablePublicationCount = availablePublicationCount;
+  public void setAvailablePublicationsCount(Count availablePublicationsCount) {
+    this.availablePublicationsCount = availablePublicationsCount;
   }
 
   /**
@@ -480,6 +540,30 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
   }
 
   /**
+   * A list of [components](https://shopify.dev/docs/apps/build/product-merchandising/bundles/add-product-fixed-bundle)
+   * that are associated with a product in a bundle.
+   */
+  public ProductBundleComponentConnection getBundleComponents() {
+    return bundleComponents;
+  }
+
+  public void setBundleComponents(ProductBundleComponentConnection bundleComponents) {
+    this.bundleComponents = bundleComponents;
+  }
+
+  /**
+   * The category of a product
+   * from [Shopify's Standard Product Taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17).
+   */
+  public TaxonomyCategory getCategory() {
+    return category;
+  }
+
+  public void setCategory(TaxonomyCategory category) {
+    this.category = category;
+  }
+
+  /**
    * A list of [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection)
    * that include the product.
    */
@@ -489,6 +573,33 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
 
   public void setCollections(CollectionConnection collections) {
     this.collections = collections;
+  }
+
+  /**
+   * A special product type that combines separate products from a store into a single product listing.
+   * [Combined listings](https://shopify.dev/apps/build/product-merchandising/combined-listings) are connected
+   * by a shared option, such as color, model, or dimension.
+   */
+  public CombinedListing getCombinedListing() {
+    return combinedListing;
+  }
+
+  public void setCombinedListing(CombinedListing combinedListing) {
+    this.combinedListing = combinedListing;
+  }
+
+  /**
+   * The [role of the product](https://shopify.dev/docs/apps/build/product-merchandising/combined-listings/build-for-combined-listings)
+   * in a combined listing.
+   *   
+   * If `null`, then the product isn't part of any combined listing.
+   */
+  public CombinedListingsRole getCombinedListingRole() {
+    return combinedListingRole;
+  }
+
+  public void setCombinedListingRole(CombinedListingsRole combinedListingRole) {
+    this.combinedListingRole = combinedListingRole;
   }
 
   /**
@@ -584,6 +695,17 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
 
   public void setDescriptionPlainSummary(String descriptionPlainSummary) {
     this.descriptionPlainSummary = descriptionPlainSummary;
+  }
+
+  /**
+   * The paginated list of events associated with the host subject.
+   */
+  public EventConnection getEvents() {
+    return events;
+  }
+
+  public void setEvents(EventConnection events) {
+    this.events = events;
   }
 
   /**
@@ -760,11 +882,11 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
    * The total count of [media](https://shopify.dev/docs/apps/build/online-store/product-media)
    * that's associated with a product.
    */
-  public int getMediaCount() {
+  public Count getMediaCount() {
     return mediaCount;
   }
 
-  public void setMediaCount(int mediaCount) {
+  public void setMediaCount(Count mediaCount) {
     this.mediaCount = mediaCount;
   }
 
@@ -1058,6 +1180,20 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
   }
 
   /**
+   * The number of
+   * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+   * that a resource is published to, without
+   * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+   */
+  public Count getResourcePublicationsCount() {
+    return resourcePublicationsCount;
+  }
+
+  public void setResourcePublicationsCount(Count resourcePublicationsCount) {
+    this.resourcePublicationsCount = resourcePublicationsCount;
+  }
+
+  /**
    * The list of resources that are either published or staged to be published to a
    * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
    */
@@ -1067,6 +1203,20 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
 
   public void setResourcePublicationsV2(ResourcePublicationV2Connection resourcePublicationsV2) {
     this.resourcePublicationsV2 = resourcePublicationsV2;
+  }
+
+  /**
+   * Whether the merchant can make changes to the product when they
+   * [edit the order](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders)
+   * associated with the product. For example, a merchant might be restricted from changing product details when they
+   * edit an order.
+   */
+  public RestrictedForResource getRestrictedForResource() {
+    return restrictedForResource;
+  }
+
+  public void setRestrictedForResource(RestrictedForResource restrictedForResource) {
+    this.restrictedForResource = restrictedForResource;
   }
 
   /**
@@ -1091,6 +1241,18 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
 
   public void setSellingPlanGroups(SellingPlanGroupConnection sellingPlanGroups) {
     this.sellingPlanGroups = sellingPlanGroups;
+  }
+
+  /**
+   * A count of [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
+   * that are associated with the product.
+   */
+  public Count getSellingPlanGroupsCount() {
+    return sellingPlanGroupsCount;
+  }
+
+  public void setSellingPlanGroupsCount(Count sellingPlanGroupsCount) {
+    this.sellingPlanGroupsCount = sellingPlanGroupsCount;
   }
 
   /**
@@ -1280,6 +1442,18 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
   }
 
   /**
+   * The number of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+   * that are associated with the product.
+   */
+  public Count getVariantsCount() {
+    return variantsCount;
+  }
+
+  public void setVariantsCount(Count variantsCount) {
+    this.variantsCount = variantsCount;
+  }
+
+  /**
    * The name of the product's vendor.
    */
   public String getVendor() {
@@ -1292,7 +1466,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
 
   @Override
   public String toString() {
-    return "Product{availablePublicationCount='" + availablePublicationCount + "', bodyHtml='" + bodyHtml + "', collections='" + collections + "', compareAtPriceRange='" + compareAtPriceRange + "', contextualPricing='" + contextualPricing + "', createdAt='" + createdAt + "', customProductType='" + customProductType + "', defaultCursor='" + defaultCursor + "', description='" + description + "', descriptionHtml='" + descriptionHtml + "', descriptionPlainSummary='" + descriptionPlainSummary + "', featuredImage='" + featuredImage + "', featuredMedia='" + featuredMedia + "', feedback='" + feedback + "', giftCardTemplateSuffix='" + giftCardTemplateSuffix + "', handle='" + handle + "', hasOnlyDefaultVariant='" + hasOnlyDefaultVariant + "', hasOutOfStockVariants='" + hasOutOfStockVariants + "', hasVariantsThatRequiresComponents='" + hasVariantsThatRequiresComponents + "', id='" + id + "', images='" + images + "', inCollection='" + inCollection + "', isGiftCard='" + isGiftCard + "', legacyResourceId='" + legacyResourceId + "', media='" + media + "', mediaCount='" + mediaCount + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', onlineStorePreviewUrl='" + onlineStorePreviewUrl + "', onlineStoreUrl='" + onlineStoreUrl + "', options='" + options + "', priceRange='" + priceRange + "', priceRangeV2='" + priceRangeV2 + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', productCategory='" + productCategory + "', productPublications='" + productPublications + "', productType='" + productType + "', publicationCount='" + publicationCount + "', publications='" + publications + "', publishedAt='" + publishedAt + "', publishedInContext='" + publishedInContext + "', publishedOnChannel='" + publishedOnChannel + "', publishedOnCurrentChannel='" + publishedOnCurrentChannel + "', publishedOnCurrentPublication='" + publishedOnCurrentPublication + "', publishedOnPublication='" + publishedOnPublication + "', requiresSellingPlan='" + requiresSellingPlan + "', resourcePublicationOnCurrentPublication='" + resourcePublicationOnCurrentPublication + "', resourcePublications='" + resourcePublications + "', resourcePublicationsV2='" + resourcePublicationsV2 + "', sellingPlanGroupCount='" + sellingPlanGroupCount + "', sellingPlanGroups='" + sellingPlanGroups + "', seo='" + seo + "', standardizedProductType='" + standardizedProductType + "', status='" + status + "', storefrontId='" + storefrontId + "', tags='" + tags + "', templateSuffix='" + templateSuffix + "', title='" + title + "', totalInventory='" + totalInventory + "', totalVariants='" + totalVariants + "', tracksInventory='" + tracksInventory + "', translations='" + translations + "', unpublishedChannels='" + unpublishedChannels + "', unpublishedPublications='" + unpublishedPublications + "', updatedAt='" + updatedAt + "', variants='" + variants + "', vendor='" + vendor + "'}";
+    return "Product{availablePublicationsCount='" + availablePublicationsCount + "', bodyHtml='" + bodyHtml + "', bundleComponents='" + bundleComponents + "', category='" + category + "', collections='" + collections + "', combinedListing='" + combinedListing + "', combinedListingRole='" + combinedListingRole + "', compareAtPriceRange='" + compareAtPriceRange + "', contextualPricing='" + contextualPricing + "', createdAt='" + createdAt + "', customProductType='" + customProductType + "', defaultCursor='" + defaultCursor + "', description='" + description + "', descriptionHtml='" + descriptionHtml + "', descriptionPlainSummary='" + descriptionPlainSummary + "', events='" + events + "', featuredImage='" + featuredImage + "', featuredMedia='" + featuredMedia + "', feedback='" + feedback + "', giftCardTemplateSuffix='" + giftCardTemplateSuffix + "', handle='" + handle + "', hasOnlyDefaultVariant='" + hasOnlyDefaultVariant + "', hasOutOfStockVariants='" + hasOutOfStockVariants + "', hasVariantsThatRequiresComponents='" + hasVariantsThatRequiresComponents + "', id='" + id + "', images='" + images + "', inCollection='" + inCollection + "', isGiftCard='" + isGiftCard + "', legacyResourceId='" + legacyResourceId + "', media='" + media + "', mediaCount='" + mediaCount + "', metafield='" + metafield + "', metafieldDefinitions='" + metafieldDefinitions + "', metafields='" + metafields + "', onlineStorePreviewUrl='" + onlineStorePreviewUrl + "', onlineStoreUrl='" + onlineStoreUrl + "', options='" + options + "', priceRange='" + priceRange + "', priceRangeV2='" + priceRangeV2 + "', privateMetafield='" + privateMetafield + "', privateMetafields='" + privateMetafields + "', productCategory='" + productCategory + "', productPublications='" + productPublications + "', productType='" + productType + "', publicationCount='" + publicationCount + "', publications='" + publications + "', publishedAt='" + publishedAt + "', publishedInContext='" + publishedInContext + "', publishedOnChannel='" + publishedOnChannel + "', publishedOnCurrentChannel='" + publishedOnCurrentChannel + "', publishedOnCurrentPublication='" + publishedOnCurrentPublication + "', publishedOnPublication='" + publishedOnPublication + "', requiresSellingPlan='" + requiresSellingPlan + "', resourcePublicationOnCurrentPublication='" + resourcePublicationOnCurrentPublication + "', resourcePublications='" + resourcePublications + "', resourcePublicationsCount='" + resourcePublicationsCount + "', resourcePublicationsV2='" + resourcePublicationsV2 + "', restrictedForResource='" + restrictedForResource + "', sellingPlanGroupCount='" + sellingPlanGroupCount + "', sellingPlanGroups='" + sellingPlanGroups + "', sellingPlanGroupsCount='" + sellingPlanGroupsCount + "', seo='" + seo + "', standardizedProductType='" + standardizedProductType + "', status='" + status + "', storefrontId='" + storefrontId + "', tags='" + tags + "', templateSuffix='" + templateSuffix + "', title='" + title + "', totalInventory='" + totalInventory + "', totalVariants='" + totalVariants + "', tracksInventory='" + tracksInventory + "', translations='" + translations + "', unpublishedChannels='" + unpublishedChannels + "', unpublishedPublications='" + unpublishedPublications + "', updatedAt='" + updatedAt + "', variants='" + variants + "', variantsCount='" + variantsCount + "', vendor='" + vendor + "'}";
   }
 
   @Override
@@ -1300,9 +1474,13 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Product that = (Product) o;
-    return availablePublicationCount == that.availablePublicationCount &&
+    return Objects.equals(availablePublicationsCount, that.availablePublicationsCount) &&
         Objects.equals(bodyHtml, that.bodyHtml) &&
+        Objects.equals(bundleComponents, that.bundleComponents) &&
+        Objects.equals(category, that.category) &&
         Objects.equals(collections, that.collections) &&
+        Objects.equals(combinedListing, that.combinedListing) &&
+        Objects.equals(combinedListingRole, that.combinedListingRole) &&
         Objects.equals(compareAtPriceRange, that.compareAtPriceRange) &&
         Objects.equals(contextualPricing, that.contextualPricing) &&
         Objects.equals(createdAt, that.createdAt) &&
@@ -1311,6 +1489,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
         Objects.equals(description, that.description) &&
         Objects.equals(descriptionHtml, that.descriptionHtml) &&
         Objects.equals(descriptionPlainSummary, that.descriptionPlainSummary) &&
+        Objects.equals(events, that.events) &&
         Objects.equals(featuredImage, that.featuredImage) &&
         Objects.equals(featuredMedia, that.featuredMedia) &&
         Objects.equals(feedback, that.feedback) &&
@@ -1325,7 +1504,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
         isGiftCard == that.isGiftCard &&
         Objects.equals(legacyResourceId, that.legacyResourceId) &&
         Objects.equals(media, that.media) &&
-        mediaCount == that.mediaCount &&
+        Objects.equals(mediaCount, that.mediaCount) &&
         Objects.equals(metafield, that.metafield) &&
         Objects.equals(metafieldDefinitions, that.metafieldDefinitions) &&
         Objects.equals(metafields, that.metafields) &&
@@ -1350,9 +1529,12 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
         requiresSellingPlan == that.requiresSellingPlan &&
         Objects.equals(resourcePublicationOnCurrentPublication, that.resourcePublicationOnCurrentPublication) &&
         Objects.equals(resourcePublications, that.resourcePublications) &&
+        Objects.equals(resourcePublicationsCount, that.resourcePublicationsCount) &&
         Objects.equals(resourcePublicationsV2, that.resourcePublicationsV2) &&
+        Objects.equals(restrictedForResource, that.restrictedForResource) &&
         sellingPlanGroupCount == that.sellingPlanGroupCount &&
         Objects.equals(sellingPlanGroups, that.sellingPlanGroups) &&
+        Objects.equals(sellingPlanGroupsCount, that.sellingPlanGroupsCount) &&
         Objects.equals(seo, that.seo) &&
         Objects.equals(standardizedProductType, that.standardizedProductType) &&
         Objects.equals(status, that.status) &&
@@ -1368,12 +1550,13 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
         Objects.equals(unpublishedPublications, that.unpublishedPublications) &&
         Objects.equals(updatedAt, that.updatedAt) &&
         Objects.equals(variants, that.variants) &&
+        Objects.equals(variantsCount, that.variantsCount) &&
         Objects.equals(vendor, that.vendor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(availablePublicationCount, bodyHtml, collections, compareAtPriceRange, contextualPricing, createdAt, customProductType, defaultCursor, description, descriptionHtml, descriptionPlainSummary, featuredImage, featuredMedia, feedback, giftCardTemplateSuffix, handle, hasOnlyDefaultVariant, hasOutOfStockVariants, hasVariantsThatRequiresComponents, id, images, inCollection, isGiftCard, legacyResourceId, media, mediaCount, metafield, metafieldDefinitions, metafields, onlineStorePreviewUrl, onlineStoreUrl, options, priceRange, priceRangeV2, privateMetafield, privateMetafields, productCategory, productPublications, productType, publicationCount, publications, publishedAt, publishedInContext, publishedOnChannel, publishedOnCurrentChannel, publishedOnCurrentPublication, publishedOnPublication, requiresSellingPlan, resourcePublicationOnCurrentPublication, resourcePublications, resourcePublicationsV2, sellingPlanGroupCount, sellingPlanGroups, seo, standardizedProductType, status, storefrontId, tags, templateSuffix, title, totalInventory, totalVariants, tracksInventory, translations, unpublishedChannels, unpublishedPublications, updatedAt, variants, vendor);
+    return Objects.hash(availablePublicationsCount, bodyHtml, bundleComponents, category, collections, combinedListing, combinedListingRole, compareAtPriceRange, contextualPricing, createdAt, customProductType, defaultCursor, description, descriptionHtml, descriptionPlainSummary, events, featuredImage, featuredMedia, feedback, giftCardTemplateSuffix, handle, hasOnlyDefaultVariant, hasOutOfStockVariants, hasVariantsThatRequiresComponents, id, images, inCollection, isGiftCard, legacyResourceId, media, mediaCount, metafield, metafieldDefinitions, metafields, onlineStorePreviewUrl, onlineStoreUrl, options, priceRange, priceRangeV2, privateMetafield, privateMetafields, productCategory, productPublications, productType, publicationCount, publications, publishedAt, publishedInContext, publishedOnChannel, publishedOnCurrentChannel, publishedOnCurrentPublication, publishedOnPublication, requiresSellingPlan, resourcePublicationOnCurrentPublication, resourcePublications, resourcePublicationsCount, resourcePublicationsV2, restrictedForResource, sellingPlanGroupCount, sellingPlanGroups, sellingPlanGroupsCount, seo, standardizedProductType, status, storefrontId, tags, templateSuffix, title, totalInventory, totalVariants, tracksInventory, translations, unpublishedChannels, unpublishedPublications, updatedAt, variants, variantsCount, vendor);
   }
 
   public static Builder newBuilder() {
@@ -1387,7 +1570,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      * that a resource is published to, without
      * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
      */
-    private int availablePublicationCount;
+    private Count availablePublicationsCount;
 
     /**
      * The description of the product, with
@@ -1397,10 +1580,37 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
     private String bodyHtml;
 
     /**
+     * A list of [components](https://shopify.dev/docs/apps/build/product-merchandising/bundles/add-product-fixed-bundle)
+     * that are associated with a product in a bundle.
+     */
+    private ProductBundleComponentConnection bundleComponents;
+
+    /**
+     * The category of a product
+     * from [Shopify's Standard Product Taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17).
+     */
+    private TaxonomyCategory category;
+
+    /**
      * A list of [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection)
      * that include the product.
      */
     private CollectionConnection collections;
+
+    /**
+     * A special product type that combines separate products from a store into a single product listing.
+     * [Combined listings](https://shopify.dev/apps/build/product-merchandising/combined-listings) are connected
+     * by a shared option, such as color, model, or dimension.
+     */
+    private CombinedListing combinedListing;
+
+    /**
+     * The [role of the product](https://shopify.dev/docs/apps/build/product-merchandising/combined-listings/build-for-combined-listings)
+     * in a combined listing.
+     *   
+     * If `null`, then the product isn't part of any combined listing.
+     */
+    private CombinedListingsRole combinedListingRole;
 
     /**
      * The [compare-at price range](https://help.shopify.com/manual/products/details/product-pricing/sale-pricing)
@@ -1448,6 +1658,11 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      * Truncated to 60 characters.
      */
     private String descriptionPlainSummary;
+
+    /**
+     * The paginated list of events associated with the host subject.
+     */
+    private EventConnection events;
 
     /**
      * The featured image for the product.
@@ -1539,7 +1754,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      * The total count of [media](https://shopify.dev/docs/apps/build/online-store/product-media)
      * that's associated with a product.
      */
-    private int mediaCount;
+    private Count mediaCount;
 
     /**
      * A [custom field](https://shopify.dev/docs/apps/build/custom-data),
@@ -1686,10 +1901,26 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
     private ResourcePublicationConnection resourcePublications;
 
     /**
+     * The number of
+     * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+     * that a resource is published to, without
+     * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+     */
+    private Count resourcePublicationsCount;
+
+    /**
      * The list of resources that are either published or staged to be published to a
      * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
      */
     private ResourcePublicationV2Connection resourcePublicationsV2;
+
+    /**
+     * Whether the merchant can make changes to the product when they
+     * [edit the order](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders)
+     * associated with the product. For example, a merchant might be restricted from changing product details when they
+     * edit an order.
+     */
+    private RestrictedForResource restrictedForResource;
 
     /**
      * A count of [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
@@ -1702,6 +1933,12 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      * that are associated with the product either directly, or through the product's variants.
      */
     private SellingPlanGroupConnection sellingPlanGroups;
+
+    /**
+     * A count of [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
+     * that are associated with the product.
+     */
+    private Count sellingPlanGroupsCount;
 
     /**
      * The [SEO title and description](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords)
@@ -1800,15 +2037,25 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
     private ProductVariantConnection variants;
 
     /**
+     * The number of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+     * that are associated with the product.
+     */
+    private Count variantsCount;
+
+    /**
      * The name of the product's vendor.
      */
     private String vendor;
 
     public Product build() {
       Product result = new Product();
-      result.availablePublicationCount = this.availablePublicationCount;
+      result.availablePublicationsCount = this.availablePublicationsCount;
       result.bodyHtml = this.bodyHtml;
+      result.bundleComponents = this.bundleComponents;
+      result.category = this.category;
       result.collections = this.collections;
+      result.combinedListing = this.combinedListing;
+      result.combinedListingRole = this.combinedListingRole;
       result.compareAtPriceRange = this.compareAtPriceRange;
       result.contextualPricing = this.contextualPricing;
       result.createdAt = this.createdAt;
@@ -1817,6 +2064,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
       result.description = this.description;
       result.descriptionHtml = this.descriptionHtml;
       result.descriptionPlainSummary = this.descriptionPlainSummary;
+      result.events = this.events;
       result.featuredImage = this.featuredImage;
       result.featuredMedia = this.featuredMedia;
       result.feedback = this.feedback;
@@ -1856,9 +2104,12 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
       result.requiresSellingPlan = this.requiresSellingPlan;
       result.resourcePublicationOnCurrentPublication = this.resourcePublicationOnCurrentPublication;
       result.resourcePublications = this.resourcePublications;
+      result.resourcePublicationsCount = this.resourcePublicationsCount;
       result.resourcePublicationsV2 = this.resourcePublicationsV2;
+      result.restrictedForResource = this.restrictedForResource;
       result.sellingPlanGroupCount = this.sellingPlanGroupCount;
       result.sellingPlanGroups = this.sellingPlanGroups;
+      result.sellingPlanGroupsCount = this.sellingPlanGroupsCount;
       result.seo = this.seo;
       result.standardizedProductType = this.standardizedProductType;
       result.status = this.status;
@@ -1874,6 +2125,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
       result.unpublishedPublications = this.unpublishedPublications;
       result.updatedAt = this.updatedAt;
       result.variants = this.variants;
+      result.variantsCount = this.variantsCount;
       result.vendor = this.vendor;
       return result;
     }
@@ -1884,8 +2136,8 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      * that a resource is published to, without
      * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
      */
-    public Builder availablePublicationCount(int availablePublicationCount) {
-      this.availablePublicationCount = availablePublicationCount;
+    public Builder availablePublicationsCount(Count availablePublicationsCount) {
+      this.availablePublicationsCount = availablePublicationsCount;
       return this;
     }
 
@@ -1900,11 +2152,50 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
     }
 
     /**
+     * A list of [components](https://shopify.dev/docs/apps/build/product-merchandising/bundles/add-product-fixed-bundle)
+     * that are associated with a product in a bundle.
+     */
+    public Builder bundleComponents(ProductBundleComponentConnection bundleComponents) {
+      this.bundleComponents = bundleComponents;
+      return this;
+    }
+
+    /**
+     * The category of a product
+     * from [Shopify's Standard Product Taxonomy](https://shopify.github.io/product-taxonomy/releases/unstable/?categoryId=sg-4-17-2-17).
+     */
+    public Builder category(TaxonomyCategory category) {
+      this.category = category;
+      return this;
+    }
+
+    /**
      * A list of [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection)
      * that include the product.
      */
     public Builder collections(CollectionConnection collections) {
       this.collections = collections;
+      return this;
+    }
+
+    /**
+     * A special product type that combines separate products from a store into a single product listing.
+     * [Combined listings](https://shopify.dev/apps/build/product-merchandising/combined-listings) are connected
+     * by a shared option, such as color, model, or dimension.
+     */
+    public Builder combinedListing(CombinedListing combinedListing) {
+      this.combinedListing = combinedListing;
+      return this;
+    }
+
+    /**
+     * The [role of the product](https://shopify.dev/docs/apps/build/product-merchandising/combined-listings/build-for-combined-listings)
+     * in a combined listing.
+     *   
+     * If `null`, then the product isn't part of any combined listing.
+     */
+    public Builder combinedListingRole(CombinedListingsRole combinedListingRole) {
+      this.combinedListingRole = combinedListingRole;
       return this;
     }
 
@@ -1976,6 +2267,14 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      */
     public Builder descriptionPlainSummary(String descriptionPlainSummary) {
       this.descriptionPlainSummary = descriptionPlainSummary;
+      return this;
+    }
+
+    /**
+     * The paginated list of events associated with the host subject.
+     */
+    public Builder events(EventConnection events) {
+      this.events = events;
       return this;
     }
 
@@ -2111,7 +2410,7 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      * The total count of [media](https://shopify.dev/docs/apps/build/online-store/product-media)
      * that's associated with a product.
      */
-    public Builder mediaCount(int mediaCount) {
+    public Builder mediaCount(Count mediaCount) {
       this.mediaCount = mediaCount;
       return this;
     }
@@ -2334,11 +2633,33 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
     }
 
     /**
+     * The number of
+     * [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
+     * that a resource is published to, without
+     * [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+     */
+    public Builder resourcePublicationsCount(Count resourcePublicationsCount) {
+      this.resourcePublicationsCount = resourcePublicationsCount;
+      return this;
+    }
+
+    /**
      * The list of resources that are either published or staged to be published to a
      * [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
      */
     public Builder resourcePublicationsV2(ResourcePublicationV2Connection resourcePublicationsV2) {
       this.resourcePublicationsV2 = resourcePublicationsV2;
+      return this;
+    }
+
+    /**
+     * Whether the merchant can make changes to the product when they
+     * [edit the order](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders)
+     * associated with the product. For example, a merchant might be restricted from changing product details when they
+     * edit an order.
+     */
+    public Builder restrictedForResource(RestrictedForResource restrictedForResource) {
+      this.restrictedForResource = restrictedForResource;
       return this;
     }
 
@@ -2357,6 +2678,15 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      */
     public Builder sellingPlanGroups(SellingPlanGroupConnection sellingPlanGroups) {
       this.sellingPlanGroups = sellingPlanGroups;
+      return this;
+    }
+
+    /**
+     * A count of [selling plan groups](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans/build-a-selling-plan)
+     * that are associated with the product.
+     */
+    public Builder sellingPlanGroupsCount(Count sellingPlanGroupsCount) {
+      this.sellingPlanGroupsCount = sellingPlanGroupsCount;
       return this;
     }
 
@@ -2498,6 +2828,15 @@ public class Product implements CommentEventEmbed, MetafieldReference, Metafield
      */
     public Builder variants(ProductVariantConnection variants) {
       this.variants = variants;
+      return this;
+    }
+
+    /**
+     * The number of [variants](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant)
+     * that are associated with the product.
+     */
+    public Builder variantsCount(Count variantsCount) {
+      this.variantsCount = variantsCount;
       return this;
     }
 

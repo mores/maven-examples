@@ -12,7 +12,7 @@ import java.util.Objects;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NONE
 )
-public class ReturnLineItem implements com.test.shopify.generated.types.Node {
+public class ReturnLineItem implements com.test.shopify.generated.types.Node, com.test.shopify.generated.types.ReturnLineItemType {
   /**
    * A note from the customer that describes the item to be returned. Maximum length: 300 characters.
    */
@@ -42,6 +42,11 @@ public class ReturnLineItem implements com.test.shopify.generated.types.Node {
    * The quantity that was refunded.
    */
   private int refundedQuantity;
+
+  /**
+   * The restocking fee for the return line item.
+   */
+  private RestockingFee restockingFee;
 
   /**
    * The reason for returning the item.
@@ -134,6 +139,17 @@ public class ReturnLineItem implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * The restocking fee for the return line item.
+   */
+  public RestockingFee getRestockingFee() {
+    return restockingFee;
+  }
+
+  public void setRestockingFee(RestockingFee restockingFee) {
+    this.restockingFee = restockingFee;
+  }
+
+  /**
    * The reason for returning the item.
    */
   public ReturnReason getReturnReason() {
@@ -180,7 +196,7 @@ public class ReturnLineItem implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "ReturnLineItem{customerNote='" + customerNote + "', fulfillmentLineItem='" + fulfillmentLineItem + "', id='" + id + "', quantity='" + quantity + "', refundableQuantity='" + refundableQuantity + "', refundedQuantity='" + refundedQuantity + "', returnReason='" + returnReason + "', returnReasonNote='" + returnReasonNote + "', totalWeight='" + totalWeight + "', withCodeDiscountedTotalPriceSet='" + withCodeDiscountedTotalPriceSet + "'}";
+    return "ReturnLineItem{customerNote='" + customerNote + "', fulfillmentLineItem='" + fulfillmentLineItem + "', id='" + id + "', quantity='" + quantity + "', refundableQuantity='" + refundableQuantity + "', refundedQuantity='" + refundedQuantity + "', restockingFee='" + restockingFee + "', returnReason='" + returnReason + "', returnReasonNote='" + returnReasonNote + "', totalWeight='" + totalWeight + "', withCodeDiscountedTotalPriceSet='" + withCodeDiscountedTotalPriceSet + "'}";
   }
 
   @Override
@@ -194,6 +210,7 @@ public class ReturnLineItem implements com.test.shopify.generated.types.Node {
         quantity == that.quantity &&
         refundableQuantity == that.refundableQuantity &&
         refundedQuantity == that.refundedQuantity &&
+        Objects.equals(restockingFee, that.restockingFee) &&
         Objects.equals(returnReason, that.returnReason) &&
         Objects.equals(returnReasonNote, that.returnReasonNote) &&
         Objects.equals(totalWeight, that.totalWeight) &&
@@ -202,7 +219,7 @@ public class ReturnLineItem implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerNote, fulfillmentLineItem, id, quantity, refundableQuantity, refundedQuantity, returnReason, returnReasonNote, totalWeight, withCodeDiscountedTotalPriceSet);
+    return Objects.hash(customerNote, fulfillmentLineItem, id, quantity, refundableQuantity, refundedQuantity, restockingFee, returnReason, returnReasonNote, totalWeight, withCodeDiscountedTotalPriceSet);
   }
 
   public static Builder newBuilder() {
@@ -241,6 +258,11 @@ public class ReturnLineItem implements com.test.shopify.generated.types.Node {
     private int refundedQuantity;
 
     /**
+     * The restocking fee for the return line item.
+     */
+    private RestockingFee restockingFee;
+
+    /**
      * The reason for returning the item.
      */
     private ReturnReason returnReason;
@@ -269,6 +291,7 @@ public class ReturnLineItem implements com.test.shopify.generated.types.Node {
       result.quantity = this.quantity;
       result.refundableQuantity = this.refundableQuantity;
       result.refundedQuantity = this.refundedQuantity;
+      result.restockingFee = this.restockingFee;
       result.returnReason = this.returnReason;
       result.returnReasonNote = this.returnReasonNote;
       result.totalWeight = this.totalWeight;
@@ -321,6 +344,14 @@ public class ReturnLineItem implements com.test.shopify.generated.types.Node {
      */
     public Builder refundedQuantity(int refundedQuantity) {
       this.refundedQuantity = refundedQuantity;
+      return this;
+    }
+
+    /**
+     * The restocking fee for the return line item.
+     */
+    public Builder restockingFee(RestockingFee restockingFee) {
+      this.restockingFee = restockingFee;
       return this;
     }
 

@@ -57,6 +57,11 @@ public class MetaobjectFieldProjection<PARENT extends BaseSubProjectionNode<?, ?
      return projection;
   }
 
+  public MetaobjectFieldProjection<PARENT, ROOT> jsonValue() {
+    getFields().put("jsonValue", null);
+    return this;
+  }
+
   public MetaobjectFieldProjection<PARENT, ROOT> key() {
     getFields().put("key", null);
     return this;

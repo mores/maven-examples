@@ -85,9 +85,29 @@ import java.util.Objects;
 )
 public class BasicEvent implements com.test.shopify.generated.types.Event, com.test.shopify.generated.types.Node {
   /**
+   * The action that occured.
+   */
+  private String action;
+
+  /**
+   * Provides additional content for collapsible timeline events.
+   */
+  private String additionalContent;
+
+  /**
+   * Provides additional data for event consumers.
+   */
+  private String additionalData;
+
+  /**
    * The name of the app that created the event.
    */
   private String appTitle;
+
+  /**
+   * Refers to a certain event and its resources.
+   */
+  private String arguments;
 
   /**
    * Whether the event was created by an app.
@@ -110,6 +130,11 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
   private boolean criticalAlert;
 
   /**
+   * Whether this event has additional content.
+   */
+  private boolean hasAdditionalContent;
+
+  /**
    * A globally-unique ID.
    */
   private String id;
@@ -119,7 +144,61 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
    */
   private String message;
 
+  /**
+   * Human readable text that supports the event message.
+   */
+  private String secondaryMessage;
+
+  /**
+   * The resource that generated the event. To see a list of possible types,
+   * refer to [HasEvents](https://shopify.dev/docs/api/admin-graphql/unstable/interfaces/HasEvents#implemented-in).
+   */
+  private HasEvents subject;
+
+  /**
+   * The ID of the resource that generated the event.
+   */
+  private String subjectId;
+
+  /**
+   * The type of the resource that generated the event.
+   */
+  private EventSubjectType subjectType;
+
   public BasicEvent() {
+  }
+
+  /**
+   * The action that occured.
+   */
+  public String getAction() {
+    return action;
+  }
+
+  public void setAction(String action) {
+    this.action = action;
+  }
+
+  /**
+   * Provides additional content for collapsible timeline events.
+   */
+  public String getAdditionalContent() {
+    return additionalContent;
+  }
+
+  public void setAdditionalContent(String additionalContent) {
+    this.additionalContent = additionalContent;
+  }
+
+  /**
+   * Provides additional data for event consumers.
+   */
+  public String getAdditionalData() {
+    return additionalData;
+  }
+
+  public void setAdditionalData(String additionalData) {
+    this.additionalData = additionalData;
   }
 
   /**
@@ -131,6 +210,17 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
 
   public void setAppTitle(String appTitle) {
     this.appTitle = appTitle;
+  }
+
+  /**
+   * Refers to a certain event and its resources.
+   */
+  public String getArguments() {
+    return arguments;
+  }
+
+  public void setArguments(String arguments) {
+    this.arguments = arguments;
   }
 
   /**
@@ -178,6 +268,17 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
   }
 
   /**
+   * Whether this event has additional content.
+   */
+  public boolean getHasAdditionalContent() {
+    return hasAdditionalContent;
+  }
+
+  public void setHasAdditionalContent(boolean hasAdditionalContent) {
+    this.hasAdditionalContent = hasAdditionalContent;
+  }
+
+  /**
    * A globally-unique ID.
    */
   public String getId() {
@@ -199,9 +300,54 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
     this.message = message;
   }
 
+  /**
+   * Human readable text that supports the event message.
+   */
+  public String getSecondaryMessage() {
+    return secondaryMessage;
+  }
+
+  public void setSecondaryMessage(String secondaryMessage) {
+    this.secondaryMessage = secondaryMessage;
+  }
+
+  /**
+   * The resource that generated the event. To see a list of possible types,
+   * refer to [HasEvents](https://shopify.dev/docs/api/admin-graphql/unstable/interfaces/HasEvents#implemented-in).
+   */
+  public HasEvents getSubject() {
+    return subject;
+  }
+
+  public void setSubject(HasEvents subject) {
+    this.subject = subject;
+  }
+
+  /**
+   * The ID of the resource that generated the event.
+   */
+  public String getSubjectId() {
+    return subjectId;
+  }
+
+  public void setSubjectId(String subjectId) {
+    this.subjectId = subjectId;
+  }
+
+  /**
+   * The type of the resource that generated the event.
+   */
+  public EventSubjectType getSubjectType() {
+    return subjectType;
+  }
+
+  public void setSubjectType(EventSubjectType subjectType) {
+    this.subjectType = subjectType;
+  }
+
   @Override
   public String toString() {
-    return "BasicEvent{appTitle='" + appTitle + "', attributeToApp='" + attributeToApp + "', attributeToUser='" + attributeToUser + "', createdAt='" + createdAt + "', criticalAlert='" + criticalAlert + "', id='" + id + "', message='" + message + "'}";
+    return "BasicEvent{action='" + action + "', additionalContent='" + additionalContent + "', additionalData='" + additionalData + "', appTitle='" + appTitle + "', arguments='" + arguments + "', attributeToApp='" + attributeToApp + "', attributeToUser='" + attributeToUser + "', createdAt='" + createdAt + "', criticalAlert='" + criticalAlert + "', hasAdditionalContent='" + hasAdditionalContent + "', id='" + id + "', message='" + message + "', secondaryMessage='" + secondaryMessage + "', subject='" + subject + "', subjectId='" + subjectId + "', subjectType='" + subjectType + "'}";
   }
 
   @Override
@@ -209,18 +355,27 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     BasicEvent that = (BasicEvent) o;
-    return Objects.equals(appTitle, that.appTitle) &&
+    return Objects.equals(action, that.action) &&
+        Objects.equals(additionalContent, that.additionalContent) &&
+        Objects.equals(additionalData, that.additionalData) &&
+        Objects.equals(appTitle, that.appTitle) &&
+        Objects.equals(arguments, that.arguments) &&
         attributeToApp == that.attributeToApp &&
         attributeToUser == that.attributeToUser &&
         Objects.equals(createdAt, that.createdAt) &&
         criticalAlert == that.criticalAlert &&
+        hasAdditionalContent == that.hasAdditionalContent &&
         Objects.equals(id, that.id) &&
-        Objects.equals(message, that.message);
+        Objects.equals(message, that.message) &&
+        Objects.equals(secondaryMessage, that.secondaryMessage) &&
+        Objects.equals(subject, that.subject) &&
+        Objects.equals(subjectId, that.subjectId) &&
+        Objects.equals(subjectType, that.subjectType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appTitle, attributeToApp, attributeToUser, createdAt, criticalAlert, id, message);
+    return Objects.hash(action, additionalContent, additionalData, appTitle, arguments, attributeToApp, attributeToUser, createdAt, criticalAlert, hasAdditionalContent, id, message, secondaryMessage, subject, subjectId, subjectType);
   }
 
   public static Builder newBuilder() {
@@ -229,9 +384,29 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
 
   public static class Builder {
     /**
+     * The action that occured.
+     */
+    private String action;
+
+    /**
+     * Provides additional content for collapsible timeline events.
+     */
+    private String additionalContent;
+
+    /**
+     * Provides additional data for event consumers.
+     */
+    private String additionalData;
+
+    /**
      * The name of the app that created the event.
      */
     private String appTitle;
+
+    /**
+     * Refers to a certain event and its resources.
+     */
+    private String arguments;
 
     /**
      * Whether the event was created by an app.
@@ -254,6 +429,11 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
     private boolean criticalAlert;
 
     /**
+     * Whether this event has additional content.
+     */
+    private boolean hasAdditionalContent;
+
+    /**
      * A globally-unique ID.
      */
     private String id;
@@ -263,16 +443,70 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
      */
     private String message;
 
+    /**
+     * Human readable text that supports the event message.
+     */
+    private String secondaryMessage;
+
+    /**
+     * The resource that generated the event. To see a list of possible types,
+     * refer to [HasEvents](https://shopify.dev/docs/api/admin-graphql/unstable/interfaces/HasEvents#implemented-in).
+     */
+    private HasEvents subject;
+
+    /**
+     * The ID of the resource that generated the event.
+     */
+    private String subjectId;
+
+    /**
+     * The type of the resource that generated the event.
+     */
+    private EventSubjectType subjectType;
+
     public BasicEvent build() {
       BasicEvent result = new BasicEvent();
+      result.action = this.action;
+      result.additionalContent = this.additionalContent;
+      result.additionalData = this.additionalData;
       result.appTitle = this.appTitle;
+      result.arguments = this.arguments;
       result.attributeToApp = this.attributeToApp;
       result.attributeToUser = this.attributeToUser;
       result.createdAt = this.createdAt;
       result.criticalAlert = this.criticalAlert;
+      result.hasAdditionalContent = this.hasAdditionalContent;
       result.id = this.id;
       result.message = this.message;
+      result.secondaryMessage = this.secondaryMessage;
+      result.subject = this.subject;
+      result.subjectId = this.subjectId;
+      result.subjectType = this.subjectType;
       return result;
+    }
+
+    /**
+     * The action that occured.
+     */
+    public Builder action(String action) {
+      this.action = action;
+      return this;
+    }
+
+    /**
+     * Provides additional content for collapsible timeline events.
+     */
+    public Builder additionalContent(String additionalContent) {
+      this.additionalContent = additionalContent;
+      return this;
+    }
+
+    /**
+     * Provides additional data for event consumers.
+     */
+    public Builder additionalData(String additionalData) {
+      this.additionalData = additionalData;
+      return this;
     }
 
     /**
@@ -280,6 +514,14 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
      */
     public Builder appTitle(String appTitle) {
       this.appTitle = appTitle;
+      return this;
+    }
+
+    /**
+     * Refers to a certain event and its resources.
+     */
+    public Builder arguments(String arguments) {
+      this.arguments = arguments;
       return this;
     }
 
@@ -316,6 +558,14 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
     }
 
     /**
+     * Whether this event has additional content.
+     */
+    public Builder hasAdditionalContent(boolean hasAdditionalContent) {
+      this.hasAdditionalContent = hasAdditionalContent;
+      return this;
+    }
+
+    /**
      * A globally-unique ID.
      */
     public Builder id(String id) {
@@ -328,6 +578,39 @@ public class BasicEvent implements com.test.shopify.generated.types.Event, com.t
      */
     public Builder message(String message) {
       this.message = message;
+      return this;
+    }
+
+    /**
+     * Human readable text that supports the event message.
+     */
+    public Builder secondaryMessage(String secondaryMessage) {
+      this.secondaryMessage = secondaryMessage;
+      return this;
+    }
+
+    /**
+     * The resource that generated the event. To see a list of possible types,
+     * refer to [HasEvents](https://shopify.dev/docs/api/admin-graphql/unstable/interfaces/HasEvents#implemented-in).
+     */
+    public Builder subject(HasEvents subject) {
+      this.subject = subject;
+      return this;
+    }
+
+    /**
+     * The ID of the resource that generated the event.
+     */
+    public Builder subjectId(String subjectId) {
+      this.subjectId = subjectId;
+      return this;
+    }
+
+    /**
+     * The type of the resource that generated the event.
+     */
+    public Builder subjectType(EventSubjectType subjectType) {
+      this.subjectType = subjectType;
       return this;
     }
   }

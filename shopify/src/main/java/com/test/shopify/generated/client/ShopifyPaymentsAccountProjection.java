@@ -2,6 +2,7 @@ package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
 import com.test.shopify.generated.types.BalanceTransactionSortKeys;
+import com.test.shopify.generated.types.PayoutSortKeys;
 import com.test.shopify.generated.types.ShopifyPaymentsPayoutTransactionType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -124,20 +125,6 @@ public class ShopifyPaymentsAccountProjection<PARENT extends BaseSubProjectionNo
     return projection;
   }
 
-  public ShopifyPaymentsFraudSettingsProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> fraudSettings(
-      ) {
-     ShopifyPaymentsFraudSettingsProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsFraudSettingsProjection<>(this, getRoot());
-     getFields().put("fraudSettings", projection);
-     return projection;
-  }
-
-  public ShopifyPaymentsNotificationSettingsProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> notificationSettings(
-      ) {
-     ShopifyPaymentsNotificationSettingsProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsNotificationSettingsProjection<>(this, getRoot());
-     getFields().put("notificationSettings", projection);
-     return projection;
-  }
-
   public ShopifyPaymentsPayoutScheduleProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> payoutSchedule(
       ) {
      ShopifyPaymentsPayoutScheduleProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsPayoutScheduleProjection<>(this, getRoot());
@@ -154,7 +141,8 @@ public class ShopifyPaymentsAccountProjection<PARENT extends BaseSubProjectionNo
 
   public ShopifyPaymentsPayoutConnectionProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> payouts(
       ShopifyPaymentsPayoutTransactionType transactionType, Integer first, String after,
-      Integer last, String before, Boolean reverse) {
+      Integer last, String before, Boolean reverse, PayoutSortKeys sortKey, String query,
+      String savedSearchId) {
     ShopifyPaymentsPayoutConnectionProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsPayoutConnectionProjection<>(this, getRoot());    
     getFields().put("payouts", projection);
     getInputArguments().computeIfAbsent("payouts", k -> new ArrayList<>());                      
@@ -170,21 +158,13 @@ public class ShopifyPaymentsAccountProjection<PARENT extends BaseSubProjectionNo
     getInputArguments().get("payouts").add(beforeArg);
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("payouts").add(reverseArg);
+    InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
+    getInputArguments().get("payouts").add(sortKeyArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("payouts").add(queryArg);
+    InputArgument savedSearchIdArg = new InputArgument("savedSearchId", savedSearchId);
+    getInputArguments().get("payouts").add(savedSearchIdArg);
     return projection;
-  }
-
-  public ShopifyPaymentsVerificationDocumentProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> permittedVerificationDocuments(
-      ) {
-     ShopifyPaymentsVerificationDocumentProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsVerificationDocumentProjection<>(this, getRoot());
-     getFields().put("permittedVerificationDocuments", projection);
-     return projection;
-  }
-
-  public ShopifyPaymentsVerificationProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> verifications(
-      ) {
-     ShopifyPaymentsVerificationProjection<ShopifyPaymentsAccountProjection<PARENT, ROOT>, ROOT> projection = new ShopifyPaymentsVerificationProjection<>(this, getRoot());
-     getFields().put("verifications", projection);
-     return projection;
   }
 
   public ShopifyPaymentsAccountProjection<PARENT, ROOT> activated() {

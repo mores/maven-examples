@@ -43,6 +43,12 @@ public class MarketProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT e
     return projection;
   }
 
+  public CountProjection<MarketProjection<PARENT, ROOT>, ROOT> catalogsCount() {
+     CountProjection<MarketProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("catalogsCount", projection);
+     return projection;
+  }
+
   public MarketCurrencySettingsProjection<MarketProjection<PARENT, ROOT>, ROOT> currencySettings() {
      MarketCurrencySettingsProjection<MarketProjection<PARENT, ROOT>, ROOT> projection = new MarketCurrencySettingsProjection<>(this, getRoot());
      getFields().put("currencySettings", projection);

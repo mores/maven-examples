@@ -1,5 +1,7 @@
 package com.test.shopify.generated.types;
 
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -9,44 +11,79 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The input fields to create an app discount.
+ * The input fields for creating or updating an automatic discount
+ * that's managed by an app.
+ *
+ * Use these input fields when you need advanced, custom, or
+ * dynamic discount capabilities that aren't supported by
+ * [Shopify's native discount types](https://help.shopify.com/manual/discounts/discount-types).
  */
 public class DiscountAutomaticAppInput {
   /**
-   * Determines which discount classes the discount can combine with.
+   * The
+   * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that you can use in combination with
+   * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
    */
   private DiscountCombinesWithInput combinesWith;
 
   /**
-   * The ID of the function providing the app discount type.
+   * The
+   * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+   * associated with the app extension providing the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   private String functionId;
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   private String title;
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   private OffsetDateTime startsAt;
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   private OffsetDateTime endsAt;
 
   /**
    * Additional metafields to associate to the discount.
+   * [Metafields](https://shopify.dev/docs/apps/build/custom-data)
+   * provide dynamic function configuration with
+   * different parameters, such as `percentage` for a percentage discount. Merchants can set metafield values
+   * in the Shopify admin, which makes the discount function more flexible and customizable.
    */
   private List<MetafieldInput> metafields = Collections.emptyList();
+
+  /**
+   * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
+   */
+  private Boolean appliesOnSubscription = false;
+
+  /**
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
+   */
+  private Integer recurringCycleLimit = 1;
 
   public DiscountAutomaticAppInput() {
   }
 
   /**
-   * Determines which discount classes the discount can combine with.
+   * The
+   * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that you can use in combination with
+   * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
    */
   public DiscountCombinesWithInput getCombinesWith() {
     return combinesWith;
@@ -57,7 +94,10 @@ public class DiscountAutomaticAppInput {
   }
 
   /**
-   * The ID of the function providing the app discount type.
+   * The
+   * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+   * associated with the app extension providing the
+   * [discount type](https://help.shopify.com/manual/discounts/discount-types).
    */
   public String getFunctionId() {
     return functionId;
@@ -68,7 +108,7 @@ public class DiscountAutomaticAppInput {
   }
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   public String getTitle() {
     return title;
@@ -79,7 +119,7 @@ public class DiscountAutomaticAppInput {
   }
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   public OffsetDateTime getStartsAt() {
     return startsAt;
@@ -90,7 +130,8 @@ public class DiscountAutomaticAppInput {
   }
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   public OffsetDateTime getEndsAt() {
     return endsAt;
@@ -102,6 +143,10 @@ public class DiscountAutomaticAppInput {
 
   /**
    * Additional metafields to associate to the discount.
+   * [Metafields](https://shopify.dev/docs/apps/build/custom-data)
+   * provide dynamic function configuration with
+   * different parameters, such as `percentage` for a percentage discount. Merchants can set metafield values
+   * in the Shopify admin, which makes the discount function more flexible and customizable.
    */
   public List<MetafieldInput> getMetafields() {
     return metafields;
@@ -111,9 +156,37 @@ public class DiscountAutomaticAppInput {
     this.metafields = metafields;
   }
 
+  /**
+   * Whether the discount applies on subscription items.
+   * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+   * enable customers to purchase products
+   * on a recurring basis.
+   */
+  public Boolean getAppliesOnSubscription() {
+    return appliesOnSubscription;
+  }
+
+  public void setAppliesOnSubscription(Boolean appliesOnSubscription) {
+    this.appliesOnSubscription = appliesOnSubscription;
+  }
+
+  /**
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
+   */
+  public Integer getRecurringCycleLimit() {
+    return recurringCycleLimit;
+  }
+
+  public void setRecurringCycleLimit(Integer recurringCycleLimit) {
+    this.recurringCycleLimit = recurringCycleLimit;
+  }
+
   @Override
   public String toString() {
-    return "DiscountAutomaticAppInput{combinesWith='" + combinesWith + "', functionId='" + functionId + "', title='" + title + "', startsAt='" + startsAt + "', endsAt='" + endsAt + "', metafields='" + metafields + "'}";
+    return "DiscountAutomaticAppInput{combinesWith='" + combinesWith + "', functionId='" + functionId + "', title='" + title + "', startsAt='" + startsAt + "', endsAt='" + endsAt + "', metafields='" + metafields + "', appliesOnSubscription='" + appliesOnSubscription + "', recurringCycleLimit='" + recurringCycleLimit + "'}";
   }
 
   @Override
@@ -126,12 +199,14 @@ public class DiscountAutomaticAppInput {
         Objects.equals(title, that.title) &&
         Objects.equals(startsAt, that.startsAt) &&
         Objects.equals(endsAt, that.endsAt) &&
-        Objects.equals(metafields, that.metafields);
+        Objects.equals(metafields, that.metafields) &&
+        Objects.equals(appliesOnSubscription, that.appliesOnSubscription) &&
+        Objects.equals(recurringCycleLimit, that.recurringCycleLimit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(combinesWith, functionId, title, startsAt, endsAt, metafields);
+    return Objects.hash(combinesWith, functionId, title, startsAt, endsAt, metafields, appliesOnSubscription, recurringCycleLimit);
   }
 
   public static Builder newBuilder() {
@@ -140,34 +215,61 @@ public class DiscountAutomaticAppInput {
 
   public static class Builder {
     /**
-     * Determines which discount classes the discount can combine with.
+     * The
+     * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
      */
     private DiscountCombinesWithInput combinesWith;
 
     /**
-     * The ID of the function providing the app discount type.
+     * The
+     * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+     * associated with the app extension providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     private String functionId;
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     private String title;
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     private OffsetDateTime startsAt;
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     private OffsetDateTime endsAt;
 
     /**
      * Additional metafields to associate to the discount.
+     * [Metafields](https://shopify.dev/docs/apps/build/custom-data)
+     * provide dynamic function configuration with
+     * different parameters, such as `percentage` for a percentage discount. Merchants can set metafield values
+     * in the Shopify admin, which makes the discount function more flexible and customizable.
      */
     private List<MetafieldInput> metafields = Collections.emptyList();
+
+    /**
+     * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
+     */
+    private Boolean appliesOnSubscription = false;
+
+    /**
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
+     */
+    private Integer recurringCycleLimit = 1;
 
     public DiscountAutomaticAppInput build() {
       DiscountAutomaticAppInput result = new DiscountAutomaticAppInput();
@@ -177,11 +279,16 @@ public class DiscountAutomaticAppInput {
       result.startsAt = this.startsAt;
       result.endsAt = this.endsAt;
       result.metafields = this.metafields;
+      result.appliesOnSubscription = this.appliesOnSubscription;
+      result.recurringCycleLimit = this.recurringCycleLimit;
       return result;
     }
 
     /**
-     * Determines which discount classes the discount can combine with.
+     * The
+     * [discount classes](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
      */
     public Builder combinesWith(DiscountCombinesWithInput combinesWith) {
       this.combinesWith = combinesWith;
@@ -189,7 +296,10 @@ public class DiscountAutomaticAppInput {
     }
 
     /**
-     * The ID of the function providing the app discount type.
+     * The
+     * [function ID](https://shopify.dev/docs/apps/build/functions/input-output/metafields-for-input-queries)
+     * associated with the app extension providing the
+     * [discount type](https://help.shopify.com/manual/discounts/discount-types).
      */
     public Builder functionId(String functionId) {
       this.functionId = functionId;
@@ -197,7 +307,7 @@ public class DiscountAutomaticAppInput {
     }
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     public Builder title(String title) {
       this.title = title;
@@ -205,7 +315,7 @@ public class DiscountAutomaticAppInput {
     }
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     public Builder startsAt(OffsetDateTime startsAt) {
       this.startsAt = startsAt;
@@ -213,7 +323,8 @@ public class DiscountAutomaticAppInput {
     }
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     public Builder endsAt(OffsetDateTime endsAt) {
       this.endsAt = endsAt;
@@ -222,9 +333,35 @@ public class DiscountAutomaticAppInput {
 
     /**
      * Additional metafields to associate to the discount.
+     * [Metafields](https://shopify.dev/docs/apps/build/custom-data)
+     * provide dynamic function configuration with
+     * different parameters, such as `percentage` for a percentage discount. Merchants can set metafield values
+     * in the Shopify admin, which makes the discount function more flexible and customizable.
      */
     public Builder metafields(List<MetafieldInput> metafields) {
       this.metafields = metafields;
+      return this;
+    }
+
+    /**
+     * Whether the discount applies on subscription items.
+     * [Subscriptions](https://shopify.dev/docs/apps/launch/billing/subscription-billing/offer-subscription-discounts)
+     * enable customers to purchase products
+     * on a recurring basis.
+     */
+    public Builder appliesOnSubscription(Boolean appliesOnSubscription) {
+      this.appliesOnSubscription = appliesOnSubscription;
+      return this;
+    }
+
+    /**
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
+     */
+    public Builder recurringCycleLimit(Integer recurringCycleLimit) {
+      this.recurringCycleLimit = recurringCycleLimit;
       return this;
     }
   }

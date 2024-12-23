@@ -14,6 +14,18 @@ public class ProductOptionProjection<PARENT extends BaseSubProjectionNode<?, ?>,
     return this;
   }
 
+  public LinkedMetafieldProjection<ProductOptionProjection<PARENT, ROOT>, ROOT> linkedMetafield() {
+     LinkedMetafieldProjection<ProductOptionProjection<PARENT, ROOT>, ROOT> projection = new LinkedMetafieldProjection<>(this, getRoot());
+     getFields().put("linkedMetafield", projection);
+     return projection;
+  }
+
+  public ProductOptionValueProjection<ProductOptionProjection<PARENT, ROOT>, ROOT> optionValues() {
+     ProductOptionValueProjection<ProductOptionProjection<PARENT, ROOT>, ROOT> projection = new ProductOptionValueProjection<>(this, getRoot());
+     getFields().put("optionValues", projection);
+     return projection;
+  }
+
   public TranslationProjection<ProductOptionProjection<PARENT, ROOT>, ROOT> translations() {
      TranslationProjection<ProductOptionProjection<PARENT, ROOT>, ROOT> projection = new TranslationProjection<>(this, getRoot());
      getFields().put("translations", projection);

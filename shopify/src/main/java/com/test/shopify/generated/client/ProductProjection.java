@@ -5,6 +5,7 @@ import com.test.shopify.generated.types.CatalogType;
 import com.test.shopify.generated.types.CollectionSortKeys;
 import com.test.shopify.generated.types.ContextualPricingContext;
 import com.test.shopify.generated.types.ContextualPublicationContext;
+import com.test.shopify.generated.types.EventSortKeys;
 import com.test.shopify.generated.types.MetafieldDefinitionPinnedStatus;
 import com.test.shopify.generated.types.MetafieldDefinitionSortKeys;
 import com.test.shopify.generated.types.ProductImageSortKeys;
@@ -24,6 +25,43 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
   public ProductProjection<PARENT, ROOT> __typename() {
     getFields().put("__typename", null);
     return this;
+  }
+
+  public CountProjection<ProductProjection<PARENT, ROOT>, ROOT> availablePublicationsCount() {
+     CountProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("availablePublicationsCount", projection);
+     return projection;
+  }
+
+  public ProductBundleComponentConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> bundleComponents(
+      ) {
+     ProductBundleComponentConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new ProductBundleComponentConnectionProjection<>(this, getRoot());
+     getFields().put("bundleComponents", projection);
+     return projection;
+  }
+
+  public ProductBundleComponentConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> bundleComponents(
+      Integer first, String after, Integer last, String before, Boolean reverse) {
+    ProductBundleComponentConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new ProductBundleComponentConnectionProjection<>(this, getRoot());    
+    getFields().put("bundleComponents", projection);
+    getInputArguments().computeIfAbsent("bundleComponents", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("bundleComponents").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("bundleComponents").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("bundleComponents").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("bundleComponents").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("bundleComponents").add(reverseArg);
+    return projection;
+  }
+
+  public TaxonomyCategoryProjection<ProductProjection<PARENT, ROOT>, ROOT> category() {
+     TaxonomyCategoryProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new TaxonomyCategoryProjection<>(this, getRoot());
+     getFields().put("category", projection);
+     return projection;
   }
 
   public CollectionConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> collections() {
@@ -55,6 +93,19 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     return projection;
   }
 
+  public CombinedListingProjection<ProductProjection<PARENT, ROOT>, ROOT> combinedListing() {
+     CombinedListingProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new CombinedListingProjection<>(this, getRoot());
+     getFields().put("combinedListing", projection);
+     return projection;
+  }
+
+  public CombinedListingsRoleProjection<ProductProjection<PARENT, ROOT>, ROOT> combinedListingRole(
+      ) {
+     CombinedListingsRoleProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new CombinedListingsRoleProjection<>(this, getRoot());
+     getFields().put("combinedListingRole", projection);
+     return projection;
+  }
+
   public ProductCompareAtPriceRangeProjection<ProductProjection<PARENT, ROOT>, ROOT> compareAtPriceRange(
       ) {
      ProductCompareAtPriceRangeProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new ProductCompareAtPriceRangeProjection<>(this, getRoot());
@@ -76,6 +127,35 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     getInputArguments().computeIfAbsent("contextualPricing", k -> new ArrayList<>());                      
     InputArgument contextArg = new InputArgument("context", context);
     getInputArguments().get("contextualPricing").add(contextArg);
+    return projection;
+  }
+
+  public EventConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> events() {
+     EventConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new EventConnectionProjection<>(this, getRoot());
+     getFields().put("events", projection);
+     return projection;
+  }
+
+  public EventConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> events(Integer first,
+      String after, Integer last, String before, Boolean reverse, EventSortKeys sortKey,
+      String query) {
+    EventConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new EventConnectionProjection<>(this, getRoot());    
+    getFields().put("events", projection);
+    getInputArguments().computeIfAbsent("events", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("events").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("events").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("events").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("events").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("events").add(reverseArg);
+    InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
+    getInputArguments().get("events").add(sortKeyArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("events").add(queryArg);
     return projection;
   }
 
@@ -130,7 +210,8 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
   }
 
   public MediaConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> media(Integer first,
-      String after, Integer last, String before, Boolean reverse, ProductMediaSortKeys sortKey) {
+      String after, Integer last, String before, Boolean reverse, ProductMediaSortKeys sortKey,
+      String query) {
     MediaConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new MediaConnectionProjection<>(this, getRoot());    
     getFields().put("media", projection);
     getInputArguments().computeIfAbsent("media", k -> new ArrayList<>());                      
@@ -146,7 +227,15 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     getInputArguments().get("media").add(reverseArg);
     InputArgument sortKeyArg = new InputArgument("sortKey", sortKey);
     getInputArguments().get("media").add(sortKeyArg);
+    InputArgument queryArg = new InputArgument("query", query);
+    getInputArguments().get("media").add(queryArg);
     return projection;
+  }
+
+  public CountProjection<ProductProjection<PARENT, ROOT>, ROOT> mediaCount() {
+     CountProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("mediaCount", projection);
+     return projection;
   }
 
   public MetafieldProjection<ProductProjection<PARENT, ROOT>, ROOT> metafield() {
@@ -397,6 +486,22 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     return projection;
   }
 
+  public CountProjection<ProductProjection<PARENT, ROOT>, ROOT> resourcePublicationsCount() {
+     CountProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("resourcePublicationsCount", projection);
+     return projection;
+  }
+
+  public CountProjection<ProductProjection<PARENT, ROOT>, ROOT> resourcePublicationsCount(
+      Boolean onlyPublished) {
+    CountProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());    
+    getFields().put("resourcePublicationsCount", projection);
+    getInputArguments().computeIfAbsent("resourcePublicationsCount", k -> new ArrayList<>());                      
+    InputArgument onlyPublishedArg = new InputArgument("onlyPublished", onlyPublished);
+    getInputArguments().get("resourcePublicationsCount").add(onlyPublishedArg);
+    return projection;
+  }
+
   public ResourcePublicationV2ConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> resourcePublicationsV2(
       ) {
      ResourcePublicationV2ConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new ResourcePublicationV2ConnectionProjection<>(this, getRoot());
@@ -427,6 +532,23 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     return projection;
   }
 
+  public RestrictedForResourceProjection<ProductProjection<PARENT, ROOT>, ROOT> restrictedForResource(
+      ) {
+     RestrictedForResourceProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new RestrictedForResourceProjection<>(this, getRoot());
+     getFields().put("restrictedForResource", projection);
+     return projection;
+  }
+
+  public RestrictedForResourceProjection<ProductProjection<PARENT, ROOT>, ROOT> restrictedForResource(
+      String calculatedOrderId) {
+    RestrictedForResourceProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new RestrictedForResourceProjection<>(this, getRoot());    
+    getFields().put("restrictedForResource", projection);
+    getInputArguments().computeIfAbsent("restrictedForResource", k -> new ArrayList<>());                      
+    InputArgument calculatedOrderIdArg = new InputArgument("calculatedOrderId", calculatedOrderId);
+    getInputArguments().get("restrictedForResource").add(calculatedOrderIdArg);
+    return projection;
+  }
+
   public SellingPlanGroupConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> sellingPlanGroups(
       ) {
      SellingPlanGroupConnectionProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new SellingPlanGroupConnectionProjection<>(this, getRoot());
@@ -450,6 +572,12 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     InputArgument reverseArg = new InputArgument("reverse", reverse);
     getInputArguments().get("sellingPlanGroups").add(reverseArg);
     return projection;
+  }
+
+  public CountProjection<ProductProjection<PARENT, ROOT>, ROOT> sellingPlanGroupsCount() {
+     CountProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("sellingPlanGroupsCount", projection);
+     return projection;
   }
 
   public SEOProjection<ProductProjection<PARENT, ROOT>, ROOT> seo() {
@@ -565,9 +693,10 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
     return projection;
   }
 
-  public ProductProjection<PARENT, ROOT> availablePublicationCount() {
-    getFields().put("availablePublicationCount", null);
-    return this;
+  public CountProjection<ProductProjection<PARENT, ROOT>, ROOT> variantsCount() {
+     CountProjection<ProductProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("variantsCount", projection);
+     return projection;
   }
 
   public ProductProjection<PARENT, ROOT> bodyHtml() {
@@ -663,11 +792,6 @@ public class ProductProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT 
 
   public ProductProjection<PARENT, ROOT> legacyResourceId() {
     getFields().put("legacyResourceId", null);
-    return this;
-  }
-
-  public ProductProjection<PARENT, ROOT> mediaCount() {
-    getFields().put("mediaCount", null);
     return this;
   }
 

@@ -26,6 +26,11 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
   private String amount;
 
   /**
+   * The rounding adjustment applied on the cash amount in shop and presentment currencies.
+   */
+  private MoneyBag amountRoundingSet;
+
+  /**
    * The amount and currency of the transaction in shop and presentment currencies.
    */
   private MoneyBag amountSet;
@@ -41,9 +46,7 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
   private String authorizationCode;
 
   /**
-   * The time when the authorization expires. This field is available only to
-   * stores on a Shopify Plus plan and is populated only for Shopify Payments
-   * authorizations.
+   * The time when the authorization expires. This field is available only to stores on a Shopify Plus plan.
    */
   private OffsetDateTime authorizationExpiresAt;
 
@@ -143,12 +146,6 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
    * The transaction receipt that the payment gateway attaches to the transaction.
    * The value of this field depends on which payment gateway processed the transaction.
    */
-  private String receipt;
-
-  /**
-   * The transaction receipt that the payment gateway attaches to the transaction.
-   * The value of this field depends on which payment gateway processed the transaction.
-   */
   private String receiptJson;
 
   /**
@@ -226,6 +223,17 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * The rounding adjustment applied on the cash amount in shop and presentment currencies.
+   */
+  public MoneyBag getAmountRoundingSet() {
+    return amountRoundingSet;
+  }
+
+  public void setAmountRoundingSet(MoneyBag amountRoundingSet) {
+    this.amountRoundingSet = amountRoundingSet;
+  }
+
+  /**
    * The amount and currency of the transaction in shop and presentment currencies.
    */
   public MoneyBag getAmountSet() {
@@ -259,9 +267,7 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
   }
 
   /**
-   * The time when the authorization expires. This field is available only to
-   * stores on a Shopify Plus plan and is populated only for Shopify Payments
-   * authorizations.
+   * The time when the authorization expires. This field is available only to stores on a Shopify Plus plan.
    */
   public OffsetDateTime getAuthorizationExpiresAt() {
     return authorizationExpiresAt;
@@ -475,18 +481,6 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
    * The transaction receipt that the payment gateway attaches to the transaction.
    * The value of this field depends on which payment gateway processed the transaction.
    */
-  public String getReceipt() {
-    return receipt;
-  }
-
-  public void setReceipt(String receipt) {
-    this.receipt = receipt;
-  }
-
-  /**
-   * The transaction receipt that the payment gateway attaches to the transaction.
-   * The value of this field depends on which payment gateway processed the transaction.
-   */
   public String getReceiptJson() {
     return receiptJson;
   }
@@ -600,7 +594,7 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "OrderTransaction{accountNumber='" + accountNumber + "', amount='" + amount + "', amountSet='" + amountSet + "', amountV2='" + amountV2 + "', authorizationCode='" + authorizationCode + "', authorizationExpiresAt='" + authorizationExpiresAt + "', createdAt='" + createdAt + "', errorCode='" + errorCode + "', fees='" + fees + "', formattedGateway='" + formattedGateway + "', gateway='" + gateway + "', id='" + id + "', kind='" + kind + "', manuallyCapturable='" + manuallyCapturable + "', maximumRefundable='" + maximumRefundable + "', maximumRefundableV2='" + maximumRefundableV2 + "', multiCapturable='" + multiCapturable + "', order='" + order + "', parentTransaction='" + parentTransaction + "', paymentDetails='" + paymentDetails + "', paymentIcon='" + paymentIcon + "', paymentId='" + paymentId + "', paymentMethod='" + paymentMethod + "', processedAt='" + processedAt + "', receipt='" + receipt + "', receiptJson='" + receiptJson + "', settlementCurrency='" + settlementCurrency + "', settlementCurrencyRate='" + settlementCurrencyRate + "', shopifyPaymentsSet='" + shopifyPaymentsSet + "', status='" + status + "', test='" + test + "', totalUnsettled='" + totalUnsettled + "', totalUnsettledSet='" + totalUnsettledSet + "', totalUnsettledV2='" + totalUnsettledV2 + "', user='" + user + "'}";
+    return "OrderTransaction{accountNumber='" + accountNumber + "', amount='" + amount + "', amountRoundingSet='" + amountRoundingSet + "', amountSet='" + amountSet + "', amountV2='" + amountV2 + "', authorizationCode='" + authorizationCode + "', authorizationExpiresAt='" + authorizationExpiresAt + "', createdAt='" + createdAt + "', errorCode='" + errorCode + "', fees='" + fees + "', formattedGateway='" + formattedGateway + "', gateway='" + gateway + "', id='" + id + "', kind='" + kind + "', manuallyCapturable='" + manuallyCapturable + "', maximumRefundable='" + maximumRefundable + "', maximumRefundableV2='" + maximumRefundableV2 + "', multiCapturable='" + multiCapturable + "', order='" + order + "', parentTransaction='" + parentTransaction + "', paymentDetails='" + paymentDetails + "', paymentIcon='" + paymentIcon + "', paymentId='" + paymentId + "', paymentMethod='" + paymentMethod + "', processedAt='" + processedAt + "', receiptJson='" + receiptJson + "', settlementCurrency='" + settlementCurrency + "', settlementCurrencyRate='" + settlementCurrencyRate + "', shopifyPaymentsSet='" + shopifyPaymentsSet + "', status='" + status + "', test='" + test + "', totalUnsettled='" + totalUnsettled + "', totalUnsettledSet='" + totalUnsettledSet + "', totalUnsettledV2='" + totalUnsettledV2 + "', user='" + user + "'}";
   }
 
   @Override
@@ -610,6 +604,7 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
     OrderTransaction that = (OrderTransaction) o;
     return Objects.equals(accountNumber, that.accountNumber) &&
         Objects.equals(amount, that.amount) &&
+        Objects.equals(amountRoundingSet, that.amountRoundingSet) &&
         Objects.equals(amountSet, that.amountSet) &&
         Objects.equals(amountV2, that.amountV2) &&
         Objects.equals(authorizationCode, that.authorizationCode) &&
@@ -632,7 +627,6 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
         Objects.equals(paymentId, that.paymentId) &&
         Objects.equals(paymentMethod, that.paymentMethod) &&
         Objects.equals(processedAt, that.processedAt) &&
-        Objects.equals(receipt, that.receipt) &&
         Objects.equals(receiptJson, that.receiptJson) &&
         Objects.equals(settlementCurrency, that.settlementCurrency) &&
         Objects.equals(settlementCurrencyRate, that.settlementCurrencyRate) &&
@@ -647,7 +641,7 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountNumber, amount, amountSet, amountV2, authorizationCode, authorizationExpiresAt, createdAt, errorCode, fees, formattedGateway, gateway, id, kind, manuallyCapturable, maximumRefundable, maximumRefundableV2, multiCapturable, order, parentTransaction, paymentDetails, paymentIcon, paymentId, paymentMethod, processedAt, receipt, receiptJson, settlementCurrency, settlementCurrencyRate, shopifyPaymentsSet, status, test, totalUnsettled, totalUnsettledSet, totalUnsettledV2, user);
+    return Objects.hash(accountNumber, amount, amountRoundingSet, amountSet, amountV2, authorizationCode, authorizationExpiresAt, createdAt, errorCode, fees, formattedGateway, gateway, id, kind, manuallyCapturable, maximumRefundable, maximumRefundableV2, multiCapturable, order, parentTransaction, paymentDetails, paymentIcon, paymentId, paymentMethod, processedAt, receiptJson, settlementCurrency, settlementCurrencyRate, shopifyPaymentsSet, status, test, totalUnsettled, totalUnsettledSet, totalUnsettledV2, user);
   }
 
   public static Builder newBuilder() {
@@ -666,6 +660,11 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
     private String amount;
 
     /**
+     * The rounding adjustment applied on the cash amount in shop and presentment currencies.
+     */
+    private MoneyBag amountRoundingSet;
+
+    /**
      * The amount and currency of the transaction in shop and presentment currencies.
      */
     private MoneyBag amountSet;
@@ -681,9 +680,7 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
     private String authorizationCode;
 
     /**
-     * The time when the authorization expires. This field is available only to
-     * stores on a Shopify Plus plan and is populated only for Shopify Payments
-     * authorizations.
+     * The time when the authorization expires. This field is available only to stores on a Shopify Plus plan.
      */
     private OffsetDateTime authorizationExpiresAt;
 
@@ -783,12 +780,6 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
      * The transaction receipt that the payment gateway attaches to the transaction.
      * The value of this field depends on which payment gateway processed the transaction.
      */
-    private String receipt;
-
-    /**
-     * The transaction receipt that the payment gateway attaches to the transaction.
-     * The value of this field depends on which payment gateway processed the transaction.
-     */
     private String receiptJson;
 
     /**
@@ -844,6 +835,7 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
       OrderTransaction result = new OrderTransaction();
       result.accountNumber = this.accountNumber;
       result.amount = this.amount;
+      result.amountRoundingSet = this.amountRoundingSet;
       result.amountSet = this.amountSet;
       result.amountV2 = this.amountV2;
       result.authorizationCode = this.authorizationCode;
@@ -866,7 +858,6 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
       result.paymentId = this.paymentId;
       result.paymentMethod = this.paymentMethod;
       result.processedAt = this.processedAt;
-      result.receipt = this.receipt;
       result.receiptJson = this.receiptJson;
       result.settlementCurrency = this.settlementCurrency;
       result.settlementCurrencyRate = this.settlementCurrencyRate;
@@ -897,6 +888,14 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
     }
 
     /**
+     * The rounding adjustment applied on the cash amount in shop and presentment currencies.
+     */
+    public Builder amountRoundingSet(MoneyBag amountRoundingSet) {
+      this.amountRoundingSet = amountRoundingSet;
+      return this;
+    }
+
+    /**
      * The amount and currency of the transaction in shop and presentment currencies.
      */
     public Builder amountSet(MoneyBag amountSet) {
@@ -921,9 +920,7 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
     }
 
     /**
-     * The time when the authorization expires. This field is available only to
-     * stores on a Shopify Plus plan and is populated only for Shopify Payments
-     * authorizations.
+     * The time when the authorization expires. This field is available only to stores on a Shopify Plus plan.
      */
     public Builder authorizationExpiresAt(OffsetDateTime authorizationExpiresAt) {
       this.authorizationExpiresAt = authorizationExpiresAt;
@@ -1073,15 +1070,6 @@ public class OrderTransaction implements com.test.shopify.generated.types.Node {
      */
     public Builder processedAt(OffsetDateTime processedAt) {
       this.processedAt = processedAt;
-      return this;
-    }
-
-    /**
-     * The transaction receipt that the payment gateway attaches to the transaction.
-     * The value of this field depends on which payment gateway processed the transaction.
-     */
-    public Builder receipt(String receipt) {
-      this.receipt = receipt;
       return this;
     }
 

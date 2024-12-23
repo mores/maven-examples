@@ -43,8 +43,23 @@ public class ShopPolicyProjection<PARENT extends BaseSubProjectionNode<?, ?>, RO
     return this;
   }
 
+  public ShopPolicyProjection<PARENT, ROOT> createdAt() {
+    getFields().put("createdAt", null);
+    return this;
+  }
+
   public ShopPolicyProjection<PARENT, ROOT> id() {
     getFields().put("id", null);
+    return this;
+  }
+
+  public ShopPolicyProjection<PARENT, ROOT> title() {
+    getFields().put("title", null);
+    return this;
+  }
+
+  public ShopPolicyProjection<PARENT, ROOT> updatedAt() {
+    getFields().put("updatedAt", null);
     return this;
   }
 

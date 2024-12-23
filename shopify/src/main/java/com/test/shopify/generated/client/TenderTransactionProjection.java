@@ -18,6 +18,12 @@ public class TenderTransactionProjection<PARENT extends BaseSubProjectionNode<?,
      return projection;
   }
 
+  public OrderProjection<TenderTransactionProjection<PARENT, ROOT>, ROOT> order() {
+     OrderProjection<TenderTransactionProjection<PARENT, ROOT>, ROOT> projection = new OrderProjection<>(this, getRoot());
+     getFields().put("order", projection);
+     return projection;
+  }
+
   public TenderTransactionDetailsProjection<TenderTransactionProjection<PARENT, ROOT>, ROOT> transactionDetails(
       ) {
      TenderTransactionDetailsProjection<TenderTransactionProjection<PARENT, ROOT>, ROOT> projection = new TenderTransactionDetailsProjection<>(this, getRoot());

@@ -36,5 +36,9 @@ public enum LocationEditUserErrorCode {
 
   PRESENT,
 
-  TOO_SHORT
+  TOO_SHORT,
+
+  CAPABILITY_VIOLATION,
+
+  INTERNAL_ERROR
 }

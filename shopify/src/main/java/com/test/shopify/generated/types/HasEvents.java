@@ -12,6 +12,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     property = "__typename"
 )
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = Article.class, name = "Article"),
+    @JsonSubTypes.Type(value = Blog.class, name = "Blog"),
+    @JsonSubTypes.Type(value = Collection.class, name = "Collection"),
+    @JsonSubTypes.Type(value = Comment.class, name = "Comment"),
     @JsonSubTypes.Type(value = Company.class, name = "Company"),
     @JsonSubTypes.Type(value = CompanyLocation.class, name = "CompanyLocation"),
     @JsonSubTypes.Type(value = Customer.class, name = "Customer"),
@@ -21,7 +25,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     @JsonSubTypes.Type(value = DiscountNode.class, name = "DiscountNode"),
     @JsonSubTypes.Type(value = DraftOrder.class, name = "DraftOrder"),
     @JsonSubTypes.Type(value = Order.class, name = "Order"),
-    @JsonSubTypes.Type(value = PriceRule.class, name = "PriceRule")
+    @JsonSubTypes.Type(value = Page.class, name = "Page"),
+    @JsonSubTypes.Type(value = PriceRule.class, name = "PriceRule"),
+    @JsonSubTypes.Type(value = Product.class, name = "Product"),
+    @JsonSubTypes.Type(value = ProductVariant.class, name = "ProductVariant")
 })
 public interface HasEvents {
   /**

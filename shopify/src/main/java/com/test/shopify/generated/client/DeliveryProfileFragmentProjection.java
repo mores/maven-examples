@@ -21,6 +21,13 @@ public class DeliveryProfileFragmentProjection<PARENT extends BaseSubProjectionN
     return this;
   }
 
+  public CountProjection<DeliveryProfileFragmentProjection<PARENT, ROOT>, ROOT> productVariantsCount(
+      ) {
+     CountProjection<DeliveryProfileFragmentProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("productVariantsCount", projection);
+     return projection;
+  }
+
   public DeliveryProductVariantsCountProjection<DeliveryProfileFragmentProjection<PARENT, ROOT>, ROOT> productVariantsCountV2(
       ) {
      DeliveryProductVariantsCountProjection<DeliveryProfileFragmentProjection<PARENT, ROOT>, ROOT> projection = new DeliveryProductVariantsCountProjection<>(this, getRoot());
@@ -159,11 +166,6 @@ public class DeliveryProfileFragmentProjection<PARENT extends BaseSubProjectionN
 
   public DeliveryProfileFragmentProjection<PARENT, ROOT> originLocationCount() {
     getFields().put("originLocationCount", null);
-    return this;
-  }
-
-  public DeliveryProfileFragmentProjection<PARENT, ROOT> productVariantsCount() {
-    getFields().put("productVariantsCount", null);
     return this;
   }
 

@@ -17,11 +17,6 @@ import java.util.Objects;
 )
 public class InventoryLevel implements com.test.shopify.generated.types.Node {
   /**
-   * The quantity of inventory items that are available at the inventory level's associated location.
-   */
-  private int available;
-
-  /**
    * Whether the inventory items associated with the inventory level can be deactivated.
    */
   private boolean canDeactivate;
@@ -37,20 +32,9 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
   private String deactivationAlert;
 
   /**
-   * Describes, in HTML with embedded URLs, either the impact of deactivating the
-   * inventory level or why the inventory level can't be deactivated.
-   */
-  private String deactivationAlertHtml;
-
-  /**
    * A globally-unique ID.
    */
   private String id;
-
-  /**
-   * The quantity of inventory items that are going to the inventory level's associated location.
-   */
-  private int incoming;
 
   /**
    * Inventory item associated with the inventory level.
@@ -78,17 +62,6 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
   private OffsetDateTime updatedAt;
 
   public InventoryLevel() {
-  }
-
-  /**
-   * The quantity of inventory items that are available at the inventory level's associated location.
-   */
-  public int getAvailable() {
-    return available;
-  }
-
-  public void setAvailable(int available) {
-    this.available = available;
   }
 
   /**
@@ -125,18 +98,6 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
   }
 
   /**
-   * Describes, in HTML with embedded URLs, either the impact of deactivating the
-   * inventory level or why the inventory level can't be deactivated.
-   */
-  public String getDeactivationAlertHtml() {
-    return deactivationAlertHtml;
-  }
-
-  public void setDeactivationAlertHtml(String deactivationAlertHtml) {
-    this.deactivationAlertHtml = deactivationAlertHtml;
-  }
-
-  /**
    * A globally-unique ID.
    */
   public String getId() {
@@ -145,17 +106,6 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  /**
-   * The quantity of inventory items that are going to the inventory level's associated location.
-   */
-  public int getIncoming() {
-    return incoming;
-  }
-
-  public void setIncoming(int incoming) {
-    this.incoming = incoming;
   }
 
   /**
@@ -215,7 +165,7 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "InventoryLevel{available='" + available + "', canDeactivate='" + canDeactivate + "', createdAt='" + createdAt + "', deactivationAlert='" + deactivationAlert + "', deactivationAlertHtml='" + deactivationAlertHtml + "', id='" + id + "', incoming='" + incoming + "', item='" + item + "', location='" + location + "', quantities='" + quantities + "', scheduledChanges='" + scheduledChanges + "', updatedAt='" + updatedAt + "'}";
+    return "InventoryLevel{canDeactivate='" + canDeactivate + "', createdAt='" + createdAt + "', deactivationAlert='" + deactivationAlert + "', id='" + id + "', item='" + item + "', location='" + location + "', quantities='" + quantities + "', scheduledChanges='" + scheduledChanges + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -223,13 +173,10 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     InventoryLevel that = (InventoryLevel) o;
-    return available == that.available &&
-        canDeactivate == that.canDeactivate &&
+    return canDeactivate == that.canDeactivate &&
         Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(deactivationAlert, that.deactivationAlert) &&
-        Objects.equals(deactivationAlertHtml, that.deactivationAlertHtml) &&
         Objects.equals(id, that.id) &&
-        incoming == that.incoming &&
         Objects.equals(item, that.item) &&
         Objects.equals(location, that.location) &&
         Objects.equals(quantities, that.quantities) &&
@@ -239,7 +186,7 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
 
   @Override
   public int hashCode() {
-    return Objects.hash(available, canDeactivate, createdAt, deactivationAlert, deactivationAlertHtml, id, incoming, item, location, quantities, scheduledChanges, updatedAt);
+    return Objects.hash(canDeactivate, createdAt, deactivationAlert, id, item, location, quantities, scheduledChanges, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -247,11 +194,6 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
   }
 
   public static class Builder {
-    /**
-     * The quantity of inventory items that are available at the inventory level's associated location.
-     */
-    private int available;
-
     /**
      * Whether the inventory items associated with the inventory level can be deactivated.
      */
@@ -268,20 +210,9 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
     private String deactivationAlert;
 
     /**
-     * Describes, in HTML with embedded URLs, either the impact of deactivating the
-     * inventory level or why the inventory level can't be deactivated.
-     */
-    private String deactivationAlertHtml;
-
-    /**
      * A globally-unique ID.
      */
     private String id;
-
-    /**
-     * The quantity of inventory items that are going to the inventory level's associated location.
-     */
-    private int incoming;
 
     /**
      * Inventory item associated with the inventory level.
@@ -310,27 +241,16 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
 
     public InventoryLevel build() {
       InventoryLevel result = new InventoryLevel();
-      result.available = this.available;
       result.canDeactivate = this.canDeactivate;
       result.createdAt = this.createdAt;
       result.deactivationAlert = this.deactivationAlert;
-      result.deactivationAlertHtml = this.deactivationAlertHtml;
       result.id = this.id;
-      result.incoming = this.incoming;
       result.item = this.item;
       result.location = this.location;
       result.quantities = this.quantities;
       result.scheduledChanges = this.scheduledChanges;
       result.updatedAt = this.updatedAt;
       return result;
-    }
-
-    /**
-     * The quantity of inventory items that are available at the inventory level's associated location.
-     */
-    public Builder available(int available) {
-      this.available = available;
-      return this;
     }
 
     /**
@@ -358,27 +278,10 @@ public class InventoryLevel implements com.test.shopify.generated.types.Node {
     }
 
     /**
-     * Describes, in HTML with embedded URLs, either the impact of deactivating the
-     * inventory level or why the inventory level can't be deactivated.
-     */
-    public Builder deactivationAlertHtml(String deactivationAlertHtml) {
-      this.deactivationAlertHtml = deactivationAlertHtml;
-      return this;
-    }
-
-    /**
      * A globally-unique ID.
      */
     public Builder id(String id) {
       this.id = id;
-      return this;
-    }
-
-    /**
-     * The quantity of inventory items that are going to the inventory level's associated location.
-     */
-    public Builder incoming(int incoming) {
-      this.incoming = incoming;
       return this;
     }
 

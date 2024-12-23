@@ -29,4 +29,15 @@ public class AppFeedbackProjection<PARENT extends BaseSubProjectionNode<?, ?>, R
      getFields().put("messages", projection);
      return projection;
   }
+
+  public ResourceFeedbackStateProjection<AppFeedbackProjection<PARENT, ROOT>, ROOT> state() {
+     ResourceFeedbackStateProjection<AppFeedbackProjection<PARENT, ROOT>, ROOT> projection = new ResourceFeedbackStateProjection<>(this, getRoot());
+     getFields().put("state", projection);
+     return projection;
+  }
+
+  public AppFeedbackProjection<PARENT, ROOT> feedbackGeneratedAt() {
+    getFields().put("feedbackGeneratedAt", null);
+    return this;
+  }
 }

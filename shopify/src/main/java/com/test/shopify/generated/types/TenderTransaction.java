@@ -27,6 +27,11 @@ public class TenderTransaction implements com.test.shopify.generated.types.Node 
   private String id;
 
   /**
+   * The order that's related to the tender transaction. This value is null if the order has been deleted.
+   */
+  private Order order;
+
+  /**
    * Information about the payment method used for the transaction.
    */
   private String paymentMethod;
@@ -79,6 +84,17 @@ public class TenderTransaction implements com.test.shopify.generated.types.Node 
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  /**
+   * The order that's related to the tender transaction. This value is null if the order has been deleted.
+   */
+  public Order getOrder() {
+    return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
   }
 
   /**
@@ -149,7 +165,7 @@ public class TenderTransaction implements com.test.shopify.generated.types.Node 
 
   @Override
   public String toString() {
-    return "TenderTransaction{amount='" + amount + "', id='" + id + "', paymentMethod='" + paymentMethod + "', processedAt='" + processedAt + "', remoteReference='" + remoteReference + "', test='" + test + "', transactionDetails='" + transactionDetails + "', user='" + user + "'}";
+    return "TenderTransaction{amount='" + amount + "', id='" + id + "', order='" + order + "', paymentMethod='" + paymentMethod + "', processedAt='" + processedAt + "', remoteReference='" + remoteReference + "', test='" + test + "', transactionDetails='" + transactionDetails + "', user='" + user + "'}";
   }
 
   @Override
@@ -159,6 +175,7 @@ public class TenderTransaction implements com.test.shopify.generated.types.Node 
     TenderTransaction that = (TenderTransaction) o;
     return Objects.equals(amount, that.amount) &&
         Objects.equals(id, that.id) &&
+        Objects.equals(order, that.order) &&
         Objects.equals(paymentMethod, that.paymentMethod) &&
         Objects.equals(processedAt, that.processedAt) &&
         Objects.equals(remoteReference, that.remoteReference) &&
@@ -169,7 +186,7 @@ public class TenderTransaction implements com.test.shopify.generated.types.Node 
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, id, paymentMethod, processedAt, remoteReference, test, transactionDetails, user);
+    return Objects.hash(amount, id, order, paymentMethod, processedAt, remoteReference, test, transactionDetails, user);
   }
 
   public static Builder newBuilder() {
@@ -186,6 +203,11 @@ public class TenderTransaction implements com.test.shopify.generated.types.Node 
      * A globally-unique ID.
      */
     private String id;
+
+    /**
+     * The order that's related to the tender transaction. This value is null if the order has been deleted.
+     */
+    private Order order;
 
     /**
      * Information about the payment method used for the transaction.
@@ -221,6 +243,7 @@ public class TenderTransaction implements com.test.shopify.generated.types.Node 
       TenderTransaction result = new TenderTransaction();
       result.amount = this.amount;
       result.id = this.id;
+      result.order = this.order;
       result.paymentMethod = this.paymentMethod;
       result.processedAt = this.processedAt;
       result.remoteReference = this.remoteReference;
@@ -243,6 +266,14 @@ public class TenderTransaction implements com.test.shopify.generated.types.Node 
      */
     public Builder id(String id) {
       this.id = id;
+      return this;
+    }
+
+    /**
+     * The order that's related to the tender transaction. This value is null if the order has been deleted.
+     */
+    public Builder order(Order order) {
+      this.order = order;
       return this;
     }
 

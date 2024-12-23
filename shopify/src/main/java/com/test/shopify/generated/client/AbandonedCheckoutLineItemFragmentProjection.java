@@ -1,8 +1,11 @@
 package com.test.shopify.generated.client;
 
 import com.netflix.graphql.dgs.client.codegen.BaseSubProjectionNode;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
+import java.util.ArrayList;
 
 public class AbandonedCheckoutLineItemFragmentProjection<PARENT extends BaseSubProjectionNode<?, ?>, ROOT extends BaseSubProjectionNode<?, ?>> extends BaseSubProjectionNode<PARENT, ROOT> {
   {
@@ -23,6 +26,31 @@ public class AbandonedCheckoutLineItemFragmentProjection<PARENT extends BaseSubP
      AttributeProjection<AbandonedCheckoutLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new AttributeProjection<>(this, getRoot());
      getFields().put("customAttributes", projection);
      return projection;
+  }
+
+  public DiscountAllocationConnectionProjection<AbandonedCheckoutLineItemFragmentProjection<PARENT, ROOT>, ROOT> discountAllocations(
+      ) {
+     DiscountAllocationConnectionProjection<AbandonedCheckoutLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new DiscountAllocationConnectionProjection<>(this, getRoot());
+     getFields().put("discountAllocations", projection);
+     return projection;
+  }
+
+  public DiscountAllocationConnectionProjection<AbandonedCheckoutLineItemFragmentProjection<PARENT, ROOT>, ROOT> discountAllocations(
+      Integer first, String after, Integer last, String before, Boolean reverse) {
+    DiscountAllocationConnectionProjection<AbandonedCheckoutLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new DiscountAllocationConnectionProjection<>(this, getRoot());    
+    getFields().put("discountAllocations", projection);
+    getInputArguments().computeIfAbsent("discountAllocations", k -> new ArrayList<>());                      
+    InputArgument firstArg = new InputArgument("first", first);
+    getInputArguments().get("discountAllocations").add(firstArg);
+    InputArgument afterArg = new InputArgument("after", after);
+    getInputArguments().get("discountAllocations").add(afterArg);
+    InputArgument lastArg = new InputArgument("last", last);
+    getInputArguments().get("discountAllocations").add(lastArg);
+    InputArgument beforeArg = new InputArgument("before", before);
+    getInputArguments().get("discountAllocations").add(beforeArg);
+    InputArgument reverseArg = new InputArgument("reverse", reverse);
+    getInputArguments().get("discountAllocations").add(reverseArg);
+    return projection;
   }
 
   public MoneyBagProjection<AbandonedCheckoutLineItemFragmentProjection<PARENT, ROOT>, ROOT> discountedTotalPriceSet(

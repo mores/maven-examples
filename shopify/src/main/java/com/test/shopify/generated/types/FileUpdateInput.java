@@ -3,6 +3,7 @@ package com.test.shopify.generated.types;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -37,6 +38,16 @@ public class FileUpdateInput {
    * The name of the file including its extension.
    */
   private String filename;
+
+  /**
+   * The IDs of the references to add to the file. Currently only accepts product IDs.
+   */
+  private List<String> referencesToAdd;
+
+  /**
+   * The IDs of the references to remove from the file. Currently only accepts product IDs.
+   */
+  private List<String> referencesToRemove;
 
   public FileUpdateInput() {
   }
@@ -100,9 +111,31 @@ public class FileUpdateInput {
     this.filename = filename;
   }
 
+  /**
+   * The IDs of the references to add to the file. Currently only accepts product IDs.
+   */
+  public List<String> getReferencesToAdd() {
+    return referencesToAdd;
+  }
+
+  public void setReferencesToAdd(List<String> referencesToAdd) {
+    this.referencesToAdd = referencesToAdd;
+  }
+
+  /**
+   * The IDs of the references to remove from the file. Currently only accepts product IDs.
+   */
+  public List<String> getReferencesToRemove() {
+    return referencesToRemove;
+  }
+
+  public void setReferencesToRemove(List<String> referencesToRemove) {
+    this.referencesToRemove = referencesToRemove;
+  }
+
   @Override
   public String toString() {
-    return "FileUpdateInput{id='" + id + "', alt='" + alt + "', originalSource='" + originalSource + "', previewImageSource='" + previewImageSource + "', filename='" + filename + "'}";
+    return "FileUpdateInput{id='" + id + "', alt='" + alt + "', originalSource='" + originalSource + "', previewImageSource='" + previewImageSource + "', filename='" + filename + "', referencesToAdd='" + referencesToAdd + "', referencesToRemove='" + referencesToRemove + "'}";
   }
 
   @Override
@@ -114,12 +147,14 @@ public class FileUpdateInput {
         Objects.equals(alt, that.alt) &&
         Objects.equals(originalSource, that.originalSource) &&
         Objects.equals(previewImageSource, that.previewImageSource) &&
-        Objects.equals(filename, that.filename);
+        Objects.equals(filename, that.filename) &&
+        Objects.equals(referencesToAdd, that.referencesToAdd) &&
+        Objects.equals(referencesToRemove, that.referencesToRemove);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, alt, originalSource, previewImageSource, filename);
+    return Objects.hash(id, alt, originalSource, previewImageSource, filename, referencesToAdd, referencesToRemove);
   }
 
   public static Builder newBuilder() {
@@ -156,6 +191,16 @@ public class FileUpdateInput {
      */
     private String filename;
 
+    /**
+     * The IDs of the references to add to the file. Currently only accepts product IDs.
+     */
+    private List<String> referencesToAdd;
+
+    /**
+     * The IDs of the references to remove from the file. Currently only accepts product IDs.
+     */
+    private List<String> referencesToRemove;
+
     public FileUpdateInput build() {
       FileUpdateInput result = new FileUpdateInput();
       result.id = this.id;
@@ -163,6 +208,8 @@ public class FileUpdateInput {
       result.originalSource = this.originalSource;
       result.previewImageSource = this.previewImageSource;
       result.filename = this.filename;
+      result.referencesToAdd = this.referencesToAdd;
+      result.referencesToRemove = this.referencesToRemove;
       return result;
     }
 
@@ -207,6 +254,22 @@ public class FileUpdateInput {
      */
     public Builder filename(String filename) {
       this.filename = filename;
+      return this;
+    }
+
+    /**
+     * The IDs of the references to add to the file. Currently only accepts product IDs.
+     */
+    public Builder referencesToAdd(List<String> referencesToAdd) {
+      this.referencesToAdd = referencesToAdd;
+      return this;
+    }
+
+    /**
+     * The IDs of the references to remove from the file. Currently only accepts product IDs.
+     */
+    public Builder referencesToRemove(List<String> referencesToRemove) {
+      this.referencesToRemove = referencesToRemove;
       return this;
     }
   }

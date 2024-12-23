@@ -29,6 +29,20 @@ public class MetafieldDefinitionFragmentProjection<PARENT extends BaseSubProject
      return projection;
   }
 
+  public MetafieldCapabilitiesProjection<MetafieldDefinitionFragmentProjection<PARENT, ROOT>, ROOT> capabilities(
+      ) {
+     MetafieldCapabilitiesProjection<MetafieldDefinitionFragmentProjection<PARENT, ROOT>, ROOT> projection = new MetafieldCapabilitiesProjection<>(this, getRoot());
+     getFields().put("capabilities", projection);
+     return projection;
+  }
+
+  public MetafieldDefinitionConstraintsProjection<MetafieldDefinitionFragmentProjection<PARENT, ROOT>, ROOT> constraints(
+      ) {
+     MetafieldDefinitionConstraintsProjection<MetafieldDefinitionFragmentProjection<PARENT, ROOT>, ROOT> projection = new MetafieldDefinitionConstraintsProjection<>(this, getRoot());
+     getFields().put("constraints", projection);
+     return projection;
+  }
+
   public MetafieldConnectionProjection<MetafieldDefinitionFragmentProjection<PARENT, ROOT>, ROOT> metafields(
       ) {
      MetafieldConnectionProjection<MetafieldDefinitionFragmentProjection<PARENT, ROOT>, ROOT> projection = new MetafieldConnectionProjection<>(this, getRoot());

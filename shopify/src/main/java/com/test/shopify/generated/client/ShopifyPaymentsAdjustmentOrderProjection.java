@@ -27,4 +27,9 @@ public class ShopifyPaymentsAdjustmentOrderProjection<PARENT extends BaseSubProj
     getFields().put("name", null);
     return this;
   }
+
+  public ShopifyPaymentsAdjustmentOrderProjection<PARENT, ROOT> orderTransactionId() {
+    getFields().put("orderTransactionId", null);
+    return this;
+  }
 }

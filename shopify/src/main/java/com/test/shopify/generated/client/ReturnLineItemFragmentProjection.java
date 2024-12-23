@@ -25,6 +25,13 @@ public class ReturnLineItemFragmentProjection<PARENT extends BaseSubProjectionNo
      return projection;
   }
 
+  public RestockingFeeProjection<ReturnLineItemFragmentProjection<PARENT, ROOT>, ROOT> restockingFee(
+      ) {
+     RestockingFeeProjection<ReturnLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new RestockingFeeProjection<>(this, getRoot());
+     getFields().put("restockingFee", projection);
+     return projection;
+  }
+
   public ReturnReasonProjection<ReturnLineItemFragmentProjection<PARENT, ROOT>, ROOT> returnReason(
       ) {
      ReturnReasonProjection<ReturnLineItemFragmentProjection<PARENT, ROOT>, ROOT> projection = new ReturnReasonProjection<>(this, getRoot());

@@ -76,6 +76,11 @@ public class Channel implements com.test.shopify.generated.types.Node {
   private ProductConnection products;
 
   /**
+   * The count of products published to the channel. Limited to a maximum of 10000.
+   */
+  private Count productsCount;
+
+  /**
    * Whether the channel supports future publishing.
    */
   private boolean supportsFuturePublishing;
@@ -216,6 +221,17 @@ public class Channel implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * The count of products published to the channel. Limited to a maximum of 10000.
+   */
+  public Count getProductsCount() {
+    return productsCount;
+  }
+
+  public void setProductsCount(Count productsCount) {
+    this.productsCount = productsCount;
+  }
+
+  /**
    * Whether the channel supports future publishing.
    */
   public boolean getSupportsFuturePublishing() {
@@ -228,7 +244,7 @@ public class Channel implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "Channel{app='" + app + "', collectionPublicationsV3='" + collectionPublicationsV3 + "', collections='" + collections + "', handle='" + handle + "', hasCollection='" + hasCollection + "', id='" + id + "', name='" + name + "', navigationItems='" + navigationItems + "', overviewPath='" + overviewPath + "', productPublications='" + productPublications + "', productPublicationsV3='" + productPublicationsV3 + "', products='" + products + "', supportsFuturePublishing='" + supportsFuturePublishing + "'}";
+    return "Channel{app='" + app + "', collectionPublicationsV3='" + collectionPublicationsV3 + "', collections='" + collections + "', handle='" + handle + "', hasCollection='" + hasCollection + "', id='" + id + "', name='" + name + "', navigationItems='" + navigationItems + "', overviewPath='" + overviewPath + "', productPublications='" + productPublications + "', productPublicationsV3='" + productPublicationsV3 + "', products='" + products + "', productsCount='" + productsCount + "', supportsFuturePublishing='" + supportsFuturePublishing + "'}";
   }
 
   @Override
@@ -248,12 +264,13 @@ public class Channel implements com.test.shopify.generated.types.Node {
         Objects.equals(productPublications, that.productPublications) &&
         Objects.equals(productPublicationsV3, that.productPublicationsV3) &&
         Objects.equals(products, that.products) &&
+        Objects.equals(productsCount, that.productsCount) &&
         supportsFuturePublishing == that.supportsFuturePublishing;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(app, collectionPublicationsV3, collections, handle, hasCollection, id, name, navigationItems, overviewPath, productPublications, productPublicationsV3, products, supportsFuturePublishing);
+    return Objects.hash(app, collectionPublicationsV3, collections, handle, hasCollection, id, name, navigationItems, overviewPath, productPublications, productPublicationsV3, products, productsCount, supportsFuturePublishing);
   }
 
   public static Builder newBuilder() {
@@ -322,6 +339,11 @@ public class Channel implements com.test.shopify.generated.types.Node {
     private ProductConnection products;
 
     /**
+     * The count of products published to the channel. Limited to a maximum of 10000.
+     */
+    private Count productsCount;
+
+    /**
      * Whether the channel supports future publishing.
      */
     private boolean supportsFuturePublishing;
@@ -340,6 +362,7 @@ public class Channel implements com.test.shopify.generated.types.Node {
       result.productPublications = this.productPublications;
       result.productPublicationsV3 = this.productPublicationsV3;
       result.products = this.products;
+      result.productsCount = this.productsCount;
       result.supportsFuturePublishing = this.supportsFuturePublishing;
       return result;
     }
@@ -438,6 +461,14 @@ public class Channel implements com.test.shopify.generated.types.Node {
      */
     public Builder products(ProductConnection products) {
       this.products = products;
+      return this;
+    }
+
+    /**
+     * The count of products published to the channel. Limited to a maximum of 10000.
+     */
+    public Builder productsCount(Count productsCount) {
+      this.productsCount = productsCount;
       return this;
     }
 

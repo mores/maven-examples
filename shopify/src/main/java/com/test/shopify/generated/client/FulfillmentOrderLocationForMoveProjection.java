@@ -41,6 +41,13 @@ public class FulfillmentOrderLocationForMoveProjection<PARENT extends BaseSubPro
     return projection;
   }
 
+  public CountProjection<FulfillmentOrderLocationForMoveProjection<PARENT, ROOT>, ROOT> availableLineItemsCount(
+      ) {
+     CountProjection<FulfillmentOrderLocationForMoveProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("availableLineItemsCount", projection);
+     return projection;
+  }
+
   public LocationProjection<FulfillmentOrderLocationForMoveProjection<PARENT, ROOT>, ROOT> location(
       ) {
      LocationProjection<FulfillmentOrderLocationForMoveProjection<PARENT, ROOT>, ROOT> projection = new LocationProjection<>(this, getRoot());
@@ -73,9 +80,11 @@ public class FulfillmentOrderLocationForMoveProjection<PARENT extends BaseSubPro
     return projection;
   }
 
-  public FulfillmentOrderLocationForMoveProjection<PARENT, ROOT> availableLineItemsCount() {
-    getFields().put("availableLineItemsCount", null);
-    return this;
+  public CountProjection<FulfillmentOrderLocationForMoveProjection<PARENT, ROOT>, ROOT> unavailableLineItemsCount(
+      ) {
+     CountProjection<FulfillmentOrderLocationForMoveProjection<PARENT, ROOT>, ROOT> projection = new CountProjection<>(this, getRoot());
+     getFields().put("unavailableLineItemsCount", projection);
+     return projection;
   }
 
   public FulfillmentOrderLocationForMoveProjection<PARENT, ROOT> message() {
@@ -85,11 +94,6 @@ public class FulfillmentOrderLocationForMoveProjection<PARENT extends BaseSubPro
 
   public FulfillmentOrderLocationForMoveProjection<PARENT, ROOT> movable() {
     getFields().put("movable", null);
-    return this;
-  }
-
-  public FulfillmentOrderLocationForMoveProjection<PARENT, ROOT> unavailableLineItemsCount() {
-    getFields().put("unavailableLineItemsCount", null);
     return this;
   }
 }

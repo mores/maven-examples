@@ -42,7 +42,7 @@ public class CustomerJourneySummary {
    * The total number of customer moments associated with this order. Returns null
    * if the order is still in the process of being attributed.
    */
-  private Integer momentsCount;
+  private Count momentsCount;
 
   /**
    * Whether the attributed sessions for the order have been created yet.
@@ -114,11 +114,11 @@ public class CustomerJourneySummary {
    * The total number of customer moments associated with this order. Returns null
    * if the order is still in the process of being attributed.
    */
-  public Integer getMomentsCount() {
+  public Count getMomentsCount() {
     return momentsCount;
   }
 
-  public void setMomentsCount(Integer momentsCount) {
+  public void setMomentsCount(Count momentsCount) {
     this.momentsCount = momentsCount;
   }
 
@@ -194,7 +194,7 @@ public class CustomerJourneySummary {
      * The total number of customer moments associated with this order. Returns null
      * if the order is still in the process of being attributed.
      */
-    private Integer momentsCount;
+    private Count momentsCount;
 
     /**
      * Whether the attributed sessions for the order have been created yet.
@@ -260,7 +260,7 @@ public class CustomerJourneySummary {
      * The total number of customer moments associated with this order. Returns null
      * if the order is still in the process of being attributed.
      */
-    public Builder momentsCount(Integer momentsCount) {
+    public Builder momentsCount(Count momentsCount) {
       this.momentsCount = momentsCount;
       return this;
     }

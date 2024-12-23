@@ -18,8 +18,23 @@ public class FulfillmentHoldProjection<PARENT extends BaseSubProjectionNode<?, ?
      return projection;
   }
 
+  public FulfillmentHoldProjection<PARENT, ROOT> displayReason() {
+    getFields().put("displayReason", null);
+    return this;
+  }
+
   public FulfillmentHoldProjection<PARENT, ROOT> heldBy() {
     getFields().put("heldBy", null);
+    return this;
+  }
+
+  public FulfillmentHoldProjection<PARENT, ROOT> heldByRequestingApp() {
+    getFields().put("heldByRequestingApp", null);
+    return this;
+  }
+
+  public FulfillmentHoldProjection<PARENT, ROOT> id() {
+    getFields().put("id", null);
     return this;
   }
 

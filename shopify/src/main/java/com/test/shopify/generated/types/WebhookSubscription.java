@@ -41,6 +41,13 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
   private WebhookSubscriptionEndpoint endpoint;
 
   /**
+   * A constraint specified using search syntax that ensures only webhooks that
+   * match the specified filter are emitted. See our [guide on
+   * filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+   */
+  private String filter;
+
+  /**
    * The format in which the webhook subscription should send the data.
    */
   private WebhookSubscriptionFormat format;
@@ -70,13 +77,6 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
    * The list of namespaces for private metafields that should be included in the webhook subscription.
    */
   private List<String> privateMetafieldNamespaces;
-
-  /**
-   * An additional constraint to refine the type of event that triggers the
-   * webhook. Only supported on certain topics. See our guide to
-   * [sub-topics](https://shopify.dev/docs/apps/webhooks/sub-topics) for more.
-   */
-  private String subTopic;
 
   /**
    * The type of event that triggers the webhook. The topic determines when the
@@ -136,6 +136,19 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
 
   public void setEndpoint(WebhookSubscriptionEndpoint endpoint) {
     this.endpoint = endpoint;
+  }
+
+  /**
+   * A constraint specified using search syntax that ensures only webhooks that
+   * match the specified filter are emitted. See our [guide on
+   * filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+   */
+  public String getFilter() {
+    return filter;
+  }
+
+  public void setFilter(String filter) {
+    this.filter = filter;
   }
 
   /**
@@ -206,19 +219,6 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
   }
 
   /**
-   * An additional constraint to refine the type of event that triggers the
-   * webhook. Only supported on certain topics. See our guide to
-   * [sub-topics](https://shopify.dev/docs/apps/webhooks/sub-topics) for more.
-   */
-  public String getSubTopic() {
-    return subTopic;
-  }
-
-  public void setSubTopic(String subTopic) {
-    this.subTopic = subTopic;
-  }
-
-  /**
    * The type of event that triggers the webhook. The topic determines when the
    * webhook subscription sends a webhook, as well as what class of data object
    * that webhook contains.
@@ -244,7 +244,7 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
 
   @Override
   public String toString() {
-    return "WebhookSubscription{apiVersion='" + apiVersion + "', callbackUrl='" + callbackUrl + "', createdAt='" + createdAt + "', endpoint='" + endpoint + "', format='" + format + "', id='" + id + "', includeFields='" + includeFields + "', legacyResourceId='" + legacyResourceId + "', metafieldNamespaces='" + metafieldNamespaces + "', privateMetafieldNamespaces='" + privateMetafieldNamespaces + "', subTopic='" + subTopic + "', topic='" + topic + "', updatedAt='" + updatedAt + "'}";
+    return "WebhookSubscription{apiVersion='" + apiVersion + "', callbackUrl='" + callbackUrl + "', createdAt='" + createdAt + "', endpoint='" + endpoint + "', filter='" + filter + "', format='" + format + "', id='" + id + "', includeFields='" + includeFields + "', legacyResourceId='" + legacyResourceId + "', metafieldNamespaces='" + metafieldNamespaces + "', privateMetafieldNamespaces='" + privateMetafieldNamespaces + "', topic='" + topic + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -256,20 +256,20 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
         Objects.equals(callbackUrl, that.callbackUrl) &&
         Objects.equals(createdAt, that.createdAt) &&
         Objects.equals(endpoint, that.endpoint) &&
+        Objects.equals(filter, that.filter) &&
         Objects.equals(format, that.format) &&
         Objects.equals(id, that.id) &&
         Objects.equals(includeFields, that.includeFields) &&
         Objects.equals(legacyResourceId, that.legacyResourceId) &&
         Objects.equals(metafieldNamespaces, that.metafieldNamespaces) &&
         Objects.equals(privateMetafieldNamespaces, that.privateMetafieldNamespaces) &&
-        Objects.equals(subTopic, that.subTopic) &&
         Objects.equals(topic, that.topic) &&
         Objects.equals(updatedAt, that.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiVersion, callbackUrl, createdAt, endpoint, format, id, includeFields, legacyResourceId, metafieldNamespaces, privateMetafieldNamespaces, subTopic, topic, updatedAt);
+    return Objects.hash(apiVersion, callbackUrl, createdAt, endpoint, filter, format, id, includeFields, legacyResourceId, metafieldNamespaces, privateMetafieldNamespaces, topic, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -297,6 +297,13 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
      * The endpoint to which the webhook subscription will send events.
      */
     private WebhookSubscriptionEndpoint endpoint;
+
+    /**
+     * A constraint specified using search syntax that ensures only webhooks that
+     * match the specified filter are emitted. See our [guide on
+     * filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+     */
+    private String filter;
 
     /**
      * The format in which the webhook subscription should send the data.
@@ -330,13 +337,6 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
     private List<String> privateMetafieldNamespaces;
 
     /**
-     * An additional constraint to refine the type of event that triggers the
-     * webhook. Only supported on certain topics. See our guide to
-     * [sub-topics](https://shopify.dev/docs/apps/webhooks/sub-topics) for more.
-     */
-    private String subTopic;
-
-    /**
      * The type of event that triggers the webhook. The topic determines when the
      * webhook subscription sends a webhook, as well as what class of data object
      * that webhook contains.
@@ -354,13 +354,13 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
       result.callbackUrl = this.callbackUrl;
       result.createdAt = this.createdAt;
       result.endpoint = this.endpoint;
+      result.filter = this.filter;
       result.format = this.format;
       result.id = this.id;
       result.includeFields = this.includeFields;
       result.legacyResourceId = this.legacyResourceId;
       result.metafieldNamespaces = this.metafieldNamespaces;
       result.privateMetafieldNamespaces = this.privateMetafieldNamespaces;
-      result.subTopic = this.subTopic;
       result.topic = this.topic;
       result.updatedAt = this.updatedAt;
       return result;
@@ -396,6 +396,16 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
      */
     public Builder endpoint(WebhookSubscriptionEndpoint endpoint) {
       this.endpoint = endpoint;
+      return this;
+    }
+
+    /**
+     * A constraint specified using search syntax that ensures only webhooks that
+     * match the specified filter are emitted. See our [guide on
+     * filters](https://shopify.dev/docs/apps/build/webhooks/customize/filters) for more details.
+     */
+    public Builder filter(String filter) {
+      this.filter = filter;
       return this;
     }
 
@@ -445,16 +455,6 @@ public class WebhookSubscription implements com.test.shopify.generated.types.Leg
      */
     public Builder privateMetafieldNamespaces(List<String> privateMetafieldNamespaces) {
       this.privateMetafieldNamespaces = privateMetafieldNamespaces;
-      return this;
-    }
-
-    /**
-     * An additional constraint to refine the type of event that triggers the
-     * webhook. Only supported on certain topics. See our guide to
-     * [sub-topics](https://shopify.dev/docs/apps/webhooks/sub-topics) for more.
-     */
-    public Builder subTopic(String subTopic) {
-      this.subTopic = subTopic;
       return this;
     }
 

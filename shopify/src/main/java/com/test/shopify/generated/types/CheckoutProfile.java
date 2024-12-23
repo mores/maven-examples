@@ -44,6 +44,11 @@ public class CheckoutProfile implements com.test.shopify.generated.types.Node {
   private String name;
 
   /**
+   * Whether the checkout profile Thank You Page and Order Status Page are actively using extensibility or not.
+   */
+  private boolean typOspPagesActive;
+
+  /**
    * The date and time when the checkout profile was last updated.
    */
   private OffsetDateTime updatedAt;
@@ -107,6 +112,17 @@ public class CheckoutProfile implements com.test.shopify.generated.types.Node {
   }
 
   /**
+   * Whether the checkout profile Thank You Page and Order Status Page are actively using extensibility or not.
+   */
+  public boolean getTypOspPagesActive() {
+    return typOspPagesActive;
+  }
+
+  public void setTypOspPagesActive(boolean typOspPagesActive) {
+    this.typOspPagesActive = typOspPagesActive;
+  }
+
+  /**
    * The date and time when the checkout profile was last updated.
    */
   public OffsetDateTime getUpdatedAt() {
@@ -119,7 +135,7 @@ public class CheckoutProfile implements com.test.shopify.generated.types.Node {
 
   @Override
   public String toString() {
-    return "CheckoutProfile{createdAt='" + createdAt + "', editedAt='" + editedAt + "', id='" + id + "', isPublished='" + isPublished + "', name='" + name + "', updatedAt='" + updatedAt + "'}";
+    return "CheckoutProfile{createdAt='" + createdAt + "', editedAt='" + editedAt + "', id='" + id + "', isPublished='" + isPublished + "', name='" + name + "', typOspPagesActive='" + typOspPagesActive + "', updatedAt='" + updatedAt + "'}";
   }
 
   @Override
@@ -132,12 +148,13 @@ public class CheckoutProfile implements com.test.shopify.generated.types.Node {
         Objects.equals(id, that.id) &&
         isPublished == that.isPublished &&
         Objects.equals(name, that.name) &&
+        typOspPagesActive == that.typOspPagesActive &&
         Objects.equals(updatedAt, that.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, editedAt, id, isPublished, name, updatedAt);
+    return Objects.hash(createdAt, editedAt, id, isPublished, name, typOspPagesActive, updatedAt);
   }
 
   public static Builder newBuilder() {
@@ -171,6 +188,11 @@ public class CheckoutProfile implements com.test.shopify.generated.types.Node {
     private String name;
 
     /**
+     * Whether the checkout profile Thank You Page and Order Status Page are actively using extensibility or not.
+     */
+    private boolean typOspPagesActive;
+
+    /**
      * The date and time when the checkout profile was last updated.
      */
     private OffsetDateTime updatedAt;
@@ -182,6 +204,7 @@ public class CheckoutProfile implements com.test.shopify.generated.types.Node {
       result.id = this.id;
       result.isPublished = this.isPublished;
       result.name = this.name;
+      result.typOspPagesActive = this.typOspPagesActive;
       result.updatedAt = this.updatedAt;
       return result;
     }
@@ -223,6 +246,14 @@ public class CheckoutProfile implements com.test.shopify.generated.types.Node {
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * Whether the checkout profile Thank You Page and Order Status Page are actively using extensibility or not.
+     */
+    public Builder typOspPagesActive(boolean typOspPagesActive) {
+      this.typOspPagesActive = typOspPagesActive;
       return this;
     }
 

@@ -59,6 +59,11 @@ public class FulfillmentOrderDestination implements com.test.shopify.generated.t
   private String lastName;
 
   /**
+   * The location designated for the pick-up of the fulfillment order.
+   */
+  private Location location;
+
+  /**
    * The phone number of the customer at the destination.
    */
   private String phone;
@@ -176,6 +181,17 @@ public class FulfillmentOrderDestination implements com.test.shopify.generated.t
   }
 
   /**
+   * The location designated for the pick-up of the fulfillment order.
+   */
+  public Location getLocation() {
+    return location;
+  }
+
+  public void setLocation(Location location) {
+    this.location = location;
+  }
+
+  /**
    * The phone number of the customer at the destination.
    */
   public String getPhone() {
@@ -210,7 +226,7 @@ public class FulfillmentOrderDestination implements com.test.shopify.generated.t
 
   @Override
   public String toString() {
-    return "FulfillmentOrderDestination{address1='" + address1 + "', address2='" + address2 + "', city='" + city + "', company='" + company + "', countryCode='" + countryCode + "', email='" + email + "', firstName='" + firstName + "', id='" + id + "', lastName='" + lastName + "', phone='" + phone + "', province='" + province + "', zip='" + zip + "'}";
+    return "FulfillmentOrderDestination{address1='" + address1 + "', address2='" + address2 + "', city='" + city + "', company='" + company + "', countryCode='" + countryCode + "', email='" + email + "', firstName='" + firstName + "', id='" + id + "', lastName='" + lastName + "', location='" + location + "', phone='" + phone + "', province='" + province + "', zip='" + zip + "'}";
   }
 
   @Override
@@ -227,6 +243,7 @@ public class FulfillmentOrderDestination implements com.test.shopify.generated.t
         Objects.equals(firstName, that.firstName) &&
         Objects.equals(id, that.id) &&
         Objects.equals(lastName, that.lastName) &&
+        Objects.equals(location, that.location) &&
         Objects.equals(phone, that.phone) &&
         Objects.equals(province, that.province) &&
         Objects.equals(zip, that.zip);
@@ -234,7 +251,7 @@ public class FulfillmentOrderDestination implements com.test.shopify.generated.t
 
   @Override
   public int hashCode() {
-    return Objects.hash(address1, address2, city, company, countryCode, email, firstName, id, lastName, phone, province, zip);
+    return Objects.hash(address1, address2, city, company, countryCode, email, firstName, id, lastName, location, phone, province, zip);
   }
 
   public static Builder newBuilder() {
@@ -288,6 +305,11 @@ public class FulfillmentOrderDestination implements com.test.shopify.generated.t
     private String lastName;
 
     /**
+     * The location designated for the pick-up of the fulfillment order.
+     */
+    private Location location;
+
+    /**
      * The phone number of the customer at the destination.
      */
     private String phone;
@@ -313,6 +335,7 @@ public class FulfillmentOrderDestination implements com.test.shopify.generated.t
       result.firstName = this.firstName;
       result.id = this.id;
       result.lastName = this.lastName;
+      result.location = this.location;
       result.phone = this.phone;
       result.province = this.province;
       result.zip = this.zip;
@@ -388,6 +411,14 @@ public class FulfillmentOrderDestination implements com.test.shopify.generated.t
      */
     public Builder lastName(String lastName) {
       this.lastName = lastName;
+      return this;
+    }
+
+    /**
+     * The location designated for the pick-up of the fulfillment order.
+     */
+    public Builder location(Location location) {
+      this.location = location;
       return this;
     }
 

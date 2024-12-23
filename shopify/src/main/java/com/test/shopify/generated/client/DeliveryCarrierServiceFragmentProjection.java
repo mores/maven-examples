@@ -48,6 +48,16 @@ public class DeliveryCarrierServiceFragmentProjection<PARENT extends BaseSubProj
      return projection;
   }
 
+  public DeliveryCarrierServiceFragmentProjection<PARENT, ROOT> active() {
+    getFields().put("active", null);
+    return this;
+  }
+
+  public DeliveryCarrierServiceFragmentProjection<PARENT, ROOT> callbackUrl() {
+    getFields().put("callbackUrl", null);
+    return this;
+  }
+
   public DeliveryCarrierServiceFragmentProjection<PARENT, ROOT> formattedName() {
     getFields().put("formattedName", null);
     return this;
@@ -60,6 +70,11 @@ public class DeliveryCarrierServiceFragmentProjection<PARENT extends BaseSubProj
 
   public DeliveryCarrierServiceFragmentProjection<PARENT, ROOT> name() {
     getFields().put("name", null);
+    return this;
+  }
+
+  public DeliveryCarrierServiceFragmentProjection<PARENT, ROOT> supportsServiceDiscovery() {
+    getFields().put("supportsServiceDiscovery", null);
     return this;
   }
 

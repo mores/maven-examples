@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class DiscountCodeAppCreatePayload {
   /**
-   * The created code app discount.
+   * The discount that the app provides.
    */
   private DiscountCodeApp codeAppDiscount;
 
@@ -24,7 +24,7 @@ public class DiscountCodeAppCreatePayload {
   }
 
   /**
-   * The created code app discount.
+   * The discount that the app provides.
    */
   public DiscountCodeApp getCodeAppDiscount() {
     return codeAppDiscount;
@@ -70,7 +70,7 @@ public class DiscountCodeAppCreatePayload {
 
   public static class Builder {
     /**
-     * The created code app discount.
+     * The discount that the app provides.
      */
     private DiscountCodeApp codeAppDiscount;
 
@@ -87,7 +87,7 @@ public class DiscountCodeAppCreatePayload {
     }
 
     /**
-     * The created code app discount.
+     * The discount that the app provides.
      */
     public Builder codeAppDiscount(DiscountCodeApp codeAppDiscount) {
       this.codeAppDiscount = codeAppDiscount;

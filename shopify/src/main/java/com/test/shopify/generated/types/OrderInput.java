@@ -46,12 +46,6 @@ public class OrderInput {
   private List<MetafieldInput> metafields;
 
   /**
-   * A list of new [localization extensions](https://shopify.dev/api/admin-graphql/latest/objects/localizationextension)
-   * to add to the existing list of localization extensions for the order.
-   */
-  private List<LocalizationExtensionInput> localizationExtensions;
-
-  /**
    * The new purchase order number for the order.
    */
   private String poNumber;
@@ -137,18 +131,6 @@ public class OrderInput {
   }
 
   /**
-   * A list of new [localization extensions](https://shopify.dev/api/admin-graphql/latest/objects/localizationextension)
-   * to add to the existing list of localization extensions for the order.
-   */
-  public List<LocalizationExtensionInput> getLocalizationExtensions() {
-    return localizationExtensions;
-  }
-
-  public void setLocalizationExtensions(List<LocalizationExtensionInput> localizationExtensions) {
-    this.localizationExtensions = localizationExtensions;
-  }
-
-  /**
    * The new purchase order number for the order.
    */
   public String getPoNumber() {
@@ -161,7 +143,7 @@ public class OrderInput {
 
   @Override
   public String toString() {
-    return "OrderInput{id='" + id + "', email='" + email + "', note='" + note + "', tags='" + tags + "', shippingAddress='" + shippingAddress + "', customAttributes='" + customAttributes + "', metafields='" + metafields + "', localizationExtensions='" + localizationExtensions + "', poNumber='" + poNumber + "'}";
+    return "OrderInput{id='" + id + "', email='" + email + "', note='" + note + "', tags='" + tags + "', shippingAddress='" + shippingAddress + "', customAttributes='" + customAttributes + "', metafields='" + metafields + "', poNumber='" + poNumber + "'}";
   }
 
   @Override
@@ -176,13 +158,12 @@ public class OrderInput {
         Objects.equals(shippingAddress, that.shippingAddress) &&
         Objects.equals(customAttributes, that.customAttributes) &&
         Objects.equals(metafields, that.metafields) &&
-        Objects.equals(localizationExtensions, that.localizationExtensions) &&
         Objects.equals(poNumber, that.poNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, email, note, tags, shippingAddress, customAttributes, metafields, localizationExtensions, poNumber);
+    return Objects.hash(id, email, note, tags, shippingAddress, customAttributes, metafields, poNumber);
   }
 
   public static Builder newBuilder() {
@@ -226,12 +207,6 @@ public class OrderInput {
     private List<MetafieldInput> metafields;
 
     /**
-     * A list of new [localization extensions](https://shopify.dev/api/admin-graphql/latest/objects/localizationextension)
-     * to add to the existing list of localization extensions for the order.
-     */
-    private List<LocalizationExtensionInput> localizationExtensions;
-
-    /**
      * The new purchase order number for the order.
      */
     private String poNumber;
@@ -245,7 +220,6 @@ public class OrderInput {
       result.shippingAddress = this.shippingAddress;
       result.customAttributes = this.customAttributes;
       result.metafields = this.metafields;
-      result.localizationExtensions = this.localizationExtensions;
       result.poNumber = this.poNumber;
       return result;
     }
@@ -303,15 +277,6 @@ public class OrderInput {
      */
     public Builder metafields(List<MetafieldInput> metafields) {
       this.metafields = metafields;
-      return this;
-    }
-
-    /**
-     * A list of new [localization extensions](https://shopify.dev/api/admin-graphql/latest/objects/localizationextension)
-     * to add to the existing list of localization extensions for the order.
-     */
-    public Builder localizationExtensions(List<LocalizationExtensionInput> localizationExtensions) {
-      this.localizationExtensions = localizationExtensions;
       return this;
     }
 

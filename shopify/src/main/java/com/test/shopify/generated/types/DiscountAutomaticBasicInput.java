@@ -8,31 +8,37 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
- * The input fields to create or update an automatic basic discount.
+ * The input fields for creating or updating an
+ * [amount off discount](https://help.shopify.com/manual/discounts/discount-types/percentage-fixed-amount)
+ * that's automatically applied on a cart and at checkout.
  */
 public class DiscountAutomaticBasicInput {
   /**
-   * Determines which discount classes the discount can combine with.
+   * The
+   * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that you can use in combination with
+   * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
    */
   private DiscountCombinesWithInput combinesWith;
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   private String title;
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   private OffsetDateTime startsAt;
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   private OffsetDateTime endsAt;
 
   /**
-   * The minimum subtotal or quantity that's required for the discount to be applied.
+   * The minimum subtotal or quantity of items that are required for the discount to be applied.
    */
   private DiscountMinimumRequirementInput minimumRequirement;
 
@@ -42,7 +48,10 @@ public class DiscountAutomaticBasicInput {
   private DiscountCustomerGetsInput customerGets;
 
   /**
-   * The number of times a discount applies on recurring purchases (subscriptions).
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
    */
   private Integer recurringCycleLimit;
 
@@ -50,7 +59,10 @@ public class DiscountAutomaticBasicInput {
   }
 
   /**
-   * Determines which discount classes the discount can combine with.
+   * The
+   * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+   * that you can use in combination with
+   * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
    */
   public DiscountCombinesWithInput getCombinesWith() {
     return combinesWith;
@@ -61,7 +73,7 @@ public class DiscountAutomaticBasicInput {
   }
 
   /**
-   * The title of the discount.
+   * The discount's name that displays to merchants in the Shopify admin and to customers.
    */
   public String getTitle() {
     return title;
@@ -72,7 +84,7 @@ public class DiscountAutomaticBasicInput {
   }
 
   /**
-   * The date and time when the discount starts.
+   * The date and time when the discount becomes active and is available to customers.
    */
   public OffsetDateTime getStartsAt() {
     return startsAt;
@@ -83,7 +95,8 @@ public class DiscountAutomaticBasicInput {
   }
 
   /**
-   * The date and time when the discount ends. For open-ended discounts, use `null`.
+   * The date and time when the discount expires and is no longer available to customers.
+   * For discounts without a fixed expiration date, specify `null`.
    */
   public OffsetDateTime getEndsAt() {
     return endsAt;
@@ -94,7 +107,7 @@ public class DiscountAutomaticBasicInput {
   }
 
   /**
-   * The minimum subtotal or quantity that's required for the discount to be applied.
+   * The minimum subtotal or quantity of items that are required for the discount to be applied.
    */
   public DiscountMinimumRequirementInput getMinimumRequirement() {
     return minimumRequirement;
@@ -116,7 +129,10 @@ public class DiscountAutomaticBasicInput {
   }
 
   /**
-   * The number of times a discount applies on recurring purchases (subscriptions).
+   * The number of billing cycles for which the discount can be applied,
+   * which is useful for subscription-based discounts. For example, if you set this field
+   * to `3`, then the discount only applies to the first three billing cycles of a
+   * subscription. If you specify `0`, then the discount applies indefinitely.
    */
   public Integer getRecurringCycleLimit() {
     return recurringCycleLimit;
@@ -156,27 +172,31 @@ public class DiscountAutomaticBasicInput {
 
   public static class Builder {
     /**
-     * Determines which discount classes the discount can combine with.
+     * The
+     * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
      */
     private DiscountCombinesWithInput combinesWith;
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     private String title;
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     private OffsetDateTime startsAt;
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     private OffsetDateTime endsAt;
 
     /**
-     * The minimum subtotal or quantity that's required for the discount to be applied.
+     * The minimum subtotal or quantity of items that are required for the discount to be applied.
      */
     private DiscountMinimumRequirementInput minimumRequirement;
 
@@ -186,7 +206,10 @@ public class DiscountAutomaticBasicInput {
     private DiscountCustomerGetsInput customerGets;
 
     /**
-     * The number of times a discount applies on recurring purchases (subscriptions).
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
      */
     private Integer recurringCycleLimit;
 
@@ -203,7 +226,10 @@ public class DiscountAutomaticBasicInput {
     }
 
     /**
-     * Determines which discount classes the discount can combine with.
+     * The
+     * [discount class](https://help.shopify.com/manual/discounts/combining-discounts/discount-combinations)
+     * that you can use in combination with
+     * [Shopify discount types](https://help.shopify.com/manual/discounts/discount-types).
      */
     public Builder combinesWith(DiscountCombinesWithInput combinesWith) {
       this.combinesWith = combinesWith;
@@ -211,7 +237,7 @@ public class DiscountAutomaticBasicInput {
     }
 
     /**
-     * The title of the discount.
+     * The discount's name that displays to merchants in the Shopify admin and to customers.
      */
     public Builder title(String title) {
       this.title = title;
@@ -219,7 +245,7 @@ public class DiscountAutomaticBasicInput {
     }
 
     /**
-     * The date and time when the discount starts.
+     * The date and time when the discount becomes active and is available to customers.
      */
     public Builder startsAt(OffsetDateTime startsAt) {
       this.startsAt = startsAt;
@@ -227,7 +253,8 @@ public class DiscountAutomaticBasicInput {
     }
 
     /**
-     * The date and time when the discount ends. For open-ended discounts, use `null`.
+     * The date and time when the discount expires and is no longer available to customers.
+     * For discounts without a fixed expiration date, specify `null`.
      */
     public Builder endsAt(OffsetDateTime endsAt) {
       this.endsAt = endsAt;
@@ -235,7 +262,7 @@ public class DiscountAutomaticBasicInput {
     }
 
     /**
-     * The minimum subtotal or quantity that's required for the discount to be applied.
+     * The minimum subtotal or quantity of items that are required for the discount to be applied.
      */
     public Builder minimumRequirement(DiscountMinimumRequirementInput minimumRequirement) {
       this.minimumRequirement = minimumRequirement;
@@ -251,7 +278,10 @@ public class DiscountAutomaticBasicInput {
     }
 
     /**
-     * The number of times a discount applies on recurring purchases (subscriptions).
+     * The number of billing cycles for which the discount can be applied,
+     * which is useful for subscription-based discounts. For example, if you set this field
+     * to `3`, then the discount only applies to the first three billing cycles of a
+     * subscription. If you specify `0`, then the discount applies indefinitely.
      */
     public Builder recurringCycleLimit(Integer recurringCycleLimit) {
       this.recurringCycleLimit = recurringCycleLimit;
