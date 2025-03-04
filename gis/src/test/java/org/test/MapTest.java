@@ -23,14 +23,14 @@ public class MapTest {
 	private org.locationtech.jts.geom.GeometryFactory gf;
 
 	private org.opengis.feature.simple.SimpleFeatureType cityType;
-	private java.util.List<org.geotools.process.spatialstatistics.core.SpatialEvent> events;
+	//private java.util.List<org.geotools.process.spatialstatistics.core.SpatialEvent> events;
 	private org.geotools.feature.DefaultFeatureCollection featureCollection;
 
 	@Test
 	public void test() throws Exception {
 
 		gf = new org.locationtech.jts.geom.GeometryFactory();
-		events = new java.util.ArrayList<>();
+		//events = new java.util.ArrayList<>();
 
 		Filter filter = CQL.toFilter("STATE = 'NY'");
 
@@ -70,6 +70,7 @@ public class MapTest {
 		layer2.setTitle("Points");
 		map.addLayer(layer2);
 
+		/*
 		org.geotools.process.spatialstatistics.core.DistanceFactory distanceFactory = new org.geotools.process.spatialstatistics.core.DistanceFactory();
 		double standardDeviation = 1.0;
 		boolean useWeight = false;
@@ -89,11 +90,13 @@ public class MapTest {
 		layer3.setVisible(true);
 		layer3.setTitle("Center");
 		map.addLayer(layer3);
+		*/
 
 		int imageWidth = 700;
 		double heightToWidth = mapBounds.getSpan(1) / mapBounds.getSpan(0);
 		java.awt.Rectangle imageBounds = new java.awt.Rectangle(0, 0, imageWidth, (int) Math.round(imageWidth * heightToWidth));
 
+		/*
 		// Begin Heat Map
 		log.info( "point CRS: " + featureCollection.getSchema().getCoordinateReferenceSystem() );
 		log.info( "Map CRS: " + mapBounds.getCoordinateReferenceSystem() );
@@ -123,6 +126,7 @@ public class MapTest {
 		org.geotools.map.GridCoverageLayer layer4 = new org.geotools.map.GridCoverageLayer( gridCoverage, styles[0]);
 		map.addLayer(layer4);
 		// End Heat Map
+		*/
 
 		org.geotools.renderer.GTRenderer renderer = new org.geotools.renderer.lite.StreamingRenderer();
 		renderer.setMapContent(map);
@@ -158,8 +162,8 @@ public class MapTest {
 		simpleFeatureBuilder.add( name );
 		org.opengis.feature.simple.SimpleFeature simpleFeature = simpleFeatureBuilder.buildFeature( name );
 
-		org.geotools.process.spatialstatistics.core.SpatialEvent spatialEvent = new org.geotools.process.spatialstatistics.core.SpatialEvent( name, coordinate );
-		events.add( spatialEvent );
+		//org.geotools.process.spatialstatistics.core.SpatialEvent spatialEvent = new org.geotools.process.spatialstatistics.core.SpatialEvent( name, coordinate );
+		//events.add( spatialEvent );
 
 		return simpleFeature;
 	}
