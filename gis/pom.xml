@@ -14,7 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- 22.2 works for geotools minus spatialstatistics -->
-		<geotools.version>22.5</geotools.version>
+		<geotools.version>29.6</geotools.version>
 	</properties>
 
 	<repositories>
