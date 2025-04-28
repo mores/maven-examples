@@ -14,7 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- 22.2 works for geotools minus spatialstatistics -->
-		<geotools.version>29.6</geotools.version>
+		<geotools.version>32.2</geotools.version>
 	</properties>
 
 	<repositories>
@@ -43,6 +43,12 @@
 	</repositories>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-swing</artifactId>
+			<version>${geotools.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.geotools</groupId>
 			<artifactId>gt-process-feature</artifactId>
