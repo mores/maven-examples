@@ -33,3 +33,10 @@ type TickEdge {
     cursor: String!
     node: Tick
 }
+
+input QuantityRuleInput {
+  increment: Int!
+  maximum: Int = null
+  minimum: Int!
+  variantId: ID!
+}
