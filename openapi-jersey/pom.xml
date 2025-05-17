@@ -16,6 +16,7 @@
 		<jakarta.servlet.version>6.0.0</jakarta.servlet.version>
 		<jersey.version>3.1.10</jersey.version>
 		<swagger.version>2.2.32</swagger.version>
+		<swagger-ui.version>5.21.0</swagger-ui.version>
 	</properties>
 
 	<dependencies>
@@ -167,18 +168,36 @@
 			</plugin>
 
 			<plugin>
+				<groupId>com.googlecode.maven-download-plugin</groupId>
+				<artifactId>download-maven-plugin</artifactId>
+				<version>1.13.0</version>
+				<executions>
+					<execution>
+						<id>swagger-ui</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>wget</goal>
+						</goals>
+						<configuration>
+							<url>https://github.com/swagger-api/swagger-ui/archive/refs/tags/v${swagger-ui.version}.tar.gz</url>
+							<unpack>true</unpack>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>3.4.0</version>
 				<configuration>
+					<warName>${project.build.finalName}</warName>
+					<webappDirectory>${basedir}/target/${project.build.finalName}</webappDirectory>
 					<webResources>
 						<webResource>
-							<directory>${basedir}/src/main/webapp/WEB-INF</directory>
-							<includes>
-								<include>web.xml</include>
-							</includes>
-							<targetPath>WEB-INF</targetPath>
-							<filtering>true</filtering>
+							<directory>${project.build.directory}/swagger-ui-${swagger-ui.version}/dist</directory>
+							<targetPath>swagger-ui</targetPath>
 						</webResource>
 					</webResources>
 				</configuration>
