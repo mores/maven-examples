@@ -10,6 +10,10 @@
 	<packaging>war</packaging>
 
 	<properties>
+		<server.dev.url>http://127.0.0.1:8080/v1</server.dev.url>
+		<server.api.url>${server.dev.url}/api</server.api.url>
+		<server.yaml.url>${server.dev.url}/api.yaml</server.yaml.url>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
 
@@ -20,6 +24,37 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>4.0.5</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<version>2.24.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
@@ -95,6 +130,8 @@
 						<format>
 							<includes>
 								<include>pom.xml</include>
+								<include>src/main/webapp/WEB-INF/web.xml</include>
+								<include>src/main/resources/log4j2.xml</include>
 							</includes>
 							<eclipseWtp>
 								<type>XML</type>
@@ -126,7 +163,9 @@
 						</goals>
 						<configuration>
 							<verbose>false</verbose>
-							<inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
+							<apiPackage>com.example</apiPackage>
+							<modelPackage>com.example.model</modelPackage>
+							<inputSpec>${project.basedir}/src/main/webapp/api.yaml</inputSpec>
 							<generatorName>jaxrs-jersey</generatorName>
 							<configOptions>
 								<dateLibrary>java8</dateLibrary>
@@ -135,34 +174,6 @@
 								<useJakartaEe>true</useJakartaEe>
 							</configOptions>
 						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>com.diffplug.spotless</groupId>
-				<artifactId>spotless-maven-plugin</artifactId>
-				<version>2.44.4</version>
-				<configuration>
-					<formats>
-						<format>
-							<includes>
-								<include>pom.xml</include>
-							</includes>
-							<eclipseWtp>
-								<type>XML</type>
-								<version>4.21.0</version>
-							</eclipseWtp>
-						</format>
-					</formats>
-				</configuration>
-				<executions>
-					<execution>
-						<id>apply</id>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>apply</goal>
-						</goals>
 					</execution>
 				</executions>
 			</plugin>
@@ -196,12 +207,43 @@
 					<webappDirectory>${basedir}/target/${project.build.finalName}</webappDirectory>
 					<webResources>
 						<webResource>
+							<directory>src/main/webapp</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>api.yaml</include>
+							</includes>
+						</webResource>
+						<webResource>
 							<directory>${project.build.directory}/swagger-ui-${swagger-ui.version}/dist</directory>
 							<targetPath>swagger-ui</targetPath>
 						</webResource>
 					</webResources>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>1</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<replace
+									token="https://petstore.swagger.io/v2/swagger.json"
+									value="${server.yaml.url}" dir="target">
+									<include name="**/swagger-initializer.js" />
+								</replace>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>
