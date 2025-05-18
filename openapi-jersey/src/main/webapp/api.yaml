@@ -7,7 +7,7 @@ info:
    version: 1.0.0
    
 servers:
-  - url: ${server.dev.url}
+  - url: ${server.api.url}
     description: Optional server description, e.g. Main (development) server
   - url: http://uat.test.com/v1
     description: Optional server description, e.g. Internal staging server for testing
