@@ -7,21 +7,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox
-	xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
 	xmlns:fx="http://javafx.com/fxml"
-	fx:controller="org.openjfx.SceneController"
->
+	fx:controller="org.openjfx.SceneController">
 
-    <Label fx:id="title" text="Hello world!"/>
-    <Label fx:id="subTitle" text="This is a simple demo application."/>
+	<Label fx:id="title" text="Hello world!" />
+	<Label fx:id="subTitle" text="This is a simple demo application." />
 
-    <TextField fx:id="field" editable="false"/>
-    <fx:define>
-      <Number fx:id="min" fx:value="0"/>
-      <Number fx:id="max" fx:value="10"/>
-    </fx:define>
-    <Spinner fx:id="spinner" min="$min" max="$max" editable="false">
-    </Spinner>
-    <Button fx:id="button" text="Click me!" onAction="#buttonClicked"/>
+	<TextField fx:id="field" editable="false" />
+	<fx:define>
+		<Number fx:id="min" fx:value="0" />
+		<Number fx:id="max" fx:value="10" />
+	</fx:define>
+	<Spinner fx:id="spinner" min="$min" max="$max" editable="false">
+	</Spinner>
+	<Button fx:id="button" text="Click me!"
+		onAction="#buttonClicked" />
 </VBox>
