@@ -26,14 +26,14 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>2.0.7</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<version>2.23.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>2.0.7</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.23.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
@@ -122,33 +122,12 @@
 						<option>-Dfile.encoding=UTF-8</option>
 					</javaOptions>
 				</configuration>
-				<executions>
-					<execution>
-						<id>mac</id>
-						<configuration>
-						</configuration>
-					</execution>
-					<execution>
-						<id>win</id>
-						<configuration>
-							<winMenu>true</winMenu>
-						</configuration>
-					</execution>
-					<execution>
-						<id>linux</id>
-						<configuration>
-							<type>APP_IMAGE</type>
-							<icon>icons/icon.png</icon>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
 				<groupId>net.revelc.code.formatter</groupId>
 				<artifactId>formatter-maven-plugin</artifactId>
 				<configuration>
-					<directory>${project.build.sourceDirectory}</directory>
 					<configFile>${project.basedir}/eclipse-formatter-config.xml</configFile>
 				</configuration>
 				<executions>
@@ -169,6 +148,8 @@
 						<format>
 							<includes>
 								<include>pom.xml</include>
+								<include>src/main/resources/**/*.fxml</include>
+								<include>src/main/resources/log4j2.xml</include>
 							</includes>
 							<eclipseWtp>
 								<type>XML</type>
