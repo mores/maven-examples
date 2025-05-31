@@ -13,11 +13,22 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.faces</artifactId>
-			<version>2.3.0</version>
-			<scope>provided</scope>
-		</dependency>
+                        <groupId>org.jboss.weld.servlet</groupId>
+                        <artifactId>weld-servlet-shaded</artifactId>
+                        <version>5.1.2.Final</version>
+                </dependency>
+
+                <dependency>
+                        <groupId>jakarta.faces</groupId>
+                        <artifactId>jakarta.faces-api</artifactId>
+                        <version>4.0.1</version>
+                </dependency>
+
+                <dependency>
+                        <groupId>org.glassfish</groupId>
+                        <artifactId>jakarta.faces</artifactId>
+                        <version>4.0.5</version>
+                </dependency>
 	</dependencies>
 
 	<build>
@@ -25,33 +36,23 @@
                         <plugin>
                                 <groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.1.2.v20140210</version>
+				<version>11.0.21</version>
                                 <configuration>
+					<httpConnector>
+                                                <port>9090</port>
+                                        </httpConnector>
 					<webApp>
 						<contextPath>/helloworld</contextPath>
 					</webApp>
-					<systemProperties>
-						<systemProperty>
-							<key>jetty.port</key>
-							<value>9090</value>
-						</systemProperty>
-					</systemProperties>
                                 </configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.glassfish</groupId>
-						<artifactId>javax.faces</artifactId>
-						<version>2.3.0</version>
-					</dependency>
-				</dependencies>
                         </plugin>
 
 			<plugin>
                                 <groupId>org.apache.maven.plugins</groupId>
                                 <artifactId>maven-compiler-plugin</artifactId>
                                 <configuration>
-                                        <source>1.5</source>
-                                        <target>1.5</target>
+                                        <source>11</source>
+                                        <target>11</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>

@@ -1,10 +1,11 @@
 package org.test;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
-@ManagedBean(name="var2")
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+
+@Named
 @SessionScoped
 public class Var2 implements Serializable {
 
