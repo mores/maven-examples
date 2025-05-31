@@ -22,12 +22,11 @@ public class HelloWorldComponent extends javax.faces.component.UIComponentBase
 		javax.faces.context.ResponseWriter writer = context.getResponseWriter();
 		writer.write("Hello World!");
 
-		// Issue number 1 - why is this null
-		javax.el.ValueExpression vex = getValueExpression( "value" );
-		log.error( "VEX: " + vex );
+		String value = (String)getAttributes().get( "value" );
+		log.info( "Value: " + value );
 
 		org.primefaces.component.panel.Panel panel = new org.primefaces.component.panel.Panel();
-		panel.setHeader( "Component" );
+		panel.setHeader( value );
 		panel.setFooter( "footer" );
 		panel.setParent( this );
 
