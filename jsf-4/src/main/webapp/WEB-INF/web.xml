@@ -9,9 +9,12 @@
 		<welcome-file>greeting.xhtml</welcome-file>
 	</welcome-file-list>
 
+	<!-- Mojarra does not support CSP -->
+	<!-- https://primefaces.github.io/primefaces/15_0_0/#/core/contentsecuritypolicy?id=known-limitations -->
+	<!-- https://github.com/jakartaee/faces/issues/1590 -->
 	<context-param>
 		<param-name>primefaces.CSP</param-name>
-		<param-value>true</param-value>
+		<param-value>false</param-value>
 	</context-param>
 
 	<context-param>
