@@ -17,6 +17,7 @@
 		<javafx.version>21.0.7</javafx.version>
 		<javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
 		<mainClass>org.openjfx.App</mainClass>
+		<jetty.version>11.0.25</jetty.version>
 	</properties>
 
 	<organization>
@@ -25,6 +26,23 @@
 	</organization>
 
 	<dependencies>
+		<dependency>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-webapp</artifactId>
+                        <version>${jetty.version}</version>
+                </dependency>
+                <dependency>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-annotations</artifactId>
+                        <version>${jetty.version}</version>
+                </dependency>
+		<!--
+                <dependency>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-slf4j-impl</artifactId>
+                        <version>${jetty.version}</version>
+                </dependency>
+		-->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j2-impl</artifactId>
@@ -45,6 +63,11 @@
 			<artifactId>javafx-fxml</artifactId>
 			<version>${javafx.version}</version>
 		</dependency>
+		<dependency>
+                        <groupId>org.openjfx</groupId>
+                        <artifactId>javafx-web</artifactId>
+                        <version>${javafx.version}</version>
+                </dependency>
 	</dependencies>
 	<build>
 		<plugins>
