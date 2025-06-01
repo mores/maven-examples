@@ -29,6 +29,11 @@ public class HelloWorldComponent extends jakarta.faces.component.UICommand
                 writer.write("Hello World!");
 		writer.write("</br>");
 
+		org.primefaces.component.panel.Panel panel = new org.primefaces.component.panel.Panel();
+                panel.setHeader( "Header" );
+                panel.setFooter( "footer" );
+		this.getChildren().add(panel);
+
 		jakarta.faces.component.html.HtmlCommandLink page2 = (jakarta.faces.component.html.HtmlCommandLink)application.createComponent(jakarta.faces.component.html.HtmlCommandLink.COMPONENT_TYPE);
 
 		jakarta.el.MethodExpression ae = getActionExpression();
@@ -39,6 +44,6 @@ public class HelloWorldComponent extends jakarta.faces.component.UICommand
 		log.info( "VE: " + ve );
 		page2.setValue( ve.getValue( context.getELContext() ) );
 
-		this.getChildren().add(page2);
+		panel.getChildren().add(page2);
         }
 }
