@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:t="http://test.org/component"
+        xmlns:pe="http://primefaces.org/ui/extensions"
+>
+
+        <f:view contentType="text/html">
+
+        <h:head>
+        </h:head>
+        <h:body>
+
+        <p:messages />
+
+        <h:form id="form1">
+		<h:commandLink value="#{var1.var}" action="#{var1.navigate}" />
+		<br/>
+		<t:helloWorldComponent value="#{var1.var}" action="#{var1.navigate}"/>
+	</h:form>
+        </h:body>
+</f:view>
+</html>
