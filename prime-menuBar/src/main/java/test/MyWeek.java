@@ -1,30 +1,21 @@
 package test;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.faces.lifecycle.ClientWindowScoped;
 
-@ManagedBean( name = "MyWeek" )
-@SessionScoped
+@Named( "MyWeek" )
+@ClientWindowScoped
 public class MyWeek implements java.io.Serializable
 {
 	private org.primefaces.model.ScheduleModel eventModel;
-	private java.util.Date initialDate;
+	private java.time.LocalDate initialDate;
 
 	public MyWeek()
         {
-		java.util.GregorianCalendar gc = new java.util.GregorianCalendar();
-                gc.set( java.util.Calendar.HOUR_OF_DAY, 0 );
-                        gc.set( java.util.Calendar.MINUTE, 0 );
-                        gc.set( java.util.Calendar.SECOND, 0 );
-                        gc.set( java.util.Calendar.MILLISECOND, 0 );
-                        gc.set( java.util.Calendar.YEAR, 2022 );
-                        gc.set( java.util.Calendar.WEEK_OF_YEAR, 26 );
-                        gc.set( java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.MONDAY );
+                initialDate = java.time.LocalDate.now();
 
-                gc.add( java.util.GregorianCalendar.HOUR, 6 );
-                initialDate = gc.getTime();
-
-		eventModel = new DefaultScheduleModel();
+		eventModel = new org.primefaces.model.DefaultScheduleModel();
 
 		eventModel.addEvent( createEvent( "A1", "driver", 0 ) );
                 eventModel.addEvent( createEvent( "A2", "driver", 3 ) );
@@ -45,27 +36,26 @@ public class MyWeek implements java.io.Serializable
                 return eventModel;
         }
 
-	public java.util.Date getInitialDate()
+	public java.time.LocalDate getInitialDate()
         {
                 return initialDate;
         }
 
-	private org.primefaces.model.DefaultScheduleEvent createEvent( String title, String style, int hours )
+	private org.primefaces.model.DefaultScheduleEvent<java.math.BigDecimal> createEvent( String title, String style, int hours )
         {
-                org.primefaces.model.DefaultScheduleEvent day = new org.primefaces.model.DefaultScheduleEvent();
+                org.primefaces.model.DefaultScheduleEvent<java.math.BigDecimal> day = new org.primefaces.model.DefaultScheduleEvent<>();
 
-		java.util.Calendar calendar = java.util.Calendar.getInstance();
-		calendar.setTime( initialDate );
+		java.time.LocalDateTime now = java.time.LocalDateTime.now();
+		java.time.LocalDateTime start = now.plusHours( hours );
 
-	    	calendar.add( java.util.Calendar.HOUR_OF_DAY, hours);
-                day.setStartDate( calendar.getTime() );
-
-		calendar.add( java.util.Calendar.HOUR_OF_DAY, 2 );
-                day.setEndDate( calendar.getTime() );
+                day.setStartDate( start );
+                day.setEndDate( start.plusHours( 2 ) );
 
                 day.setTitle( title );
 		day.setStyleClass( style );
                 day.setEditable( false );
+
+		day.setData( new java.math.BigDecimal( "0" ) );
 
                 return day;
         }

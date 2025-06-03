@@ -1,10 +1,11 @@
 package org.test;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.faces.lifecycle.ClientWindowScoped;
 
-@ManagedBean( name = "PollView" )
-@SessionScoped
+@Named( "PollView" )
+@ClientWindowScoped
 public class PollView implements java.io.Serializable {
 
     private int number;

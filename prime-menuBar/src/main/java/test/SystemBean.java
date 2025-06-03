@@ -1,9 +1,11 @@
 package test;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ApplicationScoped;
+import jakarta.annotation.PostConstruct;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.enterprise.context.ApplicationScoped;
 
-@ManagedBean(name="SystemBean")
+@Named( "SystemBean" )
 @ApplicationScoped
 public class SystemBean implements java.io.Serializable 
 {
@@ -13,7 +15,13 @@ public class SystemBean implements java.io.Serializable
 	public SystemBean()
 	{
 		jsf = Package.getPackage("com.sun.faces").getImplementationVersion();
-		org.primefaces.config.PrimeEnvironment pe = new org.primefaces.config.PrimeEnvironment( javax.faces.context.FacesContext.getCurrentInstance() );
+
+		jakarta.faces.context.FacesContext context = jakarta.faces.context.FacesContext.getCurrentInstance();
+		org.primefaces.context.PrimeRequestContext requestContext = org.primefaces.context.PrimeRequestContext.getCurrentInstance(context);
+		org.primefaces.context.PrimeApplicationContext applicationContext = requestContext.getApplicationContext();
+
+		org.primefaces.config.PrimeEnvironment pe = applicationContext.getEnvironment();
+
 		prime = pe.getBuildVersion();
 	}
 

@@ -1,10 +1,11 @@
 package org.test;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.faces.lifecycle.ClientWindowScoped;
 
-@ManagedBean( name = "Processing" )
-@SessionScoped
+@Named( "Processing" )
+@ClientWindowScoped
 public class Processing implements java.io.Serializable {
 
 	private Integer progress;
