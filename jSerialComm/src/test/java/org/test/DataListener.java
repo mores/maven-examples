@@ -26,7 +26,13 @@ public class DataListener implements  com.fazecast.jSerialComm.SerialPortDataLis
 		System.out.println("Received data of size: " + newData.length);
 		for (int i = 0; i < newData.length; ++i)
 		{
-			System.out.print((char)newData[i]);
+			String hexString = String.format("%02X", newData[i]);
+			char printable = 32;
+			if( (int)newData[i] > 31 && (int)newData[i] < 127 )
+			{
+				printable = (char)newData[i];
+			}
+			System.out.println( i + " " + hexString + " " + printable );
 		}
 		System.out.println("\n");
 	}
