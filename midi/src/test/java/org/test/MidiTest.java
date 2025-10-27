@@ -65,10 +65,15 @@ public class MidiTest {
         }
 
         sequencer.setSequence(sequence);
-
         sequencer.start();
 
-        Thread.sleep(50000);
+        while (sequencer.isRunning()) {
+            Thread.sleep(1000);
+        }
+
+        sequencer.close();
+        synthesizer.close();
+        multiReceiver.close();
     }
 
     public void testTwo() throws Exception {
@@ -115,8 +120,6 @@ public class MidiTest {
     public void testOne() throws Exception {
         log.info("testOne");
 
-        int NOTE_ON = 0x90;
-        int NOTE_OFF = 0x80;
         String[] NOTE_NAMES = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
         java.io.File file = new java.io.File("src/test/resources/ExitMusic.mid");
@@ -136,14 +139,14 @@ public class MidiTest {
                 if (message instanceof javax.sound.midi.ShortMessage) {
                     javax.sound.midi.ShortMessage sm = (javax.sound.midi.ShortMessage) message;
                     log.info("Channel: " + sm.getChannel() + " ");
-                    if (sm.getCommand() == NOTE_ON) {
+                    if (sm.getCommand() == javax.sound.midi.ShortMessage.NOTE_ON) {
                         int key = sm.getData1();
                         int octave = (key / 12) - 1;
                         int note = key % 12;
                         String noteName = NOTE_NAMES[note];
                         int velocity = sm.getData2();
                         log.info("Note on, " + noteName + octave + " key=" + key + " velocity: " + velocity);
-                    } else if (sm.getCommand() == NOTE_OFF) {
+                    } else if (sm.getCommand() == javax.sound.midi.ShortMessage.NOTE_OFF) {
                         int key = sm.getData1();
                         int octave = (key / 12) - 1;
                         int note = key % 12;
