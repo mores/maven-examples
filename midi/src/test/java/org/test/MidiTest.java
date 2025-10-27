@@ -13,30 +13,34 @@ public class MidiTest {
     public void testThree() throws Exception {
         log.info("testThree - hear music");
 
+        javax.sound.midi.Sequencer sequencer = javax.sound.midi.MidiSystem.getSequencer(false);
+        log.info("Sequencer: " + sequencer);
+        sequencer.open();
+
         javax.sound.midi.Synthesizer synthesizer = javax.sound.midi.MidiSystem.getSynthesizer();
+        log.info("Synthesizer: " + synthesizer);
         synthesizer.open();
 
-        // java.io.File soundFontFile = new java.io.File("src/test/resources/FluidR3.sf3");
-        // java.io.File soundFontFile = new java.io.File("src/test/resources/Fireninja_s_Kayserburg_Piano.sf2");
-        // javax.sound.midi.Soundbank sounbank = javax.sound.midi.MidiSystem.getSoundbank(soundFontFile);
-        // synthesizer.loadAllInstruments(sounbank);
+        java.io.File soundFontFile = new java.io.File("src/test/resources/Fireninja_s_Kayserburg_Piano.sf2");
+        javax.sound.midi.Soundbank sounbank = javax.sound.midi.MidiSystem.getSoundbank(soundFontFile);
+        synthesizer.loadAllInstruments(sounbank);
 
         javax.sound.midi.Instrument[] instruments = synthesizer.getLoadedInstruments();
         for (javax.sound.midi.Instrument instrument : instruments) {
             log.info(instrument + "\t" + instrument.getPatch().getBank() + "\t" + instrument.getPatch().getProgram());
         }
 
-        java.io.File file = new java.io.File("src/test/resources/Exit_Music.mid");
-
-        javax.sound.midi.Sequencer sequencer = javax.sound.midi.MidiSystem.getSequencer();
-        log.info("Sequencer: " + sequencer);
-        sequencer.open();
-
         sequencer.addMetaEventListener(new MetaListener());
 
         javax.sound.midi.Transmitter transmitter = sequencer.getTransmitter();
-        transmitter.setReceiver(new Receiver());
 
+        MultiReceiver multiReceiver = new MultiReceiver();
+        multiReceiver.addReceiver(new Receiver());
+        multiReceiver.addReceiver(synthesizer.getReceiver());
+
+        transmitter.setReceiver(multiReceiver);
+
+        java.io.File file = new java.io.File("src/test/resources/Exit_Music.mid");
         javax.sound.midi.Sequence sequence = javax.sound.midi.MidiSystem.getSequence(file);
 
         for (javax.sound.midi.Track track : sequence.getTracks()) {
@@ -53,7 +57,7 @@ public class MidiTest {
                                 + currentInstrument);
 
                         // Set the new instrument (e.g., 0 for Acoustic Grand Piano)
-                        int newInstrument = 1; // Replace with your desired instrument number
+                        int newInstrument = 0; // Replace with your desired instrument number
                         sm.setMessage(javax.sound.midi.ShortMessage.PROGRAM_CHANGE, sm.getChannel(), newInstrument, 0);
                     }
                 }
