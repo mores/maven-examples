@@ -34,6 +34,9 @@ public class MidiTest {
 
         sequencer.addMetaEventListener(new MetaListener());
 
+        javax.sound.midi.Transmitter transmitter = sequencer.getTransmitter();
+        transmitter.setReceiver(new Receiver());
+
         javax.sound.midi.Sequence sequence = javax.sound.midi.MidiSystem.getSequence(file);
 
         for (javax.sound.midi.Track track : sequence.getTracks()) {
