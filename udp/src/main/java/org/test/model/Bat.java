@@ -91,6 +91,8 @@ public class Bat implements Show
 			if( motionCounter > 10 )
 			{
 				motion = false;
+				motionCounter = 0;
+				log.info( "motion is now false" );
 			}
 		}
 
