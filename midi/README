@@ -1,0 +1,26 @@
+git clone https://github.com/mores/MidiReader.git
+
+cd MidiReader
+
+git checkout mavenize
+
+mvn clean install
+
+cd maven-examples/midi/src/test/resources
+
+wget https://www.musical-artifacts.com/artifacts/5536/Fireninja_s_Kayserburg_Piano.sf2
+
+mvn clean test
+
+---- audio help ----
+aplay -l
+
+card 0: vc4hdmi [vc4-hdmi], device 0: MAI PCM i2s-hifi-0 [MAI PCM i2s-hifi-0]
+card 1: Headphones [bcm2835 Headphones], device 0: bcm2835 Headphones [bcm2835 Headphones]
+
+aplay -D hw:1,0 car-horn.wav 
+
+
+vi /etc/asound.conf
+pcm.!default { type hw card 1 }
+ctl.!default { type hw card 1 }
