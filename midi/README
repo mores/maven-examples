@@ -24,3 +24,8 @@ aplay -D hw:1,0 car-horn.wav
 vi /etc/asound.conf
 pcm.!default { type hw card 1 }
 ctl.!default { type hw card 1 }
+
+
+amixer -c 1
+
+amixer -c 1 set PCM 75%
