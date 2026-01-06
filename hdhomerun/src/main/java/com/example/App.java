@@ -34,8 +34,20 @@ public class App {
             String jsonResponse = response.body();
 
             Gson gson = new Gson();
-            MyClass data = gson.fromJson(jsonResponse, MyClass.class);
+            HdHomeRun data = gson.fromJson(jsonResponse, HdHomeRun.class);
             log.info("Auth: " + data.DeviceAuth);
+
+            HttpRequest request2 = HttpRequest.newBuilder()
+                    .uri(URI.create("https://api.hdhomerun.com/api/xmltv?DeviceAuth=" + data.DeviceAuth)).build();
+            HttpResponse<String> response2 = client.send(request2, HttpResponse.BodyHandlers.ofString());
+
+            if (response2.statusCode() == 200) {
+                String xmlResponse = response2.body();
+
+                java.nio.file.Path path = java.nio.file.Paths.get("./xmltv.xml");
+                java.nio.file.Files.writeString(path, xmlResponse, java.nio.charset.StandardCharsets.UTF_8);
+            }
+
         }
 
     }

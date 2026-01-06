@@ -1,6 +1,6 @@
 package com.example;
 
-public class MyClass {
+public class HdHomeRun {
 
     public String FirmwareName;
     public String FirmwareVersion;
