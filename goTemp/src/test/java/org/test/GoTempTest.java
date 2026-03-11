@@ -108,6 +108,11 @@ public class GoTempTest
 								}
 							}
 						}
+						catch( javax.usb.UsbPlatformException usbE )
+						{
+							log.error( "Linux might need a /etc/udev/rules.d/50-vernier.rules or run as root !" );
+							log.info( "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"08f7\", ATTRS{idProduct}==\"0002\", MODE=\"0666\"" );
+						}
 						catch( Exception e )
 						{
 							java.io.StringWriter sw = new java.io.StringWriter();
