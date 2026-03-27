@@ -61,11 +61,6 @@ public class VictronScanner {
 
                 byte[] raw = mfrData.get(VICTRON_MANUFACTURER_ID);
 
-                // DEBUG: print raw bytes so we can verify byte offsets
-                StringBuilder sb = new StringBuilder("[DEBUG] raw bytes (" + raw.length + "): ");
-                for (byte b : raw) sb.append(String.format("%02X ", b));
-                System.out.println(sb.toString().trim());
-
                 if (parser == null) {
                     // Discover mode: just print device info once per address
                     System.out.printf("[DISCOVER] %s: %s%n", address, name != null ? name : "Unknown");
