@@ -64,6 +64,8 @@ public class RrdUpdater {
             "--width",  "800",
             "--height", "300",
             "--vertical-label", "Volts / Celsius",
+            "--alt-autoscale",
+            "--alt-y-grid",
 
             "DEF:voltage=" + rrdPath + ":voltage:AVERAGE",
             "LINE2:voltage#0000FF:Voltage (V)",

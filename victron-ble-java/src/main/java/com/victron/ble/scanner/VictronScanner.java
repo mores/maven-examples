@@ -83,13 +83,13 @@ public class VictronScanner {
         System.out.println("[INFO] Starting BLE scan...");
         BluetoothCentralManager central = new BluetoothCentralManager(callback);
 
-        if (targetMac != null) {
-            // Scan filtered to our specific device address — more efficient
-            central.scanForPeripheralsWithAddresses(new String[]{ targetMac });
-        } else {
-            // Discover mode: scan for everything
-            central.scanForPeripherals();
-        }
+        // Always use unfiltered scanForPeripherals() — this calls BlueZ StartDiscovery
+        // without setting a discovery filter, which keeps the adapter in full active
+        // scan mode. Using scanForPeripheralsWithAddresses() sets a filter which causes
+        // BlueZ to apply RSSI delta-thresholds and suppress repeat advertisements,
+        // requiring another client (e.g. victron-ble) to hold an unfiltered session.
+        // Filtering by MAC/manufacturer is done in our callback instead.
+        central.scanForPeripherals();
 
         if (durationSec > 0) {
             done.await(durationSec, TimeUnit.SECONDS);
