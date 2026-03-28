@@ -1,11 +1,14 @@
 package com.victron.ble.model;
 
+import java.time.Instant;
+
 /**
  * Parsed payload from a Victron Smart Battery Sense advertisement.
  * Voltage and temperature are nullable — N/A values from the device are null.
  */
 public class SmartBatterySenseData {
 
+    private final Instant timestamp;
     private final String name;
     private final String address;
     private final int rssi;
@@ -15,6 +18,7 @@ public class SmartBatterySenseData {
 
     public SmartBatterySenseData(String name, String address, int rssi,
                                   String modelName, Double voltage, Double temperatureCelsius) {
+        this.timestamp          = Instant.now();
         this.name               = name;
         this.address            = address;
         this.rssi               = rssi;
@@ -23,6 +27,7 @@ public class SmartBatterySenseData {
         this.temperatureCelsius = temperatureCelsius;
     }
 
+    public Instant getTimestamp()         { return timestamp; }
     public String getName()               { return name; }
     public String getAddress()            { return address; }
     public int getRssi()                  { return rssi; }
@@ -35,8 +40,8 @@ public class SmartBatterySenseData {
         String v = voltage            != null ? String.format("%.2f", voltage)            : "null";
         String t = temperatureCelsius != null ? String.format("%.2f", temperatureCelsius) : "null";
         return String.format(
-            "{\"name\":\"%s\",\"address\":\"%s\",\"rssi\":%d," +
+            "{\"timestamp\":\"%s\",\"name\":\"%s\",\"address\":\"%s\",\"rssi\":%d," +
             "\"payload\":{\"model_name\":\"%s\",\"voltage\":%s,\"temperature\":%s}}",
-            name, address, rssi, modelName, v, t);
+            timestamp, name, address, rssi, modelName, v, t);
     }
 }
