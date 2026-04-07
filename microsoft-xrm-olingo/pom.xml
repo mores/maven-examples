@@ -9,7 +9,7 @@
 	<name>${project.artifactId}</name>
 
 	<properties>
-		<odata.version>4.3.0</odata.version>
+		<odata.version>4.7.1</odata.version>
 	</properties>
 
 	<dependencies>
